@@ -643,3 +643,73 @@ footer {
     float: right; }
     .copy span i {
       margin-right: 20px; }
+/* ===================================== uni style Style  ================================== */
+
+      body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+section {
+    margin: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #35424a;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+button {
+    background-color: #35424a;
+    color: white;
+    padding: 10px 20px;
+    margin: 20px 0;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.right-item ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.right-item li {
+  float: left;
+}
+
+.right-item li a {
+  display: block;
+  color: #000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.right-item li a:hover {
+  color: #007BFF;
+}

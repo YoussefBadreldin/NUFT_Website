@@ -261,7 +261,7 @@ header {
 
 .small-menu {
   float: right;
-  color: #99cc43;
+  color: #FFF;
   font-size: 32px;
   margin-top: 23px;
   margin-right: 12px; }
@@ -269,13 +269,13 @@ header {
 /* ===================================== Slider Style CSS ================================== */
 .slider {
   position: relative;
-  padding-top: 122px; }
+  padding-top: 100px; }
   @media screen and (max-width: 767px) {
     .slider {
-      padding-top: 71px; } }
+      padding-top: 50px; } }
   @media screen and (max-width: 450px) {
     .slider {
-      padding-top: 190px; } }
+      padding-top: 150px; } }
 
 .slider-captions {
   position: absolute;

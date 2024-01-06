@@ -661,65 +661,78 @@ footer .glink ul li a {
   margin-right: 20px;
 }
 
-/* ===================================== uni style Style  ================================== */
+/* ===================================== universites style Style  ================================== */
 
-      body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
 }
 
 section {
-    margin: 20px;
+  margin: 20px;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 table, th, td {
-    border: 1px solid #ddd;
-    padding: 15px;
-    text-align: left;
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: left;
 }
 
 th {
-    background-color: #35424a;
-    color: white;
+  background-color: #35424a;
+  color: white;
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 button {
-    background-color: #35424a;
-    color: white;
-    padding: 10px 20px;
-    margin: 20px 0;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    display: inline-block;
+  background-color: #35424a;
+  color: white;
+  padding: 10px 20px;
+  margin: 20px 0;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
 }
 
 button:hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }
 
-.right-item ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
+/* === Social Media Links Style  ==== */
+
+.social-right-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
 
-.right-item li {
-  float: left;
+.social-right-item ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
 }
 
-.right-item li a:hover {
-  color: #007BFF;
+.social-right-item ul li {
+  margin-right: 10px;
+}
+
+.social-right-item ul li a {
+  color: #000; /* Change this to the color you want for the icons */
+  text-decoration: none;
+}
+
+.social-right-item ul li a:hover {
+  color: #888; /* Change this to the color you want when hovering over the icons */
 }

@@ -583,66 +583,68 @@ header {
         font-size: 0.8rem; } }
 
 /* ===================================== Footer Cover Style  ================================== */
-.footer-ablove {
-  padding: 30px;
-  background-color: #00ab9f;
-  color: #FFF;
-  font-size: 1.5rem; }
-  .footer-ablove .btn {
-    float: right;
-    background-color: #FFF;
-    font-family: "mouse-500", Arial, Helvetica, sans-serif; }
-
 footer {
   padding: 50px;
   background-color: #223d50;
-  color: #FFF; }
-  @media screen and (max-width: 940px) {
-    footer {
-      padding: 30px 10px; } }
-  footer h2 {
-    font-size: 1.2rem;
-    margin-bottom: 20px; }
-  footer .about p {
-    font-size: .9em;
-    margin-bottom: 20px; }
-  footer .about .foot-address {
-    display: flex; }
-    footer .about .foot-address .icon {
-      padding: 20px 10px; }
-    footer .about .foot-address .addet {
-      font-size: .9rem;
-      margin: auto 0px; }
-  footer .fotnews .blohjb {
-    margin-bottom: 10px; }
-    footer .fotnews .blohjb p {
-      font-size: .9rem; }
-    footer .fotnews .blohjb span {
-      font-size: .9rem; }
-  footer .glink ul li {
-    padding: 10px; }
-    footer .glink ul li i {
-      margin-right: 10px; }
-    footer .glink ul li a {
-      color: #FFF; }
-  footer .tags ul li {
-    float: left;
-    padding: 8px;
-    margin-right: 8px;
-    margin-bottom: 8px;
-    border: 1px solid #CCC; }
+  color: #FFF;
+}
+
+@media screen and (max-width: 940px) {
+  footer {
+    padding: 30px 10px;
+  }
+}
+
+footer .about .foot-address {
+  display: flex;
+}
+
+footer .about .foot-address .icon {
+  padding: 20px 10px;
+}
+
+footer .about .foot-address .addet {
+  font-size: .9rem;
+  margin: auto 0px;
+}
+
+footer .glink ul li {
+  padding: 10px;
+}
+
+footer .glink ul li a {
+  color: #FFF;
+  font-size: 12px;
+}
+
+
+footer .glink ul li i {
+  margin-right: 10px;
+}
+
+footer .glink ul li a {
+  color: #FFF;
+}
 
 .copy {
   padding: 20px;
   background-color: #172d3c;
-  color: #FFF; }
-  .copy a {
-    color: #FFF;
-    font-size: .8rem; }
-  .copy span {
-    float: right; }
-    .copy span i {
-      margin-right: 20px; }
+  color: #FFF;
+}
+
+.copy a {
+  color: #FFF;
+  font-size: .8rem;
+}
+
+.copy span {
+  float: right;
+}
+
+.copy span i {
+  margin-right: 20px;
+}
+
 /* ===================================== uni style Style  ================================== */
 
       body {
@@ -700,14 +702,6 @@ button:hover {
 
 .right-item li {
   float: left;
-}
-
-.right-item li a {
-  display: block;
-  color: #000;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
 }
 
 .right-item li a:hover {

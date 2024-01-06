@@ -677,12 +677,16 @@ section {
 table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 table, th, td {
   border: 1px solid #ddd;
-  padding: 15px;
-  text-align: left;
+  padding: 5px;
+  text-align: center; 
+  font-size: 0.6em;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 th {
@@ -708,6 +712,29 @@ button {
 button:hover {
   background-color: #45a049;
 }
+
+/* Media query for screens larger than 768px */
+@media (min-width: 768px) {
+  table, th, td {
+      padding: 15px;
+      font-size: 1em;
+  }
+}
+
+/* Media query for screens smaller than 768px */
+@media (max-width: 767px) {
+  table, th, td {
+      padding: 5px;
+      text-align: center;
+      font-size: 0.46em;
+  }
+
+  /* Specific style for university names on mobile */
+  td:first-child {
+      font-size: 0.46em; /* Decrease font size */
+  }
+}
+
 
 /* === Social Media Links Style  ==== */
 

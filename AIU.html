@@ -82,37 +82,53 @@
 
     <!-- ################# Body #######################--->
     <section>
-        <div style="display: flex; align-items: center;">
-            <img src="assets/images/Uni Logos/AIU.png" alt="University Logo" style="width: 300px; height: 300px;">
-            <div style="margin-left: 50px;">
-
-                <!-- ######## Uni Title ####### -->
-                <h2>Alamein International University (AIU)</h2>
-
-                <!-- ######## Uni info ####### -->
-                <p>A National university directly affiliated with the Ministry of Higher Education and Scientific Research. 
-                <br>Established according to the presidential Decision No. 435 of 2020.</p>
-                <br>
-
-                <!-- ######## Uni Location ####### -->
-                <p> Located in New Alamein City, Matruh Government on an area of 150 acres, it includes a central library, an outdoor theater, a sports and recreational area, a university hospital, a dental hospital, and a university administration building. Additionally, there are 10 buildings for the colleges, 4 residential towers for students and faculty members, and staff, in addition to 9 additional residential buildings outside the university campus in the housing district. Construction has been completed at a rate of 50%.</p>
-                <a href="enter the actual link here"><button>View Location on Maps</button></a>
-
-                <!-- ######## Social Media Links ####### -->
-                <div class="col-lg-5 d-none d-lg-block social-right-item">
-                    <ul>
-                        <li><a href="enter the actual website link here"><i class="fas fa-globe"></i></a></li>
-                        <li><a href="tel:enter the actual phone number here"><i class="fas fa-phone"></i></a></li>
-                        <li><a href="mailto:enter the actual email here"><i class="fas fa-envelope"></i></a></li>
-                        <li><a href="enter the actual Facebook link here"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="enter the actual Instagram link here"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="enter the actual YouTube link here"><i class="fab fa-youtube"></i></a></li>
-                        <li><a href="enter the actual LinkedIn link here"><i class="fab fa-linkedin-in"></i></a></li>
-                    </ul>
-                </div>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <img src="assets/images/Uni Logos/AIU.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
+    
+            <!-- ######## Uni Title ####### -->
+            <h2 style="text-align: center; margin-top: 20px;">Alamein International University (AIU)</h2>
+    
+            <!-- ######## Uni info ####### -->
+            <p style="text-align: center;">A National university directly affiliated with the Ministry of Higher Education and Scientific Research. Established according to the presidential Decision No. 435 of 2020.</p>
+    
+            <!-- ######## Uni Location ####### -->
+            <p style="text-align: center;">Located in New Alamein City, Matruh Government on an area of 150 acres, it includes a central library, an outdoor theater, a sports and recreational area, a university hospital, a dental hospital, and a university administration building. Additionally, there are 10 buildings for the colleges, 4 residential towers for students and faculty members, and staff, in addition to 9 additional residential buildings outside the university campus in the housing district. Construction has been completed at a rate of 50%.</p>
+            <a href="enter the actual link here" style="display: block; text-align: center;"><button>View Location on Maps</button></a>
+    
+            <!-- ######## Social Media Links ####### -->
+            <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
+                <ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
+                    <li><a href="enter the actual website link here"><i class="fas fa-globe"></i></a></li>
+                    <li><a href="tel:enter the actual phone number here"><i class="fas fa-phone"></i></a></li>
+                    <li><a href="mailto:enter the actual email here"><i class="fas fa-envelope"></i></a></li>
+                    <li><a href="enter the actual Facebook link here"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="enter the actual Instagram link here"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="enter the actual YouTube link here"><i class="fab fa-youtube"></i></a></li>
+                    <li><a href="enter the actual LinkedIn link here"><i class="fab fa-linkedin-in"></i></a></li>
+                </ul>
             </div>
         </div>
-    </section>    
+    </section>
+    
+    <style>
+        @media (min-width: 992px) {
+            section > div {
+                flex-direction: row;
+                text-align: left;
+            }
+            section img {
+                width: 300px;
+                height: 300px;
+            }
+            section h2 {
+                margin-top: 0;
+            }
+            .social-right-item {
+                display: none;
+            }
+        }
+    </style>
+      
 
 <!-- ######## Faculties ####### -->
     <section>

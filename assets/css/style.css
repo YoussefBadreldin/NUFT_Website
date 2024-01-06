@@ -115,10 +115,14 @@ body {
     width: 100%;
     text-align: center; }
 
-.page-nav {
-  padding: 40px;
-  text-align: center;
-  padding-top: 160px; }
+    .page-nav {
+      padding: 40px;
+      text-align: center;
+      padding-top: 160px;
+      margin-bottom: 11; /* Adjust this value as needed */
+      border: 1px solid rgb(0, 0, 0); /* Add a border */
+      background-color: #fff; /* Add a background color */
+    }    
   .page-nav ul {
     float: none;
     margin: auto; }
@@ -408,38 +412,42 @@ header {
     .Categories .key-row .c2 {
       background-color: #43cb89; }
 
-/* ===================================== our Services Style CSS ================================== */
-.our-Services {
-  padding: 50px;
-  margin-top: 115px; }
+/* ===================================== Card Box Style CSS ================================== */
+.Card-Box {
+  padding: 0px;
+  margin-top: -40px; }
   @media screen and (max-width: 940px) {
-    .our-Services {
+    .Card-Box {
       padding: 30px 10px; } }
   @media screen and (max-width: 838px) {
-    .our-Services {
+    .Card-Box  {
       margin-top: 0px; } }
-  .our-Services .serv-card {
+  .Card-Box .Box-card {
     background-color: #FFF;
     box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
     border-radius: 2px;
     margin-bottom: 15px; }
-    .our-Services .serv-card img {
+    .Card-Box .Box-card img {
       width: 100%; }
-    .our-Services .serv-card .serv-det {
+    .Card-Box .Box-card .Box-det {
       padding: 15px; }
-      .our-Services .serv-card .serv-det h6 {
+      .Card-Box .Box-card .Box-det h6 {
         padding-bottom: 8px;
         border-bottom: 1px solid #CCC; }
-      .our-Services .serv-card .serv-det ul li {
+      .Card-Box .Box-card .Box-det ul li {
         font-size: .85rem;
         padding: 5px; }
-        .our-Services .serv-card .serv-det ul li i {
+        .Card-Box .Box-card .Box-det ul li i {
           margin-right: 5px; }
-        .our-Services .serv-card .serv-det ul li span {
+        .Card-Box .Box-card .Box-det ul li span {
           float: right;
           font-size: .8rem;
           color: #43cb89; }
-
+          .Box-det h6 {
+            display: block;
+            color: #000; /* Change this to the color you want */
+        }
+        
 /* ===================================== Our Team Style CSS ================================== */
 .Our-Team {
   padding: 50px;
@@ -521,22 +529,22 @@ header {
   }
 }
 
-/* ===================================== Clinic Number Say CSS ================================== */
-.doctor-message {
+/* ===================================== About us CSS ================================== */
+.About-Us {
   background-image: url("../images/slider/slider_2.jpg");
   background-attachment: fixed;
   background-size: cover; }
-  .doctor-message .inner-lay {
+  .About-Us .inner-lay {
     background-color: rgba(6, 79, 90, 0.8);
     padding: 50px;
     color: #FFF; }
     @media screen and (max-width: 940px) {
-      .doctor-message .inner-lay {
+      .About-Us .inner-lay {
         padding: 30px 10px; } }
-    .doctor-message .inner-lay .numb {
+    .About-Us .inner-lay .numb {
       text-align: center;
       padding: 30px; }
-      .doctor-message .inner-lay .numb h3 {
+      .About-Us .inner-lay .numb h3 {
         font-size: 42px;
         padding-bottom: 10px;
         border-bottom: 1px solid #CCC;
@@ -581,7 +589,15 @@ header {
         font-size: 1rem; }
       .news-card .setv ul li {
         font-size: 0.8rem; } }
-
+        .setv h4 a {
+          color: #000; /* Change the color to what suits your design */
+          text-decoration: none; /* Removes the underline */
+      }
+      
+      .setv h4 a:hover {
+          color: #000; /* Keeps the color the same even when hovered */
+      }
+      
 /* ===================================== Footer Cover Style  ================================== */
 footer {
   padding: 50px;

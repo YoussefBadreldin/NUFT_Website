@@ -301,7 +301,7 @@ header {
 .slider-captions {
   position: absolute;
   bottom: 160px;
-  text-align: center; }
+  text-align: right; } /* changed from center to right */
   @media screen and (max-width: 1050px) {
     .slider-captions {
       bottom: 100px !important; }
@@ -361,20 +361,20 @@ header {
 .slider .owl-nav .owl-prev {
   position: absolute;
   top: 40%;
-  left: 15px; }
+  right: 15px; } /* changed from left to right */
 
 .slider .owl-nav .owl-next {
   position: absolute;
   top: 40%;
-  right: 15px; }
+  left: 15px; } /* changed from right to left */
 
 .slider .owl-dots .owl-dot {
   position: relative;
-  text-align: center;
+  text-align: right; /* changed from center to right */
   bottom: 40px;
   max-width: 1140px;
   margin: 0 auto;
-  left: -75px; }
+  right: -75px; } /* changed from left to right */
 
 .slider .owl-dots .owl-dot span {
   display: block;
@@ -388,7 +388,7 @@ header {
   -moz-border-radius: 20px;
   border-radius: 20px;
   border: 2px solid #fff;
-  float: left; }
+  float: right; } /* changed from left to right */
 
 .slider .owl-dots .owl-dot.active span {
   background-color: #fff; }
@@ -402,6 +402,7 @@ header {
 .slider .col-lg-offset-2 {
   float: none;
   margin: auto; }
+
 
 /* ===================================== Categories Style CSS ================================== */
 .Categories {
@@ -550,6 +551,70 @@ header {
   }
 }
 
+.carousel-control-prev-icon:after
+{
+  content: '>';
+  font-size: 55px;
+  color: black;
+}
+
+.carousel-control-next-icon:after {
+  content: '<';
+  font-size: 55px;
+  color: black;
+}
+.carousel-control-prev,
+.carousel-control-next {
+  width: auto;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+.carousel-control-prev {
+  left: -20px; /* Adjust as needed */
+}
+
+.carousel-control-next {
+  right: -5px; /* Adjust as needed */
+}
+
+.carousel-control-prev-icon:after
+{
+  content: '>';
+  font-size: 55px;
+  color: black;
+}
+
+.carousel-control-next-icon:after {
+  content: '<';
+  font-size: 55px;
+  color: black;
+}
+
+/* Styles for smaller screens */
+@media screen and (max-width: 768px) {
+  .carousel-control-prev,
+  .carousel-control-next {
+    top: -3%;
+    bottom: 10px; /* Position the arrows at the bottom for smaller screens */
+    transform: initial;
+  }
+
+  .carousel-control-prev {
+    left: -25px; /* Adjust as needed */
+  }
+
+  .carousel-control-next {
+    right: -25px; /* Adjust as needed */
+  }
+
+  .carousel-control-prev-icon:after,
+  .carousel-control-next-icon:after {
+    font-size: 20px; /* Smaller font size for smaller screens */
+  }
+}
+
 /* ===================================== About us CSS ================================== */
 .About-Us {
   background-image: url("../images/slider/slider_2.jpg");
@@ -570,6 +635,7 @@ header {
         padding-bottom: 10px;
         border-bottom: 1px solid #CCC;
         margin-bottom: 20px; }
+
 
 /* ===================================== News CSS ================================== */
 @media screen and (max-width: 500px) {

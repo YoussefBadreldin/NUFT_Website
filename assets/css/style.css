@@ -448,14 +448,14 @@ header {
             color: #000; /* Change this to the color you want */
         }
         
-/* ===================================== Our Team Style CSS ================================== */
-.Our-Team {
+/* ===================================== Our Board Style CSS ================================== */
+.Our-Board {
   padding: 50px;
   background-color: #FFF;
 }
 
 @media screen and (max-width: 940px) {
-  .Our-Team {
+  .Our-Board {
     padding: 30px 10px;
   }
 }
@@ -498,36 +498,6 @@ header {
   margin-bottom: 10px; /* Adding some bottom margin for spacing */
 }
 
-.Nav-arrows {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-}
-
-.Arrow {
-  font-size: 30px;
-  cursor: pointer;
-  color: #223d50; /* Adding a color to the arrows for better visibility */
-}
-
-/* Adjustments for smaller screens */
-@media screen and (max-width: 768px) {
-  .Member-card {
-    margin-right: 0;
-    margin-bottom: 15px; /* Add some bottom margin for better spacing on smaller screens */
-  }
-}
-
-/* Limit to only two rows */
-@media screen and (min-width: 768px) {
-  .Member-row {
-    max-width: calc(100% - 30px); /* Adjust the max-width to your preference */
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
 
 /* ===================================== About us CSS ================================== */
 .About-Us {

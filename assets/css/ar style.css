@@ -455,19 +455,26 @@ header {
       padding: 15px; }
       .Card-Box .Box-card .Box-det h6 {
         padding-bottom: 8px;
-        border-bottom: 1px solid #CCC; }
+        border-bottom: 1px solid #CCC; 
+        text-align: right; /* Align text to the right for RTL */
+      }
       .Card-Box .Box-card .Box-det ul li {
         font-size: .85rem;
-        padding: 5px; }
+        padding: 5px; 
+        text-align: right; /* Align text to the right for RTL */
+      }
         .Card-Box .Box-card .Box-det ul li i {
-          margin-right: 5px; }
+          margin-left: 5px; /* Adjust icon margin for RTL */
+        }
         .Card-Box .Box-card .Box-det ul li span {
-          float: right;
+          float: left; /* Float to the left for RTL */
           font-size: .8rem;
-          color: #43cb89; }
-          .Box-det h6 {
-            display: block;
-            color: #000; /* Change this to the color you want */
+          color: #43cb89; 
+        }
+        .Box-det h6 {
+          display: block;
+          color: #000; /* Change this to the color you want */
+          text-align: right; /* Align text to the right for RTL */
         }
         
 /* ===================================== Our Team Style CSS ================================== */

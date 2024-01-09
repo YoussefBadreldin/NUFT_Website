@@ -1,11 +1,4 @@
-/* =======================================================================
-Template Name: Dil Hospital
-Author:  SmartEye Adminpanel
-Author URI: www.smarteyeapps.com
-Version: 1.0
-coder name:Prabin Raja
-Description: This Template is created for web template
-======================================================================= */
+
 
 /* ===================================== Import Less ================================== */
 @import 'variable';
@@ -383,59 +376,22 @@ header{
     }
 }
 
-/* ===================================== Key Features Style CSS ================================== */
+/* ===================================== Card Box Style CSS ================================== */
 
-.key-features{
-    margin-top: -39px;
-    position: absolute;
-    @media screen and (max-width: 838px){
-        position: relative;
-        z-index: 99;
-    }
-    width: 100%;
-    z-index: 999;
-    .key-row{
-        width: 100%;
-        display: flex;
-        @include shado-1();
-        @media screen and (max-width: 486px){
-            display: block;
-        }
-        .box{
-            flex-grow: 1;
-            text-align: center;
-            padding: 60px 15px;
-            color: #FFF;
-            i{
-                font-size: 32px;
-                margin-bottom: 20px;
-            }
-        }
-        .c1{
-            background-color: #5cd399;
-        }
-        .c2{
-            background-color: #43cb89;
-        }
-    }
-}
-
-/* ===================================== Popular Cources Style CSS ================================== */
-
-.popular-cources{
+.Card-Box{
     @include big-padding();
     margin-top: 115px;
     @media screen and (max-width: 838px){
         margin-top: 0px;
     }
-    .courc-card{
+    .Card-Box{
         background-color: #FFF;
         @include card-1();
         img{
                 width: 100%;
         }
         margin-bottom: 15px;
-        .cource-det{
+        .Box-det{
             padding: 15px;
             
             
@@ -461,9 +417,9 @@ header{
     }
 }
 
-/* ===================================== Our Instructers Style CSS ================================== */
+/* ===================================== Our Board Style CSS ================================== */
 
-.our-instructor{
+.our-board{
     @include big-padding();
     background-color: #FFF;
    
@@ -506,9 +462,9 @@ header{
 }
 
 
-/* ===================================== Clinic Number Say CSS ================================== */
+/* ===================================== About us CSS ================================== */
 
-.doctor-message{
+.About-Us{
     background-image: url('../images/slider/slider_2.jpg');
 	background-attachment: fixed;
 	background-size: cover;
@@ -532,13 +488,13 @@ header{
 }
 
 
-/* ===================================== Blog CSS ================================== */
+/* ===================================== News & latest news CSS ================================== */
 .vbf{
     @media screen and (max-width: 500px){
         padding: 0px;
     }
 }
-.blog-card{
+.news-card{
     display: flex;
     margin: auto;
     background-color: #FFF;
@@ -586,7 +542,7 @@ header{
 }
 
 
-/* ===================================== Footer Cover Style  ================================== */
+/* ===================================== Footer Style  ================================== */
 
 .footer-ablove{
     padding: 30px;
@@ -624,17 +580,7 @@ footer{
             }
         }
     }
-    .fotblog{
-        .blohjb{
-            margin-bottom: 10px;
-            p{
-                font-size: .9rem;
-            }
-            span{
-                font-size: .9rem;
-            }
-        }
-    }
+
     .glink{
         ul{
             li{
@@ -675,104 +621,4 @@ footer{
             margin-right: 20px;
         }
     }
-}
-
-/* ===================================== About Us Style  ================================== */
-
-.with-medical{
-    @include big-padding();
-    background-color: #FFF;
-    .txtr{
-        padding: 10px;
-        h4{
-            font-size: 32px;
-            span{
-                color: #03509e;
-            }
-        }
-        p{
-            text-indent: 20px;
-            font-size: .9rem;
-        }
-    }
-}
-.pc2{
-    margin-top: 0px;
-    background-color: #eaeaea5e;
-}
-.bb3{
-    padding: 20px;
-}
-
-/* ===================================== Gallery Style  ================================== */
-
-.gallery-filter{
-    width: 100%;
-    text-align: center;
-    .btn{
-        background-color: #FFF;
-    }
-}
-.gallery{
-    padding: 30px;
-    background-color: #FFF;
-}
-.gallery-title
-{
-    font-size: 36px;
-    color: #29509f;
-    text-align: center;
-    font-weight: 500;
-    margin-bottom: 70px;
-}
-.gallery-title:after {
-    content: "";
-    position: absolute;
-    width: 7.5%;
-    left: 46.5%;
-    height: 45px;
-    border-bottom: 1px solid #29509f;
-}
-.filter-button
-{
-    font-size: 18px;
-    border: 1px solid #29509f;
-    border-radius: 5px;
-    text-align: center;
-    color: #29509f;
-    margin-bottom: 30px;
-
-}
-.filter-button:hover
-{
-    font-size: 18px;
-    border: 1px solid #29509f;
-    border-radius: 5px;
-    text-align: center;
-    color: #ffffff;
-    background-color: #29509f;
-
-}
-.btn-default:active .filter-button:active
-{
-    background-color: #29509f;
-    color: white;
-}
-
-.port-image
-{
-    width: 100%;
-}
-
-.gallery_product
-{
-    margin-bottom: 30px;
-}
-.ky2{
-    background-color: #FAFAFA;
-}
-
-.contact-rooo{
-    @include big-padding();
-    background-color: #FFF;
 }

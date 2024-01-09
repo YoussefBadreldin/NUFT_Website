@@ -6,6 +6,7 @@
 @font-face {
   font-family: 'mouse-500';
   src: url("../fonts/RobotoSlab-Bold.ttf") format("truetype"); }
+
 /* ===================================== Basic CSS ================================== */
 * {
   margin: 0px;
@@ -119,9 +120,9 @@ body {
       padding: 40px;
       text-align: center;
       padding-top: 160px;
-      margin-bottom: 11; /* Adjust this value as needed */
-      border: 1px solid rgb(0, 0, 0); /* Add a border */
-      background-color: #fff; /* Add a background color */
+      margin-bottom: 11; 
+      border: 1px solid rgb(0, 0, 0); 
+      background-color: #fff; 
     }    
   .page-nav ul {
     float: none;
@@ -211,7 +212,6 @@ body {
     .container {
       padding: 10px 15px; } }
 
-/* ===================================== Body CSS ================================== */
 /* ===================================== Header CSS ================================== */
 header {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
@@ -222,23 +222,23 @@ header {
   header .header-top {
     background-color: #223d50; }
     header .header-top .left-item ul li {
-      float: right;
+      float: left;
       color: #FFF;
       padding: 10px;
       font-size: .8rem; }
     header .header-top .right-item ul {
       float: right; }
       header .header-top .right-item ul li {
-        float: right;
+        float: left;
         color: #FFF;
         padding: 10px;
         font-size: .8rem; }
   header .header-nav .nav-item {
     z-index: 999; }
     header .header-nav .nav-item ul li {
-      float: right;
+      float: left;
       font-family: "mouse-500", Arial, Helvetica, sans-serif;
-      font-size: 22px;
+      font-size: 14px;
       padding: 16px; }
       @media screen and (max-width: 953px) {
         header .header-nav .nav-item ul li {
@@ -255,39 +255,18 @@ header {
     width: 200px;
     padding: 3px;
     margin-top: 8px; }
-    
-    @media screen and (max-width: 768px) {
-      .nav-img {
-          text-align: right;
-          order: 1;
-      }
-      #menu {
-          order: 2;
-      }
-    }
-    
-    @media screen and (min-width: 769px) {
-      .nav-img {
-          order: 2;
-          text-align: right;
-      }
-      #menu {
-          order: 1;
-      }
-    }
-  
   header .scroll-to-fixed-fixed {
     background-color: #FFF;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 
-    .small-menu {
-      float: left;
-      color: #FFF;
-      font-size: 32px;
-      margin-top: 23px;
-      margin-right: 12px; }
-    
-/* ===================================== Slider Style CSS ================================== */
+.small-menu {
+  float: right;
+  color: #FFF;
+  font-size: 32px;
+  margin-top: 23px;
+  margin-right: 12px; }
+
+/* ===================================== Slider CSS ================================== */
 .slider {
   position: relative;
   padding-top: 100px; }
@@ -301,7 +280,7 @@ header {
 .slider-captions {
   position: absolute;
   bottom: 160px;
-  text-align: right; } /* changed from center to right */
+  text-align: center; }
   @media screen and (max-width: 1050px) {
     .slider-captions {
       bottom: 100px !important; }
@@ -361,20 +340,20 @@ header {
 .slider .owl-nav .owl-prev {
   position: absolute;
   top: 40%;
-  right: 15px; } /* changed from left to right */
+  left: 15px; }
 
 .slider .owl-nav .owl-next {
   position: absolute;
   top: 40%;
-  left: 15px; } /* changed from right to left */
+  right: 15px; }
 
 .slider .owl-dots .owl-dot {
   position: relative;
-  text-align: right; /* changed from center to right */
+  text-align: center;
   bottom: 40px;
   max-width: 1140px;
   margin: 0 auto;
-  right: -75px; } /* changed from left to right */
+  left: -75px; }
 
 .slider .owl-dots .owl-dot span {
   display: block;
@@ -382,13 +361,13 @@ header {
   height: 14px;
   margin: 0px 0px 10px 10px;
   filter: Alpha(Opacity=50);
-  /*IE7 fix*/
+  
   opacity: 0.8;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   border-radius: 20px;
   border: 2px solid #fff;
-  float: right; } /* changed from left to right */
+  float: left; }
 
 .slider .owl-dots .owl-dot.active span {
   background-color: #fff; }
@@ -396,136 +375,12 @@ header {
 .slider .owl-dots .owl-dot.active span, .slider .owl-controls.clickable .owl-page:hover span {
   background-color: #fff;
   filter: Alpha(Opacity=100);
-  /*IE7 fix*/
+  
   opacity: 1; }
 
 .slider .col-lg-offset-2 {
   float: none;
   margin: auto; }
-
-
-/* ===================================== Categories Style CSS ================================== */
-.Categories {
-  margin-top: -39px;
-  position: absolute;
-  width: 100%;
-  z-index: 999; }
-  @media screen and (max-width: 838px) {
-    .Categories {
-      position: relative;
-      z-index: 99; } }
-  .Categories .key-row {
-    width: 100%;
-    display: flex;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
-    @media screen and (max-width: 486px) {
-      .Categories .key-row {
-        display: block; } }
-    .Categories .key-row .box {
-      flex-grow: 1;
-      text-align: center;
-      padding: 60px 15px;
-      color: #FFF; }
-      .Categories .key-row .box i {
-        font-size: 32px;
-        margin-bottom: 20px; }
-    .Categories .key-row .c1 {
-      background-color: #5cd399; }
-    .Categories .key-row .c2 {
-      background-color: #43cb89; }
-
-/* ===================================== Card Box Style CSS ================================== */
-.Card-Box {
-  padding: 0px;
-  margin-top: -40px; }
-  @media screen and (max-width: 940px) {
-    .Card-Box {
-      padding: 30px 10px; } }
-  @media screen and (max-width: 838px) {
-    .Card-Box  {
-      margin-top: 0px; } }
-  .Card-Box .Box-card {
-    background-color: #FFF;
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-    border-radius: 2px;
-    margin-bottom: 15px; }
-    .Card-Box .Box-card img {
-      width: 100%; }
-    .Card-Box .Box-card .Box-det {
-      padding: 15px; }
-      .Card-Box .Box-card .Box-det h6 {
-        padding-bottom: 8px;
-        border-bottom: 1px solid #CCC; 
-        text-align: right; /* Align text to the right for RTL */
-      }
-      .Card-Box .Box-card .Box-det ul li {
-        font-size: .85rem;
-        padding: 5px; 
-        text-align: right; /* Align text to the right for RTL */
-      }
-        .Card-Box .Box-card .Box-det ul li i {
-          margin-left: 5px; /* Adjust icon margin for RTL */
-        }
-        .Card-Box .Box-card .Box-det ul li span {
-          float: left; /* Float to the left for RTL */
-          font-size: .8rem;
-          color: #43cb89; 
-        }
-        .Box-det h6 {
-          display: block;
-          color: #000; /* Change this to the color you want */
-          text-align: right; /* Align text to the right for RTL */
-        }
-       
-/* ===================================== Our Board Style CSS ================================== */
-.Our-Board {
-  padding: 50px;
-  background-color: #FFF;
-}
-
-@media screen and (max-width: 940px) {
-  .Our-Board {
-    padding: 30px 10px;
-  }
-}
-
-.Members-carousel {
-  overflow: hidden;
-  position: relative;
-}
-
-.Member-row {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  margin-bottom: -15px; /* Adjusting margin for better spacing */
-}
-
-.Member-card {
-  background-color: #f4f4f4;
-  padding: 15px;
-  margin-right: 15px;
-  text-align: center;
-  width: 100%;
-  box-sizing: border-box; /* Ensuring padding doesn't affect width */
-  margin-bottom: 20px; /* Add space between rows */
-}
-
-.Member-card img {
-  max-width: 120px;
-  border-radius: 50%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.Member-card h6 {
-  margin-bottom: 0;
-  font-size: 1rem; /* Slightly larger font size for better readability */
-}
-
-.Member-card p {
-  font-size: .83rem;
-  margin-bottom: 10px; /* Adding some bottom margin for spacing */
-}
 
 /* ===================================== About us CSS ================================== */
 .About-Us {
@@ -548,8 +403,57 @@ header {
         border-bottom: 1px solid #CCC;
         margin-bottom: 20px; }
 
+/* ===================================== Our Board Style CSS ================================== */
+.Our-Board {
+  padding: 50px;
+  background-color: #FFF;
+}
 
-/* ===================================== News CSS ================================== */
+@media screen and (max-width: 940px) {
+  .Our-Board {
+    padding: 30px 10px;
+  }
+}
+
+.Members-carousel {
+  overflow: hidden;
+  position: relative;
+}
+
+.Member-row {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  margin-bottom: -15px;
+}
+
+.Member-card {
+  background-color: #f4f4f4;
+  padding: 15px;
+  margin-right: 15px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box; 
+  margin-bottom: 20px; 
+}
+
+.Member-card img {
+  max-width: 120px;
+  border-radius: 50%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.Member-card h6 {
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+.Member-card p {
+  font-size: .83rem;
+  margin-bottom: 10px; 
+}
+ 
+/* ===================================== Latest News & News CSS ================================== */
 @media screen and (max-width: 500px) {
   .vbf {
     padding: 0px; } }
@@ -589,91 +493,51 @@ header {
       .news-card .setv ul li {
         font-size: 0.8rem; } }
         .setv h4 a {
-          color: #000; /* Change the color to what suits your design */
-          text-decoration: none; /* Removes the underline */
+          color: #000; 
+          text-decoration: none; 
       }
       
       .setv h4 a:hover {
-          color: #000; /* Keeps the color the same even when hovered */
+          color: #000; 
       }
-      
-/* ===================================== Footer Cover Style  ================================== */
+  
+/* ===================================== guides, Status & Calc_Equiv main pages CSS ================================== */
+.Card-Box {
+  padding: 0px;
+  margin-top: -40px; }
+  @media screen and (max-width: 940px) {
+    .Card-Box {
+      padding: 30px 10px; } }
+  @media screen and (max-width: 838px) {
+    .Card-Box  {
+      margin-top: 0px; } }
+  .Card-Box .Box-card {
+    background-color: #FFF;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 2px;
+    margin-bottom: 15px; }
+    .Card-Box .Box-card img {
+      width: 100%; }
+    .Card-Box .Box-card .Box-det {
+      padding: 15px; }
+      .Card-Box .Box-card .Box-det h6 {
+        padding-bottom: 8px;
+        border-bottom: 1px solid #CCC; }
+      .Card-Box .Box-card .Box-det ul li {
+        font-size: .85rem;
+        padding: 5px; }
+        .Card-Box .Box-card .Box-det ul li i {
+          margin-right: 5px; }
+        .Card-Box .Box-card .Box-det ul li span {
+          float: right;
+          font-size: .8rem;
+          color: #43cb89; }
+          .Box-det h6 {
+            display: block;
+            color: #000;
+        }
 
-footer {
-  padding: 50px;
-  background-color: #223d50;
-  color: #FFF;
-}
-
-@media screen and (max-width: 940px) {
-  footer {
-    padding: 30px 10px;
-  }
-}
-
-footer .about .foot-address {
-  display: flex;
-  flex-direction: row-reverse; /* Align items to the right */
-}
-
-footer .about .foot-address .icon {
-  padding: 20px 10px;
-}
-
-footer .about .foot-address .addet {
-  font-size: .9rem;
-  margin: auto 0px;
-}
-
-footer .glink ul li {
-  padding: 10px;
-  text-align: right; /* Align list items to the right */
-}
-
-footer .glink ul li a {
-  color: #FFF;
-  font-size: 12px;
-}
-
-footer .glink ul li i {
-  margin-left: 10px; /* Adjust icon to the right of the text */
-}
-
-footer .glink ul li a {
-  color: #FFF;
-}
-
-.copy {
-  padding: 20px;
-  background-color: #172d3c;
-  color: #FFF;
-  text-align: right; /* Align text to the right */
-}
-
-.copy a {
-  color: #FFF;
-  font-size: .8rem;
-}
-
-.copy span {
-  float: left; /* Adjust float direction */
-}
-
-.copy span i {
-  margin-left: 20px; /* Adjust icon to the right of the text */
-}
-
-.col-md-6 h2 {
-    text-align: right;
-}
-
-@media screen and (max-width: 940px) {
-  .social-icons {
-    text-align: right; /* Align social media icons to the right */
-  }
-}
-
-/* ===================================== universites style Style  ================================== */
+/* ===================================== guides & Status Secondary pages CSS  ================================== */
 
 body {
   font-family: Arial, sans-serif;
@@ -689,16 +553,12 @@ section {
 table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
 }
 
 table, th, td {
   border: 1px solid #ddd;
-  padding: 5px;
-  text-align: center; 
-  font-size: 0.6em;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  padding: 15px;
+  text-align: left;
 }
 
 th {
@@ -725,31 +585,6 @@ button:hover {
   background-color: #45a049;
 }
 
-/* Media query for screens larger than 768px */
-@media (min-width: 768px) {
-  table, th, td {
-      padding: 15px;
-      font-size: 1em;
-  }
-}
-
-/* Media query for screens smaller than 768px */
-@media (max-width: 767px) {
-  table, th, td {
-      padding: 5px;
-      text-align: center;
-      font-size: 0.46em;
-  }
-
-  /* Specific style for university names on mobile */
-  td:first-child {
-      font-size: 0.46em; /* Decrease font size */
-  }
-}
-
-
-/* === Social Media Links Style  ==== */
-
 .social-right-item {
   display: flex;
   justify-content: space-between;
@@ -768,10 +603,73 @@ button:hover {
 }
 
 .social-right-item ul li a {
-  color: #000; /* Change this to the color you want for the icons */
+  color: #000; 
   text-decoration: none;
 }
 
 .social-right-item ul li a:hover {
-  color: #888; /* Change this to the color you want when hovering over the icons */
+  color: #888; 
+}
+    
+/* ===================================== Footer Css  ================================== */
+footer {
+  padding: 50px;
+  background-color: #223d50;
+  color: #FFF;
+}
+
+@media screen and (max-width: 940px) {
+  footer {
+    padding: 30px 10px;
+  }
+}
+
+footer .about .foot-address {
+  display: flex;
+}
+
+footer .about .foot-address .icon {
+  padding: 20px 10px;
+}
+
+footer .about .foot-address .addet {
+  font-size: .9rem;
+  margin: auto 0px;
+}
+
+footer .glink ul li {
+  padding: 10px;
+}
+
+footer .glink ul li a {
+  color: #FFF;
+  font-size: 12px;
+}
+
+
+footer .glink ul li i {
+  margin-right: 10px;
+}
+
+footer .glink ul li a {
+  color: #FFF;
+}
+
+.copy {
+  padding: 20px;
+  background-color: #172d3c;
+  color: #FFF;
+}
+
+.copy a {
+  color: #FFF;
+  font-size: .8rem;
+}
+
+.copy span {
+  float: right;
+}
+
+.copy span i {
+  margin-right: 20px;
 }

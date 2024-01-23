@@ -75,7 +75,7 @@ p {
   opacity: .5 !important; }
 
 .container-fluid {
-  padding: 0px; }
+  padding: -22px; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "mouse-500", Arial, Helvetica, sans-serif; }
@@ -574,6 +574,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
+  direction: rtl; /* Add this line */
 }
 
 section {
@@ -588,12 +589,13 @@ table {
 table, th, td {
   border: 1px solid #ddd;
   padding: 15px;
-  text-align: left;
+  text-align: center; /* Change this line */
 }
 
 th {
   background-color: #35424a;
   color: white;
+  text-align: center; /* Add this line */
 }
 
 tr:nth-child(even) {
@@ -629,7 +631,7 @@ button:hover {
 }
 
 .social-right-item ul li {
-  margin-right: 10px;
+  margin-left: 10px; /* Change this line */
 }
 
 .social-right-item ul li a {
@@ -640,6 +642,7 @@ button:hover {
 .social-right-item ul li a:hover {
   color: #888; 
 }
+
     
 /* ===================================== Footer Css  ================================== */
 footer {

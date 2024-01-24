@@ -14,7 +14,21 @@
     <link rel="stylesheet" href="../../../assets/css/style.css">
 </head>
 <body>
-   
+    <script>
+        window.onload = function() {
+            var tableCells = document.getElementsByTagName("td");
+            for (var i = 0; i < tableCells.length; i++) {
+                if (tableCells[i].innerHTML == "Ended") {
+                    tableCells[i].style.color = "red";
+                } else if (tableCells[i].innerHTML == "Avilable") {
+                    tableCells[i].style.color = "green";
+                } else if (tableCells[i].innerHTML == "Under Construction") {
+                    tableCells[i].style.color = "purple";
+                }
+            }
+        }
+        </script>
+        
 <!-- ################# Header #######################--->
 <header>
     <div class="header-top">
@@ -94,51 +108,342 @@
                     <th>2022</th>
                     <th>2023</th>
                 </tr>    
-                <tr>
-        <td>Alamein International University</td>
-        <td>ALL</td>
-        <td>Ended</td>
-        <td>Avilable</td> <!-- Thanwyaa Amaa 2022 -->
-        <td>Avilable</td> <!-- Thanwyaa Amaa 2023 -->
-        <td>Avilable</td> <!-- Arab, English & Azhari Certificates 2022 -->
-        <td>Avilable</td> <!-- Arab, English & Azhari Certificates 2023 -->
-        <td>Avilable</td> <!-- Stem & Nile Certificates 2022 -->
-        <td>Avilable</td> <!-- Stem & Nile Certificates 2023 -->
-        <td>Avilable</td> <!-- Natives -->
-        </tr>
-        <td>Galala University</td>
-        <td>ALL</td>
-        <td>Ended</td>
-        <td>Avilable</td> <!-- Thanwyaa Amaa 2022 -->
-        <td>Avilable</td> <!-- Thanwyaa Amaa 2023 -->
-        <td>Avilable</td> <!-- Arab, English & Azhari Certificates 2022 -->
-        <td>Avilable</td> <!-- Arab, English & Azhari Certificates 2023 -->
-        <td>Avilable</td> <!-- Stem & Nile Certificates 2022 -->
-        <td>Avilable</td> <!-- Stem & Nile Certificates 2023 -->
-        <td>Avilable</td> <!-- Natives -->
-        </tr>
-        <td>King Salman International University</td>
-        <td>ALL</td>
-        <td>Ended</td>
-        <td>Avilable</td> <!-- Thanwyaa Amaa 2022 -->
-        <td>Avilable</td> <!-- Thanwyaa Amaa 2023 -->
-        <td>Avilable</td> <!-- Arab, English & Azhari Certificates 2022 -->
-        <td>Avilable</td> <!-- Arab, English & Azhari Certificates 2023 -->
-        <td>Avilable</td> <!-- Stem & Nile Certificates 2022 -->
-        <td>Avilable</td> <!-- Stem & Nile Certificates 2023 -->
-        <td>Avilable</td> <!-- Natives -->
-        </tr>
-        <td>New Mansoura University</td>
-        <td>ALL</td>
-        <td>Ended</td>
-        <td>Avilable</td> <!-- Thanwyaa Amaa 2022 -->
-        <td>Avilable</td> <!-- Thanwyaa Amaa 2023 -->
-        <td>Avilable</td> <!-- Arab, English & Azhari Certificates 2022 -->
-        <td>Avilable</td> <!-- Arab, English & Azhari Certificates 2023 -->
-        <td>Avilable</td> <!-- Stem & Nile Certificates 2022 -->
-        <td>Avilable</td> <!-- Stem & Nile Certificates 2023 -->
-        <td>Avilable</td> <!-- Natives -->
-        </tr>
+            </tr>    
+            <td>French University in Egypt</td>
+            <td>All</td>
+            <td>Ended</td>
+            <td>Ended</td> <!-- General Secondary 2022 -->
+            <td>Ended</td> <!-- General Secondary 2023 -->
+            <td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+            <td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+            <td>Ended</td> <!-- STEM and Nile certificates 2022 -->
+            <td>Ended</td> <!-- STEM and Nile certificates 2023 -->
+            <td>Ended</td> <!-- Expatriates -->
+</tr>
+            <td>Nile University</td>
+            <td>All</td>
+            <td>Ended</td>
+            <td>Ended</td> <!-- General Secondary 2022 -->
+            <td>Ended</td> <!-- General Secondary 2023 -->
+            <td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+            <td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+            <td>Ended</td> <!-- STEM and Nile certificates 2022 -->
+            <td>Ended</td> <!-- STEM and Nile certificates 2023 -->
+            <td>Ended</td> <!-- Expatriates -->
+</tr>
+            <td>Egyptian E-Learning University</td>
+            <td>All</td>
+            <td>Ended</td>
+            <td>Ended</td> <!-- General Secondary 2022 -->
+            <td>Ended</td> <!-- General Secondary 2023 -->
+            <td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+            <td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+            <td>Ended</td> <!-- STEM and Nile certificates 2022 -->
+            <td>Ended</td> <!-- STEM and Nile certificates 2023 -->
+            <td>Ended</td> <!-- Expatriates -->
+</tr>
+            <td>King Salman International University</td>
+            <td>All</td>
+            <td>Ended</td>
+            <td>Avilable</td> <!-- General Secondary 2022 -->
+            <td>Avilable</td> <!-- General Secondary 2023 -->
+            <td>Avilable</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+            <td>Avilable</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+            <td>Avilable</td> <!-- STEM and Nile certificates 2022 -->
+            <td>Avilable</td> <!-- STEM and Nile certificates 2023 -->
+            <td>Avilable</td> <!-- Expatriates -->
+</tr>
+            <td>Alamein International University</td>
+            <td>All</td>
+            <td>Ended</td>
+            <td>Ended</td> <!-- General Secondary 2022 -->
+            <td>Ended</td> <!-- General Secondary 2023 -->
+            <td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+            <td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+            <td>Ended</td> <!-- STEM and Nile certificates 2022 -->
+            <td>Ended</td> <!-- STEM and Nile certificates 2023 -->
+            <td>Ended</td> <!-- Expatriates -->
+</tr>
+            <td>Galala University</td>
+            <td>All</td>
+            <td>Ended</td>
+            <td>Ended</td> <!-- General Secondary 2022 -->
+            <td>Ended</td> <!-- General Secondary 2023 -->
+            <td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+            <td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+            <td>Ended</td> <!-- STEM and Nile certificates 2022 -->
+            <td>Ended</td> <!-- STEM and Nile certificates 2023 -->
+            <td>Ended</td> <!-- Expatriates -->
+</tr>
+            <td>New Mansoura University</td>
+            <td>All</td>
+            <td>Ended</td>
+            <td>Ended</td> <!-- General Secondary 2022 -->
+            <td>Ended</td> <!-- General Secondary 2023 -->
+            <td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+            <td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+            <td>Ended</td> <!-- STEM and Nile certificates 2022 -->
+            <td>Ended</td> <!-- STEM and Nile certificates 2023 -->
+            <td>Ended</td> <!-- Expatriates -->
+</tr>
+</tr>    
+<td>Egypt University of Informatics</td>
+<td>All</td>
+<td>Ended</td>
+<td>Ended</td> <!-- General Secondary 2022 -->
+<td>Ended</td> <!-- General Secondary 2023 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2022 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2023 -->
+<td>Ended</td> <!-- Expatriates -->
+</tr>
+<td>Mansoura National University</td>
+<td>All</td>
+<td>Ended</td>
+<td>Ended</td> <!-- General Secondary 2022 -->
+<td>Ended</td> <!-- General Secondary 2023 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2022 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2023 -->
+<td>Ended</td> <!-- Expatriates -->
+</tr>
+<td>Helwan National University</td>
+<td>All</td>
+<td>Ended</td>
+<td>Ended</td> <!-- General Secondary 2022 -->
+<td>Ended</td> <!-- General Secondary 2023 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2022 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2023 -->
+<td>Ended</td> <!-- Expatriates -->
+</tr>
+<td>Banha National University</td>
+<td>All</td>
+<td>Ended</td>
+<td>Ended</td> <!-- General Secondary 2022 -->
+<td>Ended</td> <!-- General Secondary 2023 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2022 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2023 -->
+<td>Ended</td> <!-- Expatriates -->
+</tr>
+<td>Beni Suef National University</td>
+<td>All</td>
+<td>Ended</td>
+<td>Ended</td> <!-- General Secondary 2022 -->
+<td>Ended</td> <!-- General Secondary 2023 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2022 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2023 -->
+<td>Ended</td> <!-- Expatriates -->
+</tr>
+<td>South Valley National University</td>
+<td>All</td>
+<td>Ended</td>
+<td>Ended</td> <!-- General Secondary 2022 -->
+<td>Ended</td> <!-- General Secondary 2023 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2022 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2023 -->
+<td>Ended</td> <!-- Expatriates -->
+</tr>
+<td>Zagazig National University</td>
+<td>All</td>
+<td>Ended</td>
+<td>Ended</td> <!-- General Secondary 2022 -->
+<td>Ended</td> <!-- General Secondary 2023 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2022 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2023 -->
+<td>Ended</td> <!-- Expatriates -->
+</tr>
+</tr>    
+<td>Minya National University</td>
+<td>All</td>
+<td>Ended</td>
+<td>Ended</td> <!-- General Secondary 2022 -->
+<td>Ended</td> <!-- General Secondary 2023 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2022 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2023 -->
+<td>Ended</td> <!-- Expatriates -->
+</tr>
+<td>Menoufia National University</td>
+<td>All</td>
+<td>Ended</td>
+<td>Ended</td> <!-- General Secondary 2022 -->
+<td>Ended</td> <!-- General Secondary 2023 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2022 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2023 -->
+<td>Ended</td> <!-- Expatriates -->
+</tr>
+<td>East Port Said National University</td>
+<td>All</td>
+<td>Ended</td>
+<td>Ended</td> <!-- General Secondary 2022 -->
+<td>Ended</td> <!-- General Secondary 2023 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2022 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2023 -->
+<td>Ended</td> <!-- Expatriates -->
+</tr>
+<td>Alexandria National University</td>
+<td>All</td>
+<td>Ended</td>
+<td>Ended</td> <!-- General Secondary 2022 -->
+<td>Ended</td> <!-- General Secondary 2023 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2022 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2023 -->
+<td>Ended</td> <!-- Expatriates -->
+</tr>
+<td>Assiut National University</td>
+<td>All</td>
+<td>Ended</td>
+<td>Ended</td> <!-- General Secondary 2022 -->
+<td>Ended</td> <!-- General Secondary 2023 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2022 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2023 -->
+<td>Ended</td> <!-- Expatriates -->
+</tr>
+<td>New Ismailia National University</td>
+<td>All</td>
+<td>Ended</td>
+<td>Ended</td> <!-- General Secondary 2022 -->
+<td>Ended</td> <!-- General Secondary 2023 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2022 -->
+<td>Ended</td> <!-- STEM and Nile certificates 2023 -->
+<td>Ended</td> <!-- Expatriates -->
+</tr>
+<td>Sohag National University</td>
+<td>Under Construction</td>
+<td>Under Construction</td>
+<td>Under Construction</td> <!-- General Secondary 2022 -->
+<td>Under Construction</td> <!-- General Secondary 2023 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2022 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2023 -->
+<td>Under Construction</td> <!-- Expatriates -->
+</tr>
+</tr>
+</tr>    
+<td>Ain Shams National University</td>
+<td>Under Construction</td>
+<td>Under Construction</td>
+<td>Under Construction</td> <!-- General Secondary 2022 -->
+<td>Under Construction</td> <!-- General Secondary 2023 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2022 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2023 -->
+<td>Under Construction</td> <!-- Expatriates -->
+</tr>
+<td>Aswan National University</td>
+<td>Under Construction</td>
+<td>Under Construction</td>
+<td>Under Construction</td> <!-- General Secondary 2022 -->
+<td>Under Construction</td> <!-- General Secondary 2023 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2022 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2023 -->
+<td>Under Construction</td> <!-- Expatriates -->
+</tr>
+<td>Fayoum National University</td>
+<td>Under Construction</td>
+<td>Under Construction</td>
+<td>Under Construction</td> <!-- General Secondary 2022 -->
+<td>Under Construction</td> <!-- General Secondary 2023 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2022 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2023 -->
+<td>Under Construction</td> <!-- Expatriates -->
+</tr>
+<td>Damanhour National University</td>
+<td>Under Construction</td>
+<td>Under Construction</td>
+<td>Under Construction</td> <!-- General Secondary 2022 -->
+<td>Under Construction</td> <!-- General Secondary 2023 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2022 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2023 -->
+<td>Under Construction</td> <!-- Expatriates -->
+</tr>
+<td>Kafr El Sheikh National University</td>
+<td>Under Construction</td>
+<td>Under Construction</td>
+<td>Under Construction</td> <!-- General Secondary 2022 -->
+<td>Under Construction</td> <!-- General Secondary 2023 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2022 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2023 -->
+<td>Under Construction</td> <!-- Expatriates -->
+</tr>
+<td>Tanta National University</td>
+<td>Under Construction</td>
+<td>Under Construction</td>
+<td>Under Construction</td> <!-- General Secondary 2022 -->
+<td>Under Construction</td> <!-- General Secondary 2023 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2022 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2023 -->
+<td>Under Construction</td> <!-- Expatriates -->
+</tr>
+</tr>    
+<td>Damietta National University</td>
+<td>Under Construction</td>
+<td>Under Construction</td>
+<td>Under Construction</td> <!-- General Secondary 2022 -->
+<td>Under Construction</td> <!-- General Secondary 2023 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2022 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2023 -->
+<td>Under Construction</td> <!-- Expatriates -->
+</tr>
+<td>Luxor National University</td>
+<td>Under Construction</td>
+<td>Under Construction</td>
+<td>Under Construction</td> <!-- General Secondary 2022 -->
+<td>Under Construction</td> <!-- General Secondary 2023 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2022 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2023 -->
+<td>Under Construction</td> <!-- Expatriates -->
+</tr>
+<td>Elwatania National University</td>
+<td>Under Construction</td>
+<td>Under Construction</td>
+<td>Under Construction</td> <!-- General Secondary 2022 -->
+<td>Under Construction</td> <!-- General Secondary 2023 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2022 -->
+<td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2022 -->
+<td>Under Construction</td> <!-- STEM and Nile certificates 2023 -->
+<td>Under Construction</td> <!-- Expatriates -->
+</tr>
             </table>
         </div>
         <p>●The Admission Status Will be updates frequently.</p>

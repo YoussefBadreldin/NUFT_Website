@@ -215,7 +215,7 @@
                 }
 
                 $(document).ready(function() {
-                    $.get('news.html', function(data) {
+                    $.get('../../News/EN/News.html', function(data) {
                         let newsHtml = $(data);
                         let newsCards = newsHtml.find('.our-blog .news-card');
                         newsCards.sort(function(a, b) {

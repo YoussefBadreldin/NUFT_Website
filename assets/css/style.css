@@ -284,34 +284,40 @@ header {
 
   @media screen and (max-width: 1050px) {
     .slider-captions {
-      bottom: 100px !important;
-      text-align: center; }
+      bottom: 45px !important;
+      text-align: center;  
+      padding-left: 75px;
+      padding-right: 85px; }
       .slider-captions .slider-title {
-        font-size: 42px;
+        font-size: 15px;
         letter-spacing: 2px; } 
         .slider-text {
-          font-size: 28px;
+          font-size: 10px;
           letter-spacing: 2px;
           text-align: center; }
         } 
 
   @media screen and (max-width: 810px) {
     .slider-captions {
-      bottom: 50px !important;
-      text-align: center; }
+      bottom: 45px !important;
+      text-align: center;  
+      padding-left: 75px;
+      padding-right: 85px; }
       .slider-captions .slider-title {
-        font-size: 32px;
+        font-size: 15px;
         letter-spacing: 2px; } 
         .slider-text {
-          font-size: 22px;
+          font-size: 10px;
           letter-spacing: 2px;
           text-align: center; }
         }
 
   @media screen and (max-width: 572px) {
     .slider-captions {
-      bottom: 65px !important;
-      text-align: center;  }
+      bottom: 45px !important;
+      text-align: center;  
+      padding-left: 75px;
+      padding-right: 85px; }
       .slider-captions .slider-title {
         font-size: 15px;
         letter-spacing: 2px; } 

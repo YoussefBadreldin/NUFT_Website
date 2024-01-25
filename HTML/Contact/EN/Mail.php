@@ -1,7 +1,10 @@
 <?php
-if($_POST){
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+if($_SERVER["REQUEST_METHOD"] == "POST"){
     $name = $_POST['name'];
-    $email = $_POST['email'];
+    $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
     $number = $_POST['number'];
     $message = $_POST['message'];
 
@@ -18,7 +21,11 @@ if($_POST){
     $headers = "From: ".$email;
 
     // Send Email
-    mail($to,$subject,$body,$headers);
-    echo "Thank you for contacting us. We will get back to you as soon as possible.";
+    if($email) {
+        mail($to,$subject,$body,$headers);
+        echo "Thank you for contacting us. We will get back to you as soon as possible.";
+    } else {
+        echo "Please enter a valid email address.";
+    }
 }
 ?>

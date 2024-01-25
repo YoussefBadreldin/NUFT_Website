@@ -208,12 +208,12 @@
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <script>
                 function getMonth(monthName) {
-                    var months = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
+                    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
                     return months.indexOf(monthName);
                 }
 
                 $(document).ready(function() {
-                    $.get('../../News/EN/الاخبار.html', function(data) {
+                    $.get('../../News/AR/الاخبار.html', function(data) {
                         let newsHtml = $(data);
                         let newsCards = newsHtml.find('.our-blog .news-card');
                         newsCards.sort(function(a, b) {
@@ -238,6 +238,7 @@
         </div>
     </div>
 </div>
+
     <!-- ################# Footer #######################--->
     <footer>
         <div class="container">

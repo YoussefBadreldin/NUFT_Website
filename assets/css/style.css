@@ -118,18 +118,31 @@ body {
 
     .page-nav {
       padding: 40px;
-      text-align: center;
+      text-align: center !important;
       padding-top: 160px;
-      margin-bottom: 11; 
+      margin-bottom: 1px; 
+      margin-right: 0px;
+      margin-left: 0px;
       border: 1px solid rgb(0, 0, 0); 
       background-color: #fff; 
     }    
+
   .page-nav ul {
     float: none;
     margin: auto; }
   @media screen and (max-width: 576px) {
     .page-nav {
-      padding-top: 186px; } }
+      padding-top: 186px;
+      margin-bottom: -11px; 
+      ul {
+        padding-left: 30px;
+        text-align: center;
+        list-style-position: inside;
+      }
+      ul li {
+        display: inline-block;
+      }
+    } }
   @media screen and (max-width: 356px) {
     .page-nav {
       padding-top: 206px; } }
@@ -239,7 +252,8 @@ header {
       float: left;
       font-family: "mouse-500", Arial, Helvetica, sans-serif;
       font-size: 14px;
-      padding: 16px; }
+      padding: 25px 11px 11px 11px;
+    }    
       @media screen and (max-width: 953px) {
         header .header-nav .nav-item ul li {
           padding: 30px 20px; } }
@@ -439,14 +453,14 @@ header {
         border-bottom: 1px solid #CCC;
         margin-bottom: 20px; }
 
-/* ===================================== Our Board Style CSS ================================== */
-.Our-Board {
+/* ===================================== Our Team Style CSS ================================== */
+.Our-Team {
   padding: 50px;
   background-color: #FFF;
 }
 
 @media screen and (max-width: 940px) {
-  .Our-Board {
+  .Our-Team {
     padding: 30px 10px;
   }
 }
@@ -679,7 +693,7 @@ footer .glink ul li {
 
 footer .glink ul li a {
   color: #FFF;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 

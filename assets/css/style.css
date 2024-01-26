@@ -251,7 +251,7 @@ header {
     header .header-nav .nav-item ul li {
       float: left;
       font-family: "mouse-500", Arial, Helvetica, sans-serif;
-      font-size: 14px;
+      font-size: 13px;
       padding: 25px 11px 11px 11px;
     }    
       @media screen and (max-width: 953px) {

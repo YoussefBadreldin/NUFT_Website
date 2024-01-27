@@ -118,52 +118,71 @@ body {
 
     .page-nav {
       padding: 40px;
-      text-align: center !important;
+      text-align: center;
       padding-top: 160px;
-      margin-bottom: 1px; 
-      margin-right: 0px;
-      margin-left: 0px;
-      border: 1px solid rgb(0, 0, 0); 
-      background-color: #fff; 
-    }    
-
-  .page-nav ul {
-    float: none;
-    margin: auto; }
-  @media screen and (max-width: 576px) {
-    .page-nav {
-      padding-top: 186px;
-      margin-bottom: -11px; 
-      ul {
-        padding-left: 30px;
-        text-align: center;
-        list-style-position: inside;
-      }
-      ul li {
-        display: inline-block;
-      }
-    } }
-  @media screen and (max-width: 356px) {
-    .page-nav {
-      padding-top: 206px; } }
-  .page-nav h2 {
-    font-size: 36px;
-    width: 100%;
-    color: #444; }
-    @media screen and (max-width: 600px) {
-      .page-nav h2 {
-        font-size: 26px; } }
-  .page-nav ul li {
-    float: left;
-    margin-right: 10px;
-    margin-top: 10px;
-    font-size: 16px; }
+      margin: 0;
+      border: 1px solid rgb(0, 0, 0);
+      background-color: #fff;
+    }
+    
+    .page-nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0;
+      list-style: none;
+      margin: auto;
+    }
+    
+    .page-nav h2 {
+      font-size: 36px;
+      width: 100%;
+      color: #444;
+    }
+    
+    .page-nav ul li {
+      margin-right: 10px;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    
     .page-nav ul li i {
       width: 30px;
       text-align: center;
-      color: #444; }
+      color: #444;
+    }
+    
     .page-nav ul li a {
-      color: #444; }
+      color: #444;
+    }
+    
+    @media screen and (min-width: 992px) { 
+      .page-nav ul li {
+        flex: 1 0 auto; 
+      }
+    }
+    
+    @media screen and (max-width: 600px) {
+      .page-nav {
+        padding-top: 186px;
+      }
+    
+      .page-nav h2 {
+        font-size: 20px;
+        margin-bottom: -5px;
+      }
+    
+      .page-nav ul a {
+        flex: 1 0 calc(33.33% - 20px); 
+        display: inline-block;
+        font-size: 7px;
+        margin-left: 0px;
+        margin-right: 0px;
+      }
+    }
+    
+
+
 
 .btn-success {
   background-color: #223d50;

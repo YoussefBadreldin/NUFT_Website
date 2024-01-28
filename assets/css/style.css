@@ -622,9 +622,23 @@ section {
   margin: 20px;
 }
 
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+section {
+  margin: 20px;
+}
+
+/* General table styles */
 table {
   width: 100%;
   border-collapse: collapse;
+  text-align: center;
 }
 
 table, th, td {
@@ -640,6 +654,67 @@ th {
 
 tr:nth-child(even) {
   background-color: #f2f2f2;
+}
+
+/* Specific styles for tables with class 'Stat' */
+table.Stat, table.Stat th, table.Stat td {
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: center;
+}
+
+table.Stat th {
+  background-color: #35424a;
+  color: white;
+}
+
+table.Stat tr:nth-child(4n-3), table.Stat tr:nth-child(4n-2) {
+  background-color: #f2f2f2; /* color for the first and second rows */
+}
+
+table.Stat tr:nth-child(4n-1), table.Stat tr:nth-child(4n) {
+  background-color: white; /* color for the third and fourth rows */
+}
+
+button {
+  background-color: #35424a;
+  color: white;
+  padding: 10px 20px;
+  margin: 20px 0;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.social-right-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.social-right-item ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.social-right-item ul li {
+  margin-right: 10px;
+}
+
+.social-right-item ul li a {
+  color: #000; 
+  text-decoration: none;
+}
+
+.social-right-item ul li a:hover {
+  color: #888; 
 }
 
 button {

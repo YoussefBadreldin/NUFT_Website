@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUFT</title>
+
+    <link rel="icon" href="../../../assets/images/fav.jpg">
+    <link rel="stylesheet" href="../../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/css/fontawsom-all.min.css">
+    <link rel="stylesheet" href="../../../assets/plugins/slider/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../../assets/plugins/slider/css/owl.theme.default.css">
+    <link rel="stylesheet" href="../../../assets/css/style.css">
+</head>
+<body>
+    
+  <!-- ################# Header #######################--->
+<header>
+    <div class="header-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 col-md-12 left-item">
+            <ul>
+            </ul>
+          </div>
+          <div class="col-lg-5 right-item">
+            <ul>
+              <li><a href="../AR/حساب_المعادلات.html"><i class="fas fa-language"></i> العربية</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav id="nav-head" class="header-nav">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-12 nav-img">
+            <a href="../../Home/EN/Home.html">
+              <img src="../../../assets/images/logo.png" alt="Logo">
+            </a>
+            <a data-toggle="collapse" data-target="#menu" href="#menu">
+              <i class="fas d-block d-md-none small-menu fa-bars"></i>
+            </a>
+          </div>                    
+          <div id="menu" class="col-md-9 d-none d-md-block nav-item">
+            <ul>
+              <li><a href="../../Home/EN/Home.html">Home</a></li>
+              <li><a href="../../Guides/EN/Uni_Guide.html">Universities Guidebooks</a></li>
+              <li><a href="../../Status/EN/Admission_Status.html">Admissions Status</a></li>
+              <li><a href="../../Equivalent Certificates/EN/Calculate_Equivalent.html">Equivalent Certificates Calculations</a></li>
+              <li><a href="../../News/EN/News.html">News</a></li>
+              <li><a href="../../Contact/EN/Contact_Us.html">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>  
+
+<!-- ################# Page Title #######################--->
+<div class="page-nav row">
+            <h2>Kuwaiti Certificate</h2>
+            <ul>
+                <li><a href="../../Home/EN/Home.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><i class="fas fa-chevron-right"></i> <a href="Calculate_Equivalent.html">Equivalent Certificates Calculations</a></li>
+                <li><i class="fas fa-chevron-right"></i> <a href="Kuwaiti.html">Kuwaiti Certificate</a></li>
+            </ul>
+</div>
+  
+    <!-- ################# Body #######################--->
+    <div class="container mt-md-5 mt-3 mb-4">
+      <div class="row">
+          <div class="col-md-6 col-12">
+              <div class="block p-4 mb-4 bg-white rounded-lg border">
+                  <h3 class="text-center"><strong>Calculate Your Score for Egyptian Universities</strong></h3>
+                                      <!-- SAT score form -->
+                                      <div id="sat" class="score-form">
+                                        <!-- SAT 1 score input -->
+                                        <div class="form-group">
+                                            <label for="sat1">SAT 1 score:</label>
+                                            <input type="number" name="sat1" id="n1" placeholder="Out of 1600" max="1600" step="10" class="form-control w-auto" required>
+                                        </div>
+                                        <!-- SAT 2 score input -->
+                                        <div class="form-group">
+                                            <label for="sat2">SAT 2 score:</label>
+                                            <input type="number" name="sat2" id="n2" placeholder="Out of 1600" max="1600" step="10" class="form-control w-auto" required>
+                                        </div>
+                                        <!-- GPA score input -->
+                                        <div class="form-group">
+                                            <label for="gpa">GPA score:</label>
+                                            <input type="number" name="gpa" id="n3" placeholder="Out of 40" max="40" class="form-control w-auto" required>
+                                        </div>
+                                        <!-- Calculate button and result display -->
+                                        <div class="row mx-0 justify-content-center">
+                                          <button class="btn border mr-2 mt-2" onclick="calco();">Calculate score</button>
+                                          <input type="text" id="resulto" readonly class="form-control d-inline-block w-auto text-center mt-2" placeholder="Your total score">
+                </div>
+                    </div>
+              </div>
+          </div>
+  
+          <div class="col-md-6 col-12 ">
+            <div class="block bg-white p-4 mb-md-0 mb-4 rounded-lg border">
+                <h3 style="text-align: center;"><strong>Important Notes</strong></h3>
+                <p>
+                    <strong>For Public universities:</strong>
+                    <ul style="font-size: 0.8em;">
+                        <li>- </li>
+                        <li>- </li>
+                        <li>- </li>
+                        <li>- </li>
+                    </ul>
+                </p>
+                <p>
+                    <strong><br>For private & national universities:</strong>
+                    <ul style="font-size: 0.8em;">
+                        <li>- </li>
+                        <li>- </li>
+                        <li>- </li>
+                    </ul>
+                </p>
+                <p>
+                    <strong><br>For higher institutes:</strong>
+                    <ul style="font-size: 0.8em;">
+                        <li>- </li>
+                        <li>- </li>
+                    </ul>
+                </p>
+                <p>
+                    <strong><br>General notes:</strong>
+                    <ul style="font-size: 0.8em;">
+                        <li>- </li>
+                        <li>- </li>
+                        <li>- </li>
+                        <li>- </li>
+                    </ul>
+                </p>
+            </div>
+        </div>                     
+          </div>
+      </div>
+  </div>
+  
+
+
+<!-- ################# Footer #######################--->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 order-md-1 about">
+        <div class="foot-address">
+          <div class="icon">
+            <i class="fas fa-envelope-square"></i>
+          </div>
+          <div class="addet">
+            <a href="mailto:info@nuft.com">info@nuft.com</a>
+          </div>
+        </div>
+        <div class="foot-address">
+          <div class="icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <div class="addet">
+            <a href="http://wa.me/201143545184">+20 114 3545184</a>
+          </div>
+        </div>
+        <div class="social-icons" style="margin-top: 20px;">
+          <a href="https://www.facebook.com/NUFT.EG" target="_blank" style="margin-Left: 13px; margin-right: 20px;"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/nuft.eg" target="_blank" style="margin-Left: 10px; margin-right: 20px;"><i class="fab fa-instagram"></i></a>
+          <a href="https://X.com/NUFT_EG" target="_blank" style="margin-Left: 10px; margin-right: 20px;"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.tiktok.com/@NUFT.EG" target="_blank" style="margin-Left: 10px; margin-right: 20px;"><i class="fab fa-tiktok"></i></a>
+          <br>
+          <br>
+          <a href="https://t.me/Egyptian_NAT_Universties_bot" target="_blank" style="margin-Left: 10px; margin-right: 20px;"><i class="fab fa-telegram"></i></a>
+          <a href="https://www.linkedin.com/company/nufteg/" target="_blank" style="margin-Left: 8px; margin-right: 20px;"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.youtube.com/@nuft_eg" target="_blank" style="margin-Left: 8px; margin-right: 20px;"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.threads.net/@nuft.eg" target="_blank" style="margin-Left: 8px; margin-right: 20px;"><i class="fas fa-at"></i></a>
+        </div>      
+      </div>
+      <!-- Empty Space -->
+      <div class="col-md-3 order-md-2">
+      </div>
+      <!-- Quick Links -->
+      <div class="col-md-6 order-md-3 glink" style="margin-top: 20px;">
+        <h2>Quick Links</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <ul>
+              <li><a href="../../Guides/EN/National_Uni_Guide.html"><i class="fas fa-angle-double-right"></i>National Universities Guidebook</a></li>
+              <li><a href="../../Guides/EN/Public_Uni_Guide.html"><i class="fas fa-angle-double-right"></i>Public Universities Guidebook</a></li>
+              <li><a href="../../Guides/EN/Private_Uni_Guide.html"><i class="fas fa-angle-double-right"></i>Private Universities Guidebook</a></li>
+              <li><a href="../../Guides/EN/International_Uni_Guide.html"><i class="fas fa-angle-double-right"></i>International Universities Guidebook</a></li>
+              <li><a href="../../Guides/EN/Tech_Uni_Guide.html"><i class="fas fa-angle-double-right"></i>Technological Universities Guidebook</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul>
+              <li><a href="../../Status/EN/National_Uni_Status.html"><i class="fas fa-angle-double-right"></i>National Universities Admissions Status</a></li>
+              <li><a href="../../Guides/EN/Public_Uni_Guide.html"><i class="fas fa-angle-double-right"></i>Public Universities Admissions Status</a></li>
+              <li><a href="../../Guides/EN/Private_Uni_Guide.html"><i class="fas fa-angle-double-right"></i>Private Universities Admissions Status</a></li>
+              <li><a href="../../Guides/EN/International_Uni_Guide.html"><i class="fas fa-angle-double-right"></i>International Universities Admissions Status</a></li>
+              <li><a href="../../Guides/EN/Tech_Uni_Guide.html"><i class="fas fa-angle-double-right"></i>Technological Universities Admissions Status</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="copy" style="text-align: center;">
+  <div class="CopyRights">
+      <p>2024 © All Rights Reserved | Designed and Developed by Youssef Badreldin</p>
+  </div>
+</div>
+
+<script src="../../../assets/js/jquery-3.2.1.min.js"></script>
+<script src="../../../assets/js/popper.min.js"></script>
+<script src="../../../assets/js/bootstrap.min.js"></script>
+<script src="../../../assets/plugins/slider/js/owl.carousel.min.js"></script>
+<script src="../../../assets/js/script.js"></script>
+
+</body>
+</html>

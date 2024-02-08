@@ -763,7 +763,40 @@ button:hover {
 .social-right-item ul li a:hover {
   color: #888; 
 }
-    
+ 
+/* ===================================== Smart Assistant CSS ================================== */
+#smart-assistant-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%; 
+  background-color:#001D3D ; 
+  color:#FFF ; 
+  font-size: 32px;
+  cursor: pointer;
+  padding: 5px;
+  box-sizing: border-box;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  flex-direction: column; 
+}
+
+#smart-assistant-icon i {
+  line-height: 30px;
+  color:  #FFF; 
+}
+
+#smart-assistant-icon span {
+  display: block;
+  font-size: 8px;
+  line-height: 10px;
+  padding-bottom: 5px;
+  font-weight: bold; /* Added */
+}
+
 /* ===================================== Footer Css  ================================== */
 footer {
   padding: 50px;

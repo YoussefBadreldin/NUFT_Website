@@ -56,7 +56,7 @@
               <li><a href="../../Home/EN/Home.html">Home</a></li>
               <li><a href="../../Guides/EN/Uni_Guide.html">Universities Guidebooks</a></li>
               <li><a href="../../Status/EN/Admission_Status.html">Admissions Status</a></li>
-              <li><a href="../../Equivalent Certificates/EN/Calculate_Equivalent.html">Equivalent Certificates Calculations</a></li>
+              <li><a href="../../Equivalent Certificates/EN/Calculate_Equivalent.html">Equivalent Certificates Calculator</a></li>
               <li><a href="../../News/EN/News.html">News</a></li>
               <li><a href="../../Contact/EN/Contact_Us.html">Contact Us</a></li>
             </ul>
@@ -71,43 +71,43 @@
             <h2>Bahraini Certificate</h2>
             <ul>
                 <li><a href="../../Home/EN/Home.html"><i class="fas fa-home"></i> Home</a></li>
-                <li><i class="fas fa-chevron-right"></i> <a href="Calculate_Equivalent.html">Equivalent Certificates Calculations</a></li>
+                <li><i class="fas fa-chevron-right"></i> <a href="Calculate_Equivalent.html">Equivalent Certificates Calculator</a></li>
                 <li><i class="fas fa-chevron-right"></i> <a href="Bahraini.html">Bahraini Certificate</a></li>
             </ul>
 </div>
   
-    <!-- ################# Body #######################--->
-    <div class="container mt-md-5 mt-3 mb-4">
+     <!-- ################# Body #######################--->
+     <div class="container mt-md-5 mt-3 mb-4">
       <div class="row">
           <div class="col-md-6 col-12">
               <div class="block p-4 mb-4 bg-white rounded-lg border">
-                  <h3 class="text-center"><strong>Calculate Your Score for Egyptian Universities</strong></h3>
-                                      <!-- SAT score form -->
-                                      <div id="sat" class="score-form">
-                                        <!-- SAT 1 score input -->
-                                        <div class="form-group">
-                                            <label for="sat1">SAT 1 score:</label>
-                                            <input type="number" name="sat1" id="n1" placeholder="Out of 1600" max="1600" step="10" class="form-control w-auto" required>
-                                        </div>
-                                        <!-- SAT 2 score input -->
-                                        <div class="form-group">
-                                            <label for="sat2">SAT 2 score:</label>
-                                            <input type="number" name="sat2" id="n2" placeholder="Out of 1600" max="1600" step="10" class="form-control w-auto" required>
-                                        </div>
-                                        <!-- GPA score input -->
-                                        <div class="form-group">
-                                            <label for="gpa">GPA score:</label>
-                                            <input type="number" name="gpa" id="n3" placeholder="Out of 40" max="40" class="form-control w-auto" required>
-                                        </div>
-                                        <!-- Calculate button and result display -->
-                                        <div class="row mx-0 justify-content-center">
-                                          <button class="btn border mr-2 mt-2" onclick="calco();">Calculate score</button>
-                                          <input type="text" id="resulto" readonly class="form-control d-inline-block w-auto text-center mt-2" placeholder="Your total score">
-                </div>
+                  <!-- Score form -->
+                  <div id="score" class="score-form">
+                    <!-- Score 1 input -->
+                    <div class="form-group">
+                        <label for="score1">Score 1:</label>
+                        <input type="number" name="score1" id="n1" placeholder="Out of 1600" max="1600" step="10" class="form-control w-auto" required>
                     </div>
+                    <!-- Score 2 input -->
+                    <div class="form-group">
+                        <label for="score2">Score 2:</label>
+                        <input type="number" name="score2" id="n2" placeholder="Out of 1600" max="1600" step="10" class="form-control w-auto" required>
+                    </div>
+                    <!-- GPA score input -->
+                    <div class="form-group">
+                        <label for="gpa">GPA score:</label>
+                        <input type="number" name="gpa" id="n3" placeholder="Out of 40" max="40" class="form-control w-auto" required>
+                    </div>
+                    <!-- Calculate button and result display -->
+                    <div class="row mx-0 justify-content-center">
+                      <button class="btn border mr-2 mt-2" onclick="calco();">Calculate score</button>
+                      <input type="text" id="resulto" readonly class="form-control d-inline-block w-auto text-center mt-2" placeholder="Your total score">
+                    </div>
+                </div>
               </div>
           </div>
-  
+    </div>
+    
           <div class="col-md-6 col-12 ">
             <div class="block bg-white p-4 mb-md-0 mb-4 rounded-lg border">
                 <h3 style="text-align: center;"><strong>Important Notes</strong></h3>

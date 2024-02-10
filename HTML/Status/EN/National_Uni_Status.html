@@ -22,22 +22,64 @@
 </head>
 <body>
 <body>
-    <script>
-        window.onload = function() {
-            var tableCells = document.getElementsByTagName("td");
-            for (var i = 0; i < tableCells.length; i++) {
-                if (tableCells[i].innerHTML == "Ended") {
-                    tableCells[i].style.color = "red";
-                } else if (tableCells[i].innerHTML == "Avilable") {
-                    tableCells[i].style.color = "green";
-                }else if (tableCells[i].innerHTML == "Not Started") {
-                    tableCells[i].style.color = "brown";
-                }  else if (tableCells[i].innerHTML == "Under Construction") {
-                    tableCells[i].style.color = "purple";
-                }
+  <script>
+    window.onload = function() {
+        var tableCells = document.getElementsByTagName("td");
+        for (var i = 0; i < tableCells.length; i++) {
+            if (tableCells[i].innerHTML == "Ended") {
+                tableCells[i].style.color = "red";
+            } else if (tableCells[i].innerHTML == "Avilable") {
+                tableCells[i].style.color = "green";
+            }else if (tableCells[i].innerHTML == "Not Started") {
+                tableCells[i].style.color = "brown";
+            }  else if (tableCells[i].innerHTML == "Under Construction") {
+                tableCells[i].style.color = "purple";
             }
         }
-        </script>
+    }
+    </script>
+  <!-- ################# Header #######################--->
+<header>
+    <div class="header-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 col-md-12 left-item">
+            <ul>
+            </ul>
+          </div>
+          <div class="col-lg-5 right-item">
+            <ul>
+              <li><a href="../AR/حالة_الدولية.html"><i class="fas fa-language"></i> العربية</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav id="nav-head" class="header-nav">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-12 nav-img">
+            <a href="../../Home/EN/Home.html">
+              <img src="../../../assets/images/logo.png" alt="Logo">
+            </a>
+            <a data-toggle="collapse" data-target="#menu" href="#menu">
+              <i class="fas d-block d-md-none small-menu fa-bars"></i>
+            </a>
+          </div>                    
+          <div id="menu" class="col-md-9 d-none d-md-block nav-item">
+            <ul>
+              <li><a href="../../Home/EN/Home.html">Home</a></li>
+              <li><a href="../../Guides/EN/Uni_Guide.html">Universities Guidebooks</a></li>
+              <li><a href="../../Status/EN/Admission_Status.html">Admissions Status</a></li>
+              <li><a href="../../Equivalent Certificates/EN/Calculate_Equivalent.html">Equivalent Certificates Calculator</a></li>
+              <li><a href="../../News/EN/News.html">News</a></li>
+              <li><a href="../../Contact/EN/Contact_Us.html">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>  
         
 <!-- ################# Header #######################--->
 <header>
@@ -87,10 +129,11 @@
 <div class="page-nav row">
   <h2>National Universites Admissions Status</h2>
   <ul>
-      <li><a href="../../Home/EN/Home.html"><i class="fas fa-home"></i> Home</a></li>
-      <li><a href="../../Status/EN/Admission_Status.html"><i class="fas fa-chevron-right"></i> Universities Admissions Status</a></li>
-      <li><a href="../../Status/EN/National_Uni_Status.html"><i class="fas fa-chevron-right"></i> National Universities Admissions Status</a></li>
-  </ul>         
+    <li><a href="../../Home/EN/Home.html"><i class="fas fa-home"></i> Home</a></li>
+    <li><a href="../../Status/EN/Admission_Status.html"><i class="fas fa-chevron-right"></i> Universities Admissions Status</a></li>
+    <li><a href="../../Status/EN/UGRAD_Status.html"><i class="fas fa-chevron-right"></i> Undergraduagtes</a></li>
+    <li><a href="../../Status/EN/National_Uni_Status.html"><i class="fas fa-chevron-right"></i> National Universities</a></li>
+</ul>         
 </div>
 
 <!--  ************************* Body ************************** -->

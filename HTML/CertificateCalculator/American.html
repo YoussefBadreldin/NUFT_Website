@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUFT</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/images/Fav/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/images/Fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/images/Fav/favicon-16x16.png">
+    <link rel="manifest" href="../../../assets/images/Fav/site.webmanifest">
+    <link rel="mask-icon" href="../../../assets/images/Fav/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="../../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/css/fontawsom-all.min.css">
+    <link rel="stylesheet" href="../../../assets/plugins/slider/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../../assets/plugins/slider/css/owl.theme.default.css">
+    <link rel="stylesheet" href="../../../assets/css/style.css">
+    
+</head>
+<body>
+<body>
+    
+  <!-- ################# Header #######################--->
+<header>
+    <div class="header-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 col-md-12 left-item">
+            <ul>
+            </ul>
+          </div>
+          <div class="col-lg-5 right-item">
+            <ul>
+              <li><a href="../AR/امريكي.html"><i class="fas fa-language"></i> العربية</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav id="nav-head" class="header-nav">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-12 nav-img">
+            <a href="../../Home/EN/Home.html">
+              <img src="../../../assets/images/logo.png" alt="Logo">
+            </a>
+            <a data-toggle="collapse" data-target="#menu" href="#menu">
+              <i class="fas d-block d-md-none small-menu fa-bars"></i>
+            </a>
+          </div>                    
+          <div id="menu" class="col-md-9 d-none d-md-block nav-item">
+            <ul>
+              <li><a href="../../Home/EN/Home.html">Home</a></li>
+              <li><a href="../../Guides/EN/Uni_Guide.html">Universities Guidebooks</a></li>
+              <li><a href="../../Status/EN/Admission_Status.html">Admissions Status</a></li>
+              <li><a href="../../Equivalent Certificates/EN/Calculate_Equivalent.html">Equivalent Certificates Calculator</a></li>
+              <li><a href="../../News/EN/News.html">News</a></li>
+              <li><a href="../../Contact/EN/Contact_Us.html">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>  
+
+<!-- ################# Page Title #######################--->
+<div class="page-nav row">
+            <h2>American Diploma</h2>
+            <ul>
+                <li><a href="../../Home/EN/Home.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><i class="fas fa-chevron-right"></i> <a href="Calculate_Equivalent.html">Equivalent Certificates Calculator</a></li>
+                <li><i class="fas fa-chevron-right"></i> <a href="American.html">American Diploma</a></li>
+            </ul>
+</div>
+  
+    <!-- ################# Body #######################--->
+        <div class="container mt-md-5 mt-3 mb-4">
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <div class="block p-4 mb-4 bg-white rounded-lg border">
+                  <h3 style="text-align: center;"><strong>Calculate Your Score</strong></h3>
+                    <div class="form-group">
+                        <label for="Exam">Exam:</label>
+                        <select class="custom-select w-auto d-block" id="Exam" required onchange="showSuitable()">
+                            <option selected value="1">SAT</option>
+                            <option value="2">ACT</option>
+                        </select>
+                    </div>
+                    <!-- SAT score form -->
+                    <div id="sat" class="score-form">
+                        <!-- SAT 1 score input -->
+                        <div class="form-group">
+                            <label for="sat1">SAT 1 score:</label>
+                            <input type="number" name="sat1" id="n1" placeholder="Out of 1600" max="1600" step="10" class="form-control w-auto" required>
+                        </div>
+                        <!-- SAT 2 score input -->
+                        <div class="form-group">
+                            <label for="sat2">SAT 2 score:</label>
+                            <input type="number" name="sat2" id="n2" placeholder="Out of 1600" max="1600" step="10" class="form-control w-auto" required>
+                        </div>
+                        <!-- GPA score input -->
+                        <div class="form-group">
+                            <label for="gpa">GPA score:</label>
+                            <input type="number" name="gpa" id="n3" placeholder="Out of 40" max="40" class="form-control w-auto" required>
+                        </div>
+                        <!-- Calculation method input -->
+                        <div class="form-group">
+                            <label for="meth">Calculation method:</label>
+                            <select class="custom-select w-auto d-block" id="meth" required>
+                                <option selected value="1">Public Universites</option>
+                                <option value="2">Private & National Universities</option>
+                                <option value="3">Higher institutes</option>
+                            </select>
+                        </div>
+                        <!-- Calculate button and result display -->
+                        <div class="row mx-0 justify-content-center">
+                          <button class="btn border mr-2 mt-2" onclick="calco();">Calculate score</button>
+                          <input type="text" id="resulto" readonly class="form-control d-inline-block w-auto text-center mt-2" placeholder="Your total score">
+                      </div>                      
+                    </div>
+                    <!-- ACT score form -->
+                    <div id="act" class="score-form" style="display: none;">
+                        <!-- English score input -->
+                        <div class="form-group">
+                            <label for="english">English:</label>
+                            <input type="number" name="english" id="n11" placeholder="Out of 36" max="36" step="1" class="form-control w-auto" required>
+                        </div>
+                        <!-- Reading score input -->
+                        <div class="form-group">
+                            <label for="reading">Reading:</label>
+                            <input type="number" name="reading" id="n22" placeholder="Out of 36" max="36" step="1" class="form-control w-auto" required>
+                        </div>
+                        <!-- Math score input -->
+                        <div class="form-group">
+                            <label for="math">Math:</label>
+                            <input type="number" name="math" id="n33" placeholder="Out of 36" max="36" class="form-control w-auto" required>
+                        </div>
+                        <!-- Calculate button and result display -->
+                        <div class="row mx-0 justify-content-center">
+                          <button class="btn border mr-2 mt-2" onclick="calco();">Calculate score</button>
+                          <input type="text" id="resulto" readonly class="form-control d-inline-block w-auto text-center mt-2" placeholder="Your total score">
+                      </div>                      
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-12 ">
+              <div class="block bg-white p-4 mb-md-0 mb-4 rounded-lg border">
+                  <h3 style="text-align: center;"><strong>Important Notes</strong></h3>
+                  <p>
+                      <strong>For Public universities:</strong>
+                      <ul style="font-size: 0.8em;">
+                          <li>- If your SAT 1 score is above 1090, the calculation is: (your SAT 1 score/1600) *69 + (your SAT 2 score/1600) *15 + GPA.</li>
+                          <li>- You must get at least 1050 score in SAT 1.</li>
+                          <li>- To add the SAT 2 score, you must get at least 1100 score.</li>
+                          <li>- The bonus for getting a score above 1090 is 9%.</li>
+                      </ul>
+                  </p>
+                  <p>
+                      <strong><br>For private & national universities:</strong>
+                      <ul style="font-size: 0.8em;">
+                          <li>- If your SAT 1 score is above 1090, the calculation is: (your SAT 1 score/1600) *75 + (your SAT 2 score/1600) *15 + GPA.</li>
+                          <li>- To add the SAT 2 score, you must get at least 900 score.</li>
+                          <li>- The bonus for getting above 1090 is 15%.</li>
+                      </ul>
+                  </p>
+                  <p>
+                      <strong><br>For higher institutes:</strong>
+                      <ul style="font-size: 0.8em;">
+                          <li>- You must get at least 890 score in SAT 1.</li>
+                          <li>- To add the SAT 2 score, you must get at least 900 score.</li>
+                      </ul>
+                  </p>
+                  <p>
+                      <strong><br>General notes:</strong>
+                      <ul style="font-size: 0.8em;">
+                          <li>- If your SAT 1 score is below 1090, the calculation is: (your SAT 1 score/1600) *60 + (your SAT 2 score/1600) *15 + GPA.</li>
+                          <li>- SAT 2 score will be calculated as if it's equal to zero if it's less than 900 for private universities and higher institutes or 1100 for Public universities.</li>
+                          <li>- The bonus is added automatically to your total score if your SAT 1 score is above 1090.</li>
+                          <li>- To get accurate results, you must follow the scoring rules carefully.</li>
+                      </ul>
+                  </p>
+              </div>
+          </div>                     
+            </div>
+        </div>
+    </div>
+  
+      
+      <script src="./Sat score calculator for egyptian universities_files/f.txt"></script>
+      <script type="text/javascript" async="" src="./Sat score calculator for egyptian universities_files/analytics.js.download"></script>
+      <script type="text/javascript" async="" src="./Sat score calculator for egyptian universities_files/js"></script>
+      <script data-ad-client="ca-pub-5016273967120511" async="" src="./Sat score calculator for egyptian universities_files/f(1).txt" data-checked-head="true"></script>
+      <script async="" src="./Sat score calculator for egyptian universities_files/js(1)"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-158680401-1');
+      </script>
+     <script>
+      function calc() {
+          var n1 = parseFloat(document.getElementById('n1').value);
+          var n2 = parseFloat(document.getElementById('n2').value);
+          var n3 = parseFloat(document.getElementById('n3').value);
+    
+          var meth = document.getElementById('meth').value;
+          if (typeof n1 !== 'undefined' && typeof n3 !== 'undefined' && n1 <= 1600 && n1 >= 400 && n3 <= 40 && n3 >= 20) {
+              if (meth === '1') {
+                  if (n1 >= 1050) {
+                      if (typeof n2 !== 'undefined' && n2 >= 1100) {
+                          if (n1 >= 1090) {
+                              document.getElementById('result').value = n1 * 69 / 1600 + n2 * 15 / 1600 + n3;
+                          } else {
+                              document.getElementById('result').value = n1 * 60 / 1600 + n2 * 15 / 1600 + n3;
+                          }
+                      } else {
+                          var n2 = 0;
+                          if (n1 >= 1090) {
+                              document.getElementById('result').value = n1 * 69 / 1600 + n2 * 15 / 1600 + n3;
+                          } else {
+                              document.getElementById('result').value = n1 * 60 / 1600 + n2 * 15 / 1600 + n3;
+                          }
+                      }
+                  } else {
+                      document.getElementById('result').value = "You must get at least 1050 score";
+                  }
+              }
+    
+              if (meth === '2') {
+                  if (typeof n2 !== 'undefined' && n2 >= 900) {
+                      if (n1 >= 1090) {
+                          document.getElementById('result').value = n1 * 75 / 1600 + n2 * 15 / 1600 + n3;
+                      } else {
+                          document.getElementById('result').value = n1 * 60 / 1600 + n2 * 15 / 1600 + n3;
+                      }
+                  } else {
+                      var n2 = 0;
+                      if (n1 >= 1090) {
+                          document.getElementById('result').value = n1 * 75 / 1600 + n2 * 15 / 1600 + n3;
+                      } else {
+                          document.getElementById('result').value = n1 * 60 / 1600 + n2 * 15 / 1600 + n3;
+                      }
+                  }
+              }
+    
+              if (meth === '3') {
+                  if (n1 >= 890) {
+                      if (typeof n2 !== 'undefined' && n2 >= 900) {
+                          if (n1 >= 1090) {
+                              document.getElementById('result').value = n1 * 69 / 1600 + n2 * 15 / 1600 + n3;
+                          } else {
+                              document.getElementById('result').value = n1 * 60 / 1600 + n2 * 15 / 1600 + n3;
+                          }
+                      } else {
+                          var n2 = 0;
+                          if (n1 >= 1090) {
+                              document.getElementById('result').value = n1 * 69 / 1600 + n2 * 15 / 1600 + n3;
+                          } else {
+                              document.getElementById('result').value = n1 * 60 / 1600 + n2 * 15 / 1600 + n3;
+                          }
+                      }
+                  } else {
+                      document.getElementById('result').value = "You must get at least 890 score";
+                  }
+    
+              }
+          } else {
+              document.getElementById('result').value = "Enter a valid Score";
+          }
+      }
+    </script>
+    <script>
+      function calco() {
+          var n11 = parseFloat(document.getElementById('n11').value);
+          var n22 = parseFloat(document.getElementById('n22').value);
+          var n33 = parseFloat(document.getElementById('n33').value);
+    
+          if (typeof n11 !== 'undefined' && typeof n33 !== 'undefined' && typeof n22 !== 'undefined' && n11 <= 36 && n22 <= 36 && n33 <= 36) {
+              document.getElementById('resulto').value = (((n11 + n22) / 2) + n33) / 2;
+          } else {
+              document.getElementById('resulto').value = "Enter a valid Score";
+          }
+      }
+    </script>
+    <script>
+      function showSuitable() {
+          var Exam = document.getElementById('Exam').value;
+          if (Exam == '1') {
+              document.getElementById('sat').style.display = 'block';
+              document.getElementById('act').style.display = 'none';
+          } else if (Exam == '2') {
+              document.getElementById('sat').style.display = 'none';
+              document.getElementById('act').style.display = 'block';
+          }
+      }
+    </script>
+
+
+<!-- ################# Smart Assistant #######################--->
+<button id="smart-assistant-icon">
+  <i class="fas fa-robot"></i>
+  <span><br>SMART</span>
+  <span>ASSISTANT</span>
+</button>
+
+<script>
+document.getElementById("smart-assistant-icon").onclick = function () {
+    location.href = "../../Guides/EN/Uni_Guide.html";
+};
+</script>
+
+<!-- ################# Footer #######################--->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 order-md-1 about">
+        <div class="foot-address">
+          <div class="icon">
+            <i class="fas fa-envelope-square"></i>
+          </div>
+          <div class="addet">
+            <a href="mailto:info@nufteg.com">info@nufteg.com</a>
+          </div>
+        </div>
+        <div class="foot-address">
+          <div class="icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <div class="addet">
+            <a href="http://wa.me/201143545184">+20 114 3545184</a>
+          </div>
+        </div>
+        <div class="social-icons" style="margin-top: 20px;">
+          <a href="https://www.facebook.com/NUFT.EG" target="_blank" style="margin-Left: 13px; margin-right: 20px;"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/nuft.eg" target="_blank" style="margin-Left: 10px; margin-right: 20px;"><i class="fab fa-instagram"></i></a>
+          <a href="https://X.com/NUFT_EG" target="_blank" style="margin-Left: 10px; margin-right: 20px;"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.tiktok.com/@NUFT.EG" target="_blank" style="margin-Left: 10px; margin-right: 20px;"><i class="fab fa-tiktok"></i></a>
+          <br>
+          <br>
+          <a href="https://t.me/Egyptian_NAT_Universties_bot" target="_blank" style="margin-Left: 10px; margin-right: 20px;"><i class="fab fa-telegram"></i></a>
+          <a href="https://www.linkedin.com/company/nufteg/" target="_blank" style="margin-Left: 8px; margin-right: 20px;"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.youtube.com/@nuft_eg" target="_blank" style="margin-Left: 8px; margin-right: 20px;"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.threads.net/@nuft.eg" target="_blank" style="margin-Left: 8px; margin-right: 20px;"><i class="fas fa-at"></i></a>
+        </div>      
+      </div>
+      <!-- Empty Space -->
+      <div class="col-md-3 order-md-2">
+      </div>
+      <!-- Quick Links -->
+      <div class="col-md-6 order-md-3 glink" style="margin-top: 20px;">
+        <h2>Quick Links</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <ul>
+              <li><a href="UniversitesGuide/Main.html"><i class="fas fa-angle-double-right"></i>National Universities Guidebook</a></li>
+              <li><a href="UniversitesGuide/Main.html"><i class="fas fa-angle-double-right"></i>Public Universities Guidebook</a></li>
+              <li><a href="UniversitesGuide/Main.html"><i class="fas fa-angle-double-right"></i>Private Universities Guidebook</a></li>
+              <li><a href="UniversitesGuide/Main.html"><i class="fas fa-angle-double-right"></i>International Universities Guidebook</a></li>
+              <li><a href="UniversitesGuide/Main.html"><i class="fas fa-angle-double-right"></i>Technological Universities Guidebook</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <ul>
+              <li><a href="AdmissionStatus/Main.html"><i class="fas fa-angle-double-right"></i>National Universities Admissions Status</a></li>
+              <li><a href="AdmissionStatus/Main.html"><i class="fas fa-angle-double-right"></i>Public Universities Admissions Status</a></li>
+              <li><a href="AdmissionStatus/Main.html"><i class="fas fa-angle-double-right"></i>Private Universities Admissions Status</a></li>
+              <li><a href="AdmissionStatus/Main.html"><i class="fas fa-angle-double-right"></i>International Universities Admissions Status</a></li>
+              <li><a href="AdmissionStatus/Main.html"><i class="fas fa-angle-double-right"></i>Technological Universities Admissions Status</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="copy" style="text-align: center;">
+  <div class="CopyRights">
+      <p>2024 © All Rights Reserved | Designed and Developed by Youssef Badreldin</p>
+  </div>
+</div>
+
+<script src="../../../assets/js/jquery-3.2.1.min.js"></script>
+<script src="../../../assets/js/popper.min.js"></script>
+<script src="../../../assets/js/bootstrap.min.js"></script>
+<script src="../../../assets/plugins/slider/js/owl.carousel.min.js"></script>
+<script src="../../../assets/js/script.js"></script>
+
+</body>
+</html>

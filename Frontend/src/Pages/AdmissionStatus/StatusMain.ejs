@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<% include ../components/head %>
+<head>
+  <%- include('../../components/Head') %>
+</head>
 <body>
-  <% include ../components/header %>
+  <%- include('../../components/Header') %>
 
     <!-- ################# Page Title #######################--->
     <div class="page-nav row">
@@ -19,7 +21,7 @@
     <br>
       <div class="row Box-ro">
           <div class="col-md-4">
-              <a href="UGRAD_Status.ejs">
+              <a href="UGRADStatus.ejs">
                   <div class="Box-card">
                       <img src="../../../public/images/Categories/UGRADStatus.png" alt="National Universities">
                       <div class="Box-det" style="text-align: center;">
@@ -29,7 +31,7 @@
               </a>
           </div>        
           <div class="col-md-4">
-              <a href="GRAD_Status.ejs">
+              <a href="GRADStatus.ejs">
                   <div class="Box-card">
                       <img src="../../../public/images/Categories/PGRADStatus.png" alt="Public Universities">
                       <div class="Box-det" style="text-align: center;">
@@ -42,9 +44,9 @@
   </div>
 </div>
 
-<% include ../components/SmartAssistant %>
-<% include ../components/footer %>
-<% include ../components/scripts %>
+<%- include('../../components/SmartAssistant') %>
+<%- include('../../components/Footer') %>
+<%- include('../../components/Scripts') %>
 
 </body>
 </html>

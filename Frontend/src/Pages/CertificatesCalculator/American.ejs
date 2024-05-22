@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<% include partials/head %>
+<head>
+  <%- include('../components/Head') %>
+</head>
 <body>
-  <% include partials/header %>
+  <%- include('../components/Header') %>
 
     <!-- ################# Page Title #######################--->
 <div class="page-nav row">
@@ -237,9 +239,9 @@
     </script>
 
 
-<% include ../components/SmartAssistant %>
-<% include ../components/footer %>
-<% include ../components/scripts %>
+<%- include('../components/SmartAssistant') %>
+<%- include('../components/Footer') %>
+<%- include('../components/Scripts') %>
 
 </body>
 </html>

@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <%- include('../components/Head') %>
+  <%- include('../../../components/Head') %>
 </head>
 <body>
-  <%- include('../components/Header') %>
+  <%- include('../../../components/Header') %>
 
 
     <!-- ################# Page Title #######################--->
     <div class="page-nav row">
         <h2>International National Universities Guidebook</h2>
         <ul>
-            <li><a href="../../Home.ejs"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="../UniversitiesGuide/GuideMain.ejs"><i class="fas fa-chevron-right"></i> Universities Guidebooks</a></li>
-            <li><a href="../UniversitiesGuide/UGRADGuide.ejs"><i class="fas fa-chevron-right"></i> Undergraduate</a></li>
-            <li><a href="../UniversitiesGuide/NationalGuide.ejs"><i class="fas fa-chevron-right"></i> National Universities</a></li>
-            <li><a href="International.ejs"><i class="fas fa-chevron-right"></i> International National Universities</a></li>
+            <ul>
+                <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/UniversitiesGuide"><i class="fas fa-chevron-right"></i> Universities Guidebooks</a></li>
+                <li><a href="/UniversitiesGuide/UGRAD"><i class="fas fa-chevron-right"></i> Undergraduate Guidebooks</a></li>
+                <li><a href="/UniversitiesGuide/UGRAD/National"><i class="fas fa-chevron-right"></i> National Universities</a></li>
+            <li><a href="/UniversitiesGuide/UGRAD/National/International"><i class="fas fa-chevron-right"></i> International National Universities</a></li>
         </ul>
 </div>
 
@@ -26,9 +27,9 @@
       </div>
       <div class="row Box-ro">
           <div class="col-md-4">
-              <a href="../../Universites/National/KSIU.ejs">
+              <a href="/UniversitiesGuide/UGRAD/National/International/KSIU">
                   <div class="Box-card">
-                      <img src="../../../../public/images/Logos/Universites/National/KSIU.png" alt="King Salman International University">
+                      <img src="/images/Logos/Universites/National/KSIU.png" alt="King Salman International University">
                       <div class="Box-det" style="text-align:center;">
                           <h6>King Salman International University</h6>
                       </div>
@@ -36,9 +37,9 @@
               </a>
           </div>
           <div class="col-md-4">
-              <a href="../../Universites/National/AIU.ejs">
+              <a href="/UniversitiesGuide/UGRAD/National/International/AIU">
                   <div class="Box-card">
-                      <img src="../../../../public/images/Logos/Universites/National/AIU.png" alt="Alamein International University">
+                      <img src="/images/Logos/Universites/National/AIU.png" alt="Alamein International University">
                       <div class="Box-det" style="text-align:center;">
                           <h6>Alamein International University</h6>
                       </div>
@@ -46,9 +47,9 @@
               </a>
           </div>        
           <div class="col-md-4">
-              <a href="../../Universites/National/GU.ejs">
+              <a href="/UniversitiesGuide/UGRAD/National/International/GU">
                   <div class="Box-card">
-                      <img src="../../../../public/images/Logos/Universites/National/GU.png" alt="Galala University">
+                      <img src="/images/Logos/Universites/National/GU.png" alt="Galala University">
                       <div class="Box-det" style="text-align:center;">
                           <h6>Galala University</h6>
                       </div>
@@ -56,9 +57,9 @@
               </a>
           </div>
           <div class="col-md-4">
-              <a href="../../Universites/National/NMU.ejs">
+              <a href="/UniversitiesGuide/UGRAD/National/International/NMU">
                   <div class="Box-card">
-                      <img src="../../../../public/images/Logos/Universites/National/NMU.png" alt="New Mansoura University">
+                      <img src="/images/Logos/Universites/National/NMU.png" alt="New Mansoura University">
                       <div class="Box-det" style="text-align:center;">
                           <h6>New Mansoura University</h6>
                       </div>
@@ -69,9 +70,9 @@
   </div>
 </div>
 
-<%- include('../components/SmartAssistant') %>
-<%- include('../components/Footer') %>
-<%- include('../components/Scripts') %>
+<%- include('../../../components/SmartAssistant') %>
+<%- include('../../../components/Footer') %>
+<%- include('../../../components/Scripts') %>
 
 </body>
 </html>

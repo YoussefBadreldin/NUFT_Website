@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <%- include('../components/Head') %>
+  <%- include('../../components/Head') %>
 </head>
 <body>
-  <%- include('../components/Header') %>
+  <%- include('../../components/Header') %>
 
 
     <!-- ################# Page Title #######################--->
     <div class="page-nav row">
                 <h2>Undergraduate Guidebooks</h2>
                 <ul>
-                    <li><a href="../Home.ejs"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="../UniversitiesGuide/GuideMain.ejs"><i class="fas fa-chevron-right"></i> Universities Guidebooks</a></li>
-                    <li><a href="UGRADGuide.ejs"><i class="fas fa-chevron-right"></i> Undergraduate Guidebooks</a></li>
+                    <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="/UniversitiesGuide"><i class="fas fa-chevron-right"></i> Universities Guidebooks</a></li>
+                    <li><a href="/UniversitiesGuide/UGRAD"><i class="fas fa-chevron-right"></i> Undergraduate Guidebooks</a></li>
                    </ul>
     </div>
     
@@ -23,9 +23,9 @@
       <br>
         <div class="row Box-ro">
             <div class="col-md-4">
-                <a href="../NationalUniGuide.ejs">
+                <a href="/UniversitiesGuide/UGRAD/National">
                     <div class="Box-card">
-                        <img src="../../../public/images/Universites/Guide/NationalGuide.png" alt="National Universities">
+                        <img src="/images/Universites/Guide/NationalGuide.png" alt="National Universities">
                         <div class="Box-det" style="text-align: center;">
                             <h6>National Universities</h6>
                         </div>
@@ -33,9 +33,9 @@
                 </a>
             </div>        
             <div class="col-md-4">
-                <a href="../PublicUniGuide.ejs">
+                <a href="/UniversitiesGuide/UGRAD/public">
                     <div class="Box-card">
-                        <img src="../../../public/images/Universites/Guide/PublicGuide.png" alt="Public Universities">
+                        <img src="/images/Universites/Guide/PublicGuide.png" alt="Public Universities">
                         <div class="Box-det" style="text-align: center;">
                             <h6>Public Universities</h6>
                         </div>
@@ -43,9 +43,9 @@
                 </a>
             </div>
             <div class="col-md-4">
-                <a href="../PrivateUniGuide.ejs">
+                <a href="/UniversitiesGuide/UGRAD/private">
                     <div class="Box-card">
-                        <img src="../../../public/images/Universites/Guide/PrivateGuide.png" alt="Private Universities">
+                        <img src="/images/Universites/Guide/PrivateGuide.png" alt="Private Universities">
                         <div class="Box-det" style="text-align: center;">
                             <h6>Private Universities</h6>
                         </div>
@@ -53,9 +53,9 @@
                 </a>
             </div>
             <div class="col-md-4">
-                <a href="../InternationalUniGuide.ejs">
+                <a href="/UniversitiesGuide/UGRAD/international">
                     <div class="Box-card">
-                        <img src="../../../public/images/Universites/Guide/InternationalGuide.png" alt="International Universities">
+                        <img src="/images/Universites/Guide/InternationalGuide.png" alt="International Universities">
                         <div class="Box-det" style="text-align: center;">
                             <h6>International Universities</h6>
                         </div>
@@ -63,9 +63,9 @@
                 </a>
             </div>
             <div class="col-md-4">
-              <a href="../SpecialUniGuide.ejs">
+              <a href="/UniversitiesGuide/UGRAD/Special">
                   <div class="Box-card">
-                      <img src="../../../public/images/Universites/Guide/SpecialGuide.png" alt="Special Nature Universities">
+                      <img src="/images/Universites/Guide/SpecialGuide.png" alt="Special Nature Universities">
                       <div class="Box-det" style="text-align: center;">
                           <h6>Special Nature Universities</h6>
                       </div>
@@ -73,9 +73,9 @@
               </a>
           </div>            
             <div class="col-md-4">
-                <a href="../TechUniGuide.ejs">
+                <a href="/UniversitiesGuide/UGRAD/tech">
                     <div class="Box-card">
-                        <img src="../../../public/images/Universites/Guide/TechUniGuide.png" alt="Technological Universities">
+                        <img src="/images/Universites/Guide/TechUniGuide.png" alt="Technological Universities">
                         <div class="Box-det" style="text-align: center;">
                             <h6>Technological Universities</h6>
                         </div>
@@ -83,9 +83,9 @@
                 </a>
             </div>
             <div class="col-md-4">
-              <a href="../InstGuide.ejs">
+              <a href="/UniversitiesGuide/UGRAD/inst">
                   <div class="Box-card">
-                      <img src="../../../public/images/Universites/Guide/InstitutionsGuide.png" alt="Higher Institutes, Academies & Technological Colleges">
+                      <img src="/images/Universites/Guide/InstitutionsGuide.png" alt="Higher Institutes, Academies & Technological Colleges">
                       <div class="Box-det" style="text-align: center;">
                           <h6>Higher Institutes, Academies & Technological Colleges</h6>
                       </div>
@@ -96,9 +96,9 @@
     </div>
 </div>
 
-<%- include('../components/SmartAssistant') %>
-<%- include('../components/Footer') %>
-<%- include('../components/Scripts') %>
+<%- include('../../components/SmartAssistant') %>
+<%- include('../../components/Footer') %>
+<%- include('../../components/Scripts') %>
 
 </body>
 </html>

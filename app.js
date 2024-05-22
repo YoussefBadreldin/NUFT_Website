@@ -10,74 +10,269 @@ app.set('views', path.join(__dirname, 'frontend', 'src', 'pages'));
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'frontend', 'public')));
 
-// Define routes
+// Main route
 app.get('/', (req, res) => {
     res.render('Home');
 });
 
-app.get('/AdmissionStatus/National', (req, res) => {
-    res.render('AdmissionStatus/National');
+// Guides routes
+app.get('/UniversitiesGuide', (req, res) => {
+    res.render('UniversitesGuide/GuideMain');
 });
 
-app.get('/AdmissionStatus/StatusMain', (req, res) => {
+app.get('/UniversitiesGuide/UGRAD', (req, res) => {
+    res.render('UniversitesGuide/UGRADGuide');
+});
+
+app.get('/UniversitiesGuide/PGRAD', (req, res) => {
+    res.render('ComingSoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National', (req, res) => {
+    res.render('UniversitesGuide/NationalGuide');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Normal', (req, res) => {
+    res.render('UniversitesGuide/NationalUniverites/Normal');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/International', (req, res) => {
+    res.render('UniversitesGuide/NationalUniverites/International');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Affiliated', (req, res) => {
+    res.render('UniversitesGuide/NationalUniverites/Affiliated');
+});
+
+app.get('/UniversitiesGuide/UGRAD/public', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/private', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/international', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/special', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/tech', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/inst', (req, res) => {
+    res.render('comingsoon');
+});
+
+// Universites routes
+// International NU
+app.get('/UniversitiesGuide/UGRAD/National/International/AIU', (req, res) => {
+    res.render('Universites/National/AIU');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/International/KSIU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/International/GU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/International/NMU', (req, res) => {
+    res.render('comingsoon');
+});
+// Normal NU
+app.get('/UniversitiesGuide/UGRAD/National/Normal/EUI', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Normal/UFE', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Normal/NU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Normal/EELU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Normal/ENU', (req, res) => {
+    res.render('comingsoon');
+});
+// Affiliated NU
+app.get('/UniversitiesGuide/UGRAD/National/Affiliated/MansNU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Affiliated/HNU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Affiliated/BNU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Affiliated/BSNU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Affiliated/SVNU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Affiliated/ZNU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Affiliated/MiniaNU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Affiliated/MenofiaNU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Affiliated/EPNU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Affiliated/AlexNU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Affiliated/AssuitNU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Affiliated/NINU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Affiliated/SNU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Affiliated/ASNU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Affiliated/AswanNU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Affiliated/FNU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Affiliated/DNU', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/UniversitiesGuide/UGRAD/National/Affiliated/KSNU', (req, res) => {
+    res.render('comingsoon');
+});
+
+// Status routes
+app.get('/AdmissionStatus', (req, res) => {
     res.render('AdmissionStatus/StatusMain');
 });
 
-app.get('/AdmissionStatus/UGRADStatus', (req, res) => {
+app.get('/AdmissionStatus/UGRAD', (req, res) => {
     res.render('AdmissionStatus/UGRADStatus');
 });
 
-app.get('/CertificateCalculator/American', (req, res) => {
-    res.render('CertificateCalculator/American');
+app.get('/AdmissionStatus/PGRAD', (req, res) => {
+    res.render('ComingSoon');
 });
 
-app.get('/CertificateCalculator/CertificatesMain', (req, res) => {
-    res.render('CertificateCalculator/CertificatesMain');
+app.get('/AdmissionStatus/UGRAD/National', (req, res) => {
+    res.render('AdmissionStatus/National');
 });
 
-app.get('/CertificateCalculator/Igcse', (req, res) => {
-    res.render('CertificateCalculator/Igcse');
+app.get('/AdmissionStatus/UGRAD/public', (req, res) => {
+    res.render('comingsoon');
 });
 
-app.get('/Universities/National/Aiu', (req, res) => {
-    res.render('Universities/National/Aiu');
+app.get('/AdmissionStatus/UGRAD/private', (req, res) => {
+    res.render('comingsoon');
 });
 
-app.get('/UniversitiesGuide/NationalUniversites/Affiliated', (req, res) => {
-    res.render('UniversitiesGuide/NationalUniversites/Affiliated');
+app.get('/AdmissionStatus/UGRAD/international', (req, res) => {
+    res.render('comingsoon');
 });
 
-app.get('/UniversitiesGuide/NationalUniversites/international', (req, res) => {
-    res.render('UniversitiesGuide/NationalUniversites/international');
+app.get('/AdmissionStatus/UGRAD/special', (req, res) => {
+    res.render('comingsoon');
 });
 
-app.get('/UniversitiesGuide/NationalUniversites/normal', (req, res) => {
-    res.render('UniversitiesGuide/NationalUniversites/normal');
+app.get('/AdmissionStatus/UGRAD/tech', (req, res) => {
+    res.render('comingsoon');
 });
 
-app.get('/UniversitiesGuide/GuideMain', (req, res) => {
-    res.render('UniversitiesGuide/GuideMain');
+app.get('/AdmissionStatus/UGRAD/inst', (req, res) => {
+    res.render('comingsoon');
 });
 
-app.get('/UniversitiesGuide/nationalguide', (req, res) => {
-    res.render('UniversitiesGuide/nationalguide');
+// Certificates routes
+app.get('/CertificatesCalculator', (req, res) => {
+    res.render('CertificatesCalculator/CertificatesMain');
 });
 
-app.get('/UniversitiesGuide/ugradguide', (req, res) => {
-    res.render('UniversitiesGuide/ugradguide');
+app.get('/CertificatesCalculator/American', (req, res) => {
+    res.render('CertificatesCalculator/American');
 });
 
-app.get('/CommingSoon', (req, res) => {
-    res.render('CommingSoon');
+app.get('/CertificatesCalculator/IGCSE', (req, res) => {
+    res.render('CertificatesCalculator/IGCSE');
 });
 
+app.get('/CertificatesCalculator/Azhari', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/CertificatesCalculator/STEM', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/CertificatesCalculator/Nile', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/CertificatesCalculator/Saudi', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/CertificatesCalculator/Kuwaiti', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/CertificatesCalculator/Bahraini', (req, res) => {
+    res.render('comingsoon');
+});
+
+
+
+// News routes
+app.get('/News', (req, res) => {
+    res.render('News');
+});
+
+// Contuctus routes
 app.get('/ContactUs', (req, res) => {
     res.render('ContactUs');
 });
 
-app.get('/News', (req, res) => {
-    res.render('News');
+// Coming Soon page routes
+app.get('/CommingSoon', (req, res) => {
+    res.render('CommingSoon');
 });
+
 
 // Start server
 const PORT = process.env.PORT || 3000;

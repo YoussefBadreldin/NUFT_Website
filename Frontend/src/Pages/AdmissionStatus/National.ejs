@@ -6,9 +6,6 @@
 <body>
   <%- include('../../components/Header') %>
 
-
-    <!-- ################# Page Title #######################--->
-
   <script>
     window.onload = function() {
         var tableCells = document.getElementsByTagName("td");
@@ -25,13 +22,16 @@
         }
     }
     </script>
+
+
+    <!-- ################# Page Title #######################--->
 <div class="page-nav row">
   <h2>National Universites Admissions Status</h2>
   <ul>
-    <li><a href="../../Home.ejs"><i class="fas fa-home"></i> Home</a></li>
-    <li><a href="../AdmissionStatus/StatusMain.ejs"><i class="fas fa-chevron-right"></i> Universities Admissions Status</a></li>
-    <li><a href="#"><i class="fas fa-chevron-right"></i> Undergraduagtes</a></li>
-    <li><a href="National.ejs"><i class="fas fa-chevron-right"></i> National Universities</a></li>
+    <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+    <li><a href="/AdmissionStatus"><i class="fas fa-chevron-right"></i> Universities Admissions Status</a></li>
+    <li><i class="fas fa-chevron-right"></i> <a href="/AdmissionStatus/UGRAD">Undergraduagte</a></li>
+    <li><a href="/AdmissionStatus/UGRAD/National"><i class="fas fa-chevron-right"></i> National Universities</a></li>
 </ul>         
 </div>
 

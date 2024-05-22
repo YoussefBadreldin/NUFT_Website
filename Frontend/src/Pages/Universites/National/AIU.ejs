@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <%- include('../components/Head') %>
+  <%- include('../../../components/Head') %>
 </head>
 <body>
-  <%- include('../components/Header') %>
+  <%- include('../../../components/Header') %>
 
 
     <!-- ################# Page Title #######################--->
     <div class="page-nav row">
         <h2>Alamein International University</h2>
         <ul>
-            <li><a href="../../Home/EN/Home.html"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="../../Guides/EN/Uni_Guide.html"><i class="fas fa-chevron-right"></i> Universities
-                    Guidebooks</a></li>
-            <li><a href="../../Guides/EN/National_Uni_Guide.html"><i class="fas fa-chevron-right"></i> National
-                    Universities Guidebook</a></li>
-            <li><a href="../../Guides/EN/National Universites Categories Guide/International_National_Uni_Guide.html"><i class="fas fa-chevron-right"></i>
-                    International National Universities Guidebook</a></li>
-            <li><a href="../EN/AIU.html"><i class="fas fa-chevron-right"></i> Alamein International University</a></li>
+            <ul>
+                <li><a href="/Home.ejs"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/UniversitiesGuide"><i class="fas fa-chevron-right"></i> Universities Guidebooks</a></li>
+                <li><a href="/UniversitiesGuide/UGRAD"><i class="fas fa-chevron-right"></i> Undergraduate Guidebooks</a></li>
+                <li><a href="/UniversitiesGuide/UGRAD/National"><i class="fas fa-chevron-right"></i> National Universities</a></li>
+            <li><a href="/UniversitiesGuide/UGRAD/National/International"><i class="fas fa-chevron-right"></i> International National Universities</a></li>
+            <li><a href="/UniversitiesGuide/UGRAD/National/International/AIU"><i class="fas fa-chevron-right"></i> Alamein International University</a></li>
         </ul>
     </div>
 
     <!-- ################# Body #######################--->
     <section>
         <div style="display: flex; flex-direction: column; align-items: center;">
-            <img src="../../../../public/images/Logos/Universites/National/AIU.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
+            <img src="/images/Logos/Universites/National/AIU.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
 
             <!-- ######## Uni Title ####### -->
             <h2 style="text-align: center; margin-top: 20px;">Alamein International University (AIU)</h2>
@@ -219,9 +218,9 @@
     </section>
 
 
-    <%- include('../components/SmartAssistant') %>
-    <%- include('../components/Footer') %>
-    <%- include('../components/Scripts') %>
+    <%- include('../../../components/SmartAssistant') %>
+    <%- include('../../../components/Footer') %>
+    <%- include('../../../components/Scripts') %>
 
 </body>
 </html>

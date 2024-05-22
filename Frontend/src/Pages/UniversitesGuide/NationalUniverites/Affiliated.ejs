@@ -4,17 +4,24 @@
 <body>
   <% include partials/header %>
 
-    <!-- ################# Page Title #######################--->
-<div class="page-nav row">
-            <h2>Affiliated National Universities Guidebook</h2>
-            <ul>
-                <li><a href="../../../Home/EN/Home.html"><i class="fas fa-home"></i> Home</a></li>
-                <li><i class="fas fa-chevron-right"></i> <a href="../EN/Uni_Guide.html">Universites Guidebooks</a></li>
-                <li><i class="fas fa-chevron-right"></i> <a href="../EN/UGRAD_Uni_Guide.html">Undergraduate</a></li>
-                <li><i class="fas fa-chevron-right"></i> <a href="../../EN/National_Uni_Guide.html">National Universities</a></li>
-                <li><i class="fas fa-chevron-right"></i> <a href="Affiliated_National_Uni_Guide.html">Affiliated National Universities</a></li>
-            </ul>
-</div>
+  <!DOCTYPE html>
+  <html lang="en">
+  <% include partials/head %>
+  <body>
+    <% include partials/header %>
+  
+      <!-- ################# Page Title #######################--->
+      <div class="page-nav row">
+          <h2>Normal National Universities Guidebook</h2>
+          <ul>
+              <li><a href="../../Home.ejs"><i class="fas fa-home"></i> Home</a></li>
+              <li><a href="../GuideMain.ejs"><i class="fas fa-chevron-right"></i> Universites Guidebooks</a></li>
+              <li><a href="../UGRADGuide.ejs"><i class="fas fa-chevron-right"></i> Undergraduate</a></li>
+              <li><a href="../NationalGuide.ejs"><i class="fas fa-chevron-right"></i> National Universities</a></li>
+              <li><a href="Affiliated.ejs"><i class="fas fa-chevron-right"></i> Normal National Universities</a></li>
+          </ul>
+  </div>
+  
 
 <!-- ################# Cards Box #######################--->
 <div class="Card-Box">
@@ -243,21 +250,9 @@
 </div>
 
 
-<!-- ################# Smart Assistant #######################--->
-<button id="smart-assistant-icon">
-    <i class="fas fa-robot"></i>
-    <span><br>SMART</span>
-    <span>ASSISTANT</span>
-  </button>
-  
-  <script>
-  document.getElementById("smart-assistant-icon").onclick = function () {
-      location.href = "../../Guides/EN/Uni_Guide.html";
-  };
-  </script>
-  
-  <% include ../components/footer %>
-  <% include ../components/scripts %>
-  
-  </body>
-  </html>
+<% include ../components/SmartAssistant %>
+<% include ../components/footer %>
+<% include ../components/scripts %>
+
+</body>
+</html>

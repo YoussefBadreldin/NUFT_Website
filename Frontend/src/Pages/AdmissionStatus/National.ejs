@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<% include partials/head %>
+<% include ../components/head %>
 <body>
-  <% include partials/header %>
+  <% include ../components/header %>
 
     <!-- ################# Page Title #######################--->
 
@@ -25,10 +25,10 @@
 <div class="page-nav row">
   <h2>National Universites Admissions Status</h2>
   <ul>
-    <li><a href="../../Home/EN/Home.html"><i class="fas fa-home"></i> Home</a></li>
-    <li><a href="../../Status/EN/Admission_Status.html"><i class="fas fa-chevron-right"></i> Universities Admissions Status</a></li>
-    <li><a href="../../Status/EN/UGRAD_Status.html"><i class="fas fa-chevron-right"></i> Undergraduagtes</a></li>
-    <li><a href="../../Status/EN/National_Uni_Status.html"><i class="fas fa-chevron-right"></i> National Universities</a></li>
+    <li><a href="../../Home.ejs"><i class="fas fa-home"></i> Home</a></li>
+    <li><a href="../AdmissionStatus/StatusMain.ejs"><i class="fas fa-chevron-right"></i> Universities Admissions Status</a></li>
+    <li><a href="#"><i class="fas fa-chevron-right"></i> Undergraduagtes</a></li>
+    <li><a href="National.ejs"><i class="fas fa-chevron-right"></i> National Universities</a></li>
 </ul>         
 </div>
 
@@ -127,27 +127,14 @@
             <td colspan="5"><strong>Expected Admissions Results Date:</strong> Under Construction</td>
         </tr> 
         <!-- University 5 -->
-            </table>
-        </div>
-        <p style="text-align: center;"><br>● The Admission Status Will be updated frequently.</p>
-    </section>
+      </table>
+    </div>
+    <p style="text-align: center;"><br>● The Admission Status Will be updated frequently.</p>
+  </section>
 </body>
 </html>
 
-
-<!-- ################# Smart Assistant #######################--->
-<button id="smart-assistant-icon">
-  <i class="fas fa-robot"></i>
-  <span><br>SMART</span>
-  <span>ASSISTANT</span>
-</button>
-
-<script>
-document.getElementById("smart-assistant-icon").onclick = function () {
-    location.href = "../../Guides/EN/Uni_Guide.html";
-};
-</script>
-
+<% include ../components/SmartAssistant %>
 <% include ../components/footer %>
 <% include ../components/scripts %>
 

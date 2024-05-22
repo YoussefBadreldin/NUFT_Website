@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<% include partials/head %>
+<% include ../components/head %>
 <body>
-  <% include partials/header %>
+  <% include ../components/header %>
 
     <!-- ################# Page Title #######################--->
 <div class="page-nav row">
             <h2>Normal National Universities Guidebook</h2>
             <ul>
-                <li><a href="../../../Home/EN/Home.html"><i class="fas fa-home"></i> Home</a></li>
-                <li><i class="fas fa-chevron-right"></i> <a href="../EN/Uni_Guide.html">Universites Guidebooks</a></li>
-                <li><i class="fas fa-chevron-right"></i> <a href="../EN/UGRAD_Uni_Guide.html">Undergraduate</a></li>
-                <li><i class="fas fa-chevron-right"></i> <a href="../../EN/National_Uni_Guide.html">National Universities</a></li>
-                <li><i class="fas fa-chevron-right"></i> <a href="Normal_National_Uni_Guide.html">Normal National Universities</a></li>
+                <li><a href="../../Home.ejs"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="../GuideMain.ejs"><i class="fas fa-chevron-right"></i> Universites Guidebooks</a></li>
+                <li><a href="../UGRADGuide.ejs"><i class="fas fa-chevron-right"></i> Undergraduate</a></li>
+                <li><a href="../NationalGuide.ejs"><i class="fas fa-chevron-right"></i> National Universities</a></li>
+                <li><a href="Normal.ejs"><i class="fas fa-chevron-right"></i> Normal National Universities</a></li>
             </ul>
 </div>
 
@@ -23,9 +23,9 @@
         </div>
         <div class="row Box-ro">
             <div class="col-md-4">
-                <a href="../../../Universites/EN/National/UFE.html">
+                <a href="../../Universites/National/UFE.ejs">
                     <div class="Box-card">
-                        <img src="../../../../assets/images/Uni Logos/National/UFE.png" alt="">
+                        <img src="../../../../public/images/Logos/Universites/National/UFE.png" alt="">
                         <div class="Box-det" style="text-align:center;">
                             <h6>French University in Egypt</h6>
                             <ul>
@@ -35,9 +35,9 @@
                 </a>
             </div>
             <div class="col-md-4">
-                <a href="../../../Universites/EN/National/NU.html">
+                <a href="../../Universites/National/NU.ejs">
                     <div class="Box-card">
-                        <img src="../../../../assets/images/Uni Logos/National/NU.png" alt="">
+                        <img src="../../../../public/images/Logos/Universites/National/NU.png" alt="">
                         <div class="Box-det" style="text-align:center;">
                             <h6>Nile University</h6>
                             <ul>
@@ -47,9 +47,9 @@
                 </a>
             </div>        
             <div class="col-md-4">
-                <a href="../../../Universites/EN/National/EELU.html">
+                <a href="../../Universites/National/EELU.ejs">
                     <div class="Box-card">
-                        <img src="../../../../assets/images/Uni Logos/National/EELU.png" alt="">
+                        <img src="../../../../public/images/Logos/Universites/National/EELU.png" alt="">
                         <div class="Box-det" style="text-align:center;">
                             <h6>Egyptian E-Learning University</h6>
                             <ul>
@@ -59,9 +59,9 @@
                 </a>
             </div>
             <div class="col-md-4">
-                <a href="../../../Universites/EN/National/EUI.html">
+                <a href="../../Universites/National/EUI.ejs">
                     <div class="Box-card">
-                        <img src="../../../../assets/images/Uni Logos/National/EUI.png" alt="">
+                        <img src="../../../../public/images/Logos/Universites/National/EUI.png" alt="">
                         <div class="Box-det" style="text-align:center;">
                             <h6>Egypt University of Informatics</h6>
                             <ul>
@@ -71,9 +71,9 @@
                 </a>                      
         </div>
         <div class="col-md-4">
-            <a href="../../../Universites/EN/Under_Construction.html">
+            <a href="../../Universites/Under_Construction.ejs">
                 <div class="Box-card">
-                    <img src="../../../../assets/images/Uni Logos/Under_Construction.png" alt="">
+                    <img src="../../../../public/images/Logos/Universites/UnderConstruction.png" alt="">
                     <div class="Box-det" style="text-align:center;">
                         <h6>Elwatania National University</h6>
                         <ul>
@@ -86,19 +86,7 @@
     </div>
 </div>
 
-<!-- ################# Smart Assistant #######################--->
-<button id="smart-assistant-icon">
-  <i class="fas fa-robot"></i>
-  <span><br>SMART</span>
-  <span>ASSISTANT</span>
-</button>
-
-<script>
-document.getElementById("smart-assistant-icon").onclick = function () {
-    location.href = "../../Guides/EN/Uni_Guide.html";
-};
-</script>
-
+<% include ../components/SmartAssistant %>
 <% include ../components/footer %>
 <% include ../components/scripts %>
 

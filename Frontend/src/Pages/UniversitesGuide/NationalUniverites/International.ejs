@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<% include partials/head %>
+<% include ../components/head %>
 <body>
-  <% include partials/header %>
+  <% include ../components/header %>
 
     <!-- ################# Page Title #######################--->
-<div class="page-nav row">
-            <h2>International National Universities Guidebook</h2>
-            <ul>
-                <li><a href="../../../Home/EN/Home.html"><i class="fas fa-home"></i> Home</a></li>
-                <li><i class="fas fa-chevron-right"></i> <a href="../EN/Uni_Guide.html">Universites Guidebooks</a></li>
-                <li><i class="fas fa-chevron-right"></i> <a href="../EN/UGRAD_Uni_Guide.html">Undergraduate</a></li>
-                <li><i class="fas fa-chevron-right"></i> <a href="../../EN/National_Uni_Guide.html">National Universities </a></li>
-                <li><i class="fas fa-chevron-right"></i> <a href="International_National_Uni_Guide.html">International National Universities</a></li>
-            </ul>
+    <div class="page-nav row">
+        <h2>International National Universities Guidebook</h2>
+        <ul>
+            <li><a href="../../Home.ejs"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="../UniversitiesGuide/GuideMain.ejs"><i class="fas fa-chevron-right"></i> Universities Guidebooks</a></li>
+            <li><a href="../UniversitiesGuide/UGRADGuide.ejs"><i class="fas fa-chevron-right"></i> Undergraduate</a></li>
+            <li><a href="../UniversitiesGuide/NationalGuide.ejs"><i class="fas fa-chevron-right"></i> National Universities</a></li>
+            <li><a href="International.ejs"><i class="fas fa-chevron-right"></i> International National Universities</a></li>
+        </ul>
 </div>
 
 <!-- ################# Cards Box #######################--->
@@ -23,71 +23,50 @@
       </div>
       <div class="row Box-ro">
           <div class="col-md-4">
-              <a href="../../../Universites/EN/National/KSIU.html">
+              <a href="../../Universites/National/KSIU.ejs">
                   <div class="Box-card">
-                      <img src="../../../../assets/images/Uni Logos/National/KSIU.png" alt="">
+                      <img src="../../../../public/images/Logos/Universites/National/KSIU.png" alt="King Salman International University">
                       <div class="Box-det" style="text-align:center;">
                           <h6>King Salman International University</h6>
-                          <ul>
-                          </ul>
                       </div>
                   </div>
               </a>
           </div>
           <div class="col-md-4">
-              <a href="../../../Universites/EN/National/AIU.html">
+              <a href="../../Universites/National/AIU.ejs">
                   <div class="Box-card">
-                      <img src="../../../../assets/images/Uni Logos/National/AIU.png" alt="">
+                      <img src="../../../../public/images/Logos/Universites/National/AIU.png" alt="Alamein International University">
                       <div class="Box-det" style="text-align:center;">
                           <h6>Alamein International University</h6>
-                          <ul>
-                          </ul>
                       </div>
                   </div>
               </a>
           </div>        
           <div class="col-md-4">
-              <a href="../../../Universites/EN/National/GU.html">
+              <a href="../../Universites/National/GU.ejs">
                   <div class="Box-card">
-                      <img src="../../../../assets/images/Uni Logos/National/GU.png" alt="">
+                      <img src="../../../../public/images/Logos/Universites/National/GU.png" alt="Galala University">
                       <div class="Box-det" style="text-align:center;">
                           <h6>Galala University</h6>
-                          <ul>
-                          </ul>
                       </div>
                   </div>
               </a>
           </div>
           <div class="col-md-4">
-              <a href="../../../Universites/EN/National/NMU.html">
+              <a href="../../Universites/National/NMU.ejs">
                   <div class="Box-card">
-                      <img src="../../../../assets/images/Uni Logos/National/NMU.png" alt="">
+                      <img src="../../../../public/images/Logos/Universites/National/NMU.png" alt="New Mansoura University">
                       <div class="Box-det" style="text-align:center;">
                           <h6>New Mansoura University</h6>
-                          <ul>
-                          </ul>
-                        </div>
                       </div>
-                  </a>
-              </div>
+                  </div>
+              </a>
           </div>
       </div>
   </div>
-    
+</div>
 
-<!-- ################# Smart Assistant #######################--->
-<button id="smart-assistant-icon">
-  <i class="fas fa-robot"></i>
-  <span><br>SMART</span>
-  <span>ASSISTANT</span>
-</button>
-
-<script>
-document.getElementById("smart-assistant-icon").onclick = function () {
-    location.href = "../../Guides/EN/Uni_Guide.html";
-};
-</script>
-
+<% include ../components/SmartAssistant %>
 <% include ../components/footer %>
 <% include ../components/scripts %>
 

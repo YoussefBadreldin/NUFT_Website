@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ../components/head %>
+<body>
+  <% include ../components/header %>
+
+<!-- ################# Page Title #######################--->
+<div class="page-nav row">
+  <h2>This page will be available soon</h2>
+  <ul>
+    <li><a href="../Home.ejs"><i class="fas fa-home"></i> Home</a></li>
+    <li><a href="../UniversitiesGuide/GuideMain.ejs"><i class="fas fa-chevron-right"></i> Universities Guidebooks</a></li>
+  </ul>
+</div>
+
+<!-- ################# Body #######################--->
+<style>
+  img {
+    width: 100%;
+    height: auto;
+  }
+  @media screen and (max-width: 600px) {
+    img {
+      margin-top: 11px;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+</style>
+
+<img src="../../public/images/ComingSoon.png" alt="Under Construction">
+
+<% include ../components/SmartAssistant %>
+<% include ../components/footer %>
+<% include ../components/scripts %>
+
+</body>
+</html>

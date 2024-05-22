@@ -22,7 +22,7 @@
     <!-- ################# Body #######################--->
     <section>
         <div style="display: flex; flex-direction: column; align-items: center;">
-            <img src="../../../../assets/images/Uni Logos/National/AIU.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
+            <img src="../../../../public/images/Logos/Universites/National/AIU.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
 
             <!-- ######## Uni Title ####### -->
             <h2 style="text-align: center; margin-top: 20px;">Alamein International University (AIU)</h2>
@@ -217,21 +217,9 @@
 
 
 
-    <!-- ################# Smart Assistant #######################--->
-    <button id="smart-assistant-icon">
-    <i class="fas fa-robot"></i>
-    <span><br>SMART</span>
-    <span>ASSISTANT</span>
-  </button>
-
-    <script>
-        document.getElementById("smart-assistant-icon").onclick = function () {
-      location.href = "../../Guides/EN/Uni_Guide.html";
-  };
-    </script>
-
-<% include ../components/footer %>
-<% include ../components/scripts %>
-
-</body>
-</html>
+    <% include ../components/SmartAssistant %>
+    <% include ../components/footer %>
+    <% include ../components/scripts %>
+    
+    </body>
+    </html>

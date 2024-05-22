@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ../components/head %>
+<body>
+  <% include ../components/header %>
+
+    <!-- ################# Page Title #######################--->
+<div class="page-nav row">
+            <h2>National Universities Guidebook</h2>
+            <ul>
+                <li><a href="../Home.ejs"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="../UniversitiesGuide/GuideMain.ejs"><i class="fas fa-chevron-right"></i> Universities Guidebooks</a></li>
+                <li><a href="../UniversitiesGuide/UGRADGuide.ejs"><i class="fas fa-chevron-right"></i> Undergraduate</a></li>
+                <li><a href="../UniversitiesGuide/NationalGuide.ejs"><i class="fas fa-chevron-right"></i> National Universities</a></li>
+            </ul>
+</div>
+
+<!-- ################# Cards Box #######################--->
+<div class="Card-Box">
+  <div class="container" style="text-align: center;">
+      <!-- Add your text here -->
+      <h3>Introduction and Admission Requirements for National Universities</h3>
+      <p>
+        <!-- Content about Egyptian National universities and admission requirements -->
+      </p>
+    <h3><br>National Universities Categories Guidebooks</h3>
+      <div class="row Box-ro">
+          <div class="col-md-4">
+              <a href="NationalUniverites/Normal.ejs">
+                  <div class="Box-card">
+                      <img src="../../../public/images/Categories/NormalNU.png" alt="Normal National Universities">
+                      <div class="Box-det" style="text-align: center;">
+                          <h6>Normal National Universities</h6>
+                      </div>
+                  </div>
+              </a>
+          </div>        
+          <div class="col-md-4">
+              <a href="NationalUniverites/International.ejs">
+                  <div class="Box-card">
+                      <img src="../../../public/images/Categories/InternationalNU.png" alt="International National Universities">
+                      <div class="Box-det" style="text-align: center;">
+                          <h6>International National Universities</h6>
+                      </div>
+                  </div>
+              </a>
+          </div>
+          <div class="col-md-4">
+              <a href="NationalUniverites/Affiliated.ejs">
+                  <div class="Box-card">
+                      <img src="../../../public/images/Categories/AffiliatedNU.png" alt="Affiliated National Universities">
+                      <div class="Box-det" style="text-align: center;">
+                          <h6>Affiliated National Universities</h6>
+                      </div>
+                  </div>
+              </a>
+          </div>
+      </div>
+  </div>
+</div>
+
+<% include ../components/SmartAssistant %>
+<% include ../components/footer %>
+<% include ../components/scripts %>
+
+</body>
+</html>

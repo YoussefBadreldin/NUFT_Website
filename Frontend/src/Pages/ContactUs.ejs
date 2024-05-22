@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<% include partials/head %>
+<% include ../components/head %>
 <body>
-  <% include partials/header %>
+  <% include ../components/header %>
 
     <!-- ################# Page Title #######################--->
 <div class="page-nav row">
             <h2>Contact Us</h2>
             <ul>
-                <li><a href="Home.html"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="Contact_Us.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                <li><a href="../Home.ejs"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="ContactUs.ejs"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
             </ul>
 </div>
 
@@ -25,7 +25,7 @@
             <p style="font-size: 15px;">
                 <a href="https://www.facebook.com/NUFT.EG" target="_blank" style="color: black; margin-right: 10px;"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.instagram.com/nuft.eg" target="_blank" style="color: black; margin-right: 10px;"><i class="fab fa-instagram"></i></a>
-                <a href="https://X.com/NUFT_EG" target="_blank" style="color: black; margin-right: 10px;"><i class="fab fa-twitter"></i></a>
+                <a href="https://twitter.com/NUFT_EG" target="_blank" style="color: black; margin-right: 10px;"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.linkedin.com/company/nufteg/" target="_blank" style="color: black; margin-right: 10px;"><i class="fab fa-linkedin"></i></a>
                 <a href="https://t.me/Egyptian_NAT_Universties_bot" target="_blank" style="color: black; margin-right: 10px;"><i class="fab fa-telegram"></i></a>
                 <a href="https://www.tiktok.com/@NUFT.EG" target="_blank" style="color: black; margin-right: 10px;"><i class="fab fa-tiktok"></i></a>
@@ -77,63 +77,47 @@
             </div>
         </div>
         <script>
-       function displayMessage() {
-    var name = document.getElementById('name').value;
-    var email = document.getElementById('email').value;
-    var number = document.getElementById('number').value;
-    var message = document.getElementById('message').value;
+            function displayMessage() {
+                var name = document.getElementById('name').value;
+                var email = document.getElementById('email').value;
+                var number = document.getElementById('number').value;
+                var message = document.getElementById('message').value;
 
-    var nameRegex = /^[A-Za-z\s]+$/;
-    var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    var numberRegex = /^[0-9+]+$/; 
+                var nameRegex = /^[A-Za-z\s]+$/;
+                var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                var numberRegex = /^[0-9+]+$/; 
 
-    var errorMessage = "";
+                var errorMessage = "";
 
-    if (name === "" || email === "" || number === "" || message === "") {
-        errorMessage += "Please fill all fields before submitting.<br>";
-    }
-    if (!name.match(nameRegex)) {
-        errorMessage += "Name must contain only letters and spaces.<br>";
-    }
-    if (!email.match(emailRegex)) {
-        errorMessage += "Email must be in the format 'example@example.com'.<br>";
-    }
-    if (!number.match(numberRegex)) {
-        errorMessage += "Number must contain only digits and the plus sign.<br>";
-    }
+                if (name === "" || email === "" || number === "" || message === "") {
+                    errorMessage += "Please fill all fields before submitting.<br>";
+                }
+                if (!name.match(nameRegex)) {
+                    errorMessage += "Name must contain only letters and spaces.<br>";
+                }
+                if (!email.match(emailRegex)) {
+                    errorMessage += "Email must be in the format 'example@example.com'.<br>";
+                }
+                if (!number.match(numberRegex)) {
+                    errorMessage += "Number must contain only digits and the plus sign.<br>";
+                }
 
-    var errorDiv = document.getElementById('errorMessages');
-    errorDiv.innerHTML = errorMessage;
+                var errorDiv = document.getElementById('errorMessages');
+                errorDiv.innerHTML = errorMessage;
 
-    if (errorMessage !== "") {
-        return false;
-    } else {
-        document.getElementById('contactForm').style.display = 'none';
-        document.getElementById('thankYouMessage').style.display = 'block';
-        return true;
-    }
-}
-
-</script>
-            </div>
-        </div>
+                if (errorMessage !== "") {
+                    return false;
+                } else {
+                    document.getElementById('contactForm').style.display = 'none';
+                    document.getElementById('thankYouMessage').style.display = 'block';
+                    return true;
+                }
+            }
+        </script>
     </div>
 </div>
 
-
-      <!-- ################# Smart Assistant #######################--->
-      <button id="smart-assistant-icon">
-        <i class="fas fa-robot"></i>
-        <span><br>SMART</span>
-        <span>ASSISTANT</span>
-      </button>
-      
-            <script>
-              document.getElementById("smart-assistant-icon").onclick = function () {
-          location.href = "universitesGuide/main.html";
-      };
-            </script>
-
+<% include ../components/SmartAssistant %>
 <% include ../components/footer %>
 <% include ../components/scripts %>
 

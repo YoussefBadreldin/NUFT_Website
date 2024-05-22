@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<% include partials/head %>
+<% include ../components/head %>
 <body>
-  <% include partials/header %>
+  <% include ../components/header %>
 
     <!-- ################# Page Title #######################--->
     <div class="page-nav row">
       <h2>News</h2>
       <ul>
-        <li><a href="Home.html"><i class="fas fa-home"></i> Home</a></li>
-        <li><i class="fas fa-chevron-right"></i> <a href="News.html">News</a></li>
+        <li><a href="../Home.ejs"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="News.ejs"><i class="fas fa-chevron-right"></i> News</a></li>
       </ul>
     </div>
 
@@ -17,6 +17,7 @@
     <div class="our-Services">
       <div class="container">
         <div class="session-title row">
+          <!-- Session title goes here -->
         </div>
       </div>
 
@@ -25,7 +26,8 @@
         <div class="container">
           <div class="row-news row">
             <div class="col-md-10 vbf mx-auto">
-
+              <!-- News cards go here -->
+              <!-- Example of a news card -->
               <div class="news-card row">
                 <div class="col-2">
                   <div class="date-box">
@@ -35,123 +37,10 @@
                   </div>
                 </div>
                 <div class="col-7 setv">
-                  <h4><a href="">Ministry of higher Education & Scientific Research announced that</a></h4>
-                  <ul>
-                  </ul>
+                  <h4><a href="#">Ministry of higher Education & Scientific Research announced that...</a></h4>
                 </div>
                 <div class="col-3 img-cv">
-                  <img src="../../../assets/images/Uni Logos/MOHSER.png" alt="">
-                </div>
-              </div>
-
-              <div class="news-card row">
-                <div class="col-2">
-                  <div class="date-box">
-                    <span>31</span>
-                    <p>Dec</p>
-                    <small>2023</small>
-                  </div>
-                </div>
-                <div class="col-7 setv">
-                  <h4><a
-                      href="https://www.facebook.com/100072542972704/posts/392194836541946/?mibextid=rS40aB7S9Ucbxw6v">New
-                      mansoura university announced that faculty of physical therapy will be avilable for admission in
-                      academic year 2024/2025</a></h4>
-                  <ul>
-                  </ul>
-                </div>
-                <div class="col-3 img-cv">
-                  <img src="../../../assets/images/Uni Logos/National/NMU.png" alt="">
-                </div>
-              </div>
-
-              <div class="news-card row">
-                <div class="col-2">
-                  <div class="date-box">
-                    <span>24</span>
-                    <p>Jan</p>
-                    <small>2024</small>
-                  </div>
-                </div>
-                <div class="col-7 setv">
-                  <h4><a href="">Alamein International University announced</a></h4>
-                  <ul>
-                  </ul>
-                </div>
-                <div class="col-3 img-cv">
-                  <img src="../../../assets/images/Uni Logos/National/AIU.png" alt="">
-                </div>
-              </div>
-
-              <div class="news-card row">
-                <div class="col-2">
-                  <div class="date-box">
-                    <span>1</span>
-                    <p>Jan</p>
-                    <small>2024</small>
-                  </div>
-                </div>
-                <div class="col-7 setv">
-                  <h4><a href="">Galala University announced that</a></h4>
-                  <ul>
-                  </ul>
-                </div>
-                <div class="col-3 img-cv">
-                  <img src="../../../assets/images/Uni Logos/National/GU.png" alt="">
-                </div>
-              </div>
-
-              <div class="news-card row">
-                <div class="col-2">
-                  <div class="date-box">
-                    <span>16</span>
-                    <p>Jan</p>
-                    <small>2024</small>
-                  </div>
-                </div>
-                <div class="col-7 setv">
-                  <h4><a href="">Nile University announced that</a></h4>
-                  <ul>
-                  </ul>
-                </div>
-                <div class="col-3 img-cv">
-                  <img src="../../../assets/images/Uni Logos/National/NU.png" alt="">
-                </div>
-              </div>
-
-              <div class="news-card row">
-                <div class="col-2">
-                  <div class="date-box">
-                    <span>30</span>
-                    <p>Jun</p>
-                    <small>2023</small>
-                  </div>
-                </div>
-                <div class="col-7 setv">
-                  <h4><a href="">Egypt University of informatics announced that</a></h4>
-                  <ul>
-                  </ul>
-                </div>
-                <div class="col-3 img-cv">
-                  <img src="../../../assets/images/Uni Logos/National/EUI.png" alt="">
-                </div>
-              </div>
-
-              <div class="news-card row">
-                <div class="col-2">
-                  <div class="date-box">
-                    <span>1</span>
-                    <p>Jan</p>
-                    <small>2023</small>
-                  </div>
-                </div>
-                <div class="col-7 setv">
-                  <h4><a href="">Menofia National University announced that</a></h4>
-                  <ul>
-                  </ul>
-                </div>
-                <div class="col-3 img-cv">
-                  <img src="../../../assets/images/Uni Logos/National/MenofiaNU.png" alt="">
+                  <img src="../../public/images/Logos/MOHSER.png" alt="MOHSER Logo">
                 </div>
               </div>
               <!-- Repeat for other news cards -->
@@ -161,49 +50,38 @@
       </div>
 
       <script>
+        // Sorting script for news cards
         window.onload = function() {
-    var container = document.querySelector('.vbf'); // the parent container
-    var items = Array.from(document.querySelectorAll('.news-card')); // the cards to be sorted
+          var container = document.querySelector('.vbf'); // the parent container
+          var items = Array.from(document.querySelectorAll('.news-card')); // the cards to be sorted
 
-    items.sort(function(a, b) {
-        var dateA = new Date(
-            a.querySelector('.date-box small').innerText,
-            getMonth(a.querySelector('.date-box p').innerText),
-            a.querySelector('.date-box span').innerText
-        );
-        var dateB = new Date(
-            b.querySelector('.date-box small').innerText,
-            getMonth(b.querySelector('.date-box p').innerText),
-            b.querySelector('.date-box span').innerText
-        );
+          items.sort(function(a, b) {
+              var dateA = new Date(
+                  a.querySelector('.date-box small').innerText,
+                  getMonth(a.querySelector('.date-box p').innerText),
+                  a.querySelector('.date-box span').innerText
+              );
+              var dateB = new Date(
+                  b.querySelector('.date-box small').innerText,
+                  getMonth(b.querySelector('.date-box p').innerText),
+                  b.querySelector('.date-box span').innerText
+              );
 
-        return dateB - dateA; // sort in descending order
-    });
+              return dateB - dateA; // sort in descending order
+          });
 
-    items.forEach(function(item) {
-        container.appendChild(item); // append the sorted items back into the container
-    });
-};
+          items.forEach(function(item) {
+              container.appendChild(item); // append the sorted items back into the container
+          });
+        };
 
-function getMonth(monthName) {
-    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    return months.indexOf(monthName);
-}
+        function getMonth(monthName) {
+          var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+          return months.indexOf(monthName);
+        }
       </script>
 
-      <!-- ################# Smart Assistant #######################--->
-      <button id="smart-assistant-icon">
-  <i class="fas fa-robot"></i>
-  <span><br>SMART</span>
-  <span>ASSISTANT</span>
-</button>
-
-      <script>
-        document.getElementById("smart-assistant-icon").onclick = function () {
-    location.href = "universitesGuide/main.html";
-};
-      </script>
-
+<% include ../components/SmartAssistant %>
 <% include ../components/footer %>
 <% include ../components/scripts %>
 

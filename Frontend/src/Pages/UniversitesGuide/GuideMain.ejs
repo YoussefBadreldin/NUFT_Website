@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<% include partials/head %>
+<% include ../components/head %>
 <body>
-  <% include partials/header %>
+  <% include ../components/header %>
 
     <!-- ################# Page Title #######################--->
     <div class="page-nav row">
                 <h2>Universites Guidebooks</h2>
                 <ul>
-                    <li><a href="../../Home/EN/Home.html"><i class="fas fa-home"></i> Home</a></li>
-                    <li><i class="fas fa-chevron-right"></i> <a href="../EN/Uni_Guide.html">Universities Guidebooks</a></li>
+                    <li><a href="../Home.ejs"><i class="fas fa-home"></i> Home</a></li>
+                    <li><i class="fas fa-chevron-right"></i> <a href="GuideMain.ejs">Universities Guidebooks</a></li>
                 </ul>
     </div>
     
@@ -19,9 +19,9 @@
       <br>
         <div class="row Box-ro">
             <div class="col-md-4">
-                <a href="UGRAD_Uni_Guide.html">
+                <a href="UGRAD_Uni_Guide.ejs">
                     <div class="Box-card">
-                        <img src="../../../assets/images/Uni Types/UGRAD.png" alt="National Universities">
+                        <img src="../../../public/images/Categories/UGRADGuide.png" alt="National Universities">
                         <div class="Box-det" style="text-align: center;">
                             <h6>Undergraduagte</h6>
                         </div>
@@ -29,9 +29,9 @@
                 </a>
             </div>        
             <div class="col-md-4">
-                <a href="GRAD_Uni_Guide.html">
+                <a href="GRAD_Uni_Guide.ejs">
                     <div class="Box-card">
-                        <img src="../../../assets/images/Uni Types/PGRAD.png" alt="Public Universities">
+                        <img src="../../../public/images/Categories/PGRADGuide.png" alt="Public Universities">
                         <div class="Box-det" style="text-align: center;">
                             <h6>Postraduagte</h6>
                         </div>
@@ -42,19 +42,7 @@
     </div>
 </div>
 
-<!-- ################# Smart Assistant #######################--->
-<button id="smart-assistant-icon">
-  <i class="fas fa-robot"></i>
-  <span><br>SMART</span>
-  <span>ASSISTANT</span>
-</button>
-
-<script>
-document.getElementById("smart-assistant-icon").onclick = function () {
-    location.href = "../../Guides/EN/Uni_Guide.html";
-};
-</script>
-
+<% include ../components/SmartAssistant %>
 <% include ../components/footer %>
 <% include ../components/scripts %>
 

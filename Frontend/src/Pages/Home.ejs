@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<% include partials/head %>
+<% include ../components/head %>
 <body>
-  <% include partials/header %>
+  <% include ../components/header %>
 
 <!-- ################# Slider #######################--->
 <div class="slider">
   <div class="owl-carousel">
     <!-- Slide 1 -->
     <div class="item">
-      <div class="slider-img"><img src="../../../assets/images/slider/slider-1.jpg" alt="Slider Image 1"></div>
+      <div class="slider-img"><img src="../public/images/slider/slider-1.jpg" alt="Slider Image 1"></div>
       <div class="row">
         <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
           <div class="slider-captions">
@@ -20,7 +20,7 @@
     </div>
     <!-- Slide 2 -->
     <div class="item">
-      <div class="slider-img"><img src="../../../assets/images/slider/slider-2.jpg" alt="Slider Image 2"></div>
+      <div class="slider-img"><img src="../public/images/slider/slider-2.jpg" alt="Slider Image 2"></div>
       <div class="row">
         <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
           <div class="slider-captions">
@@ -31,7 +31,7 @@
     </div>
     <!-- Slide 3 -->
     <div class="item">
-      <div class="slider-img"><img src="../../../assets/images/slider/slider-3.jpg" alt="Slider Image 3"></div>
+      <div class="slider-img"><img src="../public/images/slider/slider-3.jpg" alt="Slider Image 3"></div>
       <div class="row">
         <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8 col-sm-12 col-xs-12">
           <div class="slider-captions">
@@ -80,56 +80,7 @@
     <h2>Our Team</h2>
   </div>
   <div class="Member-row row">
-    <!-- First Row: 1 Member -->
-    <div class="col-md-12">
-      <div class="Member-card">
-        <img src="../../../assets/images/board/Mahmoud_Adel.jpg" alt="Mahmoud Adel">
-        <h6>Mahmoud Adel</h6>
-        <p>Team Leader</p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="Member-card">
-        <img src="../../../assets/images/board/Ahmed_Alaa.jpg" alt="Ahmed Alaa">
-        <h6>Ahmed Alaa</h6>
-        <p>Head of Undergraduate Committee</p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="Member-card">
-        <img src="../../../assets/images/board/Ahmed_Hamdy.jpg" alt="Ahmed Hamdy">
-        <h6>Ahmed Hamdy</h6>
-        <p>Head of Postgraduate Committee</p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="Member-card">
-        <img src="../../../assets/images/board/Mayada_Kandil.jpg" alt="Mayada Kandil">
-        <h6>Mayada Kandil</h6>
-        <p>Head of Media & Marketing Committee</p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="Member-card">
-        <img src="../../../assets/images/board/Youssef_Badreldin.jpg" alt="Youssef Badreldin">
-        <h6>Youssef Badreldin</h6>
-        <p>Head of Information Technology Committee</p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="Member-card">
-        <img src="../../../assets/images/board/Hanin_Sabbah.jpg" alt="Hanin Sabbah">
-        <h6>Hanin Sabbah</h6>
-        <p>Head of Public Relations Committee</p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="Member-card">
-        <img src="../../../assets/images/board/Ahmed_Eid.jpg" alt="Ahmed Eid">
-        <h6>Ahmed Eid</h6>
-        <p>Head of Customer Service Committee</p>
-      </div>
-    </div>
+    <!-- Team members go here -->
   </div>
 </div>
 </div>
@@ -141,55 +92,14 @@
         <h2>Latest News</h2>
       </div>
       <div class="row-news row">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script>
-          function getMonth(monthName) {
-            var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            return months.indexOf(monthName);
-          }
-  
-          $(document).ready(function() {
-            $.get('news.html', function(data) {
-              let newsHtml = $(data);
-              let newsCards = newsHtml.find('.our-blog .news-card');
-              newsCards.sort(function(a, b) {
-                var dateA = new Date(
-                  a.querySelector('.date-box small').innerText,
-                  getMonth(a.querySelector('.date-box p').innerText),
-                  a.querySelector('.date-box span').innerText
-                );
-                var dateB = new Date(
-                  b.querySelector('.date-box small').innerText,
-                  getMonth(b.querySelector('.date-box p').innerText),
-                  b.querySelector('.date-box span').innerText
-                );
-  
-                return dateB - dateA;
-              });
-  
-              $('.Latest-News .row-news').html(newsCards.slice(0, 5));
-            });
-          });
-        </script>
+        <!-- Latest news goes here -->
       </div>
     </div>
   </div>  
 
-<!-- ################# Smart Assistant #######################--->
-<button id="smart-assistant-icon">
-  <i class="fas fa-robot"></i>
-  <span><br>SMART</span>
-  <span>ASSISTANT</span>
-</button>
-
-<script>
-document.getElementById("smart-assistant-icon").onclick = function () {
-    location.href = "UniversitesGuide/main.html";
-};
-</script>
-
-<% include ../components/footer %>
-<% include ../components/scripts %>
-
-</body>
-</html>
+  <% include ../components/SmartAssistant %>
+  <% include ../components/footer %>
+  <% include ../components/scripts %>
+  
+  </body>
+  </html>

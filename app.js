@@ -219,6 +219,19 @@ app.get('/AdmissionStatus/UGRAD/inst', (req, res) => {
     res.render('comingsoon');
 });
 
+// Scholarships routes
+app.get('/Scholarships', (req, res) => {
+    res.render('Scholarships/ScholarshipsMain');
+});
+
+app.get('/Scholarships/UGRAD', (req, res) => {
+    res.render('Scholarships/UGRADScholarships');
+});
+
+app.get('/Scholarships/PGRAD', (req, res) => {
+    res.render('ComingSoon');
+});
+
 // Certificates routes
 app.get('/CertificatesCalculator', (req, res) => {
     res.render('CertificatesCalculator/CertificatesMain');

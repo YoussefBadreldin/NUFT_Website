@@ -15,6 +15,15 @@ app.get('/', (req, res) => {
     res.render('Home');
 });
 
+// Login & Signup routes
+app.get('/Login', (req, res) => {
+    res.render('Login');
+});
+
+app.get('/Signup', (req, res) => {
+    res.render('Signup');
+});
+
 // Guides routes
 app.get('/UniversitiesGuide', (req, res) => {
     res.render('UniversitesGuide/GuideMain');
@@ -268,8 +277,6 @@ app.get('/CertificatesCalculator/Kuwaiti', (req, res) => {
 app.get('/CertificatesCalculator/Bahraini', (req, res) => {
     res.render('comingsoon');
 });
-
-
 
 // News routes
 app.get('/News', (req, res) => {

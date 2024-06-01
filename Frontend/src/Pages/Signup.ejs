@@ -4,63 +4,47 @@
   <%- include('../components/Head') %>
 </head>
 <body>
-  <%- include('../components/Header') %>
-      <!-- ################# empty space #######################--->
-      <div class="our-Services">
-        <div class="container">
-          <div class="session-title row">
-            <!-- Session title goes here -->
-          </div>
-        </div>
-    <div class="our-Services">
-        <div class="container">
-          <div class="session-title row">
-            <!-- Session title goes here -->
-          </div>
 
+  <div class="auth-container">
+    <div class="auth-form-container">
+      <!-- Logo -->
+      <div class="auth-logo">
+        <img src="/images/logo2.png" alt="Logo">
+      </div>
+      <!-- Signup Form -->
+      <div class="auth-session-title">
+        <h2>Welcome to NUFT</h2>
+      </div>
+      <div class="auth-form-content">
+        <form action="/auth/signup" method="post">
+          <div class="auth-form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="auth-form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+          </div>
+          <div class="auth-form-group">
+            <input type="submit" value="Signup">
+          </div>
+        </form>
+        <!-- Social Login -->
+        <div class="auth-social-login">
+          <a href="/auth/google" class="auth-btn auth-btn-google">
+            <img src="/images/Logos/Google.png" alt="Google Logo" width="100" height="30">
+          </a>
+          <a href="/auth/facebook" class="auth-btn auth-btn-facebook">
+            <img src="/images/Logos/Facebook.png" alt="Facebook Logo" width="100" height="30">
+          </a>
         </div>
-        <div class="our-Services">
-            <div class="container">
-              <div class="session-title row">
-                <!-- Session title goes here -->
-              </div>
-            </div>  
-            <div class="our-Services">
-                <div class="container">
-                  <div class="session-title row">
-                    <!-- Session title goes here -->
-                  </div>
-                </div>    <div class="our-Services">
-                    <div class="container">
-                      <div class="session-title row">
-                        <!-- Session title goes here -->
-                      </div>
-                    </div> 
-  
-    <div class="signup-container">
-      <h2>Signup</h2>
-      <form action="#" method="post">
-        <div class="form-group">
-          <label for="username">Username:</label>
-          <input type="text" id="username" name="username" required>
+        <div class="auth-create-account">
+          <p> <a href="/auth/login">Have an account?</a></p>
         </div>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="text" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" required>
-        </div>
-        <div class="form-group">
-          <input type="submit" value="Signup">
-        </div>
-      </form>
+      </div>
     </div>
+  </div>
 
-<%- include('../components/SmartAssistant') %>
-<%- include('../components/Footer') %>
-<%- include('../components/Scripts') %>
-
+  <%- include('../components/Scripts') %>
 </body>
 </html>

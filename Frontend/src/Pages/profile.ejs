@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../components/Head') %>
+  <link rel="stylesheet" href="path/to/your/css/file.css">
+</head>
+<body>
+  <%- include('../components/Header') %>
+
+  <div class="sidebar">
+    <ul>
+      <li><a href="#" onclick="showSection('basic-info')">Basic Information</a></li>
+      <li><a href="#" onclick="showSection('profile-pic')">Profile Picture</a></li>
+      <li><a href="#" onclick="showSection('contact-info')">Contact Information</a></li>
+      <li><a href="#" onclick="showSection('academic')">Academic Credentials</a></li>
+      <li><a href="#" onclick="showSection('password')">Change Password</a></li>
+      <!-- Add more sections as needed -->
+    </ul>
+  </div>
+
+  <div class="profile-details">
+    <div id="basic-info" class="section active">
+      <!-- Content for Basic Information section -->
+      <h2>Basic Information</h2>
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required><br><br>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select><br><br>
+      </form>
+    </div>
+
+    <div id="profile-pic" class="section">
+      <!-- Content for Profile Picture section -->
+      <h2>Profile Picture</h2>
+      <input type="file" id="profile-picture" name="profile-picture">
+    </div>
+
+    <div id="contact-info" class="section">
+      <!-- Content for Contact Information section -->
+      <h2>Contact Information</h2>
+      <form>
+        <label for="phone">Contact Phone:</label>
+        <input type="tel" id="phone" name="phone"><br><br>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address"></textarea><br><br>
+      </form>
+    </div>
+
+    <div id="academic" class="section">
+      <!-- Content for Academic Credentials section -->
+      <h2>Academic Credentials</h2>
+      <textarea id="academic-credentials" name="academic-credentials"></textarea>
+      <br><br>
+      <label for="faculties">Preferred Faculties:</label>
+      <input type="text" id="faculties" name="faculties">
+    </div>
+
+    <div id="password" class="section">
+      <!-- Content for Change Password section -->
+      <h2>Change Password</h2>
+      <form>
+        <label for="current-password">Current Password:</label>
+        <input type="password" id="current-password" name="current-password" required><br><br>
+
+        <label for="new-password">New Password:</label>
+        <input type="password" id="new-password" name="new-password" required><br><br>
+
+        <label for="confirm-password">Confirm New Password:</label>
+        <input type="password" id="confirm-password" name="confirm-password" required><br><br>
+      </form>
+    </div>
+    <!-- Add more sections as needed -->
+  </div>
+
+  <script>
+    function showSection(sectionId) {
+      // Hide all sections
+      var sections = document.querySelectorAll('.section');
+      sections.forEach(function(section) {
+        section.classList.remove('active');
+      });
+
+      // Show the selected section
+      var section = document.getElementById(sectionId);
+      section.classList.add('active');
+    }
+  </script>
+
+  <%- include('../components/SmartAssistant') %>
+  <%- include('../components/Footer') %>
+  <%- include('../components/Scripts') %>
+</body>
+</html>

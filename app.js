@@ -16,13 +16,27 @@ app.get('/', (req, res) => {
 });
 
 // Login & Signup routes
-app.get('/Login', (req, res) => {
+app.get('/auth/Login', (req, res) => {
     res.render('Login');
 });
 
-app.get('/Signup', (req, res) => {
+app.get('/auth/Signup', (req, res) => {
     res.render('Signup');
 });
+
+app.get('/auth/facebook', (req, res) => {
+    res.render('comingsoon');
+});
+
+app.get('/auth/google', (req, res) => {
+    res.render('comingsoon');
+});
+
+// Profile routes
+app.get('/profile', (req, res) => {
+    res.render('profile');
+});
+
 
 // Guides routes
 app.get('/UniversitiesGuide', (req, res) => {
@@ -297,7 +311,7 @@ app.get('/CommingSoon', (req, res) => {
 // Start server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on http:localhost:${PORT}`);
 });
 
 module.exports = app;

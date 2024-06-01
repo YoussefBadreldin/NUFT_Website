@@ -12,7 +12,17 @@ app.use(express.static(path.join(__dirname, 'frontend', 'public')));
 
 // Main route
 app.get('/', (req, res) => {
+    res.render('Index');
+});
+
+// Home route
+app.get('/Home', (req, res) => {
     res.render('Home');
+});
+
+// Register route
+app.get('/Register', (req, res) => {
+    res.render('Register');
 });
 
 // Login & Signup routes

@@ -2,9 +2,117 @@
 <html lang="en">
 <head>
   <%- include('../../components/Head') %>
+  <link rel="stylesheet" href="/path/to/font-awesome/css/font-awesome.min.css">
+  
 </head>
 <body>
   <%- include('../../components/Header') %>
+
+  <!-- ################# Page Title #######################--->
+  <div class="page-nav row">
+    <h2>National Universities Admissions Status</h2>
+    <ul>
+      <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="/AdmissionStatus"><i class="fas fa-chevron-right"></i> Universities Admissions Status</a></li>
+      <li><i class="fas fa-chevron-right"></i> <a href="/AdmissionStatus/UGRAD">Undergraduate</a></li>
+      <li><a href="/AdmissionStatus/UGRAD/National"><i class="fas fa-chevron-right"></i> National Universities</a></li>
+    </ul>         
+  </div>
+
+  <!-- Subscribe Header -->
+  <div class="subscribe-header">
+    <i id="subscribe-header-bell" class="fa fa-bell notification-bell"></i>
+    <span>Subscribe for changes notifications</span>
+  </div>
+
+  <!--  ************************* Body ************************** -->
+  <section>
+    <div class="table-responsive">
+      <table class="Stat">
+        <tr>
+          <th rowspan="2">University</th>
+          <th rowspan="2">Transfer</th>
+          <th colspan="2">Thanwyaa Amaa</th>
+          <th colspan="2">Arab, English & Azhari Certificates</th>
+          <th colspan="2">Stem & Nile Certificates</th>
+          <th rowspan="2">International Students</th>
+        </tr>
+        <tr>
+          <th>2023</th>
+          <th>2024</th>
+          <th>2023</th>
+          <th>2024</th>
+          <th>2023</th>
+          <th>2024</th>
+        </tr>
+
+        <!-- Example University Rows -->
+        <tr>
+          <td>
+            French University in Egypt
+            <i class="fa fa-bell notification-bell" data-university="French University in Egypt"></i>
+          </td>
+          <td>Not Started</td>
+          <td>Not Started</td>
+          <td>Not Started</td>
+          <td>Not Started</td>
+          <td>Not Started</td>
+          <td>Not Started</td>
+          <td>Not Started</td>
+          <td>Not Started</td>
+        </tr>
+        <tr>
+          <td>
+            Nile University
+            <i class="fa fa-bell notification-bell" data-university="Nile University"></i>
+          </td>
+          <td>Avilable</td>
+          <td>Avilable</td>
+          <td>Avilable</td>
+          <td>Avilable</td>
+          <td>Avilable</td>
+          <td>Avilable</td>
+          <td>Avilable</td>
+          <td>Avilable</td>
+        </tr>
+        <tr>
+          <td>
+            Egyptian E-Learning University
+            <i class="fa fa-bell notification-bell" data-university="Egyptian E-Learning University"></i>
+          </td>
+          <td>Ended</td>
+          <td>Ended</td>
+          <td>Ended</td>
+          <td>Ended</td>
+          <td>Ended</td>
+          <td>Ended</td>
+          <td>Ended</td>
+          <td>Ended</td>
+        </tr>
+        <tr>
+          <td>
+            Ain Shams National University
+            <i class="fa fa-bell notification-bell" data-university="Ain Shams National University"></i>
+          </td>
+          <td>Under Construction</td>
+          <td>Under Construction</td>
+          <td>Under Construction</td>
+          <td>Under Construction</td>
+          <td>Under Construction</td>
+          <td>Under Construction</td>
+          <td>Under Construction</td>
+          <td>Under Construction</td>
+        </tr>
+        <!-- Add more university rows as needed -->
+
+      </table>
+    </div>
+    <p style="text-align: center;"><br>● The Admission Status will be updated frequently.</p>
+  </section>
+
+  <%- include('../../components/SmartAssistant') %>
+  <%- include('../../components/Footer') %>
+  <%- include('../../components/Scripts') %>
 
   <script>
     window.onload = function() {
@@ -14,130 +122,38 @@
                 tableCells[i].style.color = "red";
             } else if (tableCells[i].innerHTML == "Avilable") {
                 tableCells[i].style.color = "green";
-            }else if (tableCells[i].innerHTML == "Not Started") {
+            } else if (tableCells[i].innerHTML == "Not Started") {
                 tableCells[i].style.color = "brown";
-            }  else if (tableCells[i].innerHTML == "Under Construction") {
+            } else if (tableCells[i].innerHTML == "Under Construction") {
                 tableCells[i].style.color = "purple";
             }
         }
-    }
-    </script>
 
+        var notificationButtons = document.getElementsByClassName("notification-bell");
+        for (var i = 0; i < notificationButtons.length; i++) {
+            notificationButtons[i].onclick = function() {
+                var university = this.dataset.university;
+                var isActive = this.classList.toggle("active");
+                // In a real application, you would send a request to your backend to handle subscription logic
+                if (isActive) {
+                    alert(`Subscribed to notifications for ${university}`);
+                } else {
+                    alert(`Unsubscribed from notifications for ${university}`);
+                }
+            };
+        }
 
-    <!-- ################# Page Title #######################--->
-<div class="page-nav row">
-  <h2>National Universites Admissions Status</h2>
-  <ul>
-    <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
-    <li><a href="/AdmissionStatus"><i class="fas fa-chevron-right"></i> Universities Admissions Status</a></li>
-    <li><i class="fas fa-chevron-right"></i> <a href="/AdmissionStatus/UGRAD">Undergraduagte</a></li>
-    <li><a href="/AdmissionStatus/UGRAD/National"><i class="fas fa-chevron-right"></i> National Universities</a></li>
-</ul>         
-</div>
-
-<!--  ************************* Body ************************** -->
-    <section>
-      <div class="table-responsive" >
-        <table class="Stat">
-          <tr>
-            <th rowspan="2">University</th>
-            <th rowspan="2">Faculty</th>
-            <th rowspan="2">Transfer</th>
-            <th rowspan="2">Change Major Route</th>
-            <th colspan="2">Thanwyaa Amaa</th>
-            <th colspan="2">Arab, English & Azhari Certificates</th>
-            <th colspan="2">Stem & Nile Certificates</th>
-            <th rowspan="2">International Students</th>
-        </tr>
-        <tr>
-            <th>2023</th>
-            <th>2024</th>
-            <th>2023</th>
-            <th>2024</th>
-            <th>2023</th>
-            <th>2024</th>
-        </tr> 
-        <!-- University 1 -->            
-        <tr>
-          <td rowspan="2">French University in Egypt</td>
-          <td rowspan="2"> All</td>
-          <td>Not Started</td> <!-- Transfer -->
-          <td>Not Started</td> <!-- Change Major Route -->
-          <td>Not Started</td> <!-- General Secondary 2023 -->
-          <td>Not Started</td> <!-- General Secondary 2024 -->
-          <td>Not Started</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
-          <td>Not Started</td> <!-- Arabic and English certificates and Al-Azhar 2024 -->
-          <td>Not Started</td> <!-- STEM and Nile certificates 2023 -->
-          <td>Not Started</td> <!-- STEM and Nile certificates 2024 -->
-          <td>Not Started</td> <!-- International Students -->
-        </tr>
-        <tr style="color:blue;">
-            <td colspan="5"><strong>Admissions Deadline:</strong> 00 Month 2024</td>
-            <td colspan="5"><strong>Expected Admissions Results Date:</strong> 00 Month 2024</td>
-        </tr> 
-        <!-- University 2 -->   
-        <tr>
-          <td rowspan="2">Nile University</td>
-          <td rowspan="2"> All</td>
-          <td>Avilable</td> <!-- Transfer -->
-          <td>Avilable</td> <!-- Change Major Route -->
-          <td>Avilable</td> <!-- General Secondary 2023 -->
-          <td>Avilable</td> <!-- General Secondary 2024 -->
-          <td>Avilable</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
-          <td>Avilable</td> <!-- Arabic and English certificates and Al-Azhar 2024 -->
-          <td>Avilable</td> <!-- STEM and Nile certificates 2023 -->
-          <td>Avilable</td> <!-- STEM and Nile certificates 2024 -->
-          <td>Avilable</td> <!-- International Students -->
-        </tr>
-        <tr style="color:blue;">
-            <td colspan="5"><strong>Admissions Deadline:</strong> 00 Month 2024</td>
-            <td colspan="5"><strong>Expected Admissions Results Date:</strong> 00 Month 2024</td>
-        </tr> 
-        <!-- University 3 -->
-        <tr>
-          <td rowspan="2">Egyptian E-Learning University</td>
-          <td rowspan="2"> All</td>
-          <td>Ended</td> <!-- Transfer -->
-          <td>Ended</td> <!-- Change Major Route -->
-          <td>Ended</td> <!-- General Secondary 2023 -->
-          <td>Ended</td> <!-- General Secondary 2024 -->
-          <td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
-          <td>Ended</td> <!-- Arabic and English certificates and Al-Azhar 2024 -->
-          <td>Ended</td> <!-- STEM and Nile certificates 2023 -->
-          <td>Ended</td> <!-- STEM and Nile certificates 2024 -->
-          <td>Ended</td> <!-- International Students -->
-        </tr>
-        <tr style="color:blue;">
-            <td colspan="5"><strong>Admissions Deadline:</strong> 00 Month 2024</td>
-            <td colspan="5"><strong>Expected Admissions Results Date:</strong> 00 Month 2024</td>
-        </tr> 
-        <!-- University 4 -->
-        <tr>
-          <td rowspan="2">Ain Shams National University</td>
-          <td rowspan="2"> All</td>
-          <td>Under Construction</td> <!-- Transfer -->
-          <td>Under Construction</td> <!-- Change Major Route -->
-          <td>Under Construction</td> <!-- General Secondary 2023 -->
-          <td>Under Construction</td> <!-- General Secondary 2024 -->
-          <td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2023 -->
-          <td>Under Construction</td> <!-- Arabic and English certificates and Al-Azhar 2024 -->
-          <td>Under Construction</td> <!-- STEM and Nile certificates 2023 -->
-          <td>Under Construction</td> <!-- STEM and Nile certificates 2024 -->
-          <td>Under Construction</td> <!-- Natives -->
-        </tr>
-        <tr style="color:blue;">
-            <td colspan="5"><strong>Admissions Deadline:</strong> Under Construction</td>
-            <td colspan="5"><strong>Expected Admissions Results Date:</strong> Under Construction</td>
-        </tr> 
-        <!-- University 5 -->
-      </table>
-    </div>
-    <p style="text-align: center;"><br>● The Admission Status Will be updated frequently.</p>
-  </section>
-
-<%- include('../../components/SmartAssistant') %>
-<%- include('../../components/Footer') %>
-<%- include('../../components/Scripts') %>
-
+        var headerBell = document.getElementById("subscribe-header-bell");
+        headerBell.onclick = function() {
+            var isActive = headerBell.classList.toggle("active");
+            // In a real application, you would send a request to your backend to handle subscription logic for all universities
+            if (isActive) {
+                alert(`Subscribed to notifications for all universities`);
+            } else {
+                alert(`Unsubscribed from notifications for all universities`);
+            }
+        };
+    };
+  </script>
 </body>
 </html>

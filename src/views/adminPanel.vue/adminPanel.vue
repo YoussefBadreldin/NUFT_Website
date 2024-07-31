@@ -375,7 +375,7 @@ export default {
                 international_program_link: this.international_program_link,
                 transfer_link: this.transfer_link
             };
-            axios.post('https://nuft-backend.onrender.com/add_links', links_form_data)
+            axios.post('https://nuft-backend.onrender.com/links/add_links', links_form_data)
                 .then(() => {
                     alert('form sent successfully');
                 })

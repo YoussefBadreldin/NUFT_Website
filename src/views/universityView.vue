@@ -1,0 +1,58 @@
+<template>
+    <div>
+        <!-- Page Title -->
+        <HeaderComponent />
+        <div class="page-nav row">
+            <h2>دليل الجامعات</h2>
+        </div>
+
+        <!-- Cards Box -->
+        <div class="Card-Box">
+            <div class="container" dir="rtl">
+                <br>
+                <div class="row Box-ro">
+                    <div class="col-md-4">
+                        <router-link to="/universitiesGuide/UGRAD">
+                            <div class="Box-card">
+                                <img src="/images/Categories/UGRADGuide.png" alt="National Universities">
+                                <div class="Box-det" style="text-align: center;">
+                                    <h6>مرحلة الباكلريوس</h6>
+                                </div>
+                            </div>
+                        </router-link>
+                    </div>
+                    <!--<div class="col-md-4">
+                        <router-link to="/UniversitiesGuide/PGRAD">
+                            <div class="Box-card">
+                                <img src="/images/Categories/PGRADGuide.png" alt="Public Universities">
+                                <div class="Box-det" style="text-align: center;">
+                                    <h6>مرحلة الدراسات العليا</h6>
+                                </div>
+                            </div>
+                        </router-link>
+                    </div>-->
+                </div>
+            </div>
+        </div>
+
+        <FooterComponent />
+        <Scripts />
+    </div>
+</template>
+
+<script>
+import HeaderComponent from '../../public/global/headerComponent.vue';
+import FooterComponent from '../../public/global/footerComponent.vue';
+
+export default {
+    name:"UniversitiesGuide",
+    components: {
+        HeaderComponent,
+        FooterComponent
+    }
+};
+</script>
+
+<style scoped>
+/* Add your styles here */
+</style>

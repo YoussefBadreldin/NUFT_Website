@@ -236,7 +236,7 @@
         <form @submit.prevent="trans">
           <!-- Same form structure as above -->
           <br>
-          <button type="submit">تحديث</button>
+          <button type="submit">اضافة</button>
         </form>
       </div>
 
@@ -250,7 +250,7 @@
           <button type="submit">تحديث</button>
         </form>
         <br> <br>
-        
+
       </div>
     </div>
   </div>

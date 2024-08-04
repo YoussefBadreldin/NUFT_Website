@@ -2,49 +2,39 @@
     <div>
         <HeaderComponent />
 
-        <!-- Slider -->
-        <div class="slider">
-            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
+       <!-- Slider -->
+<div class="slider">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../../images/slider/slider-1.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>دليلك الشامل للجامعات في مصر</h2>
                 </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="../../images/slider/slider-1.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h2>دليلك الشامل للجامعات في مصر</h2>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../../images/slider/slider-2.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h2>استكشف خياراتك مع دليلنا للجامعات</h2>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../../images/slider/slider-3.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h2>ابدأ رحلتك مع دليلنا للجامعات</h2>
-                        </div>
-                    </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../../images/slider/slider-2.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>استكشف خياراتك مع دليلنا للجامعات</h2>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+            </div>
+            <div class="carousel-item">
+                <img src="../../images/slider/slider-3.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>ابدأ رحلتك مع دليلنا للجامعات</h2>
+                </div>
             </div>
         </div>
+    </div>
+</div>
 
         <!-- About Us -->
         <div class="About-Us">
@@ -84,19 +74,35 @@
             </div>
         </div>
 
-        <!-- Latest News -->
-        <div class="Latest-News">
-            <div class="container">
-                <div class="session-title row">
-                    <h2>أخر الأخبار</h2>
-                </div>
-                <div class="row-news row">
-                    <!-- News content will be dynamically inserted here -->
+       <!-- Our Partners -->
+<div class="Our-Partners">
+    <div class="container">
+        <div class="session-title row">
+            <h2>شركاء النجاح</h2>
+        </div>
+        <div class="row-partners row">
+            <!-- Partner content will be dynamically inserted here -->
+            <!-- Example of partner item -->
+            <div class="col-md-4">
+                <div class="partner-item">
+                    <img src="/images/Logo2.png" alt="Partner 1" class="img-fluid">
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="partner-item">
+                    <img src="/images/Logo2.png" alt="Partner 2" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="partner-item">
+                    <img src="/images/Logo2.png" alt="Partner 3" class="img-fluid">
+                </div>
+            </div>
+            <!-- Add more partners as needed -->
         </div>
+    </div>
+</div>
 
-        <SmartAssistant />
         <FooterComponent />
     </div>
 </template>

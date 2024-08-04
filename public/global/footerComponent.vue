@@ -6,21 +6,21 @@
           <h2>روابط سريعة</h2>
           <div class="row">
             <div class="col-md-6">
-              <ul>
-                <li><a href="/AdmissionStatus"><i class="fas fa-angle-double-right"></i>حالة تقديمات الجامعات الاهلية</a></li>
-                <li><a href="/AdmissionStatus"><i class="fas fa-angle-double-right"></i>حالة تقديمات الجامعات الحكومية</a></li>
-                <li><a href="/AdmissionStatus"><i class="fas fa-angle-double-right"></i>حالة تقديمات الجامعات الخاصة</a></li>
-                <li><a href="/AdmissionStatus"><i class="fas fa-angle-double-right"></i>حالة تقديمات الجامعات الدولية</a></li>
-                <li><a href="/AdmissionStatus"><i class="fas fa-angle-double-right"></i>حالة تقديمات الجامعات التكنولوجية</a></li>
+              <ul dir="rtl">
+                <li><a href="/AdmissionStatus"><i class="fas fa-angle-double-left"></i>حالة تقديمات الجامعات الاهلية</a></li>
+                <li><a href="/AdmissionStatus"><i class="fas fa-angle-double-left"></i>حالة تقديمات الجامعات الحكومية</a></li>
+                <li><a href="/AdmissionStatus"><i class="fas fa-angle-double-left"></i>حالة تقديمات الجامعات الخاصة</a></li>
+                <li><a href="/AdmissionStatus"><i class="fas fa-angle-double-left"></i>حالة تقديمات الجامعات الدولية</a></li>
+                <li><a href="/AdmissionStatus"><i class="fas fa-angle-double-left"></i>حالة تقديمات الجامعات التكنولوجية</a></li>
               </ul>
             </div>
             <div class="col-md-6">
-              <ul>
-                <li><a href="/UniversitiesGuide"><i class="fas fa-angle-double-right"></i>دليل الجامعات الاهلية</a></li>
-                <li><a href="/UniversitiesGuide"><i class="fas fa-angle-double-right"></i>دليل الجامعات الحكومية</a></li>
-                <li><a href="/UniversitiesGuide"><i class="fas fa-angle-double-right"></i>دليل الجامعات الخاصة</a></li>
-                <li><a href="/UniversitiesGuide"><i class="fas fa-angle-double-right"></i>دليل الجامعات الدولية</a></li>
-                <li><a href="/UniversitiesGuide"><i class="fas fa-angle-double-right"></i>دليل الجامعات التكنولوجية</a></li>
+              <ul dir="rtl">
+                <li><a href="/UniversitiesGuide"><i class="fas fa-angle-double-left"></i>دليل الجامعات الاهلية </a></li>
+                <li><a href="/UniversitiesGuide"><i class="fas fa-angle-double-left"></i>دليل الجامعات الحكومية </a></li>
+                <li><a href="/UniversitiesGuide"><i class="fas fa-angle-double-left"></i>دليل الجامعات الخاصة</a></li>
+                <li><a href="/UniversitiesGuide"><i class="fas fa-angle-double-left"></i>دليل الجامعات الدولية </a></li>
+                <li><a href="/UniversitiesGuide"><i class="fas fa-angle-double-left"></i>دليل الجامعات التكنولوجية </a></li>
               </ul>
             </div>
             
@@ -82,5 +82,33 @@ export default {
 </script>
 
 <style scoped>
-/* Add your styles here */
+footer {
+  color: #fff; /* White text */
+}
+
+footer a {
+  color: #fff; /* White links */
+}
+
+footer i {
+  color: #fff; /* White icons */
+}
+
+footer .icon {
+  color: #fff; /* White icons inside .icon class */
+}
+
+footer .copy {
+  color: #fff; /* White text for copyright section */
+}
+
+ul[dir="rtl"] {
+  text-align: right;
+}
+
+ul[dir="rtl"] i {
+  margin-left: 10px; /* Adjust this value to control the space */
+  margin-right: 0;
+}
+
 </style>

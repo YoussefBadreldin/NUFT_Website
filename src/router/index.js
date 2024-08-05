@@ -96,11 +96,6 @@ const routes = [
     component:ScholarshipsUGRAD
   },
   {
-    path:"/Scholarships/PGRAD",
-    name:"ScholarshipsPGRAD",
-    component:soonView
-  },
-  {
     path:"/CertificatesCalculator",
     name:"CertificatesCalculator",
     component:CertificatesCalculator,

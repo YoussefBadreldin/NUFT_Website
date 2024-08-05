@@ -3,14 +3,8 @@
 
         <header-component />
 
-        <!-- Page Title -->
         <div class="page-nav row">
-            <h2>IGCSE</h2>
-            <ul>
-                <li><router-link to="/"><i class="fas fa-home"></i> Home</router-link></li>
-                <li><router-link to="/CertificatesCalculator"><i class="fas fa-chevron-right"></i> Equivalent Certificates Calculator</router-link></li>
-                <li><router-link to="/CertificatesCalculator/IGCSE"><i class="fas fa-chevron-right"></i> IGCSE</router-link></li>
-            </ul>
+            <h2>الثانوية البرطانية</h2>
         </div>
 
         <!-- Body -->
@@ -19,7 +13,7 @@
                 <!-- Score Calculation Section -->
                 <div class="col-md-6 col-12">
                     <div class="block p-4 mb-4 bg-white rounded-lg border">
-                        <h3 class="text-center"><strong>Calculate Your Score</strong></h3>
+                        <h3 class="text-center"><strong>احسب مجموعك</strong></h3>
                         <div id="igcse" class="score-form">
                             <!-- IGCSE score form -->
                             <div class="form-group">
@@ -108,55 +102,55 @@
                             </div>
 
                             <div class="row mx-0 justify-content-center">
-                                <button class="btn border mr-2 mt-2" @click="calculateScore">Calculate score</button>
-                                <input type="text" v-model="scorePercentage" readonly class="form-control d-inline-block w-auto text-center mt-2" placeholder="Score percentage: {{ scorePercentage }} %">
-                                <input type="text" v-model="governmentScore" readonly class="form-control d-inline-block w-auto text-center mt-2" placeholder="Government Score: {{ governmentScore }} / 410">
-                            </div>
+                                <button class="btn border mr-2 mt-2" @click="calculateScore">احسب المجموع</button>
+                <input type="text" v-model="scorePercentage" readonly class="form-control d-inline-block w-auto text-center mt-2" placeholder="نسبة الدرجة">
+                <input type="text" v-model="governmentScore" readonly class="form-control d-inline-block w-auto text-center mt-2" placeholder="درجة الحكومة">
+                        </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Important Notes -->
-                <div class="col-md-6 col-12">
-                    <div class="block bg-white p-4 mb-md-0 mb-4 rounded-lg border">
-                        <h3 style="text-align: center;"><strong>Important Notes</strong></h3>
-                        <p>
-                            <strong>For Public universities:</strong>
-                            <ul style="font-size: 0.8em;">
-                                <li>- </li>
-                                <li>- </li>
-                                <li>- </li>
-                                <li>- </li>
-                            </ul>
-                        </p>
-                        <p>
-                            <strong><br>For private & national universities:</strong>
-                            <ul style="font-size: 0.8em;">
-                                <li>- </li>
-                                <li>- </li>
-                                <li>- </li>
-                            </ul>
-                        </p>
-                        <p>
-                            <strong><br>For higher institutes:</strong>
-                            <ul style="font-size: 0.8em;">
-                                <li>- </li>
-                                <li>- </li>
-                            </ul>
-                        </p>
-                        <p>
-                            <strong><br>General notes:</strong>
-                            <ul style="font-size: 0.8em;">
-                                <li>- </li>
-                                <li>- </li>
-                                <li>- </li>
-                                <li>- </li>
-                            </ul>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                <!-- ملاحظات هامة -->
+<div class="col-md-6 col-12">
+    <div class="block bg-white p-4 mb-md-0 mb-4 rounded-lg border">
+        <h3 style="text-align: center;"><strong>ملاحظات هامة</strong></h3>
+        <p>
+            <strong>:لجامعات الحكومية</strong>
+            <ul style="font-size: 0.8em;">
+                <li>- </li>
+                <li>- </li>
+                <li>- </li>
+                <li>- </li>
+            </ul>
+        </p>
+        <p>
+            <strong><br>:لجامعات الخاصة والوطنية</strong>
+            <ul style="font-size: 0.8em;">
+                <li>- </li>
+                <li>- </li>
+                <li>- </li>
+            </ul>
+        </p>
+        <p>
+            <strong><br>:للمعاهد العليا</strong>
+            <ul style="font-size: 0.8em;">
+                <li>- </li>
+                <li>- </li>
+            </ul>
+        </p>
+        <p>
+            <strong><br>:ملاحظات عامة</strong>
+            <ul style="font-size: 0.8em;">
+                <li>- </li>
+                <li>- </li>
+                <li>- </li>
+                <li>- </li>
+            </ul>
+        </p>
+    </div>
+</div>
+    </div>
+</div>
 
         <smart-assistant />
         <footer-component />

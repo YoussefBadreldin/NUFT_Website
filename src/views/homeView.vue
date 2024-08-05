@@ -2,59 +2,48 @@
     <div>
         <HeaderComponent />
 
-        <!-- Slider -->
-        <div class="slider">
-            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
+       <!-- Slider -->
+<div class="slider">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../../images/slider/slider-1.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>دليلك الشامل للجامعات في مصر</h2>
                 </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="../../images/slider/slider-1.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h2>Your Comprehensive Guide to Universities in Egypt.</h2>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../../images/slider/slider-2.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h2>Explore Your Options with Our Universities Guide</h2>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="../../images/slider/slider-3.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h2>Start Your Journey with Our Universities Guide</h2>
-                        </div>
-                    </div>
+            </div>
+            <div class="carousel-item">
+                <img src="../../images/slider/slider-2.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>استكشف خياراتك مع دليلنا للجامعات</h2>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+            </div>
+            <div class="carousel-item">
+                <img src="../../images/slider/slider-3.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2>ابدأ رحلتك مع دليلنا للجامعات</h2>
+                </div>
             </div>
         </div>
+    </div>
+</div>
 
         <!-- About Us -->
         <div class="About-Us">
             <div class="inner-lay">
                 <div class="container">
                     <div class="row session-title">
-                        <h2>About US</h2>
+                        <h2>من نحن؟</h2>
                         <p>
-                            A voluntary team of students from various Egyptian universities, aiming to assist those
-                            interested in applying to Egyptian universities.
+                            فريق تطوعي من طلاب مختلف الجامعات المصرية، يهدف إلى مساعدة المهتمين بالتقديم للجامعات المصرية
                         </p>
                     </div>
                     <div class="row">
@@ -69,9 +58,9 @@
 
         <!-- Our Team -->
         <div class="Our-Team">
-            <div class="container">
+            <div class="container" dir="rtl">
                 <div class="session-title row">
-                    <h2>Our Team</h2>
+                    <h2>فريقنا</h2>
                 </div>
                 <div class="Member-row row">
                     <div v-for="(member, index) in teamMembers" :key="index" class="col-md-4">
@@ -85,19 +74,35 @@
             </div>
         </div>
 
-        <!-- Latest News -->
-        <div class="Latest-News">
-            <div class="container">
-                <div class="session-title row">
-                    <h2>Latest News</h2>
-                </div>
-                <div class="row-news row">
-                    <!-- News content will be dynamically inserted here -->
+       <!-- Our Partners -->
+<div class="Our-Partners">
+    <div class="container">
+        <div class="session-title row">
+            <h2>شركاء النجاح</h2>
+        </div>
+        <div class="row-partners row">
+            <!-- Partner content will be dynamically inserted here -->
+            <!-- Example of partner item -->
+            <div class="col-md-4">
+                <div class="partner-item">
+                    <img src="/images/Logo2.png" alt="Partner 1" class="img-fluid">
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="partner-item">
+                    <img src="/images/Logo2.png" alt="Partner 2" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="partner-item">
+                    <img src="/images/Logo2.png" alt="Partner 3" class="img-fluid">
+                </div>
+            </div>
+            <!-- Add more partners as needed -->
         </div>
+    </div>
+</div>
 
-        <SmartAssistant />
         <FooterComponent />
     </div>
 </template>
@@ -117,20 +122,21 @@ export default {
         return {
 
             stats: [
-                { number: '4+', description: 'Years of Experience' },
-                { number: '80+', description: 'Team Members' },
-                { number: '7+', description: 'Guidebooks' },
-                { number: '115k+', description: 'Guidebooks Visits' }
+                { number: '115k+', description: 'زيارات للدليل' },
+                { number: '7+', description: 'دليل مختلف' },
+                { number: '80+', description: 'عضو في الفريق' },
+                { number: '4+', description: 'سنين من الخبرة'}
             ],
             teamMembers: [
-                { name: 'Mahmoud Adel', position: 'Team Leader', image: '/images/Board/MahmoudAdel.jpg' },
-                { name: 'Ahmed Alaa', position: 'Head of Undergraduate Committee', image: '/images/Board/AhmedAlaa.jpg' },
-                { name: 'Ahmed Hamdy', position: 'Head of Postgraduate Committee', image: '/images/Board/AhmedHamdy.jpg' },
-                { name: 'Mayada Kandil', position: 'Head of Media & Marketing Committee', image: '/images/Board/MayadaKandil.jpg' },
-                { name: 'Youssef Badreldin', position: 'Head of Information Technology Committee', image: '/images/Board/YoussefBadreldin.jpg' },
-                { name: 'Hanin Sabbah', position: 'Head of Public Relations Committee', image: '/images/Board/HaninSabbah.jpg' },
-                { name: 'Ahmed Eid', position: 'Head of Customer Service Committee', image: '/images/Board/AhmedEid.jpg' }
-            ]
+            { name: 'محمود عادل', position: 'قائد الفريق', image: '/images/Board/MahmoudAdel.jpg' },
+            { name: 'أحمد عيد', position: 'رئيس لجنة خدمة العملاء', image: '/images/Board/AhmedEid.jpg' },
+            { name: 'حنين صباح', position: 'رئيس لجنة العلاقات العامة', image: '/images/Board/HaninSabbah.jpg' }, 
+            { name: 'يوسف بدر الدين', position: 'رئيس لجنة تكنولوجيا المعلومات', image: '/images/Board/YoussefBadreldin.jpg' },
+            { name: 'ميادة قنديل', position: 'رئيس لجنة الإعلام والتسويق', image: '/images/Board/MayadaKandil.jpg' },
+            { name: 'أحمد حمدي', position: 'رئيس لجنة الدراسات العليا', image: '/images/Board/AhmedHamdy.jpg' },
+            { name: 'أحمد علاء', position: 'رئيس لجنة المرحلة الجامعية', image: '/images/Board/AhmedAlaa.jpg' }
+            
+        ]
         };
     },
     mounted() {

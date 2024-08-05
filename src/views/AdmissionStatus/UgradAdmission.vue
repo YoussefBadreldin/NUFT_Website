@@ -5,26 +5,11 @@
 
         <!-- Include the Header component -->
 
-        <!-- ################# Page Title #######################--->
         <div class="page-nav row">
-            <h2>Undergraduate Admissions Status</h2>
-            <ul>
-                <li>
-                    <router-link to="/"><i class="fas fa-home"></i> Home</router-link>
-                </li>
-                <li>
-                    <router-link to="/AdmissionStatus"><i class="fas fa-chevron-right"></i> Universities Admissions
-                        Status</router-link>
-                </li>
-                <li>
-                    <i class="fas fa-chevron-right"></i>
-                    <router-link to="/AdmissionStatus/UGRAD">Undergraduate</router-link>
-                </li>
-            </ul>
+            <h2>حالة تقديمات مرحلة الباكلريوس</h2>
         </div>
 
-        <!-- ################# Cards Box #######################--->
-        <div class="Card-Box">
+        <div class="Card-Box" dir="rtl">
             <div class="container">
                 <br />
                 <div class="row Box-ro">
@@ -72,44 +57,44 @@ export default {
                     link: '/AdmissionStatus/UGRAD/National',
                     imgSrc: '/images/Universites/Status/NationalStatus.png',
                     altText: 'National Universities',
-                    title: 'National Universities',
-                },
+                    title: 'الجامعات الاهلية',
+                }/*,
                 {
                     link: '/UniversitiesGuide/PGRAD',
                     imgSrc: '/images/Universites/Status/PublicStatus.png',
                     altText: 'Public Universities',
-                    title: 'Public Universities',
+                    title: 'الجامعات الحكومية',
                 },
                 {
                     link: '/UniversitiesGuide/PGRAD',
                     imgSrc: '/images/Universites/Status/PrivateStatus.png',
                     altText: 'Private Universities',
-                    title: 'Private Universities',
+                    title: 'الجامعات الخاصة',
                 },
                 {
                     link: '/UniversitiesGuide/PGRAD',
                     imgSrc: '/images/Universites/Status/InternationalStatus.png',
                     altText: 'International Universities',
-                    title: 'International Universities',
+                    title: 'الجامعات الدولية',
                 },
                 {
                     link: '/UniversitiesGuide/PGRAD',
                     imgSrc: '/images/Universites/Status/SpecialStatus.png',
                     altText: 'Special Nature Universities',
-                    title: 'Special Nature Universities',
+                    title: 'الجامعات ذات طبيعة خاصة',
                 },
                 {
                     link: '/UniversitiesGuide/PGRAD',
                     imgSrc: '/images/Universites/Status/TechUniStatus.png',
                     altText: 'Technological Universities',
-                    title: 'Technological Universities',
+                    title: 'الجامعات التكنولوجية',
                 },
                 {
                     link: '/UniversitiesGuide/PGRAD',
                     imgSrc: '/images/Universites/Status/AllInstitutionsStatus.png',
                     altText: 'Higher Institutes, Academies & Technological Colleges',
-                    title: 'Higher Institutes, Academies & Technological Colleges',
-                },
+                    title: 'المعاهد العليا والاكاديميات والكليات التكنولوجية',
+                },*/
             ],
         };
     },

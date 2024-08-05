@@ -3,17 +3,12 @@
         <!-- Page Title -->
         <HeaderComponent />
         <div class="page-nav row">
-            <h2>Universities Guidebooks</h2>
-            <ul>
-                <li><router-link to="/"><i class="fas fa-home"></i> Home</router-link></li>
-                <li><i class="fas fa-chevron-right"></i> <router-link to="/GuideMain">Universities
-                        Guidebooks</router-link></li>
-            </ul>
+            <h2>دليل الجامعات</h2>
         </div>
 
         <!-- Cards Box -->
         <div class="Card-Box">
-            <div class="container">
+            <div class="container" dir="rtl">
                 <br>
                 <div class="row Box-ro">
                     <div class="col-md-4">
@@ -21,21 +16,21 @@
                             <div class="Box-card">
                                 <img src="/images/Categories/UGRADGuide.png" alt="National Universities">
                                 <div class="Box-det" style="text-align: center;">
-                                    <h6>Undergraduate</h6>
+                                    <h6>مرحلة الباكلريوس</h6>
                                 </div>
                             </div>
                         </router-link>
                     </div>
-                    <div class="col-md-4">
+                    <!--<div class="col-md-4">
                         <router-link to="/UniversitiesGuide/PGRAD">
                             <div class="Box-card">
                                 <img src="/images/Categories/PGRADGuide.png" alt="Public Universities">
                                 <div class="Box-det" style="text-align: center;">
-                                    <h6>Postgraduate</h6>
+                                    <h6>مرحلة الدراسات العليا</h6>
                                 </div>
                             </div>
                         </router-link>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>

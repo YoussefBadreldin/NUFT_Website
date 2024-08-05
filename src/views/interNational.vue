@@ -1,28 +1,11 @@
 <template>
     <div>
     <HeaderComponent />
-    <!-- ################# Page Title #######################--->
     <div class="page-nav row">
-        <h2>International National Universities Guidebook</h2>
-        <ul>
-        <li><router-link to="/"><i class="fas fa-home"></i> Home</router-link></li>
-        <li><router-link to="/UniversitiesGuide"><i class="fas fa-chevron-right"></i> Universities Guidebooks</router-link></li>
-        <li><router-link to="/UniversitiesGuide/UGRAD"><i class="fas fa-chevron-right"></i> Undergraduate Guidebooks</router-link></li>
-        <li><router-link to="/UniversitiesGuide/UGRAD/National"><i class="fas fa-chevron-right"></i> National Universities</router-link></li>
-        <li><router-link to="/UniversitiesGuide/UGRAD/National/International"><i class="fas fa-chevron-right"></i> International National Universities</router-link></li>
-        </ul>
-    </div>
-
-    <!-- ################# Search Box #######################--->
-    <div class="search-box">
-        <div class="container" style="text-align: center;">
-        <input type="text" v-model="searchQuery" placeholder="Search universities by name..." />
-        <button @click="search"><i class="fas fa-search"></i></button>
-        </div>
+        <h2>الجامعات الاهلية الدولية</h2>
     </div>
     
-    <!-- ################# Cards Box #######################--->
-    <div class="Card-Box">
+    <div class="Card-Box" dir="rtl">
         <div class="container">
         <div class="session-title row"></div>
         <div class="row Box-ro">
@@ -60,25 +43,25 @@ export default {
         universities: [
         {
             id: 1,
-            name: 'King Salman International University',
+            name: 'جامعة الملك سلمان الدولية',
             imgSrc: '/images/Logos/Universites/National/KSIU.png',
             link: '/UniversitiesGuide/UGRAD/National/International/KSIU'
         },
         {
             id: 2,
-            name: 'Alamein International University',
+            name: 'جامعة العلمين الدولية',
             imgSrc: '/images/Logos/Universites/National/AIU.png',
             link: '/UniversitiesGuide/UGRAD/National/International/AIU'
         },
         {
             id: 3,
-            name: 'Galala University',
+            name: 'جامعة الجلالة',
             imgSrc: '/images/Logos/Universites/National/GU.png',
             link: '/UniversitiesGuide/UGRAD/National/International/GU'
         },
         {
             id: 4,
-            name: 'New Mansoura University',
+            name: 'جامعة المنصورة الجديدة',
             imgSrc: '/images/Logos/Universites/National/NMU.png',
             link: '/UniversitiesGuide/UGRAD/National/International/NMU'
         }

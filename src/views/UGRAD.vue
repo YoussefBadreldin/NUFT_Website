@@ -5,12 +5,19 @@
 
         <!-- Page Title -->
         <div class="page-nav row">
-            <h2>دليل مرحلة الباكلريوس</h2>
+            <h2>Undergraduate Guidebooks</h2>
+            <ul>
+                <li><router-link to="/"><i class="fas fa-home"></i> Home</router-link></li>
+                <li><router-link to="/UniversitiesGuide"><i class="fas fa-chevron-right"></i> Universities
+                        Guidebooks</router-link></li>
+                <li><router-link to="/UniversitiesGuide/UGRAD"><i class="fas fa-chevron-right"></i> Undergraduate
+                        Guidebooks</router-link></li>
+            </ul>
         </div>
 
         <!-- Cards Box -->
         <div class="Card-Box">
-            <div class="container" dir="rtl">
+            <div class="container">
                 <br>
                 <div class="row Box-ro">
                     <div class="col-md-4">
@@ -18,17 +25,17 @@
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/NationalGuide.png" alt="National Universities">
                                 <div class="Box-det" style="text-align: center;">
-                                    <h6>الجامعات الاهلية</h6>
+                                    <h6>National Universities</h6>
                                 </div>
                             </div>
                         </router-link>
                     </div>
-                    <!--<div class="col-md-4">
+                    <div class="col-md-4">
                         <router-link to="/UniversitiesGuide/UGRAD/soon">
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/PublicGuide.png" alt="Public Universities">
                                 <div class="Box-det" style="text-align: center;">
-                                    <h6>الجامعات الحكومية</h6>
+                                    <h6>Public Universities</h6>
                                 </div>
                             </div>
                         </router-link>
@@ -38,7 +45,7 @@
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/PrivateGuide.png" alt="Private Universities">
                                 <div class="Box-det" style="text-align: center;">
-                                    <h6>الجامعات الخاصة</h6>
+                                    <h6>Private Universities</h6>
                                 </div>
                             </div>
                         </router-link>
@@ -49,7 +56,7 @@
                                 <img src="/images/Universites/Guide/InternationalGuide.png"
                                     alt="International Universities">
                                 <div class="Box-det" style="text-align: center;">
-                                    <h6>الجامعات الدولية</h6>
+                                    <h6>International Universities</h6>
                                 </div>
                             </div>
                         </router-link>
@@ -59,7 +66,7 @@
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/SpecialGuide.png" alt="Special Nature Universities">
                                 <div class="Box-det" style="text-align: center;">
-                                    <h6>الجامعات ذات طبيعة خاصة</h6>
+                                    <h6>Special Nature Universities</h6>
                                 </div>
                             </div>
                         </router-link>
@@ -69,7 +76,7 @@
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/TechUniGuide.png" alt="Technological Universities">
                                 <div class="Box-det" style="text-align: center;">
-                                    <h6>الجامعات التكنولوجية</h6>
+                                    <h6>Technological Universities</h6>
                                 </div>
                             </div>
                         </router-link>
@@ -80,11 +87,11 @@
                                 <img src="/images/Universites/Guide/InstitutionsGuide.png"
                                     alt="Higher Institutes, Academies & Technological Colleges">
                                 <div class="Box-det" style="text-align: center;">
-                                    <h6>المعاهد العليا والاكادميات والكليات التكنولوجية</h6>
+                                    <h6>Higher Institutes, Academies & Technological Colleges</h6>
                                 </div>
                             </div>
                         </router-link>
-                    </div>-->
+                    </div>
                 </div>
             </div>
         </div>

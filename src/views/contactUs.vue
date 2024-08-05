@@ -4,7 +4,11 @@
 
         <!-- Page Title -->
         <div class="page-nav row">
-            <h2>تواصل معنا</h2>
+            <h2>Contact Us</h2>
+            <ul>
+                <li><router-link to="/"><i class="fas fa-home"></i> Home</router-link></li>
+                <li><router-link to="/ContactUs"><i class="fas fa-chevron-right"></i> Contact Us</router-link></li>
+            </ul>
         </div>
 
         <!-- Body -->
@@ -12,7 +16,7 @@
             <div class="container">
 
                 <!-- Contact Info -->
-                <h2 class="text-center" style="margin-top: 50px;">بيانات التواصل</h2>
+                <h2 class="text-center" style="margin-top: 50px;">Contact Info</h2>
                 <div style="text-align: center; color: black;">
                     <p style="margin-bottom: 10px; font-size: 15px;">
                         <a href="mailto:info@nuft.com" style="color: black;">
@@ -49,35 +53,35 @@
                 <!-- Contact Form -->
                 <div class="row justify-content-center">
                     <div class="col-sm-6" style="padding: 20px;">
-                        <h2 class="text-center" style="margin-top: 30px;">نموذج التواصل</h2>
+                        <h2 class="text-center" style="margin-top: 30px;">Contact Form</h2>
                         <form @submit.prevent="submitForm">
                             <div class="form-group row">
+                                <label for="name" class="col-sm-3 col-form-label">Name:</label>
                                 <div class="col-sm-8">
-                                    <input v-model="form.name" type="text" id="name" name="name" placeholder="اسمك" class="form-control">
+                                    <input v-model="form.name" type="text" id="name" name="name" placeholder="Name" class="form-control">
                                 </div>
-                                <label for="name" class="col-sm-3 col-form-label">:الاسم</label>
                             </div>
                             <div class="form-group row">
+                                <label for="email" class="col-sm-3 col-form-label">Email:</label>
                                 <div class="col-sm-8">
-                                    <input v-model="form.email" type="email" id="email" name="email" placeholder="ايميلك" class="form-control">
+                                    <input v-model="form.email" type="email" id="email" name="email" placeholder="Email" class="form-control">
                                 </div>
-                                <label for="email" class="col-sm-3 col-form-label">:الايميل</label>
                             </div>
                             <div class="form-group row">
+                                <label for="number" class="col-sm-3 col-form-label">Number:</label>
                                 <div class="col-sm-8">
-                                    <input v-model="form.phone" type="text" id="number" name="number" placeholder="رقمك" class="form-control">
+                                    <input v-model="form.phone" type="text" id="number" name="number" placeholder="Number" class="form-control">
                                 </div>
-                                <label for="number" class="col-sm-3 col-form-label">:الرقم</label>
                             </div>
                             <div class="form-group row">
+                                <label for="message" class="col-sm-3 col-form-label">Message:</label>
                                 <div class="col-sm-8">
-                                    <textarea v-model="form.message" id="message" rows="5" placeholder="رسالتك" class="form-control"></textarea>
+                                    <textarea v-model="form.message" id="message" rows="5" placeholder="Your Message" class="form-control"></textarea>
                                 </div>
-                                <label for="message" class="col-sm-3 col-form-label">:الرسالة</label>   
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-8 offset-sm-3">
-                                    <button type="submit" class="btn btn-success">ارسال</button>
+                                    <button type="submit" class="btn btn-success">Send Message</button>
                                 </div>
                             </div>
                             <div id="errorMessages" v-html="errorMessages" style="color: red; font-size: 16px; text-align: center;"></div>

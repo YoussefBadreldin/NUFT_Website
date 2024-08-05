@@ -1,60 +1,52 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item navbar-brand">
-          <a href="/Home">
-            <img src="../../../images/logo.png" alt="Logo" class="d-inline-block align-top" />
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    <header-component />
     <div class="wrapper">
         <div class="title">
-            {{ mode === 'signup' ? 'ابدأ الآن' : 'مرحباً بك مجدداً' }}
+            {{ mode === 'signup' ? 'Sign Up Form' : 'Sign In Form' }}
         </div>
         <form @submit.prevent="handleSubmit">
             <div class="field">
                 <input type="email" required v-model="email">
-                <label>البريد الالكتروني</label>
+                <label>Email Address</label>
             </div>
             <div class="field">
                 <input type="password" required v-model="password">
-                <label>كلمة المرور</label>
+                <label>Password</label>
             </div>
             <div class="field">
                 <button type="submit" class="btn btn-primary">
-                    {{ mode === 'signup' ? 'انشئ الحساب' : 'تسجيل الدخول' }}
+                    {{ mode === 'signup' ? 'Sign Up' : 'Sign In' }}
                 </button>
             </div>
             <div class="signup-link">
-                {{ mode === 'signup' ? 'لديك حساب بالفعل؟' : 'ليس لديك حساب؟' }}
+                {{ mode === 'signup' ? 'Already a member?' : 'Not a member?' }}
                 <a href="#" @click.prevent="toggleMode">
-                    {{ mode === 'signup' ? 'قم بتسجيل الدخول هنا' : 'أنشئ حسابك الان' }}
+                    {{ mode === 'signup' ? 'Sign in here' : 'Sign up now' }}
                 </a>
             </div>
         </form>
     </div>
+    <smart-assistant />
+    <footer-component />
 </template>
 
 <script>
 import axios from 'axios';
+import HeaderComponent from '../../../public/global/headerComponent.vue';
+import FooterComponent from '../../../public/global/footerComponent.vue';
 
 export default {
-    name: "AuthForm",
+    name: "SignUp",
     data() {
         return {
             email: '',
             password: '',
-            mode: 'signin' // Initial mode is signin
+            mode: 'signup' // Initial mode is signup
         };
     },
     components: {
+        HeaderComponent,
+        FooterComponent
     },
     methods: {
         handleSubmit() {
@@ -119,12 +111,14 @@ export default {
     font-family: 'Poppins', sans-serif;
 }
 
-html, body {
+html,
+body {
     display: grid;
     height: 100%;
     width: 100%;
     place-items: center;
     background: #f2f2f2;
+    /* background: linear-gradient(-135deg, #c850c0, #4158d0); */
 }
 
 ::selection {
@@ -133,15 +127,12 @@ html, body {
 }
 
 .wrapper {
-    width: 100%;
-    max-width: 380px;
+    width: 380px;
     background: #fff;
     border-radius: 15px;
-    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    margin: 150px auto 100px auto; /* Top margin: 40px, Bottom margin: 60px */
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
-
 
 .wrapper .title {
     font-size: 35px;
@@ -149,33 +140,36 @@ html, body {
     text-align: center;
     line-height: 100px;
     color: #fff;
+    user-select: none;
     border-radius: 15px 15px 0 0;
-    background: linear-gradient(-135deg, #ced2e1, #4158d0);
+    background: linear-gradient(-135deg, #c850c0, #4158d0);
 }
 
 .wrapper form {
-    padding: 20px 30px;
-    margin-top: 20px;
+    padding: 10px 30px 50px 30px;
+    margin-top: 20vh;
 }
 
 .wrapper form .field {
+    height: 50px;
+    width: 100%;
     margin-top: 20px;
     position: relative;
 }
 
 .wrapper form .field input {
+    height: 100%;
     width: 100%;
-    height: 50px;
+    outline: none;
+    font-size: 17px;
     padding-left: 20px;
     border: 1px solid lightgrey;
     border-radius: 25px;
-    font-size: 17px;
-    outline: none;
-    transition: border-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .wrapper form .field input:focus,
-.wrapper form .field input:valid {
+form .field input:valid {
     border-color: #4158d0;
 }
 
@@ -183,97 +177,84 @@ html, body {
     position: absolute;
     top: 50%;
     left: 20px;
-    color: #999;
+    color: #999999;
+    font-weight: 400;
     font-size: 17px;
     pointer-events: none;
     transform: translateY(-50%);
     transition: all 0.3s ease;
 }
 
-.wrapper form .field input:focus ~ label,
-.wrapper form .field input:valid ~ label {
-    top: -10px;
+form .field input:focus~label,
+form .field input:valid~label {
+    top: 0%;
     font-size: 16px;
     color: #4158d0;
     background: #fff;
-    padding: 0 5px;
+    transform: translateY(-50%);
 }
 
-.wrapper form .btn-primary {
+form .content {
+    display: flex;
     width: 100%;
     height: 50px;
-    background: linear-gradient(-135deg, #ced2e1, #4158d0);
-    border: none;
-    border-radius: 25px;
-    color: #fff;
-    font-size: 17px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+    font-size: 16px;
+    align-items: center;
+    justify-content: space-around;
 }
 
-.wrapper form .btn-primary:active {
+form .content .checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form .content input {
+    width: 15px;
+    height: 15px;
+    background: red;
+}
+
+form .content label {
+    color: #262626;
+    user-select: none;
+    padding-left: 5px;
+}
+
+form .content .pass-link {
+    color: "";
+}
+
+form .field input[type="submit"] {
+    color: #fff;
+    border: none;
+    padding-left: 0;
+    margin-top: -10px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    background: linear-gradient(-135deg, #c850c0, #4158d0);
+    transition: all 0.3s ease;
+}
+
+form .field input[type="submit"]:active {
     transform: scale(0.95);
 }
 
-.wrapper form .signup-link {
+form .signup-link {
     color: #262626;
     margin-top: 20px;
     text-align: center;
 }
 
-.wrapper form .signup-link a {
+form .pass-link a,
+form .signup-link a {
     color: #4158d0;
     text-decoration: none;
 }
 
-.wrapper form .signup-link a:hover {
+form .pass-link a:hover,
+form .signup-link a:hover {
     text-decoration: underline;
-}
-
-.nav-link {
-    color: #ced2e1 !important;
-    padding-top: 20px; 
-    padding-bottom: 20px;
-    font-size: 1.4rem;
-}
-
-.nav-link p {
-    color: red;
-    font-size: 1.2rem;
-}
-
-nav {
-    background-color: #001d3d !important;
-}
-
-.navbar-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Align items vertically */
-    width: 100%;
-}
-
-.nav-item {
-    margin: 0 10px;
-}
-
-.signup-button {
-    background-color: #ffbf00; 
-    color: #001d3d !important; 
-    padding: 15px 20px; /* Increased padding for vertical centering */
-    border-radius: 5px;
-    font-weight: bold; 
-    text-align: center; 
-}
-
-.btn-primary {
-    color: white; 
-}
-
-.navbar-brand {
-    display: flex;
-    align-items: center;
-    margin-left: -55px; 
 }
 </style>

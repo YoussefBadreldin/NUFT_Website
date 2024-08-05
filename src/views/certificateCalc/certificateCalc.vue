@@ -5,12 +5,18 @@
 
         <body>
 
+            <!-- ################# Page Title #######################--->
             <div class="page-nav row">
-                <h2>معادلة الشهادات</h2>
+                <h2>Equivalent Certificates Calculator</h2>
+                <ul>
+                    <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="/CertificatesCalculator"><i class="fas fa-chevron-right"></i> Certificates
+                            Calculator</a></li>
+                </ul>
             </div>
 
             <div class="Card-Box">
-                <div class="container" dir="rtl">
+                <div class="container">
                     <br>
                     <div class="row Box-ro">
                         <div class="col-md-4">
@@ -18,7 +24,7 @@
                                 <div class="Box-card">
                                     <img src="/images/Certificates/American.png" alt="">
                                     <div class="Box-det" style="text-align:center;">
-                                        <h6>الدبلومة الامريكية</h6>
+                                        <h6>American Diploma</h6>
                                         <ul>
                                         </ul>
                                     </div>
@@ -30,14 +36,14 @@
                                 <div class="Box-card">
                                     <img src="/images/Certificates/IGCSE.png" alt="">
                                     <div class="Box-det" style="text-align:center;">
-                                        <h6>الثانوية البريطانية</h6>
+                                        <h6>IGCSE</h6>
                                         <ul>
                                         </ul>
                                     </div>
                                 </div>
                             </a>
                         </div>
-                        <!--<div class="col-md-4">
+                        <div class="col-md-4">
                             <a href="/CertificatesCalculator/Azhari">
                                 <div class="Box-card">
                                     <img src="/images/Certificates/Azhari.png" alt="">
@@ -108,7 +114,7 @@
                                     </div>
                                 </div>
                             </a>
-                        </div>-->
+                        </div>
                     </div>
                 </div>
             </div>

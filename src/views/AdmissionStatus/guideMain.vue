@@ -3,11 +3,18 @@
         <!-- Include the Head component -->
         <HeaderComponent />
 
+        <!-- ################# Page Title #######################--->
         <div class="page-nav row">
-            <h2>حالة التقديمات</h2>
+            <h2>Universities Admissions Status</h2>
+            <ul>
+                <li><router-link to="/"><i class="fas fa-home"></i> Home</router-link></li>
+                <li><router-link to="/AdmissionStatus"><i class="fas fa-chevron-right"></i> Universities Admissions
+                        Status</router-link></li>
+            </ul>
         </div>
 
-        <div class="Card-Box" dir="rtl">
+        <!-- ################# Cards Box #######################--->
+        <div class="Card-Box">
             <div class="container">
                 <br />
                 <div class="row Box-ro">
@@ -16,21 +23,21 @@
                             <div class="Box-card">
                                 <img src="/images/Categories/UGRADStatus.png" alt="National Universities" />
                                 <div class="Box-det" style="text-align: center;">
-                                    <h6>مرحلة الباكلريوس</h6>
+                                    <h6>Undergraduate</h6>
                                 </div>
                             </div>
                         </router-link>
                     </div>
-                    <!--<div class="col-md-4">
+                    <div class="col-md-4">
                         <router-link to="/AdmissionStatus/PGRAD">
                             <div class="Box-card">
                                 <img src="/images/Categories/PGRADStatus.png" alt="Public Universities" />
                                 <div class="Box-det" style="text-align: center;">
-                                    <h6>مرحلة الدراسات العليا</h6>
+                                    <h6>Postgraduate</h6>
                                 </div>
                             </div>
                         </router-link>
-                    </div>-->
+                    </div>
                 </div>
             </div>
         </div>

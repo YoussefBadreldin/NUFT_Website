@@ -1,11 +1,28 @@
 <template>
     <div>
     <HeaderComponent />
+    <!-- ################# Page Title #######################--->
     <div class="page-nav row">
-        <h2>الجامعات الاهلية الدولية</h2>
+        <h2>International National Universities Guidebook</h2>
+        <ul>
+        <li><router-link to="/"><i class="fas fa-home"></i> Home</router-link></li>
+        <li><router-link to="/UniversitiesGuide"><i class="fas fa-chevron-right"></i> Universities Guidebooks</router-link></li>
+        <li><router-link to="/UniversitiesGuide/UGRAD"><i class="fas fa-chevron-right"></i> Undergraduate Guidebooks</router-link></li>
+        <li><router-link to="/UniversitiesGuide/UGRAD/National"><i class="fas fa-chevron-right"></i> National Universities</router-link></li>
+        <li><router-link to="/UniversitiesGuide/UGRAD/National/International"><i class="fas fa-chevron-right"></i> International National Universities</router-link></li>
+        </ul>
+    </div>
+
+    <!-- ################# Search Box #######################--->
+    <div class="search-box">
+        <div class="container" style="text-align: center;">
+        <input type="text" v-model="searchQuery" placeholder="Search universities by name..." />
+        <button @click="search"><i class="fas fa-search"></i></button>
+        </div>
     </div>
     
-    <div class="Card-Box" dir="rtl">
+    <!-- ################# Cards Box #######################--->
+    <div class="Card-Box">
         <div class="container">
         <div class="session-title row"></div>
         <div class="row Box-ro">
@@ -43,25 +60,25 @@ export default {
         universities: [
         {
             id: 1,
-            name: 'جامعة الملك سلمان الدولية',
+            name: 'King Salman International University',
             imgSrc: '/images/Logos/Universites/National/KSIU.png',
             link: '/UniversitiesGuide/UGRAD/National/International/KSIU'
         },
         {
             id: 2,
-            name: 'جامعة العلمين الدولية',
+            name: 'Alamein International University',
             imgSrc: '/images/Logos/Universites/National/AIU.png',
             link: '/UniversitiesGuide/UGRAD/National/International/AIU'
         },
         {
             id: 3,
-            name: 'جامعة الجلالة',
+            name: 'Galala University',
             imgSrc: '/images/Logos/Universites/National/GU.png',
             link: '/UniversitiesGuide/UGRAD/National/International/GU'
         },
         {
             id: 4,
-            name: 'جامعة المنصورة الجديدة',
+            name: 'New Mansoura University',
             imgSrc: '/images/Logos/Universites/National/NMU.png',
             link: '/UniversitiesGuide/UGRAD/National/International/NMU'
         }

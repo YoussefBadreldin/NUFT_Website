@@ -4,7 +4,11 @@
 
         <!-- Page Title -->
         <div class="page-nav row">
-            <h2>الاخبار</h2>
+            <h2>News</h2>
+            <ul>
+                <li><router-link to="/"><i class="fas fa-home"></i> Home</router-link></li>
+                <li><router-link to="/News"><i class="fas fa-chevron-right"></i> News</router-link></li>
+            </ul>
         </div>
 
         <!-- Empty Space -->

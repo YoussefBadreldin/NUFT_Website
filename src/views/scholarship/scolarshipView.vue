@@ -2,34 +2,40 @@
     <div>
         <header-component />
 
+        <!-- ################# Page Title #######################--->
         <div class="page-nav row">
-            <h2>المنح</h2>
+            <h2>Scholarships</h2>
+            <ul>
+                <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/Scholarships"><i class="fas fa-chevron-right"></i> Scholarships</a></li>
+            </ul>
         </div>
 
-        <div class="Card-Box" dir="rtl">
+        <!-- ################# Cards Box #######################--->
+        <div class="Card-Box">
             <div class="container">
                 <br>
                 <div class="row Box-ro">
                     <div class="col-md-4">
                         <a href="/Scholarships/UGRAD">
                             <div class="Box-card">
-                                <img src="/images/Categories/UGRADStatus.png" alt="">
+                                <img src="/images/Categories/UGRADScholarships.png" alt="">
                                 <div class="Box-det" style="text-align: center;">
-                                    <h6>مرحلة الباكلريوس</h6>
+                                    <h6>Undergraduate</h6>
                                 </div>
                             </div>
                         </a>
                     </div>
-                    <!--<div class="col-md-4">
+                    <div class="col-md-4">
                         <a href="/Scholarships/PGRAD">
                             <div class="Box-card">
-                                <img src="/images/Categories/PGRADStatus.png" alt="">
+                                <img src="/images/Categories/PGRADScholarships.png" alt="">
                                 <div class="Box-det" style="text-align: center;">
-                                    <h6>مرحلة الدراسات العليا</h6>
+                                    <h6>Postgraduate</h6>
                                 </div>
                             </div>
                         </a>
-                    </div>-->
+                    </div>
                 </div>
             </div>
         </div>

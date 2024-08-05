@@ -2,49 +2,28 @@
     <div>
         <!-- Your existing template code here -->
         <HeaderComponent />
-         <section>
-<div style="display: flex; flex-direction: column; align-items: center;">
-    <img src="/images/Logos/Universites/National/AIU.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
-
-    <!-- ######## Uni Title ####### -->
-    <h2 style="text-align: center; margin-top: 20px;">(AIU) جامعة العلمين الدولية </h2>
-
-    <!-- ######## Uni info ####### -->
-    <p style="text-align: center;">جامعة اهلية تابعة مباشرة لوزارة التعليم العالي والبحث العلمي. تأسست بموجب قرار رئيس الجمهورية رقم 435 لسنة 2020.</p>
-
-    <!-- ######## Uni Location ####### -->
-    <p style="text-align: center;">تقع في مدينة العلمين الجديدة بمحافظة مطروح على مساحة 150 فدانًا، وتضم مكتبة مركزية، مسرحًا خارجيًا، منطقة رياضية وترفيهية، مستشفى جامعي، مستشفى للأسنان، ومبنى إدارة الجامعة. بالإضافة إلى ذلك، هناك 10 مبانٍ للكليات، 4 أبراج سكنية للطلاب وأعضاء هيئة التدريس والموظفين، بالإضافة إلى 9 مبانٍ سكنية إضافية خارج الحرم الجامعي في حي السكن. وقد تم الانتهاء من البناء بمعدل 50%.</p>
-    <a href="enter the actual link here" style="display: block; text-align: center;">
-        <button>عرض الموقع على الخرائط</button>
-    </a>
-
-    <!-- ######## Social Media Links ####### -->
-    <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
-        <ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
-            <li><a href="enter the actual website link here"><i class="fas fa-globe"></i></a></li>
-            <li><a href="tel:enter the actual phone number here"><i class="fas fa-phone"></i></a></li>
-            <li><a href="mailto:enter the actual email here"><i class="fas fa-envelope"></i></a></li>
-            <li><a href="enter the actual Facebook link here"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a href="enter the actual Instagram link here"><i class="fab fa-instagram"></i></a></li>
-            <li><a href="enter the actual YouTube link here"><i class="fab fa-youtube"></i></a></li>
-            <li><a href="enter the actual LinkedIn link here"><i class="fab fa-linkedin-in"></i></a></li>
-        </ul>
-    </div>
-</div>
-<br> <br>
+        <!-- ######## Faculties ####### -->
+        <section>
+            <h2>Faculties</h2>
             <div class="table-responsive">
-                <table style="margin-top:0vh;" dir="rtl">
+                <div class="view_location">
+                    <!-- <img src="../../../images/Logos/Universites/National/AIU.png" alt=""> -->
+                    <a id="locationLink" :href="location" target="_blank">
+                        <button>View Location</button>
+                    </a>
+                </div>
+                <table style="margin-top:30vh;">
                     <thead>
                         <tr>
-                           <th rowspan="2">الكلية</th>
-                            <th rowspan="2">البرامج</th>
-                            <th rowspan="2">الرسوم للمصريين</th>
-                            <th rowspan="2">الرسوم للوافدين</th>
-                            <th rowspan="2">الشعبة</th>
-                            <th colspan="2">الحد الأدنى  للثانوية العامة</th>
-                            <th colspan="2">الحد الأدنى للشهادات العربية، الإنجليزية والأزهرية</th>
-                            <th colspan="2">الحد الأدنى لستيم والنيل</th>
-                            <th rowspan="2">الحد الأدنى للوافدين</th>
+                            <th rowspan="2">Faculty</th>
+                            <th rowspan="2">Programs</th>
+                            <th rowspan="2">Fees for Egyptians</th>
+                            <th rowspan="2">Fees for Natives</th>
+                            <th rowspan="2">Section</th>
+                            <th colspan="2">Minimum Score Needed for Thanwyaa Amaa</th>
+                            <th colspan="2">Minimum Score Needed for Arab, English & Azhari Certificates</th>
+                            <th colspan="2">Minimum Score Needed for Stem & Nile Certificates</th>
+                            <th rowspan="2">Minimum Score Needed for Natives</th>
                         </tr>
                         <tr>
                             <th>{{ firstYear }}</th>
@@ -73,28 +52,29 @@
                     </tbody>
                 </table>
             </div>
-<p>
-    ● الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت).
-</p>
+            <p>
+                ● The mentioned fees do not include application fees (if any), administrative expenses (if any),
+                transaction insurance (if any), educational services fees (if any), accommodation and transportation
+                expenses (if any).
+            </p>
         </section>
 
         <!-- ######## International Programs ####### -->
         <section>
-        <br> <br>
-            <h2>البرامج الدولية</h2>
-            <div class="table-responsive" dir="rtl">
+            <h2>International Programs</h2>
+            <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
-                           <th rowspan="2">الكلية</th>
-                            <th rowspan="2">البرامج</th>
-                            <th rowspan="2">الرسوم للمصريين</th>
-                            <th rowspan="2">الرسوم للوافدين</th>
-                            <th rowspan="2">الشعبة</th>
-                            <th colspan="2">الحد الأدنى  للثانوية العامة</th>
-                            <th colspan="2">الحد الأدنى للشهادات العربية، الإنجليزية والأزهرية</th>
-                            <th colspan="2">الحد الأدنى لستيم والنيل</th>
-                            <th rowspan="2">الحد الأدنى للوافدين</th>
+                            <th rowspan="2">Faculty</th>
+                            <th rowspan="2">Programs</th>
+                            <th rowspan="2">Fees for Egyptians</th>
+                            <th rowspan="2">Fees for Natives</th>
+                            <th rowspan="2">Section</th>
+                            <th colspan="2">Minimum Score Needed for Thanwyaa Amaa</th>
+                            <th colspan="2">Minimum Score Needed for Arab, English & Azhari Certificates</th>
+                            <th colspan="2">Minimum Score Needed for Stem & Nile Certificates</th>
+                            <th rowspan="2">Minimum Score Needed for Natives</th>
                         </tr>
                         <tr>
                             <th>{{ firstYear }}</th>
@@ -123,22 +103,23 @@
                     </tbody>
                 </table>
             </div>
-<p>
-    ● الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت).
-</p>
-<a :href="details_about_internationa_program" target="_blank">
-    <button>مزيد من التفاصيل عن البرامج الدولية</button>
-</a>
+            <p>
+                ● The mentioned fees do not include application fees (if any), administrative expenses (if any),
+                transaction insurance (if any), educational services fees (if any), accommodation and transportation
+                expenses (if any).
+            </p>
+            <a :href="details_about_internationa_program" target="_blank">
+                <button>More Details about International Programs</button>
+            </a>
         </section>
         <section>
-        <br> <br>
-            <h2>السكن</h2>
-            <div class="table-responsive" dir="rtl">
+            <h2>Dormitories</h2>
+            <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
-                            <th>النوع</th>
-                            <th>السعر</th>
+                            <th>Type</th>
+                            <th>Price</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -149,18 +130,16 @@
                     </tbody>
                 </table>
             </div>
-            <br>
-            <a :href="register_link_dorms" target="_blank"><button>رابط التسجيل</button></a>
+            <a :href="register_link_dorms" target="_blank"><button>Register Link</button></a>
         </section>
         <section>
-        <br> <br>
-            <h2>الانتقالات</h2>
-            <div class="table-responsive" dir="rtl">
+            <h2>Transportation</h2>
+            <div class="table-responsive">
                 <table>
                     <thead>
                         <tr>
-                            <th>الخط</th>
-                            <th>السعر</th>
+                            <th>Type</th>
+                            <th>Price</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -171,22 +150,20 @@
                     </tbody>
                 </table>
             </div>
-            <br> 
-            <a :href="register_link_dorms" target="_blank"><button>رابط التسجيل</button></a>
+            <a :href="register_link_dorms" target="_blank"><button>Register Link</button></a>
         </section>
-       <section>
-       <br> <br>
-    <h1>المنح الدراسية</h1>
-    <p>تفاصيل المنح الدراسية</p>
-    <a :href="register_link_transportation" target="_blank"><button>مزيد من التفاصيل عن المنح الدراسية</button></a>
-</section>
-<section>
-<br> <br>
-    <a :href="Admission_link_natives" target="_blank"><button>رابط التقديم للطلاب الوافدين</button></a>
-    <a :href="transfer_link_egyption" target="_blank"><button>رابط التحويل للطلاب المصريين</button></a>
-    <a :href="international_program_link" target="_blank"><button>رابط التقديم للطلاب المصريين (البرامج الدولية)</button></a>
-    <a :href="Admission_link_egyption" target="_blank"><button>رابط التقديم للطلاب المصريين</button></a>
-</section>
+        <section>
+            <h1>Sholarships</h1>
+            <p>Sholarships Details</p>
+            <a :href="register_link_transportation" target="_blank"><button>More Details About Scolarships</button></a>
+        </section>
+        <section>
+            <a :href="Admission_link_egyption" target="_blank"><button>Admission Link for Egyptian Students</button></a>
+            <a :href="international_program_link" target="_blank"><button>Admission Link for Egyptian Students
+                    (International Programs)</button></a>
+            <a :href="Admission_link_natives" target="_blank"><button>Admission Link for Native Students</button></a>
+            <a :href="transfer_link_egyption" target="_blank"><button>Transfer Link for Egyptian Students</button></a>
+        </section>
         <FooterComponent />
     </div>
 </template>
@@ -349,10 +326,5 @@ td {
 th {
     background-color: black;
     text-align: center;
-}
-
-button {
-  border-radius: 5px; 
-  margin-right: 10px;
 }
 </style>

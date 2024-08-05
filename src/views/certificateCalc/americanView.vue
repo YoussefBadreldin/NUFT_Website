@@ -4,74 +4,79 @@
         <header-component />
         <!-- Page Title -->
         <div class="page-nav row">
-            <h2>الدبلومة الامريكية</h2>
+            <h2>American Diploma</h2>
+            <ul>
+                <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/CertificatesCalculator"><i class="fas fa-chevron-right"></i> Certificates Calculator</a></li>
+                <li><i class="fas fa-chevron-right"></i> <a href="/CertificatesCalculator/American">American Diploma</a></li>
+            </ul>
         </div>
 
-<!-- قسم المحتوى -->
-<div class="container mt-md-5 mt-3 mb-4">
-    <div class="row">
-        <div class="col-md-6 col-12">
-            <div class="block p-4 mb-4 bg-white rounded-lg border">
-                <h3 style="text-align: center;"><strong>احسب مجموعك</strong></h3>
-                <div class="form-group">
-                    <label for="Exam">:الامتحان</label>
-                    <select class="custom-select w-auto d-block" v-model="selectedExam" @change="showSuitable">
-                        <option value="1">SAT</option>
-                        <option value="2">ACT</option>
-                    </select>
-                </div>
+        <!-- Body Section -->
+        <div class="container mt-md-5 mt-3 mb-4">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <div class="block p-4 mb-4 bg-white rounded-lg border">
+                        <h3 style="text-align: center;"><strong>Calculate Your Score</strong></h3>
+                        <div class="form-group">
+                            <label for="Exam">Exam:</label>
+                            <select class="custom-select w-auto d-block" v-model="selectedExam" @change="showSuitable">
+                                <option value="1">SAT</option>
+                                <option value="2">ACT</option>
+                            </select>
+                        </div>
 
-                <!-- نموذج درجات SAT -->
-                <div v-if="selectedExam === '1'" class="score-form">
-                    <div class="form-group">
-                        <label for="sat1"> :SAT 1 درجة</label>
-                        <input type="number" v-model="sat1" placeholder="من 1600" max="1600" step="10" class="form-control w-auto" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="sat2"> :SAT 2 درجة</label>
-                        <input type="number" v-model="sat2" placeholder="من 1600" max="1600" step="10" class="form-control w-auto" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="gpa">:(GPA) درجة المعدل التراكمي</label>
-                        <input type="number" v-model="gpa" placeholder="من 40" max="40" class="form-control w-auto" required>
-                    </div>
-                </div>
+                        <!-- SAT score form -->
+                        <div v-if="selectedExam === '1'" class="score-form">
+                            <div class="form-group">
+                                <label for="sat1">SAT 1 score:</label>
+                                <input type="number" v-model="sat1" placeholder="Out of 1600" max="1600" step="10" class="form-control w-auto" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="sat2">SAT 2 score:</label>
+                                <input type="number" v-model="sat2" placeholder="Out of 1600" max="1600" step="10" class="form-control w-auto" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="gpa">GPA score:</label>
+                                <input type="number" v-model="gpa" placeholder="Out of 40" max="40" class="form-control w-auto" required>
+                            </div>
+                        </div>
 
-                <!-- نموذج درجات ACT -->
-                <div v-if="selectedExam === '2'" class="score-form">
-                    <div class="form-group">
-                        <label for="english">:الإنجليزية</label>
-                        <input type="number" v-model="english" placeholder="من 36" max="36" step="1" class="form-control w-auto" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="reading">:القراءة</label>
-                        <input type="number" v-model="reading" placeholder="من 36" max="36" step="1" class="form-control w-auto" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="math">:الرياضيات</label>
-                        <input type="number" v-model="math" placeholder="من 36" max="36" class="form-control w-auto" required>
-                    </div>
-                </div>
+                        <!-- ACT score form -->
+                        <div v-if="selectedExam === '2'" class="score-form">
+                            <div class="form-group">
+                                <label for="english">English:</label>
+                                <input type="number" v-model="english" placeholder="Out of 36" max="36" step="1" class="form-control w-auto" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="reading">Reading:</label>
+                                <input type="number" v-model="reading" placeholder="Out of 36" max="36" step="1" class="form-control w-auto" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="math">Math:</label>
+                                <input type="number" v-model="math" placeholder="Out of 36" max="36" class="form-control w-auto" required>
+                            </div>
+                        </div>
 
-                <div class="form-group">
-                    <label for="meth">:طريقة الحساب</label>
-                    <select class="custom-select w-auto d-block" v-model="calculationMethod" required>
-                        <option value="1">الجامعات الحكومية</option>
-                        <option value="2">الجامعات الخاصة والوطنية</option>
-                        <option value="3">المعاهد العليا</option>
-                    </select>
-                </div>
+                        <div class="form-group">
+                            <label for="meth">Calculation method:</label>
+                            <select class="custom-select w-auto d-block" v-model="calculationMethod" required>
+                                <option value="1">Public Universities</option>
+                                <option value="2">Private & National Universities</option>
+                                <option value="3">Higher Institutes</option>
+                            </select>
+                        </div>
 
-                <div class="row mx-0 justify-content-center">
-                    <button class="btn border mr-2 mt-2" @click="calculateScore">احسب المجموع</button>
-                    <input type="text" v-model="totalScore" readonly class="form-control d-inline-block w-auto text-center mt-2" placeholder="مجموعك الكلي">
+                        <div class="row mx-0 justify-content-center">
+                            <button class="btn border mr-2 mt-2" @click="calculateScore">Calculate score</button>
+                            <input type="text" v-model="totalScore" readonly class="form-control d-inline-block w-auto text-center mt-2" placeholder="Your total score">
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
                 <div class="col-md-6 col-12">
                     <div class="block bg-white p-4 mb-md-0 mb-4 rounded-lg border">
-                        <h3 style="text-align: center;"><strong>ملاحظات هامة</strong></h3>
+                        <h3 style="text-align: center;"><strong>Important Notes</strong></h3>
                         <p v-for="(note, index) in notes" :key="index">{{ note }}</p>
                     </div>
                 </div>
@@ -107,9 +112,9 @@ export default {
             totalScore: '',
             notes: [
                 // Add your notes here
-                'ملاحظة 1',
-                'ملاحظة 2',
-                'ملاحظة 3'
+                'Note 1',
+                'Note 2',
+                'Note 3'
             ]
         };
     },

@@ -80,7 +80,7 @@
           </div>
           <div>
             <input type="text" v-model="detailsSchoolarship" id="detailsSchoolarship">
-            <label for="detailsSchoolarship">:تفاصيل المنح</label>
+            <label for="detailsSchoolarship">:رابط تفاصيل المنح</label>
           </div>
           <br>
           <button type="submit">اضافة</button>
@@ -112,10 +112,6 @@
           <div>
             <input type="text" v-model="second_year">
             <label for="second_year">:العام الحالي (يتم تضاف بداية الموسم)</label>
-          </div>
-          <div>
-            <input type="text" v-model="details_about_internationa_program">
-            <label for="details_about_internationa_program">:رابط تفاصيل المنح</label>
           </div>
           <div>
             <input type="text" v-model="international_program_link">

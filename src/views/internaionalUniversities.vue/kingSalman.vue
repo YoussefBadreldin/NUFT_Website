@@ -7,29 +7,35 @@
     <img src="/images/Logos/Universites/National/KSIU.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
 
     <!-- ######## Uni Title ####### -->
-    <h2 style="text-align: center; margin-top: 20px;">(KSIU) جامعة الملك سلمان الدولية </h2>
+    <h2 style="text-align: center; margin-top: 20px;"> جامعة الملك سلمان الدولية  <br> (KSIU)</h2>
 
     <!-- ######## Uni info ####### -->
-    <p style="text-align: center;">جامعة أهلية تابعة مباشرة لوزارة التعليم العالي والبحث العلمي. تأسست بموجب قرار رئيس الجمهورية رقم 00 لسنة 2020.</p>
+    <p style="text-align: center;">جامعة أهلية تتبع وزارة التعليم العالي والبحث العلمي بشكل مباشر لها 3 فروع في محافظة جنوب سيناء <br> أنشئت وفقًا للقرار الجمهوري رقم 434 لسنة 2020</p>
 
     <!-- ######## Uni Location ####### -->
-    <p style="text-align: center;">تقع في .</p>
+    <p style="text-align: center;">يقع مقر مدينة الطور على مساحة 270 فدانا، ويضم قاعة مؤتمرات وسكن للطلبة وسكن أعضاء هيئة التدريس، ومركز للخدمات الطلابية وتم الانتهاء من الإنشاءات بنسبة 95
+<br>
+يقع مقر مدينة رأس سدر على مساحة 45 فدانا، ويضم مبنى للإدارة، والمكتبة، وسكن للطلبة، وسكن للطالبات ٢٣٤٠، وسكن أعضاء هيئة التدريس وتم الانتهاء من الإنشاءات بنسبة 95
+<br>
+يقع مقر مدينة شرم الشيخ على مساحة 35 فدانا، ويضم فندق، وسكن للطلبة، وسكن للطالبات، وسكن لأعضاء هيئة التدريس، ومنطقة رياضية تحتوي على (ملعب متعدد - ٢ ملعب تنس – حمام سباحة نصف أوليمبي) وتم الانتهاء من الإنشاءات بنسبة 95</p>
     <a href="enter the actual link here" style="display: block; text-align: center;">
-        <button>عرض الموقع على الخرائط</button>
+        <button> (الطور) عرض الموقع على الخرائط</button>
+        <button> (راس سدر) عرض الموقع على الخرائط</button>
+        <button> (شرم الشيخ) عرض الموقع على الخرائط</button>
     </a>
 
     <!-- ######## Social Media Links ####### -->
-    <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
+        <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
         <ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
-            <li><a href="enter the actual website link here"><i class="fas fa-globe"></i></a></li>
-            <li><a href="tel:enter the actual phone number here"><i class="fas fa-phone"></i></a></li>
-            <li><a href="mailto:enter the actual email here"><i class="fas fa-envelope"></i></a></li>
-            <li><a href="enter the actual Facebook link here"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a href="enter the actual Instagram link here"><i class="fab fa-instagram"></i></a></li>
-            <li><a href="enter the actual YouTube link here"><i class="fab fa-youtube"></i></a></li>
-            <li><a href="enter the actual LinkedIn link here"><i class="fab fa-linkedin-in"></i></a></li>
-        </ul>
-    </div>
+        <li><a href="https://ksiu.edu.eg"><i class="fas fa-globe"></i></a></li>
+        <li><a href="tel:16949"><i class="fas fa-phone"></i></a></li>
+        <li><a href="mailto:info@ksiu.edu.eg"><i class="fas fa-envelope"></i></a></li>
+        <li><a href="https://facebook.com/ksiu"><i class="fab fa-facebook-f"></i></a></li>
+        <li><a href="https://instagram.com/ksiu"><i class="fab fa-instagram"></i></a></li>
+        <li><a href="https://youtube.com/ksiu"><i class="fab fa-youtube"></i></a></li>
+        <li><a href="https://linkedin.com/in/ksiu"><i class="fab fa-linkedin-in"></i></a></li>
+    </ul>
+</div>
 </div>
 <br> <br>
             <div class="table-responsive">
@@ -74,7 +80,7 @@
                 </table>
             </div>
 <p>
-    ● الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت).
+      الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت)
 </p>
         </section>
 
@@ -296,7 +302,7 @@ th {
 }
 
 button {
-  margin-Bottom: 1opx
+  margin-bottom: 10px;
   border-radius: 5px; 
   margin-right: 10px;
 }

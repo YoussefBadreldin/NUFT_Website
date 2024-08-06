@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <img id="logo" src="/images/logo.png" alt="NUFT Logo">
+    <img id="logo" src="/images/StayTuned.png" alt="NUFT Logo">
     <div id="slogan">Your Guide to Universities in Egypt</div>
     <div id="stay-tuned">Coming Soon!</div>
     <a id="follow-us" href="https://cutt.ly/teuctojo" target="_blank">Follow Us</a>
@@ -18,7 +18,6 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #001D3D ;
 }
 
 .container {
@@ -40,12 +39,12 @@ margin-bottom: 20px;
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #D9D9D9;
+  color: #001D3D ;
 }
 
 #stay-tuned {
   font-style: italic;
-  color: #D9D9D9;
+  color: #001D3D ;
   margin-bottom: 20px;
 }
 
@@ -53,7 +52,7 @@ margin-bottom: 20px;
   padding: 10px 20px;
   font-size: 16px;
   text-decoration: none;
-  color: #FFFFFF;
+  color: #001D3D ;
   background-color: #FFBF00;
   border-radius: 5px;
   display: inline-block;

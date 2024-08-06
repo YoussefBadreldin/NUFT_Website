@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <img id="logo" src="/images/logo.png" alt="NUFT Logo">
+    <img id="logo" src="logo.png" alt="NUFT Logo">
     <div id="slogan">Your Guide to Universities in Egypt</div>
     <div id="stay-tuned">Coming Soon!</div>
     <a id="follow-us" href="https://cutt.ly/teuctojo" target="_blank">Follow Us</a>
@@ -9,8 +9,8 @@
 
 <script>
 export default {
-  name: 'NUFTEG'
-}
+  name: 'NufEG',
+};
 </script>
 
 <style scoped>
@@ -18,7 +18,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #001D3D ;
+  background-color: #001D3D;
 }
 
 .container {
@@ -31,9 +31,9 @@ body {
 }
 
 #logo {
-  max-width: 100%;
+  max-width: 100%; 
   margin-top: -100px;
-margin-bottom: 20px; 
+  margin-bottom: -100px;
 }
 
 #slogan {
@@ -56,6 +56,6 @@ margin-bottom: 20px;
   color: #FFFFFF;
   background-color: #FFBF00;
   border-radius: 5px;
-  display: inline-block;
+  display: inline-block; 
 }
 </style>

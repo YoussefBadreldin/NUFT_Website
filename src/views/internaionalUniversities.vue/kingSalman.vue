@@ -263,13 +263,13 @@ export default {
             let mapLink = '';
             switch(location) {
                 case 'الطور':
-                    mapLink = 'enter the actual link here';
+                    mapLink = 'https://goo.gl/maps/E4fviPSqcdWtmMvf8?coh=178573&entry=tt';
                     break;
                 case 'راس سدر':
-                    mapLink = 'enter the actual link here';
+                    mapLink = 'https://goo.gl/maps/kZzF5udbmPRdFuNJA?coh=178573&entry=tt';
                     break;
                 case 'شرم الشيخ':
-                    mapLink = 'enter the actual link here';
+                    mapLink = 'https://goo.gl/maps/i6uAZuZowDPBNV9R9?coh=178573&entry=tt';
                     break;
             }
             window.open(mapLink, '_blank');

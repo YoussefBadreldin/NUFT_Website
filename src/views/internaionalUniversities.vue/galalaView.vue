@@ -31,8 +31,9 @@
         </ul>
     </div>
 </div>
-<br> <br>
-            <div class="table-responsive">
+            <br><br>
+            <h1>الكليات والبرامج</h1>
+            <div class="table-responsive" dir="rtl">
                 <table style="margin-top:0vh;" dir="rtl">
                     <thead>
                         <tr>
@@ -177,11 +178,12 @@
        <section>
        <br> <br>
     <h1>المنح الدراسية</h1>
-    <p>تفاصيل المنح الدراسية</p>
+            <p>توفر الجامعة مجموعة مختلفة من المنح الدراسية</p>
     <a :href="register_link_transportation" target="_blank"><button>مزيد من التفاصيل عن المنح الدراسية</button></a>
 </section>
 <section>
-<br> <br>
+            <br><br>
+            <h1>طرق التقديم</h1>
     <a :href="Admission_link_natives" target="_blank"><button>رابط التقديم للطلاب الوافدين</button></a>
     <a :href="transfer_link_egyption" target="_blank"><button>رابط التحويل للطلاب المصريين</button></a>
     <a :href="international_program_link" target="_blank"><button>رابط التقديم للطلاب المصريين (البرامج الدولية)</button></a>

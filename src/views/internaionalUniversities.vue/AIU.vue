@@ -312,8 +312,6 @@ export default {
 </script>
 
 
-
-
 <style scoped>
 .view_location {
     margin-top: 20vh;
@@ -350,11 +348,13 @@ td {
 
 th {
     background-color: black;
+    color: white;
     text-align: center;
 }
 
 button {
-  border-radius: 5px; 
-  margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px; 
+    margin-right: 10px;
 }
 </style>

@@ -347,11 +347,13 @@ td {
 
 th {
     background-color: black;
+    color: white;
     text-align: center;
 }
 
 button {
-  border-radius: 5px; 
-  margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px; 
+    margin-right: 10px;
 }
 </style>

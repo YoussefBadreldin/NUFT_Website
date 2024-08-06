@@ -10,25 +10,28 @@
     <h2 style="text-align: center; margin-top: 20px;">(GU) جامعة الجلالة </h2>
 
     <!-- ######## Uni info ####### -->
-    <p style="text-align: center;">جامعة أهلية تابعة مباشرة لوزارة التعليم العالي والبحث العلمي. تأسست بموجب قرار رئيس الجمهورية رقم 00 لسنة 2020.</p>
+    <p style="text-align: center;">جامعة أهلية تتبع وزارة التعليم العالي والبحث العلمي بشكل مباشر.
+    <br>
+أنشئت وفقًا للقرار الجمهوري رقم 436 لسنة 2020
+</p>
 
     <!-- ######## Uni Location ####### -->
-    <p style="text-align: center;">تقع في .</p>
+    <p style="text-align: center;">تقع على مساحة 173 فدانا، ويضم مستشفى تعليمي بطاقة 577 سريرًا، وسكنًا خاصًا للطلاب وأعضاء هيئة التدريس .</p>
     <a href="enter the actual link here" style="display: block; text-align: center;">
         <button>عرض الموقع على الخرائط</button>
     </a>
 
     <!-- ######## Social Media Links ####### -->
     <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
-        <ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
-            <li><a href="enter the actual website link here"><i class="fas fa-globe"></i></a></li>
-            <li><a href="tel:enter the actual phone number here"><i class="fas fa-phone"></i></a></li>
-            <li><a href="mailto:enter the actual email here"><i class="fas fa-envelope"></i></a></li>
-            <li><a href="enter the actual Facebook link here"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a href="enter the actual Instagram link here"><i class="fab fa-instagram"></i></a></li>
-            <li><a href="enter the actual YouTube link here"><i class="fab fa-youtube"></i></a></li>
-            <li><a href="enter the actual LinkedIn link here"><i class="fab fa-linkedin-in"></i></a></li>
-        </ul>
+<ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
+    <li><a href="https://www.gu.edu.eg"><i class="fas fa-globe"></i></a></li>
+    <li><a href="tel:15888"><i class="fas fa-phone"></i></a></li>
+    <li><a href="mailto:info@gu.edu.eg"><i class="fas fa-envelope"></i></a></li>
+    <li><a href="https://www.facebook.com/gu.edu.eg"><i class="fab fa-facebook-f"></i></a></li>
+    <li><a href="https://www.instagram.com/gu.edu.eg"><i class="fab fa-instagram"></i></a></li>
+    <li><a href="https://www.youtube.com/user/gu.edu.eg"><i class="fab fa-youtube"></i></a></li>
+    <li><a href="https://www.linkedin.com/school/gu.edu.eg"><i class="fab fa-linkedin-in"></i></a></li>
+</ul>
     </div>
 </div>
             <br><br>
@@ -87,8 +90,8 @@
                 <table>
                     <thead>
                         <tr>
-                           <th rowspan="2">الكلية</th>
-                            <th rowspan="2">البرامج</th>
+                           <th rowspan="2">البرامج</th>
+                            <th rowspan="2">التفاصيل</th>
                             <th rowspan="2">الرسوم للمصريين</th>
                             <th rowspan="2">الرسوم للوافدين</th>
                             <th rowspan="2">الشعبة</th>
@@ -312,8 +315,6 @@ export default {
 </script>
 
 
-
-
 <style scoped>
 .view_location {
     margin-top: 20vh;
@@ -350,12 +351,13 @@ td {
 
 th {
     background-color: black;
+    color: white;
     text-align: center;
 }
 
 button {
-  border-radius: 5px; 
-  margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px; 
+    margin-right: 10px;
 }
-
 </style>

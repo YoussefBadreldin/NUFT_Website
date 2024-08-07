@@ -53,7 +53,7 @@ export default {
                     link: '/status/UGRAD/National',
                     imgSrc: '/images/Universites/Status/NationalStatus.png',
                     altText: 'National Universities',
-                    title: 'الجامعات الاهلية',
+                    title: 'حالة تقديمات الجامعات الاهلية',
                 }/*,
                 {
                     link: 'status/UGRAD/public',

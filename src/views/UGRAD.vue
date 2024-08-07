@@ -18,7 +18,7 @@
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/NationalGuide.png" alt="National Universities">
                                 <div class="Box-det" style="text-align: center;">
-                                    <h6>الجامعات الاهلية</h6>
+                                    <h6>دليل الجامعات الاهلية</h6>
                                 </div>
                             </div>
                         </router-link>

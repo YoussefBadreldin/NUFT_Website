@@ -2,7 +2,7 @@
     <div>
         <header-component />
         <div class="page-nav row">
-            <h2>المنح</h2>
+            <h2>منح المرحلة الجامعية</h2>
             <ul>
             </ul>
         </div>

@@ -15,7 +15,7 @@
                             <div class="Box-card">
                                 <img src="/images/Categories/UGRADStatus.png" alt="">
                                 <div class="Box-det" style="text-align: center;">
-                                    <h6>مرحلة الباكلريوس</h6>
+                                    <h6>منح المرحلة الجامعية</h6>
                                 </div>
                             </div>
                         </a>

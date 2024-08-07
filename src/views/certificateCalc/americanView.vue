@@ -4,7 +4,7 @@
         <header-component />
         <!-- Page Title -->
         <div class="page-nav row">
-            <h2>الدبلومة الامريكية</h2>
+            <h2>معادلة الدبلومة الامريكية</h2>
         </div>
 
 <!-- قسم المحتوى -->
@@ -12,7 +12,6 @@
     <div class="row">
         <div class="col-md-6 col-12">
             <div class="block p-4 mb-4 bg-white rounded-lg border">
-                <h3 style="text-align: center;"><strong>احسب مجموعك</strong></h3>
                 <div class="form-group">
                     <label for="Exam">:الامتحان</label>
                     <select class="custom-select w-auto d-block" v-model="selectedExam" @change="showSuitable">

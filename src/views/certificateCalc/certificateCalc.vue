@@ -18,7 +18,7 @@
                                 <div class="Box-card">
                                     <img src="/images/Certificates/American.png" alt="">
                                     <div class="Box-det" style="text-align:center;">
-                                        <h6>الدبلومة الامريكية</h6>
+                                        <h6>معادلة الدبلومة الامريكية</h6>
                                         <ul>
                                         </ul>
                                     </div>
@@ -30,7 +30,7 @@
                                 <div class="Box-card">
                                     <img src="/images/Certificates/IGCSE.png" alt="">
                                     <div class="Box-det" style="text-align:center;">
-                                        <h6>الثانوية البريطانية</h6>
+                                        <h6>معادلة الثانوية البريطانية</h6>
                                         <ul>
                                         </ul>
                                     </div>

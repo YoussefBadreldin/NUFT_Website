@@ -4,7 +4,7 @@
         <header-component />
 
         <div class="page-nav row">
-            <h2>الثانوية البرطانية</h2>
+            <h2>معادلة الثانوية البرطانية</h2>
         </div>
 
         <!-- Body -->
@@ -13,7 +13,6 @@
                 <!-- Score Calculation Section -->
                 <div class="col-md-6 col-12">
                     <div class="block p-4 mb-4 bg-white rounded-lg border">
-                        <h3 class="text-center"><strong>احسب مجموعك</strong></h3>
                         <div id="igcse" class="score-form">
                             <!-- IGCSE score form -->
                             <div class="form-group">

@@ -16,7 +16,7 @@
 </p>
 
     <!-- ######## Uni Location ####### -->
-    <p style="text-align: center;">تقع على مساحة 32 فدانا</p>
+    <p style="text-align: center;">تقع على مساحة 32 فدانا بمدينة الشيخ زايد، محافظة الجيزة</p>
     <a href="https://goo.gl/maps/XTF9ZnTdsqf3ApdJ7?coh=178573&entry=tt" style="display: block; text-align: center;">
         <button>عرض الموقع على الخرائط</button>
     </a>

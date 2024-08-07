@@ -11,25 +11,27 @@
                 
                 <!-- ######## Uni info ####### -->
                 <p style="text-align: center;">
-                    جامعة أهلية تتبع وزارة التعليم العالي والبحث العلمي بشكل مباشر لها 3 فروع في محافظة جنوب سيناء <br> أنشئت وفقًا للقرار الجمهوري رقم 434 لسنة 2020
+                جامعة أهلية تتبع وزارة التعليم العالي والبحث العلمي بشكل مباشر
+                   <br>
+                    أنشئت وفقًا للقرار الجمهوري رقم 436 لسنة 2020
                 </p>
                 
     <!-- ######## Uni Location ####### -->
-    <p style="text-align: center;">تقع على مساحة 173 فدانا، ويضم مستشفى تعليمي بطاقة 577 سريرًا، وسكنًا خاصًا للطلاب وأعضاء هيئة التدريس .</p>
-    <a href="enter the actual link here" style="display: block; text-align: center;">
+    <p style="text-align: center;">تقع على مساحة 173 فدانا، بمدينة الجلالة، محافظة مطروح وتضم مستشفى تعليمي بطاقة 577 سريرًا، وسكنًا خاصًا للطلاب وأعضاء هيئة التدريس </p>
+    <a href="https://goo.gl/maps/zyQ7JQaHfKxixSja8?coh=178573&entry=tt" style="display: block; text-align: center;">
         <button>عرض الموقع على الخرائط</button>
     </a>
                 
                 <!-- ######## Social Media Links ####### -->
                 <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
                     <ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
-                        <li><a href="https://GU.edu.eg"><i class="fas fa-globe"></i></a></li>
-                        <li><a href="tel:16949"><i class="fas fa-phone"></i></a></li>
-                        <li><a href="mailto:info@GU.edu.eg"><i class="fas fa-envelope"></i></a></li>
-                        <li><a href="https://facebook.com/GU"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="https://instagram.com/GU"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="https://youtube.com/GU"><i class="fab fa-youtube"></i></a></li>
-                        <li><a href="https://linkedin.com/in/GU"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="https://gu.edu.eg"><i class="fas fa-globe"></i></a></li>
+                        <li><a href="tel:15888"><i class="fas fa-phone"></i></a></li>
+                        <li><a href="mailto:info@gu.edu.eg"><i class="fas fa-envelope"></i></a></li>
+                        <li><a href="https://www.facebook.com/Galalaofficial"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/galalauniofficial/"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://www.youtube.com/@GUOfficial"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/galala-university/"><i class="fab fa-linkedin-in"></i></a></li>
                     </ul>
                 </div>
             </div>

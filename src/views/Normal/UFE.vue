@@ -16,7 +16,7 @@
 </p>
 
     <!-- ######## Uni Location ####### -->
-    <p style="text-align: center;">تقغ على مساحة 3.7 فدادين، وتم تخصيص مساحة 30 فدانًا إضافية للإنشاء مقر جديد، ليصبح إجمالي المساحة 33.7 فدانًا</p>
+    <p style="text-align: center;"> بتقغ على مساحة 3.7 فدادين، وتم تخصيص مساحة 30 فدانًا إضافية للإنشاء مقر جديد، ليصبح إجمالي المساحة 33.7 فدانًا بمدينة الشروق، محافظة القاهرة</p>
     <a href="https://goo.gl/maps/z7rRdwxEEbt95edC8?coh=178573&entry=tt" style="display: block; text-align: center;">
         <button>عرض الموقع على الخرائط</button>
     </a>

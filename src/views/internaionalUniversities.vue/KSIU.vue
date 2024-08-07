@@ -32,10 +32,10 @@
                         <li><a href="https://ksiu.edu.eg"><i class="fas fa-globe"></i></a></li>
                         <li><a href="tel:16949"><i class="fas fa-phone"></i></a></li>
                         <li><a href="mailto:info@ksiu.edu.eg"><i class="fas fa-envelope"></i></a></li>
-                        <li><a href="https://facebook.com/ksiu"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="https://instagram.com/ksiu"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="https://youtube.com/ksiu"><i class="fab fa-youtube"></i></a></li>
-                        <li><a href="https://linkedin.com/in/ksiu"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="https://www.facebook.com/ksiuofficial"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/ksiu.social/"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCyWTcNywa0eUYBC42YJ8Mhw"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/king-salman-international-university/"><i class="fab fa-linkedin-in"></i></a></li>
                     </ul>
                 </div>
             </div>

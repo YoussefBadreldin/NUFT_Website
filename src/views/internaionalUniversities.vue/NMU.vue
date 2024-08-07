@@ -11,25 +11,27 @@
                 
                 <!-- ######## Uni info ####### -->
                 <p style="text-align: center;">
-                    جامعة أهلية تتبع وزارة التعليم العالي والبحث العلمي بشكل مباشر لها 3 فروع في محافظة جنوب سيناء <br> أنشئت وفقًا للقرار الجمهوري رقم 434 لسنة 2020
+             جامعة أهلية تتبع وزارة التعليم العالي والبحث العلمي بشكل مباشر
+                    <br>
+                    أنشئت وفقًا للقرار الجمهوري رقم 437 لسنة 2020
                 </p>
                 
     <!-- ######## Uni Location ####### -->
-    <p style="text-align: center;">تقع على مساحة 173 فدانا، ويضم مستشفى تعليمي بطاقة 577 سريرًا، وسكنًا خاصًا للطلاب وأعضاء هيئة التدريس .</p>
-    <a href="enter the actual link here" style="display: block; text-align: center;">
+    <p style="text-align: center;">تقع على مساحة 127 فدانا، بمدينة المنصورة الجديدة، محافظة الدقهلية وتضم مبنى الإدارة، ومركز المؤتمرات، ومكتبة مركزية، والمستشفى الجامعي، ومستشفى طب الفم والأسنان، وصالات رياضية مغطاة، وملاعب مفتوحة، وصالة جيم، ومسجد بمساحة ٥٠٠ متر مربع، وسكن للطلاب، وسكن للطالبات، وسكن أعضاء هيئة التدريس .</p>
+    <a href="https://goo.gl/maps/x12V322bLZ3zmvSZ7?coh=178573&entry=tt" style="display: block; text-align: center;">
         <button>عرض الموقع على الخرائط</button>
     </a>
                 
                 <!-- ######## Social Media Links ####### -->
                 <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
                     <ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
-                        <li><a href="https://NMU.edu.eg"><i class="fas fa-globe"></i></a></li>
-                        <li><a href="tel:16949"><i class="fas fa-phone"></i></a></li>
-                        <li><a href="mailto:info@NMU.edu.eg"><i class="fas fa-envelope"></i></a></li>
-                        <li><a href="https://facebook.com/NMU"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="https://instagram.com/NMU"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="https://youtube.com/NMU"><i class="fab fa-youtube"></i></a></li>
-                        <li><a href="https://linkedin.com/in/NMU"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="https://nmu.edu.eg"><i class="fas fa-globe"></i></a></li>
+                        <li><a href="tel:01000807773"><i class="fas fa-phone"></i></a></li>
+                        <li><a href="mailto:info@nmu.edu.eg"><i class="fas fa-envelope"></i></a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=100072542972704"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/nmu_media/U"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/nmueg/"><i class="fab fa-linkedin-in"></i></a></li>
                     </ul>
                 </div>
             </div>

@@ -30,6 +30,9 @@
                         </thead>
                         <tbody>
                             <tr v-for="university in universities" :key="university.name">
+                                <td>
+                                    {{ university.faclityName }}
+                                </td>
                                 <td :style="{ color: getColor(university.transfer) }">{{ university.statusTransfer }}</td>
                                 <td :style="{ color: getColor(university.thanwyaaAmaaStatus_first) }">{{ university.thanwyaaAmaaStatus_first }}</td>
                                  <td :style="{ color: getColor(university.thanwyaaAmaaStatus_second) }">{{ university.thanwyaaAmaaStatus_second }}</td>
@@ -38,11 +41,6 @@
                                    <td :style="{ color: getColor(university.StemNileCertificates_first) }">{{ university.StemNileCertificates_first }}</td>    
                                 <td :style="{ color: getColor(university.StemNileCertificates_second) }">{{ university.StemNileCertificates_second }}</td>
                                   <td :style="{ color: getColor(university.internationalStudents) }">{{ university.InternationalStudents }}</td>
-                                <td>
-                                    {{ university.faclityName }}
-                                    <i class="fa fa-bell notification-bell" :class="{ active: university.isSubscribed }"
-                                        @click="toggleSubscription(university)"></i>
-                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -74,57 +72,6 @@ export default {
             firstYear: '',
             secondYear: '',
             universities: [
-                // Uncomment and update these with actual data as needed
-                /*
-                {
-                    name: 'الجامعة الفرنسية في مصر',
-                    transfer: 'لم يبدأ',
-                    thanwyaaAmaaStatus_first: 'لم يبدأ',
-                    thanwyaaAmaaStatus_second: 'لم يبدأ',
-                    ArabEnglishAzhariCertificates_first: 'لم يبدأ',
-                    ArabEnglishAzhariCertificates_second: 'لم يبدأ',
-                    StemNileCertificates_first: 'لم يبدأ',
-                    StemNileCertificates_second: 'لم يبدأ',
-                    InternationalStudents: 'لم يبدأ',
-                    isSubscribed: false
-                },
-                {
-                    name: 'جامعة النيل',
-                    transfer: 'متاح',
-                    thanwyaaAmaaStatus_first: 'متاح',
-                    thanwyaaAmaaStatus_second: 'متاح',
-                    ArabEnglishAzhariCertificates_first: 'متاح',
-                    ArabEnglishAzhariCertificates_second: 'متاح',
-                    StemNileCertificates_first: 'متاح',
-                    StemNileCertificates_second: 'متاح',
-                    InternationalStudents: 'متاح',
-                    isSubscribed: false
-                },
-                {
-                    name: 'الجامعة المصرية للتعلم الإلكتروني',
-                    transfer: 'انتهى',
-                    thanwyaaAmaaStatus_first: 'انتهى',
-                    thanwyaaAmaaStatus_second: 'انتهى',
-                    ArabEnglishAzhariCertificates_first: 'انتهى',
-                    ArabEnglishAzhariCertificates_second: 'انتهى',
-                    StemNileCertificates_first: 'انتهى',
-                    StemNileCertificates_second: 'انتهى',
-                    InternationalStudents: 'انتهى',
-                    isSubscribed: false
-                },
-                {
-                    name: 'جامعة عين شمس الوطنية',
-                    transfer: 'تحت الإنشاء',
-                    thanwyaaAmaaStatus_first: 'تحت الإنشاء',
-                    thanwyaaAmaaStatus_second: 'تحت الإنشاء',
-                    ArabEnglishAzhariCertificates_first: 'تحت الإنشاء',
-                    ArabEnglishAzhariCertificates_second: 'تحت الإنشاء',
-                    StemNileCertificates_first: 'تحت الإنشاء',
-                    StemNileCertificates_second: 'تحت الإنشاء',
-                    InternationalStudents: 'تحت الإنشاء',
-                    isSubscribed: false
-                }
-                */
             ],
             all_data: [],
         }

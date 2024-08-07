@@ -282,7 +282,10 @@ export default {
         this.gettrans();
         console.log(this.filteredData);
         console.log('international', this.filteredInternational);
-    }
+  },
+  mounted() {
+    window.scrollTo(0, 0);
+  }
 };
 </script>
 

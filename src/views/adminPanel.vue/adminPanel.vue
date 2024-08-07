@@ -62,10 +62,6 @@
                     <label for="minimumForNatives">Wafdeen Score:</label>
                     <input type="text" v-model="minimumForNatives" id="minimumForNatives">
                 </div>
-                <div>
-                    <label for="detailsSchoolarship">Schoralships Details Link:</label>
-                    <input type="text" v-model="detailsSchoolarship" id="detailsSchoolarship">
-                </div>
                 <br>
                 <button type="submit">Add</button>
             </form>
@@ -90,10 +86,6 @@
            <div>
                 <label for="details_about_internationa_program">International programs Details:</label>
                 <input type="text" v-model="details_about_internationa_program">
-            </div>
-           <div>
-                <label for="view_location">Google maps Location link:</label>
-                <input type="text" v-model="view_location">
             </div>
             <div>
                 <label for="register_link_dorms">Dorms Details Link:</label>

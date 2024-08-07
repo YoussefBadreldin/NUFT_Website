@@ -42,7 +42,30 @@
                         <tr>
                            <th rowspan="2">الكلية</th>
                             <th rowspan="2">البرامج</th>
-                            <th rowspan="2">(في السنة) الرسوم للمصريين</th>
+                            <th rowspan="2">الرسوم للمصرين 
+                            <br>
+                             فئة أ
+                             <br>
+                            (في السنة)
+                            </th>
+                            <th rowspan="2">الرسوم للمصرين 
+                            <br>
+                             فئة ب
+                             <br>
+                            (في السنة)
+                            </th>
+                           <th rowspan="2">الرسوم للمصرين 
+                            <br>
+                             فئة ج
+                             <br>
+                            (في السنة)
+                            </th>
+                            <th rowspan="2">الرسوم للمصرين 
+                            <br>
+                             فئة د
+                             <br>
+                            (في السنة)
+                            </th>
                             <th rowspan="2">(في السنة) الرسوم للوافدين</th>
                             <th rowspan="2">الشعبة</th>
                             <th colspan="2">الحد الأدنى  للثانوية العامة</th>
@@ -64,6 +87,9 @@
                             <td>{{ faculty.facilities }}</td>
                             <td>{{ faculty.programs }}</td>
                             <td>{{ faculty.feesEgyption }}</td>
+                            <td>{{ faculty.feesEgyption }}</td>
+                            <td>{{ faculty.feesEgyption }}</td>
+                            <td>{{ faculty.feesEgyption }}</td>
                             <td>{{ faculty.feesNatives }}</td>
                             <td>{{ faculty.section }}</td>
                             <td>{{ faculty.scoreFirst }}</td>
@@ -80,6 +106,16 @@
 <p>
      الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت).
 </p>
+<p>
+<strong>
+فئة أ: من الي
+<br>
+فئة ب: من الي
+<br>
+فئة ج: من الي
+<br>
+فئة د: من الي
+</strong></p>
         </section>
 
         <section>

@@ -31,6 +31,14 @@ import MansNU from "../views/affiliated/MansNU.vue";
 import HNU from "../views/affiliated/HNU.vue";
 import BNU from "../views/affiliated/BNU.vue";
 import BSNU from "../views/affiliated/BSNU.vue";
+import SVNU from "../views/affiliated/SVNU.vue";
+import ZNU from "../views/affiliated/ZNU.vue";
+import MiniaNU from "../views/affiliated/MiniaNU.vue";
+import MenofiaNU from "../views/affiliated/MenofiaNU.vue";
+import EPNU from "../views/affiliated/EPNU.vue";
+import AlexNU from "../views/affiliated/AlexNU.vue";
+import AssuitNU from "../views/affiliated/AssuitNU.vue";
+import NINU from "../views/affiliated/NINU.vue";
 import getUsers from "../views/adminPanel.vue/users.vue";
 import ContactList from "../views/adminPanel.vue/getContact.vue";
 
@@ -214,6 +222,46 @@ const routes = [
     path: '/Guide/UGRAD/National/BSNU',
     name: 'BSNU',
     component: BSNU,
+  },
+  {
+    path: '/Guide/UGRAD/National/SVNU',
+    name: 'SVNU',
+    component: SVNU,
+  },
+  {
+    path: '/Guide/UGRAD/National/ZNU',
+    name: 'ZNU',
+    component: ZNU,
+  },
+  {
+    path: '/Guide/UGRAD/National/MiniaNU',
+    name: 'MiniaNU',
+    component: MiniaNU,
+  },
+  {
+    path: '/Guide/UGRAD/National/MenofiaNU',
+    name: 'MenofiaNU',
+    component: MenofiaNU,
+  },
+  {
+    path: '/Guide/UGRAD/National/EPNU',
+    name: 'EPNU',
+    component: EPNU,
+  },
+  {
+    path: '/Guide/UGRAD/National/AlexNU',
+    name: 'AlexNU',
+    component: AlexNU,
+  },
+  {
+    path: '/Guide/UGRAD/National/AssuitNU',
+    name: 'AssuitNU',
+    component: AssuitNU,
+  },
+  {
+    path: '/Guide/UGRAD/National/NINU',
+    name: 'NINU',
+    component: NINU,
   },
   {
     path: '/users',

@@ -33,14 +33,14 @@
                                 <td>
                                     {{ university.faclityName }}
                                 </td>
-                                <td :style="{ color: getColor(university.transfer) }">{{ university.statusTransfer }}</td>
+                                <td :style="{ color: getColor(university.statusTransfer) }">{{ university.statusTransfer }}</td>
                                 <td :style="{ color: getColor(university.thanwyaaAmaaStatus_first) }">{{ university.thanwyaaAmaaStatus_first }}</td>
                                  <td :style="{ color: getColor(university.thanwyaaAmaaStatus_second) }">{{ university.thanwyaaAmaaStatus_second }}</td>
                                   <td :style="{ color: getColor(university.ArabEnglishAzhariCertificates_first) }">{{ university.ArabEnglishAzhariCertificates_first }}</td>
                                   <td :style="{ color: getColor(university.ArabEnglishAzhariCertificates_second) }">{{ university.ArabEnglishAzhariCertificates_second }}</td>
                                    <td :style="{ color: getColor(university.StemNileCertificates_first) }">{{ university.StemNileCertificates_first }}</td>    
                                 <td :style="{ color: getColor(university.StemNileCertificates_second) }">{{ university.StemNileCertificates_second }}</td>
-                                  <td :style="{ color: getColor(university.internationalStudents) }">{{ university.InternationalStudents }}</td>
+                                <td :style="{ color: getColor(university.InternationalStudents) }">{{ university.InternationalStudents }}</td>
                             </tr>
                         </tbody>
                     </table>

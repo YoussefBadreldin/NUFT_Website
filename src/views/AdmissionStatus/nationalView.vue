@@ -74,26 +74,6 @@ export default {
         }
     },
     methods: {
-        toggleSubscription(university) {
-            university.isSubscribed = !university.isSubscribed;
-            // In a real application, you would send a request to your backend to handle subscription logic
-            if (university.isSubscribed) {
-                alert(`تم الاشتراك في إشعارات ${university.name}`);
-            } else {
-                alert(`تم إلغاء الاشتراك من إشعارات ${university.name}`);
-            }
-        },
-        toggleSubscribeAll() {
-            this.universities.forEach(university => {
-                university.isSubscribed = !university.isSubscribed;
-            });
-            // In a real application, you would send a request to your backend to handle subscription logic for all universities
-            if (this.universities[0].isSubscribed) {
-                alert(`تم الاشتراك في إشعارات جميع الجامعات`);
-            } else {
-                alert(`تم إلغاء الاشتراك من إشعارات جميع الجامعات`);
-            }
-        },
         getColor(status) {
             switch (status) {
                 case 'انتهى':

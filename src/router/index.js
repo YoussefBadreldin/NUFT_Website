@@ -18,11 +18,15 @@ import signUp from "../views/signup/signUp.vue";
 import Normal from '../views/Normal.vue';
 import interNational from '../views/interNational.vue';
 import affiliated from '../views/affiliated.vue';
-import AIU from '../views/internaionalUniversities.vue/AIU.vue';
 import adminPanel from "../views/adminPanel.vue/adminPanel.vue";
-import kingSalman from "../views/internaionalUniversities.vue/kingSalman.vue";
-import galalaUniversity from "../views/internaionalUniversities.vue/galalaView.vue";
-import newMansoura from "../views/internaionalUniversities.vue/newMansoura.vue";
+import UFE from '../views/Normal/UFE.vue';
+import NU from '../views/Normal/NU.vue';
+import EELU from '../views/Normal/EELU.vue';
+import EUI from '../views/Normal/EUI.vue';
+import AIU from '../views/internaionalUniversities.vue/AIU.vue';
+import KSIU from "../views/internaionalUniversities.vue/KSIU.vue";
+import GU from "../views/internaionalUniversities.vue/GU.vue";
+import NMU from "../views/internaionalUniversities.vue/NMU.vue";
 import MansNU from "../views/affiliated/MansNU.vue";
 import getUsers from "../views/adminPanel.vue/users.vue";
 import ContactList from "../views/adminPanel.vue/getContact.vue";
@@ -144,29 +148,49 @@ const routes = [
     component:affiliated,
   },
   {
-    path:'/Guide/UGRAD/National/AIU',
-    name:'AIU',
-    component:AIU,
-  },
-  {
     path:'/Noureldin-3la-Zeby',
     name:'adminpanel',
     component: adminPanel
   },
   {
+    path:'/Guide/UGRAD/National/UFE',
+    name:'UFE',
+    component:UFE,
+  },
+  {
+    path:'/Guide/UGRAD/National/NU',
+    name:'NU',
+    component:NU,
+  },
+  {
+    path:'/Guide/UGRAD/National/EELU',
+    name:'EELU',
+    component:EELU,
+  },
+  {
+    path:'/Guide/UGRAD/National/EUI',
+    name:'EUI',
+    component:EUI,
+  },
+  {
+    path:'/Guide/UGRAD/National/AIU',
+    name:'AIU',
+    component:AIU,
+  },
+  {
     path: '/Guide/UGRAD/National/KSIU',
-    name: 'kingSalman',
-    component: kingSalman,
+    name: 'kSIU',
+    component: KSIU,
   },
   {
     path: '/Guide/UGRAD/National/GU',
-    name: 'galalaUniversity',
-    component: galalaUniversity,
+    name: 'GU',
+    component: GU,
   },
   {
     path: '/Guide/UGRAD/National/NMU',
-    name: 'newMansoura',
-    component: newMansoura,
+    name: 'NMU',
+    component: NMU,
   },
   {
     path: '/Guide/UGRAD/National/MansNU',

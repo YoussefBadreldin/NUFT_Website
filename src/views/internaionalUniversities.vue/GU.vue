@@ -4,10 +4,10 @@
         <HeaderComponent />
          <section>
  <div style="display: flex; flex-direction: column; align-items: center;">
-    <img src="/images/Logos/Universites/National/NMU.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
+    <img src="/images/Logos/Universites/National/GU.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
 
     <!-- ######## Uni Title ####### -->
-    <h2 style="text-align: center; margin-top: 20px;">(NMU) جامعة المنصورة الجديدة </h2>
+    <h2 style="text-align: center; margin-top: 20px;">(GU) جامعة الجلالة </h2>
 
     <!-- ######## Uni info ####### -->
     <p style="text-align: center;">جامعة أهلية تتبع وزارة التعليم العالي والبحث العلمي بشكل مباشر.
@@ -202,7 +202,7 @@ import HeaderComponent from '../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../public/global/footerComponent.vue';
 
 export default {
-    name: 'newMansoura',
+    name: 'GU',
     data() {
         return {
             all_data: [],
@@ -244,8 +244,8 @@ export default {
                 }
                 if (Array.isArray(this.all_data)) {
                     console.log('All data:', this.all_data);
-                    this.filteredData = this.all_data.filter(index => index.speciality === 'NMU' && index.facality_or_international === 'facality');
-                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'NMU');
+                    this.filteredData = this.all_data.filter(index => index.speciality === 'GU' && index.facality_or_international === 'facality');
+                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'GU');
                     console.log('Filtered data:', this.filteredData);
                     console.log('Filtered international:', this.filteredInternational);
                 }
@@ -260,7 +260,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-backend.onrender.com/links/get_links');
                 this.links = response.data;
-                this.filteredLinks = this.links.filter(index => index.university_Name === 'NMU');
+                this.filteredLinks = this.links.filter(index => index.university_Name === 'GU');
                 console.log(this.filteredLinks);
                 if (this.filteredLinks.length > 0) {
                     this.firstYear = this.filteredLinks[0].first_year;
@@ -284,7 +284,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-backend.onrender.com/info/getdorms');
                 this.dorms = response.data;
-                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'NMU');
+                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'GU');
                 //console.log('dorms table', this.filteredDorms)
             } catch (error) {
                 console.log(error);
@@ -294,7 +294,7 @@ export default {
             try {
                 const response = await axios.get('http://localhost:3000/trans/gettrans');
                 this.trans = response.data;
-                this.filteredTrans = this.trans.filter(index => index.spec === 'NMU');
+                this.filteredTrans = this.trans.filter(index => index.spec === 'GU');
                 console.log('filteredTrans', this.filteredTrans)
             }
             catch (error) {

@@ -4,31 +4,34 @@
         <HeaderComponent />
          <section>
  <div style="display: flex; flex-direction: column; align-items: center;">
-    <img src="/images/Logos/Universites/National/NMU.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
+    <img src="/images/Logos/Universites/National/nmu.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
 
     <!-- ######## Uni Title ####### -->
     <h2 style="text-align: center; margin-top: 20px;">(NMU) جامعة المنصورة الجديدة </h2>
 
     <!-- ######## Uni info ####### -->
-    <p style="text-align: center;">جامعة أهلية تابعة مباشرة لوزارة التعليم العالي والبحث العلمي. تأسست بموجب قرار رئيس الجمهورية رقم 00 لسنة 2020.</p>
+    <p style="text-align: center;">جامعة أهلية تتبع وزارة التعليم العالي والبحث العلمي بشكل مباشر.
+    <br>
+أنشئت وفقًا للقرار الجمهوري رقم 436 لسنة 2020
+</p>
 
     <!-- ######## Uni Location ####### -->
-    <p style="text-align: center;">تقع في .</p>
+    <p style="text-align: center;">تقع على مساحة 173 فدانا، ويضم مستشفى تعليمي بطاقة 577 سريرًا، وسكنًا خاصًا للطلاب وأعضاء هيئة التدريس .</p>
     <a href="enter the actual link here" style="display: block; text-align: center;">
         <button>عرض الموقع على الخرائط</button>
     </a>
 
     <!-- ######## Social Media Links ####### -->
     <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
-        <ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
-            <li><a href="enter the actual website link here"><i class="fas fa-globe"></i></a></li>
-            <li><a href="tel:enter the actual phone number here"><i class="fas fa-phone"></i></a></li>
-            <li><a href="mailto:enter the actual email here"><i class="fas fa-envelope"></i></a></li>
-            <li><a href="enter the actual Facebook link here"><i class="fab fa-facebook-f"></i></a></li>
-            <li><a href="enter the actual Instagram link here"><i class="fab fa-instagram"></i></a></li>
-            <li><a href="enter the actual YouTube link here"><i class="fab fa-youtube"></i></a></li>
-            <li><a href="enter the actual LinkedIn link here"><i class="fab fa-linkedin-in"></i></a></li>
-        </ul>
+<ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
+    <li><a href="https://www.gu.edu.eg"><i class="fas fa-globe"></i></a></li>
+    <li><a href="tel:15888"><i class="fas fa-phone"></i></a></li>
+    <li><a href="mailto:info@gu.edu.eg"><i class="fas fa-envelope"></i></a></li>
+    <li><a href="https://www.facebook.com/gu.edu.eg"><i class="fab fa-facebook-f"></i></a></li>
+    <li><a href="https://www.instagram.com/gu.edu.eg"><i class="fab fa-instagram"></i></a></li>
+    <li><a href="https://www.youtube.com/user/gu.edu.eg"><i class="fab fa-youtube"></i></a></li>
+    <li><a href="https://www.linkedin.com/school/gu.edu.eg"><i class="fab fa-linkedin-in"></i></a></li>
+</ul>
     </div>
 </div>
             <br><br>
@@ -87,8 +90,8 @@
                 <table>
                     <thead>
                         <tr>
-                           <th rowspan="2">الكلية</th>
-                            <th rowspan="2">البرامج</th>
+                           <th rowspan="2">البرامج</th>
+                            <th rowspan="2">التفاصيل</th>
                             <th rowspan="2">الرسوم للمصريين</th>
                             <th rowspan="2">الرسوم للوافدين</th>
                             <th rowspan="2">الشعبة</th>
@@ -172,11 +175,11 @@
                     </tbody>
                 </table>
             </div>
-            <br> 
+            <br>
             <a :href="register_link_dorms" target="_blank"><button>رابط التسجيل</button></a>
         </section>
-      <section>
-      <br> <br>
+       <section>
+       <br> <br>
     <h1>المنح الدراسية</h1>
             <p>توفر الجامعة مجموعة مختلفة من المنح الدراسية</p>
     <a :href="register_link_transportation" target="_blank"><button>مزيد من التفاصيل عن المنح الدراسية</button></a>
@@ -241,8 +244,8 @@ export default {
                 }
                 if (Array.isArray(this.all_data)) {
                     console.log('All data:', this.all_data);
-                    this.filteredData = this.all_data.filter(index => index.speciality === 'mansoura' && index.facality_or_international === 'facality');
-                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'mansoura');
+                    this.filteredData = this.all_data.filter(index => index.speciality === 'newMansoura' && index.facality_or_international === 'facality');
+                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'newMansoura');
                     console.log('Filtered data:', this.filteredData);
                     console.log('Filtered international:', this.filteredInternational);
                 }
@@ -257,7 +260,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-backend.onrender.com/links/get_links');
                 this.links = response.data;
-                this.filteredLinks = this.links.filter(index => index.university_Name === 'mansoura');
+                this.filteredLinks = this.links.filter(index => index.university_Name === 'newMansoura');
                 console.log(this.filteredLinks);
                 if (this.filteredLinks.length > 0) {
                     this.firstYear = this.filteredLinks[0].first_year;
@@ -281,7 +284,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-backend.onrender.com/info/getdorms');
                 this.dorms = response.data;
-                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'mansoura');
+                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'newMansoura');
                 //console.log('dorms table', this.filteredDorms)
             } catch (error) {
                 console.log(error);
@@ -289,9 +292,9 @@ export default {
         },
         async gettrans() {
             try {
-                const response = await axios.get('https://nuft-backend.onrender.com/trans/gettrans');
+                const response = await axios.get('http://localhost:3000/trans/gettrans');
                 this.trans = response.data;
-                this.filteredTrans = this.trans.filter(index => index.spec === 'mansoura');
+                this.filteredTrans = this.trans.filter(index => index.spec === 'newMansoura');
                 console.log('filteredTrans', this.filteredTrans)
             }
             catch (error) {
@@ -310,6 +313,7 @@ export default {
 
 };
 </script>
+
 
 <style scoped>
 .view_location {

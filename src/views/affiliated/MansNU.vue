@@ -11,25 +11,27 @@
                 
                 <!-- ######## Uni info ####### -->
                 <p style="text-align: center;">
-                    جامعة أهلية تتبع وزارة التعليم العالي والبحث العلمي بشكل مباشر لها 3 فروع في محافظة جنوب سيناء <br> أنشئت وفقًا للقرار الجمهوري رقم 434 لسنة 2020
+                جامعة أهلية منبثقة عن جامعة المنصورة الحكومية
+                    <br> 
+                    أنشئت وفقًا للقرار الجمهوري رقم 42 لسنة 2022.
                 </p>
                 
     <!-- ######## Uni Location ####### -->
-    <p style="text-align: center;">تقع على مساحة 173 فدانا، ويضم مستشفى تعليمي بطاقة 577 سريرًا، وسكنًا خاصًا للطلاب وأعضاء هيئة التدريس .</p>
-    <a href="enter the actual link here" style="display: block; text-align: center;">
+    <p style="text-align: center;">تقع على يقع على مساحة 42 فدانا، بمدينة جمصة، محافظة الدقهلية</p>
+    <a href="https://goo.gl/maps/WnRGmzFnppyr5mNWA?coh=178573&entry=tt" style="display: block; text-align: center;">
         <button>عرض الموقع على الخرائط</button>
     </a>
                 
                 <!-- ######## Social Media Links ####### -->
                 <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
                     <ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
-                        <li><a href="https://ksiu.edu.eg"><i class="fas fa-globe"></i></a></li>
-                        <li><a href="tel:16949"><i class="fas fa-phone"></i></a></li>
-                        <li><a href="mailto:info@ksiu.edu.eg"><i class="fas fa-envelope"></i></a></li>
-                        <li><a href="https://facebook.com/ksiu"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="https://instagram.com/ksiu"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="https://youtube.com/ksiu"><i class="fab fa-youtube"></i></a></li>
-                        <li><a href="https://linkedin.com/in/ksiu"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="https://mansnu.edu.eg"><i class="fas fa-globe"></i></a></li>
+                        <li><a href="tel:01271261661"><i class="fas fa-phone"></i></a></li>
+                        <li><a href="mailto:info@mansnu.edu.eg"><i class="fas fa-envelope"></i></a></li>
+                        <li><a href="https://www.facebook.com/MansouraNationalUniversity"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/MNUEgypt/?fbclid=IwAR32aVsx3SS94z4CmFmrBHEoQqha7pWBEYoGhUrW-Xm11F61VA1S1PFt0Js"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://www.youtube.com/@MNUEgypt"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/mnuegypt/"><i class="fab fa-linkedin-in"></i></a></li>
                     </ul>
                 </div>
             </div>

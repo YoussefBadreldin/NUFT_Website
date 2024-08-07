@@ -11,25 +11,27 @@
                 
                 <!-- ######## Uni info ####### -->
                 <p style="text-align: center;">
-                    جامعة أهلية تتبع وزارة التعليم العالي والبحث العلمي بشكل مباشر لها 3 فروع في محافظة جنوب سيناء <br> أنشئت وفقًا للقرار الجمهوري رقم 434 لسنة 2020
+                    جامعة أهلية منبثقة عن جامعة المنيا الحكومية 
+                    <br>
+                     أنشئت وفقًا للقرار الجمهوري رقم 422 لسنة 2022
                 </p>
                 
     <!-- ######## Uni Location ####### -->
-    <p style="text-align: center;">تقع على مساحة 173 فدانا، ويضم مستشفى تعليمي بطاقة 577 سريرًا، وسكنًا خاصًا للطلاب وأعضاء هيئة التدريس .</p>
-    <a href="enter the actual link here" style="display: block; text-align: center;">
+    <p style="text-align: center;">تقع على مساحة 41 فدانا، بمدينة المنيا الجديدة، محافظة المنيا وتضم مباني المعامل والورش، سكن الطلاب والطالبات، المناطق الرياضية والترفيهية</p>
+    <a href="https://goo.gl/maps/SMfNwEp7RpVzUGwZ7?coh=178573&entry=tt" style="display: block; text-align: center;">
         <button>عرض الموقع على الخرائط</button>
     </a>
                 
                 <!-- ######## Social Media Links ####### -->
                 <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
                     <ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
-                        <li><a href="https://ksiu.edu.eg"><i class="fas fa-globe"></i></a></li>
-                        <li><a href="tel:16949"><i class="fas fa-phone"></i></a></li>
-                        <li><a href="mailto:info@ksiu.edu.eg"><i class="fas fa-envelope"></i></a></li>
-                        <li><a href="https://facebook.com/ksiu"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="https://instagram.com/ksiu"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="https://youtube.com/ksiu"><i class="fab fa-youtube"></i></a></li>
-                        <li><a href="https://linkedin.com/in/ksiu"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="https://www.minia.edu.eg/minia/desofnew.aspx?new_id=537498"><i class="fas fa-globe"></i></a></li>
+                        <li><a href="tel:"><i class="fas fa-phone"></i></a></li>
+                        <li><a href="mailto:"><i class="fas fa-envelope"></i></a></li>
+                        <li><a href="https://www.facebook.com/people/%D8%AC%D8%A7%D9%85%D8%B9%D8%A9-%D8%A7%D9%84%D9%85%D9%86%D9%8A%D8%A7-%D8%A7%D9%84%D8%A3%D9%87%D9%84%D9%8A%D8%A9/100085627053543/?paipv=0&eav=AfbIPlCR3rJP_m8jKcnOckx_HSBqEYQWgiR0KCuPmMdWuY2ZfFQEkVgLsa_YjK5qLuI&_rdr"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                        <li><a href=""><i class="fab fa-youtube"></i></a></li>
+                        <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
                     </ul>
                 </div>
             </div>

@@ -76,11 +76,11 @@ export default {
     methods: {
         getColor(status) {
             switch (status) {
-                case 'انتهى':
+                case 'انتهي (كل الكليات)':
                     return 'red';
-                case 'متاح':
+                case 'متاح (كل الكليات)':
                     return 'green';
-                case 'لم يبدأ':
+                case 'لم يبدأ (كل الكليات)':
                     return 'brown';
                 case 'تحت الإنشاء':
                     return 'purple';

@@ -98,9 +98,7 @@
                     <thead>
                         <tr>
                             <th>النوع</th>
-                            <th>الرسوم
-                            <br>
-                            (في الترم)</th>
+                            <th>الرسوم</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -44,7 +44,7 @@ export default {
         {
             id: 1,
             name: 'جامعة المنصورة الاهلية  ',
-            imgSrc: '/images/Logos/Universites/National/Mansnu.png',
+            imgSrc: '/images/Logos/Universites/National/MansNU.png',
             link: '/guide/UGRAD/National/MansNU'
         },
         {

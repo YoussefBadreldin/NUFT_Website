@@ -4,7 +4,7 @@
         <HeaderComponent />
         <section>
             <div style="display: flex; flex-direction: column; align-items: center;">
-                <img src="/images/Logos/Universites/National/AlexNU.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
+                <img src="/images/Logos/Universites/National/AssuitNU.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
                 
                 <!-- ######## Uni Title ####### -->
                 <h2 style="text-align: center; margin-top: 20px;">جامعة  اسيوط الاهلية<br>(ANU)</h2>
@@ -155,7 +155,7 @@ import HeaderComponent from '../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../public/global/footerComponent.vue';
 
 export default {
-    name: 'AlexNU',
+    name: 'AssuitNU',
     data() {
         return {
             all_data: [],
@@ -197,8 +197,8 @@ export default {
                 }
                 if (Array.isArray(this.all_data)) {
                     console.log('All data:', this.all_data);
-                    this.filteredData = this.all_data.filter(index => index.speciality === 'AlexNU' && index.facality_or_international === 'facality');
-                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'AlexNU');
+                    this.filteredData = this.all_data.filter(index => index.speciality === 'AssuitNU' && index.facality_or_international === 'facality');
+                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'AssuitNU');
                     console.log('Filtered data:', this.filteredData);
                     console.log('Filtered international:', this.filteredInternational);
                 } else {
@@ -212,7 +212,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-backend.onrender.com/links/get_links');
                 this.links = response.data;
-                this.filteredLinks = this.links.filter(index => index.university_Name === 'AlexNU');
+                this.filteredLinks = this.links.filter(index => index.university_Name === 'AssuitNU');
                 console.log(this.filteredLinks);
                 if (this.filteredLinks.length > 0) {
                     this.firstYear = this.filteredLinks[0].first_year;
@@ -236,7 +236,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-backend.onrender.com/info/getdorms');
                 this.dorms = response.data;
-                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'AlexNU');
+                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'AssuitNU');
                 //console.log('dorms table', this.filteredDorms)
             } catch (error) {
                 console.log(error);
@@ -246,7 +246,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-backend.onrender.com/trans/gettrans');
                 this.trans = response.data;
-                this.filteredTrans = this.trans.filter(index => index.spec === 'AlexNU');
+                this.filteredTrans = this.trans.filter(index => index.spec === 'AssuitNU');
                 console.log('filteredTrans', this.filteredTrans)
             }
             catch (error) {

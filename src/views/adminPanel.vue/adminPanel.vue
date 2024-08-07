@@ -1,333 +1,267 @@
 <template>
-  <div>
-       <div class="header-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-7 col-md-12 left-item">
-            <ul></ul>
-          </div>
-          <div class="col-lg-5 right-item">
-            <ul>
-             <li><a><strong>بث تجريبي</strong></a></li>
-            </ul>
-          </div>
+    <div class="parent">
+        <h1>NUFT Admin Panel</h1>
+        <br><br>
+        <h1>Add Universities Data</h1>        
+        <div class="container">
+            <form @submit.prevent="handleSubmit">
+                <div>
+                    <label for="facilities">Facilities:</label>
+                    <input type="text" v-model="facilities" id="facilities">
+                </div>
+                <div>
+                    <label for="facality_or_international">facality_or_international</label>
+                    <input type="text" id="facality_or_international" v-model="facality_or_international">
+                </div>
+                <div>
+                    <label for="programs">Programs:</label>
+                    <input type="text" v-model="programs" id="programs">
+                </div>
+                <div>
+                    <label for="feesEgyption">Fees (Egyptian):</label>
+                    <input type="text" v-model="feesEgyption" id="feesEgyption">
+                </div>
+                <div>
+                    <label for="feesNatives">Fees (Natives):</label>
+                    <input type="text" v-model="feesNatives" id="feesNatives">
+                </div>
+                <div>
+                    <label for="section">Section:</label>
+                    <input type="text" v-model="section" id="section">
+                </div>
+                <!-- <div>
+                    <label for="firstYearThanwyaa">First Year Thanwyaa:</label>
+                    <input type="text" v-model="firstYearThanwyaa" id="firstYearThanwyaa">
+                </div> -->
+                <div>
+                    <label for="scoreFirst">Score First Thanwya:</label>
+                    <input type="text" v-model="scoreFirst" id="scoreFirst">
+                </div>
+                <!-- <div>
+                    <label for="secondYearThanwyaa">Second Year Thanwyaa:</label>
+                    <input type="text" v-model="secondYearThanwyaa" id="secondYearThanwyaa">
+                </div> -->
+                <div>
+                    <label for="scoreSecond">Score Second thanwya:</label>
+                    <input type="text" v-model="scoreSecond" id="scoreSecond">
+                </div>
+                <!-- <div>
+                    <label for="firstYearAzhar">First Year Azhar:</label>
+                    <input type="text" v-model="firstYearAzhar" id="firstYearAzhar">
+                </div> -->
+                <div>
+                    <label for="scorefirstAzhar">Score First Azhar:</label>
+                    <input type="text" v-model="scorefirstAzhar" id="scorefirstAzhar">
+                </div>
+                <!-- <div>
+                    <label for="secondYearAzhar">Second Year Azhar:</label>
+                    <input type="text" v-model="secondYearAzhar" id="secondYearAzhar">
+                </div> -->
+                <div>
+                    <label for="scoreYearsecondAzhar">Score Second Azhar:</label>
+                    <input type="text" v-model="scoreYearsecondAzhar" id="scoreYearsecondAzhar">
+                </div>
+                <!-- <div>
+                    <label for="firstYearStem">First Year Stem:</label>
+                    <input type="text" v-model="firstYearStem" id="firstYearStem">
+                </div> -->
+                <div>
+                    <label for="scorefirstStem">Score First Stem:</label>
+                    <input type="text" v-model="scorefirstStem" id="scorefirstStem">
+                </div>
+                <!-- <div>
+                    <label for="secondYearStem">Second Year Stem:</label>
+                    <input type="text" v-model="secondYearStem" id="secondYearStem">
+                </div> -->
+                <div>
+                    <label for="scoreYearsecondStem">Score Second Stem:</label>
+                    <input type="text" v-model="scoreYearsecondStem" id="scoreYearsecondStem">
+                </div>
+                <div>
+                    <label for="minimumForNatives">Minimum for Natives:</label>
+                    <input type="text" v-model="minimumForNatives" id="minimumForNatives">
+                </div>
+                <div>
+                    <label for="speciality">Speciality:</label>
+                    <input type="text" v-model="speciality" id="speciality">
+                </div>
+                <div>
+                    <label for="detailsSchoolarship">detailsSchoolarship:</label>
+                    <input type="text" v-model="detailsSchoolarship" id="detailsSchoolarship">
+                </div>
+                <!-- <div>
+                    <label for="details_about_internationa_program">details_about_internationa_program</label>
+                    <input type="text" id='details_about_internationa_program' v-model="details_about_internationa_program">
+                </div> -->
+                <br>
+                <button type="submit">Submit</button>
+            </form>
         </div>
-      </div>
-    </div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item navbar-brand">
-            <a href="">
-              <img src="../../../images/logo.png" alt="Logo" class="d-inline-block align-top" />
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
 
-    <div class="container">
-      <div class="form-section">
-      <br> <br>
-        <h1>اضافة بيانات الجامعات</h1>
-        <br> <br>
-        <form @submit.prevent="handleSubmit">
-          <div>
-            <input type="text" v-model="speciality" id="speciality">
-            <label for="speciality">:(Short-Name) اسم الجامعة</label>
-          </div>
-          <div>
-            <input type="text" v-model="facality_or_international" id="facality_or_international">
-            <label for="facality_or_international">:(Normal / Dual) نوع البرنامج</label>
-          </div>
-          <div>
-            <input type="text" v-model="facihglities" id="facilities">
-            <label for="facilities">:(Short-Name) اسم الكلية</label>
-          </div>
-          <div>
-            <input type="text" v-model="programs" id="programs">
-            <label for="programs">:اسم البرنامج</label>
-          </div>
-          <div>
-            <input type="text" v-model="section" id="section">
-            <label for="section">:الشعبة</label>
-          </div>
-          <div>
-            <input type="text" v-model="feesEgyption" id="feesEgyption">
-            <label for="feesEgyption">:المصاريف (للمصريين)</label>
-          </div>
-          <div>
-            <input type="text" v-model="feesNatives" id="feesNatives">
-            <label for="feesNatives">:المصاريف (للوافدين)</label>
-          </div>
-          <div>
-            <input type="text" v-model="scoreFirst" id="scoreFirst">
-            <label for="scoreFirst">:الحد الادني للثانوية العامة (العام السابق)</label>
-          </div>
-          <div>
-            <input type="text" v-model="scoreSecond" id="scoreSecond">
-            <label for="scoreSecond">:الحد الادني للثانوية العامة (العام الحالي)</label>
-          </div>
-          <div>
-            <input type="text" v-model="scorefirstAzhar" id="scorefirstAzhar">
-            <label for="scorefirstAzhar">:الحد الادني للثانوية الازهرية والشهادات المعادلة (العام السابق)</label>
-          </div>
-          <div>
-            <input type="text" v-model="scoreYearsecondAzhar" id="scoreYearsecondAzhar">
-            <label for="scoreYearsecondAzhar">:الحد الادني للثانوية الازهرية والشهادات المعادلة (العام الحالي)</label>
-          </div>
-          <div>
-            <input type="text" v-model="scorefirstStem" id="scorefirstStem">
-            <label for="scorefirstStem">:الحد الادني لستيم والنيل (العام السابق)</label>
-          </div>
-          <div>
-            <input type="text" v-model="scoreYearsecondStem" id="scoreYearsecondStem">
-            <label for="scoreYearsecondStem">:الحد الادني لستيم والنيل (العام الحالي)</label>
-          </div>
-          <div>
-            <input type="text" v-model="minimumForNatives" id="minimumForNatives">
-            <label for="minimumForNatives">:الحد الادني للوافدين</label>
-          </div>
-          <div>
-            <input type="text" v-model="detailsSchoolarship" id="detailsSchoolarship">
-            <label for="detailsSchoolarship">:رابط تفاصيل المنح</label>
-          </div>
-          <br>
-          <button type="submit">اضافة</button>
+<br><br>
+
+        <h1>Add Links</h1>
+        <form @submit.prevent="links">    
+            <div>
+                <label for="first_year">first_year</label>
+                <input type="text" v-model="first_year">
+            </div>
+            <div>
+                <label for="second_year">second_year</label>
+                <input type="text" v-model="second_year">
+            </div>
+            <div>
+                <label for="details_about_internationa_program">details_about_international_program</label>
+                <input type="text" v-model="details_about_internationa_program">
+            </div>
+            <!-- <div>
+                <label for="details_about_internationa_program">details_about_international_program</label>
+                <input type="text" v-model="details_about_internationa_program">
+            </div> -->
+            <!-- <div>
+                <label for="view_location">view_location</label>
+                <input type="text" v-model="view_location">
+            </div> -->
+            <div>
+                <label for="register_link_dorms">register_link_dorms</label>
+                <input type="text" v-model="register_link_dorms">
+            </div>
+            <div>
+                <label for="register_link_transportation">register_link_transportation</label>
+                <input type="text" v-model="register_link_transportation">
+            </div>
+            <div>
+                <label for="view_location">view_location</label>
+                <input type="text" v-model="view_location">
+            </div>
+            <div>
+                <label for="register_link">Admission link for egytion</label>
+                <input type="text" v-model="register_link">
+            </div>
+            <div>
+                <label for="Admission_link_egyption">Admission_link_egyption(international)</label>
+                <input type="text" v-model="Admission_link_egyption">
+            </div>
+            <div>
+                <label for="Admission_link_natives">Admission_link_natives</label>
+                <input type="text" v-model="Admission_link_natives">
+            </div>
+            <div>
+                <label for="international_program_link">transfer link fro egyption students</label>
+                <input type="text" v-model="international_program_link">
+            </div>
+            <div>
+                <label for="transfer_link">transfer_link</label>
+                <input type="text" id="transfer_link" v-model="transfer_link">
+            </div>
+            <div>
+                <label for="university_Name">university_Name</label>
+                <input type="text" v-model="university_Name">
+            </div>
+<br>
+            <button type="submit">Submit</button>
         </form>
-      </div>
 
-      <div class="form-section">
-      <br> <br>
-        <h1>تحديث بيانات الجامعات</h1>
-        <br> <br>
-        <form @submit.prevent="updateData">
-          <button type="submit">تحديث</button>
-        </form>
-      </div>
+<br><br>
 
-      <div class="form-section">
-      <br> <br>
-        <h1>اضافة روابط واساسيات الجامعات</h1>
-        <br> <br>
-        <form @submit.prevent="links">
-          <div>
-            <input type="text" v-model="university_Name">
-            <label for="university_Name">:(Short-Name) اسم الجامعة</label>
-          </div>
-          <div>
-            <input type="text" v-model="first_year">
-            <label for="first_year">:العام السابق (يتم تضاف بداية الموسم)</label>
-          </div>
-          <div>
-            <input type="text" v-model="second_year">
-            <label for="second_year">:العام الحالي (يتم تضاف بداية الموسم)</label>
-          </div>
-          <div>
-            <input type="text" v-model="international_program_link">
-            <label for="international_program_link">:رابط تفاصيل البرامج الدولية</label>
-          </div>
-          <div>
-            <input type="text" v-model="register_link_dorms">
-            <label for="register_link_dorms">:رابط حجز السكن</label>
-          </div>
-          <div>
-            <input type="text" v-model="view_location">
-            <label for="view_location">:رابط لوكشن الجامعة</label>
-          </div>
-          <div>
-            <input type="text" v-model="register_link">
-            <label for="register_link">:رابط التقديم للمصريين</label>
-          </div>
-          <div>
-            <input type="text" v-model="Admission_link_egyption">
-            <label for="Admission_link_egyption">:رابط التقديم للمصريين (البرامج الدولية)</label>
-          </div>
-          <div>
-            <input type="text" id="transfer_link" v-model="transfer_link">
-            <label for="transfer_link">:رابط التحويل للمصريين</label>
-          </div>
-          <div>
-            <input type="text" v-model="Admission_link_natives">
-            <label for="Admission_link_natives">:رابط التقديم للوافدين</label>
-          </div>
-          <br>
-          <button type="submit">اضافة</button>
-        </form>
-      </div>
-
-      <div class="form-section">
-      <br> <br>
-        <h1>تحديث روابط واساسيات الجامعات</h1>
-        <br> <br>
-        <form @submit.prevent="updateLinks">
-          <button type="submit">تحديث</button>
-        </form>
-      </div>
-
-      <div class="form-section">
-      <br> <br>
-        <h1>اضافة سكن الجامعات</h1>
-        <br> <br>
+        <h1>Add Dorms</h1>
         <form @submit.prevent="dorms">
-          <div>
-            <input type="text" v-model="spec">
-            <label for="spec">:(Short-Name) اسم الجامعة</label>
-          </div>
-          <div>
-            <input type="text" v-model="type">
-            <label for="type">:نوع السكن (فردي / زوجي)</label>
-          </div>
-          <div>
-            <input type="text" v-model="price">
-            <label for="price">:السعر</label>
-          </div>
-          <br>
-          <button type="submit">اضافة</button>
+            <div>
+                <label for="type">Type</label>
+                <input type="text" id="type" v-model="type">
+            </div>
+            <div>
+                <label for="price">Price</label>
+                <input type="text" id="price" v-model="price">
+            </div>
+            <div>
+                <label for="spec">spec</label>
+                <input type="text" id="spec" v-model="spec">
+            </div>
+            <br>
+            <button type="submit">Submit</button>
         </form>
-      </div>
 
-      <div class="form-section">
-      <br> <br>
-        <h1>تحديث سكن الجامعات</h1>
-        <br> <br>
-        <form @submit.prevent="updateDorms">
-          <button type="submit">تحديث</button>
-        </form>
-      </div>
+<br><br>
 
-      <div class="form-section">
-      <br> <br>
-        <h1>اضافة انتقالات الجامعات</h1>
-        <br> <br>
+        <h1>Add Transportation</h1>
         <form @submit.prevent="trans">
-          <div>
-            <input type="text" v-model="spec2">
-            <label for="spec2">:(Short-Name) اسم الجامعة</label>
-          </div>
-          <div>
-            <input type="text" v-model="type2">
-            <label for="type2">:الخط</label>
-          </div>
-          <div>
-            <input type="text" v-model="price2">
-            <label for="price2">:السعر</label>
-          </div>
-          <br>
-          <button type="submit">اضافة</button>
-        </form>
-      </div>
-
-      <div class="form-section">
-      <br> <br>
-        <h1>تحديث انتقالات الجامعات</h1>
-        <br> <br>
-        <form @submit.prevent="updateTrans">
-          <button type="submit">تحديث</button>
-        </form>
-      </div>
-
-<br> <br>
-<h1>إضافة حالة الجامعات</h1>
-<br> <br>
-<form @submit.prevent="admission">
-<div>
-          <input type="text" v-model="addmission_spec" id="addmission_spec">
-          <label for="addmission_spec">:نوع الجامعة</label>
-        </div>
-        <div>
-          <input type="text" v-model="f_name" id="f_name">
-          <label for="f_name">:اسم الجامعة</label>
-        </div>
-        <div>
-          <input type="text" v-model="status_transfer" id="status_transfer">
-          <label for="status_transfer">:حالة التحويل</label>
-        </div>
-        <div>
-          <input type="text" v-model="thanwyaaAmaaStatus_first" id="thanwyaaAmaaStatus_first">
-          <label for="thanwyaaAmaaStatus_first">:حالة تقديم الثانوية العامة (العام السابق)</label>
-        </div>
-        <div>
-          <input type="text" v-model="thanwyaaAmaaStatus_second" id="thanwyaaAmaaStatus_second">
-          <label for="thanwyaaAmaaStatus_second">:حالة تقديم الثانوية العامة (العام الحالي)</label>
-        </div>
-        <div>
-          <input type="text" v-model="ArabEnglishAzhariCertificates_first" id="ArabEnglishAzhariCertificates_first">
-          <label for="ArabEnglishAzhariCertificates_first">:حالة تقديم الازهرية والشهادات المعادلة (العام السابق)</label>
-        </div>
-        <div>
-          <input type="text" v-model="ArabEnglishAzhariCertificates_second" id="ArabEnglishAzhariCertificates_second">
-          <label for="ArabEnglishAzhariCertificates_second">:حالة تقديم الازهرية والشهادات المعادلة (العام الحالي)</label>
-        </div>
-        <div>
-          <input type="text" v-model="StemNileCertificates_first" id="StemNileCertificates_first">
-          <label for="StemNileCertificates_first">:حالة تقديم ستيم والنيل (العام السابق)</label>
-        </div>
-        <div>
-          <input type="text" v-model="StemNileCertificates_second" id="StemNileCertificates_second">
-          <label for="StemNileCertificates_second">:حالة تقديم ستيم والنيل (العام الحالي)</label>
-        </div>
-        <div>
-          <input type="text" v-model="InternationalStudents" id="InternationalStudents">
-          <label for="InternationalStudents">:حالة تقديم الوافدين</label>
-        </div>
-  <br>
-  <button type="submit">إضافة</button>
-</form>
-
-<br> <br>
-<h1>تحديث حالة الجامعات</h1>
-<br> <br>
-<form @submit.prevent="updateadmission">
-  <button type="submit">تحديث</button>
-</form>
-
-      <div class="form-section">
-      <br> <br>
-        <h1>اضافة المنح</h1>
-        <br> <br>
-        <form @submit.prevent="updateNews">
-          <!-- Same form structure as above -->
-          <br>
-          <button type="submit">اضافة</button>
-        </form>
-      </div>
-
-            <div class="form-section">
-      <br> <br>
-        <h1>تحديث المنح</h1>
-        <br> <br>
-        <form @submit.prevent="trans">
-          <!-- Same form structure as above -->
-          <br>
-          <button type="submit">تحديث</button>
+            <div>
+                <label for="type">type</label>
+                <input type="text" id="type" v-model="type2">
+            </div>
+            <div>
+                <label for="price">price</label>
+                <input type="text" id="price" v-model="price2">
+            </div>
+            <div>
+                <label for="spec">spec</label>
+                <input type="text" id="spec" v-model="spec2">
+            </div>
+            <br>
+            <button type="submit">Submit</button>
         </form>
 
-        <br> <br>
-        <h1>أضافة الاخبار</h1>
-      <br> <br>
-      <form @submit.prevent="newsfunction">
-        <div>
-          <textarea v-model="news" cols="30" rows="10"></textarea>
-          <label for="news">:تفاصيل الخبر</label>
-        </div>
-        <br>
-        <button type="submit">أضافة</button>
-      </form>
+<br><br>
 
-      <br> <br>
-      <h1>تحديث الاخبار</h1>
-      <br> <br>
-      <form @submit.prevent="updateNews">
-        <button type="submit">تحديت</button>
-      </form>
-        <br> <br>
-      </div>
+        <h1>Add News</h1>
+        <form @submit.prevent="newsfunction">
+            <div>
+                <label for="news">News</label>
+                <textarea name="" id="" cols="30" rows="10" v-model="news"></textarea>
+            </div>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+
+<br><br>
+
+        <h1>Add Admission Status</h1>
+        <form @submit.prevent="admission">
+            <div>
+                <label for="f_name">Faclity Name</label>
+                <input type="text" id="f_name" v-model="f_name">
+            </div>
+            <div>
+                <label for="spec">Specility</label>
+                <input type="text" id="spec" v-model="addmission_spec">
+            </div>
+            <div>
+                <label for="trans">statusTransfer</label>
+                <input type="text" id="trans" v-model="status_transfer">
+            </div>
+            <div>
+                <label for="thanwyaaAmaaStatus_first">thanwyaaAmaaStatus_first</label>
+                <input type="text" id="thanwyaaAmaaStatus_first" v-model="thanwyaaAmaaStatus_first">
+            </div>
+            <div>
+                <label for="thanwyaaAmaaStatus_second">thanwyaaAmaaStatus_second</label>
+                <input type="text" id="thanwyaaAmaaStatus_second" v-model="thanwyaaAmaaStatus_second">
+            </div>
+            <div>
+                <label for="ArabEnglishAzhariCertificates_first">ArabEnglishAzhariCertificates_first</label>
+                <input type="text" id="ArabEnglishAzhariCertificates_first" v-model="ArabEnglishAzhariCertificates_first">
+            </div>
+            <div>
+                <label for="ArabEnglishAzhariCertificates_second">ArabEnglishAzhariCertificates_second</label>
+                <input type="text" id="ArabEnglishAzhariCertificates_second" v-model="ArabEnglishAzhariCertificates_second">
+            </div>
+            <div>
+                <label for="StemNileCertificates_first">StemNileCertificates_first</label>
+                <input type="text" id="StemNileCertificates_first" v-model="StemNileCertificates_first">
+            </div>
+            <div>
+                <label for="StemNileCertificates_second">StemNileCertificates_second</label>
+                <input type="text" id="StemNileCertificates_second" v-model="StemNileCertificates_second">
+            </div>
+            <div>
+                <label for="InternationalStudents">InternationalStudents</label>
+                <input type="text" id="InternationalStudents" v-model="InternationalStudents">
+            </div>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
     </div>
-  </div>
 </template>
 
 <script>
@@ -463,7 +397,7 @@ export default {
                 price: this.price,
                 spec: this.spec
             }
-            axios.post('https://nuft-backend.onrender.com/adddorms', form).then(()=>{
+            axios.post('https://nuft-backend.onrender.com/info/adddorms', form).then(()=>{
                 alert('form sent successfully');
             }).catch(error=>{
                 console.log(error);
@@ -526,97 +460,4 @@ form div {
         grid-template-columns: 1fr;
     }
 }
-<style scoped>
-.nav-link {
-    color: #ced2e1 !important;
-    padding-top: 20px; 
-    padding-bottom: 20px;
-    font-size: 1.4rem;
-}
-
-.nav-link p {
-    color: red;
-    font-size: 1.2rem;
-}
-
-nav {
-    background-color: #001d3d !important;
-}
-
-.navbar-nav {
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Align items vertically */
-    width: 100%;
-}
-
-.nav-item {
-    margin: 0 10px;
-}
-
-.signup-button {
-    background-color: #ffbf00; 
-    color: #001d3d !important; 
-    padding: 15px 20px; /* Increased padding for vertical centering */
-    border-radius: 5px;
-    font-weight: bold; 
-    text-align: center; 
-}
-
-.btn-primary {
-    color: white; 
-}
-
-.navbar-brand {
-    display: flex;
-    align-items: center;
-    margin-left: -55px; 
-}
-.header-top {
-  background-color: #C70039;
-  padding: 5px 0; /* Reduced top and bottom padding */
-  color: white;
-  text-align: center;
-}
-
-.header-top .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.header-top .row {
-  width: 100%;
-}
-
-.header-top .left-item,
-.header-top .right-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.header-top .left-item ul,
-.header-top .right-item ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-}
-
-.header-top .right-item ul {
-  justify-content: center;
-}
-
-.header-top li {
-  margin-top: -20px;
-  padding: 0; /* Ensure no padding in list items */
-}
-
-.header-top .right-item a {
-  margin: 0; /* Ensure no margin around the link */
-  padding: 0; /* Ensure no padding around the link */
-  line-height: 1.5; /* Adjust line height if needed */
-}
-
 </style>

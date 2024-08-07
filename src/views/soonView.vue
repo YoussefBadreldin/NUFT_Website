@@ -3,20 +3,20 @@
     <div class="parent">
         <img src="../../images/ComingSoon.png" alt="">
     </div>
-    <smart-assistant />
+
     <footer-component />
 </template>
 
 <script>
 
     import HeaderComponent from '../../public/global/headerComponent.vue';
-    import SmartAssistant from '../../public/global/smartAssistant.vue';
+   
     import FooterComponent from '../../public/global/footerComponent.vue';
     export default{
         name: "soonView",
         components:{
             HeaderComponent,
-            SmartAssistant,
+
             FooterComponent
         }
     }

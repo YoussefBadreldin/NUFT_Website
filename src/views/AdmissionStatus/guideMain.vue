@@ -35,9 +35,6 @@
             </div>
         </div>
 
-        <!-- Include the SmartAssistant component -->
-        <SmartAssistant />
-
         <!-- Include the Footer component -->
         <FooterComponent />
 
@@ -47,14 +44,14 @@
 
 <script>
 import HeaderComponent from '../../../public/global/headerComponent.vue';
-import SmartAssistant from '../../../public/global/smartAssistant.vue';
+
 import FooterComponent from '../../../public/global/footerComponent.vue';
 
 export default {
     name:"AdmissionStatus",
     components: {
         HeaderComponent,
-        SmartAssistant,
+
         FooterComponent,
     },
 };

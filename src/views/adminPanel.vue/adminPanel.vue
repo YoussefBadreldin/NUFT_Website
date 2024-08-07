@@ -217,8 +217,8 @@
         <h1>Add Schoralships</h1>
          <form @submit.prevent="Scholarship">
             <div>
-                <label for="news">Scholarship Details:</label>
-                <textarea name="" id="" cols="30" rows="10" v-model="news"></textarea>
+                <label for="Scholarship">Scholarship Details:</label>
+                <textarea name="" id="" cols="30" rows="10" v-model="Scholarship"></textarea>
             </div>
             <br>
             <button type="submit">Add</button>

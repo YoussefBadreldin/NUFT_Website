@@ -4,10 +4,10 @@
         <HeaderComponent />
         <section>
             <div style="display: flex; flex-direction: column; align-items: center;">
-                <img src="/images/Logos/Universites/National/HNU.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
+                <img src="/images/Logos/Universites/National/MenofiaNU.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
                 
                 <!-- ######## Uni Title ####### -->
-                <h2 style="text-align: center; margin-top: 20px;">جامعة  حلوان الاهلية<br>(HNU)</h2>
+                <h2 style="text-align: center; margin-top: 20px;">جامعة  المنوفية الاهلية<br>(MNU)</h2>
                 
                 <!-- ######## Uni info ####### -->
                 <p style="text-align: center;">
@@ -155,7 +155,7 @@ import HeaderComponent from '../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../public/global/footerComponent.vue';
 
 export default {
-    name: 'HNU',
+    name: 'MenofiaNU',
     data() {
         return {
             all_data: [],
@@ -197,8 +197,8 @@ export default {
                 }
                 if (Array.isArray(this.all_data)) {
                     console.log('All data:', this.all_data);
-                    this.filteredData = this.all_data.filter(index => index.speciality === 'HNU' && index.facality_or_international === 'facality');
-                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'HNU');
+                    this.filteredData = this.all_data.filter(index => index.speciality === 'MenofiaNU' && index.facality_or_international === 'facality');
+                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'MenofiaNU');
                     console.log('Filtered data:', this.filteredData);
                     console.log('Filtered international:', this.filteredInternational);
                 } else {
@@ -212,7 +212,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-backend.onrender.com/links/get_links');
                 this.links = response.data;
-                this.filteredLinks = this.links.filter(index => index.university_Name === 'HNU');
+                this.filteredLinks = this.links.filter(index => index.university_Name === 'MenofiaNU');
                 console.log(this.filteredLinks);
                 if (this.filteredLinks.length > 0) {
                     this.firstYear = this.filteredLinks[0].first_year;
@@ -236,7 +236,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-backend.onrender.com/info/getdorms');
                 this.dorms = response.data;
-                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'HNU');
+                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'MenofiaNU');
                 //console.log('dorms table', this.filteredDorms)
             } catch (error) {
                 console.log(error);
@@ -246,7 +246,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-backend.onrender.com/trans/gettrans');
                 this.trans = response.data;
-                this.filteredTrans = this.trans.filter(index => index.spec === 'HNU');
+                this.filteredTrans = this.trans.filter(index => index.spec === 'MenofiaNU');
                 console.log('filteredTrans', this.filteredTrans)
             }
             catch (error) {

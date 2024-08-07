@@ -244,8 +244,8 @@ export default {
                 }
                 if (Array.isArray(this.all_data)) {
                     console.log('All data:', this.all_data);
-                    this.filteredData = this.all_data.filter(index => index.speciality === 'galala' && index.facality_or_international === 'facality');
-                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'galala');
+                    this.filteredData = this.all_data.filter(index => index.speciality === 'GU' && index.facality_or_international === 'facality');
+                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'GU');
                     console.log('Filtered data:', this.filteredData);
                     console.log('Filtered international:', this.filteredInternational);
                 }
@@ -260,7 +260,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-backend.onrender.com/links/get_links');
                 this.links = response.data;
-                this.filteredLinks = this.links.filter(index => index.university_Name === 'galala');
+                this.filteredLinks = this.links.filter(index => index.university_Name === 'GU');
                 console.log(this.filteredLinks);
                 if (this.filteredLinks.length > 0) {
                     this.firstYear = this.filteredLinks[0].first_year;
@@ -284,7 +284,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-backend.onrender.com/info/getdorms');
                 this.dorms = response.data;
-                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'galala');
+                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'GU');
                 //console.log('dorms table', this.filteredDorms)
             } catch (error) {
                 console.log(error);
@@ -294,7 +294,7 @@ export default {
             try {
                 const response = await axios.get('http://localhost:3000/trans/gettrans');
                 this.trans = response.data;
-                this.filteredTrans = this.trans.filter(index => index.spec === 'galala');
+                this.filteredTrans = this.trans.filter(index => index.spec === 'GU');
                 console.log('filteredTrans', this.filteredTrans)
             }
             catch (error) {

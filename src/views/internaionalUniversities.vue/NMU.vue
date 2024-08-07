@@ -84,58 +84,6 @@
             </p>
  </section>
 
-        <!-- ######## International Programs ####### -->
-        <section>
-        <br> <br>
-            <h2>البرامج الدولية</h2>
-            <div class="table-responsive" dir="rtl">
-                <table>
-                    <thead>
-                        <tr>
-                           <th rowspan="2">البرامج</th>
-                            <th rowspan="2">التفاصيل</th>
-                            <th rowspan="2">(في السنة) الرسوم للمصريين</th>
-                            <th rowspan="2">(في السنة) الرسوم للوافدين</th>
-                            <th rowspan="2">الشعبة</th>
-                            <th colspan="2">الحد الأدنى  للثانوية العامة</th>
-                            <th colspan="2">الحد الأدنى للشهادات العربية، الإنجليزية والأزهرية</th>
-                            <th colspan="2">الحد الأدنى لستيم والنيل</th>
-                            <th rowspan="2">الحد الأدنى للوافدين</th>
-                        </tr>
-                        <tr>
-                            <th>{{ firstYear }}</th>
-                            <th>{{ secondYear }}</th>
-                            <th>{{ firstYear }}</th>
-                            <th>{{ secondYear }}</th>
-                            <th>{{ firstYear }}</th>
-                            <th>{{ secondYear }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(faculty, index) in filteredInternational" :key="index">
-                            <td>{{ faculty.facilities }}</td>
-                            <td>{{ faculty.programs }}</td>
-                            <td>{{ faculty.feesEgyption }}</td>
-                            <td>{{ faculty.feesNatives }}</td>
-                            <td>{{ faculty.section }}</td>
-                            <td>{{ faculty.scoreFirst }}</td>
-                            <td>{{ faculty.scoreSecond }}</td>
-                            <td>{{ faculty.scorefirstAzhar }}</td>
-                            <td>{{ faculty.scoreYearsecondAzhar }}</td>
-                            <td>{{ faculty.scorefirstStem }}</td>
-                            <td>{{ faculty.scoreYearsecondStem }}</td>
-                            <td>{{ faculty.minimumForNatives }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-<p>
-     الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت).
-</p>
-<a :href="details_about_internationa_program" target="_blank">
-    <button>مزيد من التفاصيل عن البرامج الدولية</button>
-</a>
-        </section>
         <section>
             <br><br>
             <h2>السكن</h2>
@@ -194,7 +142,6 @@
             <h1>طرق التقديم</h1>
     <a :href="Admission_link_natives" target="_blank"><button>رابط التقديم للطلاب الوافدين</button></a>
     <a :href="transfer_link_egyption" target="_blank"><button>رابط التحويل للطلاب المصريين</button></a>
-    <a :href="international_program_link" target="_blank"><button>رابط التقديم للطلاب المصريين (البرامج الدولية)</button></a>
     <a :href="Admission_link_egyption" target="_blank"><button>رابط التقديم للطلاب المصريين</button></a>
 </section>
 

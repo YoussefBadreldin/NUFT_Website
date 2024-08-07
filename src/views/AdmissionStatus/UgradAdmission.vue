@@ -6,7 +6,7 @@
         <!-- Include the Header component -->
 
         <div class="page-nav row">
-            <h2>حالة تقديمات مرحلة الباكلريوس</h2>
+            <h2>حالة تقديمات المرحلة الجامعية</h2>
         </div>
 
         <div class="Card-Box" dir="rtl">

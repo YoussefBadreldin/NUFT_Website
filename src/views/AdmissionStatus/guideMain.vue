@@ -16,7 +16,7 @@
                             <div class="Box-card">
                                 <img src="/images/Categories/UGRADStatus.png" alt="National Universities" />
                                 <div class="Box-det" style="text-align: center;">
-                                    <h6>مرحلة الباكلريوس</h6>
+                                    <h6>حالة تقديمات المرحلة الجامعية</h6>
                                 </div>
                             </div>
                         </router-link>

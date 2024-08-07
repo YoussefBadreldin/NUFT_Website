@@ -70,9 +70,12 @@ export default {
     },
     methods: {
     search() {
-        console.log('Search query:', this.searchQuery);
-        // Implement search functionality here
+      console.log('Search query:', this.searchQuery);
+      // Implement search functionality here
     }
-    }
+  },
+  mounted() {
+    window.scrollTo(0, 0);
+  }
 };
 </script>

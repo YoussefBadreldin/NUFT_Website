@@ -5,7 +5,7 @@
 
         <!-- Page Title -->
         <div class="page-nav row">
-            <h2>دليل مرحلة الباكلريوس</h2>
+            <h2>دليل المرحة الجامعية</h2>
         </div>
 
         <!-- Cards Box -->

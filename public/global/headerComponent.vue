@@ -56,37 +56,37 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-<div class="collapse navbar-collapse" id="navbarNav">
-  <ul class="navbar-nav ml-auto">
-    <li class="nav-item">
-      <a class="nav-link" href="/Home">الرئيسية</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/universitiesGuide">دليل الجامعات</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/AdmissionStatus">حالة التقديمات</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/Scholarships">المنح</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/CertificatesCalculator">معادلة الشهادات</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/News">الاخبار</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/ContactUs">تواصل معنا</a>
-    </li>
-    <li class="nav-item" v-if="!name">
-      <a class="nav-link signup-button" href="/signup">تسجيل الدخول</a>
-    </li>
-    <li class="nav-item" v-if="name">
-      <button class="btn btn-primary btn-sm" @click="out">تسجيل الخروج</button>
-    </li>
-  </ul>
-</div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/Home">الرئيسية</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Guide">دليل الجامعات</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Status">حالة التقديمات</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Scholarships">المنح</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Calculator">معادلة الشهادات</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/News">الاخبار</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Contact">تواصل معنا</a>
+          </li>
+          <li class="nav-item" v-if="!name">
+            <a class="nav-link signup-button" href="/signup">تسجيل الدخول</a>
+          </li>
+          <li class="nav-item" v-if="name">
+            <button class="btn btn-primary btn-sm" @click="out">تسجيل الخروج</button>
+          </li>
+        </ul>
+      </div>
     </nav>
   </div>
 </template>
@@ -152,5 +152,22 @@ export default {
 
 .navbar-brand {
   margin-right: 15px; 
+}
+
+@media (min-width: 992px) {
+  .navbar-brand {
+    order: 1;
+    margin-right: 0;
+  }
+  .navbar-nav {
+    order: 0;
+    flex: 1;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+  }
+  .navbar-nav .nav-item {
+    margin-right: 0;
+    margin-left: 10px;
+  }
 }
 </style>

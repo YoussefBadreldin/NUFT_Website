@@ -14,7 +14,7 @@
                 <br>
                 <div class="row Box-ro">
                     <div class="col-md-4">
-                        <router-link to="/UniversitiesGuide/UGRAD/national">
+                        <router-link to="/Guide/UGRAD/national">
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/NationalGuide.png" alt="National Universities">
                                 <div class="Box-det" style="text-align: center;">
@@ -24,7 +24,7 @@
                         </router-link>
                     </div>
                     <!--<div class="col-md-4">
-                        <router-link to="/UniversitiesGuide/UGRAD/soon">
+                        <router-link to="/Guide/UGRAD/soon">
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/PublicGuide.png" alt="Public Universities">
                                 <div class="Box-det" style="text-align: center;">
@@ -34,7 +34,7 @@
                         </router-link>
                     </div>
                     <div class="col-md-4">
-                        <router-link to="/UniversitiesGuide/UGRAD/soon">
+                        <router-link to="/Guide/UGRAD/soon">
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/PrivateGuide.png" alt="Private Universities">
                                 <div class="Box-det" style="text-align: center;">
@@ -44,7 +44,7 @@
                         </router-link>
                     </div>
                     <div class="col-md-4">
-                        <router-link to="/UniversitiesGuide/UGRAD/soon">
+                        <router-link to="/Guide/UGRAD/soon">
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/InternationalGuide.png"
                                     alt="International Universities">
@@ -55,7 +55,7 @@
                         </router-link>
                     </div>
                     <div class="col-md-4">
-                        <router-link to="/UniversitiesGuide/UGRAD/soon">
+                        <router-link to="/Guide/UGRAD/soon">
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/SpecialGuide.png" alt="Special Nature Universities">
                                 <div class="Box-det" style="text-align: center;">
@@ -65,7 +65,7 @@
                         </router-link>
                     </div>
                     <div class="col-md-4">
-                        <router-link to="/UniversitiesGuide/UGRAD/soon">
+                        <router-link to="/Guide/UGRAD/soon">
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/TechUniGuide.png" alt="Technological Universities">
                                 <div class="Box-det" style="text-align: center;">
@@ -75,7 +75,7 @@
                         </router-link>
                     </div>
                     <div class="col-md-4">
-                        <router-link to="/UniversitiesGuide/UGRAD/soon">
+                        <router-link to="/Guide/UGRAD/soon">
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/InstitutionsGuide.png"
                                     alt="Higher Institutes, Academies & Technological Colleges">

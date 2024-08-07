@@ -8,36 +8,36 @@
             </div>
 
             <section>
-                <div class="table-responsive">
+                <div class="table-responsive" dir="rtl">
                     <table class="Stat">
                         <thead>
                             <tr>
-                                <th rowspan="2">الوافدين</th>
-                                <th colspan="2">شهادات ستيم والنيل</th>
-                                <th colspan="2">الشهادات العربية والإنجليزية والأزهرية</th>
-                                <th colspan="2">الثانوية العامة</th>
-                                <th rowspan="2">التحويل</th>
                                 <th rowspan="2">الجامعة</th>
+                                <th rowspan="2">التحويل</th>
+                                <th colspan="2">الثانوية العامة</th>
+                                <th colspan="2">الشهادات العربية والإنجليزية والأزهرية</th>
+                                <th colspan="2">شهادات ستيم والنيل</th>
+                                <th rowspan="2">الوافدين</th>
                             </tr>
                             <tr>
-                                <th>{{ secondYear }}</th>
                                 <th>{{ firstYear }}</th>
                                 <th>{{ secondYear }}</th>
                                 <th>{{ firstYear }}</th>
                                 <th>{{ secondYear }}</th>
                                 <th>{{ firstYear }}</th>
+                                <th>{{ secondYear }}</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="university in universities" :key="university.name">
-                                <td :style="{ color: getColor(university.internationalStudents) }">{{ university.InternationalStudents }}</td>
-                                <td :style="{ color: getColor(university.StemNileCertificates_second) }">{{ university.StemNileCertificates_second }}</td>
-                                <td :style="{ color: getColor(university.StemNileCertificates_first) }">{{ university.StemNileCertificates_first }}</td>
-                                <td :style="{ color: getColor(university.ArabEnglishAzhariCertificates_second) }">{{ university.ArabEnglishAzhariCertificates_second }}</td>
-                                <td :style="{ color: getColor(university.ArabEnglishAzhariCertificates_first) }">{{ university.ArabEnglishAzhariCertificates_first }}</td>
-                                <td :style="{ color: getColor(university.thanwyaaAmaaStatus_second) }">{{ university.thanwyaaAmaaStatus_second }}</td>
-                                <td :style="{ color: getColor(university.thanwyaaAmaaStatus_first) }">{{ university.thanwyaaAmaaStatus_first }}</td>
                                 <td :style="{ color: getColor(university.transfer) }">{{ university.statusTransfer }}</td>
+                                <td :style="{ color: getColor(university.thanwyaaAmaaStatus_first) }">{{ university.thanwyaaAmaaStatus_first }}</td>
+                                 <td :style="{ color: getColor(university.thanwyaaAmaaStatus_second) }">{{ university.thanwyaaAmaaStatus_second }}</td>
+                                  <td :style="{ color: getColor(university.ArabEnglishAzhariCertificates_first) }">{{ university.ArabEnglishAzhariCertificates_first }}</td>
+                                  <td :style="{ color: getColor(university.ArabEnglishAzhariCertificates_second) }">{{ university.ArabEnglishAzhariCertificates_second }}</td>
+                                   <td :style="{ color: getColor(university.StemNileCertificates_first) }">{{ university.StemNileCertificates_first }}</td>    
+                                <td :style="{ color: getColor(university.StemNileCertificates_second) }">{{ university.StemNileCertificates_second }}</td>
+                                  <td :style="{ color: getColor(university.internationalStudents) }">{{ university.InternationalStudents }}</td>
                                 <td>
                                     {{ university.faclityName }}
                                     <i class="fa fa-bell notification-bell" :class="{ active: university.isSubscribed }"

@@ -54,43 +54,43 @@ export default {
         return {
             cards: [
                 {
-                    link: '/AdmissionStatus/UGRAD/National',
+                    link: '/status/UGRAD/National',
                     imgSrc: '/images/Universites/Status/NationalStatus.png',
                     altText: 'National Universities',
                     title: 'الجامعات الاهلية',
                 }/*,
                 {
-                    link: '/UniversitiesGuide/PGRAD',
+                    link: 'status/UGRAD/public',
                     imgSrc: '/images/Universites/Status/PublicStatus.png',
                     altText: 'Public Universities',
                     title: 'الجامعات الحكومية',
                 },
                 {
-                    link: '/UniversitiesGuide/PGRAD',
+                    link: 'status/UGRAD/Private',
                     imgSrc: '/images/Universites/Status/PrivateStatus.png',
                     altText: 'Private Universities',
                     title: 'الجامعات الخاصة',
                 },
                 {
-                    link: '/UniversitiesGuide/PGRAD',
+                    link: 'status/UGRAD/International'',
                     imgSrc: '/images/Universites/Status/InternationalStatus.png',
                     altText: 'International Universities',
                     title: 'الجامعات الدولية',
                 },
                 {
-                    link: '/UniversitiesGuide/PGRAD',
+                    link: 'status/UGRAD/Special',
                     imgSrc: '/images/Universites/Status/SpecialStatus.png',
                     altText: 'Special Nature Universities',
                     title: 'الجامعات ذات طبيعة خاصة',
                 },
                 {
-                    link: '/UniversitiesGuide/PGRAD',
+                    link: 'status/UGRAD/Tech',
                     imgSrc: '/images/Universites/Status/TechUniStatus.png',
                     altText: 'Technological Universities',
                     title: 'الجامعات التكنولوجية',
                 },
                 {
-                    link: '/UniversitiesGuide/PGRAD',
+                    link: 'status/UGRAD/HigherInst,
                     imgSrc: '/images/Universites/Status/AllInstitutionsStatus.png',
                     altText: 'Higher Institutes, Academies & Technological Colleges',
                     title: 'المعاهد العليا والاكاديميات والكليات التكنولوجية',

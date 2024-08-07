@@ -15,17 +15,17 @@
         <h3><br>أنواع الجامعات الاهلية</h3>
         <div class="row Box-ro">
             <div class="col-md-4">
-            <router-link to="/UniversitiesGuide/UGRAD/soon">
+            <router-link to="/Guide/UGRAD/National/Normal">
                 <div class="Box-card">
                 <img src="/images/Categories/NormalNU.png" alt="Normal National Universities">
                 <div class="Box-det" style="text-align: center;">
-                    <h6>الجامعات الاهلية التقليدية</h6>
+                    <h6>الجامعات الاهلية</h6>
                 </div>
                 </div>
             </router-link>
             </div>
             <div class="col-md-4">
-            <router-link to="/UniversitiesGuide/UGRAD/National/International">
+            <router-link to="/Guide/UGRAD/National/International">
                 <div class="Box-card">
                 <img src="/images/Categories/InternationalNU.png" alt="International National Universities">
                 <div class="Box-det" style="text-align: center;">
@@ -35,7 +35,7 @@
             </router-link>
             </div>
             <div class="col-md-4">
-            <router-link to="/UniversitiesGuide/UGRAD/soon">
+            <router-link to="/guide/UGRAD/National/Affiliated">
                 <div class="Box-card">
                 <img src="/images/Categories/AffiliatedNU.png" alt="Affiliated National Universities">
                 <div class="Box-det" style="text-align: center;">

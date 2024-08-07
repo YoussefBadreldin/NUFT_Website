@@ -12,7 +12,7 @@
                 <br>
                 <div class="row Box-ro">
                     <div class="col-md-4">
-                        <router-link to="/universitiesGuide/UGRAD">
+                        <router-link to="/Guide/UGRAD">
                             <div class="Box-card">
                                 <img src="/images/Categories/UGRADGuide.png" alt="National Universities">
                                 <div class="Box-det" style="text-align: center;">
@@ -22,7 +22,7 @@
                         </router-link>
                     </div>
                     <!--<div class="col-md-4">
-                        <router-link to="/UniversitiesGuide/PGRAD">
+                        <router-link to="/Guide/PGRAD">
                             <div class="Box-card">
                                 <img src="/images/Categories/PGRADGuide.png" alt="Public Universities">
                                 <div class="Box-det" style="text-align: center;">

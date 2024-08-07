@@ -14,7 +14,7 @@
                     <br>
                     <div class="row Box-ro">
                         <div class="col-md-4">
-                            <a href="/CertificatesCalculator/American">
+                            <a href="/Calculator/American">
                                 <div class="Box-card">
                                     <img src="/images/Certificates/American.png" alt="">
                                     <div class="Box-det" style="text-align:center;">
@@ -26,7 +26,7 @@
                             </a>
                         </div>
                         <div class="col-md-4">
-                            <a href="/CertificatesCalculator/IGCSE">
+                            <a href="/Calculator/IGCSE">
                                 <div class="Box-card">
                                     <img src="/images/Certificates/IGCSE.png" alt="">
                                     <div class="Box-det" style="text-align:center;">
@@ -38,7 +38,7 @@
                             </a>
                         </div>
                         <!--<div class="col-md-4">
-                            <a href="/CertificatesCalculator/Azhari">
+                            <a href="/Calculator/Azhari">
                                 <div class="Box-card">
                                     <img src="/images/Certificates/Azhari.png" alt="">
                                     <div class="Box-det" style="text-align:center;">
@@ -50,7 +50,7 @@
                             </a>
                         </div>
                         <div class="col-md-4">
-                            <a href="/CertificatesCalculator/STEM">
+                            <a href="/Calculator/STEM">
                                 <div class="Box-card">
                                     <img src="/images/Certificates/STEM.png" alt="">
                                     <div class="Box-det" style="text-align:center;">
@@ -62,7 +62,7 @@
                             </a>
                         </div>
                         <div class="col-md-4">
-                            <a href="/CertificatesCalculator/Nile">
+                            <a href="/Calculator/Nile">
                                 <div class="Box-card">
                                     <img src="/images/Certificates/Nile.png" alt="">
                                     <div class="Box-det" style="text-align:center;">
@@ -74,7 +74,7 @@
                             </a>
                         </div>
                         <div class="col-md-4">
-                            <a href="/CertificatesCalculator/Saudi">
+                            <a href="/Calculator/Saudi">
                                 <div class="Box-card">
                                     <img src="/images/Certificates/Saudi.png" alt="">
                                     <div class="Box-det" style="text-align:center;">
@@ -86,7 +86,7 @@
                             </a>
                         </div>
                         <div class="col-md-4">
-                            <a href="/CertificatesCalculator/Kuwaiti">
+                            <a href="/Calculator/Kuwaiti">
                                 <div class="Box-card">
                                     <img src="/images/Certificates/Kuwaiti.png" alt="">
                                     <div class="Box-det" style="text-align:center;">
@@ -98,7 +98,7 @@
                             </a>
                         </div>
                         <div class="col-md-4">
-                            <a href="/CertificatesCalculator/Bahraini">
+                            <a href="/Calculator/Bahraini">
                                 <div class="Box-card">
                                     <img src="/images/Certificates/Bahraini.png" alt="">
                                     <div class="Box-det" style="text-align:center;">

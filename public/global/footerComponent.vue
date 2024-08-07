@@ -2,31 +2,23 @@
   <footer>
     <div class="container">
       <div class="row">
-        <div class="col-md-6 order-md-1 glink" style="margin-top: 20px;">
+        <div class="col-md-4 order-md-1 glink" style="margin-top: 20px; text-align: center;">
           <h2>روابط سريعة</h2>
           <div class="row">
-            <div class="col-md-6">
-              <ul dir="rtl">
-                <li><a href="/AdmissionStatus"><i class="fas fa-angle-double-left"></i>حالة تقديمات الجامعات الاهلية</a></li>
-                <li><a href="/AdmissionStatus"><i class="fas fa-angle-double-left"></i>حالة تقديمات الجامعات الحكومية</a></li>
-                <li><a href="/AdmissionStatus"><i class="fas fa-angle-double-left"></i>حالة تقديمات الجامعات الخاصة</a></li>
-                <li><a href="/AdmissionStatus"><i class="fas fa-angle-double-left"></i>حالة تقديمات الجامعات الدولية</a></li>
-                <li><a href="/AdmissionStatus"><i class="fas fa-angle-double-left"></i>حالة تقديمات الجامعات التكنولوجية</a></li>
+            <div class="col-md-12">
+              <ul dir="rtl" style="display: inline-block; text-align: right;">
+                <li><a href="/Guide/UGRAD/National/Normal"><i class="fas fa-angle-double-left"></i>دليل الجامعات الاهلية</a></li>
+                <li><a href="/Guide/UGRAD/National/International"><i class="fas fa-angle-double-left"></i>دليل الجامعات الاهلية الدولية</a></li>
+                <li><a href="/Guide/UGRAD/National/Affiliated"><i class="fas fa-angle-double-left"></i>دليل الجامعات الاهلية المنبثقة</a></li>
+                <li><a href="/Status/UGRAD/National"><i class="fas fa-angle-double-left"></i>حالة تقديمات الجامعات الاهلية</a></li>
               </ul>
             </div>
-            <div class="col-md-6">
-              <ul dir="rtl">
-                <li><a href="/UniversitiesGuide"><i class="fas fa-angle-double-left"></i>دليل الجامعات الاهلية </a></li>
-                <li><a href="/UniversitiesGuide"><i class="fas fa-angle-double-left"></i>دليل الجامعات الحكومية </a></li>
-                <li><a href="/UniversitiesGuide"><i class="fas fa-angle-double-left"></i>دليل الجامعات الخاصة</a></li>
-                <li><a href="/UniversitiesGuide"><i class="fas fa-angle-double-left"></i>دليل الجامعات الدولية </a></li>
-                <li><a href="/UniversitiesGuide"><i class="fas fa-angle-double-left"></i>دليل الجامعات التكنولوجية </a></li>
-              </ul>
-            </div>
-            
           </div>
         </div>
-        <div class="col-md-6 order-md-2 about">
+        <div class="col-md-4 order-md-2">
+          <!-- Empty space -->
+        </div>
+        <div class="col-md-4 order-md-3 about" style="text-align: center;">
           <div class="foot-address">
             <div class="icon">
               <i class="fas fa-envelope-square"></i>
@@ -34,8 +26,6 @@
             <div class="addet">
               <a href="mailto:info@nufteg.com">info@nufteg.com</a>
             </div>
-          </div>
-          <div class="foot-address">
             <div class="icon">
               <i class="fab fa-whatsapp"></i>
             </div>
@@ -43,24 +33,23 @@
               <a href="http://wa.me/201285012807">+20 128 5012807</a>
             </div>
           </div>
-          <div class="social-icons" style="margin-top: 20px;">
-            <a href="https://www.facebook.com/NUFT.EG" target="_blank" style="margin-left: 13px; margin-right: 20px;">
+          <div class="social-icons" style="margin-top: 20px; display: flex; justify-content: center;">
+            <a href="https://www.facebook.com/NUFT.EG" target="_blank" style="margin: 0 10px;">
               <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="https://www.instagram.com/nuft.eg" target="_blank" style="margin-left: 10px; margin-right: 20px;">
+            <a href="https://www.instagram.com/nuft.eg" target="_blank" style="margin: 0 10px;">
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="https://www.tiktok.com/@NUFT.EG" target="_blank" style="margin-left: 10px; margin-right: 20px;">
+            <a href="https://www.tiktok.com/@NUFT.EG" target="_blank" style="margin: 0 10px;">
               <i class="fab fa-tiktok"></i>
             </a>
-            <br><br>
-            <a href="https://www.linkedin.com/company/nufteg/" target="_blank" style="margin-left: 8px; margin-right: 20px;">
+            <a href="https://www.linkedin.com/company/nufteg/" target="_blank" style="margin: 0 10px;">
               <i class="fab fa-linkedin"></i>
             </a>
-            <a href="https://www.youtube.com/@nuft_eg" target="_blank" style="margin-left: 8px; margin-right: 20px;">
+            <a href="https://www.youtube.com/@nuft_eg" target="_blank" style="margin: 0 10px;">
               <i class="fab fa-youtube"></i>
             </a>
-            <a href="https://t.me/NUFT_EG" target="_blank" style="margin-left: 10px; margin-right: 20px;">
+            <a href="https://t.me/NUFT_EG" target="_blank" style="margin: 0 10px;">
               <i class="fab fa-telegram"></i>
             </a>
           </div>
@@ -69,9 +58,9 @@
     </div>
   </footer>
   <div class="copy" style="text-align: center;">
-<div class="CopyRights">
-  <p><a href="https://pill-network.com" target="_blank" rel="noopener noreferrer">Pill Network</a> ع2024 جميع الحقوق محفوظة | تصميم وتطوير بواسطة©</p>
-</div>
+    <div class="CopyRights">
+      <p><a href="https://pill-network.com" target="_blank" rel="noopener noreferrer">Pill Network</a> ع2024 جميع الحقوق محفوظة | تصميم وتطوير بواسطة©</p>
+    </div>
   </div>
 </template>
 
@@ -111,4 +100,17 @@ ul[dir="rtl"] i {
   margin-right: 0;
 }
 
+.social-icons a {
+  margin: 0 10px; /* Adjust margin to control spacing between icons */
+}
+
+.foot-address, .social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.foot-address .icon, .foot-address .addet {
+  margin: 0 10px;
+}
 </style>

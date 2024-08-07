@@ -3,7 +3,7 @@ import MainComponent from "../views/homeView.vue";
 import UniversitiesGuide from "../views/universityView.vue";
 import UgardView from "../views/UGRAD.vue";
 import soonView from "../views/soonView.vue";
-import NationalUniversities from "../views/nationalView.vue"
+import NationalUniversities from "../views/nationalView.vue";
 import AdmissionStatus from "../views/AdmissionStatus/guideMain.vue";
 import AdmissionStatusUGRAD from "../views/AdmissionStatus/UgradAdmission.vue";
 import NationalUniversitiesAdmissionsStatus from "../views/AdmissionStatus/nationalView.vue";
@@ -15,12 +15,15 @@ import IGCSECalculator from "../views/certificateCalc/ICG.vue";
 import NewsPage from "../views/News.vue";
 import ContactUs from "../views/contactUs.vue";
 import signUp from "../views/signup/signUp.vue";
+import Normal from '../views/Normal.vue';
 import interNational from '../views/interNational.vue';
+import affiliated from '../views/affiliated.vue';
 import AIU from '../views/internaionalUniversities.vue/AIU.vue';
 import adminPanel from "../views/adminPanel.vue/adminPanel.vue";
 import kingSalman from "../views/internaionalUniversities.vue/kingSalman.vue";
-import galalaUniversity from "../views/internaionalUniversities.vue/galalaView";
-import newMansoura from "../views/internaionalUniversities.vue/newMansoura";
+import galalaUniversity from "../views/internaionalUniversities.vue/galalaView.vue";
+import newMansoura from "../views/internaionalUniversities.vue/newMansoura.vue";
+import MansNU from "../views/affiliated/MansNU.vue";
 import getUsers from "../views/adminPanel.vue/users.vue";
 import ContactList from "../views/adminPanel.vue/getContact.vue";
 
@@ -41,48 +44,48 @@ const routes = [
     component:MainComponent
   },
   {
-    path:'/universitiesGuide',
-    name:'universitiesGuide',
+    path:'/Guide',
+    name:'Guide',
     component:UniversitiesGuide
   },
   {
-    path:'/universitiesGuide/UGRAD',
-    name:"UniversitiesGuide/UGRAD",
+    path:'/Guide/UGRAD',
+    name:"Guide/UGRAD",
     component:UgardView,
   },
   {
-    path:'/UniversitiesGuide/UGRAD/soon',
-    name:'UniversitiesGuide/UGRAD/soon',
+    path:'/Guide/UGRAD/soon',
+    name:'Guide/UGRAD/soon',
     component:soonView,
   },
   {
-    path:'/UniversitiesGuide/PGRAD',
-    name:'UniversitiesGuide/PGRAD',
+    path:'/Guide/PGRAD',
+    name:'Guide/PGRAD',
     component:soonView,
   },
   {
-    path:'/UniversitiesGuide/UGRAD/national',
+    path:'/Guide/UGRAD/national',
     name:"NationalUniversities",
     component:NationalUniversities
   },
   {
-    path:"/AdmissionStatus",
-    name:"AdmissionStatus",
+    path:"/Status",
+    name:"Status",
     component:AdmissionStatus
   },
   {
-    path:"/AdmissionStatus/PGRAD",
+    path:"/Status/PGRAD",
     name:"AdmissionStatusPGRAD",
     component:soonView,
   },
   {
-    path:"/AdmissionStatus/UGRAD",
-    name:"AdmissionStatus/UGRAD",
+    path:"/Status/UGRAD",
+    name:"Status/UGRAD",
     component:AdmissionStatusUGRAD
   },
   {
-    path:"/AdmissionStatus/UGRAD/National",
-    name:"AdmissionStatus/UGRAD/National",
+    path:"/Status/UGRAD/National",
+    name:"Status/UGRAD/National",
     component:NationalUniversitiesAdmissionsStatus,
   },
   {
@@ -96,17 +99,17 @@ const routes = [
     component:ScholarshipsUGRAD
   },
   {
-    path:"/CertificatesCalculator",
-    name:"CertificatesCalculator",
+    path:"/Calculator",
+    name:"Calculator",
     component:CertificatesCalculator,
   },
   {
-    path:"/CertificatesCalculator/American",
+    path:"/Calculator/American",
     name:"americanView",
     component:americanView,
   },
   {
-    path:'/CertificatesCalculator/IGCSE',
+    path:'/Calculator/IGCSE',
     name:"IGCSECalculator",
     component:IGCSECalculator
   },
@@ -116,8 +119,8 @@ const routes = [
     component:NewsPage
   },
   {
-    path:"/ContactUs",
-    name:"ContactUs",
+    path:"/Contact",
+    name:"Contact",
     component:ContactUs
   },
   {
@@ -126,34 +129,49 @@ const routes = [
     component: signUp
   },
   {
-    path:'/UniversitiesGuide/UGRAD/National/International',
+    path:'/Guide/UGRAD/National/Normal',
+    name:'Normal',
+    component:Normal,
+  },
+  {
+    path:'/Guide/UGRAD/National/International',
     name:'interNational',
     component:interNational,
   },
   {
-    path:'/UniversitiesGuide/UGRAD/National/International/AIU',
+    path:'/Guide/UGRAD/National/affiliated',
+    name:'affiliated',
+    component:affiliated,
+  },
+  {
+    path:'/Guide/UGRAD/National/AIU',
     name:'AIU',
     component:AIU,
   },
   {
-    path:'/adminPanel',
+    path:'/Noureldin-3la-Zeby',
     name:'adminpanel',
     component: adminPanel
   },
   {
-    path: '/UniversitiesGuide/UGRAD/National/International/KSIU',
+    path: '/Guide/UGRAD/National/KSIU',
     name: 'kingSalman',
     component: kingSalman,
   },
   {
-    path: '/UniversitiesGuide/UGRAD/National/International/GU',
+    path: '/Guide/UGRAD/National/GU',
     name: 'galalaUniversity',
     component: galalaUniversity,
   },
   {
-    path: '/UniversitiesGuide/UGRAD/National/International/NMU',
+    path: '/Guide/UGRAD/National/NMU',
     name: 'newMansoura',
     component: newMansoura,
+  },
+  {
+    path: '/Guide/UGRAD/National/MansNU',
+    name: 'MansNU',
+    component: MansNU,
   },
   {
     path: '/users',

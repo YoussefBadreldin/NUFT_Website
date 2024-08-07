@@ -149,15 +149,15 @@
         <form @submit.prevent="trans">
           <div>
                 <label for="spec">Uni Short Name:</label>
-                <input type="text" id="spec" v-model="spec">
+                <input type="text" id="spec" v-model="spec2">
             </div>
             <div>
                 <label for="type">type:</label>
-                <input type="text" id="type" v-model="type">
+                <input type="text" id="type" v-model="type2">
             </div>
             <div>
                 <label for="price">price:</label>
-                <input type="text" id="price" v-model="price">
+                <input type="text" id="price" v-model="price2">
             </div>
 
             <br>

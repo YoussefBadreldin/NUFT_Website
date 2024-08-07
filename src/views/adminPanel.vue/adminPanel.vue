@@ -5,14 +5,19 @@
         <h1>Add Universities Data</h1>        
         <div class="container">
             <form @submit.prevent="handleSubmit">
+                 <div>
+                    <label for="speciality">Uni Short Name:</label>
+                    <input type="text" v-model="speciality" id="speciality">
+                </div>
                 <div>
-                    <label for="facilities">Facilities:</label>
+                    <label for="facality_or_international">Type (facality or international)</label>
+                    <input type="text" id="facality_or_international" v-model="facality_or_international">
+                </div>                           
+                <div>
+                    <label for="facilities">Faculty Name:</label>
                     <input type="text" v-model="facilities" id="facilities">
                 </div>
-                <div>
-                    <label for="facality_or_international">facality_or_international</label>
-                    <input type="text" id="facality_or_international" v-model="facality_or_international">
-                </div>
+
                 <div>
                     <label for="programs">Programs:</label>
                     <input type="text" v-model="programs" id="programs">
@@ -22,79 +27,47 @@
                     <input type="text" v-model="feesEgyption" id="feesEgyption">
                 </div>
                 <div>
-                    <label for="feesNatives">Fees (Natives):</label>
+                    <label for="feesNatives">Fees (Wafedeen):</label>
                     <input type="text" v-model="feesNatives" id="feesNatives">
                 </div>
                 <div>
                     <label for="section">Section:</label>
                     <input type="text" v-model="section" id="section">
                 </div>
-                <!-- <div>
-                    <label for="firstYearThanwyaa">First Year Thanwyaa:</label>
-                    <input type="text" v-model="firstYearThanwyaa" id="firstYearThanwyaa">
-                </div> -->
                 <div>
-                    <label for="scoreFirst">Score First Thanwya:</label>
+                    <label for="scoreFirst">Thanwya Score (Past):</label>
                     <input type="text" v-model="scoreFirst" id="scoreFirst">
                 </div>
-                <!-- <div>
-                    <label for="secondYearThanwyaa">Second Year Thanwyaa:</label>
-                    <input type="text" v-model="secondYearThanwyaa" id="secondYearThanwyaa">
-                </div> -->
                 <div>
-                    <label for="scoreSecond">Score Second thanwya:</label>
+                    <label for="scoreSecond">Thanwya Score (Current):</label>
                     <input type="text" v-model="scoreSecond" id="scoreSecond">
                 </div>
-                <!-- <div>
-                    <label for="firstYearAzhar">First Year Azhar:</label>
-                    <input type="text" v-model="firstYearAzhar" id="firstYearAzhar">
-                </div> -->
                 <div>
-                    <label for="scorefirstAzhar">Score First Azhar:</label>
+                    <label for="scorefirstAzhar">Azhar Score (Past):</label>
                     <input type="text" v-model="scorefirstAzhar" id="scorefirstAzhar">
                 </div>
-                <!-- <div>
-                    <label for="secondYearAzhar">Second Year Azhar:</label>
-                    <input type="text" v-model="secondYearAzhar" id="secondYearAzhar">
-                </div> -->
                 <div>
-                    <label for="scoreYearsecondAzhar">Score Second Azhar:</label>
+                    <label for="scoreYearsecondAzhar">Azhar Score (Current):</label>
                     <input type="text" v-model="scoreYearsecondAzhar" id="scoreYearsecondAzhar">
                 </div>
-                <!-- <div>
-                    <label for="firstYearStem">First Year Stem:</label>
-                    <input type="text" v-model="firstYearStem" id="firstYearStem">
-                </div> -->
                 <div>
-                    <label for="scorefirstStem">Score First Stem:</label>
+                    <label for="scorefirstStem">Stem Score (Past)</label>
                     <input type="text" v-model="scorefirstStem" id="scorefirstStem">
                 </div>
-                <!-- <div>
-                    <label for="secondYearStem">Second Year Stem:</label>
-                    <input type="text" v-model="secondYearStem" id="secondYearStem">
-                </div> -->
                 <div>
-                    <label for="scoreYearsecondStem">Score Second Stem:</label>
+                    <label for="scoreYearsecondStem">Stem Score (Current)</label>
                     <input type="text" v-model="scoreYearsecondStem" id="scoreYearsecondStem">
                 </div>
                 <div>
-                    <label for="minimumForNatives">Minimum for Natives:</label>
+                    <label for="minimumForNatives">Wafdeen Score:</label>
                     <input type="text" v-model="minimumForNatives" id="minimumForNatives">
                 </div>
                 <div>
-                    <label for="speciality">Speciality:</label>
-                    <input type="text" v-model="speciality" id="speciality">
-                </div>
-                <div>
-                    <label for="detailsSchoolarship">detailsSchoolarship:</label>
+                    <label for="detailsSchoolarship">Schoralships Details Link:</label>
                     <input type="text" v-model="detailsSchoolarship" id="detailsSchoolarship">
                 </div>
-                <!-- <div>
-                    <label for="details_about_internationa_program">details_about_internationa_program</label>
-                    <input type="text" id='details_about_internationa_program' v-model="details_about_internationa_program">
-                </div> -->
                 <br>
-                <button type="submit">Submit</button>
+                <button type="submit">Add</button>
             </form>
         </div>
 
@@ -102,64 +75,52 @@
 
         <h1>Add Links</h1>
         <form @submit.prevent="links">    
+             <div>
+                <label for="university_Name">Uni Short Name:</label>
+                <input type="text" v-model="university_Name">
+            </div>
             <div>
-                <label for="first_year">first_year</label>
+                <label for="first_year">Tansik Past Year:</label>
                 <input type="text" v-model="first_year">
             </div>
             <div>
-                <label for="second_year">second_year</label>
+                <label for="second_year">Tansik Current Year:</label>
                 <input type="text" v-model="second_year">
             </div>
-            <div>
-                <label for="details_about_internationa_program">details_about_international_program</label>
+           <div>
+                <label for="details_about_internationa_program">International programs Details:</label>
                 <input type="text" v-model="details_about_internationa_program">
             </div>
-            <!-- <div>
-                <label for="details_about_internationa_program">details_about_international_program</label>
-                <input type="text" v-model="details_about_internationa_program">
-            </div> -->
-            <!-- <div>
-                <label for="view_location">view_location</label>
+           <div>
+                <label for="view_location">Google maps Location link:</label>
                 <input type="text" v-model="view_location">
-            </div> -->
+            </div>
             <div>
-                <label for="register_link_dorms">register_link_dorms</label>
+                <label for="register_link_dorms">Dorms Details Link:</label>
                 <input type="text" v-model="register_link_dorms">
             </div>
             <div>
-                <label for="register_link_transportation">register_link_transportation</label>
+                <label for="register_link_transportation">Transportation Details Link:</label>
                 <input type="text" v-model="register_link_transportation">
             </div>
             <div>
-                <label for="view_location">view_location</label>
-                <input type="text" v-model="view_location">
-            </div>
-            <div>
-                <label for="register_link">Admission link for egytion</label>
-                <input type="text" v-model="register_link">
-            </div>
-            <div>
-                <label for="Admission_link_egyption">Admission_link_egyption(international)</label>
+                <label for="Admission_link_egyption">Egyptians Admission Link:</label>
                 <input type="text" v-model="Admission_link_egyption">
             </div>
+             <div>
+                <label for="international_program_link">Egyptians Admission Link (International Programs):</label>
+                <input type="text" v-model="international_program_link">
+            </div>      
+             <div>
+                <label for="transfer_link">Egyptians Admission Link (Transfer):</label>
+                <input type="text" id="transfer_link" v-model="transfer_link">
+            </div>                
             <div>
-                <label for="Admission_link_natives">Admission_link_natives</label>
+                <label for="Admission_link_natives">Wafdeen Admission Link:</label>
                 <input type="text" v-model="Admission_link_natives">
             </div>
-            <div>
-                <label for="international_program_link">transfer link fro egyption students</label>
-                <input type="text" v-model="international_program_link">
-            </div>
-            <div>
-                <label for="transfer_link">transfer_link</label>
-                <input type="text" id="transfer_link" v-model="transfer_link">
-            </div>
-            <div>
-                <label for="university_Name">university_Name</label>
-                <input type="text" v-model="university_Name">
-            </div>
 <br>
-            <button type="submit">Submit</button>
+            <button type="submit">Add</button>
         </form>
 
 <br><br>
@@ -167,51 +128,40 @@
         <h1>Add Dorms</h1>
         <form @submit.prevent="dorms">
             <div>
-                <label for="type">Type</label>
+                <label for="spec">Uni Short Name:</label>
+                <input type="text" id="spec" v-model="spec">
+            </div>
+            <div>
+                <label for="type">Type:</label>
                 <input type="text" id="type" v-model="type">
             </div>
             <div>
-                <label for="price">Price</label>
+                <label for="price">Price:</label>
                 <input type="text" id="price" v-model="price">
             </div>
-            <div>
-                <label for="spec">spec</label>
-                <input type="text" id="spec" v-model="spec">
-            </div>
             <br>
-            <button type="submit">Submit</button>
+            <button type="submit">Add</button>
         </form>
 
 <br><br>
 
         <h1>Add Transportation</h1>
         <form @submit.prevent="trans">
-            <div>
-                <label for="type">type</label>
-                <input type="text" id="type" v-model="type2">
+          <div>
+                <label for="spec">Uni Short Name:</label>
+                <input type="text" id="spec" v-model="spec">
             </div>
             <div>
-                <label for="price">price</label>
-                <input type="text" id="price" v-model="price2">
+                <label for="type">type:</label>
+                <input type="text" id="type" v-model="type">
             </div>
             <div>
-                <label for="spec">spec</label>
-                <input type="text" id="spec" v-model="spec2">
+                <label for="price">price:</label>
+                <input type="text" id="price" v-model="price">
             </div>
-            <br>
-            <button type="submit">Submit</button>
-        </form>
 
-<br><br>
-
-        <h1>Add News</h1>
-        <form @submit.prevent="newsfunction">
-            <div>
-                <label for="news">News</label>
-                <textarea name="" id="" cols="30" rows="10" v-model="news"></textarea>
-            </div>
             <br>
-            <button type="submit">Submit</button>
+            <button type="submit">Add</button>
         </form>
 
 <br><br>
@@ -259,8 +209,33 @@
                 <input type="text" id="InternationalStudents" v-model="InternationalStudents">
             </div>
             <br>
-            <button type="submit">Submit</button>
+            <button type="submit">Add</button>
         </form>
+
+        <br><br>
+
+        <h1>Add Schoralships</h1>
+         <form @submit.prevent="Scholarship">
+            <div>
+                <label for="news">Scholarship Details:</label>
+                <textarea name="" id="" cols="30" rows="10" v-model="news"></textarea>
+            </div>
+            <br>
+            <button type="submit">Add</button>
+        </form>
+
+<br><br>
+
+        <h1>Add News</h1>
+        <form @submit.prevent="newsfunction">
+            <div>
+                <label for="news">News Details:</label>
+                <textarea name="" id="" cols="30" rows="10" v-model="news"></textarea>
+            </div>
+            <br>
+            <button type="submit">Add</button>
+        </form>
+    <br><br>    
     </div>
 </template>
 

@@ -10,16 +10,25 @@
     <h2 style="text-align: center; margin-top: 20px;">(EELU) الجامعة المصرية للتعلم الالكتروني </h2>
 
     <!-- ######## Uni info ####### -->
-    <p style="text-align: center;">جامعة أهلية تتبع وزارة التعليم العالي والبحث العلمي بشكل مباشر.
+    <p style="text-align: center;">جامعة أهلية بدعم من صندوق تطوير التعليم برئاسة مجلس الوزراء لها 13 فرع بالجامعات المصرية الحكومية المختلفة
     <br>
-أنشئت وفقًا للقرار الجمهوري رقم 436 لسنة 2020
+أنشئت وفقًا للقرار الجمهوري رقم 233 لسنة 2008
 </p>
-
-    <!-- ######## Uni Location ####### -->
-    <p style="text-align: center;">تقع على مساحة 173 فدانا، ويضم مستشفى تعليمي بطاقة 577 سريرًا، وسكنًا خاصًا للطلاب وأعضاء هيئة التدريس .</p>
-    <a href="enter the actual link here" style="display: block; text-align: center;">
-        <button>عرض الموقع على الخرائط</button>
-    </a>
+<div style="text-align: center;">
+    <button @click="openMap('الفيوم')">عرض الموقع على الخرائط (الفيوم)</button>
+    <button @click="openMap('إسكندرية')">عرض الموقع على الخرائط (إسكندرية)</button>
+    <button @click="openMap('جنوب الوادي بقنا')">عرض الموقع على الخرائط (جنوب الوادي بقنا)</button>
+    <button @click="openMap('الإسماعلية')">عرض الموقع على الخرائط (الإسماعلية)</button>
+    <button @click="openMap('طنطا')">عرض الموقع على الخرائط (طنطا)</button>
+    <button @click="openMap('سوهاج')">عرض الموقع على الخرائط (سوهاج)</button>
+    <button @click="openMap('أسوان')">عرض الموقع على الخرائط (أسوان)</button>
+    <button @click="openMap('عين شمس')">عرض الموقع على الخرائط (عين شمس)</button>
+    <button @click="openMap('جنوب الوادي بالغردقة')">عرض الموقع على الخرائط (جنوب الوادي بالغردقة)</button>
+    <button @click="openMap('بني سويف')">عرض الموقع على الخرائط (بني سويف)</button>
+    <button @click="openMap('السادات')">عرض الموقع على الخرائط (السادات)</button>
+    <button @click="openMap('أسيوط')">عرض الموقع على الخرائط (أسيوط)</button>
+    <button @click="openMap('المنوفية')">عرض الموقع على الخرائط (المنوفية)</button>
+</div>
 
     <!-- ######## Social Media Links ####### -->
     <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
@@ -151,7 +160,6 @@
         <FooterComponent />
     </div>
 </template>
-
 <script>
 import axios from 'axios';
 import HeaderComponent from '../../../public/global/headerComponent.vue';
@@ -256,6 +264,54 @@ export default {
             catch (error) {
                 console.log(error);
             }
+        },
+        openMap(location) {
+            let mapLink = '';
+            switch(location) {
+                case 'الفيوم':
+                    mapLink = 'https://goo.gl/maps/link1';
+                    break;
+                case 'إسكندرية':
+                    mapLink = 'https://goo.gl/maps/link2';
+                    break;
+                case 'جنوب الوادي بقنا':
+                    mapLink = 'https://goo.gl/maps/link3';
+                    break;
+                case 'الإسماعلية':
+                    mapLink = 'https://goo.gl/maps/link4';
+                    break;
+                case 'طنطا':
+                    mapLink = 'https://goo.gl/maps/link5';
+                    break;
+                case 'سوهاج':
+                    mapLink = 'https://goo.gl/maps/link6';
+                    break;
+                case 'أسوان':
+                    mapLink = 'https://goo.gl/maps/link7';
+                    break;
+                case 'عين شمس':
+                    mapLink = 'https://goo.gl/maps/link8';
+                    break;
+                case 'جنوب الوادي بالغردقة':
+                    mapLink = 'https://goo.gl/maps/link9';
+                    break;
+                case 'بني سويف':
+                    mapLink = 'https://goo.gl/maps/link10';
+                    break;
+                case 'السادات':
+                    mapLink = 'https://goo.gl/maps/link11';
+                    break;
+                case 'أسيوط':
+                    mapLink = 'https://goo.gl/maps/link12';
+                    break;
+                case 'المنوفية':
+                    mapLink = 'https://goo.gl/maps/link13';
+                    break;
+                default:
+                    alert('Location not found');
+                    return;
+            }
+            window.open(mapLink, '_blank');
         }
     },
     created() {
@@ -265,12 +321,13 @@ export default {
         this.gettrans();
         console.log(this.filteredData);
         console.log('international', this.filteredInternational);
-  },
-  mounted() {
-    window.scrollTo(0, 0);
-  }
+    },
+    mounted() {
+        window.scrollTo(0, 0);
+    }
 };
 </script>
+
 
 
 <style scoped>

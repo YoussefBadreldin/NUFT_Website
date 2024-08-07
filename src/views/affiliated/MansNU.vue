@@ -261,7 +261,7 @@ export default {
                 console.log(error);
             }
         },
-        openMap(location) {
+openMap(location) {
             let mapLink = '';
             switch(location) {
                 case 'الطور':

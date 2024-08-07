@@ -10,27 +10,27 @@
     <h2 style="text-align: center; margin-top: 20px;">(UFE) الجامعة الفرنسية بمصر </h2>
 
     <!-- ######## Uni info ####### -->
-    <p style="text-align: center;">جامعة أهلية تتبع وزارة التعليم العالي والبحث العلمي بشكل مباشر.
+    <p style="text-align: center;">جامعة أهلية تحت إشراف مزدوج من وزارتي التعليم العالي المصرية والفرنسية
     <br>
-أنشئت وفقًا للقرار الجمهوري رقم 436 لسنة 2020
+أنشئت وفقًا للقرار الجمهوري رقم 26 لسنة 2002
 </p>
 
     <!-- ######## Uni Location ####### -->
-    <p style="text-align: center;">تقع على مساحة 173 فدانا، ويضم مستشفى تعليمي بطاقة 577 سريرًا، وسكنًا خاصًا للطلاب وأعضاء هيئة التدريس .</p>
-    <a href="enter the actual link here" style="display: block; text-align: center;">
+    <p style="text-align: center;">تقغ على مساحة 3.7 فدادين، وتم تخصيص مساحة 30 فدانًا إضافية للإنشاء مقر جديد، ليصبح إجمالي المساحة 33.7 فدانًا</p>
+    <a href="https://goo.gl/maps/z7rRdwxEEbt95edC8?coh=178573&entry=tt" style="display: block; text-align: center;">
         <button>عرض الموقع على الخرائط</button>
     </a>
 
     <!-- ######## Social Media Links ####### -->
     <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
 <ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
-    <li><a href="https://www.gu.edu.eg"><i class="fas fa-globe"></i></a></li>
-    <li><a href="tel:15888"><i class="fas fa-phone"></i></a></li>
-    <li><a href="mailto:info@gu.edu.eg"><i class="fas fa-envelope"></i></a></li>
-    <li><a href="https://www.facebook.com/gu.edu.eg"><i class="fab fa-facebook-f"></i></a></li>
-    <li><a href="https://www.instagram.com/gu.edu.eg"><i class="fab fa-instagram"></i></a></li>
-    <li><a href="https://www.youtube.com/user/gu.edu.eg"><i class="fab fa-youtube"></i></a></li>
-    <li><a href="https://www.linkedin.com/school/gu.edu.eg"><i class="fab fa-linkedin-in"></i></a></li>
+    <li><a href="https://www.ufe.edu.eg"><i class="fas fa-globe"></i></a></li>
+    <li><a href="tel:17054"><i class="fas fa-phone"></i></a></li>
+    <li><a href="mailto:admission@ufe.edu.eg"><i class="fas fa-envelope"></i></a></li>
+    <li><a href="https://www.facebook.com/ufe.edu.eg"><i class="fab fa-facebook-f"></i></a></li>
+    <li><a href="https://www.instagram.com/ufe_egypt/"><i class="fab fa-instagram"></i></a></li>
+    <li><a href="https://www.youtube.com/@universitefrancaisedegypte6560"><i class="fab fa-youtube"></i></a></li>
+    <li><a href="https://www.linkedin.com/company/universitefrancaisedegypte"><i class="fab fa-linkedin-in"></i></a></li>
 </ul>
     </div>
 </div>

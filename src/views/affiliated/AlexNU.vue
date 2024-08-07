@@ -11,25 +11,27 @@
                 
                 <!-- ######## Uni info ####### -->
                 <p style="text-align: center;">
-                    جامعة أهلية تتبع وزارة التعليم العالي والبحث العلمي بشكل مباشر لها 3 فروع في محافظة جنوب سيناء <br> أنشئت وفقًا للقرار الجمهوري رقم 434 لسنة 2020
+                    جامعة أهلية منبثقة عن جامعة الاسكندرية الحكومية 
+                    <br>
+                     أنشئت وفقًا للقرار الجمهوري رقم 425 لسنة 2022
                 </p>
                 
     <!-- ######## Uni Location ####### -->
-    <p style="text-align: center;">تقع على مساحة 173 فدانا، ويضم مستشفى تعليمي بطاقة 577 سريرًا، وسكنًا خاصًا للطلاب وأعضاء هيئة التدريس .</p>
-    <a href="enter the actual link here" style="display: block; text-align: center;">
+    <p style="text-align: center;">تقع على مساحة 30 فدانا، بمدينة أبيس (سموحة الجديدة)، محافظة الإسكندرية ويضم مناطق رياضية وترفيهية </p>
+    <a href="https://goo.gl/maps/SjP16WQvXSJ2MF476?coh=178573&entry=tt" style="display: block; text-align: center;">
         <button>عرض الموقع على الخرائط</button>
     </a>
                 
                 <!-- ######## Social Media Links ####### -->
                 <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
                     <ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
-                        <li><a href="https://ksiu.edu.eg"><i class="fas fa-globe"></i></a></li>
-                        <li><a href="tel:16949"><i class="fas fa-phone"></i></a></li>
-                        <li><a href="mailto:info@ksiu.edu.eg"><i class="fas fa-envelope"></i></a></li>
-                        <li><a href="https://facebook.com/ksiu"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="https://instagram.com/ksiu"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="https://youtube.com/ksiu"><i class="fab fa-youtube"></i></a></li>
-                        <li><a href="https://linkedin.com/in/ksiu"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="http://anu.alexu.edu.eg/"><i class="fas fa-globe"></i></a></li>
+                        <li><a href="tel:01228858407"><i class="fas fa-phone"></i></a></li>
+                        <li><a href="mailto:admission.anu@alexu.edu.eg "><i class="fas fa-envelope"></i></a></li>
+                        <li><a href="https://www.facebook.com/AlexandriaNationalUniversity/"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                        <li><a href=""><i class="fab fa-youtube"></i></a></li>
+                        <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
                     </ul>
                 </div>
             </div>

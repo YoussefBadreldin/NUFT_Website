@@ -92,7 +92,7 @@
                     <thead>
                         <tr>
                             <th>النوع</th>
-                            <th>السعر</th>
+                            <th>(للترم) السعر</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -115,7 +115,7 @@
                     <thead>
                         <tr>
                             <th>الخط</th>
-                            <th>السعر</th>
+                            <th>(للترم) السعر</th>
                         </tr>
                     </thead>
                     <tbody>

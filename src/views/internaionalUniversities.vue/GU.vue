@@ -2,50 +2,58 @@
     <div>
         <!-- Your existing template code here -->
         <HeaderComponent />
-         <section>
- <div style="display: flex; flex-direction: column; align-items: center;">
-    <img src="/images/Logos/Universites/National/GU.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
+        <section>
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <img src="/images/Logos/Universites/National/GU.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
+                
+                <!-- ######## Uni Title ####### -->
+                <h2 style="text-align: center; margin-top: 20px;">جامعة الجلالة <br>(GU)</h2>
+                
+                <!-- ######## Uni info ####### -->
+                <p style="text-align: center;">
+                    جامعة أهلية تتبع وزارة التعليم العالي والبحث العلمي بشكل مباشر لها 3 فروع في محافظة جنوب سيناء <br> أنشئت وفقًا للقرار الجمهوري رقم 434 لسنة 2020
+                </p>
+                
+                <!-- ######## Uni Location ####### -->
+                <p style="text-align: center;">
+                    يقع مقر مدينة الطور على مساحة 205 فدانا، ويضم قاعة مؤتمرات وسكن للطلبة وسكن أعضاء هيئة التدريس، ومركز للخدمات الطلابية<br><br>
+                    يقع مقر مدينة رأس سدر على مساحة 75 فدانا، ويضم مبنى للإدارة، والمكتبة، وسكن للطلبة، وسكن للطالبات ٢٣٤٠، وسكن أعضاء هيئة التدريس<br><br>
+                    يقع مقر مدينة شرم الشيخ على مساحة 25 فدانا، ويضم فندق، وسكن للطلبة، وسكن للطالبات، وسكن لأعضاء هيئة التدريس، ومنطقة رياضية تحتوي على (ملعب متعدد - ٢ ملعب تنس – حمام سباحة نصف أوليمبي)
+                </p>
+                <div style="text-align: center;">
+                    <button @click="openMap('الطور')">عرض الموقع على الخرائط (الطور)</button>
+                    <button @click="openMap('راس سدر')">عرض الموقع على الخرائط (راس سدر)</button>
+                    <button @click="openMap('شرم الشيخ')">عرض الموقع على الخرائط (شرم الشيخ)</button>
+                </div>
+                
+                <!-- ######## Social Media Links ####### -->
+                <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
+                    <ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
+                        <li><a href="https://GU.edu.eg"><i class="fas fa-globe"></i></a></li>
+                        <li><a href="tel:16949"><i class="fas fa-phone"></i></a></li>
+                        <li><a href="mailto:info@GU.edu.eg"><i class="fas fa-envelope"></i></a></li>
+                        <li><a href="https://facebook.com/GU"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://instagram.com/GU"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://youtube.com/GU"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="https://linkedin.com/in/GU"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-    <!-- ######## Uni Title ####### -->
-    <h2 style="text-align: center; margin-top: 20px;">(GU) جامعة الجلالة </h2>
-
-    <!-- ######## Uni info ####### -->
-    <p style="text-align: center;">جامعة أهلية تتبع وزارة التعليم العالي والبحث العلمي بشكل مباشر.
-    <br>
-أنشئت وفقًا للقرار الجمهوري رقم 436 لسنة 2020
-</p>
-
-    <!-- ######## Uni Location ####### -->
-    <p style="text-align: center;">تقع على مساحة 173 فدانا، ويضم مستشفى تعليمي بطاقة 577 سريرًا، وسكنًا خاصًا للطلاب وأعضاء هيئة التدريس .</p>
-    <a href="enter the actual link here" style="display: block; text-align: center;">
-        <button>عرض الموقع على الخرائط</button>
-    </a>
-
-    <!-- ######## Social Media Links ####### -->
-    <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
-<ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
-    <li><a href="https://www.gu.edu.eg"><i class="fas fa-globe"></i></a></li>
-    <li><a href="tel:15888"><i class="fas fa-phone"></i></a></li>
-    <li><a href="mailto:info@gu.edu.eg"><i class="fas fa-envelope"></i></a></li>
-    <li><a href="https://www.facebook.com/gu.edu.eg"><i class="fab fa-facebook-f"></i></a></li>
-    <li><a href="https://www.instagram.com/gu.edu.eg"><i class="fab fa-instagram"></i></a></li>
-    <li><a href="https://www.youtube.com/user/gu.edu.eg"><i class="fab fa-youtube"></i></a></li>
-    <li><a href="https://www.linkedin.com/school/gu.edu.eg"><i class="fab fa-linkedin-in"></i></a></li>
-</ul>
-    </div>
-</div>
+        <section>
             <br><br>
             <h1>الكليات والبرامج</h1>
             <div class="table-responsive" dir="rtl">
-                <table style="margin-top:0vh;" dir="rtl">
+                <table style="margin-top: 0vh;" dir="rtl">
                     <thead>
                         <tr>
-                           <th rowspan="2">الكلية</th>
+                            <th rowspan="2">الكلية</th>
                             <th rowspan="2">البرامج</th>
                             <th rowspan="2">الرسوم للمصريين</th>
                             <th rowspan="2">الرسوم للوافدين</th>
                             <th rowspan="2">الشعبة</th>
-                            <th colspan="2">الحد الأدنى  للثانوية العامة</th>
+                            <th colspan="2">الحد الأدنى للثانوية العامة</th>
                             <th colspan="2">الحد الأدنى للشهادات العربية، الإنجليزية والأزهرية</th>
                             <th colspan="2">الحد الأدنى لستيم والنيل</th>
                             <th rowspan="2">الحد الأدنى للوافدين</th>
@@ -77,10 +85,10 @@
                     </tbody>
                 </table>
             </div>
-<p>
-     الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت).
-</p>
-        </section>
+            <p>
+                الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت)
+            </p>
+ </section>
 
         <!-- ######## International Programs ####### -->
         <section>
@@ -135,7 +143,7 @@
 </a>
         </section>
         <section>
-        <br> <br>
+            <br><br>
             <h2>السكن</h2>
             <div class="table-responsive" dir="rtl">
                 <table>
@@ -156,8 +164,9 @@
             <br>
             <a :href="register_link_dorms" target="_blank"><button>رابط التسجيل</button></a>
         </section>
+
         <section>
-        <br> <br>
+            <br><br>
             <h2>الانتقالات</h2>
             <div class="table-responsive" dir="rtl">
                 <table>
@@ -176,22 +185,24 @@
                 </table>
             </div>
             <br>
-            <a :href="register_link_dorms" target="_blank"><button>رابط التسجيل</button></a>
+            <a :href="register_link_transportation" target="_blank"><button>رابط التسجيل</button></a>
         </section>
-       <section>
-       <br> <br>
-    <h1>المنح الدراسية</h1>
+
+        <section>
+            <br><br>
+            <h1>المنح الدراسية</h1>
             <p>توفر الجامعة مجموعة مختلفة من المنح الدراسية</p>
-    <a :href="register_link_transportation" target="_blank"><button>مزيد من التفاصيل عن المنح الدراسية</button></a>
-</section>
-<section>
+            <a :href="register_link_transportation" target="_blank"><button>مزيد من التفاصيل عن المنح الدراسية</button></a>
+        </section>
+
+        <section>
             <br><br>
             <h1>طرق التقديم</h1>
-    <a :href="Admission_link_natives" target="_blank"><button>رابط التقديم للطلاب الوافدين</button></a>
-    <a :href="transfer_link_egyption" target="_blank"><button>رابط التحويل للطلاب المصريين</button></a>
-    <a :href="international_program_link" target="_blank"><button>رابط التقديم للطلاب المصريين (البرامج الدولية)</button></a>
-    <a :href="Admission_link_egyption" target="_blank"><button>رابط التقديم للطلاب المصريين</button></a>
-</section>
+            <a :href="Admission_link_natives" target="_blank"><button>رابط التقديم للطلاب الوافدين</button></a>
+            <a :href="transfer_link_egyption" target="_blank"><button>رابط التحويل للطلاب المصريين</button></a>
+            <a :href="Admission_link_egyption" target="_blank"><button>رابط التقديم للطلاب المصريين</button></a>
+        </section>
+
         <FooterComponent />
     </div>
 </template>
@@ -248,8 +259,7 @@ export default {
                     this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'GU');
                     console.log('Filtered data:', this.filteredData);
                     console.log('Filtered international:', this.filteredInternational);
-                }
-                else {
+                } else {
                     console.error('this.all_data is not an array:', this.all_data);
                 }
             } catch (error) {
@@ -292,7 +302,7 @@ export default {
         },
         async gettrans() {
             try {
-                const response = await axios.get('http://localhost:3000/trans/gettrans');
+                const response = await axios.get('https://nuft-backend.onrender.com/trans/gettrans');
                 this.trans = response.data;
                 this.filteredTrans = this.trans.filter(index => index.spec === 'GU');
                 console.log('filteredTrans', this.filteredTrans)
@@ -300,6 +310,21 @@ export default {
             catch (error) {
                 console.log(error);
             }
+        },
+        openMap(location) {
+            let mapLink = '';
+            switch(location) {
+                case 'الطور':
+                    mapLink = 'https://goo.gl/maps/E4fviPSqcdWtmMvf8?coh=178573&entry=tt';
+                    break;
+                case 'راس سدر':
+                    mapLink = 'https://goo.gl/maps/kZzF5udbmPRdFuNJA?coh=178573&entry=tt';
+                    break;
+                case 'شرم الشيخ':
+                    mapLink = 'https://goo.gl/maps/i6uAZuZowDPBNV9R9?coh=178573&entry=tt';
+                    break;
+            }
+            window.open(mapLink, '_blank');
         }
     },
     created() {
@@ -315,7 +340,6 @@ export default {
   }
 };
 </script>
-
 
 <style scoped>
 .view_location {

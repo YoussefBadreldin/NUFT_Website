@@ -1,4 +1,18 @@
 <template>
+    <div class="header-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 col-md-12 left-item">
+            <ul></ul>
+          </div>
+          <div class="col-lg-5 right-item">
+            <ul>
+             <li><a><strong>بث تجريبي</strong></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -275,4 +289,52 @@ nav {
     align-items: center;
     margin-left: -55px; 
 }
+
+.header-top {
+  background-color: #C70039;
+  padding: 5px 0; /* Reduced top and bottom padding */
+  color: white;
+  text-align: center;
+}
+
+.header-top .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-top .row {
+  width: 100%;
+}
+
+.header-top .left-item,
+.header-top .right-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-top .left-item ul,
+.header-top .right-item ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.header-top .right-item ul {
+  justify-content: center;
+}
+
+.header-top li {
+  margin-top: -20px;
+  padding: 0; /* Ensure no padding in list items */
+}
+
+.header-top .right-item a {
+  margin: 0; /* Ensure no margin around the link */
+  padding: 0; /* Ensure no padding around the link */
+  line-height: 1.5; /* Adjust line height if needed */
+}
+
 </style>

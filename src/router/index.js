@@ -28,6 +28,9 @@ import KSIU from "../views/internaionalUniversities.vue/KSIU.vue";
 import GU from "../views/internaionalUniversities.vue/GU.vue";
 import NMU from "../views/internaionalUniversities.vue/NMU.vue";
 import MansNU from "../views/affiliated/MansNU.vue";
+import HNU from "../views/affiliated/HNU.vue";
+import BNU from "../views/affiliated/BNU.vue";
+import BSNU from "../views/affiliated/BSNU.vue";
 import getUsers from "../views/adminPanel.vue/users.vue";
 import ContactList from "../views/adminPanel.vue/getContact.vue";
 
@@ -196,6 +199,21 @@ const routes = [
     path: '/Guide/UGRAD/National/MansNU',
     name: 'MansNU',
     component: MansNU,
+  },
+  {
+    path: '/Guide/UGRAD/National/HNU',
+    name: 'HNU',
+    component: HNU,
+  },
+  {
+    path: '/Guide/UGRAD/National/BNU',
+    name: 'BNU',
+    component: BNU,
+  },
+  {
+    path: '/Guide/UGRAD/National/BSNU',
+    name: 'BSNU',
+    component: BSNU,
   },
   {
     path: '/users',

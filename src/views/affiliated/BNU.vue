@@ -2,50 +2,52 @@
     <div>
         <!-- Your existing template code here -->
         <HeaderComponent />
-         <section>
- <div style="display: flex; flex-direction: column; align-items: center;">
-    <img src="/images/Logos/Universites/National/UFE.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
-
-    <!-- ######## Uni Title ####### -->
-    <h2 style="text-align: center; margin-top: 20px;">(UFE) الجامعة الفرنسية بمصر </h2>
-
-    <!-- ######## Uni info ####### -->
-    <p style="text-align: center;">جامعة أهلية تتبع وزارة التعليم العالي والبحث العلمي بشكل مباشر.
-    <br>
-أنشئت وفقًا للقرار الجمهوري رقم 436 لسنة 2020
-</p>
-
+        <section>
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <img src="/images/Logos/Universites/National/BNU.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
+                
+                <!-- ######## Uni Title ####### -->
+                <h2 style="text-align: center; margin-top: 20px;">جامعة  بنها الاهلية<br>(BNU)</h2>
+                
+                <!-- ######## Uni info ####### -->
+                <p style="text-align: center;">
+                    جامعة أهلية تتبع وزارة التعليم العالي والبحث العلمي بشكل مباشر لها 3 فروع في محافظة جنوب سيناء <br> أنشئت وفقًا للقرار الجمهوري رقم 434 لسنة 2020
+                </p>
+                
     <!-- ######## Uni Location ####### -->
     <p style="text-align: center;">تقع على مساحة 173 فدانا، ويضم مستشفى تعليمي بطاقة 577 سريرًا، وسكنًا خاصًا للطلاب وأعضاء هيئة التدريس .</p>
     <a href="enter the actual link here" style="display: block; text-align: center;">
         <button>عرض الموقع على الخرائط</button>
     </a>
+                
+                <!-- ######## Social Media Links ####### -->
+                <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
+                    <ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
+                        <li><a href="https://ksiu.edu.eg"><i class="fas fa-globe"></i></a></li>
+                        <li><a href="tel:16949"><i class="fas fa-phone"></i></a></li>
+                        <li><a href="mailto:info@ksiu.edu.eg"><i class="fas fa-envelope"></i></a></li>
+                        <li><a href="https://facebook.com/ksiu"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://instagram.com/ksiu"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="https://youtube.com/ksiu"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="https://linkedin.com/in/ksiu"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-    <!-- ######## Social Media Links ####### -->
-    <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
-<ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
-    <li><a href="https://www.gu.edu.eg"><i class="fas fa-globe"></i></a></li>
-    <li><a href="tel:15888"><i class="fas fa-phone"></i></a></li>
-    <li><a href="mailto:info@gu.edu.eg"><i class="fas fa-envelope"></i></a></li>
-    <li><a href="https://www.facebook.com/gu.edu.eg"><i class="fab fa-facebook-f"></i></a></li>
-    <li><a href="https://www.instagram.com/gu.edu.eg"><i class="fab fa-instagram"></i></a></li>
-    <li><a href="https://www.youtube.com/user/gu.edu.eg"><i class="fab fa-youtube"></i></a></li>
-    <li><a href="https://www.linkedin.com/school/gu.edu.eg"><i class="fab fa-linkedin-in"></i></a></li>
-</ul>
-    </div>
-</div>
+        <section>
             <br><br>
             <h1>الكليات والبرامج</h1>
             <div class="table-responsive" dir="rtl">
-                <table style="margin-top:0vh;" dir="rtl">
+                <table style="margin-top: 0vh;" dir="rtl">
                     <thead>
                         <tr>
-                           <th rowspan="2">الكلية</th>
+                            <th rowspan="2">الكلية</th>
                             <th rowspan="2">البرامج</th>
                             <th rowspan="2">الرسوم للمصريين</th>
                             <th rowspan="2">الرسوم للوافدين</th>
                             <th rowspan="2">الشعبة</th>
-                            <th colspan="2">الحد الأدنى  للثانوية العامة</th>
+                            <th colspan="2">الحد الأدنى للثانوية العامة</th>
                             <th colspan="2">الحد الأدنى للشهادات العربية، الإنجليزية والأزهرية</th>
                             <th colspan="2">الحد الأدنى لستيم والنيل</th>
                             <th rowspan="2">الحد الأدنى للوافدين</th>
@@ -77,65 +79,13 @@
                     </tbody>
                 </table>
             </div>
-<p>
-    ● الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت).
-</p>
+            <p>
+                الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت)
+            </p>
         </section>
 
-        <!-- ######## International Programs ####### -->
         <section>
-        <br> <br>
-            <h2>البرامج الدولية</h2>
-            <div class="table-responsive" dir="rtl">
-                <table>
-                    <thead>
-                        <tr>
-                           <th rowspan="2">البرامج</th>
-                            <th rowspan="2">التفاصيل</th>
-                            <th rowspan="2">الرسوم للمصريين</th>
-                            <th rowspan="2">الرسوم للوافدين</th>
-                            <th rowspan="2">الشعبة</th>
-                            <th colspan="2">الحد الأدنى  للثانوية العامة</th>
-                            <th colspan="2">الحد الأدنى للشهادات العربية، الإنجليزية والأزهرية</th>
-                            <th colspan="2">الحد الأدنى لستيم والنيل</th>
-                            <th rowspan="2">الحد الأدنى للوافدين</th>
-                        </tr>
-                        <tr>
-                            <th>{{ firstYear }}</th>
-                            <th>{{ secondYear }}</th>
-                            <th>{{ firstYear }}</th>
-                            <th>{{ secondYear }}</th>
-                            <th>{{ firstYear }}</th>
-                            <th>{{ secondYear }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(faculty, index) in filteredInternational" :key="index">
-                            <td>{{ faculty.facilities }}</td>
-                            <td>{{ faculty.programs }}</td>
-                            <td>{{ faculty.feesEgyption }}</td>
-                            <td>{{ faculty.feesNatives }}</td>
-                            <td>{{ faculty.section }}</td>
-                            <td>{{ faculty.scoreFirst }}</td>
-                            <td>{{ faculty.scoreSecond }}</td>
-                            <td>{{ faculty.scorefirstAzhar }}</td>
-                            <td>{{ faculty.scoreYearsecondAzhar }}</td>
-                            <td>{{ faculty.scorefirstStem }}</td>
-                            <td>{{ faculty.scoreYearsecondStem }}</td>
-                            <td>{{ faculty.minimumForNatives }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-<p>
-    ● الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت).
-</p>
-<a :href="details_about_internationa_program" target="_blank">
-    <button>مزيد من التفاصيل عن البرامج الدولية</button>
-</a>
-        </section>
-        <section>
-        <br> <br>
+            <br><br>
             <h2>السكن</h2>
             <div class="table-responsive" dir="rtl">
                 <table>
@@ -156,8 +106,9 @@
             <br>
             <a :href="register_link_dorms" target="_blank"><button>رابط التسجيل</button></a>
         </section>
+
         <section>
-        <br> <br>
+            <br><br>
             <h2>الانتقالات</h2>
             <div class="table-responsive" dir="rtl">
                 <table>
@@ -176,22 +127,24 @@
                 </table>
             </div>
             <br>
-            <a :href="register_link_dorms" target="_blank"><button>رابط التسجيل</button></a>
+            <a :href="register_link_transportation" target="_blank"><button>رابط التسجيل</button></a>
         </section>
-       <section>
-       <br> <br>
-    <h1>المنح الدراسية</h1>
+
+        <section>
+            <br><br>
+            <h1>المنح الدراسية</h1>
             <p>توفر الجامعة مجموعة مختلفة من المنح الدراسية</p>
-    <a :href="register_link_transportation" target="_blank"><button>مزيد من التفاصيل عن المنح الدراسية</button></a>
-</section>
-<section>
+            <a :href="register_link_transportation" target="_blank"><button>مزيد من التفاصيل عن المنح الدراسية</button></a>
+        </section>
+
+        <section>
             <br><br>
             <h1>طرق التقديم</h1>
-    <a :href="Admission_link_natives" target="_blank"><button>رابط التقديم للطلاب الوافدين</button></a>
-    <a :href="transfer_link_egyption" target="_blank"><button>رابط التحويل للطلاب المصريين</button></a>
-    <a :href="international_program_link" target="_blank"><button>رابط التقديم للطلاب المصريين (البرامج الدولية)</button></a>
-    <a :href="Admission_link_egyption" target="_blank"><button>رابط التقديم للطلاب المصريين</button></a>
-</section>
+            <a :href="Admission_link_natives" target="_blank"><button>رابط التقديم للطلاب الوافدين</button></a>
+            <a :href="transfer_link_egyption" target="_blank"><button>رابط التحويل للطلاب المصريين</button></a>
+            <a :href="Admission_link_egyption" target="_blank"><button>رابط التقديم للطلاب المصريين</button></a>
+        </section>
+
         <FooterComponent />
     </div>
 </template>
@@ -202,7 +155,7 @@ import HeaderComponent from '../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../public/global/footerComponent.vue';
 
 export default {
-    name: 'UFE',
+    name: 'BNU',
     data() {
         return {
             all_data: [],
@@ -244,12 +197,11 @@ export default {
                 }
                 if (Array.isArray(this.all_data)) {
                     console.log('All data:', this.all_data);
-                    this.filteredData = this.all_data.filter(index => index.speciality === 'UFE' && index.facality_or_international === 'facality');
-                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'UFE');
+                    this.filteredData = this.all_data.filter(index => index.speciality === 'BNU' && index.facality_or_international === 'facality');
+                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'BNU');
                     console.log('Filtered data:', this.filteredData);
                     console.log('Filtered international:', this.filteredInternational);
-                }
-                else {
+                } else {
                     console.error('this.all_data is not an array:', this.all_data);
                 }
             } catch (error) {
@@ -260,7 +212,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-backend.onrender.com/links/get_links');
                 this.links = response.data;
-                this.filteredLinks = this.links.filter(index => index.university_Name === 'UFE');
+                this.filteredLinks = this.links.filter(index => index.university_Name === 'BNU');
                 console.log(this.filteredLinks);
                 if (this.filteredLinks.length > 0) {
                     this.firstYear = this.filteredLinks[0].first_year;
@@ -284,7 +236,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-backend.onrender.com/info/getdorms');
                 this.dorms = response.data;
-                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'UFE');
+                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'BNU');
                 //console.log('dorms table', this.filteredDorms)
             } catch (error) {
                 console.log(error);
@@ -292,14 +244,29 @@ export default {
         },
         async gettrans() {
             try {
-                const response = await axios.get('http://localhost:3000/trans/gettrans');
+                const response = await axios.get('https://nuft-backend.onrender.com/trans/gettrans');
                 this.trans = response.data;
-                this.filteredTrans = this.trans.filter(index => index.spec === 'UFE');
+                this.filteredTrans = this.trans.filter(index => index.spec === 'BNU');
                 console.log('filteredTrans', this.filteredTrans)
             }
             catch (error) {
                 console.log(error);
             }
+        },
+        openMap(location) {
+            let mapLink = '';
+            switch(location) {
+                case 'الطور':
+                    mapLink = 'https://goo.gl/maps/E4fviPSqcdWtmMvf8?coh=178573&entry=tt';
+                    break;
+                case 'راس سدر':
+                    mapLink = 'https://goo.gl/maps/kZzF5udbmPRdFuNJA?coh=178573&entry=tt';
+                    break;
+                case 'شرم الشيخ':
+                    mapLink = 'https://goo.gl/maps/i6uAZuZowDPBNV9R9?coh=178573&entry=tt';
+                    break;
+            }
+            window.open(mapLink, '_blank');
         }
     },
     created() {
@@ -310,10 +277,8 @@ export default {
         console.log(this.filteredData);
         console.log('international', this.filteredInternational);
     }
-
 };
 </script>
-
 
 <style scoped>
 .view_location {

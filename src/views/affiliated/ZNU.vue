@@ -11,25 +11,27 @@
                 
                 <!-- ######## Uni info ####### -->
                 <p style="text-align: center;">
-                    جامعة أهلية تتبع وزارة التعليم العالي والبحث العلمي بشكل مباشر لها 3 فروع في محافظة جنوب سيناء <br> أنشئت وفقًا للقرار الجمهوري رقم 434 لسنة 2020
+                     جامعة أهلية منبثقة عن جامعة الزقازيق الحكومية 
+                    <br>
+                     أنشئت وفقًا للقرار الجمهوري رقم 421 لسنة 2022
                 </p>
                 
     <!-- ######## Uni Location ####### -->
-    <p style="text-align: center;">تقع على مساحة 173 فدانا، ويضم مستشفى تعليمي بطاقة 577 سريرًا، وسكنًا خاصًا للطلاب وأعضاء هيئة التدريس .</p>
-    <a href="enter the actual link here" style="display: block; text-align: center;">
+    <p style="text-align: center;">تقع على مساحة 44 فدانا،بمدينة العاشر من رمضان، محافظة الشرقية ويضم مبني الورش، مبني ريادة الاعمال والابتكار، مبني المعامل، المنطقة الترفيهية </p>
+    <a href="https://goo.gl/maps/A1Ubs51P5puXpETM6?coh=178573&entry=tt" style="display: block; text-align: center;">
         <button>عرض الموقع على الخرائط</button>
     </a>
                 
                 <!-- ######## Social Media Links ####### -->
                 <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
                     <ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
-                        <li><a href="https://ksiu.edu.eg"><i class="fas fa-globe"></i></a></li>
-                        <li><a href="tel:16949"><i class="fas fa-phone"></i></a></li>
-                        <li><a href="mailto:info@ksiu.edu.eg"><i class="fas fa-envelope"></i></a></li>
-                        <li><a href="https://facebook.com/ksiu"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="https://instagram.com/ksiu"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="https://youtube.com/ksiu"><i class="fab fa-youtube"></i></a></li>
-                        <li><a href="https://linkedin.com/in/ksiu"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="https://news.zu.edu.eg/ShowDetails/46742/1"><i class="fas fa-globe"></i></a></li>
+                        <li><a href="tel:01110775399 "><i class="fas fa-phone"></i></a></li>
+                        <li><a href="mailto:znu@zu.edu.eg"><i class="fas fa-envelope"></i></a></li>
+                        <li><a href="https://www.facebook.com/ZagazigNationalUniversity?fref=mentions&__xts__%5b0%5d=68.ARBQ9s-0NS7wjAu1g5jronusyypgkiIXtejdP2X9bB1h2ZFUgXmJRijEJ-96xZKZV6OMuAky9IVwjAcwNmKWcjV8XIe-V9w8rIQgCy-dVXgtGdOw2vlQkczP8ps0TjMytcQvITwneK-ib98XwYAhWCBSq7xK4zyGASTHgc1D54I-M6rxo__FDu5QE-727t-utQayC-lf08J_wem-pPI9TJxJLS_UnhBHELJTFeGKEUxP4QxC5BeH5ixDXxAvFT1yH_9s66RMu9dUsYRQyRiBvhD85F7k9_v8g4haGP5gh-s9SiIP3nfrrrA"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                        <li><a href=""><i class="fab fa-youtube"></i></a></li>
+                        <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>
                     </ul>
                 </div>
             </div>

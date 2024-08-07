@@ -2,12 +2,11 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item navbar-brand">
-          <a href="/Home">
+          <a href="">
             <img src="../../../images/logo.png" alt="Logo" class="d-inline-block align-top" />
           </a>
         </li>

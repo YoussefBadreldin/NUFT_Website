@@ -124,8 +124,8 @@ const routes = [
     component:ContactUs
   },
   {
-    path:'/signup',
-    name:'signUp',
+    path:'/user',
+    name:'user',
     component: signUp
   },
   {

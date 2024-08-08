@@ -43,13 +43,15 @@
 </ul>
     </div>
 </div>
+    </section>
+           <section>
             <br><br>
             <h1>الكليات والبرامج</h1>
             <div class="table-responsive" dir="rtl">
-                <table style="margin-top:0vh;" dir="rtl">
+                <table style="margin-top: 0vh;" dir="rtl">
                     <thead>
                         <tr>
-                           <th rowspan="2">الكلية</th>
+                            <th rowspan="2">الكلية</th>
                             <th rowspan="2">البرامج</th>
                             <th rowspan="2">الرسوم للمصريين
                             <br>
@@ -58,7 +60,7 @@
                             <br>
                              (في السنة)</th>
                             <th rowspan="2">الشعبة</th>
-                            <th colspan="2">الحد الأدنى  للثانوية العامة</th>
+                            <th colspan="2">الحد الأدنى للثانوية العامة</th>
                             <th colspan="2">الحد الأدنى للشهادات العربية، الإنجليزية والأزهرية</th>
                             <th colspan="2">الحد الأدنى لستيم والنيل</th>
                             <th rowspan="2">الحد الأدنى للوافدين</th>
@@ -90,20 +92,20 @@
                     </tbody>
                 </table>
             </div>
-<p>
-    ● الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت).
-</p>
+            <p>
+                الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت)
+            </p>
         </section>
 
         <section>
-        <br> <br>
+            <br><br>
             <h2>السكن</h2>
             <div class="table-responsive" dir="rtl">
                 <table>
                     <thead>
                         <tr>
                             <th>النوع</th>
-                              <th>الرسوم
+                            <th>الرسوم
                             <br>
                             (في الترم)</th>
                         </tr>
@@ -119,8 +121,9 @@
             <br>
             <a :href="register_link_dorms" target="_blank"><button>رابط التسجيل</button></a>
         </section>
+
         <section>
-        <br> <br>
+            <br><br>
             <h2>الانتقالات</h2>
             <div class="table-responsive" dir="rtl">
                 <table>
@@ -141,32 +144,35 @@
                 </table>
             </div>
             <br>
-            <a :href="register_link_dorms" target="_blank"><button>رابط التسجيل</button></a>
+            <a :href="register_link_transportation" target="_blank"><button>رابط التسجيل</button></a>
         </section>
-       <section>
-       <br> <br>
-    <h1>المنح الدراسية</h1>
+
+        <section>
+            <br><br>
+            <h1>المنح الدراسية</h1>
             <p>توفر الجامعة مجموعة مختلفة من المنح الدراسية</p>
-    <a :href="register_link_transportation" target="_blank"><button>مزيد من التفاصيل عن المنح الدراسية</button></a>
-</section>
-<section>
+            <a :href="register_link_transportation" target="_blank"><button>مزيد من التفاصيل عن المنح الدراسية</button></a>
+        </section>
+
+        <section>
             <br><br>
             <h1>طرق التقديم</h1>
-    <a :href="Admission_link_natives" target="_blank"><button>رابط التقديم للطلاب الوافدين</button></a>
-    <a :href="transfer_link_egyption" target="_blank"><button>رابط التحويل للطلاب المصريين</button></a>
-    <a :href="international_program_link" target="_blank"><button>رابط التقديم للطلاب المصريين (البرامج الدولية)</button></a>
-    <a :href="Admission_link_egyption" target="_blank"><button>رابط التقديم للطلاب المصريين</button></a>
-</section>
+            <a :href="Admission_link_natives" target="_blank"><button>رابط التقديم للطلاب الوافدين</button></a>
+            <a :href="transfer_link_egyption" target="_blank"><button>رابط التحويل للطلاب المصريين</button></a>
+            <a :href="Admission_link_egyption" target="_blank"><button>رابط التقديم للطلاب المصريين</button></a>
+        </section>
+
         <FooterComponent />
     </div>
 </template>
+
 <script>
 import axios from 'axios';
 import HeaderComponent from '../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../public/global/footerComponent.vue';
 
 export default {
-    name: 'EELU',
+    name: 'KSIU',
     data() {
         return {
             all_data: [],
@@ -208,12 +214,11 @@ export default {
                 }
                 if (Array.isArray(this.all_data)) {
                     console.log('All data:', this.all_data);
-                    this.filteredData = this.all_data.filter(index => index.speciality === 'EELU' && index.facality_or_international === 'facality');
-                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'EELU');
+                    this.filteredData = this.all_data.filter(index => index.speciality === 'KSIU' && index.facality_or_international === 'facality');
+                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'KSIU');
                     console.log('Filtered data:', this.filteredData);
                     console.log('Filtered international:', this.filteredInternational);
-                }
-                else {
+                } else {
                     console.error('this.all_data is not an array:', this.all_data);
                 }
             } catch (error) {
@@ -224,7 +229,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-backend.onrender.com/links/get_links');
                 this.links = response.data;
-                this.filteredLinks = this.links.filter(index => index.university_Name === 'EELU');
+                this.filteredLinks = this.links.filter(index => index.university_Name === 'KSIU');
                 console.log(this.filteredLinks);
                 if (this.filteredLinks.length > 0) {
                     this.firstYear = this.filteredLinks[0].first_year;
@@ -248,7 +253,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-backend.onrender.com/info/getdorms');
                 this.dorms = response.data;
-                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'EELU');
+                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'KSIU');
                 //console.log('dorms table', this.filteredDorms)
             } catch (error) {
                 console.log(error);
@@ -256,9 +261,9 @@ export default {
         },
         async gettrans() {
             try {
-                const response = await axios.get('http://localhost:3000/trans/gettrans');
+                const response = await axios.get('https://nuft-backend.onrender.com/trans/gettrans');
                 this.trans = response.data;
-                this.filteredTrans = this.trans.filter(index => index.spec === 'EELU');
+                this.filteredTrans = this.trans.filter(index => index.spec === 'KSIU');
                 console.log('filteredTrans', this.filteredTrans)
             }
             catch (error) {
@@ -268,48 +273,15 @@ export default {
         openMap(location) {
             let mapLink = '';
             switch(location) {
-                case 'الفيوم':
-                    mapLink = 'https://goo.gl/maps/link1';
+                case 'الطور':
+                    mapLink = 'https://goo.gl/maps/E4fviPSqcdWtmMvf8?coh=178573&entry=tt';
                     break;
-                case 'إسكندرية':
-                    mapLink = 'https://goo.gl/maps/link2';
+                case 'راس سدر':
+                    mapLink = 'https://goo.gl/maps/kZzF5udbmPRdFuNJA?coh=178573&entry=tt';
                     break;
-                case 'جنوب الوادي بقنا':
-                    mapLink = 'https://goo.gl/maps/link3';
+                case 'شرم الشيخ':
+                    mapLink = 'https://goo.gl/maps/i6uAZuZowDPBNV9R9?coh=178573&entry=tt';
                     break;
-                case 'الإسماعلية':
-                    mapLink = 'https://goo.gl/maps/link4';
-                    break;
-                case 'طنطا':
-                    mapLink = 'https://goo.gl/maps/link5';
-                    break;
-                case 'سوهاج':
-                    mapLink = 'https://goo.gl/maps/link6';
-                    break;
-                case 'أسوان':
-                    mapLink = 'https://goo.gl/maps/link7';
-                    break;
-                case 'عين شمس':
-                    mapLink = 'https://goo.gl/maps/link8';
-                    break;
-                case 'جنوب الوادي بالغردقة':
-                    mapLink = 'https://goo.gl/maps/link9';
-                    break;
-                case 'بني سويف':
-                    mapLink = 'https://goo.gl/maps/link10';
-                    break;
-                case 'السادات':
-                    mapLink = 'https://goo.gl/maps/link11';
-                    break;
-                case 'أسيوط':
-                    mapLink = 'https://goo.gl/maps/link12';
-                    break;
-                case 'المنوفية':
-                    mapLink = 'https://goo.gl/maps/link13';
-                    break;
-                default:
-                    alert('Location not found');
-                    return;
             }
             window.open(mapLink, '_blank');
         }
@@ -321,14 +293,12 @@ export default {
         this.gettrans();
         console.log(this.filteredData);
         console.log('international', this.filteredInternational);
-    },
-    mounted() {
-        window.scrollTo(0, 0);
-    }
+  },
+  mounted() {
+    window.scrollTo(0, 0);
+  }
 };
 </script>
-
-
 
 <style scoped>
 .view_location {

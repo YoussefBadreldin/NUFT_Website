@@ -139,14 +139,13 @@ export default {
     }
 
     .navbar-nav .nav-item {
-      margin-left: 30px;
+      margin-left: 25px;
     }
 
     .navbar-brand {
       order: 1;
       margin-right: 0;
       margin-right: 250px;
-      margin-left: -1050px;
     }
   }
 

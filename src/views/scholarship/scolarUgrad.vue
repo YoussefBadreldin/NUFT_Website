@@ -20,28 +20,20 @@
             <div class="col-md-10 vbf mx-auto">
                 <div class="news-card row">
                     <div class="col-2">
-                        <div class="date-box">
-                            <p>منح</p>
-                            <small>كاملة</small>
-                        </div>
                     </div>
                     <div class="col-7 setv">
-                        <h4><a href="#">منح دراسية في مجال علوم الكمبيوتر بجامعة النيل</a></h4>
+                        <h4><a>منح مقدمة من موسسة</a></h4>
                         <p>
-                            <strong>معايير الأهلية:</strong>
-                            <ul>
-                                <li>- طالب مصري</li>
-                            </ul>
+                            <strong>:في مجالات</strong>
                         </p>
                         <p>
-                            <strong>عملية التقديم:</strong>
                             <ul>
-                                <li>- قم بزيارة <a class="application-link" href="http://www.google.com" target="_blank">هذا الرابط</a> للوصول إلى نموذج التقديم.</li>
+                                <li> <a class="application-link" href="http://www.google.com" target="_blank">التفاصيل </a></li>
                             </ul>
                         </p>
                     </div>
                     <div class="col-3 img-cv">
-                        <img src="/images/Logos/Universites/National/NU.png" alt="جامعة النيل">
+                        <img src="/images/ComingSoon.png" alt="جامعة النيل">
                     </div>
                 </div>
 

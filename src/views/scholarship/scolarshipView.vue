@@ -13,7 +13,7 @@
                     <div class="col-md-4">
                         <a href="/Scholarships/UGRAD">
                             <div class="Box-card">
-                                <img src="/images/Categories/UGRADStatus.png" alt="">
+                                <img src="/images/scholarships/UGRAD.png" alt="">
                                 <div class="Box-det" style="text-align: center;">
                                     <h6>منح المرحلة الجامعية</h6>
                                 </div>
@@ -23,7 +23,7 @@
                     <!--<div class="col-md-4">
                         <a href="/Scholarships/PGRAD">
                             <div class="Box-card">
-                                <img src="/images/Categories/PGRADStatus.png" alt="">
+                                <img src="/images/scholarships/PGRAD.png" alt="">
                                 <div class="Box-det" style="text-align: center;">
                                     <h6>مرحلة الدراسات العليا</h6>
                                 </div>

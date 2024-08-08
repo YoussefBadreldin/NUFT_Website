@@ -52,55 +52,54 @@
           <div class="col-lg-7 col-md-12 left-item">
             <ul></ul>
           </div>
-          <div class="col-lg-5 right-item">
             <ul>
              <li><a><strong>بث تجريبي</strong></a></li>
             </ul>
-          </div>
         </div>
       </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a class="navbar-brand" href="/Home">
-        <img src="../../images/logo.png" alt="Logo" class="d-inline-block align-top" />
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/Home">الرئيسية</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/Guide">دليل الجامعات</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/Status">حالة التقديمات</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/Scholarships">المنح</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/Calculator">معادلة الشهادات</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/News">الاخبار</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/Contact">تواصل معنا</a>
-          </li>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="/Home">
+            <img src="../../images/logo.png" alt="Logo" class="d-inline-block align-top" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
           <li class="nav-item" v-if="!name">
             <a class="nav-link signup-button" href="/user">تسجيل الدخول</a>
           </li>
           <li class="nav-item" v-if="name">
             <button class="btn btn-primary btn-sm" @click="logout">تسجيل الخروج</button>
           </li>
-        </ul>
-      </div>
-    </nav>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Contact">تواصل معنا</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/News">الأخبار</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Calculator">معادلة الشهادات</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Scholarships">المنح</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Status">حالة التقديمات</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Guide">دليل الجامعات</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home">الرئيسية</a>
+                </li>
+            </ul>
+        </div>
+      </nav>
   </div>
 </template>
 
@@ -125,12 +124,15 @@ export default {
 </script>
 
 <style scoped>
-.nav-link {
-  color: #ced2e1 !important;
-  padding: 10px 15px; 
-  font-size: 1rem;
+  body {
+    direction: rtl;
+  }
+  .navbar-nav {
+    flex-direction: row-reverse;
+  }
+.navbar {
+  background-color: #001d3d !important;
 }
-
 .signup-button, .btn-primary {
   background-color: #ffbf00; 
   color: #001d3d !important; 
@@ -139,45 +141,10 @@ export default {
   font-weight: bold; 
   text-align: center; 
 }
-
-.navbar {
-  background-color: #001d3d !important;
-}
-
-.navbar-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.nav-item {
-  margin: 5px 10px;
-}
-
-.navbar-brand {
-  margin-right: 15px; 
-}
-
-@media (min-width: 992px) {
-  .navbar-brand {
-    order: 1;
-    margin-right: 0;
-  }
-  .navbar-nav {
-    order: 0;
-    flex: 1;
-    justify-content: flex-end;
-    flex-direction: row-reverse;
-  }
-  .navbar-nav .nav-item {
-    margin-right: 0;
-    margin-left: 10px;
-  }
-}
-
 .header-top {
   background-color: #C70039;
-  padding: 5px 0; /* Reduced top and bottom padding */
+  padding: 1px 0; /* Reduced top and bottom padding */
+  margin-bottom: -15px;
   color: white;
   text-align: center;
 }
@@ -221,5 +188,13 @@ export default {
   padding: 0; /* Ensure no padding around the link */
   line-height: 1.5; /* Adjust line height if needed */
 }
-
+  @media (max-width: 992px) {
+    .navbar-nav {
+      flex-direction: column-reverse;
+    }
+    .header-top {
+  margin-top: -10px;
+  margin-bottom: -20px;
+}
+  }
 </style>

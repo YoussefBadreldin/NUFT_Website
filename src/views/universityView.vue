@@ -58,4 +58,11 @@ export default {
     /* Set the width of the page-nav section */
     width: 100.97%; /* Adjust as needed */
 }
+
+media (max-width: 991px) {
+    .page-nav {
+    /* Set the width of the page-nav section */
+    width: 300%; /* Adjust as needed */
+}
+}
 </style>

@@ -139,7 +139,7 @@ export default {
     }
 
     .navbar-nav .nav-item {
-      margin-left: 5px;
+      margin-left: 10px;
     }
 
     .navbar-brand {

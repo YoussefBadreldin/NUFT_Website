@@ -59,7 +59,9 @@
   </footer>
   <div class="copy" style="text-align: center;">
     <div class="CopyRights">
-      <p><a href="https://pill-network.com" target="_blank" rel="noopener noreferrer">Pill Network</a> ع2024 جميع الحقوق محفوظة | تصميم وتطوير بواسطة©</p>
+      <p>  2024© جميع الحقوق محفوظة
+      <br>
+      <a href="https://pill-network.com" target="_blank" rel="noopener noreferrer">Pill Network </a> تصميم وتطوير بواسطة</p>
     </div>
   </div>
 </template>

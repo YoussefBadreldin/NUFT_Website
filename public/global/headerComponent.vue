@@ -132,7 +132,7 @@ export default {
   }
 
   /* Desktop and larger screens */
-  @media (min-width: 992px) {
+  @media (min-width: 1024px) {
     .navbar-nav {
       margin-left: 250px;
       flex-direction: row-reverse;

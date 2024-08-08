@@ -131,15 +131,13 @@ export default {
     background-color: #001d3d !important;
   }
 
-  /* Desktop and larger screens */
-  @media (min-width: 992px) {
     .navbar-nav {
       margin-left: 250px;
       flex-direction: row-reverse;
     }
 
     .navbar-nav .nav-item {
-      margin-left: 30px;
+      margin-left: 25px;
     }
 
     .navbar-brand {
@@ -148,7 +146,6 @@ export default {
       margin-right: 250px;
       margin-left: -1050px;
     }
-  }
 
   /* Mobile view */
   @media (max-width: 991px) {

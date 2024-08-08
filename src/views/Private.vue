@@ -248,14 +248,14 @@ export default {
                 {
                     id: 35,
                     name: 'جامعة القاهرة ساكسوني للعلوم التطبيقية والتكنولوجيا',
-                    imgSrc: '/images/Logos/Universites/Private/CSU.png',
-                    link: '/guide/UGRAD/private/CSU'
+                    imgSrc: '/images/Logos/Universites/Private/SEU.png',
+                    link: '/guide/UGRAD/private/SEU'
                 },
                 {
                     id: 36,
                     name: 'جامعة اللوتس',
-                    imgSrc: '/images/Logos/Universites/Private/Lotus.png',
-                    link: '/guide/UGRAD/private/Lotus'
+                    imgSrc: '/images/Logos/Universites/Private/LUM.png',
+                    link: '/guide/UGRAD/private/LUM'
                 }
             ]
         };

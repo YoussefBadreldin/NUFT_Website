@@ -23,7 +23,7 @@
                             </div>
                         </router-link>
                     </div>
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                         <router-link to="/Guide/UGRAD/Private">
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/PrivateGuide.png" alt="Private Universities">
@@ -33,7 +33,7 @@
                             </div>
                         </router-link>
                     </div>
-                  <!--  <div class="col-md-4">
+                   <div class="col-md-4">
                         <router-link to="/Guide/UGRAD/soon">
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/InternationalGuide.png"

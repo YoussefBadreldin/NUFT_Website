@@ -55,12 +55,12 @@ export default {
                     altText: 'National Universities',
                     title: 'حالة تقديمات الجامعات الاهلية',
                 }
-                ,{
+                ,/*{
                     link: '/status/UGRAD/Private',
                     imgSrc: '/images/Universites/Status/PrivateStatus.png',
                     altText: 'Private Universities',
                     title: 'حالة تقديمات الجامعات الخاصة',
-                }/*,
+                },
                 {
                     link: 'status/UGRAD/International'',
                     imgSrc: '/images/Universites/Status/InternationalStatus.png',

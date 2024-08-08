@@ -134,18 +134,19 @@ export default {
   /* Desktop and larger screens */
   @media (min-width: 992px) {
     .navbar-nav {
-      margin-left: 350px;
+      margin-left: 250px;
       flex-direction: row-reverse;
     }
 
     .navbar-nav .nav-item {
-      margin-left: 2px;
+      margin-left: 30px;
     }
 
     .navbar-brand {
       order: 1;
       margin-right: 0;
-      margin-right: 350px;
+      margin-right: 250px;
+      margin-left: -1050px;
     }
   }
 

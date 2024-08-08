@@ -126,4 +126,12 @@ export default {
     window.scrollTo(0, 0);
   }
 };
+
 </script>
+
+<style scoped>
+.page-nav {
+    /* Set the width of the page-nav section */
+    width: 100.97%; /* Adjust as needed */
+}
+</style>

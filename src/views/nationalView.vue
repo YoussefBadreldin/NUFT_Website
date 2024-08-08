@@ -66,6 +66,9 @@ export default {
 }
 </script>
 
-<style>
-/* Add your component-specific styles here */
+<style scoped>
+.page-nav {
+    /* Set the width of the page-nav section */
+    width: 100.97%; /* Adjust as needed */
+}
 </style>

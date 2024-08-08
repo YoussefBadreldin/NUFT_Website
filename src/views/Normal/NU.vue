@@ -90,9 +90,9 @@
                             <td>{{ faculty.facilities }}</td>
                             <td>{{ faculty.programs }}</td>
                             <td>{{ faculty.feesEgyption }}</td>
-                            <td>{{ faculty.feesEgyption }}</td>
-                            <td>{{ faculty.feesEgyption }}</td>
-                            <td>{{ faculty.feesEgyption }}</td>
+                            <td>{{ faculty.feesEgyption2 }}</td>
+                            <td>{{ faculty.feesEgyption3 }}</td>
+                            <td>{{ faculty.feesEgyption4 }}</td>
                             <td>{{ faculty.feesNatives }}</td>
                             <td>{{ faculty.section }}</td>
                             <td>{{ faculty.scoreFirst }}</td>

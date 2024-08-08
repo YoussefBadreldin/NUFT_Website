@@ -37,22 +37,35 @@
     </section>
     
        <section>
-            <br><br>
+           <br><br>
             <h1>الكليات والبرامج</h1>
             <div class="table-responsive" dir="rtl">
-                <table style="margin-top: 0vh;" dir="rtl">
+                <table style="margin-top:0vh;" dir="rtl">
                     <thead>
                         <tr>
-                            <th rowspan="2">الكلية</th>
+                           <th rowspan="2">الكلية</th>
                             <th rowspan="2">البرامج</th>
-                            <th rowspan="2">الرسوم للمصريين
+                            <th rowspan="2">الرسوم للمصرين 
                             <br>
-                             (في السنة)</th>
-                            <th rowspan="2">الرسوم للوافدين
+                             فئة أ
+                             <br>
+                            (في السنة)
+                            </th>
+                            <th rowspan="2">الرسوم للمصرين 
                             <br>
-                             (في السنة)</th>
+                             فئة ب
+                             <br>
+                            (في السنة)
+                            </th>
+                           <th rowspan="2">الرسوم للمصرين 
+                            <br>
+                             فئة ج
+                             <br>
+                            (في السنة)
+                            </th>
+                            <th rowspan="2">(في السنة) الرسوم للوافدين</th>
                             <th rowspan="2">الشعبة</th>
-                            <th colspan="2">الحد الأدنى للثانوية العامة</th>
+                            <th colspan="2">الحد الأدنى  للثانوية العامة</th>
                             <th colspan="2">الحد الأدنى للشهادات العربية، الإنجليزية والأزهرية</th>
                             <th colspan="2">الحد الأدنى لستيم والنيل</th>
                             <th rowspan="2">الحد الأدنى للوافدين</th>
@@ -71,6 +84,8 @@
                             <td>{{ faculty.facilities }}</td>
                             <td>{{ faculty.programs }}</td>
                             <td>{{ faculty.feesEgyption }}</td>
+                            <td>{{ faculty.feesEgyption }}</td>
+                            <td>{{ faculty.feesEgyption }}</td>
                             <td>{{ faculty.feesNatives }}</td>
                             <td>{{ faculty.section }}</td>
                             <td>{{ faculty.scoreFirst }}</td>
@@ -84,7 +99,7 @@
                     </tbody>
                 </table>
             </div>
-            <p>
+<p>
                 الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت)
             </p>
         </section>

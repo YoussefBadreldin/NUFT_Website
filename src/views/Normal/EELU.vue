@@ -44,6 +44,7 @@
     </div>
 </div>
     </section>
+    
            <section>
             <br><br>
             <h1>الكليات والبرامج</h1>

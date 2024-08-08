@@ -59,7 +59,7 @@ export default {
                     link: '/status/UGRAD/Private',
                     imgSrc: '/images/Universites/Status/PrivateStatus.png',
                     altText: 'Private Universities',
-                    title: 'الجامعات الخاصة',
+                    title: 'حالة تقديمات الجامعات الخاصة',
                 }/*,
                 {
                     link: 'status/UGRAD/International'',

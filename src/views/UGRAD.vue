@@ -28,7 +28,7 @@
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/PrivateGuide.png" alt="Private Universities">
                                 <div class="Box-det" style="text-align: center;">
-                                    <h6>الجامعات الخاصة</h6>
+                                    <h6>دليل الجامعات الخاصة</h6>
                                 </div>
                             </div>
                         </router-link>

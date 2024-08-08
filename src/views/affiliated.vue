@@ -61,7 +61,7 @@ export default {
         },
         {
             id: 4,
-            name: 'جامعة بني سوسف الاهلية',
+            name: 'جامعة بني سويف الاهلية',
             imgSrc: '/images/Logos/Universites/National/BSNU.png',
             link: '/guide/UGRAD/National/BSNU'
        },

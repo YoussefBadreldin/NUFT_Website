@@ -54,19 +54,13 @@ export default {
                     imgSrc: '/images/Universites/Status/NationalStatus.png',
                     altText: 'National Universities',
                     title: 'حالة تقديمات الجامعات الاهلية',
-                }/*,
-                {
-                    link: 'status/UGRAD/public',
-                    imgSrc: '/images/Universites/Status/PublicStatus.png',
-                    altText: 'Public Universities',
-                    title: 'الجامعات الحكومية',
-                },
-                {
-                    link: 'status/UGRAD/Private',
+                }
+                ,{
+                    link: '/status/UGRAD/Private',
                     imgSrc: '/images/Universites/Status/PrivateStatus.png',
                     altText: 'Private Universities',
                     title: 'الجامعات الخاصة',
-                },
+                }/*,
                 {
                     link: 'status/UGRAD/International'',
                     imgSrc: '/images/Universites/Status/InternationalStatus.png',

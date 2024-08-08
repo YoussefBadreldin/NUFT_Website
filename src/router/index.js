@@ -4,9 +4,11 @@ import UniversitiesGuide from "../views/universityView.vue";
 import UgardView from "../views/UGRAD.vue";
 import soonView from "../views/soonView.vue";
 import NationalUniversities from "../views/nationalView.vue";
+import Private from "../views/Private.vue";
 import AdmissionStatus from "../views/AdmissionStatus/guideMain.vue";
 import AdmissionStatusUGRAD from "../views/AdmissionStatus/UgradAdmission.vue";
 import NationalUniversitiesAdmissionsStatus from "../views/AdmissionStatus/nationalView.vue";
+import PrivateStatus from "../views/AdmissionStatus/PrivateView.vue";
 import ScholarShips from "../views/scholarship/scolarshipView.vue";
 import ScholarshipsUGRAD from "../views/scholarship/scolarUgrad.vue";
 import CertificatesCalculator from "../views/certificateCalc/certificateCalc.vue";
@@ -84,6 +86,11 @@ const routes = [
     component:NationalUniversities
   },
   {
+    path:'/Guide/UGRAD/Private',
+    name:"Private",
+    component:Private
+  },
+  {
     path:"/Status",
     name:"Status",
     component:AdmissionStatus
@@ -102,6 +109,11 @@ const routes = [
     path:"/Status/UGRAD/National",
     name:"Status/UGRAD/National",
     component:NationalUniversitiesAdmissionsStatus,
+  },
+  {
+    path:"/Status/UGRAD/Private",
+    name:"PrivateStatus",
+    component:PrivateStatus,
   },
   {
     path:"/Scholarships",

@@ -23,18 +23,8 @@
                             </div>
                         </router-link>
                     </div>
-                    <!--<div class="col-md-4">
-                        <router-link to="/Guide/UGRAD/soon">
-                            <div class="Box-card">
-                                <img src="/images/Universites/Guide/PublicGuide.png" alt="Public Universities">
-                                <div class="Box-det" style="text-align: center;">
-                                    <h6>الجامعات الحكومية</h6>
-                                </div>
-                            </div>
-                        </router-link>
-                    </div>
                     <div class="col-md-4">
-                        <router-link to="/Guide/UGRAD/soon">
+                        <router-link to="/Guide/UGRAD/Private">
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/PrivateGuide.png" alt="Private Universities">
                                 <div class="Box-det" style="text-align: center;">
@@ -43,7 +33,7 @@
                             </div>
                         </router-link>
                     </div>
-                    <div class="col-md-4">
+                  <!--  <div class="col-md-4">
                         <router-link to="/Guide/UGRAD/soon">
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/InternationalGuide.png"

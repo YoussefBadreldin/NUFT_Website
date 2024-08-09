@@ -28,7 +28,7 @@
                         <li><a href="http://anu.alexu.edu.eg/"><i class="fas fa-globe"></i></a></li>
                         <li><a href="tel:01228858407"><i class="fas fa-phone"></i></a></li>
                         <li><a href="mailto:admission.anu@alexu.edu.eg "><i class="fas fa-envelope"></i></a></li>
-                        <li><a href="https://www.facebook.com/AlexandriaNationalUniversity/"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.facebook.com/AlexandriauniOfficial"><i class="fab fa-facebook-f"></i></a></li>
                         <li><a href=""><i class="fab fa-instagram"></i></a></li>
                         <li><a href=""><i class="fab fa-youtube"></i></a></li>
                         <li><a href=""><i class="fab fa-linkedin-in"></i></a></li>

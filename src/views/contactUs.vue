@@ -133,7 +133,7 @@ export default {
             this.errorMessages = errorMessage;
 
             if (!errorMessage) {
-                axios.post('https://nuft-backend.onrender.com/contact/add', this.form)
+                axios.post('https://nuft-website-backend.vercel.app/contact/add', this.form)
                     .then(() => {
                         this.submitted = true;
                         this.form = {

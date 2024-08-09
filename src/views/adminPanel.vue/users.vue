@@ -25,7 +25,7 @@
     },
     methods: {
       getAllusers() {
-        axios.get('https://nuft-backend.onrender.com/auth/getallusers')
+        axios.get('https://nuft-website-backend.vercel.app/auth/getallusers')
           .then(response => {
             this.allUsers = response.data;
           })

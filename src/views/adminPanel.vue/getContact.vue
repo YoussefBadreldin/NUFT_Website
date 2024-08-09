@@ -51,7 +51,7 @@ export default {
     },
     methods: {
         fetchContacts() {
-            axios.get('https://nuft-backend.onrender.com/contact/get')
+            axios.get('https://nuft-website-backend.vercel.app/contact/get')
                 .then(response => {
                     this.contacts = response.data;
                     this.loading = false;

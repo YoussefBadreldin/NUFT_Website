@@ -16,21 +16,21 @@
   <meta name="theme-color" content="#ffffff">
 
   <!-- SEO Meta Tags -->
-  <meta name="description" content="يقدم NUFT إرشادات شاملة للطلاب الراغبين في الدراسة بالجامعات المصرية، بما في ذلك الجامعات الاهلية، الجامعات الخاصة، والجامعات الدولية. اكتشف فرص المنح الدراسية وحالة التقديمات ودليل الجامعات.">
-  <meta name="keywords" content="الجامعات المصرية، الدراسة في مصر، دليل الجامعات المصرية، الجامعات الاهلية، الجامعات الخاصة، الجامعات الدولية، المنح الدراسية في مصر، التقديمات الطلابية في مصر، ادرس في مصر، تنسيق الجامعات، الحد الادني للجامعات، وزارة التعليم العالي والبحث العلمي، المجلس الاعلي للجامعات، التحويل للجامعات، study in Egypt wafdeen، وافدين، الثانوية العامة، الذكاء الاصطناعي، نتيجة الثانوية العامة، حاسبات ومعلومات، طب">
+<meta name="description" content="يقدم NUFT إرشادات شاملة للطلاب الراغبين في الدراسة بالجامعات المصرية، بما في ذلك الجامعات الاهلية، الجامعات الخاصة، والجامعات الدولية. اكتشف فرص المنح الدراسية وحالة التقديمات ودليل الجامعات. تعرف على القبول بالجامعة، التخصصات الجامعية، الرسوم الدراسية، السكن الجامعي، والحياة الجامعية.">
+<meta name="keywords" content="الجامعات المصرية، الدراسة في مصر، دليل الجامعات المصرية، الجامعات الاهلية، الجامعات الخاصة، الجامعات الدولية، المنح الدراسية في مصر، التقديمات الطلابية في مصر، ادرس في مصر، تنسيق الجامعات، الحد الادني للجامعات، وزارة التعليم العالي والبحث العلمي، المجلس الاعلي للجامعات، التحويل للجامعات، study in Egypt wafdeen، وافدين، الثانوية العامة، الذكاء الاصطناعي، نتيجة الثانوية العامة، حاسبات ومعلومات، طب، دليل الجامعات الاهلية، دليل الجامعات في مصر، دليل الجامعات الخاصة، دليل الجامعات المصرية، جامعة الملك سلمان الدولية، جامعة الجلالة، جامعة العلمين الدولية، الجامعات الاهلية المنبثقة، جامعة المنصورة الجديدة، جامعة النيل الاهلية، جامعة مصر للمعلوماتية، Edugate، noureldin for universities، سفير الجامعات، Safiruni، EDUHUB، طالب، جامعة الابتكار، جامعة السويدي للتكنولوجيا، الجامعة، القبول بالجامعة، التخصصات الجامعية، الرسوم الدراسية، السكن الجامعي، المنح الدراسية، الحياة الجامعية، فرص العمل بعد التخرج، أفضل جامعة في [city]، جامعات [city]، دراسة في [city]، تخصص [program]، جامعة تقدم تخصص [program]، أفضل جامعة لـ [program]، كلية الطب، كلية الهندسة، كلية الحقوق، الدراسات العليا، التعليم عن بعد، رسوم الدراسة بكلية الطب جامعة القاهرة، أفضل تخصصات الهندسة في مصر">
 
-  <!-- Open Graph Meta Tags for Social Sharing -->
-  <meta property="og:title" content="NUFT - دليلك إلى الجامعات المصرية">
-  <meta property="og:description" content="اكتشف مستقبلك في الجامعات المصرية مع NUFT. احصل على معلومات حول الجامعات الاهلية، الجامعات الخاصة، الجامعات الدولية، المنح الدراسية، والتقديمات والمزيد.">
-  <meta property="og:image" content="https://nufteg.com/images/og-image.jpg"> <!-- Ensure this is the correct image path -->
-  <meta property="og:url" content="https://nufteg.com">
-  <meta property="og:type" content="website">
+<!-- Open Graph Meta Tags for Social Sharing -->
+<meta property="og:title" content="NUFT - دليلك إلى الجامعات المصرية">
+<meta property="og:description" content="اكتشف مستقبلك في الجامعات المصرية مع NUFT. احصل على معلومات حول الجامعات الاهلية، الجامعات الخاصة، الجامعات الدولية، المنح الدراسية، والتقديمات والمزيد. تعرف على القبول بالجامعة، التخصصات الجامعية، الرسوم الدراسية، السكن الجامعي، والحياة الجامعية.">
+<meta property="og:image" content="https://nufteg.com/images/og-image.jpg"> <!-- Ensure this is the correct image path -->
+<meta property="og:url" content="https://nufteg.com">
+<meta property="og:type" content="website">
 
-  <!-- Twitter Card Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="NUFT - دليلك إلى الجامعات المصرية">
-  <meta name="twitter:description" content="اكتشف الجامعات المصرية مع NUFT. دليلك الكامل للجامعات الاهلية، الجامعات الخاصة، الجامعات الدولية، المنح الدراسية، التقديمات، والمزيد.">
-  <meta name="twitter:image" content="https://nufteg.com/images/twitter-card.jpg"> <!-- Ensure this is the correct image path -->
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NUFT - دليلك إلى الجامعات المصرية">
+<meta name="twitter:description" content="اكتشف الجامعات المصرية مع NUFT. دليلك الكامل للجامعات الاهلية، الجامعات الخاصة، الجامعات الدولية، المنح الدراسية، التقديمات، والحياة الجامعية. تعرف على القبول بالجامعة، التخصصات الجامعية، الرسوم الدراسية، السكن الجامعي، وفرص العمل بعد التخرج.">
+<meta name="twitter:image" content="https://nufteg.com/images/twitter-card.jpg"> <!-- Ensure this is the correct image path -->
 
   <!-- CSS Preloading for Critical CSS -->
   <link rel="preload" href="/css/bootstrap.min.css" as="style">

@@ -54,37 +54,25 @@ export default {
                     imgSrc: '/images/Universites/Status/NationalStatus.png',
                     altText: 'National Universities',
                     title: 'حالة تقديمات الجامعات الاهلية',
-                }
-                ,/*{
-                    link: '/status/UGRAD/Private',
+                },
+                {
+                    link: '', // Provide a valid link or remove if not needed
                     imgSrc: '/images/Universites/Status/PrivateStatus.png',
                     altText: 'Private Universities',
-                    title: 'حالة تقديمات الجامعات الخاصة',
+                    title: 'حالة تقديمات الجامعات الخاصة (قريبا)',
                 },
                 {
-                    link: 'status/UGRAD/International'',
-                    imgSrc: '/images/Universites/Status/InternationalStatus.png',
-                    altText: 'International Universities',
-                    title: 'الجامعات الدولية',
-                },
-                {
-                    link: 'status/UGRAD/Special',
+                    link: '', // Provide a valid link or remove if not needed
                     imgSrc: '/images/Universites/Status/SpecialStatus.png',
                     altText: 'Special Nature Universities',
-                    title: 'الجامعات ذات طبيعة خاصة',
+                    title: 'حالة تقديمات الجامعات ذات الطبيعة الخاصة (قريبا)',
                 },
                 {
-                    link: 'status/UGRAD/Tech',
-                    imgSrc: '/images/Universites/Status/TechUniStatus.png',
-                    altText: 'Technological Universities',
-                    title: 'الجامعات التكنولوجية',
-                },
-                {
-                    link: 'status/UGRAD/HigherInst,
-                    imgSrc: '/images/Universites/Status/AllInstitutionsStatus.png',
-                    altText: 'Higher Institutes, Academies & Technological Colleges',
-                    title: 'المعاهد العليا والاكاديميات والكليات التكنولوجية',
-                },*/
+                    link: '', // Provide a valid link or remove if not needed
+                    imgSrc: '/images/Universites/Status/InternationalStatus.png',
+                    altText: 'International Universities',
+                    title: 'حالة تقديمات الجامعات الدولية (قريبا)',
+                }
             ],
         };
     },

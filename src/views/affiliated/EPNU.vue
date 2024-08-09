@@ -198,7 +198,7 @@ export default {
     methods: {
         async get_data() {
             try {
-                const response = await axios.get('https://nuft-backend.onrender.com/faclity/getInternational');
+                const response = await axios.get('https://nuft-website-backend.vercel.app/faclity/getInternational');
                 console.log('API response data:', response.data);
                 if (response.data && Array.isArray(response.data.facilities)) {
                     this.all_data = response.data.facilities;
@@ -220,7 +220,7 @@ export default {
         },
         async getLinks() {
             try {
-                const response = await axios.get('https://nuft-backend.onrender.com/links/get_links');
+                const response = await axios.get('https://nuft-website-backend.vercel.app/links/get_links');
                 this.links = response.data;
                 this.filteredLinks = this.links.filter(index => index.university_Name === 'EPNU');
                 console.log(this.filteredLinks);
@@ -244,7 +244,7 @@ export default {
         },
         async getDorms() {
             try {
-                const response = await axios.get('https://nuft-backend.onrender.com/info/getdorms');
+                const response = await axios.get('https://nuft-website-backend.vercel.app/info/getdorms');
                 this.dorms = response.data;
                 this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'EPNU');
                 //console.log('dorms table', this.filteredDorms)
@@ -254,7 +254,7 @@ export default {
         },
         async gettrans() {
             try {
-                const response = await axios.get('https://nuft-backend.onrender.com/trans/gettrans');
+                const response = await axios.get('https://nuft-website-backend.vercel.app/trans/gettrans');
                 this.trans = response.data;
                 this.filteredTrans = this.trans.filter(index => index.spec === 'EPNU');
                 console.log('filteredTrans', this.filteredTrans)

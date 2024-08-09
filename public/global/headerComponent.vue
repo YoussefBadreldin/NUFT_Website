@@ -273,25 +273,6 @@ export default {
     .header-top {
       margin-top: -10px;
       margin-bottom: -20px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .header-top .container {
-      padding: 0;
-    }
-
-    .header-top .right-item,
-    .header-top .left-item {
-      justify-content: center;
-    }
-
-    .header-top .right-item ul {
-      justify-content: center;
-    }
-
-    .header-top .right-item a {
-      text-align: center;
     }
   }
 </style>

@@ -1,15 +1,14 @@
 <template>
     <div>
-
         <header-component />
 
-        <div class="page-nav row">
+        <div class="page-nav row justify-content-center">
             <h2>معادلة الثانوية البرطانية</h2>
         </div>
 
         <!-- Body -->
         <div class="container mt-md-5 mt-3 mb-4">
-            <div class="row">
+            <div class="row justify-content-center">
                 <!-- Score Calculation Section -->
                 <div class="col-md-6 col-12">
                     <div class="block p-4 mb-4 bg-white rounded-lg border">
@@ -102,54 +101,14 @@
 
                             <div class="row mx-0 justify-content-center">
                                 <button class="btn border mr-2 mt-2" @click="calculateScore">احسب المجموع</button>
-                <input type="text" v-model="scorePercentage" readonly class="form-control d-inline-block w-auto text-center mt-2" placeholder="نسبة الدرجة">
-                <input type="text" v-model="governmentScore" readonly class="form-control d-inline-block w-auto text-center mt-2" placeholder="درجة الحكومة">
-                        </div>
+                                <input type="text" v-model="scorePercentage" readonly class="form-control d-inline-block w-auto text-center mt-2" placeholder="نسبة الدرجة">
+                                <input type="text" v-model="governmentScore" readonly class="form-control d-inline-block w-auto text-center mt-2" placeholder="درجة الحكومة">
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- ملاحظات هامة -->
-<div class="col-md-6 col-12">
-    <div class="block bg-white p-4 mb-md-0 mb-4 rounded-lg border">
-        <h3 style="text-align: center;"><strong>ملاحظات هامة</strong></h3>
-        <p>
-            <strong>:لجامعات الحكومية</strong>
-            <ul style="font-size: 0.8em;">
-                <li>- </li>
-                <li>- </li>
-                <li>- </li>
-                <li>- </li>
-            </ul>
-        </p>
-        <p>
-            <strong><br>:لجامعات الخاصة والوطنية</strong>
-            <ul style="font-size: 0.8em;">
-                <li>- </li>
-                <li>- </li>
-                <li>- </li>
-            </ul>
-        </p>
-        <p>
-            <strong><br>:للمعاهد العليا</strong>
-            <ul style="font-size: 0.8em;">
-                <li>- </li>
-                <li>- </li>
-            </ul>
-        </p>
-        <p>
-            <strong><br>:ملاحظات عامة</strong>
-            <ul style="font-size: 0.8em;">
-                <li>- </li>
-                <li>- </li>
-                <li>- </li>
-                <li>- </li>
-            </ul>
-        </p>
-    </div>
-</div>
-    </div>
-</div>
+            </div>
+        </div>
 
         <footer-component />
     </div>
@@ -204,7 +163,15 @@ export default {
 
 <style scoped>
 .page-nav {
-    /* Set the width of the page-nav section */
+    text-align: center;
     width: 100.97%; /* Adjust as needed */
+}
+
+.container {
+    text-align: center;
+}
+
+.block {
+    margin: 0 auto;
 }
 </style>

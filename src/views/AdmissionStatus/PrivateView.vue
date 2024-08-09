@@ -89,14 +89,14 @@ export default {
             }
         },
         getAdmission(){
-            axios.get('https://nuft-website-backend.vercel.app/admission/get').then(response=>{
+            axios.get('https://nuft-backend.onrender.com/admission/get').then(response=>{
                 this.universities = response.data;
             }).catch(error=>{
                 console.log(error);
             })
         },
         getYears(){
-            axios.get('https://nuft-website-backend.vercel.app/links/get_links').then(response=>{
+            axios.get('https://nuft-backend.onrender.com/links/get_links').then(response=>{
                 this.all_data = response.data;
                 this.firstYear = this.all_data[0].first_year;
                 this.secondYear = this.all_data[0].second_year;

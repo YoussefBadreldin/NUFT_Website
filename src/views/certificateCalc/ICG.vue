@@ -102,7 +102,7 @@
                             <div class="row mx-0 justify-content-center">
                                 <button class="btn border mr-2 mt-2" @click="calculateScore">احسب المجموع</button>
                                 <input type="text" v-model="scorePercentage" readonly class="form-control d-inline-block w-auto text-center mt-2" placeholder="نسبة الدرجة">
-                                <input type="text" v-model="governmentScore" readonly class="form-control d-inline-block w-auto text-center mt-2" placeholder="درجة الحكومة">
+                                <input type="text" v-model="governmentScore" readonly class="form-control d-inline-block w-auto text-center mt-2" placeholder="الدرجة ">
                             </div>
                         </div>
                     </div>

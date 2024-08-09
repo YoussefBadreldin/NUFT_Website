@@ -110,10 +110,10 @@ export default {
     data() {
         return {
             stats: [
-                { number: '115k+', description: 'زيارات للدليل' },
-                { number: '7+', description: 'دليل مختلف' },
+                { number: '115k+', description: 'زيارات لدليل 2023' },
+                { number: '8+', description: 'دليل مختلف' },
                 { number: '80+', description: 'عضو في الفريق' },
-                { number: '4+', description: 'سنين من الخبرة' }
+                { number: '5+', description: 'سنين من الخبرة' }
             ],
             teamMembers: [
                 { name: 'محمود عادل', position: 'رئيس الفريق', image: '/images/Board/MahmoudAdel.jpg' },

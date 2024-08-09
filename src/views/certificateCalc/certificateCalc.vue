@@ -37,12 +37,12 @@
                                 </div>
                             </a>
                         </div>
-                        <!--<div class="col-md-4">
-                            <a href="/Calculator/Azhari">
+                        <div class="col-md-4">
+                            <a href="">
                                 <div class="Box-card">
                                     <img src="/images/Certificates/Azhari.png" alt="">
                                     <div class="Box-det" style="text-align:center;">
-                                        <h6>Azhari Certificate</h6>
+                                        <h6>معادلة الثانوية الازهرية <strong>(قريبا)</strong></h6>
                                         <ul>
                                         </ul>
                                     </div>
@@ -50,11 +50,11 @@
                             </a>
                         </div>
                         <div class="col-md-4">
-                            <a href="/Calculator/STEM">
+                            <a href="">
                                 <div class="Box-card">
                                     <img src="/images/Certificates/STEM.png" alt="">
                                     <div class="Box-det" style="text-align:center;">
-                                        <h6>STEM Certificate</h6>
+                                        <h6>معادلة الثانوية المصرية للمتفوقين STEM <strong>(قريبا)</strong></h6>
                                         <ul>
                                         </ul>
                                     </div>
@@ -62,11 +62,11 @@
                             </a>
                         </div>
                         <div class="col-md-4">
-                            <a href="/Calculator/Nile">
+                            <a href="">
                                 <div class="Box-card">
                                     <img src="/images/Certificates/Nile.png" alt="">
                                     <div class="Box-det" style="text-align:center;">
-                                        <h6>Nile Certificate</h6>
+                                        <h6>معادلة ثانوية مدارس النيل الدولية <strong>(قريبا)</strong></h6>
                                         <ul>
                                         </ul>
                                     </div>
@@ -74,11 +74,11 @@
                             </a>
                         </div>
                         <div class="col-md-4">
-                            <a href="/Calculator/Saudi">
+                            <a href="">
                                 <div class="Box-card">
                                     <img src="/images/Certificates/Saudi.png" alt="">
                                     <div class="Box-det" style="text-align:center;">
-                                        <h6>Saudi Certificate</h6>
+                                        <h6>معادلة الثانوية السعودية <strong>(قريبا)</strong></h6>
                                         <ul>
                                         </ul>
                                     </div>
@@ -86,11 +86,11 @@
                             </a>
                         </div>
                         <div class="col-md-4">
-                            <a href="/Calculator/Kuwaiti">
+                            <a href="">
                                 <div class="Box-card">
                                     <img src="/images/Certificates/Kuwaiti.png" alt="">
                                     <div class="Box-det" style="text-align:center;">
-                                        <h6>Kuwaiti Certificate</h6>
+                                        <h6>معادلة الثانوية الكويتية <strong>(قريبا)</strong></h6>
                                         <ul>
                                         </ul>
                                     </div>
@@ -98,17 +98,17 @@
                             </a>
                         </div>
                         <div class="col-md-4">
-                            <a href="/Calculator/Bahraini">
+                            <a href="">
                                 <div class="Box-card">
                                     <img src="/images/Certificates/Bahraini.png" alt="">
                                     <div class="Box-det" style="text-align:center;">
-                                        <h6>Bahraini Certificate</h6>
+                                        <h6>معادلة الثانوية البحرينية <strong>(قريبا)</strong></h6>
                                         <ul>
                                         </ul>
                                     </div>
                                 </div>
                             </a>
-                        </div>-->
+                        </div>
                     </div>
                 </div>
             </div>

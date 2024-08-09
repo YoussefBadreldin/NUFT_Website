@@ -110,7 +110,7 @@ export default {
     data() {
         return {
             stats: [
-                { number: '150k+', description: 'زيارات لدليل 2023' },
+                { number: '150k+', description: 'زيارة لدليل 2023' },
                 { number: '8+', description: 'دليل مختلف' },
                 { number: '80+', description: 'عضو في الفريق' },
                 { number: '5+', description: 'سنين من الخبرة' }

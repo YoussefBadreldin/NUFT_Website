@@ -22,18 +22,18 @@
                     <div class="col-2">
                     </div>
                     <div class="col-7 setv">
-                        <h4><a>منح مقدمة من موسسة</a></h4>
+                       
                         <p>
-                            <strong>:في مجالات</strong>
+                            
                         </p>
                         <p>
                             <ul>
-                                <li> <a class="application-link" href="http://www.google.com" target="_blank">التفاصيل </a></li>
+                               
                             </ul>
                         </p>
                     </div>
                     <div class="col-3 img-cv">
-                        <img src="/images/ComingSoon.png" alt="جامعة النيل">
+                       
                     </div>
                 </div>
 

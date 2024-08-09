@@ -96,7 +96,7 @@
                                     <input class="form-check-input" type="checkbox" id="withFactor" v-model="withFactor">
                                     <label class="form-check-label" for="withFactor">With factor?</label>
                                 </div>
-                                <input type="text" id="sportsBonusPercentage" readonly class="form-control d-inline-block w-auto text-center mt-2" placeholder="Sports Bonus Percentage">
+                                <input type="text" id="sportsBonusPercentage" readonly class="form-control d-inline-block w-auto text-center mt-2" :value="sportsBonusPercentage" placeholder="Sports Bonus Percentage">
                             </div>
 
                             <div class="row mx-0 justify-content-center">
@@ -126,23 +126,23 @@ export default {
     },
     data() {
         return {
-            igcseALevels: [0, 0, 0, 0],
-            igcseBLevels: [0, 0, 0, 0],
-            igcseCLevels: [0, 0, 0, 0],
-            igcse9Levels: [0, 0, 0, 0, 0],
-            igcse8Levels: [0, 0, 0, 0, 0],
-            igcse7Levels: [0, 0, 0, 0, 0],
-            igcse6Levels: [0, 0, 0, 0, 0],
-            igcse5Levels: [0, 0, 0, 0, 0],
-            igcse4Levels: [0, 0, 0, 0, 0],
-            asALevels: [0, 0, 0, 0],
-            asBLevels: [0, 0, 0, 0],
-            asCLevels: [0, 0, 0, 0],
-            asDLevels: [0, 0, 0, 0, 0],
-            aALevels: [0, 0, 0, 0],
-            aBLevels: [0, 0, 0, 0],
-            aCLevels: [0, 0, 0, 0],
-            aDLevels: [0, 0, 0, 0, 0],
+            igcseALevels: 0,
+            igcseBLevels: 0,
+            igcseCLevels: 0,
+            igcse9Levels: 0,
+            igcse8Levels: 0,
+            igcse7Levels: 0,
+            igcse6Levels: 0,
+            igcse5Levels: 0,
+            igcse4Levels: 0,
+            asALevels: 0,
+            asBLevels: 0,
+            asCLevels: 0,
+            asDLevels: 0,
+            aALevels: 0,
+            aBLevels: 0,
+            aCLevels: 0,
+            aDLevels: 0,
             withFactor: false,
             sportsBonusPercentage: '',
             scorePercentage: '',
@@ -151,11 +151,23 @@ export default {
     },
     methods: {
         calculateScore() {
-            // Implement your score calculation logic here
-            // Example logic:
-            //let totalScore = 0;
-            // Calculate total score based on selected levels and factors
-            // Assign to this.scorePercentage and this.governmentScore
+            let totalScore = 0;
+            const factor = this.withFactor ? 1.1 : 1; // Example factor application
+
+            // Example calculation: sum of levels multiplied by factor
+            totalScore += (this.igcseALevels * 8 + this.igcseBLevels * 7 + this.igcseCLevels * 6);
+            totalScore += (this.igcse9Levels * 9 + this.igcse8Levels * 8 + this.igcse7Levels * 7);
+            totalScore += (this.igcse6Levels * 6 + this.igcse5Levels * 5 + this.igcse4Levels * 4);
+            totalScore += (this.asALevels * 5 + this.asBLevels * 4 + this.asCLevels * 3 + this.asDLevels * 2);
+            totalScore += (this.aALevels * 5 + this.aBLevels * 4 + this.aCLevels * 3 + this.aDLevels * 2);
+
+            totalScore *= factor;
+
+            // Example score calculation for government score
+            const governmentScore = totalScore * 0.8; // Example calculation
+            
+            this.scorePercentage = (totalScore / 100).toFixed(2); // Example percentage
+            this.governmentScore = governmentScore.toFixed(2);
         },
     },
 };

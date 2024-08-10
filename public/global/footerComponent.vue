@@ -72,7 +72,9 @@
           <div class="visitor-counter">
             <p>عدد الزوار: <span id="visitor-count">Loading...</span></p>
           </div>
-          <p>تم اطلاق الموقع يوم 9 أغسطس 2024 <br></p>
+          <br>
+          <br>
+          <p>تم اطلاق الموقع يوم 9 أغسطس 2024 </p>
         </div>
       </div>
     </div>

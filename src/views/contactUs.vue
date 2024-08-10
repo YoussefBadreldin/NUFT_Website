@@ -213,4 +213,9 @@ export default {
     font-size: 24px;
     margin-top: 30px;
 }
+
+.page-nav {
+    /* Set the width of the page-nav section */
+    width: 100.97%; /* Adjust as needed */
+}
 </style>

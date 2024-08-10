@@ -117,14 +117,14 @@ export default {
             ],
             teamMembers: [
                 { name: 'محمود عادل', position: 'رئيس الفريق', image: '/images/Board/MahmoudAdel.jpg' },
+                { name: 'كارينا ايمن', position: 'مدير لجنة التسويق', image: '/images/Board/KarinaAyman.jpg' },
+                { name: 'يوسف بدر الدين', position: 'مدير لجنة تكنولوجيا المعلومات', image: '/images/Board/YoussefBadreldin.jpg' },
+                { name: 'أحمد علاء', position: 'مدير لجنة التسجيلات', image: '/images/Board/AhmedAlaa.jpg' },
                 { name: 'ميادة قنديل', position: 'مدير لجنة الإعلام', image: '/images/Board/MayadaKandil.jpg' },
                 { name: 'أحمد عيد', position: 'مدير لجنة خدمة العملاء', image: '/images/Board/AhmedEid.jpg' },
                 { name: 'زياد ابو الفتوح', position: 'مدير لجنة العلاقات العامة', image: '/images/Board/ZiadApoelfotouh.jpg' },
                 { name: 'حنين صباح', position: 'رئيس لجنة المرحلة الجامعية', image: '/images/Board/HaninSabbah.jpg' },
-                { name: 'يوسف بدر الدين', position: 'مدير لجنة تكنولوجيا المعلومات', image: '/images/Board/YoussefBadreldin.jpg' },
-                { name: 'أحمد حمدي', position: 'مدير المشروعات ومدير لجنة الدراسات العليا', image: '/images/Board/AhmedHamdy.jpg' },
-                { name: 'كارينا ايمن', position: 'مدير لجنة التسويق', image: '/images/Board/KarinaAyman.jpg' },
-                { name: 'أحمد علاء', position: 'مدير لجنة التسجيلات', image: '/images/Board/AhmedAlaa.jpg' }
+                { name: 'أحمد حمدي', position: 'مدير المشروعات ومدير لجنة الدراسات العليا', image: '/images/Board/AhmedHamdy.jpg' }  
             ]
         };
     },

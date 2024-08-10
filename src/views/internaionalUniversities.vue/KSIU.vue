@@ -202,7 +202,7 @@ export default {
     methods: {
         async get_data() {
             try {
-                const response = await axios.get('https://nuft-backend.onrender.com/faclity/getInternational');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/faclity/getInternational');
                 console.log('API response data:', response.data);
                 if (response.data && Array.isArray(response.data.facilities)) {
                     this.all_data = response.data.facilities;
@@ -224,7 +224,7 @@ export default {
         },
         async getLinks() {
             try {
-                const response = await axios.get('https://nuft-backend.onrender.com/links/get_links');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/links/get_links');
                 this.links = response.data;
                 this.filteredLinks = this.links.filter(index => index.university_Name === 'KSIU');
                 console.log(this.filteredLinks);
@@ -248,7 +248,7 @@ export default {
         },
         async getDorms() {
             try {
-                const response = await axios.get('https://nuft-backend.onrender.com/info/getdorms');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/info/getdorms');
                 this.dorms = response.data;
                 this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'KSIU');
                 //console.log('dorms table', this.filteredDorms)
@@ -258,7 +258,7 @@ export default {
         },
         async gettrans() {
             try {
-                const response = await axios.get('https://nuft-backend.onrender.com/trans/gettrans');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/trans/gettrans');
                 this.trans = response.data;
                 this.filteredTrans = this.trans.filter(index => index.spec === 'KSIU');
                 console.log('filteredTrans', this.filteredTrans)

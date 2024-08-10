@@ -51,7 +51,7 @@ export default {
     },
     methods: {
         fetchContacts() {
-            axios.get('https://nuft-website-backend.vercel.app/contact/get')
+            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/contact/get')
                 .then(response => {
                     this.contacts = response.data;
                     this.loading = false;

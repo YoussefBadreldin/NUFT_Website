@@ -25,7 +25,7 @@
     },
     methods: {
       getAllusers() {
-        axios.get('https://nuft-website-backend.vercel.app/auth/getallusers')
+        axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/auth/getallusers')
           .then(response => {
             this.allUsers = response.data;
           })

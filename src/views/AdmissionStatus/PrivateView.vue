@@ -4,11 +4,11 @@
 
         <div>
             <div class="page-nav row">
-                <h2>حالة تقديمات الجامعات الاهلية</h2>
+                <h2>حالة تقديمات الجامعات الخاصة</h2>
             </div>
 
             <section>
-                <div class="table-responsive" dir="rtl">
+                <div class="table-wrapper" dir="rtl">
                     <table class="Stat">
                         <thead>
                             <tr>
@@ -30,22 +30,20 @@
                         </thead>
                         <tbody>
                             <tr v-for="university in universities" :key="university.name">
-                                <td>
-                                    {{ university.faclityName }}
-                                </td>
+                                <td>{{ university.faclityName }}</td>
                                 <td :style="{ color: getColor(university.statusTransfer) }">{{ university.statusTransfer }}</td>
                                 <td :style="{ color: getColor(university.thanwyaaAmaaStatus_first) }">{{ university.thanwyaaAmaaStatus_first }}</td>
-                                 <td :style="{ color: getColor(university.thanwyaaAmaaStatus_second) }">{{ university.thanwyaaAmaaStatus_second }}</td>
-                                  <td :style="{ color: getColor(university.ArabEnglishAzhariCertificates_first) }">{{ university.ArabEnglishAzhariCertificates_first }}</td>
-                                  <td :style="{ color: getColor(university.ArabEnglishAzhariCertificates_second) }">{{ university.ArabEnglishAzhariCertificates_second }}</td>
-                                   <td :style="{ color: getColor(university.StemNileCertificates_first) }">{{ university.StemNileCertificates_first }}</td>    
+                                <td :style="{ color: getColor(university.thanwyaaAmaaStatus_second) }">{{ university.thanwyaaAmaaStatus_second }}</td>
+                                <td :style="{ color: getColor(university.ArabEnglishAzhariCertificates_first) }">{{ university.ArabEnglishAzhariCertificates_first }}</td>
+                                <td :style="{ color: getColor(university.ArabEnglishAzhariCertificates_second) }">{{ university.ArabEnglishAzhariCertificates_second }}</td>
+                                <td :style="{ color: getColor(university.StemNileCertificates_first) }">{{ university.StemNileCertificates_first }}</td>    
                                 <td :style="{ color: getColor(university.StemNileCertificates_second) }">{{ university.StemNileCertificates_second }}</td>
                                 <td :style="{ color: getColor(university.InternationalStudents) }">{{ university.InternationalStudents }}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <p style="text-align: center;"><br>يتم تحديث حالة الجامعات بشكل دوري●</p>
+                <p style="text-align: center;"><br>يتم تحديث حالة تقديم الجامعات بشكل دوري●</p>
             </section>
         </div>
 
@@ -68,8 +66,7 @@ export default {
         return {
             firstYear: '',
             secondYear: '',
-            universities: [
-            ],
+            universities: [],
             all_data: [],
         }
     },
@@ -89,14 +86,14 @@ export default {
             }
         },
         getAdmission(){
-            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/admission/get').then(response=>{
+            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/admission-private/get').then(response=>{
                 this.universities = response.data;
             }).catch(error=>{
                 console.log(error);
             })
         },
         getYears(){
-            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/links/get_links').then(response=>{
+            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/links-private/get_links').then(response=>{
                 this.all_data = response.data;
                 this.firstYear = this.all_data[0].first_year;
                 this.secondYear = this.all_data[0].second_year;
@@ -113,34 +110,41 @@ export default {
     }
 }
 </script>
-
 <style scoped>
 .page-nav {
-    width: 100%; /* Adjust width to fit container */
+    /* Set the width of the page-nav section */
+    width: 100.97%; /* Adjust as needed */
+}
+/* General Styles for Table */
+.table-wrapper {
+    overflow: auto; /* Allows both horizontal and vertical scrolling */
+    max-height: 500px; /* Adjust this value as needed for your design */
+    width: 100%;
+    /* Custom Scrollbar Styles */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #888 #f1f1f1; /* For Firefox */
 }
 
-.table-responsive {
-    overflow-x: auto; /* Allows horizontal scrolling for wide tables */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-    margin-bottom: 20px; /* Add margin if needed */
+.table-wrapper::-webkit-scrollbar {
+    width: 8px; /* Width for vertical scrollbar */
+    height: 8px; /* Height for horizontal scrollbar */
 }
 
-/* Hide scrollbar for Chrome, Safari, and Opera */
-.table-responsive::-webkit-scrollbar {
-    display: none;
+.table-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
 }
 
-/* Hide scrollbar for IE, Edge, and Firefox */
-.table-responsive {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Optional: Adds rounded corners to the scrollbar thumb */
 }
 
 table.Stat {
     border-collapse: collapse;
-    width: 100%;
+    min-width: 100%; /* Ensure table is wide enough for horizontal scrolling */
 }
 
+/* Sticky Header */
 table.Stat thead {
     position: sticky;
     top: 0;
@@ -149,29 +153,19 @@ table.Stat thead {
 }
 
 table.Stat th, table.Stat td {
-    padding: 12px; /* Increase padding for better readability */
+    padding: 8px;
     border: 1px solid #ddd; /* Optional: Adds a border around cells */
     text-align: center; /* Center-aligns text in cells */
 }
 
+/* Mobile Specific Styles */
 @media (max-width: 768px) {
     table.Stat {
-        font-size: 14px; /* Increase font size for better readability */
+        font-size: 14px; /* Adjust font size for better readability */
     }
-
+    
     table.Stat th, table.Stat td {
-        padding: 10px; /* Adjust padding for mobile screens */
+        padding: 12px; /* Increase padding for touch accessibility */
     }
 }
-
-@media (max-width: 480px) {
-    table.Stat {
-        font-size: 16px; /* Further increase font size for very small screens */
-    }
-
-    table.Stat th, table.Stat td {
-        padding: 12px; /* Increase padding for very small screens */
-    }
-}
-
 </style>

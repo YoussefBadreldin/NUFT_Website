@@ -8,7 +8,7 @@
             </div>
 
             <section>
-                <div class="table-responsive" dir="rtl">
+                <div class="table-wrapper" dir="rtl">
                     <table class="Stat">
                         <thead>
                             <tr>
@@ -30,22 +30,20 @@
                         </thead>
                         <tbody>
                             <tr v-for="university in universities" :key="university.name">
-                                <td>
-                                    {{ university.faclityName }}
-                                </td>
+                                <td>{{ university.faclityName }}</td>
                                 <td :style="{ color: getColor(university.statusTransfer) }">{{ university.statusTransfer }}</td>
                                 <td :style="{ color: getColor(university.thanwyaaAmaaStatus_first) }">{{ university.thanwyaaAmaaStatus_first }}</td>
-                                 <td :style="{ color: getColor(university.thanwyaaAmaaStatus_second) }">{{ university.thanwyaaAmaaStatus_second }}</td>
-                                  <td :style="{ color: getColor(university.ArabEnglishAzhariCertificates_first) }">{{ university.ArabEnglishAzhariCertificates_first }}</td>
-                                  <td :style="{ color: getColor(university.ArabEnglishAzhariCertificates_second) }">{{ university.ArabEnglishAzhariCertificates_second }}</td>
-                                   <td :style="{ color: getColor(university.StemNileCertificates_first) }">{{ university.StemNileCertificates_first }}</td>    
+                                <td :style="{ color: getColor(university.thanwyaaAmaaStatus_second) }">{{ university.thanwyaaAmaaStatus_second }}</td>
+                                <td :style="{ color: getColor(university.ArabEnglishAzhariCertificates_first) }">{{ university.ArabEnglishAzhariCertificates_first }}</td>
+                                <td :style="{ color: getColor(university.ArabEnglishAzhariCertificates_second) }">{{ university.ArabEnglishAzhariCertificates_second }}</td>
+                                <td :style="{ color: getColor(university.StemNileCertificates_first) }">{{ university.StemNileCertificates_first }}</td>    
                                 <td :style="{ color: getColor(university.StemNileCertificates_second) }">{{ university.StemNileCertificates_second }}</td>
                                 <td :style="{ color: getColor(university.InternationalStudents) }">{{ university.InternationalStudents }}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <p style="text-align: center;"><br>يتم تحديث حالة الجامعات بشكل دوري●</p>
+                <p style="text-align: center;"><br>يتم تحديث حالة تقديم الجامعات بشكل دوري●</p>
             </section>
         </div>
 
@@ -68,8 +66,7 @@ export default {
         return {
             firstYear: '',
             secondYear: '',
-            universities: [
-            ],
+            universities: [],
             all_data: [],
         }
     },
@@ -113,10 +110,62 @@ export default {
     }
 }
 </script>
-
 <style scoped>
 .page-nav {
     /* Set the width of the page-nav section */
     width: 100.97%; /* Adjust as needed */
+}
+/* General Styles for Table */
+.table-wrapper {
+    overflow: auto; /* Allows both horizontal and vertical scrolling */
+    max-height: 500px; /* Adjust this value as needed for your design */
+    width: 100%;
+    /* Custom Scrollbar Styles */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #888 #f1f1f1; /* For Firefox */
+}
+
+.table-wrapper::-webkit-scrollbar {
+    width: 8px; /* Width for vertical scrollbar */
+    height: 8px; /* Height for horizontal scrollbar */
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Optional: Adds rounded corners to the scrollbar thumb */
+}
+
+table.Stat {
+    border-collapse: collapse;
+    min-width: 100%; /* Ensure table is wide enough for horizontal scrolling */
+}
+
+/* Sticky Header */
+table.Stat thead {
+    position: sticky;
+    top: 0;
+    background-color: #fff; /* Adjust for visibility against table rows */
+    z-index: 10; /* Ensure header stays above other content */
+}
+
+table.Stat th, table.Stat td {
+    padding: 8px;
+    border: 1px solid #ddd; /* Optional: Adds a border around cells */
+    text-align: center; /* Center-aligns text in cells */
+}
+
+/* Mobile Specific Styles */
+@media (max-width: 768px) {
+    table.Stat {
+        font-size: 14px; /* Adjust font size for better readability */
+    }
+    
+    table.Stat th, table.Stat td {
+        padding: 12px; /* Increase padding for touch accessibility */
+    }
 }
 </style>

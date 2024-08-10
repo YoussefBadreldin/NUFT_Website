@@ -123,7 +123,7 @@ export default {
                 { name: 'ميادة قنديل', position: 'مدير لجنة الإعلام', image: '/images/Board/MayadaKandil.jpg' },
                 { name: 'أحمد عيد', position: 'مدير لجنة خدمة العملاء', image: '/images/Board/AhmedEid.jpg' },
                 { name: 'زياد ابو الفتوح', position: 'مدير لجنة العلاقات العامة', image: '/images/Board/ZiadApoelfotouh.jpg' },
-                { name: 'حنين صباح', position: 'رئيس لجنة المرحلة الجامعية', image: '/images/Board/HaninSabbah.jpg' },
+                { name: 'حنين صباح', position: 'مدير لجنة المرحلة الجامعية', image: '/images/Board/HaninSabbah.jpg' },
                 { name: 'أحمد حمدي', position: 'مدير المشروعات ومدير لجنة الدراسات العليا', image: '/images/Board/AhmedHamdy.jpg' }  
             ]
         };

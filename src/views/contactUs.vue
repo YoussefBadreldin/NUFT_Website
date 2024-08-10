@@ -15,8 +15,8 @@
                 <h2 class="text-center" style="margin-top: 50px;">بيانات التواصل</h2>
                 <div class="text-center contact-info">
                     <p>
-                        <a href="mailto:info@nuft.com">
-                            <i class="fas fa-envelope-square"></i> info@nuft.com
+                        <a href="mailto:info@nufteg.com">
+                            <i class="fas fa-envelope-square"></i> info@nufteg.com
                         </a>
                     </p>
                     <p>

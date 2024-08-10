@@ -4,7 +4,7 @@
 
         <div>
             <div class="page-nav row">
-                <h2>حالة تقديمات الجامعات الخاصة</h2>
+                <h2>حالة تقديمات الجامعات الاهلية</h2>
             </div>
 
             <section>
@@ -119,4 +119,43 @@ export default {
     /* Set the width of the page-nav section */
     width: 100.97%; /* Adjust as needed */
 }
+
+.table-responsive {
+    overflow-y: auto; /* Allows vertical scrolling */
+    overflow-x: hidden; /* Hides horizontal scrollbar */
+    max-height: 500px; /* Adjust this value as needed for your design */
+    width: 100%; /* Ensures the container takes full width */
+}
+
+table.Stat {
+    border-collapse: collapse;
+    width: 100%; /* Ensure the table takes full width */
+    table-layout: auto; /* Allows table columns to adjust to fit content */
+}
+
+table.Stat thead {
+    position: sticky;
+    top: 0;
+    background-color: #fff; /* Adjust for visibility against table rows */
+    z-index: 10; /* Ensure header stays above other content */
+}
+
+/* Center text in table cells on laptops and larger screens */
+table.Stat th, table.Stat td {
+    padding: 8px;
+    border: 1px solid #ddd; /* Optional: Adds a border around cells */
+    text-align: center; /* Center text on laptops and larger screens */
+}
+
+@media (max-width: 768px) {
+    table.Stat {
+        font-size: 12px; /* Adjust font size for smaller screens */
+    }
+    
+    /* Override text alignment for smaller screens if needed */
+    table.Stat th, table.Stat td {
+        text-align: right; /* Assuming RTL layout on smaller screens */
+    }
+}
+
 </style>

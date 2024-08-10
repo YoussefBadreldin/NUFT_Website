@@ -76,14 +76,14 @@ export default {
     this.updateVisitorCount();
   },
   methods: {
-    updateVisitorCount() {
-      // Get the current count from localStorage or set it to 0 if not found
-      let count = parseInt(localStorage.getItem('visitorCount')) || 0;
-      count++;
-      localStorage.setItem('visitorCount', count);
-
-      // Update the display
-      document.getElementById('visitor-count').innerText = count;
+    async updateVisitorCount() {
+      try {
+        const response = await fetch('http://localhost:3000/api/visitor-count');
+        const data = await response.json();
+        document.getElementById('visitor-count').innerText = data.count;
+      } catch (error) {
+        console.error('Error fetching visitor count:', error);
+      }
     }
   }
 }

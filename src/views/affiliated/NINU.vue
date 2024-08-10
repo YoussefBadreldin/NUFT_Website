@@ -198,7 +198,7 @@ export default {
     methods: {
         async get_data() {
             try {
-                const response = await axios.get('https://nuft-backend.onrender.com/https:/nuft-backend.onrender.com/faclity/getInternational');
+                const response = await axios.get('https://nuft-backend.onrender.com/faclity/getInternational');
                 console.log('API response data:', response.data);
                 if (response.data && Array.isArray(response.data.facilities)) {
                     this.all_data = response.data.facilities;

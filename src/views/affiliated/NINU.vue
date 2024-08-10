@@ -293,6 +293,7 @@ export default {
 };
 </script>
 
+
 <style scoped>
 /* General Styles for Tables */
 .table-responsive {
@@ -325,26 +326,26 @@ table {
     border-spacing: 0; /* Removes space between borders */
 }
 
+/* Sticky Header Styles */
+thead {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0; /* Adjust this if you have other fixed elements above the table */
+    background-color: black;
+    color: white;
+    z-index: 1; /* Ensures header is above other content */
+}
+
 th, td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
 }
 
-/* Sticky Header Styles */
+/* Sticky Header Row Styles */
 thead th {
-    position: -webkit-sticky; /* For Safari */
-    position: sticky;
-    top: 0;
     background-color: black;
     color: white;
-    z-index: 1; /* Ensures header is above other content */
-}
-
-button {
-    margin-bottom: 10px;
-    border-radius: 5px;
-    margin-right: 10px;
 }
 
 /* Mobile Specific Styles */
@@ -357,4 +358,5 @@ button {
         padding: 12px; /* Increase padding for touch accessibility */
     }
 }
+
 </style>

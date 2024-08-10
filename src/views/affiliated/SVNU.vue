@@ -358,3 +358,69 @@ button {
     }
 }
 </style>
+<style scoped>
+/* General Styles for Tables */
+.table-responsive {
+    overflow: auto; /* Allows both horizontal and vertical scrolling */
+    max-height: 500px; /* Adjust this value as needed for your design */
+    width: 100%;
+    /* Custom Scrollbar Styles */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #888 #f1f1f1; /* For Firefox */
+}
+
+.table-responsive::-webkit-scrollbar {
+    width: 8px; /* Width for vertical scrollbar */
+    height: 8px; /* Height for horizontal scrollbar */
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Optional: Adds rounded corners to the scrollbar thumb */
+}
+
+/* Styles for Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0; /* Removes space between borders */
+}
+
+/* Sticky Header Styles */
+thead {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0; /* Adjust this if you have other fixed elements above the table */
+    background-color: black;
+    color: white;
+    z-index: 1; /* Ensures header is above other content */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Sticky Header Row Styles */
+thead th {
+    background-color: black;
+    color: white;
+}
+
+/* Mobile Specific Styles */
+@media (max-width: 768px) {
+    table {
+        font-size: 14px; /* Adjust font size for better readability */
+    }
+
+    th, td {
+        padding: 12px; /* Increase padding for touch accessibility */
+    }
+}
+
+</style>

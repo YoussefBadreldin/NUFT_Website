@@ -17,7 +17,7 @@
                   </ul>
                 </div>
                 <div class="col-md-6 col-6">
-                 <ul dir="rtl" style="display: inline-block; text-align: right; margin-right: 15px;">
+                 <ul dir="rtl" style="display: inline-block; text-align: right; margin-right: 10px;">
                     <li><a href="/Guide/UGRAD/National/Normal"><i class="fas fa-angle-double-left"></i> دليل الجامعات الأهلية</a></li>
                     <li><a href="/Guide/UGRAD/National/International"><i class="fas fa-angle-double-left"></i> دليل الجامعات الأهلية الدولية</a></li>
                     <li><a href="/Guide/UGRAD/National/Affiliated"><i class="fas fa-angle-double-left"></i> دليل الجامعات الأهلية المنبثقة</a></li>

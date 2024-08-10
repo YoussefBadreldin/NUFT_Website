@@ -8,7 +8,7 @@
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-6 col-6">
-                  <ul dir="rtl" style="display: inline-block; text-align: right; margin-left: -40px; margin-right: -40px;">
+                  <ul dir="rtl" style="display: inline-block; text-align: right; margin-left: -40px; margin-right: -60px;">
                     <li><a href="#"><i class="fas fa-angle-double-left"></i> حالة تقديمات الجامعات الخاصة <strong>(قريباً)</strong></a></li>                  
                     <li><a href="#"><i class="fas fa-angle-double-left"></i> دليل الجامعات ذات طبيعة خاصة <strong>(قريباً)</strong></a></li>                          
                     <li><a href="#"><i class="fas fa-angle-double-left"></i> حالة تقديمات الجامعات ذات طبيعة خاصة <strong>(قريباً)</strong></a></li>                    
@@ -17,7 +17,7 @@
                   </ul>
                 </div>
                 <div class="col-md-6 col-6">
-                 <ul dir="rtl" style="display: inline-block; text-align: right; margin-right: -20px;">
+                 <ul dir="rtl" style="display: inline-block; text-align: right; margin-right: 20px;">
                     <li><a href="/Guide/UGRAD/National/Normal"><i class="fas fa-angle-double-left"></i> دليل الجامعات الأهلية</a></li>
                     <li><a href="/Guide/UGRAD/National/International"><i class="fas fa-angle-double-left"></i> دليل الجامعات الأهلية الدولية</a></li>
                     <li><a href="/Guide/UGRAD/National/Affiliated"><i class="fas fa-angle-double-left"></i> دليل الجامعات الأهلية المنبثقة</a></li>

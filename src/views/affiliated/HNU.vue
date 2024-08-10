@@ -26,8 +26,8 @@
                 <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
                     <ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
                         <li><a href="http://www.hnu.edu.eg/"><i class="fas fa-globe"></i></a></li>
-                        <li><a href="tel:01283220056"><i class="fas fa-phone"></i></a></li>
-                        <li><a href="mailto:info@hnu.edu.eg"><i class="fas fa-envelope"></i></a></li>
+                        <li><a href="tel:01100440119"><i class="fas fa-phone"></i></a></li>
+                        <li><a href="mailto:studentaffairs@hnu.edu.eg"><i class="fas fa-envelope"></i></a></li>
                         <li><a href="https://www.facebook.com/HNU.Helwan/?paipv=0&eav=AfahNabYzoRKlqd3Vg3nJ6igWAuyRX3yIpDzVNLU5JaIQmtGK8pkVFUVLzt5zDiBgI8&_rdr"><i class="fab fa-facebook-f"></i></a></li>
                         <li><a href=""><i class="fab fa-instagram"></i></a></li>
                         <li><a href=""><i class="fab fa-youtube"></i></a></li>

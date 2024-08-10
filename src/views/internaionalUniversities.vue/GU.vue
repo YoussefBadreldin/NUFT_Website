@@ -414,5 +414,48 @@ thead th {
         padding: 12px; /* Increase padding for touch accessibility */
     }
 }
+.view_location {
+    margin-top: 20vh;
+    position: absolute;
+    top: 5vh;
+    width: 100%;
+}
 
+.page-nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.page-nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+button {
+    margin-bottom: 10px;
+    border-radius: 5px; 
+    margin-right: 10px;
+}
 </style>

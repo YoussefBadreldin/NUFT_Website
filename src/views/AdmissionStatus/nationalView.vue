@@ -31,7 +31,7 @@
                         <tbody>
                             <tr v-for="university in universities" :key="university.name">
                                 <td>
-                                    <a :href="university.url" target="_blank">{{ university.faclityName }}</a>
+                                    <a :href="university.url" target="">{{ university.faclityName }}</a>
                                 </td>
                                 <td :style="{ color: getColor(university.statusTransfer) }">{{ university.statusTransfer }}</td>
                                 <td :style="{ color: getColor(university.thanwyaaAmaaStatus_first) }">{{ university.thanwyaaAmaaStatus_first }}</td>

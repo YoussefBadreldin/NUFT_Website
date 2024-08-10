@@ -78,7 +78,7 @@ export default {
   methods: {
     async updateVisitorCount() {
       try {
-        const response = await fetch('http://localhost:3000/api/visitor-count');
+        const response = await fetch('https://nuft-website-backend-874bbf91403c.herokuapp.com/api/visitor-count');
         const data = await response.json();
         document.getElementById('visitor-count').innerText = data.count;
       } catch (error) {

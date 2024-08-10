@@ -292,48 +292,67 @@ export default {
 </script>
 
 <style scoped>
-.view_location {
-    margin-top: 20vh;
-    position: absolute;
-    top: 5vh;
-    width: 100%;
-}
-
-.page-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-.page-nav ul li {
-    display: inline;
-    margin-right: 10px;
-}
-
+/* General Styles for Tables */
 .table-responsive {
-    overflow-x: auto;
+    overflow: auto; /* Allows both horizontal and vertical scrolling */
+    max-height: 500px; /* Adjust this value as needed for your design */
+    width: 100%;
+    /* Custom Scrollbar Styles */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #888 #f1f1f1; /* For Firefox */
 }
 
+.table-responsive::-webkit-scrollbar {
+    width: 8px; /* Width for vertical scrollbar */
+    height: 8px; /* Height for horizontal scrollbar */
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Optional: Adds rounded corners to the scrollbar thumb */
+}
+
+/* Styles for Tables */
 table {
     width: 100%;
     border-collapse: collapse;
+    border-spacing: 0; /* Removes space between borders */
 }
 
-th,
-td {
+th, td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
 }
 
-th {
+/* Sticky Header Styles */
+thead th {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 0;
     background-color: black;
     color: white;
-    text-align: center;
+    z-index: 1; /* Ensures header is above other content */
 }
 
 button {
     margin-bottom: 10px;
-    border-radius: 5px; 
+    border-radius: 5px;
     margin-right: 10px;
+}
+
+/* Mobile Specific Styles */
+@media (max-width: 768px) {
+    table {
+        font-size: 14px; /* Adjust font size for better readability */
+    }
+
+    th, td {
+        padding: 12px; /* Increase padding for touch accessibility */
+    }
 }
 </style>

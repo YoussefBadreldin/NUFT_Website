@@ -121,16 +121,24 @@ export default {
 }
 
 .table-responsive {
-    overflow-y: auto; /* Allows vertical scrolling */
-    overflow-x: hidden; /* Hides horizontal scrollbar */
+    overflow-y: scroll; /* Allows vertical scrolling */
     max-height: 500px; /* Adjust this value as needed for your design */
-    width: 100%; /* Ensures the container takes full width */
+}
+
+/* Hide scrollbar for Chrome, Safari, and Opera */
+.table-responsive::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge, and Firefox */
+.table-responsive {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
 table.Stat {
     border-collapse: collapse;
-    width: 100%; /* Ensure the table takes full width */
-    table-layout: auto; /* Allows table columns to adjust to fit content */
+    width: 100%;
 }
 
 table.Stat thead {
@@ -140,22 +148,23 @@ table.Stat thead {
     z-index: 10; /* Ensure header stays above other content */
 }
 
-/* Center text in table cells on laptops and larger screens */
 table.Stat th, table.Stat td {
     padding: 8px;
     border: 1px solid #ddd; /* Optional: Adds a border around cells */
-    text-align: center; /* Center text on laptops and larger screens */
+    text-align: right; /* Assuming RTL layout */
 }
 
 @media (max-width: 768px) {
     table.Stat {
         font-size: 12px; /* Adjust font size for smaller screens */
     }
-    
-    /* Override text alignment for smaller screens if needed */
-    table.Stat th, table.Stat td {
-        text-align: right; /* Assuming RTL layout on smaller screens */
-    }
 }
+
+table.Stat th, table.Stat td {
+    padding: 8px;
+    border: 1px solid #ddd; /* Optional: Adds a border around cells */
+    text-align: center; /* Center-aligns text in cells */
+}
+
 
 </style>

@@ -53,13 +53,16 @@
               <i class="fab fa-telegram"></i>
             </a>
           </div>
+          <div class="visitor-counter">
+            <p>عدد الزوار: <span id="visitor-count">Loading...</span></p>
+          </div>
         </div>
       </div>
     </div>
   </footer>
   <div class="copy" style="text-align: center;">
     <div class="CopyRights">
-      <p>  2024© جميع الحقوق محفوظة
+      <p> 2024© جميع الحقوق محفوظة
       <br>
       <a href="https://pill-network.com" target="_blank" rel="noopener noreferrer">Pill Network </a> تصميم وتطوير بواسطة</p>
     </div>
@@ -68,7 +71,21 @@
 
 <script>
 export default {
-  name: 'FooterComponent'
+  name: 'FooterComponent',
+  mounted() {
+    this.updateVisitorCount();
+  },
+  methods: {
+    updateVisitorCount() {
+      // Get the current count from localStorage or set it to 0 if not found
+      let count = parseInt(localStorage.getItem('visitorCount')) || 0;
+      count++;
+      localStorage.setItem('visitorCount', count);
+
+      // Update the display
+      document.getElementById('visitor-count').innerText = count;
+    }
+  }
 }
 </script>
 
@@ -114,5 +131,20 @@ ul[dir="rtl"] i {
 
 .foot-address .icon, .foot-address .addet {
   margin: 0 10px;
+}
+
+.visitor-counter {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #ffbf00;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  font-size: 18px;
+  color: #001d3d; /* White text for consistency */
+  display: inline-block;
+}
+
+.visitor-counter p {
+  margin: 0;
 }
 </style>

@@ -155,8 +155,10 @@ export default {
 </script>
 
 <style scoped>
+
 .page-nav {
-    width: 100%;
+    /* Set the width of the page-nav section */
+    width: 100.97%; /* Adjust as needed */
 }
 
 .contact-info p {
@@ -214,8 +216,4 @@ export default {
     margin-top: 30px;
 }
 
-.page-nav {
-    /* Set the width of the page-nav section */
-    width: 100.97%; /* Adjust as needed */
-}
 </style>

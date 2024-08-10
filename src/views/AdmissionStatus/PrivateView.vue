@@ -116,13 +116,13 @@ export default {
 
 <style scoped>
 .page-nav {
-    /* Set the width of the page-nav section */
-    width: 100.97%; /* Adjust as needed */
+    width: 100%; /* Adjust width to fit container */
 }
 
 .table-responsive {
-    overflow-y: scroll; /* Allows vertical scrolling */
-    max-height: 500px; /* Adjust this value as needed for your design */
+    overflow-x: auto; /* Allows horizontal scrolling for wide tables */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    margin-bottom: 20px; /* Add margin if needed */
 }
 
 /* Hide scrollbar for Chrome, Safari, and Opera */
@@ -149,22 +149,29 @@ table.Stat thead {
 }
 
 table.Stat th, table.Stat td {
-    padding: 8px;
-    border: 1px solid #ddd; /* Optional: Adds a border around cells */
-    text-align: right; /* Assuming RTL layout */
-}
-
-@media (max-width: 768px) {
-    table.Stat {
-        font-size: 12px; /* Adjust font size for smaller screens */
-    }
-}
-
-table.Stat th, table.Stat td {
-    padding: 8px;
+    padding: 12px; /* Increase padding for better readability */
     border: 1px solid #ddd; /* Optional: Adds a border around cells */
     text-align: center; /* Center-aligns text in cells */
 }
 
+@media (max-width: 768px) {
+    table.Stat {
+        font-size: 14px; /* Increase font size for better readability */
+    }
+
+    table.Stat th, table.Stat td {
+        padding: 10px; /* Adjust padding for mobile screens */
+    }
+}
+
+@media (max-width: 480px) {
+    table.Stat {
+        font-size: 16px; /* Further increase font size for very small screens */
+    }
+
+    table.Stat th, table.Stat td {
+        padding: 12px; /* Increase padding for very small screens */
+    }
+}
 
 </style>

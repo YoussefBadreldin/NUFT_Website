@@ -119,6 +119,9 @@
 <br>
 فئة د: من الي
 </strong></p>
+<a href="/Status/UGRAD/National" style="display: block; text-align: center;">
+        <button>اضغط هنا لمعرفة حالة تقديم الجامعة</button>
+    </a>
         </section>
 
         <section>

@@ -30,7 +30,9 @@
                         </thead>
                         <tbody>
                             <tr v-for="university in universities" :key="university.name">
-                                <td>{{ university.faclityName }}</td>
+                                <td>
+                                    <a :href="university.url" target="_blank">{{ university.faclityName }}</a>
+                                </td>
                                 <td :style="{ color: getColor(university.statusTransfer) }">{{ university.statusTransfer }}</td>
                                 <td :style="{ color: getColor(university.thanwyaaAmaaStatus_first) }">{{ university.thanwyaaAmaaStatus_first }}</td>
                                 <td :style="{ color: getColor(university.thanwyaaAmaaStatus_second) }">{{ university.thanwyaaAmaaStatus_second }}</td>
@@ -86,20 +88,27 @@ export default {
             }
         },
         getAdmission(){
-            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/admission/get').then(response=>{
-                this.universities = response.data;
-            }).catch(error=>{
-                console.log(error);
-            })
+            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/admission/get')
+                .then(response => {
+                    this.universities = response.data.map(university => ({
+                        ...university,
+                        url: university.url || '#', // Use the URL from the API, or default to '#' if not available
+                    }));
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         },
         getYears(){
-            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/links/get_links').then(response=>{
-                this.all_data = response.data;
-                this.firstYear = this.all_data[0].first_year;
-                this.secondYear = this.all_data[0].second_year;
-            }).catch(error=>{
-                console.log(error);
-            })
+            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/links/get_links')
+                .then(response => {
+                    this.all_data = response.data;
+                    this.firstYear = this.all_data[0].first_year;
+                    this.secondYear = this.all_data[0].second_year;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         }
     },
     created(){
@@ -110,11 +119,13 @@ export default {
     }
 }
 </script>
+
 <style scoped>
 .page-nav {
     /* Set the width of the page-nav section */
     width: 100.97%; /* Adjust as needed */
 }
+
 /* General Styles for Table */
 .table-wrapper {
     overflow: auto; /* Allows both horizontal and vertical scrolling */

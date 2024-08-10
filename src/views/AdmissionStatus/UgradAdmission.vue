@@ -65,7 +65,7 @@ export default {
                     link: '', // Provide a valid link or remove if not needed
                     imgSrc: '/images/Universites/Status/SpecialStatus.png',
                     altText: 'Special Nature Universities',
-                    title: 'حالة تقديمات الجامعات ذات الطبيعة الخاصة (قريبا)',
+                    title: 'حالة تقديمات الجامعات ذات طبيعة خاصة (قريبا)',
                 },
                 {
                     link: '', // Provide a valid link or remove if not needed

@@ -6,12 +6,28 @@
           <h2>روابط سريعة</h2>
           <div class="row">
             <div class="col-md-12">
-              <ul dir="rtl" style="display: inline-block; text-align: right;">
-                <li><a href="/Guide/UGRAD/National/Normal"><i class="fas fa-angle-double-left"></i>دليل الجامعات الاهلية</a></li>
-                <li><a href="/Guide/UGRAD/National/International"><i class="fas fa-angle-double-left"></i>دليل الجامعات الاهلية الدولية</a></li>
-                <li><a href="/Guide/UGRAD/National/Affiliated"><i class="fas fa-angle-double-left"></i>دليل الجامعات الاهلية المنبثقة</a></li>
-                <li><a href="/Status/UGRAD/National"><i class="fas fa-angle-double-left"></i>حالة تقديمات الجامعات الاهلية</a></li>
-              </ul>
+              <div class="row">
+                <div class="col-md-6 col-6">
+                  <ul dir="rtl" style="display: inline-block; text-align: right; margin-left: -40px; margin-right: -40px;">
+                    <li><a href="#"><i class="fas fa-angle-double-left"></i> حالة تقديمات الجامعات الخاصة <strong>(قريباً)</strong></a></li>                  
+                    <li><a href="#"><i class="fas fa-angle-double-left"></i> دليل الجامعات ذات طبيعة خاصة <strong>(قريباً)</strong></a></li>                          
+                    <li><a href="#"><i class="fas fa-angle-double-left"></i> حالة تقديمات الجامعات ذات طبيعة خاصة <strong>(قريباً)</strong></a></li>                    
+                    <li><a href="#"><i class="fas fa-angle-double-left"></i> دليل الجامعات الدولية <strong>(قريباً)</strong></a></li>
+                    <li><a href="#"><i class="fas fa-angle-double-left"></i> حالة تقديمات الجامعات الدولية <strong>(قريباً)</strong></a></li>
+                  </ul>
+                </div>
+                <div class="col-md-6 col-6">
+                 <ul dir="rtl" style="display: inline-block; text-align: right; margin-right: -20px;">
+                    <li><a href="/Guide/UGRAD/National/Normal"><i class="fas fa-angle-double-left"></i> دليل الجامعات الأهلية</a></li>
+                    <li><a href="/Guide/UGRAD/National/International"><i class="fas fa-angle-double-left"></i> دليل الجامعات الأهلية الدولية</a></li>
+                    <li><a href="/Guide/UGRAD/National/Affiliated"><i class="fas fa-angle-double-left"></i> دليل الجامعات الأهلية المنبثقة</a></li>
+                    <li><a href="/Status/UGRAD/National"><i class="fas fa-angle-double-left"></i> حالة تقديمات الجامعات الأهلية</a></li>                    
+                    <li><a href="#"><i class="fas fa-angle-double-left"></i> دليل الجامعات الخاصة <strong>(قريباً)</strong></a></li>
+
+
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -63,8 +79,8 @@
   <div class="copy" style="text-align: center;">
     <div class="CopyRights">
       <p> 2024© جميع الحقوق محفوظة
-      <br>
-      <a href="https://pill-network.com" target="_blank" rel="noopener noreferrer">Pill Network </a> تصميم وتطوير بواسطة</p>
+        <br>
+        <a href="https://pill-network.com" target="_blank" rel="noopener noreferrer">Pill Network </a> تصميم وتطوير بواسطة</p>
     </div>
   </div>
 </template>
@@ -75,39 +91,40 @@ export default {
   mounted() {
     this.updateVisitorCount();
   },
-  methods: {
-    async updateVisitorCount() {
-      try {
-        const response = await fetch('https://nuft-website-backend-874bbf91403c.herokuapp.com/api/visitor-count');
-        const data = await response.json();
-        document.getElementById('visitor-count').innerText = data.count;
-      } catch (error) {
-        console.error('Error fetching visitor count:', error);
-      }
+methods: {
+  async updateVisitorCount() {
+    try {
+      const response = await fetch('https://nuft-website-backend-874bbf91403c.herokuapp.com/api/visitor-count');
+      const data = await response.json();
+      const formattedCount = data.count.toLocaleString();
+      document.getElementById('visitor-count').innerText = formattedCount;
+    } catch (error) {
+      console.error('Error fetching visitor count:', error);
     }
   }
+}
 }
 </script>
 
 <style scoped>
 footer {
-  color: #fff; /* White text */
+  color: #fff;
 }
 
 footer a {
-  color: #fff; /* White links */
+  color: #fff;
 }
 
 footer i {
-  color: #fff; /* White icons */
+  color: #fff;
 }
 
 footer .icon {
-  color: #fff; /* White icons inside .icon class */
+  color: #fff;
 }
 
 footer .copy {
-  color: #fff; /* White text for copyright section */
+  color: #fff;
 }
 
 ul[dir="rtl"] {
@@ -115,12 +132,12 @@ ul[dir="rtl"] {
 }
 
 ul[dir="rtl"] i {
-  margin-left: 10px; /* Adjust this value to control the space */
+  margin-left: 10px;
   margin-right: 0;
 }
 
 .social-icons a {
-  margin: 0 10px; /* Adjust margin to control spacing between icons */
+  margin: 0 10px;
 }
 
 .foot-address, .social-icons {
@@ -137,10 +154,10 @@ ul[dir="rtl"] i {
   margin-top: 20px;
   padding: 15px;
   background-color: #ffbf00;
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   font-size: 18px;
-  color: #001d3d; /* White text for consistency */
+  color: #001d3d;
   display: inline-block;
 }
 

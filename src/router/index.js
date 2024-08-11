@@ -1,56 +1,56 @@
 import { createRouter, createWebHistory } from "vue-router";
-import MainComponent from "../views/homeView.vue";
-import UniversitiesGuide from "../views/universityView.vue";
-import UgardView from "../views/UGRAD.vue";
-import soonView from "../views/soonView.vue";
-import NationalUniversities from "../views/nationalView.vue";
-import Private from "../views/Private.vue";
-import AdmissionStatus from "../views/AdmissionStatus/guideMain.vue";
-import AdmissionStatusUGRAD from "../views/AdmissionStatus/UgradAdmission.vue";
-import NationalUniversitiesAdmissionsStatus from "../views/AdmissionStatus/nationalView.vue";
-import PrivateStatus from "../views/AdmissionStatus/PrivateView.vue";
-import ScholarShips from "../views/scholarship/scolarshipView.vue";
-import ScholarshipsUGRAD from "../views/scholarship/scolarUgrad.vue";
-import CertificatesCalculator from "../views/certificateCalc/certificateCalc.vue";
-import americanView from '../views/certificateCalc/americanView.vue';
-import IGCSECalculator from "../views/certificateCalc/ICG.vue";
-import NewsPage from "../views/News.vue";
-import ContactUs from "../views/contactUs.vue";
+import MainComponent from "../views/home.vue";
 import signUp from "../views/signup/signUp.vue";
-import Normal from '../views/Normal.vue';
-import interNational from '../views/interNational.vue';
-import affiliated from '../views/affiliated.vue';
-import adminPanel from "../views/adminPanel.vue/adminPanel.vue";
-import adminPanelnational from "../views/adminPanel.vue/national adminPanel.vue";
-import adminPanelprivate from "../views/adminPanel.vue/private adminPanel.vue";
-import UFE from '../views/Normal/UFE.vue';
-import NU from '../views/Normal/NU.vue';
-import EELU from '../views/Normal/EELU.vue';
-import EUI from '../views/Normal/EUI.vue';
-import AIU from '../views/internaionalUniversities.vue/AIU.vue';
-import KSIU from "../views/internaionalUniversities.vue/KSIU.vue";
-import GU from "../views/internaionalUniversities.vue/GU.vue";
-import NMU from "../views/internaionalUniversities.vue/NMU.vue";
-import MansNU from "../views/affiliated/MansNU.vue";
-import HNU from "../views/affiliated/HNU.vue";
-import BNU from "../views/affiliated/BNU.vue";
-import BSNU from "../views/affiliated/BSNU.vue";
-import SVNU from "../views/affiliated/SVNU.vue";
-import ZNU from "../views/affiliated/ZNU.vue";
-import MiniaNU from "../views/affiliated/MiniaNU.vue";
-import MenofiaNU from "../views/affiliated/MenofiaNU.vue";
-import EPNU from "../views/affiliated/EPNU.vue";
-import AlexNU from "../views/affiliated/AlexNU.vue";
-import AssuitNU from "../views/affiliated/AssuitNU.vue";
-import NINU from "../views/affiliated/NINU.vue";
-import getUsers from "../views/adminPanel.vue/users.vue";
-import ContactList from "../views/adminPanel.vue/getContact.vue";
+import adminPanel from "../views/adminpanel/adminPanel.vue";
+import adminPanelnational from "../views/adminpanel/national adminPanel.vue";
+import adminPanelprivate from "../views/adminpanel/private adminPanel.vue";
+import getUsers from "../views/adminpanel/users";
+import ContactList from "../views/adminpanel/getContact.vue";
+import NationalStatus from "../views/AdmissionStatus/nationaladmissionstatus.vue";
+import PrivateStatus from "../views/AdmissionStatus/privateadmissionstatus.vue";
+import AdmissionStatus from "../views/AdmissionStatus/AdmissionStatus.vue";
+import Ugrad_AdmissionStatus from "../views/AdmissionStatus/Ugrad_AdmissionStatus.vue";
+import CertificatesCalculator from "../views/certificateCalc/certificateCalc.vue";
+import americanView from '../views/certificateCalc/American.vue';
+import IGCSECalculator from "../views/certificateCalc/IGCSE.vue";
+import ScholarShips from "../views/scholarship/scolarship.vue";
+import ScholarshipsUGRAD from "../views/scholarship/UGRAD_scolarship.vue";
+import UniversitiesGuide from "../views/UniversitiesGuide/UniversitesGuide.vue";
+import UGRAD_UniversitiesGuide from "../views/UniversitiesGuide/UGRAD_UniversitesGuide.vue";
+import National from "../views/Universites/National/NationalView.vue";
+import Normal from '../views/Universites/National/Normal/Normal.vue';
+import UFE from '../views/Universites/National/Normal/UFE.vue';
+import NU from '../views/Universites/National/Normal/NU.vue';
+import EELU from '../views/Universites/National/Normal/EELU.vue';
+import EUI from '../views/Universites/National/Normal/EUI.vue';
+import International from '../views/Universites/National/International/International.vue';
+import AIU from '../views/Universites/National/International/AIU.vue';
+import KSIU from "../views/Universites/National/International/KSIU.vue";
+import GU from "../views/Universites/National/International/GU.vue";
+import NMU from "../views/Universites/National/International/NMU.vue";
+import affiliated from '../views/Universites/National/Affiliated/Affiliated.vue';
+import MansNU from '../views/Universites/National/Affiliated/MansNU.vue';
+import HNU from '../views/Universites/National/Affiliated/HNU.vue';
+import BNU from '../views/Universites/National/Affiliated/BNU.vue';
+import BSNU from '../views/Universites/National/Affiliated/BSNU.vue';
+import SVNU from '../views/Universites/National/Affiliated/SVNU.vue';
+import ZNU from '../views/Universites/National/Affiliated/ZNU.vue';
+import MiniaNU from '../views/Universites/National/Affiliated/MiniaNU.vue';
+import MenofiaNU from'../views/Universites/National/Affiliated/MenofiaNU.vue';
+import EPNU from '../views/Universites/National/Affiliated/EPNU.vue';
+import AlexNU from '../views/Universites/National/Affiliated/AlexNU.vue';
+import AssuitNU from '../views/Universites/National/Affiliated/AssuitNU.vue';
+import NINU from '../views/Universites/National/Affiliated/NINU.vue';
+import Private from "../views/Universites/Private/Private.vue";
+import ContactUs from "../views/contactUs.vue";
+import NewsPage from "../views/News.vue";
+
 
 const routes = [
   {
-    path: '/getContact',
-    name: "ContactList",
-    component: ContactList,
+    path:'/',
+    name:'home',
+    component:MainComponent
   },
   {
     path:"/Home",
@@ -58,39 +58,34 @@ const routes = [
     component:MainComponent
   },
   {
-    path:'/',
-    name:'home',
-    component:MainComponent
+    path:'/user',
+    name:'user',
+    component: signUp
   },
   {
-    path:'/Guide',
-    name:'Guide',
-    component:UniversitiesGuide
+    path: '/users',
+    name: "getUsers",
+    component: getUsers
   },
   {
-    path:'/Guide/UGRAD',
-    name:"Guide/UGRAD",
-    component:UgardView,
+    path: '/getContact',
+    name: "ContactList",
+    component: ContactList,
   },
   {
-    path:'/Guide/UGRAD/soon',
-    name:'Guide/UGRAD/soon',
-    component:soonView,
+    path:'/Noureldin-3la-Zeby',
+    name:'adminpanel',
+    component: adminPanel
   },
   {
-    path:'/Guide/PGRAD',
-    name:'Guide/PGRAD',
-    component:soonView,
+    path:'/Noureldin-3la-Zeby-national',
+    name:'adminPanelnational',
+    component: adminPanelnational
   },
   {
-    path:'/Guide/UGRAD/national',
-    name:"NationalUniversities",
-    component:NationalUniversities
-  },
-  {
-    path:'/Guide/UGRAD/Private',
-    name:"Private",
-    component:Private
+    path:'/Noureldin-3la-Zeby-private',
+    name:'adminPanelprivate',
+    component: adminPanelprivate
   },
   {
     path:"/Status",
@@ -98,34 +93,19 @@ const routes = [
     component:AdmissionStatus
   },
   {
-    path:"/Status/PGRAD",
-    name:"AdmissionStatusPGRAD",
-    component:soonView,
-  },
-  {
     path:"/Status/UGRAD",
     name:"Status/UGRAD",
-    component:AdmissionStatusUGRAD
+    component:Ugrad_AdmissionStatus
   },
   {
     path:"/Status/UGRAD/National",
     name:"Status/UGRAD/National",
-    component:NationalUniversitiesAdmissionsStatus,
+    component:NationalStatus,
   },
   {
     path:"/Status/UGRAD/Private",
     name:"PrivateStatus",
     component:PrivateStatus,
-  },
-  {
-    path:"/Scholarships",
-    name:"ScholarShips",
-    component:ScholarShips
-  },
-  {
-    path:"/Scholarships/UGRAD",
-    name:"ScholarshipsUGRAD",
-    component:ScholarshipsUGRAD
   },
   {
     path:"/Calculator",
@@ -143,49 +123,34 @@ const routes = [
     component:IGCSECalculator
   },
   {
-    path:"/News",
-    name:"NewsPage",
-    component:NewsPage
+    path:"/Scholarships",
+    name:"ScholarShips",
+    component:ScholarShips
   },
   {
-    path:"/Contact",
-    name:"Contact",
-    component:ContactUs
+    path:"/Scholarships/UGRAD",
+    name:"ScholarshipsUGRAD",
+    component:ScholarshipsUGRAD
   },
   {
-    path:'/user',
-    name:'user',
-    component: signUp
+    path:'/Guide',
+    name:'Guide',
+    component:UniversitiesGuide
+  },
+  {
+    path:'/Guide/UGRAD',
+    name:"Guide/UGRAD",
+    component:UGRAD_UniversitiesGuide,
+  },
+  {
+    path:'/Guide/UGRAD/national',
+    name:"National",
+    component:National
   },
   {
     path:'/Guide/UGRAD/National/Normal',
     name:'Normal',
     component:Normal,
-  },
-  {
-    path:'/Guide/UGRAD/National/International',
-    name:'interNational',
-    component:interNational,
-  },
-  {
-    path:'/Guide/UGRAD/National/affiliated',
-    name:'affiliated',
-    component:affiliated,
-  },
-  {
-    path:'/Noureldin-3la-Zeby',
-    name:'adminpanel',
-    component: adminPanel
-  },
-  {
-    path:'/Noureldin-3la-Zeby-national',
-    name:'adminPanelnational',
-    component: adminPanelnational
-  },
-  {
-    path:'/Noureldin-3la-Zeby-private',
-    name:'adminPanelprivate',
-    component: adminPanelprivate
   },
   {
     path:'/Guide/UGRAD/National/UFE',
@@ -208,6 +173,11 @@ const routes = [
     component:EUI,
   },
   {
+    path:'/Guide/UGRAD/National/International',
+    name:'International',
+    component:International,
+  },
+  {
     path:'/Guide/UGRAD/National/AIU',
     name:'AIU',
     component:AIU,
@@ -221,6 +191,11 @@ const routes = [
     path: '/Guide/UGRAD/National/GU',
     name: 'GU',
     component: GU,
+  },
+  {
+    path:'/Guide/UGRAD/National/affiliated',
+    name:'affiliated',
+    component:affiliated,
   },
   {
     path: '/Guide/UGRAD/National/NMU',
@@ -288,10 +263,21 @@ const routes = [
     component: NINU,
   },
   {
-    path: '/users',
-    name: "getUsers",
-    component: getUsers
+    path:'/Guide/UGRAD/Private',
+    name:"Private",
+    component:Private
   },
+  {
+    path:"/Contact",
+    name:"Contact",
+    component:ContactUs
+  },
+  {
+    path:"/News",
+    name:"NewsPage",
+    component:NewsPage
+  }
+
 ];
 
 const router = createRouter({

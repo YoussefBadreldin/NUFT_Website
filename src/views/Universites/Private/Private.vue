@@ -260,7 +260,7 @@ export default {
                 {
                     id: 36,
                     name: 'جامعة اللوتس',
-                    imgSrc: '/images/Logos/Universites/Private/LUM.png',
+                    imgSrc: '/images/Logos/Universites/Private/LOTUS.png',
                     link: '/guide/UGRAD/private/LUM'
                 }
             ]

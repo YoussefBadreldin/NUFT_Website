@@ -2,7 +2,7 @@
     <div class="parent">
         <h1>NUFT Admin Panel</h1>
         <br><br>
-        <h1>الجامعات الاهلية</h1>
+        <h1>الجامعات الخاصة</h1>
         <br><br>
         <h1>Add Universities Data</h1>        
         <div class="container">

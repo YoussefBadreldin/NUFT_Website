@@ -4,7 +4,7 @@
 
         <div>
             <div class="page-nav row">
-                <h2>حالة تقديمات الجامعات الخاصة</h2>
+                <h2>حالة تقديمات الجامعات الاهلية</h2>
             </div>
 
             <section>
@@ -59,7 +59,7 @@ import HeaderComponent from '../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../public/global/footerComponent.vue';
 
 export default {
-    name: 'NationalUniversitiesAdmissionsStatus',
+    name: 'privateUniversitiesAdmissionsStatus',
     components: {
         HeaderComponent,
         FooterComponent,
@@ -88,7 +88,7 @@ export default {
             }
         },
         getAdmission(){
-            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/admission/get')
+            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/privateadmission/get')
                 .then(response => {
                     this.universities = response.data.map(university => ({
                         ...university,
@@ -100,7 +100,7 @@ export default {
                 });
         },
         getYears(){
-            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/links/get_links')
+            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/privatelinks/get_privatelinks')
                 .then(response => {
                     this.all_data = response.data;
                     this.firstYear = this.all_data[0].first_year;

@@ -22,6 +22,7 @@ import interNational from '../views/interNational.vue';
 import affiliated from '../views/affiliated.vue';
 import adminPanel from "../views/adminPanel.vue/adminPanel.vue";
 import adminPanelnational from "../views/adminPanel.vue/national adminPanel.vue";
+import adminPanelprivate from "../views/adminPanel.vue/private adminPanel.vue";
 import UFE from '../views/Normal/UFE.vue';
 import NU from '../views/Normal/NU.vue';
 import EELU from '../views/Normal/EELU.vue';
@@ -180,6 +181,11 @@ const routes = [
     path:'/Noureldin-3la-Zeby-national',
     name:'adminPanelnational',
     component: adminPanelnational
+  },
+  {
+    path:'/Noureldin-3la-Zeby-private',
+    name:'adminPanelprivate',
+    component: adminPanelprivate
   },
   {
     path:'/Guide/UGRAD/National/UFE',

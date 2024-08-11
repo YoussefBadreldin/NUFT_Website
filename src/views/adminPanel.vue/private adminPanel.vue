@@ -327,7 +327,7 @@ export default {
                 details_about_internationa_program: this.details_about_internationa_program
             };
 
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/faclity/addprivate', formData)
+            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/privatefaclity/addprivate', formData)
                 .then(response => {
                     console.log(response.data);
                     alert('form sent successfully');
@@ -352,7 +352,7 @@ export default {
                 international_program_link: this.international_program_link,
                 transfer_link: this.transfer_link
             };
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/links/add_links', links_form_data)
+            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/privatelinks/add_privatelinks', links_form_data)
                 .then(() => {
                     alert('form sent successfully');
                 })
@@ -366,7 +366,7 @@ export default {
                 price: this.price,
                 spec: this.spec
             }
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/info/adddorms', form).then(()=>{
+            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/privatedorms/addprivatedorms', form).then(()=>{
                 alert('form sent successfully');
             }).catch(error=>{
                 console.log(error);
@@ -378,7 +378,7 @@ export default {
                 price: this.price2,
                 spec: this.spec2
             }
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/trans/addtrans', form).then(()=>{
+            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/privatetrans/addprivatetrans', form).then(()=>{
                 alert('form sent succesffully');
             }).catch(error=>{
                 console.log(error);
@@ -408,7 +408,7 @@ export default {
                 StemNileCertificates_second: this.StemNileCertificates_second,
                 InternationalStudents: this.InternationalStudents,
             }
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/admission/add', form).then(()=>{
+            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/privateadmission/add', form).then(()=>{
                 alert('form sent successfully');
             }).catch(error=>{
                 console.log(error);

@@ -2,10 +2,13 @@
   <div>
     <HeaderComponent />
 
+<div class="page-nav row">
+        <h2>دليل الجامعات الاهلية</h2>
+
+    </div>
+
     <div class="Card-Box" dir="rtl">
       <div class="container" style="text-align: center;">
-      <h2>الجامعات الخاصة</h2>
-      <br><br>
         <h3>ما هي الجامعات الخاصة المصرية؟</h3>
         <p>هي جامعات . وعددهم 36 جامعة</p>
       </div>

@@ -6,6 +6,6 @@ const secondInfoSchema = new mongoose.Schema({
     spec: String
 });
 
-const trans_Info = mongoose.model('transInfo', secondInfoSchema);
+const privatetrans_Info = mongoose.model('privatetransInfo', secondInfoSchema);
 
-module.exports = trans_Info;
+module.exports = privatetrans_Info;

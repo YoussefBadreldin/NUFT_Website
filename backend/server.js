@@ -7,13 +7,20 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const authRoutes = require('./router/userRouter');
-const international = require('./router/internationalRouter');
-const international_Links = require('./router/inter_links_router');
-const dorms = require('./router/infoDormsRouter');
-const trans = require('./router/trans_router');
 const news = require('./router/newsRouter');
-const admission = require('./router/admission');
 const contact = require('./router/contactRouter');
+const national = require('./router/nationalRouter');
+const national_Links = require('./router/national_links_router');
+const nationaldorms = require('./router/nationalinfoDormsRouter');
+const nationaltrans = require('./router/nationaltrans_router');
+const nationaladmission = require('./router/nationaladmission');
+const private = require('./router/privateRouter');
+const private_Links = require('./router/private_links_router');
+const privatedorms = require('./router/privateinfoDormsRouter');
+const privatetrans = require('./router/privatetrans_router');
+const privateadmission = require('./router/privateadmission');
+
+
 
 app.use(cors());
 
@@ -30,13 +37,18 @@ app.get('/ab', () => {
 
 // Routes
 app.use('/auth', authRoutes);
-app.use('/faclity', international);
-app.use('/links', international_Links);
-app.use('/info', dorms);
-app.use('/trans', trans);
 app.use('/news', news);
-app.use('/admission', admission);
 app.use('/contact', contact);
+app.use('/nationalfaclity', national);
+app.use('/nationallinks', national_Links);
+app.use('/nationaldorms', nationaldorms);
+app.use('/nationaltrans', nationaltrans);
+app.use('/nationaladmission', nationaladmission);
+app.use('/privatefaclity', private);
+app.use('/privatelinks', private_Links);
+app.use('/privatedorms', privatedorms);
+app.use('/privatetrans', privatetrans);
+app.use('/privateadmission', privateadmission);
 
 // CORS OPTIONS preflight handler
 app.options('/auth/signup', cors());

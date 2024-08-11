@@ -7,7 +7,7 @@
                 <img src="/images/Logos/Universites/Private/MTI.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
                 
                 <!-- ######## Uni Title ####### -->
-                <h2 style="text-align: center; margin-top: 20px;">جامعة  اسكندرية الاهلية<br>(ANU)</h2>
+                <h2 style="text-align: center; margin-top: 20px;">الجامعة الحديثة للتكنولوجيا والمعلومات<br>(MTI)</h2>
                 
                 <!-- ######## Uni info ####### -->
                 <p style="text-align: center;">

@@ -4,7 +4,7 @@
         <HeaderComponent />
         <section>
             <div style="display: flex; flex-direction: column; align-items: center;">
-                <img src="/images/Logos/Universites/National/LUM.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
+                <img src="/images/Logos/Universites/Private/LUM.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
                 
                 <!-- ######## Uni Title ####### -->
                 <h2 style="text-align: center; margin-top: 20px;">جامعة  اسكندرية الاهلية<br>(ANU)</h2>

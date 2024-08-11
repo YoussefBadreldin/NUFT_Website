@@ -7,7 +7,7 @@
                 <img src="/images/Logos/Universites/Private/SEU.png" alt="University Logo" style="width: 100%; max-width: 300px; height: auto;">
                 
                 <!-- ######## Uni Title ####### -->
-                <h2 style="text-align: center; margin-top: 20px;">جامعة  اسكندرية الاهلية<br>(ANU)</h2>
+                <h2 style="text-align: center; margin-top: 20px;">جامعة القاهرة ساكسوني للعلوم التطبيقية والتكنولوجيا<br>(SEU)</h2>
                 
                 <!-- ######## Uni info ####### -->
                 <p style="text-align: center;">

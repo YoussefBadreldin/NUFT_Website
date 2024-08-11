@@ -88,7 +88,7 @@
             <p>
                 الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت)
             </p>
-            <a href="/Status/UGRAD/National" style="display: block; text-align: center;">
+            <a href="/Status/UGRAD/Private" style="display: block; text-align: center;">
         <button>اضغط هنا لمعرفة حالة تقديم الجامعة</button>
     </a>
         </section>
@@ -201,7 +201,7 @@ export default {
     methods: {
         async get_data() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationalfaclity/getnational');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/Privatefaclity/getPrivate');
                 console.log('API response data:', response.data);
                 if (response.data && Array.isArray(response.data.facilities)) {
                     this.all_data = response.data.facilities;
@@ -223,7 +223,7 @@ export default {
         },
         async getLinks() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationallinks/get_nationallinks');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/Privatelinks/get_Privatelinks');
                 this.links = response.data;
                 this.filteredLinks = this.links.filter(index => index.university_Name === 'LUM');
                 console.log(this.filteredLinks);
@@ -247,7 +247,7 @@ export default {
         },
         async getDorms() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaldorms/getnationaldorms');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/Privatedorms/getPrivatedorms');
                 this.dorms = response.data;
                 this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'LUM');
                 //console.log('dorms table', this.filteredDorms)
@@ -257,7 +257,7 @@ export default {
         },
         async gettrans() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaltrans/getnationaltrans');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/Privatetrans/getPrivatetrans');
                 this.trans = response.data;
                 this.filteredTrans = this.trans.filter(index => index.spec === 'LUM');
                 console.log('filteredTrans', this.filteredTrans)

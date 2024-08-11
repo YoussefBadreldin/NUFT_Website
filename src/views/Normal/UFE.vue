@@ -167,7 +167,7 @@ import HeaderComponent from '../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../public/global/footerComponent.vue';
 
 export default {
-    name: 'UFE',
+    name: 'AIU',
     data() {
         return {
             all_data: [],
@@ -200,7 +200,7 @@ export default {
     methods: {
         async get_data() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/faclity/getInternational');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationalfaclity/getnational');
                 console.log('API response data:', response.data);
                 if (response.data && Array.isArray(response.data.facilities)) {
                     this.all_data = response.data.facilities;
@@ -209,8 +209,8 @@ export default {
                 }
                 if (Array.isArray(this.all_data)) {
                     console.log('All data:', this.all_data);
-                    this.filteredData = this.all_data.filter(index => index.speciality === 'UFE' && index.facality_or_international === 'facality');
-                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'UFE');
+                    this.filteredData = this.all_data.filter(index => index.speciality === 'AIU' && index.facality_or_international === 'facality');
+                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'AIU');
                     console.log('Filtered data:', this.filteredData);
                     console.log('Filtered international:', this.filteredInternational);
                 } else {
@@ -222,9 +222,9 @@ export default {
         },
         async getLinks() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/links/get_links');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationallinks/get_nationallinks');
                 this.links = response.data;
-                this.filteredLinks = this.links.filter(index => index.university_Name === 'UFE');
+                this.filteredLinks = this.links.filter(index => index.university_Name === 'AIU');
                 console.log(this.filteredLinks);
                 if (this.filteredLinks.length > 0) {
                     this.firstYear = this.filteredLinks[0].first_year;
@@ -246,9 +246,9 @@ export default {
         },
         async getDorms() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/info/getdorms');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaldorms/getnationaldorms');
                 this.dorms = response.data;
-                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'UFE');
+                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'AIU');
                 //console.log('dorms table', this.filteredDorms)
             } catch (error) {
                 console.log(error);
@@ -256,9 +256,9 @@ export default {
         },
         async gettrans() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/trans/gettrans');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaltrans/getnationaltrans');
                 this.trans = response.data;
-                this.filteredTrans = this.trans.filter(index => index.spec === 'UFE');
+                this.filteredTrans = this.trans.filter(index => index.spec === 'AIU');
                 console.log('filteredTrans', this.filteredTrans)
             }
             catch (error) {
@@ -294,7 +294,6 @@ export default {
   }
 };
 </script>
-
 
 <style scoped>
 /* General Styles for Tables */

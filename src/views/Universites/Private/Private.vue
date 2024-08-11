@@ -4,10 +4,10 @@
 
     <div class="Card-Box" dir="rtl">
       <div class="container" style="text-align: center;">
+      <h2>الجامعات الخاصة</h2>
+      <br><br>
         <h3>ما هي الجامعات الخاصة المصرية؟</h3>
-        <p>توجد في مصر 36 جامعة خاصة.</p>
-        <br><br>
-        <h2>الجامعات الخاصة</h2>
+        <p>هي جانعات . وعددهم 36 جامعة</p>
       </div>
 
       <div class="Card-Box" dir="rtl">

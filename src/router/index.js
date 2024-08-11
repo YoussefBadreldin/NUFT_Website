@@ -42,6 +42,42 @@ import AlexNU from '../views/Universites/National/Affiliated/AlexNU.vue';
 import AssuitNU from '../views/Universites/National/Affiliated/AssuitNU.vue';
 import NINU from '../views/Universites/National/Affiliated/NINU.vue';
 import Private from "../views/Universites/Private/Private.vue";
+import O6U from "../views/Universites/Private/O6U.vue";
+import MSA from "../views/Universites/Private/MSA.vue";
+import MUST from "../views/Universites/Private/MUST.vue";
+import MIU from "../views/Universites/Private/MIU.vue";
+import GUC from "../views/Universites/Private/GUC.vue";
+import ACU from "../views/Universites/Private/ACU.vue";
+import BUE from "../views/Universites/Private/BUE.vue";
+import MTI from "../views/Universites/Private/MTI.vue";
+import SU from "../views/Universites/Private/SU.vue";
+import PUA from "../views/Universites/Private/PUA.vue";
+import FUE from "../views/Universites/Private/FUE.vue";
+import ERU from "../views/Universites/Private/ERU.vue";
+import NUB from "../views/Universites/Private/NUB.vue";
+import DU from "../views/Universites/Private/DU.vue";
+import HU from "../views/Universites/Private/HU.vue";
+import DerayaU from "../views/Universites/Private/DerayaU.vue";
+import NGU from "../views/Universites/Private/NGU.vue";
+import BUC from "../views/Universites/Private/BUC.vue";
+import ECU from "../views/Universites/Private/ECU.vue";
+import HUE from "../views/Universites/Private/HUE.vue";
+import MUE from "../views/Universites/Private/MUE.vue";
+import ASU from "../views/Universites/Private/ASU.vue";
+import SphinxU from "../views/Universites/Private/SphinxU.vue";
+import MUC from "../views/Universites/Private/MUC.vue";
+import AHUC from "../views/Universites/Private/AHUC.vue";
+import SGU from "../views/Universites/Private/SGU.vue";
+import BUA from "../views/Universites/Private/BUA.vue";
+import RST from "../views/Universites/Private/RST.vue";
+import CUC from "../views/Universites/Private/CUC.vue";
+import SUT from "../views/Universites/Private/SUT.vue";
+import IU from "../views/Universites/Private/IU.vue";
+import RU from "../views/Universites/Private/RU.vue";
+import BADYA from "../views/Universites/Private/BADYA.vue";
+import NVU from "../views/Universites/Private/NVU.vue";
+import SEU from "../views/Universites/Private/SEU.vue";
+import LUM from "../views/Universites/Private/LUM.vue";
 import ContactUs from "../views/contactUs.vue";
 import NewsPage from "../views/News.vue";
 
@@ -267,6 +303,186 @@ const routes = [
     name:"Private",
     component:Private
   },
+  {
+    path: '/Guide/UGRAD/O6U',
+    name: "O6U",
+    component: O6U
+  },
+  {
+    path: '/Guide/UGRAD/MSA',
+    name: "MSA",
+    component: MSA
+  },
+  {
+    path: '/Guide/UGRAD/MUST',
+    name: "MUST",
+    component: MUST
+  },
+  {
+    path: '/Guide/UGRAD/MIU',
+    name: "MIU",
+    component: MIU
+  },
+  {
+    path: '/Guide/UGRAD/GUC',
+    name: "GUC",
+    component: GUC
+  },
+  {
+    path: '/Guide/UGRAD/ACU',
+    name: "ACU",
+    component: ACU
+  },
+  {
+    path: '/Guide/UGRAD/BUE',
+    name: "BUE",
+    component: BUE
+  },
+  {
+    path: '/Guide/UGRAD/MTI',
+    name: "MTI",
+    component: MTI
+  },
+  {
+    path: '/Guide/UGRAD/SU',
+    name: "SU",
+    component: SU
+  },
+  {
+    path: '/Guide/UGRAD/PUA',
+    name: "PUA",
+    component: PUA
+  },
+  {
+    path: '/Guide/UGRAD/FUE',
+    name: "FUE",
+    component: FUE
+  },
+  {
+    path: '/Guide/UGRAD/ERU',
+    name: "ERU",
+    component: ERU
+  },
+  {
+    path: '/Guide/UGRAD/NUB',
+    name: "NUB",
+    component: NUB
+  },
+  {
+    path: '/Guide/UGRAD/DU',
+    name: "DU",
+    component: DU
+  },
+  {
+    path: '/Guide/UGRAD/HU',
+    name: "HU",
+    component: HU
+  },
+  {
+    path: '/Guide/UGRAD/DerayaU',
+    name: "DerayaU",
+    component: DerayaU
+  },
+  {
+    path: '/Guide/UGRAD/NGU',
+    name: "NGU",
+    component: NGU
+  },
+  {
+    path: '/Guide/UGRAD/BUC',
+    name: "BUC",
+    component: BUC
+  },
+  {
+    path: '/Guide/UGRAD/ECU',
+    name: "ECU",
+    component: ECU
+  },
+  {
+    path: '/Guide/UGRAD/HUE',
+    name: "HUE",
+    component: HUE
+  },
+  {
+    path: '/Guide/UGRAD/MUE',
+    name: "MUE",
+    component: MUE
+  },
+  {
+    path: '/Guide/UGRAD/ASU',
+    name: "ASU",
+    component: ASU
+  },
+  {
+    path: '/Guide/UGRAD/SphinxU',
+    name: "SphinxU",
+    component: SphinxU
+  },
+  {
+    path: '/Guide/UGRAD/MUC',
+    name: "MUC",
+    component: MUC
+  },
+  {
+    path: '/Guide/UGRAD/AHUC',
+    name: "AHUC",
+    component: AHUC
+  },
+  {
+    path: '/Guide/UGRAD/SGU',
+    name: "SGU",
+    component: SGU
+  },
+  {
+    path: '/Guide/UGRAD/BUA',
+    name: "BUA",
+    component: BUA
+  },
+  {
+    path: '/Guide/UGRAD/RST',
+    name: "RST",
+    component: RST
+  },
+  {
+    path: '/Guide/UGRAD/CUC',
+    name: "CUC",
+    component: CUC
+  },
+  {
+    path: '/Guide/UGRAD/SUT',
+    name: "SUT",
+    component: SUT
+  },
+  {
+    path: '/Guide/UGRAD/IU',
+    name: "IU",
+    component: IU
+  },
+  {
+    path: '/Guide/UGRAD/RU',
+    name: "RU",
+    component: RU
+  },
+  {
+    path: '/Guide/UGRAD/BADYA',
+    name: "BADYA",
+    component: BADYA
+  },
+  {
+    path: '/Guide/UGRAD/NVU',
+    name: "NVU",
+    component: NVU
+  },
+  {
+    path: '/Guide/UGRAD/SEU',
+    name: "SEU",
+    component: SEU
+  },
+  {
+    path: '/Guide/UGRAD/LUM',
+    name: "LUM",
+    component: LUM
+  },  
   {
     path:"/Contact",
     name:"Contact",

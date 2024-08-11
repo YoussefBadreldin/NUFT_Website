@@ -72,20 +72,17 @@ export default {
             all_data: [],
         }
     },
-    methods: {
-        getColor(status) {
-            switch (status) {
-                case 'انتهي (كل الكليات)':
-                    return 'red';
-                case 'متاح (كل الكليات)':
-                    return 'green';
-                case 'لم يبدأ (كل الكليات)':
-                    return 'brown';
-                case 'تحت الإنشاء':
-                    return 'purple';
-                default:
-                    return 'inherit';
-            }
+  methods: {
+    getColor(status) {
+        if (status.includes('انتهي')) {
+            return 'red';
+        } else if (status.includes('متاح')) {
+            return 'green';
+        } else if (status.includes('لم يبدأ')) {
+            return 'purple';
+        } else {
+            return 'inherit';
+        }
         },
         getAdmission(){
             axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaladmission/get')

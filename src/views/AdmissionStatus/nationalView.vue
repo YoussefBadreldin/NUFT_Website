@@ -88,7 +88,7 @@ export default {
             }
         },
         getAdmission(){
-            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/admission/get')
+            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaladmission/get')
                 .then(response => {
                     this.universities = response.data.map(university => ({
                         ...university,
@@ -100,7 +100,7 @@ export default {
                 });
         },
         getYears(){
-            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/links/get_links')
+            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationallinks/get_nationallinks')
                 .then(response => {
                     this.all_data = response.data;
                     this.firstYear = this.all_data[0].first_year;

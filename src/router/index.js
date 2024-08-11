@@ -304,182 +304,182 @@ const routes = [
     component:Private
   },
   {
-    path: '/Guide/UGRAD/O6U',
+    path: '/Guide/UGRAD/private/O6U',
     name: "O6U",
     component: O6U
   },
   {
-    path: '/Guide/UGRAD/MSA',
+    path: '/Guide/UGRAD/private/MSA',
     name: "MSA",
     component: MSA
   },
   {
-    path: '/Guide/UGRAD/MUST',
+    path: '/Guide/UGRAD/private/MUST',
     name: "MUST",
     component: MUST
   },
   {
-    path: '/Guide/UGRAD/MIU',
+    path: '/Guide/UGRAD/private/MIU',
     name: "MIU",
     component: MIU
   },
   {
-    path: '/Guide/UGRAD/GUC',
+    path: '/Guide/UGRAD/private/GUC',
     name: "GUC",
     component: GUC
   },
   {
-    path: '/Guide/UGRAD/ACU',
+    path: '/Guide/UGRAD/private/ACU',
     name: "ACU",
     component: ACU
   },
   {
-    path: '/Guide/UGRAD/BUE',
+    path: '/Guide/UGRAD/private/BUE',
     name: "BUE",
     component: BUE
   },
   {
-    path: '/Guide/UGRAD/MTI',
+    path: '/Guide/UGRAD/private/MTI',
     name: "MTI",
     component: MTI
   },
   {
-    path: '/Guide/UGRAD/SU',
+    path: '/Guide/UGRAD/private/SU',
     name: "SU",
     component: SU
   },
   {
-    path: '/Guide/UGRAD/PUA',
+    path: '/Guide/UGRAD/private/PUA',
     name: "PUA",
     component: PUA
   },
   {
-    path: '/Guide/UGRAD/FUE',
+    path: '/Guide/UGRAD/private/FUE',
     name: "FUE",
     component: FUE
   },
   {
-    path: '/Guide/UGRAD/ERU',
+    path: '/Guide/UGRAD/private/ERU',
     name: "ERU",
     component: ERU
   },
   {
-    path: '/Guide/UGRAD/NUB',
+    path: '/Guide/UGRAD/private/NUB',
     name: "NUB",
     component: NUB
   },
   {
-    path: '/Guide/UGRAD/DU',
+    path: '/Guide/UGRAD/private/DU',
     name: "DU",
     component: DU
   },
   {
-    path: '/Guide/UGRAD/HU',
+    path: '/Guide/UGRAD/private/HU',
     name: "HU",
     component: HU
   },
   {
-    path: '/Guide/UGRAD/DerayaU',
+    path: '/Guide/UGRAD/private/DerayaU',
     name: "DerayaU",
     component: DerayaU
   },
   {
-    path: '/Guide/UGRAD/NGU',
+    path: '/Guide/UGRAD/private/NGU',
     name: "NGU",
     component: NGU
   },
   {
-    path: '/Guide/UGRAD/BUC',
+    path: '/Guide/UGRAD/private/BUC',
     name: "BUC",
     component: BUC
   },
   {
-    path: '/Guide/UGRAD/ECU',
+    path: '/Guide/UGRAD/private/ECU',
     name: "ECU",
     component: ECU
   },
   {
-    path: '/Guide/UGRAD/HUE',
+    path: '/Guide/UGRAD/private/HUE',
     name: "HUE",
     component: HUE
   },
   {
-    path: '/Guide/UGRAD/MUE',
+    path: '/Guide/UGRAD/private/MUE',
     name: "MUE",
     component: MUE
   },
   {
-    path: '/Guide/UGRAD/ASU',
+    path: '/Guide/UGRAD/private/ASU',
     name: "ASU",
     component: ASU
   },
   {
-    path: '/Guide/UGRAD/SphinxU',
+    path: '/Guide/UGRAD/private/SphinxU',
     name: "SphinxU",
     component: SphinxU
   },
   {
-    path: '/Guide/UGRAD/MUC',
+    path: '/Guide/UGRAD/private/MUC',
     name: "MUC",
     component: MUC
   },
   {
-    path: '/Guide/UGRAD/AHUC',
+    path: '/Guide/UGRAD/private/AHUC',
     name: "AHUC",
     component: AHUC
   },
   {
-    path: '/Guide/UGRAD/SGU',
+    path: '/Guide/UGRAD/private/SGU',
     name: "SGU",
     component: SGU
   },
   {
-    path: '/Guide/UGRAD/BUA',
+    path: '/Guide/UGRAD/private/BUA',
     name: "BUA",
     component: BUA
   },
   {
-    path: '/Guide/UGRAD/RST',
+    path: '/Guide/UGRAD/private/RST',
     name: "RST",
     component: RST
   },
   {
-    path: '/Guide/UGRAD/CUC',
+    path: '/Guide/UGRAD/private/CUC',
     name: "CUC",
     component: CUC
   },
   {
-    path: '/Guide/UGRAD/SUT',
+    path: '/Guide/UGRAD/private/SUT',
     name: "SUT",
     component: SUT
   },
   {
-    path: '/Guide/UGRAD/IU',
+    path: '/Guide/UGRAD/private/IU',
     name: "IU",
     component: IU
   },
   {
-    path: '/Guide/UGRAD/RU',
+    path: '/Guide/UGRAD/private/RU',
     name: "RU",
     component: RU
   },
   {
-    path: '/Guide/UGRAD/BADYA',
+    path: '/Guide/UGRAD/private/BADYA',
     name: "BADYA",
     component: BADYA
   },
   {
-    path: '/Guide/UGRAD/NVU',
+    path: '/Guide/UGRAD/private/NVU',
     name: "NVU",
     component: NVU
   },
   {
-    path: '/Guide/UGRAD/SEU',
+    path: '/Guide/UGRAD/private/SEU',
     name: "SEU",
     component: SEU
   },
   {
-    path: '/Guide/UGRAD/LUM',
+    path: '/Guide/UGRAD/private/LUM',
     name: "LUM",
     component: LUM
   },  

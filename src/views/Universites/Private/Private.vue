@@ -1,30 +1,36 @@
 <template>
-    <div>
+  <div>
     <HeaderComponent />
-    <div class="page-nav row">
-        <h2>الجامعات الخاصة </h2>
-    </div>
-    
+
     <div class="Card-Box" dir="rtl">
+      <div class="container" style="text-align: center;">
+        <h3>ما هي الجامعات الخاصة المصرية؟</h3>
+        <p>توجد في مصر 36 جامعة خاصة.</p>
+        <br><br>
+        <h2>الجامعات الخاصة</h2>
+      </div>
+
+      <div class="Card-Box" dir="rtl">
         <div class="container">
-        <div class="session-title row"></div>
-        <div class="row Box-ro">
+          <div class="session-title row"></div>
+          <div class="row Box-ro">
             <div class="col-md-4" v-for="university in universities" :key="university.id">
-            <router-link :to="university.link">
+              <router-link :to="university.link">
                 <div class="Box-card">
-                <img :src="university.imgSrc" :alt="university.name">
-                <div class="Box-det" style="text-align: center;">
+                  <img :src="university.imgSrc" :alt="university.name">
+                  <div class="Box-det" style="text-align: center;">
                     <h6>{{ university.name }}</h6>
+                  </div>
                 </div>
-                </div>
-            </router-link>
+              </router-link>
             </div>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
 
     <FooterComponent />
-    </div>
+  </div>
 </template>
 
 <script>

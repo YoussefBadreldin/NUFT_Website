@@ -52,25 +52,37 @@ export default {
         universities: [
                 {
                     id: 1,
-                    name: 'جامعة 6 اكتوبر',
+                    name: 'جامعة جزيرة الأمير إدوارد',
                     imgSrc: '/images/Logos/Universites/international/O6U.png',
                     link: '/guide/UGRAD/international/O6U'
                 },
                 {
                     id: 2,
-                    name: 'جامعة أكتوبر للعلوم الحديثة والآداب',
+                    name: 'جامعة رايرسون',
                     imgSrc: '/images/Logos/Universites/international/MSA.png',
                     link: '/guide/UGRAD/international/MSA'
                 },
                 {
                     id: 3,
-                    name: 'جامعة مصر للعلوم والتكنولوجيا',
+                    name: 'جامعة كوفنتري البريطانية',
                     imgSrc: '/images/Logos/Universites/international/MUST.png',
                     link: '/guide/UGRAD/international/MUST'
                 },
                 {
                     id: 4,
-                    name: 'جامعة مصر الدولية',
+                    ame: 'جامعة نوفا البرتغالية',
+                    imgSrc: '/images/Logos/Universites/international/MIU.png',
+                    link: '/guide/UGRAD/international/MIU'
+                },
+                {
+                    id: 5,
+                    ame: 'جامعة هيرتفوردشاير البريطانية',
+                    imgSrc: '/images/Logos/Universites/international/MIU.png',
+                    link: '/guide/UGRAD/international/MIU'
+                },
+                {
+                    id: 6,
+                    ame: 'جامعة نوفا البرتغالية',
                     imgSrc: '/images/Logos/Universites/international/MIU.png',
                     link: '/guide/UGRAD/international/MIU'
                 }

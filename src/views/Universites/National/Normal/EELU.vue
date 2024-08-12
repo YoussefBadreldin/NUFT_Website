@@ -286,7 +286,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationallinks/get_nationallinks');
                 this.links = response.data;
-                this.filteredLinks = this.links.filter(index => index.university_Name === 'EELU');
+                this.filteredLinks = this.links.filter(index => index.university === 'EELU');
                 console.log(this.filteredLinks);
                 if (this.filteredLinks.length > 0) {
                     this.firstYear = this.filteredLinks[0].first_year;

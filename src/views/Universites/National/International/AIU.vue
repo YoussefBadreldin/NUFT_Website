@@ -278,21 +278,11 @@ export default {
             try {
                 const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationallinks/get_nationallinks');
                 this.links = response.data;
-                this.filteredLinks = this.links.filter(index => index.university_Name === 'AIU');
+                this.filteredLinks = this.links.filter(index => index.university === 'AIU');
                 console.log(this.filteredLinks);
                 if (this.filteredLinks.length > 0) {
                     this.firstYear = this.filteredLinks[0].first_year;
                     this.secondYear = this.filteredLinks[0].second_year;
-                    this.location = this.filteredLinks[0].view_location;
-                    this.details_about_internationa_program = this.filteredLinks[0].details_about_internationa_program;
-                    this.register_link_dorms = this.filteredLinks[0].register_link_dorms;
-                    this.register_link_transportation = this.filteredLinks[0].register_link_transportation;
-                    this.register_link = this.filteredLinks[0].regitser_link;
-                    this.Admission_link_egyption = this.filteredLinks[0].Admission_link_egyption;
-                    this.Admission_link_natives = this.filteredLinks[0].Admission_link_natives;
-                    this.international_program_link = this.filteredLinks[0].international_program_link;
-                    this.transfer_link_egyption = this.filteredLinks[0].transfer_link;
-                    this.scholarship_datils = this.filteredLinks[0].scholarship_datils;
                 }
             } catch (error) {
                 console.log(error);

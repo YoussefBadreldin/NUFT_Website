@@ -36,40 +36,74 @@
 </div>
     </section>
     
-           <section>
+       <section>
             <br><br>
             <h1>الكليات والبرامج</h1>
             <div class="table-responsive" dir="rtl">
-                <table style="margin-top:0vh;" dir="rtl">
+                <table style="margin-top: 0vh;" dir="rtl">
                     <thead>
                         <tr>
-                           <th rowspan="2">الكلية</th>
+                            <th rowspan="2">الكلية</th>
                             <th rowspan="2">البرامج</th>
-                            <th rowspan="2">الرسوم للمصرين 
-                            <br>
-                             فئة أ
-                             <br>
-                            (في السنة)
-                            </th>
-                            <th rowspan="2">الرسوم للمصرين 
-                            <br>
-                             فئة ب
-                             <br>
-                            (في السنة)
-                            </th>
-                           <th rowspan="2">الرسوم للمصرين 
-                            <br>
-                             فئة ج
-                             <br>
-                            (في السنة)
-                            </th>
-                            <th rowspan="2">الرسوم للمصرين 
-                            <br>
-                             فئة د
-                             <br>
-                            (في السنة)
-                            </th>
+                            <th rowspan="2">(في السنة) الرسوم للمصريين</th>
                             <th rowspan="2">(في السنة) الرسوم للوافدين</th>
+                            <th rowspan="2">الشعبة</th>
+                            <th colspan="2">الحد الأدنى للثانوية العامة</th>
+                            <th colspan="2">الحد الأدنى للشهادات العربية، الإنجليزية والأزهرية</th>
+                            <th colspan="2">الحد الأدنى لستيم والنيل</th>
+                            <th rowspan="2">الحد الأدنى للوافدين</th>
+                        </tr>
+                        <tr>
+                            <th>{{ firstYear }}</th>
+                            <th>{{ secondYear }}</th>
+                            <th>{{ firstYear }}</th>
+                            <th>{{ secondYear }}</th>
+                            <th>{{ firstYear }}</th>
+                            <th>{{ secondYear }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(faculty, index) in filteredData" :key="index">
+                            <td>{{ faculty.faculty }}</td>
+                            <td>{{ faculty.programs }}</td>
+                            <td>{{ faculty.feesEgyption }}</td>
+                            <td>{{ faculty.feesNatives }}</td>
+                            <td>{{ faculty.section }}</td>
+                            <td>{{ faculty.thanwyaa_firstYear_score }}</td>
+                            <td>{{ faculty.thanwyaa_secondYear_score }}</td>
+                            <td>{{ faculty.azhar_firstYear_score }}</td>
+                            <td>{{ faculty.azhar_secondYear_score }}</td>
+                            <td>{{ faculty.stem_firstYear_score }}</td>
+                            <td>{{ faculty.stem_secondYear_score }}</td>
+                            <td>{{ faculty.wafdeen_score }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>
+                الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت)
+            </p>
+            <a href="/Status/UGRAD/National" style="display: block; text-align: center;">
+        <button>اضغط هنا لمعرفة حالة تقديم الجامعة</button>
+    </a>
+ </section>
+
+        <!-- ######## International Programs ####### -->
+        <section>
+        <br> <br>
+            <h2>البرامج الدولية</h2>
+            <div class="table-responsive" dir="rtl">
+                <table>
+                    <thead>
+                        <tr>
+                           <th rowspan="2">البرامج</th>
+                            <th rowspan="2">التفاصيل</th>
+                            <th rowspan="2">الرسوم للمصريين
+                            <br>
+                             (في السنة)</th>
+                            <th rowspan="2">الرسوم للوافدين
+                            <br>
+                             (في السنة)</th>
                             <th rowspan="2">الشعبة</th>
                             <th colspan="2">الحد الأدنى  للثانوية العامة</th>
                             <th colspan="2">الحد الأدنى للشهادات العربية، الإنجليزية والأزهرية</th>
@@ -86,44 +120,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(faculty, index) in filteredData" :key="index">
-                            <td>{{ faculty.facilities }}</td>
+                        <tr v-for="(faculty, index) in filteredInternational" :key="index">
+                            <td>{{ faculty.faculty }}</td>
                             <td>{{ faculty.programs }}</td>
                             <td>{{ faculty.feesEgyption }}</td>
-                            <td>{{ faculty.feesEgyption2 }}</td>
-                            <td>{{ faculty.feesEgyption3 }}</td>
-                            <td>{{ faculty.feesEgyption4 }}</td>
                             <td>{{ faculty.feesNatives }}</td>
                             <td>{{ faculty.section }}</td>
-                            <td>{{ faculty.scoreFirst }}</td>
-                            <td>{{ faculty.scoreSecond }}</td>
-                            <td>{{ faculty.scorefirstAzhar }}</td>
-                            <td>{{ faculty.scoreYearsecondAzhar }}</td>
-                            <td>{{ faculty.scorefirstStem }}</td>
-                            <td>{{ faculty.scoreYearsecondStem }}</td>
-                            <td>{{ faculty.minimumForNatives }}</td>
+                            <td>{{ faculty.thanwyaa_firstYear_score }}</td>
+                            <td>{{ faculty.thanwyaa_secondYear_score }}</td>
+                            <td>{{ faculty.azhar_firstYear_score }}</td>
+                            <td>{{ faculty.azhar_secondYear_score }}</td>
+                            <td>{{ faculty.stem_firstYear_score }}</td>
+                            <td>{{ faculty.stem_secondYear_score }}</td>
+                            <td>{{ faculty.wafdeen_score }}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 <p>
-                الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت)
-            </p>
-<p>
-<strong>
-فئة أ: من الي
-<br>
-فئة ب: من الي
-<br>
-فئة ج: من الي
-<br>
-فئة د: من الي
-</strong></p>
-<a href="/Status/UGRAD/National" style="display: block; text-align: center;">
-        <button>اضغط هنا لمعرفة حالة تقديم الجامعة</button>
-    </a>
+     الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت).
+</p>
+<a :href="details_about_internationa_program" target="_blank">
+    <button>مزيد من التفاصيل عن البرامج الدولية</button>
+</a>
         </section>
-
         <section>
             <br><br>
             <h2>السكن</h2>
@@ -132,7 +152,7 @@
                     <thead>
                         <tr>
                             <th>النوع</th>
-                            <th>الرسوم
+                             <th>الرسوم
                             <br>
                             (في الترم)</th>
                         </tr>
@@ -183,11 +203,12 @@
 
         <section>
             <br><br>
-            <h1>طرق التقديم</h1>
-            <a :href="Admission_link_natives" target="_blank"><button>رابط التقديم للطلاب الوافدين</button></a>
-            <a :href="transfer_link_egyption" target="_blank"><button>رابط التحويل للطلاب المصريين</button></a>
-            <a :href="Admission_link_egyption" target="_blank"><button>رابط التقديم للطلاب المصريين</button></a>
-        </section>
+             <h1>طرق التقديم</h1>
+    <a :href="Admission_link_natives" target="_blank"><button>رابط التقديم للطلاب الوافدين</button></a>
+    <a :href="transfer_link_egyption" target="_blank"><button>رابط التحويل للطلاب المصريين</button></a>
+    <a :href="international_program_link" target="_blank"><button>رابط التقديم للطلاب المصريين (البرامج الدولية)</button></a>
+    <a :href="Admission_link_egyption" target="_blank"><button>رابط التقديم للطلاب المصريين</button></a>
+</section>
 
         <FooterComponent />
     </div>
@@ -199,7 +220,7 @@ import HeaderComponent from '../../../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../../../public/global/footerComponent.vue';
 
 export default {
-    name: 'NU',
+    name: 'AIU',
     data() {
         return {
             all_data: [],
@@ -232,17 +253,17 @@ export default {
     methods: {
         async get_data() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationalfaclity/getnational');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationalfaculty/getnational');
                 console.log('API response data:', response.data);
-                if (response.data && Array.isArray(response.data.facilities)) {
-                    this.all_data = response.data.facilities;
+                if (response.data && Array.isArray(response.data.faculty)) {
+                    this.all_data = response.data.faculty;
                 } else {
                     console.error('API response does not contain an array:', response.data);
                 }
                 if (Array.isArray(this.all_data)) {
                     console.log('All data:', this.all_data);
-                    this.filteredData = this.all_data.filter(index => index.speciality === 'NU' && index.facality_or_international === 'facality');
-                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'NU');
+                    this.filteredData = this.all_data.filter(index => index.university === 'AIU' && index.normal_or_Dual === 'normal');
+                    this.filteredInternational = this.all_data.filter(index => index.normal_or_Dual === 'dual' && index.university === 'AIU');
                     console.log('Filtered data:', this.filteredData);
                     console.log('Filtered international:', this.filteredInternational);
                 } else {
@@ -256,7 +277,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationallinks/get_nationallinks');
                 this.links = response.data;
-                this.filteredLinks = this.links.filter(index => index.university_Name === 'NU');
+                this.filteredLinks = this.links.filter(index => index.university_Name === 'AIU');
                 console.log(this.filteredLinks);
                 if (this.filteredLinks.length > 0) {
                     this.firstYear = this.filteredLinks[0].first_year;
@@ -280,7 +301,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaldorms/getnationaldorms');
                 this.dorms = response.data;
-                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'NU');
+                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'AIU');
                 //console.log('dorms table', this.filteredDorms)
             } catch (error) {
                 console.log(error);
@@ -290,7 +311,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaltrans/getnationaltrans');
                 this.trans = response.data;
-                this.filteredTrans = this.trans.filter(index => index.spec === 'NU');
+                this.filteredTrans = this.trans.filter(index => index.spec === 'AIU');
                 console.log('filteredTrans', this.filteredTrans)
             }
             catch (error) {
@@ -326,8 +347,6 @@ export default {
   }
 };
 </script>
-
-
 
 <style scoped>
 /* General Styles for Tables */

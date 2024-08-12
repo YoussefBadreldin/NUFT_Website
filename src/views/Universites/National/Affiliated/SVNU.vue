@@ -46,12 +46,8 @@
                         <tr>
                             <th rowspan="2">الكلية</th>
                             <th rowspan="2">البرامج</th>
-                            <th rowspan="2">الرسوم للمصريين
-                            <br>
-                             (في السنة)</th>
-                            <th rowspan="2">الرسوم للوافدين
-                            <br>
-                             (في السنة)</th>
+                            <th rowspan="2">(في السنة) الرسوم للمصريين</th>
+                            <th rowspan="2">(في السنة) الرسوم للوافدين</th>
                             <th rowspan="2">الشعبة</th>
                             <th colspan="2">الحد الأدنى للثانوية العامة</th>
                             <th colspan="2">الحد الأدنى للشهادات العربية، الإنجليزية والأزهرية</th>
@@ -69,18 +65,18 @@
                     </thead>
                     <tbody>
                         <tr v-for="(faculty, index) in filteredData" :key="index">
-                            <td>{{ faculty.facilities }}</td>
+                            <td>{{ faculty.faculty }}</td>
                             <td>{{ faculty.programs }}</td>
                             <td>{{ faculty.feesEgyption }}</td>
                             <td>{{ faculty.feesNatives }}</td>
                             <td>{{ faculty.section }}</td>
-                            <td>{{ faculty.scoreFirst }}</td>
-                            <td>{{ faculty.scoreSecond }}</td>
-                            <td>{{ faculty.scorefirstAzhar }}</td>
-                            <td>{{ faculty.scoreYearsecondAzhar }}</td>
-                            <td>{{ faculty.scorefirstStem }}</td>
-                            <td>{{ faculty.scoreYearsecondStem }}</td>
-                            <td>{{ faculty.minimumForNatives }}</td>
+                            <td>{{ faculty.thanwyaa_firstYear_score }}</td>
+                            <td>{{ faculty.thanwyaa_secondYear_score }}</td>
+                            <td>{{ faculty.azhar_firstYear_score }}</td>
+                            <td>{{ faculty.azhar_secondYear_score }}</td>
+                            <td>{{ faculty.stem_firstYear_score }}</td>
+                            <td>{{ faculty.stem_secondYear_score }}</td>
+                            <td>{{ faculty.wafdeen_score }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -91,8 +87,64 @@
             <a href="/Status/UGRAD/National" style="display: block; text-align: center;">
         <button>اضغط هنا لمعرفة حالة تقديم الجامعة</button>
     </a>
-        </section>
+ </section>
 
+        <!-- ######## International Programs ####### -->
+        <section>
+        <br> <br>
+            <h2>البرامج الدولية</h2>
+            <div class="table-responsive" dir="rtl">
+                <table>
+                    <thead>
+                        <tr>
+                           <th rowspan="2">البرامج</th>
+                            <th rowspan="2">التفاصيل</th>
+                            <th rowspan="2">الرسوم للمصريين
+                            <br>
+                             (في السنة)</th>
+                            <th rowspan="2">الرسوم للوافدين
+                            <br>
+                             (في السنة)</th>
+                            <th rowspan="2">الشعبة</th>
+                            <th colspan="2">الحد الأدنى  للثانوية العامة</th>
+                            <th colspan="2">الحد الأدنى للشهادات العربية، الإنجليزية والأزهرية</th>
+                            <th colspan="2">الحد الأدنى لستيم والنيل</th>
+                            <th rowspan="2">الحد الأدنى للوافدين</th>
+                        </tr>
+                        <tr>
+                            <th>{{ firstYear }}</th>
+                            <th>{{ secondYear }}</th>
+                            <th>{{ firstYear }}</th>
+                            <th>{{ secondYear }}</th>
+                            <th>{{ firstYear }}</th>
+                            <th>{{ secondYear }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(faculty, index) in filteredInternational" :key="index">
+                            <td>{{ faculty.faculty }}</td>
+                            <td>{{ faculty.programs }}</td>
+                            <td>{{ faculty.feesEgyption }}</td>
+                            <td>{{ faculty.feesNatives }}</td>
+                            <td>{{ faculty.section }}</td>
+                            <td>{{ faculty.thanwyaa_firstYear_score }}</td>
+                            <td>{{ faculty.thanwyaa_secondYear_score }}</td>
+                            <td>{{ faculty.azhar_firstYear_score }}</td>
+                            <td>{{ faculty.azhar_secondYear_score }}</td>
+                            <td>{{ faculty.stem_firstYear_score }}</td>
+                            <td>{{ faculty.stem_secondYear_score }}</td>
+                            <td>{{ faculty.wafdeen_score }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+<p>
+     الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت).
+</p>
+<a :href="details_about_internationa_program" target="_blank">
+    <button>مزيد من التفاصيل عن البرامج الدولية</button>
+</a>
+        </section>
         <section>
             <br><br>
             <h2>السكن</h2>
@@ -101,7 +153,7 @@
                     <thead>
                         <tr>
                             <th>النوع</th>
-                            <th>الرسوم
+                             <th>الرسوم
                             <br>
                             (في الترم)</th>
                         </tr>
@@ -152,11 +204,12 @@
 
         <section>
             <br><br>
-            <h1>طرق التقديم</h1>
-            <a :href="Admission_link_natives" target="_blank"><button>رابط التقديم للطلاب الوافدين</button></a>
-            <a :href="transfer_link_egyption" target="_blank"><button>رابط التحويل للطلاب المصريين</button></a>
-            <a :href="Admission_link_egyption" target="_blank"><button>رابط التقديم للطلاب المصريين</button></a>
-        </section>
+             <h1>طرق التقديم</h1>
+    <a :href="Admission_link_natives" target="_blank"><button>رابط التقديم للطلاب الوافدين</button></a>
+    <a :href="transfer_link_egyption" target="_blank"><button>رابط التحويل للطلاب المصريين</button></a>
+    <a :href="international_program_link" target="_blank"><button>رابط التقديم للطلاب المصريين (البرامج الدولية)</button></a>
+    <a :href="Admission_link_egyption" target="_blank"><button>رابط التقديم للطلاب المصريين</button></a>
+</section>
 
         <FooterComponent />
     </div>
@@ -201,17 +254,17 @@ export default {
     methods: {
         async get_data() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationalfaclity/getnational');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationalfaculty/getnational');
                 console.log('API response data:', response.data);
-                if (response.data && Array.isArray(response.data.facilities)) {
-                    this.all_data = response.data.facilities;
+                if (response.data && Array.isArray(response.data.faculty)) {
+                    this.all_data = response.data.faculty;
                 } else {
                     console.error('API response does not contain an array:', response.data);
                 }
                 if (Array.isArray(this.all_data)) {
                     console.log('All data:', this.all_data);
-                    this.filteredData = this.all_data.filter(index => index.speciality === 'SVNU' && index.facality_or_international === 'facality');
-                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'SVNU');
+                    this.filteredData = this.all_data.filter(index => index.university === 'SVNU' && index.normal_or_Dual === 'normal');
+                    this.filteredInternational = this.all_data.filter(index => index.normal_or_Dual === 'dual' && index.university === 'SVNU');
                     console.log('Filtered data:', this.filteredData);
                     console.log('Filtered international:', this.filteredInternational);
                 } else {
@@ -296,72 +349,6 @@ export default {
 };
 </script>
 
-
-<style scoped>
-/* General Styles for Tables */
-.table-responsive {
-    overflow: auto; /* Allows both horizontal and vertical scrolling */
-    max-height: 500px; /* Adjust this value as needed for your design */
-    width: 100%;
-    /* Custom Scrollbar Styles */
-    scrollbar-width: thin; /* For Firefox */
-    scrollbar-color: #888 #f1f1f1; /* For Firefox */
-}
-
-.table-responsive::-webkit-scrollbar {
-    width: 8px; /* Width for vertical scrollbar */
-    height: 8px; /* Height for horizontal scrollbar */
-}
-
-.table-responsive::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Background of the scrollbar track */
-}
-
-.table-responsive::-webkit-scrollbar-thumb {
-    background: #888; /* Color of the scrollbar thumb */
-    border-radius: 10px; /* Optional: Adds rounded corners to the scrollbar thumb */
-}
-
-/* Styles for Tables */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0; /* Removes space between borders */
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-}
-
-/* Sticky Header Styles */
-thead th {
-    position: -webkit-sticky; /* For Safari */
-    position: sticky;
-    top: 0;
-    background-color: black;
-    color: white;
-    z-index: 1; /* Ensures header is above other content */
-}
-
-button {
-    margin-bottom: 10px;
-    border-radius: 5px;
-    margin-right: 10px;
-}
-
-/* Mobile Specific Styles */
-@media (max-width: 768px) {
-    table {
-        font-size: 14px; /* Adjust font size for better readability */
-    }
-
-    th, td {
-        padding: 12px; /* Increase padding for touch accessibility */
-    }
-}
-</style>
 <style scoped>
 /* General Styles for Tables */
 .table-responsive {

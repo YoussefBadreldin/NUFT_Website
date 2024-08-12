@@ -208,28 +208,6 @@
 
         <br><br>
 
-        <h1>Add Schoralships</h1>
-         <form @submit.prevent="Scholarship">
-            <div>
-                <label for="Scholarship">Scholarship Details:</label>
-                <textarea name="" id="" cols="30" rows="10" v-model="Scholarship"></textarea>
-            </div>
-            <br>
-            <button type="submit">Add</button>
-        </form>
-
-<br><br>
-
-        <h1>Add News</h1>
-        <form @submit.prevent="newsfunction">
-            <div>
-                <label for="news">News Details:</label>
-                <textarea name="" id="" cols="30" rows="10" v-model="news"></textarea>
-            </div>
-            <br>
-            <button type="submit">Add</button>
-        </form>
-    <br><br>    
     </div>
 </template>
 
@@ -282,7 +260,6 @@ export default {
             type2:'',
             price2: '',
             spec2: '',
-            news: '',
             f_name: '',
             addmission_spec: '',
             status_transfer: '',
@@ -380,17 +357,6 @@ export default {
             }
             axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/specialtrans/addspecialtrans', form).then(()=>{
                 alert('form sent succesffully');
-            }).catch(error=>{
-                console.log(error);
-            })
-        },
-        newsfunction(){
-            const form = {
-                text: this.news,
-            }
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/news/addNews', form).then(()=>{
-                console.log('news sent successfully');
-                alert("news sent succesfully");
             }).catch(error=>{
                 console.log(error);
             })

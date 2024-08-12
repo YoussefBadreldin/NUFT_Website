@@ -6,6 +6,8 @@
             <a href="/NUFTawyNumber1-private" class="button">الجامعات الخاصة</a>
             <a href="/NUFTawyNumber1-special" class="button">الجامعات ذات طبيعة خاصة</a>
              <a href="/NUFTawyNumber1-International" class="button">الجامعات الدولية</a>
+             <a href="/NUFTawyNumber1-News" class="button">الاخبار</a>
+             <a href="/NUFTawyNumber1-Scholarships" class="button">المنح</a>
         </div>
     </div>
 </template>

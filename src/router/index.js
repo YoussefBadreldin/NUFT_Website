@@ -6,6 +6,8 @@ import adminPanelnational from "../views/adminpanel/national adminPanel.vue";
 import adminPanelprivate from "../views/adminpanel/private adminPanel.vue";
 import adminPanelspecial from "../views/adminpanel/special adminPanel.vue";
 import adminPanelinternational from "../views/adminpanel/international adminPanel.vue";
+import adminPanelnews from "../views/adminpanel/news adminPanel.vue";
+import adminPanelSchoralships from "../views/adminpanel/Schoralships adminPanel.vue";
 import getUsers from "../views/adminpanel/users";
 import ContactList from "../views/adminpanel/getContact.vue";
 import AdmissionStatus from "../views/AdmissionStatus/AdmissionStatus.vue";
@@ -135,9 +137,19 @@ const routes = [
     component: adminPanelspecial
   },
   {
-    path:'/Noureldin-3la-Zeby-international',
+    path:'/NUFTawyNumber1-international',
     name:'adminPanelinternational',
     component: adminPanelinternational
+  },
+  {
+    path:'/NUFTawyNumber1-news',
+    name:'adminPanelnews',
+    component: adminPanelnews
+  },
+  {
+    path:'/NUFTawyNumber1-Scholarships',
+    name:'adminPanelSchoralships',
+    component: adminPanelSchoralships
   },
   {
     path:"/Status",

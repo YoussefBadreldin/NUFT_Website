@@ -46,12 +46,8 @@
                         <tr>
                             <th rowspan="2">الكلية</th>
                             <th rowspan="2">البرامج</th>
-                            <th rowspan="2">الرسوم للمصريين
-                            <br>
-                             (في السنة)</th>
-                            <th rowspan="2">الرسوم للوافدين
-                            <br>
-                             (في السنة)</th>
+                            <th rowspan="2">(في السنة) الرسوم للمصريين</th>
+                            <th rowspan="2">(في السنة) الرسوم للوافدين</th>
                             <th rowspan="2">الشعبة</th>
                             <th colspan="2">الحد الأدنى للثانوية العامة</th>
                             <th colspan="2">الحد الأدنى للشهادات العربية، الإنجليزية والأزهرية</th>
@@ -69,18 +65,18 @@
                     </thead>
                     <tbody>
                         <tr v-for="(faculty, index) in filteredData" :key="index">
-                            <td>{{ faculty.facilities }}</td>
+                            <td>{{ faculty.faculty }}</td>
                             <td>{{ faculty.programs }}</td>
                             <td>{{ faculty.feesEgyption }}</td>
                             <td>{{ faculty.feesNatives }}</td>
                             <td>{{ faculty.section }}</td>
-                            <td>{{ faculty.scoreFirst }}</td>
-                            <td>{{ faculty.scoreSecond }}</td>
-                            <td>{{ faculty.scorefirstAzhar }}</td>
-                            <td>{{ faculty.scoreYearsecondAzhar }}</td>
-                            <td>{{ faculty.scorefirstStem }}</td>
-                            <td>{{ faculty.scoreYearsecondStem }}</td>
-                            <td>{{ faculty.minimumForNatives }}</td>
+                            <td>{{ faculty.thanwyaa_firstYear_score }}</td>
+                            <td>{{ faculty.thanwyaa_secondYear_score }}</td>
+                            <td>{{ faculty.azhar_firstYear_score }}</td>
+                            <td>{{ faculty.azhar_secondYear_score }}</td>
+                            <td>{{ faculty.stem_firstYear_score }}</td>
+                            <td>{{ faculty.stem_secondYear_score }}</td>
+                            <td>{{ faculty.wafdeen_score }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -91,8 +87,64 @@
             <a href="/Status/UGRAD/National" style="display: block; text-align: center;">
         <button>اضغط هنا لمعرفة حالة تقديم الجامعة</button>
     </a>
-        </section>
+ </section>
 
+        <!-- ######## International Programs ####### -->
+        <section>
+        <br> <br>
+            <h2>البرامج الدولية</h2>
+            <div class="table-responsive" dir="rtl">
+                <table>
+                    <thead>
+                        <tr>
+                           <th rowspan="2">البرامج</th>
+                            <th rowspan="2">التفاصيل</th>
+                            <th rowspan="2">الرسوم للمصريين
+                            <br>
+                             (في السنة)</th>
+                            <th rowspan="2">الرسوم للوافدين
+                            <br>
+                             (في السنة)</th>
+                            <th rowspan="2">الشعبة</th>
+                            <th colspan="2">الحد الأدنى  للثانوية العامة</th>
+                            <th colspan="2">الحد الأدنى للشهادات العربية، الإنجليزية والأزهرية</th>
+                            <th colspan="2">الحد الأدنى لستيم والنيل</th>
+                            <th rowspan="2">الحد الأدنى للوافدين</th>
+                        </tr>
+                        <tr>
+                            <th>{{ firstYear }}</th>
+                            <th>{{ secondYear }}</th>
+                            <th>{{ firstYear }}</th>
+                            <th>{{ secondYear }}</th>
+                            <th>{{ firstYear }}</th>
+                            <th>{{ secondYear }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(faculty, index) in filteredInternational" :key="index">
+                            <td>{{ faculty.faculty }}</td>
+                            <td>{{ faculty.programs }}</td>
+                            <td>{{ faculty.feesEgyption }}</td>
+                            <td>{{ faculty.feesNatives }}</td>
+                            <td>{{ faculty.section }}</td>
+                            <td>{{ faculty.thanwyaa_firstYear_score }}</td>
+                            <td>{{ faculty.thanwyaa_secondYear_score }}</td>
+                            <td>{{ faculty.azhar_firstYear_score }}</td>
+                            <td>{{ faculty.azhar_secondYear_score }}</td>
+                            <td>{{ faculty.stem_firstYear_score }}</td>
+                            <td>{{ faculty.stem_secondYear_score }}</td>
+                            <td>{{ faculty.wafdeen_score }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+<p>
+     الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت).
+</p>
+<a :href="details_about_internationa_program" target="_blank">
+    <button>مزيد من التفاصيل عن البرامج الدولية</button>
+</a>
+        </section>
         <section>
             <br><br>
             <h2>السكن</h2>
@@ -101,7 +153,7 @@
                     <thead>
                         <tr>
                             <th>النوع</th>
-                            <th>الرسوم
+                             <th>الرسوم
                             <br>
                             (في الترم)</th>
                         </tr>
@@ -152,11 +204,12 @@
 
         <section>
             <br><br>
-            <h1>طرق التقديم</h1>
-            <a :href="Admission_link_natives" target="_blank"><button>رابط التقديم للطلاب الوافدين</button></a>
-            <a :href="transfer_link_egyption" target="_blank"><button>رابط التحويل للطلاب المصريين</button></a>
-            <a :href="Admission_link_egyption" target="_blank"><button>رابط التقديم للطلاب المصريين</button></a>
-        </section>
+             <h1>طرق التقديم</h1>
+    <a :href="Admission_link_natives" target="_blank"><button>رابط التقديم للطلاب الوافدين</button></a>
+    <a :href="transfer_link_egyption" target="_blank"><button>رابط التحويل للطلاب المصريين</button></a>
+    <a :href="international_program_link" target="_blank"><button>رابط التقديم للطلاب المصريين (البرامج الدولية)</button></a>
+    <a :href="Admission_link_egyption" target="_blank"><button>رابط التقديم للطلاب المصريين</button></a>
+</section>
 
         <FooterComponent />
     </div>
@@ -201,17 +254,17 @@ export default {
     methods: {
         async get_data() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationalfaclity/getnational');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationalfaculty/getnational');
                 console.log('API response data:', response.data);
-                if (response.data && Array.isArray(response.data.facilities)) {
-                    this.all_data = response.data.facilities;
+                if (response.data && Array.isArray(response.data.faculty)) {
+                    this.all_data = response.data.faculty;
                 } else {
                     console.error('API response does not contain an array:', response.data);
                 }
                 if (Array.isArray(this.all_data)) {
                     console.log('All data:', this.all_data);
-                    this.filteredData = this.all_data.filter(index => index.speciality === 'MiniaNU' && index.facality_or_international === 'facality');
-                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'MiniaNU');
+                    this.filteredData = this.all_data.filter(index => index.university === 'MiniaNU' && index.normal_or_Dual === 'normal');
+                    this.filteredInternational = this.all_data.filter(index => index.normal_or_Dual === 'dual' && index.university === 'MiniaNU');
                     console.log('Filtered data:', this.filteredData);
                     console.log('Filtered international:', this.filteredInternational);
                 } else {
@@ -295,8 +348,6 @@ export default {
   }
 };
 </script>
-
-
 
 <style scoped>
 /* General Styles for Tables */

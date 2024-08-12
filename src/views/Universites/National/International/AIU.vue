@@ -65,18 +65,18 @@
                     </thead>
                     <tbody>
                         <tr v-for="(faculty, index) in filteredData" :key="index">
-                            <td>{{ faculty.facilities }}</td>
+                            <td>{{ faculty.faculty }}</td>
                             <td>{{ faculty.programs }}</td>
                             <td>{{ faculty.feesEgyption }}</td>
                             <td>{{ faculty.feesNatives }}</td>
                             <td>{{ faculty.section }}</td>
-                            <td>{{ faculty.scoreFirst }}</td>
-                            <td>{{ faculty.scoreSecond }}</td>
-                            <td>{{ faculty.scorefirstAzhar }}</td>
-                            <td>{{ faculty.scoreYearsecondAzhar }}</td>
-                            <td>{{ faculty.scorefirstStem }}</td>
-                            <td>{{ faculty.scoreYearsecondStem }}</td>
-                            <td>{{ faculty.minimumForNatives }}</td>
+                            <td>{{ faculty.thanwyaa_firstYear_score }}</td>
+                            <td>{{ faculty.thanwyaa_secondYear_score }}</td>
+                            <td>{{ faculty.azhar_firstYear_score }}</td>
+                            <td>{{ faculty.azhar_secondYear_score }}</td>
+                            <td>{{ faculty.stem_firstYear_score }}</td>
+                            <td>{{ faculty.stem_secondYear_score }}</td>
+                            <td>{{ faculty.wafdeen_score }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -122,18 +122,18 @@
                     </thead>
                     <tbody>
                         <tr v-for="(faculty, index) in filteredInternational" :key="index">
-                            <td>{{ faculty.facilities }}</td>
+                            <td>{{ faculty.faculty }}</td>
                             <td>{{ faculty.programs }}</td>
                             <td>{{ faculty.feesEgyption }}</td>
                             <td>{{ faculty.feesNatives }}</td>
                             <td>{{ faculty.section }}</td>
-                            <td>{{ faculty.scoreFirst }}</td>
-                            <td>{{ faculty.scoreSecond }}</td>
-                            <td>{{ faculty.scorefirstAzhar }}</td>
-                            <td>{{ faculty.scoreYearsecondAzhar }}</td>
-                            <td>{{ faculty.scorefirstStem }}</td>
-                            <td>{{ faculty.scoreYearsecondStem }}</td>
-                            <td>{{ faculty.minimumForNatives }}</td>
+                            <td>{{ faculty.thanwyaa_firstYear_score }}</td>
+                            <td>{{ faculty.thanwyaa_secondYear_score }}</td>
+                            <td>{{ faculty.azhar_firstYear_score }}</td>
+                            <td>{{ faculty.azhar_secondYear_score }}</td>
+                            <td>{{ faculty.stem_firstYear_score }}</td>
+                            <td>{{ faculty.stem_secondYear_score }}</td>
+                            <td>{{ faculty.wafdeen_score }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -254,17 +254,17 @@ export default {
     methods: {
         async get_data() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationalfaclity/getnational');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationalfaculty/getnational');
                 console.log('API response data:', response.data);
-                if (response.data && Array.isArray(response.data.facilities)) {
-                    this.all_data = response.data.facilities;
+                if (response.data && Array.isArray(response.data.faculty)) {
+                    this.all_data = response.data.faculty;
                 } else {
                     console.error('API response does not contain an array:', response.data);
                 }
                 if (Array.isArray(this.all_data)) {
                     console.log('All data:', this.all_data);
-                    this.filteredData = this.all_data.filter(index => index.speciality === 'AIU' && index.facality_or_international === 'facality');
-                    this.filteredInternational = this.all_data.filter(index => index.facality_or_international === 'international' && index.speciality === 'AIU');
+                    this.filteredData = this.all_data.filter(index => index.university === 'AIU' && index.normal_or_Dual === 'normal');
+                    this.filteredInternational = this.all_data.filter(index => index.normal_or_Dual === 'dual' && index.university === 'AIU');
                     console.log('Filtered data:', this.filteredData);
                     console.log('Filtered international:', this.filteredInternational);
                 } else {

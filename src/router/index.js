@@ -4,12 +4,16 @@ import signUp from "../views/signup/signUp.vue";
 import adminPanel from "../views/adminpanel/adminPanel.vue";
 import adminPanelnational from "../views/adminpanel/national adminPanel.vue";
 import adminPanelprivate from "../views/adminpanel/private adminPanel.vue";
+import adminPanelspecial from "../views/adminpanel/special adminPanel.vue";
+import adminPanelinternational from "../views/adminpanel/international adminPanel.vue";
 import getUsers from "../views/adminpanel/users";
 import ContactList from "../views/adminpanel/getContact.vue";
-import NationalStatus from "../views/AdmissionStatus/nationaladmissionstatus.vue";
-import PrivateStatus from "../views/AdmissionStatus/privateadmissionstatus.vue";
 import AdmissionStatus from "../views/AdmissionStatus/AdmissionStatus.vue";
 import Ugrad_AdmissionStatus from "../views/AdmissionStatus/Ugrad_AdmissionStatus.vue";
+import NationalStatus from "../views/AdmissionStatus/nationaladmissionstatus.vue";
+import PrivateStatus from "../views/AdmissionStatus/privateadmissionstatus.vue";
+import specialStatus from "../views/AdmissionStatus/specialadmissionstatus.vue";
+import internationalStatus from "../views/AdmissionStatus/internationaladmissionstatus.vue";
 import CertificatesCalculator from "../views/certificateCalc/certificateCalc.vue";
 import americanView from '../views/certificateCalc/American.vue';
 import IGCSECalculator from "../views/certificateCalc/IGCSE.vue";
@@ -124,6 +128,16 @@ const routes = [
     component: adminPanelprivate
   },
   {
+    path:'/Noureldin-3la-Zeby-special',
+    name:'adminPanelspecial',
+    component: adminPanelspecial
+  },
+  {
+    path:'/Noureldin-3la-Zeby-international',
+    name:'adminPanelinternational',
+    component: adminPanelinternational
+  },
+  {
     path:"/Status",
     name:"Status",
     component:AdmissionStatus
@@ -142,6 +156,16 @@ const routes = [
     path:"/Status/UGRAD/Private",
     name:"PrivateStatus",
     component:PrivateStatus,
+  },
+  {
+    path:"/Status/UGRAD/special",
+    name:"specialStatus",
+    component:specialStatus,
+  },
+  {
+    path:"/Status/UGRAD/international",
+    name:"internationalStatus",
+    component:internationalStatus,
   },
   {
     path:"/Calculator",

@@ -115,22 +115,22 @@ const routes = [
     component: ContactList,
   },
   {
-    path:'/Noureldin-3la-Zeby',
+    path:'/NUFTawyNumber1',
     name:'adminpanel',
     component: adminPanel
   },
   {
-    path:'/Noureldin-3la-Zeby-national',
+    path:'/NUFTawyNumber1-national',
     name:'adminPanelnational',
     component: adminPanelnational
   },
   {
-    path:'/Noureldin-3la-Zeby-private',
+    path:'/NUFTawyNumber1-private',
     name:'adminPanelprivate',
     component: adminPanelprivate
   },
   {
-    path:'/Noureldin-3la-Zeby-special',
+    path:'/NUFTawyNumber1-special',
     name:'adminPanelspecial',
     component: adminPanelspecial
   },

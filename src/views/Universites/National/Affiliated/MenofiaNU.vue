@@ -221,7 +221,7 @@ import HeaderComponent from '../../../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../../../public/global/footerComponent.vue';
 
 export default {
-    name: 'MansNU',
+    name: 'MenofiaNU',
     data() {
         return {
             all_data: [],
@@ -263,8 +263,8 @@ export default {
                 }
                 if (Array.isArray(this.all_data)) {
                     console.log('All data:', this.all_data);
-                    this.filteredData = this.all_data.filter(index => index.university === 'MansNU' && index.normal_or_Dual === 'normal');
-                    this.filteredInternational = this.all_data.filter(index => index.normal_or_Dual === 'dual' && index.university === 'MansNU');
+                    this.filteredData = this.all_data.filter(index => index.university === 'MenofiaNU' && index.normal_or_Dual === 'normal');
+                    this.filteredInternational = this.all_data.filter(index => index.normal_or_Dual === 'dual' && index.university === 'MenofiaNU');
                     console.log('Filtered data:', this.filteredData);
                     console.log('Filtered international:', this.filteredInternational);
                 } else {
@@ -278,7 +278,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationallinks/get_nationallinks');
                 this.links = response.data;
-                this.filteredLinks = this.links.filter(index => index.university_Name === 'MansNU');
+                this.filteredLinks = this.links.filter(index => index.university_Name === 'MenofiaNU');
                 console.log(this.filteredLinks);
                 if (this.filteredLinks.length > 0) {
                     this.firstYear = this.filteredLinks[0].first_year;
@@ -302,7 +302,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaldorms/getnationaldorms');
                 this.dorms = response.data;
-                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'MansNU');
+                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'MenofiaNU');
                 //console.log('dorms table', this.filteredDorms)
             } catch (error) {
                 console.log(error);
@@ -312,7 +312,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaltrans/getnationaltrans');
                 this.trans = response.data;
-                this.filteredTrans = this.trans.filter(index => index.spec === 'MansNU');
+                this.filteredTrans = this.trans.filter(index => index.spec === 'MenofiaNU');
                 console.log('filteredTrans', this.filteredTrans)
             }
             catch (error) {

@@ -14,9 +14,9 @@
                             <tr>
                                 <th rowspan="2">الجامعة</th>
                                 <th rowspan="2">التحويل</th>
-                                <th colspan="2">الثانوية العامة</th>
-                                <th colspan="2">الشهادات العربية والإنجليزية والأزهرية</th>
-                                <th colspan="2">شهادات ستيم والنيل</th>
+                                <th colspan="2">الثانوية العامة وستيم والنيل</th>
+                                <th colspan="2">الثانوية الأزهرية</th>
+                                <th colspan="2">الشهادات العربية والاجنبية</th>
                                 <th rowspan="2">الوافدين</th>
                             </tr>
                             <tr>
@@ -31,16 +31,16 @@
                         <tbody>
                             <tr v-for="university in universities" :key="university.name">
                                 <td>
-                                    <a :href="university.url" target="">{{ university.faclityName }}</a>
+                                    <a :href="university.guide_Url" target="">{{ university.university_Arabic_Name }}</a>
                                 </td>
-                                <td :style="{ color: getColor(university.statusTransfer) }">{{ university.statusTransfer }}</td>
-                                <td :style="{ color: getColor(university.thanwyaaAmaaStatus_first) }">{{ university.thanwyaaAmaaStatus_first }}</td>
-                                <td :style="{ color: getColor(university.thanwyaaAmaaStatus_second) }">{{ university.thanwyaaAmaaStatus_second }}</td>
-                                <td :style="{ color: getColor(university.ArabEnglishAzhariCertificates_first) }">{{ university.ArabEnglishAzhariCertificates_first }}</td>
-                                <td :style="{ color: getColor(university.ArabEnglishAzhariCertificates_second) }">{{ university.ArabEnglishAzhariCertificates_second }}</td>
-                                <td :style="{ color: getColor(university.StemNileCertificates_first) }">{{ university.StemNileCertificates_first }}</td>    
-                                <td :style="{ color: getColor(university.StemNileCertificates_second) }">{{ university.StemNileCertificates_second }}</td>
-                                <td :style="{ color: getColor(university.InternationalStudents) }">{{ university.InternationalStudents }}</td>
+                                <td :style="{ color: getColor(university.transfer_status || '') }">{{ university.transfer_status }}</td>
+                                <td :style="{ color: getColor(university.thanwyaa_firstYear_status || '') }">{{ university.thanwyaa_firstYear_status }}</td>
+                                <td :style="{ color: getColor(university.thanwyaa_secondYear_status || '') }">{{ university.thanwyaa_secondYear_status }}</td>
+                                <td :style="{ color: getColor(university.azhar_firstYear_status || '') }">{{ university.azhar_firstYear_status }}</td>
+                                <td :style="{ color: getColor(university.azhar_secondYear_status || '') }">{{ university.azhar_secondYear_status }}</td>
+                                <td :style="{ color: getColor(university.Arabenglish_firstYear_status || '') }">{{ university.Arabenglish_secondYear_status }}</td>
+                                <td :style="{ color: getColor(university.Arabenglish_secondYear_status || '') }">{{ university.Arabenglish_secondYear_status }}</td>
+                                <td :style="{ color: getColor(university.wafdeen_status || '') }">{{ university.wafdeen_status }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -59,7 +59,7 @@ import HeaderComponent from '../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../public/global/footerComponent.vue';
 
 export default {
-    name: 'internationalUniversitiesAdmissionsStatus',
+    name: 'NationalUniversitiesAdmissionsStatus',
     components: {
         HeaderComponent,
         FooterComponent,
@@ -72,31 +72,33 @@ export default {
             all_data: [],
         }
     },
- methods: {
-    getColor(status) {
-        if (status.includes('انتهي')) {
-            return 'red';
-        } else if (status.includes('متاح')) {
-            return 'green';
-        } else if (status.includes('لم يبدأ')) {
-            return 'purple';
-        } else {
-            return 'inherit';
-        }
+    methods: {
+        getColor(status) {
+            if (!status) return 'inherit'; // Return default color if status is undefined
+            if (status.includes('انتهي')) {
+                return 'red';
+            } else if (status.includes('متاح')) {
+                return 'green';
+            } else if (status.includes('لم يبدأ')) {
+                return 'purple';
+            } else {
+                return 'inherit';
+            }
         },
-        getAdmission(){
+        getAdmission() {
             axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationaladmission/get')
                 .then(response => {
+                    console.log("API Response:", response.data); // Log API response
                     this.universities = response.data.map(university => ({
                         ...university,
-                        url: university.url || '#', // Use the URL from the API, or default to '#' if not available
+                        guide_Url: university.guide_Url || '#', // Use the URL from the API, or default to '#' if not available
                     }));
                 })
                 .catch(error => {
                     console.log(error);
                 });
         },
-        getYears(){
+        getYears() {
             axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationallinks/get_internationallinks')
                 .then(response => {
                     this.all_data = response.data;
@@ -108,7 +110,7 @@ export default {
                 });
         }
     },
-    created(){
+    created() {
         this.getAdmission();
         this.getYears();
         console.log(this.firstYear);

@@ -82,7 +82,25 @@ export default {
                 },
                 {
                     id: 6,
-                    ame: 'جامعة نوفا البرتغالية',
+                    ame: 'جامعة ايست لندن',
+                    imgSrc: '/images/Logos/Universites/international/MIU.png',
+                    link: '/guide/UGRAD/international/MIU'
+                },
+                {
+                    id: 7,
+                    ame: 'جامعة وسط لانكشاير',
+                    imgSrc: '/images/Logos/Universites/international/MIU.png',
+                    link: '/guide/UGRAD/international/MIU'
+                },
+                {
+                    id: 8,
+                    ame: 'جامعة كازان الروسية',
+                    imgSrc: '/images/Logos/Universites/international/MIU.png',
+                    link: '/guide/UGRAD/international/MIU'
+                },
+                {
+                    id: 9,
+                    ame: 'جامعة سان بطرسبرج الروسية',
                     imgSrc: '/images/Logos/Universites/international/MIU.png',
                     link: '/guide/UGRAD/international/MIU'
                 }

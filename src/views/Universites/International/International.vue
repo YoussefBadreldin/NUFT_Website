@@ -10,7 +10,7 @@
     <div class="Card-Box" dir="rtl">
       <div class="container" style="text-align: center;">
         <h3>ما هي الجامعات الدولية المصرية؟</h3>
-        <p>هي جامعات . وعددهم 0 جامعة</p>
+        <p>هي جامعات . وعددهم 9 جامعات</p>
       </div>
 
       <div class="Card-Box" dir="rtl">
@@ -53,56 +53,56 @@ export default {
                 {
                     id: 1,
                     name: 'جامعة جزيرة الأمير إدوارد',
-                    imgSrc: '/images/Logos/Universites/international/O6U.png',
-                    link: '/guide/UGRAD/international/O6U'
+                    imgSrc: '/images/Logos/Universites/international/UPEI.png',
+                    link: '/guide/UGRAD/international/UPEI'
                 },
                 {
                     id: 2,
-                    name: 'جامعة رايرسون',
-                    imgSrc: '/images/Logos/Universites/international/MSA.png',
-                    link: '/guide/UGRAD/international/MSA'
+                    name: 'جامعة رايرسون (جامعة تورنتو متروبوليتان)',
+                    imgSrc: '/images/Logos/Universites/international/TMU.png',
+                    link: '/guide/UGRAD/international/TMU'
                 },
                 {
                     id: 3,
                     name: 'جامعة كوفنتري البريطانية',
-                    imgSrc: '/images/Logos/Universites/international/MUST.png',
-                    link: '/guide/UGRAD/international/MUST'
+                    imgSrc: '/images/Logos/Universites/international/Coventry.png',
+                    link: '/guide/UGRAD/international/Coventry'
                 },
                 {
                     id: 4,
-                    ame: 'جامعة نوفا البرتغالية',
-                    imgSrc: '/images/Logos/Universites/international/MIU.png',
-                    link: '/guide/UGRAD/international/MIU'
+                    ame: 'جامعة نوفا ليشبونا البرتغالية',
+                    imgSrc: '/images/Logos/Universites/international/NOVA.png',
+                    link: '/guide/UGRAD/international/NOVA'
                 },
                 {
                     id: 5,
                     ame: 'جامعة هيرتفوردشاير البريطانية',
-                    imgSrc: '/images/Logos/Universites/international/MIU.png',
-                    link: '/guide/UGRAD/international/MIU'
+                    imgSrc: '/images/Logos/Universites/international/UH.png',
+                    link: '/guide/UGRAD/international/UH'
                 },
                 {
                     id: 6,
                     ame: 'جامعة ايست لندن',
-                    imgSrc: '/images/Logos/Universites/international/MIU.png',
-                    link: '/guide/UGRAD/international/MIU'
+                    imgSrc: '/images/Logos/Universites/international/UEL.png',
+                    link: '/guide/UGRAD/international/UEL'
                 },
                 {
                     id: 7,
                     ame: 'جامعة وسط لانكشاير',
-                    imgSrc: '/images/Logos/Universites/international/MIU.png',
-                    link: '/guide/UGRAD/international/MIU'
+                    imgSrc: '/images/Logos/Universites/international/UCLAN.png',
+                    link: '/guide/UGRAD/international/UCLAN'
                 },
                 {
                     id: 8,
-                    ame: 'جامعة كازان الروسية',
-                    imgSrc: '/images/Logos/Universites/international/MIU.png',
-                    link: '/guide/UGRAD/international/MIU'
+                    ame: 'جامعة كازان الفيدرالية الروسية',
+                    imgSrc: '/images/Logos/Universites/international/KPFU.png',
+                    link: '/guide/UGRAD/international/KPFU'
                 },
                 {
                     id: 9,
                     ame: 'جامعة سان بطرسبرج الروسية',
-                    imgSrc: '/images/Logos/Universites/international/MIU.png',
-                    link: '/guide/UGRAD/international/MIU'
+                    imgSrc: '/images/Logos/Universites/international/SPBU.png',
+                    link: '/guide/UGRAD/international/SPBU'
                 }
             ]
         };

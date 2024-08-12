@@ -2,22 +2,22 @@
     <div class="parent">
         <h1>NUFT Admin Panel</h1>
         <br><br>
-        <h1>الجامعات الدولية</h1>
+        <h1>الجامعات الاهلية</h1>
         <br><br>
         <h1>Add Universities Data</h1>        
         <div class="container">
             <form @submit.prevent="handleSubmit">
                  <div>
-                    <label for="university">Uni Short Name:</label>
-                    <input type="text" v-model="university" id="university">
+                    <label for="speciality">Uni Short Name:</label>
+                    <input type="text" v-model="speciality" id="speciality">
                 </div>
                 <div>
-                    <label for="normal_or_dual">Program Type (normal or dual)</label>
-                    <input type="text" id="normal_or_dual" v-model="normal_or_dual">
+                    <label for="facality_or_international">Type (facality or international)</label>
+                    <input type="text" id="facality_or_international" v-model="facality_or_international">
                 </div>                           
                 <div>
-                    <label for="faculty">Faculty Name:</label>
-                    <input type="text" v-model="faculty" id="faculty">
+                    <label for="facilities">Faculty Name:</label>
+                    <input type="text" v-model="facilities" id="facilities">
                 </div>
 
                 <div>
@@ -37,32 +37,32 @@
                     <input type="text" v-model="section" id="section">
                 </div>
                 <div>
-                    <label for="thanwyaa_firstYear_score">Thanwya Score (Past):</label>
-                    <input type="text" v-model="thanwyaa_firstYear_score" id="thanwyaa_firstYear_score">
+                    <label for="scoreFirst">Thanwya Score (Past):</label>
+                    <input type="text" v-model="scoreFirst" id="scoreFirst">
                 </div>
                 <div>
-                    <label for="thanwyaa_secondYear_score">Thanwya Score (Current):</label>
-                    <input type="text" v-model="thanwyaa_secondYear_score" id="thanwyaa_secondYear_score">
+                    <label for="scoreSecond">Thanwya Score (Current):</label>
+                    <input type="text" v-model="scoreSecond" id="scoreSecond">
                 </div>
                 <div>
-                    <label for="azhar_firstYear_score">Azhar Score (Past):</label>
-                    <input type="text" v-model="azhar_firstYear_score" id="azhar_firstYear_score">
+                    <label for="scorefirstAzhar">Azhar Score (Past):</label>
+                    <input type="text" v-model="scorefirstAzhar" id="scorefirstAzhar">
                 </div>
                 <div>
-                    <label for="azhar_secondYear_score">Azhar Score (Current):</label>
-                    <input type="text" v-model="azhar_secondYear_score" id="azhar_secondYear_score">
+                    <label for="scoreYearsecondAzhar">Azhar Score (Current):</label>
+                    <input type="text" v-model="scoreYearsecondAzhar" id="scoreYearsecondAzhar">
                 </div>
                 <div>
-                    <label for="stem_firstYear_score">Stem Score (Past)</label>
-                    <input type="text" v-model="stem_firstYear_score" id="stem_firstYear_score">
+                    <label for="scorefirstStem">Stem Score (Past)</label>
+                    <input type="text" v-model="scorefirstStem" id="scorefirstStem">
                 </div>
                 <div>
-                    <label for="stem_secondYear_score">Stem Score (Current)</label>
-                    <input type="text" v-model="stem_secondYear_score" id="stem_secondYear_score">
+                    <label for="scoreYearsecondStem">Stem Score (Current)</label>
+                    <input type="text" v-model="scoreYearsecondStem" id="scoreYearsecondStem">
                 </div>
                 <div>
-                    <label for="wafdeen_score">Wafdeen Score:</label>
-                    <input type="text" v-model="wafdeen_score" id="wafdeen_score">
+                    <label for="minimumForNatives">Wafdeen Score:</label>
+                    <input type="text" v-model="minimumForNatives" id="minimumForNatives">
                 </div>
                 <br>
                 <button type="submit">Add</button>
@@ -206,7 +206,7 @@
             <button type="submit">Add</button>
         </form>
 
-        <br><br>
+        <br><br>   
     </div>
 </template>
 
@@ -217,8 +217,8 @@ export default {
     name: 'AdminPanel',
     data() {
         return {
-            faculty: '',
-            normal_or_dual: '',
+            facilities: '',
+            facality_or_international: '',
             registration_link: '',
             // Admission_link_egyption: '',
             // Admission_link_natives: '',
@@ -229,19 +229,19 @@ export default {
             feesNatives: '',
             section: '',
             firstYearThanwyaa: '',
-            thanwyaa_firstYear_score: '',
+            scoreFirst: '',
             secondYearThanwyaa: '',
-            thanwyaa_secondYear_score: '',
+            scoreSecond: '',
             firstYearAzhar: '',
-            azhar_firstYear_score: '',
+            scorefirstAzhar: '',
             secondYearAzhar: '',
-            azhar_secondYear_score: '',
+            scoreYearsecondAzhar: '',
             firstYearStem: '',
-            stem_firstYear_score: '',
+            scorefirstStem: '',
             secondYearStem: '',
-            stem_secondYear_score: '',
-            wafdeen_score: '',
-            university: '',
+            scoreYearsecondStem: '',
+            minimumForNatives: '',
+            speciality: '',
             detailsSchoolarship: '',
             details_about_internationa_program: '',
             first_year: '',
@@ -274,8 +274,8 @@ export default {
         
         handleSubmit() {
             const formData = {
-                faculty: this.faculty,
-                normal_or_dual: this.normal_or_dual,
+                facilities: this.facilities,
+                facality_or_international: this.facality_or_international,
                 registration_link: this.registration_link,
                 Admission_link_egyption: this.Admission_link_egyption,
                 Admission_link_natives: this.Admission_link_natives,
@@ -286,24 +286,24 @@ export default {
                 feesNatives: this.feesNatives,
                 section: this.section,
                 firstYearThanwyaa: this.firstYearThanwyaa,
-                thanwyaa_firstYear_score: this.thanwyaa_firstYear_score,
+                scoreFirst: this.scoreFirst,
                 secondYearThanwyaa: this.secondYearThanwyaa,
-                thanwyaa_secondYear_score: this.thanwyaa_secondYear_score,
+                scoreSecond: this.scoreSecond,
                 firstYearAzhar: this.firstYearAzhar,
-                azhar_firstYear_score: this.azhar_firstYear_score,
+                scorefirstAzhar: this.scorefirstAzhar,
                 secondYearAzhar: this.secondYearAzhar,
-                azhar_secondYear_score: this.azhar_secondYear_score,
+                scoreYearsecondAzhar: this.scoreYearsecondAzhar,
                 firstYearStem: this.firstYearStem,
-                stem_firstYear_score: this.stem_firstYear_score,
+                scorefirstStem: this.scorefirstStem,
                 secondYearStem: this.secondYearStem,
-                stem_secondYear_score: this.stem_secondYear_score,
-                wafdeen_score: this.wafdeen_score,
-                university: this.university,
+                scoreYearsecondStem: this.scoreYearsecondStem,
+                minimumForNatives: this.minimumForNatives,
+                speciality: this.speciality,
                 detailsSchoolarship: this.detailsSchoolarship,
                 details_about_internationa_program: this.details_about_internationa_program
             };
 
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationalfaculty/addnational', formData)
+            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationalfaclity/addnational', formData)
                 .then(response => {
                     console.log(response.data);
                     alert('form sent successfully');
@@ -362,7 +362,7 @@ export default {
         },
         admission(){
             const form = {
-                facultyName: this.f_name,
+                faclityName: this.f_name,
                 specility: this.addmission_spec,
                 statusTransfer: this.status_transfer,
                 thanwyaaAmaaStatus_first: this.thanwyaaAmaaStatus_first,

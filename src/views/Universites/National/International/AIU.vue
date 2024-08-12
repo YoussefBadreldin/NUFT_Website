@@ -49,9 +49,9 @@
                             <th rowspan="2">(في السنة) الرسوم للمصريين</th>
                             <th rowspan="2">(في السنة) الرسوم للوافدين</th>
                             <th rowspan="2">الشعبة</th>
-                            <th colspan="2">الحد الأدنى للثانوية العامة</th>
-                            <th colspan="2">الحد الأدنى للشهادات العربية، الإنجليزية والأزهرية</th>
-                            <th colspan="2">الحد الأدنى لستيم والنيل</th>
+                            <th colspan="2">الحد الأدنى للثانوية العامة وستيم والنيل</th>
+                            <th colspan="2">الحد الأدنى للثانوية الازهرية</th>
+                            <th colspan="2">الحد الأدنى للشهادات العربية والاجنبية</th>
                             <th rowspan="2">الحد الأدنى للوافدين</th>
                         </tr>
                         <tr>
@@ -74,8 +74,8 @@
                             <td>{{ faculty.thanwyaa_secondYear_score }}</td>
                             <td>{{ faculty.azhar_firstYear_score }}</td>
                             <td>{{ faculty.azhar_secondYear_score }}</td>
-                            <td>{{ faculty.stem_firstYear_score }}</td>
-                            <td>{{ faculty.stem_secondYear_score }}</td>
+                            <td>{{ faculty.Arabenglish_firstYear_score }}</td>
+                            <td>{{ faculty.Arabenglish_secondYear_score }}</td>
                             <td>{{ faculty.wafdeen_score }}</td>
                         </tr>
                     </tbody>
@@ -131,8 +131,8 @@
                             <td>{{ faculty.thanwyaa_secondYear_score }}</td>
                             <td>{{ faculty.azhar_firstYear_score }}</td>
                             <td>{{ faculty.azhar_secondYear_score }}</td>
-                            <td>{{ faculty.stem_firstYear_score }}</td>
-                            <td>{{ faculty.stem_secondYear_score }}</td>
+                            <td>{{ faculty.Arabenglish_firstYear_score }}</td>
+                            <td>{{ faculty.Arabenglish_secondYear_score }}</td>
                             <td>{{ faculty.wafdeen_score }}</td>
                         </tr>
                     </tbody>

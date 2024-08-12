@@ -14,9 +14,9 @@
                             <tr>
                                 <th rowspan="2">الجامعة</th>
                                 <th rowspan="2">التحويل</th>
-                                <th colspan="2">الثانوية العامة وستيم والنيل</th>
-                                <th colspan="2">الثانوية الأزهرية</th>
-                                <th colspan="2">الشهادات العربية والاجنبية</th>
+                                <th colspan="2">الثانوية العامة</th>
+                                <th colspan="2">الشهادات العربية والإنجليزية والأزهرية</th>
+                                <th colspan="2">شهادات ستيم والنيل</th>
                                 <th rowspan="2">الوافدين</th>
                             </tr>
                             <tr>
@@ -33,14 +33,14 @@
                                 <td>
                                     <a :href="university.guide_Url" target="">{{ university.university_Arabic_Name }}</a>
                                 </td>
-                                <td :style="{ color: getColor(university.transfer_status || '') }">{{ university.transfer_status }}</td>
-                                <td :style="{ color: getColor(university.thanwyaa_firstYear_status || '') }">{{ university.thanwyaa_firstYear_status }}</td>
-                                <td :style="{ color: getColor(university.thanwyaa_secondYear_status || '') }">{{ university.thanwyaa_secondYear_status }}</td>
-                                <td :style="{ color: getColor(university.azhar_firstYear_status || '') }">{{ university.azhar_firstYear_status }}</td>
-                                <td :style="{ color: getColor(university.azhar_secondYear_status || '') }">{{ university.azhar_secondYear_status }}</td>
-                                <td :style="{ color: getColor(university.Arabenglish_firstYear_status || '') }">{{ university.Arabenglish_secondYear_status }}</td>
-                                <td :style="{ color: getColor(university.Arabenglish_secondYear_status || '') }">{{ university.Arabenglish_secondYear_status }}</td>
-                                <td :style="{ color: getColor(university.wafdeen_status || '') }">{{ university.wafdeen_status }}</td>
+                                <td :style="{ color: getColor(university.transfer_status) }">{{ university.transfer_status }}</td>
+                                <td :style="{ color: getColor(university.thanwyaa_firstYear_status) }">{{ university.thanwyaa_firstYear_status }}</td>
+                                <td :style="{ color: getColor(university.thanwyaa_secondYear_status) }">{{ university.thanwyaa_secondYear_status }}</td>
+                                <td :style="{ color: getColor(university.azhar_firstYear_status) }">{{ university.azhar_firstYear_status }}</td>
+                                <td :style="{ color: getColor(university.azhar_secondYear_status) }">{{ university.azhar_secondYear_status }}</td>
+                                <td :style="{ color: getColor(university.Arabenglish_firstYear_status) }">{{ university.Arabenglish_firstYear_status }}</td>    
+                                <td :style="{ color: getColor(university.Arabenglish_secondYear_status) }">{{ university.Arabenglish_secondYear_status }}</td>
+                                <td :style="{ color: getColor(university.wafdeen_status) }">{{ university.wafdeen_status }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -72,33 +72,31 @@ export default {
             all_data: [],
         }
     },
-    methods: {
-        getColor(status) {
-            if (!status) return 'inherit'; // Return default color if status is undefined
-            if (status.includes('انتهي')) {
-                return 'red';
-            } else if (status.includes('متاح')) {
-                return 'green';
-            } else if (status.includes('لم يبدأ')) {
-                return 'purple';
-            } else {
-                return 'inherit';
-            }
+  methods: {
+    getColor(status) {
+        if (status.includes('انتهي')) {
+            return 'red';
+        } else if (status.includes('متاح')) {
+            return 'green';
+        } else if (status.includes('لم يبدأ')) {
+            return 'purple';
+        } else {
+            return 'inherit';
+        }
         },
-        getAdmission() {
+        getAdmission(){
             axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/specialadmission/get')
                 .then(response => {
-                    console.log("API Response:", response.data); // Log API response
                     this.universities = response.data.map(university => ({
                         ...university,
-                        guide_Url: university.guide_Url || '#', // Use the URL from the API, or default to '#' if not available
+                        guide_guide_Url: university.guide_guide_Url || '#', // Use the URL from the API, or default to '#' if not available
                     }));
                 })
                 .catch(error => {
                     console.log(error);
                 });
         },
-        getYears() {
+        getYears(){
             axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/speciallinks/get_speciallinks')
                 .then(response => {
                     this.all_data = response.data;
@@ -110,7 +108,7 @@ export default {
                 });
         }
     },
-    created() {
+    created(){
         this.getAdmission();
         this.getYears();
         console.log(this.firstYear);

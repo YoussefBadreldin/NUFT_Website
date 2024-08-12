@@ -2,10 +2,10 @@
     <div class="parent">
         <h1>NUFT Admin Panel</h1>
         <div class="buttons" dir="rtl">
-            <a href="/noureldin-3la-zeby-national" class="button">الجامعات الاهلية</a>
-            <a href="/noureldin-3la-zeby-private" class="button">الجامعات الخاصة</a>
-            <a href="/noureldin-3la-zeby-special" class="button">الجامعات ذات طبيعة خاصة</a>
-             <a href="/noureldin-3la-zeby-International" class="button">الجامعات الدولية</a>
+            <a href="/NUFTawyNumber1-national" class="button">الجامعات الاهلية</a>
+            <a href="/NUFTawyNumber1-private" class="button">الجامعات الخاصة</a>
+            <a href="/NUFTawyNumber1-special" class="button">الجامعات ذات طبيعة خاصة</a>
+             <a href="/NUFTawyNumber1-International" class="button">الجامعات الدولية</a>
         </div>
     </div>
 </template>

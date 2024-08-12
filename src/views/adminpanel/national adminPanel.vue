@@ -4,7 +4,7 @@
         <br><br>
         <h1>الجامعات الاهلية</h1>
         <br><br>
-        <h1>Add Universities Data</h1>        
+        <h1>Add Faculties</h1>        
         <div class="container">
             <form @submit.prevent="handleSubmit">
                  <div>
@@ -71,55 +71,103 @@
 
 <br><br>
 
-        <h1>Add Links</h1>
-        <form @submit.prevent="links">    
-             <div>
-                <label for="university_Name">Uni Short Name:</label>
-                <input type="text" v-model="university_Name">
-            </div>
-            <div>
-                <label for="first_year">Tansik Past Year:</label>
-                <input type="text" v-model="first_year">
-            </div>
-            <div>
-                <label for="second_year">Tansik Current Year:</label>
-                <input type="text" v-model="second_year">
-            </div>
-           <div>
-                <label for="details_about_internationa_program">International programs Details:</label>
-                <input type="text" v-model="details_about_internationa_program">
-            </div>
-            <div>
-                <label for="register_link_dorms">Dorms Details Link:</label>
-                <input type="text" v-model="register_link_dorms">
-            </div>
-            <div>
-                <label for="register_link_transportation">Transportation Details Link:</label>
-                <input type="text" v-model="register_link_transportation">
-            </div>
-            <div>
-                <label for="Admission_link_egyption">Egyptians Admission Link:</label>
-                <input type="text" v-model="Admission_link_egyption">
-            </div>
-             <div>
-                <label for="international_program_link">Egyptians Admission Link (International Programs):</label>
-                <input type="text" v-model="international_program_link">
-            </div>      
-             <div>
-                <label for="transfer_link">Egyptians Admission Link (Transfer):</label>
-                <input type="text" id="transfer_link" v-model="transfer_link">
-            </div>                
-            <div>
-                <label for="Admission_link_natives">Wafdeen Admission Link:</label>
-                <input type="text" v-model="Admission_link_natives">
-            </div>
-<br>
+        <h1>Add Universties Info & Links</h1>
+       <form @submit.prevent="links">    
+    <div>
+        <label for="university">Uni short name:</label>
+        <input type="text" v-model="university2">
+    </div>
+    <div>
+        <label for="university_Arabic_Name">University Arabic Name:</label>
+        <input type="text" v-model="university_Arabic_Name">
+    </div>
+    <div>
+        <label for="university_Logo">University Logo URL:</label>
+        <input type="text" v-model="university_Logo">
+    </div>
+    <div>
+        <label for="Uni_Bio">University Bio:</label>
+        <input type="text" v-model="Uni_Bio">
+    </div>
+    <div>
+        <label for="location">Location:</label>
+        <input type="text" v-model="location">
+    </div>
+    <div>
+        <label for="website">Website:</label>
+        <input type="text" v-model="website">
+    </div>
+    <div>
+        <label for="phone">Phone:</label>
+        <input type="text" v-model="phone">
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="text" v-model="email">
+    </div>
+    <div>
+        <label for="facebook">Facebook:</label>
+        <input type="text" v-model="facebook">
+    </div>
+    <div>
+        <label for="instagram">Instagram:</label>
+        <input type="text" v-model="instagram">
+    </div>
+    <div>
+        <label for="youtube">YouTube:</label>
+        <input type="text" v-model="youtube">
+    </div>
+    <div>
+        <label for="linkedin">LinkedIn:</label>
+        <input type="text" v-model="linkedin">
+    </div>
+    <div>
+        <label for="first_year">Tansik Past Year:</label>
+        <input type="text" v-model="first_year">
+    </div>
+    <div>
+        <label for="second_year">Tansik Current Year:</label>
+        <input type="text" v-model="second_year">
+    </div>
+    <div>
+        <label for="international_programs">International Programs Details:</label>
+        <input type="text" v-model="international_programs">
+    </div>
+    <div>
+        <label for="dorms_link">Dorms Details Link:</label>
+        <input type="text" v-model="dorms_link">
+    </div>
+    <div>
+        <label for="transportation_link">Transportation Details Link:</label>
+        <input type="text" v-model="transportation_link">
+    </div>
+        <div>
+        <label for="scholarship_link">scholarship Details Link:</label>
+        <input type="text" v-model="scholarship_link">
+    </div>
+    <div>
+        <label for="Egyptian_Admission_link">Egyptians Admission Link:</label>
+        <input type="text" v-model="Egyptian_Admission_link">
+    </div>
+    <div>
+        <label for="Egyptian_Admission_link2">Egyptians Admission Link (International Programs):</label>
+        <input type="text" v-model="Egyptian_Admission_link2">
+    </div>
+    <div>
+        <label for="Egyptian_Transfer_link">Egyptians Admission Link (Transfer):</label>
+        <input type="text" v-model="Egyptian_Transfer_link">
+    </div>
+    <div>
+        <label for="Wafdeen_Admission_link">Wafdeen Admission Link:</label>
+        <input type="text" v-model="Wafdeen_Admission_link">
+    </div>
+            <br>
             <button type="submit">Add</button>
         </form>
 
 <br><br>
 
-        <h1>Add Dorms</h1>
+        <h1>Add Universities Dorms</h1>
         <form @submit.prevent="dorms">
             <div>
                 <label for="spec">Uni Short Name:</label>
@@ -139,7 +187,7 @@
 
 <br><br>
 
-        <h1>Add Transportation</h1>
+        <h1>Add Universities Transportation</h1>
         <form @submit.prevent="trans">
           <div>
                 <label for="spec">Uni Short Name:</label>
@@ -161,50 +209,55 @@
 <br><br>
 
         <h1>Add Admission Status</h1>
-        <form @submit.prevent="admission">
-            <div>
-                <label for="f_name">Faclity Name</label>
-                <input type="text" id="f_name" v-model="f_name">
-            </div>
-            <div>
-                <label for="spec">Specility</label>
-                <input type="text" id="spec" v-model="addmission_spec">
-            </div>
-            <div>
-                <label for="trans">statusTransfer</label>
-                <input type="text" id="trans" v-model="status_transfer">
-            </div>
-            <div>
-                <label for="thanwyaaAmaaStatus_first">thanwyaaAmaaStatus_first</label>
-                <input type="text" id="thanwyaaAmaaStatus_first" v-model="thanwyaaAmaaStatus_first">
-            </div>
-            <div>
-                <label for="thanwyaaAmaaStatus_second">thanwyaaAmaaStatus_second</label>
-                <input type="text" id="thanwyaaAmaaStatus_second" v-model="thanwyaaAmaaStatus_second">
-            </div>
-            <div>
-                <label for="ArabEnglishAzhariCertificates_first">ArabEnglishAzhariCertificates_first</label>
-                <input type="text" id="ArabEnglishAzhariCertificates_first" v-model="ArabEnglishAzhariCertificates_first">
-            </div>
-            <div>
-                <label for="ArabEnglishAzhariCertificates_second">ArabEnglishAzhariCertificates_second</label>
-                <input type="text" id="ArabEnglishAzhariCertificates_second" v-model="ArabEnglishAzhariCertificates_second">
-            </div>
-            <div>
-                <label for="StemNileCertificates_first">StemNileCertificates_first</label>
-                <input type="text" id="StemNileCertificates_first" v-model="StemNileCertificates_first">
-            </div>
-            <div>
-                <label for="StemNileCertificates_second">StemNileCertificates_second</label>
-                <input type="text" id="StemNileCertificates_second" v-model="StemNileCertificates_second">
-            </div>
-            <div>
-                <label for="InternationalStudents">InternationalStudents</label>
-                <input type="text" id="InternationalStudents" v-model="InternationalStudents">
-            </div>
-            <br>
-            <button type="submit">Add</button>
-        </form>
+       <form @submit.prevent="admission">
+    <div>
+        <label for="university">Uni Short Name:</label>
+        <input type="text" id="university" v-model="university3">
+    </div>
+    <div>
+        <label for="university_Arabic_Name">Uni Arabic Name:</label>
+        <input type="text" id="university_Arabic_Name" v-model="university_Arabic_Name2">
+    </div>
+    <div>
+        <label for="transfer_status">Transfer Status:</label>
+        <input type="text" id="transfer_status" v-model="transfer_status">
+    </div>
+    <div>
+        <label for="thanwyaa_firstYear_status">Thanwya Status (past)</label>
+        <input type="text" id="thanwyaa_firstYear_status" v-model="thanwyaa_firstYear_status">
+    </div>
+    <div>
+        <label for="thanwyaa_secondYear_status">Thanwya Status (current):</label>
+        <input type="text" id="thanwyaa_secondYear_status" v-model="thanwyaa_secondYear_status">
+    </div>
+    <div>
+        <label for="azhar_firstYear_status">Azhar Status (past)</label>
+        <input type="text" id="azhar_firstYear_status" v-model="azhar_firstYear_status">
+    </div>
+    <div>
+        <label for="azhar_secondYear_status">Azhar Status (Current)</label>
+        <input type="text" id="azhar_secondYear_status" v-model="azhar_secondYear_status">
+    </div>
+    <div>
+        <label for="Arabenglish_firstYear_status">Arab & English Status (past):</label>
+        <input type="text" id="Arabenglish_firstYear_status" v-model="Arabenglish_firstYear_status">
+    </div>
+    <div>
+        <label for="Arabenglish_secondYear_status">Arab & English status (current):</label>
+        <input type="text" id="Arabenglish_secondYear_status" v-model="Arabenglish_secondYear_status">
+    </div>
+    <div>
+        <label for="wafdeen_status">Wafdeen Status:</label>
+        <input type="text" id="wafdeen_status" v-model="wafdeen_status">
+    </div>
+    <div>
+        <label for="guide_Url">Guide URL:</label>
+        <input type="text" id="guide_Url" v-model="guide_Url">
+    </div>
+    <br>
+    <button type="submit">Add</button>
+</form>
+
 
         <br><br>   
     </div>
@@ -217,12 +270,21 @@ export default {
     name: 'AdminPanel',
     data() {
         return {
+            university: '',
+            university_Arabic_Name: '',
+            transfer_status: '',
+            thanwyaa_firstYear_status: '',
+            thanwyaa_secondYear_status: '',
+            azhar_firstYear_status: '',
+            azhar_secondYear_status: '',
+            Arabenglish_firstYear_status: '',
+            Arabenglish_secondYear_status: '',
+            wafdeen_status: '',
+            guide_Url: '',
             faculty: '',
             normal_or_Dual: '',
             registration_link: '',
-            // Admission_link_egyption: '',
-            // Admission_link_natives: '',
-            international_program_link: '',
+            international_programs: '',
             transfer_link: '',
             programs: '',
             feesEgyption: '',
@@ -241,22 +303,20 @@ export default {
             secondYearStem: '',
             Arabenglish_secondYear_score: '',
             wafdeen_score: '',
-            university: '',
-            detailsSchoolarship: '',
-            details_about_internationa_program: '',
+            scholarship_link: '',
             first_year: '',
             second_year: '',
             view_location: '',
-            register_link_dorms: '',
-            register_link_transportation: '',
+            dorms_link: '',
+            transportation_link: '',
             university_Name: '',
             register_link: '',
             Admission_link_egyption: '',
             Admission_link_natives: '',
-            type:'',
+            type: '',
             price: '',
             spec: '',
-            type2:'',
+            type2: '',
             price2: '',
             spec2: '',
             f_name: '',
@@ -268,10 +328,23 @@ export default {
             StemNileCertificates_first: '',
             StemNileCertificates_second: '',
             InternationalStudents: '',
+            university_Logo: '',
+            Uni_Bio: '',
+            location: '',
+            website: '',
+            phone: '',
+            email: '',
+            facebook: '',
+            instagram: '',
+            youtube: '',
+            linkedin: '',
+            Egyptian_Admission_link: '',
+            Egyptian_Admission_link2: '',
+            Egyptian_Transfer_link: '',
+            Wafdeen_Admission_link: ''
         };
     },
     methods: {
-        
         handleSubmit() {
             const formData = {
                 faculty: this.faculty,
@@ -279,7 +352,7 @@ export default {
                 registration_link: this.registration_link,
                 Admission_link_egyption: this.Admission_link_egyption,
                 Admission_link_natives: this.Admission_link_natives,
-                international_program_link: this.international_program_link,
+                international_programs: this.international_programs,
                 transfer_link: this.transfer_link,
                 programs: this.programs,
                 feesEgyption: this.feesEgyption,
@@ -299,14 +372,24 @@ export default {
                 Arabenglish_secondYear_score: this.Arabenglish_secondYear_score,
                 wafdeen_score: this.wafdeen_score,
                 university: this.university,
-                detailsSchoolarship: this.detailsSchoolarship,
-                details_about_internationa_program: this.details_about_internationa_program
+                scholarship_link: this.scholarship_link,
+                first_year: this.first_year,
+                second_year: this.second_year,
+                view_location: this.view_location,
+                dorms_link: this.dorms_link,
+                transportation_link: this.transportation_link,
+                university_Name: this.university_Name,
+                register_link: this.register_link,
+                Egyptian_Admission_link: this.Egyptian_Admission_link,
+                Egyptian_Admission_link2: this.Egyptian_Admission_link2,
+                Egyptian_Transfer_link: this.Egyptian_Transfer_link,
+                Wafdeen_Admission_link: this.Wafdeen_Admission_link
             };
 
             axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationalfaculty/addnational', formData)
                 .then(response => {
                     console.log(response.data);
-                    alert('form sent successfully');
+                    alert('Form sent successfully');
                 })
                 .catch(error => {
                     console.error('Error adding faculty:', error);
@@ -315,73 +398,91 @@ export default {
         },
         links() {
             const links_form_data = {
+                university: this.university,
+                university_Arabic_Name: this.university_Arabic_Name,
+                university_Logo: this.university_Logo,
+                Uni_Bio: this.Uni_Bio,
+                location: this.location,
+                website: this.website,
+                phone: this.phone,
+                email: this.email,
+                facebook: this.facebook,
+                instagram: this.instagram,
+                youtube: this.youtube,
+                linkedin: this.linkedin,
                 first_year: this.first_year,
                 second_year: this.second_year,
-                details_about_internationa_program: this.details_about_internationa_program,
-                view_location: this.view_location,
-                register_link_dorms: this.register_link_dorms,
-                register_link_transportation: this.register_link_transportation,
-                university_Name: this.university_Name,
-                register_link: this.register_link,
-                Admission_link_egyption: this.Admission_link_egyption,
-                Admission_link_natives: this.Admission_link_natives,
-                international_program_link: this.international_program_link,
-                transfer_link: this.transfer_link
+                international_programs: this.international_programs,
+                dorms_link: this.dorms_link,
+                transportation_link: this.transportation_link,
+                scholarship_link: this.scholarship_link,
+                Egyptian_Admission_link: this.Egyptian_Admission_link,
+                Egyptian_Admission_link2: this.Egyptian_Admission_link2,
+                Egyptian_Transfer_link: this.Egyptian_Transfer_link,
+                Wafdeen_Admission_link: this.Wafdeen_Admission_link
             };
             axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationallinks/add_nationallinks', links_form_data)
                 .then(() => {
-                    alert('form sent successfully');
+                    alert('Form sent successfully');
                 })
                 .catch(error => {
                     console.log(error);
                 });
         },
-        dorms(){
+        dorms() {
             const form = {
                 type: this.type,
                 price: this.price,
                 spec: this.spec
-            }
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaldorms/addnationaldorms', form).then(()=>{
-                alert('form sent successfully');
-            }).catch(error=>{
-                console.log(error);
-            })
+            };
+            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaldorms/addnationaldorms', form)
+                .then(() => {
+                    alert('Form sent successfully');
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         },
-        trans(){
+        trans() {
             const form = {
                 type: this.type2,
                 price: this.price2,
                 spec: this.spec2
-            }
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaltrans/addnationaltrans', form).then(()=>{
-                alert('form sent succesffully');
-            }).catch(error=>{
-                console.log(error);
-            })
+            };
+            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaltrans/addnationaltrans', form)
+                .then(() => {
+                    alert('Form sent successfully');
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         },
-        admission(){
+        admission() {
             const form = {
-                facultyName: this.f_name,
-                specility: this.addmission_spec,
-                statusTransfer: this.status_transfer,
-                thanwyaaAmaaStatus_first: this.thanwyaaAmaaStatus_first,
-                thanwyaaAmaaStatus_second: this.thanwyaaAmaaStatus_second,
-                ArabEnglishAzhariCertificates_first: this.ArabEnglishAzhariCertificates_first,
-                ArabEnglishAzhariCertificates_second: this.ArabEnglishAzhariCertificates_second,
-                StemNileCertificates_first: this.StemNileCertificates_first,
-                StemNileCertificates_second: this.StemNileCertificates_second,
-                InternationalStudents: this.InternationalStudents,
-            }
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaladmission/add', form).then(()=>{
-                alert('form sent successfully');
-            }).catch(error=>{
-                console.log(error);
-            })
+                university: this.university,
+                university_Arabic_Name: this.university_Arabic_Name,
+                transfer_status: this.transfer_status,
+                thanwyaa_firstYear_status: this.thanwyaa_firstYear_status,
+                thanwyaa_secondYear_status: this.thanwyaa_secondYear_status,
+                azhar_firstYear_status: this.azhar_firstYear_status,
+                azhar_secondYear_status: this.azhar_secondYear_status,
+                Arabenglish_firstYear_status: this.Arabenglish_firstYear_status,
+                Arabenglish_secondYear_status: this.Arabenglish_secondYear_status,
+                wafdeen_status: this.wafdeen_status,
+                guide_Url: this.guide_Url
+            };
+            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaladmission/add', form)
+                .then(() => {
+                    alert('Form sent successfully');
+                })
+                .catch(error => {
+                    console.log(error);
+                });
         }
     }
 };
 </script>
+
 
 <style scoped>
 form div {

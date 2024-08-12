@@ -82,6 +82,8 @@ import BADYA from "../views/Universites/Private/BADYA.vue";
 import NVU from "../views/Universites/Private/NVU.vue";
 import SEU from "../views/Universites/Private/SEU.vue";
 import LUM from "../views/Universites/Private/LUM.vue";
+import special from "../views/Universites/Special/SpecialView.vue";
+import international from "../views/Universites/International/International.vue";
 import ContactUs from "../views/contactUs.vue";
 import NewsPage from "../views/News.vue";
 
@@ -516,8 +518,17 @@ const routes = [
     path:"/News",
     name:"NewsPage",
     component:NewsPage
-  }
-
+  },
+  {
+    path:'/Guide/UGRAD/special',
+    name:'special',
+    component:special,
+  },
+  {
+    path:'/Guide/UGRAD/international',
+    name:'international',
+    component:international,
+  },
 ];
 
 const router = createRouter({

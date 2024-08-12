@@ -70,37 +70,37 @@ export default {
                 },
                 {
                     id: 4,
-                    ame: 'جامعة نوفا ليشبونا البرتغالية',
+                    name: 'جامعة نوفا ليشبونا البرتغالية',
                     imgSrc: '/images/Logos/Universites/international/NOVA.png',
                     link: '/guide/UGRAD/international/NOVA'
                 },
                 {
                     id: 5,
-                    ame: 'جامعة هيرتفوردشاير البريطانية',
+                    name: 'جامعة هيرتفوردشاير البريطانية',
                     imgSrc: '/images/Logos/Universites/international/UH.png',
                     link: '/guide/UGRAD/international/UH'
                 },
                 {
                     id: 6,
-                    ame: 'جامعة ايست لندن',
+                    name: 'جامعة ايست لندن',
                     imgSrc: '/images/Logos/Universites/international/UEL.png',
                     link: '/guide/UGRAD/international/UEL'
                 },
                 {
                     id: 7,
-                    ame: 'جامعة وسط لانكشاير',
+                    name: 'جامعة وسط لانكشاير',
                     imgSrc: '/images/Logos/Universites/international/UCLAN.png',
                     link: '/guide/UGRAD/international/UCLAN'
                 },
                 {
                     id: 8,
-                    ame: 'جامعة كازان الفيدرالية الروسية',
+                    name: 'جامعة كازان الفيدرالية الروسية',
                     imgSrc: '/images/Logos/Universites/international/KPFU.png',
                     link: '/guide/UGRAD/international/KPFU'
                 },
                 {
                     id: 9,
-                    ame: 'جامعة سان بطرسبرج الروسية',
+                    name: 'جامعة سان بطرسبرج الروسية',
                     imgSrc: '/images/Logos/Universites/international/SPBU.png',
                     link: '/guide/UGRAD/international/SPBU'
                 }

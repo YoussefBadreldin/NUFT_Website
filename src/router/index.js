@@ -85,6 +85,9 @@ import NVU from "../views/Universites/Private/NVU.vue";
 import SEU from "../views/Universites/Private/SEU.vue";
 import LUM from "../views/Universites/Private/LUM.vue";
 import special from "../views/Universites/Special/SpecialView.vue";
+import InternationalAgreements from "../views/Universites/Special/InternationalAgreement/InternationalAgreement.vue";
+import FrameworkAgreements from "../views/Universites/Special/FrameworkAgreement/FrameworkAgreement.vue";
+import SpecialLaw from "../views/Universites/Special/SpecialLaws/SpecialLaws.vue";
 import international from "../views/Universites/International/International.vue";
 import ContactUs from "../views/contactUs.vue";
 import NewsPage from "../views/News.vue";
@@ -175,6 +178,21 @@ const routes = [
     path:"/Status/UGRAD/special",
     name:"specialStatus",
     component:specialStatus,
+  },
+  {
+    path:"/Status/UGRAD/InternationalAgreements",
+    name:"InternationalAgreements",
+    component:InternationalAgreements,
+  },
+  {
+    path:"/Status/UGRAD/FrameworkAgreements",
+    name:"FrameworkAgreements",
+    component:FrameworkAgreements,
+  },
+  {
+    path:"/Status/UGRAD/SpecialLaw",
+    name:"SpecialLaw",
+    component:SpecialLaw,
   },
   {
     path:"/Status/UGRAD/international",

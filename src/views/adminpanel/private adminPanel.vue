@@ -227,40 +227,40 @@
             <input type="text" id="university_admission" v-model="university_admission">
           </div>
           <div class="form-group">
-            <label for="university_Arabic_Name_admission">University Arabic Name (short name in brackets):</label>
+            <label for="university_Arabic_Name_admission">University Arabic Name (short name in brackets)/End Date Sentense (اخر موعد للتقديم):</label>
             <input type="text" id="university_Arabic_Name_admission" v-model="university_Arabic_Name_admission">
           </div>
           <div class="form-group">
-            <label for="transfer_status">Transfer Status:</label>
+            <label for="transfer_status">Transfer Status/End Date:</label>
             <input type="text" id="transfer_status" v-model="transfer_status">
           </div>
         <div class="form-group">
-            <label for="thanwyaa_firstYear_status">Thanwyaa First Year Status:</label>
+            <label for="thanwyaa_firstYear_status">Thanwyaa First Year Status/End Date:</label>
             <input type="text" id="thanwyaa_firstYear_status" v-model="thanwyaa_firstYear_status">
           </div>
           <div class="form-group">
-            <label for="thanwyaa_secondYear_status">Thanwyaa Second Year Status:</label>
+            <label for="thanwyaa_secondYear_status">Thanwyaa Second Year Status/End Date:</label>
             <input type="text" id="thanwyaa_secondYear_status" v-model="thanwyaa_secondYear_status">
           </div>
           <div class="form-group">
-            <label for="azhar_firstYear_status">Azhar First Year Status:</label>
+            <label for="azhar_firstYear_status">Azhar First Year Status/End Date:</label>
             <input type="text" id="azhar_firstYear_status" v-model="azhar_firstYear_status">
           </div>
           <div class="form-group">
-            <label for="azhar_secondYear_status">Azhar Second Year Status:</label>
+            <label for="azhar_secondYear_status">Azhar Second Year Status/End Date:</label>
             <input type="text" id="azhar_secondYear_status" v-model="azhar_secondYear_status">
           </div>
           
           <div class="form-group">
-            <label for="Arabenglish_firstYear_status">Arabenglish First Year Status:</label>
+            <label for="Arabenglish_firstYear_status">Arabenglish First Year Status/End Date:</label>
             <input type="text" id="Arabenglish_firstYear_status" v-model="Arabenglish_firstYear_status">
           </div>
           <div class="form-group">
-            <label for="Arabenglish_secondYear_status">Arabenglish Second Year Status:</label>
+            <label for="Arabenglish_secondYear_status">Arabenglish Second Year Status/End Date:</label>
             <input type="text" id="Arabenglish_secondYear_status" v-model="Arabenglish_secondYear_status">
           </div>
           <div class="form-group">
-            <label for="wafdeen_status">Wafdeen Status:</label>
+            <label for="wafdeen_status">Wafdeen Status/End Date:</label>
             <input type="text" id="wafdeen_status" v-model="wafdeen_status">
           </div>
           <div class="form-group">
@@ -445,8 +445,8 @@ export default {
         },
         admission() {
             const form = {
-                    university_admission: this.university_admission,
-                    university_Arabic_Name_admission: this.university_Arabic_Name_admission,
+                    university: this.university_admission,
+                    university_Arabic_Name: this.university_Arabic_Name_admission,
                     transfer_status: this.transfer_status,
                     thanwyaa_firstYear_status: this.thanwyaa_firstYear_status,
                     thanwyaa_secondYear_status: this.thanwyaa_secondYear_status,

@@ -42,8 +42,8 @@ export default {
   },
   methods: {
     handleLogin() {
-      const validUsername = "NUFTawy";
-      const validPassword = "NUFTawy";
+      const validUsername = "admin";
+      const validPassword = "admin";
 
       if (this.username === validUsername && this.password === validPassword) {
         this.isAuthenticated = true;

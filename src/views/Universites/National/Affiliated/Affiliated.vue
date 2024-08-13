@@ -97,7 +97,7 @@ export default {
         },
                 {
             id: 10,
-            name: 'جامعة اسكندرية الاهلية',
+            name: 'جامعة الاسكندرية الاهلية',
             imgSrc: '/images/Logos/Universites/National/AlexNU.png',
             link: '/guide/UGRAD/National/AlexNU'
         },

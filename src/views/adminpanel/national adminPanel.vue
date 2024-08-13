@@ -24,7 +24,7 @@
       <h1 style="color: #ffbf00; font-weight: bold;">الجامعات الاهلية</h1>
        
       <div class="form-section">
-      <h1>Add University Faculties</h1>      
+      <h1 style="color: #ff0000; font-weight: bold;">Add University Faculties</h1>      
         <form @submit.prevent="handleSubmit">
           <div class="form-group">
             <label for="university">Uni Short Name:</label>
@@ -87,7 +87,7 @@
       </div>
 
       <div class="form-section">
-      <h1>Add University Info & Links</h1>      
+      <h1 style="color: #ff0000; font-weight: bold;">Add University Info & Links</h1>      
         <form @submit.prevent="links">
           <div class="form-group">
             <label for="university_Name">Uni Short Name:</label>
@@ -182,7 +182,7 @@
       </div>
 
       <div class="form-section">
-      <h1>Add University Dorms</h1>     
+      <h1 style="color: #ff0000; font-weight: bold;">Add University Dorms</h1>     
         <form @submit.prevent="dorms">
           <div class="form-group">
                 <label for="spec">Uni Short Name:</label>
@@ -201,7 +201,7 @@
       </div>
 
       <div class="form-section">
-      <h1>Add University Transportation</h1>   
+      <h1 style="color: #ff0000; font-weight: bold;">Add University Transportation</h1>   
         <form @submit.prevent="transportation">
           <div class="form-group">
                 <label for="spec">Uni Short Name:</label>
@@ -220,7 +220,7 @@
       </div>
 
       <div class="form-section">
-      <h1>Add University Admission Status</h1>
+      <h1 style="color: #ff0000; font-weight: bold;">Add University Admission Status</h1>
         <form @submit.prevent="admission">
         <div class="form-group">
             <label for="university_admission">Uni short name:</label>

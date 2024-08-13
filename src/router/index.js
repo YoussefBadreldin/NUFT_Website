@@ -86,8 +86,17 @@ import SEU from "../views/Universites/Private/SEU.vue";
 import LUM from "../views/Universites/Private/LUM.vue";
 import special from "../views/Universites/Special/SpecialView.vue";
 import InternationalAgreements from "../views/Universites/Special/InternationalAgreement/InternationalAgreement.vue";
+import AUC from "../views/Universites/Special/InternationalAgreement/AUC.vue";
+import EJUST from "../views/Universites/Special/InternationalAgreement/EJUST.vue";
+import GIU from "../views/Universites/Special/InternationalAgreement/GIU.vue";
+import EslscaU from "../views/Universites/Special/InternationalAgreement/EslscaU.vue";
+import TUB from "../views/Universites/Special/InternationalAgreement/TUB.vue";
+import Senghor from "../views/Universites/Special/InternationalAgreement/Senghor.vue";
 import FrameworkAgreements from "../views/Universites/Special/FrameworkAgreement/FrameworkAgreement.vue";
+import AASTMT from "../views/Universites/Special/FrameworkAgreement/AASTMT.vue";
+import AOU from "../views/Universites/Special/FrameworkAgreement/AOU.vue";
 import SpecialLaw from "../views/Universites/Special/SpecialLaws/SpecialLaws.vue";
+import UST from "../views/Universites/Special/SpecialLaws/UST.vue";
 import international from "../views/Universites/International/International.vue";
 import ContactUs from "../views/contactUs.vue";
 import NewsPage from "../views/News.vue";
@@ -178,21 +187,6 @@ const routes = [
     path:"/Status/UGRAD/special",
     name:"specialStatus",
     component:specialStatus,
-  },
-  {
-    path:"/Status/UGRAD/InternationalAgreements",
-    name:"InternationalAgreements",
-    component:InternationalAgreements,
-  },
-  {
-    path:"/Status/UGRAD/FrameworkAgreements",
-    name:"FrameworkAgreements",
-    component:FrameworkAgreements,
-  },
-  {
-    path:"/Status/UGRAD/SpecialLaw",
-    name:"SpecialLaw",
-    component:SpecialLaw,
   },
   {
     path:"/Status/UGRAD/international",
@@ -554,6 +548,66 @@ const routes = [
     name:'special',
     component:special,
   },
+  {
+    path:"/Guide/UGRAD/special/InternationalAgreements",
+    name:"InternationalAgreements",
+    component:InternationalAgreements,
+  },
+  {
+    path: '/Guide/UGRAD/special/AUC',
+    name: "AUC",
+    component: AUC
+  },  
+  {
+    path: '/Guide/UGRAD/special/EJUST',
+    name: "EJUST",
+    component: EJUST
+  },  
+  {
+    path: '/Guide/UGRAD/special/GIU',
+    name: "GIU",
+    component: GIU
+  },  
+  {
+    path: '/Guide/UGRAD/special/EslscaU',
+    name: "EslscaU",
+    component: EslscaU
+  },  
+  {
+    path: '/Guide/UGRAD/special/TUB',
+    name: "TUB",
+    component: TUB
+  },  
+  {
+    path: '/Guide/UGRAD/special/Senghor',
+    name: "Senghor",
+    component: Senghor
+  },  
+  {
+    path:"/Guide/UGRAD/special/FrameworkAgreements",
+    name:"FrameworkAgreements",
+    component:FrameworkAgreements,
+  },
+  {
+    path: '/Guide/UGRAD/special/AASTMT',
+    name: "AASTMT",
+    component: AASTMT
+  },  
+  {
+    path: '/Guide/UGRAD/special/AOU',
+    name: "AOU",
+    component: AOU
+  }, 
+  {
+    path:"/Guide/UGRAD/special/SpecialLaw",
+    name:"SpecialLaw",
+    component:SpecialLaw,
+  },
+  {
+    path: '/Guide/UGRAD/special/UST',
+    name: "UST",
+    component: UST
+  }, 
   {
     path:'/Guide/UGRAD/international',
     name:'international',

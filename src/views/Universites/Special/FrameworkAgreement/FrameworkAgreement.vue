@@ -2,8 +2,15 @@
   <div>
     <HeaderComponent />
     <div class="page-nav row">
-      <h2>الجامعات الاهلية الدولية</h2>
+      <h2>الجامعات المنشئه باتفاقات اطارية</h2>
     </div>
+    </div>
+
+    <div class="Card-Box" dir="rtl">
+      <div class="container" style="text-align: center;">
+        <h3>ما هي الجامعات المنشئه باتفاقات اطارية؟</h3>
+        <p>هي جامعات . وعددهم 6 جامعات</p>
+      </div>
 
     <div class="Card-Box" dir="rtl">
       <div class="container">
@@ -32,7 +39,7 @@ import HeaderComponent from '../../../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../../../public/global/footerComponent.vue';
 
 export default {
-  name: 'interNational',
+  name: 'interSpecial',
   components: {
     HeaderComponent,
     FooterComponent,
@@ -41,29 +48,17 @@ export default {
     return {
       searchQuery: '',
       universities: [
-        {
+{
           id: 1,
-          name: 'جامعة الملك سلمان الدولية',
-          imgSrc: '/images/Logos/Universites/National/KSIU.png',
-          link: '/Guide/UGRAD/National/KSIU'
+          name: 'الاكادمية البحرية للعلوم والتكنولوجيا والنقل البحري',
+          imgSrc: '/images/Logos/Universites/Special/AASTMT.png',
+          link: '/Guide/UGRAD/Special/AASTMT'
         },
         {
           id: 2,
-          name: 'جامعة العلمين الدولية',
-          imgSrc: '/images/Logos/Universites/National/AIU.png',
-          link: '/Guide/UGRAD/National/AIU'
-        },
-        {
-          id: 3,
-          name: 'جامعة الجلالة',
-          imgSrc: '/images/Logos/Universites/National/GU.png',
-          link: '/Guide/UGRAD/National/GU'
-        },
-        {
-          id: 4,
-          name: 'جامعة المنصورة الجديدة',
-          imgSrc: '/images/Logos/Universites/National/NMU.png',
-          link: '/Guide/UGRAD/National/NMU'
+          name: 'الجامعة العربية المفتوحة',
+          imgSrc: '/images/Logos/Universites/Special/AOU.png',
+          link: '/Guide/UGRAD/Special/AOU'
         }
       ]
     };

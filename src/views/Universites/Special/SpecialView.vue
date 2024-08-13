@@ -10,7 +10,7 @@
     <div class="Card-Box" dir="rtl">
         <div class="container" style="text-align: center;">
         <h3>ما هي الجامعات ذات طبيعة خاصة؟</h3>
-        هي جامعات . وهم 10 جامعة
+        هي جامعات . وعددهم 9 جامعات
         <br><br>
         <h3><br>أنواع الجامعات ذات طبيعة خلصة</h3>
         <div class="row Box-ro">

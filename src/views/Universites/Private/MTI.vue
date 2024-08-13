@@ -222,8 +222,8 @@
 
 <script>
 import axios from 'axios';
-import HeaderComponent from '../../../../../public/global/headerComponent.vue';
-import FooterComponent from '../../../../../public/global/footerComponent.vue';
+import HeaderComponent from '../../../../public/global/headerComponent.vue';
+import FooterComponent from '../../../../public/global/footerComponent.vue';
 
 export default {
     name: 'MTI',

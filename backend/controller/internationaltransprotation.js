@@ -1,12 +1,12 @@
-const internationaltrans_Info = require('../models/internationaltransportation');
+const interinternationaltrans_Info = require('../models/internationaltransportation');
 
 const addInfo = async function(req, res) {
-    const { type, price, spec } = req.body;
+    const { spec, type, price } = req.body;
     try {
-        const newInfo = new internationaltrans_Info({
+        const newInfo = new interinternationaltrans_Info({
+            spec,
             type,
-            price,
-            spec
+            price,      
         });
         await newInfo.save();
         res.status(200).json({ message: 'Form sent successfully' });
@@ -18,7 +18,7 @@ const addInfo = async function(req, res) {
 
 const getInfo = async function(req, res) {
     try {
-        const all_information = await internationaltrans_Info.find();
+        const all_information = await interinternationaltrans_Info.find();
         if (all_information.length === 0) {
             res.status(404).json({ message: 'NO DATA' });
         } else {

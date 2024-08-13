@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const {addprivateFacility,deleteFacility,getAllfacilities} = require('../controller/privateController');
-router.post('/addprivate', addprivateFacility);
-router.get('/getprivate',getAllfacilities)
-router.delete('/deleteprivate',deleteFacility);
+const {addprivatefaculty,deletefaculty,getAllfaculty} = require('../controller/privateController');
+router.post('/addprivate', addprivatefaculty);
+router.get('/getprivate',getAllfaculty)
+router.delete('/deleteprivate',deletefaculty);
 
 module.exports = router

@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
 const specialdormsSchema = new mongoose.Schema({
+    spec: String,
     type: String,
-    price: String,
-    spec: String
+    price: String 
 });
 
 const specialdorms = mongoose.model('specialdorms', specialdormsSchema);

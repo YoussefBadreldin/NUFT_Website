@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const {addinternationalFacility,deleteFacility,getAllfacilities} = require('../controller/internationalController');
-router.post('/addinternational', addinternationalFacility);
-router.get('/getinternational',getAllfacilities)
-router.delete('/deleteinternational',deleteFacility);
+const {addinternationalfaculty,deletefaculty,getAllfaculty} = require('../controller/internationalController');
+router.post('/addinternational', addinternationalfaculty);
+router.get('/getinternational',getAllfaculty)
+router.delete('/deleteinternational',deletefaculty);
 
 module.exports = router

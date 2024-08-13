@@ -1,12 +1,12 @@
 const specialtrans_Info = require('../models/specialtransportation');
 
 const addInfo = async function(req, res) {
-    const { type, price, spec } = req.body;
+    const { spec, type, price } = req.body;
     try {
         const newInfo = new specialtrans_Info({
+            spec,
             type,
-            price,
-            spec
+            price,      
         });
         await newInfo.save();
         res.status(200).json({ message: 'Form sent successfully' });

@@ -89,11 +89,11 @@
                 <input type="text" v-model="universityInfo.Uni_Bio">
             </div>
             <div>
-                <label for="location">Location:</label>
+                <label for="location (https://)">Location:</label>
                 <input type="text" v-model="universityInfo.location">
             </div>
             <div>
-                <label for="website">Website:</label>
+                <label for="website (https://)">Website:</label>
                 <input type="text" v-model="universityInfo.website">
             </div>
             <div>
@@ -105,19 +105,19 @@
                 <input type="text" v-model="universityInfo.email">
             </div>
             <div>
-                <label for="facebook">Facebook:</label>
+                <label for="facebook (https://)">Facebook:</label>
                 <input type="text" v-model="universityInfo.facebook">
             </div>
             <div>
-                <label for="instagram">Instagram:</label>
+                <label for="instagram (https://)">Instagram:</label>
                 <input type="text" v-model="universityInfo.instagram">
             </div>
             <div>
-                <label for="youtube">YouTube:</label>
+                <label for="youtube (https://)">YouTube:</label>
                 <input type="text" v-model="universityInfo.youtube">
             </div>
             <div>
-                <label for="linkedin">LinkedIn:</label>
+                <label for="linkedin (https://)">LinkedIn:</label>
                 <input type="text" v-model="universityInfo.linkedin">
             </div>
             <div>
@@ -129,35 +129,35 @@
                 <input type="text" v-model="universityInfo.second_year">
             </div>
             <div>
-                <label for="international_programs">International Programs Details:</label>
+                <label for="international_programs (https://)">International Programs Details:</label>
                 <input type="text" v-model="universityInfo.international_programs">
             </div>
             <div>
-                <label for="dorms_link">Dorms Details Link:</label>
+                <label for="dorms_link (https://)">Dorms Details Link:</label>
                 <input type="text" v-model="universityInfo.dorms_link">
             </div>
             <div>
-                <label for="transportation_link">Transportation Details Link:</label>
+                <label for="transportation_link (https://)">Transportation Details Link:</label>
                 <input type="text" v-model="universityInfo.transportation_link">
             </div>
             <div>
-                <label for="scholarship_link">Scholarship Details Link:</label>
+                <label for="scholarship_link (https://)">Scholarship Details Link:</label>
                 <input type="text" v-model="universityInfo.scholarship_link">
             </div>
             <div>
-                <label for="Egyptian_Admission_link">Egyptians Admission Link:</label>
+                <label for="Egyptian_Admission_link (https://)">Egyptians Admission Link:</label>
                 <input type="text" v-model="universityInfo.Egyptian_Admission_link">
             </div>
             <div>
-                <label for="Egyptian_Admission_link2">Egyptians Admission Link (International Programs):</label>
+                <label for="Egyptian_Admission_link2 (https://)">Egyptians Admission Link (International Programs):</label>
                 <input type="text" v-model="universityInfo.Egyptian_Admission_link2">
             </div>
             <div>
-                <label for="Egyptian_Transfer_link">Egyptians Admission Link (Transfer):</label>
+                <label for="Egyptian_Transfer_link (https://)">Egyptians Admission Link (Transfer):</label>
                 <input type="text" v-model="universityInfo.Egyptian_Transfer_link">
             </div>
             <div>
-                <label for="Wafdeen_Admission_link">Wafdeen Admission Link:</label>
+                <label for="Wafdeen_Admission_link (https://)">Wafdeen Admission Link:</label>
                 <input type="text" v-model="universityInfo.Wafdeen_Admission_link">
             </div>
             <br>

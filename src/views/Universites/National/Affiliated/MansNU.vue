@@ -205,16 +205,16 @@
     </section>
 
     <!-- Admission Links -->
-    <section>
-    <br>
-      <h2>روابط التقديم</h2>
-      <ul>
-    <a :href="Wafdeen_Admission_link" target="_blank"><button>رابط التقديم للطلاب الوافدين</button></a>
-    <a :href="Egyptian_Transfer_link" target="_blank"><button>رابط التحويل للطلاب المصريين</button></a>
-    <a :href="Egyptian_Admission_link2" target="_blank"><button>رابط التقديم للطلاب المصريين (البرامج الدولية)</button></a>
+<section dir="rtl">
+  <br>
+  <h2>روابط التقديم</h2>
+  <ul>
     <a :href="Egyptian_Admission_link" target="_blank"><button>رابط التقديم للطلاب المصريين</button></a>
-      </ul>
-    </section>
+    <a :href="Egyptian_Admission_link2" target="_blank"><button>رابط التقديم للطلاب المصريين (البرامج الدولية)</button></a>
+    <a :href="Egyptian_Transfer_link" target="_blank"><button>رابط التحويل للطلاب المصريين</button></a>
+    <a :href="Wafdeen_Admission_link" target="_blank"><button>رابط التقديم للطلاب الوافدين</button></a>
+  </ul>
+</section>
 
     <FooterComponent />
   </div>

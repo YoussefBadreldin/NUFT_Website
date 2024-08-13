@@ -31,7 +31,7 @@
             <input type="text" v-model="university" id="university">
           </div>
           <div class="form-group">
-            <label for="normal_or_Dual">Type (Normal or Dual):</label>
+            <label for="normal_or_Dual">Type (normal or dual):</label>
             <input type="text" v-model="normal_or_Dual" id="normal_or_Dual">
           </div>   
           <div class="form-group">

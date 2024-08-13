@@ -170,11 +170,11 @@
             <input type="text" v-model="Egyptian_Admission_link2">
           </div>
           <div class="form-group">
-            <label for="Egyptian_Transfer_link">Egyptians Transfer Link:</label>
+            <label for="Egyptian_Transfer_link">Egyptians Transfer Link ((https://)):</label>
             <input type="text" v-model="Egyptian_Transfer_link">
           </div>
           <div class="form-group">
-            <label for="Wafdeen_Admission_link">Wafdeen Admission Link:</label>
+            <label for="Wafdeen_Admission_link">Wafdeen Admission Link((https://)):</label>
             <input type="text" v-model="Wafdeen_Admission_link">
           </div>
           <button type="submit">Add</button>

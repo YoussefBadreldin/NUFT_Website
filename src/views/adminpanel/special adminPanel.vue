@@ -202,7 +202,7 @@
 
       <div class="form-section">
       <h1 style="color: #ff0000; font-weight: bold;">Add University Transportation</h1>   
-        <form @submit.prevent="transportation">
+        <form @submit.prevent="trans">
           <div class="form-group">
                 <label for="spec">Uni Short Name:</label>
                 <input type="text" id="spec" v-model="spec2">

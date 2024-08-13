@@ -170,11 +170,11 @@
             <input type="text" v-model="Egyptian_Admission_link2">
           </div>
           <div class="form-group">
-            <label for="Egyptian_Transfer_link">Egyptians Transfer Link:</label>
+            <label for="Egyptian_Transfer_link">Egyptians Transfer Link ((https://)):</label>
             <input type="text" v-model="Egyptian_Transfer_link">
           </div>
           <div class="form-group">
-            <label for="Wafdeen_Admission_link">Wafdeen Admission Link:</label>
+            <label for="Wafdeen_Admission_link">Wafdeen Admission Link((https://)):</label>
             <input type="text" v-model="Wafdeen_Admission_link">
           </div>
           <button type="submit">Add</button>
@@ -185,20 +185,16 @@
       <h1>Add University Dorms</h1>     
         <form @submit.prevent="dorms">
           <div class="form-group">
-            <label for="dorms_Name">Dorm Name:</label>
-            <input type="text" v-model="dorms_Name">
+                <label for="spec">Uni Short Name:</label>
+                <input type="text" id="spec" v-model="spec">
           </div>
           <div class="form-group">
-            <label for="dorms_Description">Dorm Description:</label>
-            <input type="text" v-model="dorms_Description">
+                <label for="type">Type:</label>
+                <input type="text" id="type" v-model="type">
           </div>
           <div class="form-group">
-            <label for="dorms_Fees">Dorm Fees (per month):</label>
-            <input type="text" v-model="dorms_Fees">
-          </div>
-          <div class="form-group">
-            <label for="dorms_Facilities">Dorm Facilities:</label>
-            <input type="text" v-model="dorms_Facilities">
+                <label for="price">Price:</label>
+                <input type="text" id="price" v-model="price">
           </div>
           <button type="submit">Add</button>
         </form>
@@ -208,20 +204,16 @@
       <h1>Add University Transportation</h1>   
         <form @submit.prevent="transportation">
           <div class="form-group">
-            <label for="transportation_Name">Transportation Name:</label>
-            <input type="text" v-model="transportation_Name">
+                <label for="spec">Uni Short Name:</label>
+                <input type="text" id="spec" v-model="spec2">
           </div>
           <div class="form-group">
-            <label for="transportation_Description">Transportation Description:</label>
-            <input type="text" v-model="transportation_Description">
+                <label for="type">Route:</label>
+                <input type="text" id="type" v-model="type2">
           </div>
           <div class="form-group">
-            <label for="transportation_Fees">Transportation Fees (per month):</label>
-            <input type="text" v-model="transportation_Fees">
-          </div>
-          <div class="form-group">
-            <label for="transportation_Facilities">Transportation Facilities:</label>
-            <input type="text" v-model="transportation_Facilities">
+                <label for="price">price:</label>
+                <input type="text" id="price" v-model="price2">
           </div>
           <button type="submit">Add</button>
         </form>
@@ -230,21 +222,50 @@
       <div class="form-section">
       <h1>Add University Admission Status</h1>
         <form @submit.prevent="admission">
-          <div class="form-group">
-            <label for="admission_Title">Admission Title:</label>
-            <input type="text" v-model="admission_Title">
+        <div class="form-group">
+            <label for="university_admission">Uni short name:</label>
+            <input type="text" id="university_admission" v-model="university_admission">
           </div>
           <div class="form-group">
-            <label for="admission_Description">Admission Description:</label>
-            <input type="text" v-model="admission_Description">
+            <label for="university_Arabic_Name_admission">University Arabic Name (short name in brackets):</label>
+            <input type="text" id="university_Arabic_Name_admission" v-model="university_Arabic_Name_admission">
           </div>
           <div class="form-group">
-            <label for="admission_Fees">Admission Fees (EGP):</label>
-            <input type="text" v-model="admission_Fees">
+            <label for="transfer_status">Transfer Status:</label>
+            <input type="text" id="transfer_status" v-model="transfer_status">
+          </div>
+        <div class="form-group">
+            <label for="thanwyaa_firstYear_status">Thanwyaa First Year Status:</label>
+            <input type="text" id="thanwyaa_firstYear_status" v-model="thanwyaa_firstYear_status">
           </div>
           <div class="form-group">
-            <label for="admission_Facilities">Admission Facilities:</label>
-            <input type="text" v-model="admission_Facilities">
+            <label for="thanwyaa_secondYear_status">Thanwyaa Second Year Status:</label>
+            <input type="text" id="thanwyaa_secondYear_status" v-model="thanwyaa_secondYear_status">
+          </div>
+          <div class="form-group">
+            <label for="azhar_firstYear_status">Azhar First Year Status:</label>
+            <input type="text" id="azhar_firstYear_status" v-model="azhar_firstYear_status">
+          </div>
+          <div class="form-group">
+            <label for="azhar_secondYear_status">Azhar Second Year Status:</label>
+            <input type="text" id="azhar_secondYear_status" v-model="azhar_secondYear_status">
+          </div>
+          
+          <div class="form-group">
+            <label for="Arabenglish_firstYear_status">Arabenglish First Year Status:</label>
+            <input type="text" id="Arabenglish_firstYear_status" v-model="Arabenglish_firstYear_status">
+          </div>
+          <div class="form-group">
+            <label for="Arabenglish_secondYear_status">Arabenglish Second Year Status:</label>
+            <input type="text" id="Arabenglish_secondYear_status" v-model="Arabenglish_secondYear_status">
+          </div>
+          <div class="form-group">
+            <label for="wafdeen_status">Wafdeen Status:</label>
+            <input type="text" id="wafdeen_status" v-model="wafdeen_status">
+          </div>
+          <div class="form-group">
+            <label for="guide_Url">Guide URL (/guide/UGRAD/National/):</label>
+            <input type="text" id="guide_Url" v-model="guide_Url">
           </div>
           <button type="submit">Add</button>
         </form>

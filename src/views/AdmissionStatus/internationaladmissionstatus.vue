@@ -4,7 +4,7 @@
 
         <div>
             <div class="page-nav row">
-                <h2>حالة تقديمات الجامعات الاهلية</h2>
+                <h2>حالة تقديمات الجامعات الدولية</h2>
             </div>
 
             <section>
@@ -14,9 +14,9 @@
                             <tr>
                                 <th rowspan="2">الجامعة</th>
                                 <th rowspan="2">التحويل</th>
-                                <th colspan="2">الثانوية العامة</th>
-                                <th colspan="2">الشهادات العربية والإنجليزية والأزهرية</th>
-                                <th colspan="2">شهادات ستيم والنيل</th>
+                                <th colspan="2">الثانوية العامة وستيم والنيل</th>
+                                <th colspan="2">الثانوية الأزهرية</th>
+                                <th colspan="2">الشهادات العربية والإجنبية</th>
                                 <th rowspan="2">الوافدين</th>
                             </tr>
                             <tr>
@@ -85,7 +85,7 @@ export default {
         }
         },
         getAdmission(){
-            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationaadmission/get')
+            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationaladmission/get')
                 .then(response => {
                     this.universities = response.data.map(university => ({
                         ...university,
@@ -97,7 +97,7 @@ export default {
                 });
         },
         getYears(){
-            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationalinks/get_internationalinks')
+            axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationallinks/get_internationallinks')
                 .then(response => {
                     this.all_data = response.data;
                     this.firstYear = this.all_data[0].first_year;

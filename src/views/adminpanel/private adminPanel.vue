@@ -2,7 +2,7 @@
     <div class="parent">
         <h1>NUFT Admin Panel</h1>
         <br><br>
-        <h1>الجامعات الخاصة</h1>
+        <h1>الجامعات الاهلية</h1>
         <br><br>
         <h1>Add University Faculties</h1>        
         <div class="container">
@@ -73,8 +73,8 @@
         <h1>Add University Info & Links</h1>
         <form @submit.prevent="links">    
             <div>
-                <label for="university">University:</label>
-                <input type="text" v-model="university">
+                <label for="university_Name">University:</label>
+                <input type="text" v-model="university_Name">
             </div>
             <div>
                 <label for="university_Arabic_Name">University Arabic Name:</label>
@@ -170,15 +170,15 @@
         <form @submit.prevent="dorms">
             <div>
                 <label for="spec">University:</label>
-                <input type="text" id="spec" v-model="university_dorms">
+                <input type="text" id="spec" v-model="spec">
             </div>
             <div>
                 <label for="type">Type:</label>
-                <input type="text" id="type" v-model="dorm_type">
+                <input type="text" id="type" v-model="type">
             </div>
             <div>
                 <label for="price">Price:</label>
-                <input type="text" id="price" v-model="dorm_price">
+                <input type="text" id="price" v-model="price">
             </div>
             <br>
             <button type="submit">Add</button>
@@ -189,16 +189,16 @@
         <h1>Add University Transportation</h1>
         <form @submit.prevent="trans">
             <div>
-                <label for="spec">University:</label>
-                <input type="text" id="spec" v-model="university_transportation">
+                <label for="spec2">University:</label>
+                <input type="text" id="spec2" v-model="spec2">
             </div>
             <div>
-                <label for="type">Type:</label>
-                <input type="text" id="type" v-model="trans_type">
+                <label for="type2">Type:</label>
+                <input type="text" id="type2" v-model="type2">
             </div>
             <div>
-                <label for="price">Price:</label>
-                <input type="text" id="price" v-model="trans_price">
+                <label for="price2">Price:</label>
+                <input type="text" id="price2" v-model="price2">
             </div>
             <br>
             <button type="submit">Add</button>
@@ -208,49 +208,53 @@
 
         <h1>Add University Admission Status</h1>
         <form @submit.prevent="admission">
-            <div>
-                <label for="university">University:</label>
-                <input type="text" id="university" v-model="university_admission">
-            </div>
-            <div>
-                <label for="university_Arabic_Name">University Arabic Name:</label>
-                <input type="text" id="university_Arabic_Name" v-model="university_Arabic_Name_admission">
-            </div>
-            <div>
-                <label for="transfer_status">Transfer Status:</label>
-                <input type="text" id="transfer_status" v-model="transfer_status">
-            </div>
-            <div>
-                <label for="thanwyaa_firstYear_status">Thanwyaa (Past Year) Status:</label>
-                <input type="text" id="thanwyaa_firstYear_status" v-model="thanwyaa_firstYear_status">
-            </div>
-            <div>
-                <label for="thanwyaa_secondYear_status">Thanwyaa (Current Year) Status:</label>
-                <input type="text" id="thanwyaa_secondYear_status" v-model="thanwyaa_secondYear_status">
-            </div>
-            <div>
-                <label for="azhar_firstYear_status">Azhar (Past Year) Status:</label>
-                <input type="text" id="azhar_firstYear_status" v-model="azhar_firstYear_status">
-            </div>
-            <div>
-                <label for="azhar_secondYear_status">Azhar (Current Year) Status:</label>
-                <input type="text" id="azhar_secondYear_status" v-model="azhar_secondYear_status">
-            </div>
-            <div>
-                <label for="Arabenglish_firstYear_status">Arabenglish (Past Year) Status:</label>
-                <input type="text" id="Arabenglish_firstYear_status" v-model="Arabenglish_firstYear_status">
-            </div>
-            <div>
-                <label for="Arabenglish_secondYear_status">Arabenglish (Current Year) Status:</label>
-                <input type="text" id="Arabenglish_secondYear_status" v-model="Arabenglish_secondYear_status">
-            </div>
-            <div>
-                <label for="wafdeen_status">Wafdeen Status:</label>
-                <input type="text" id="wafdeen_status" v-model="wafdeen_status">
-            </div>
-            <br>
-            <button type="submit">Add</button>
-        </form>
+        <div>
+            <label for="university_admission">University:</label>
+            <input type="text" id="university_admission" v-model="university_admission">
+        </div>
+        <div>
+            <label for="university_Arabic_Name_admission">University Arabic Name:</label>
+            <input type="text" id="university_Arabic_Name_admission" v-model="university_Arabic_Name_admission">
+        </div>
+        <div>
+            <label for="transfer_status">Transfer Status:</label>
+            <input type="text" id="transfer_status" v-model="transfer_status">
+        </div>
+        <div>
+            <label for="thanwyaa_firstYear_status">Thanwyaa First Year Status:</label>
+            <input type="text" id="thanwyaa_firstYear_status" v-model="thanwyaa_firstYear_status">
+        </div>
+        <div>
+            <label for="thanwyaa_secondYear_status">Thanwyaa Second Year Status:</label>
+            <input type="text" id="thanwyaa_secondYear_status" v-model="thanwyaa_secondYear_status">
+        </div>
+        <div>
+            <label for="azhar_firstYear_status">Azhar First Year Status:</label>
+            <input type="text" id="azhar_firstYear_status" v-model="azhar_firstYear_status">
+        </div>
+        <div>
+            <label for="azhar_secondYear_status">Azhar Second Year Status:</label>
+            <input type="text" id="azhar_secondYear_status" v-model="azhar_secondYear_status">
+        </div>
+        <div>
+            <label for="Arabenglish_firstYear_status">Arabenglish First Year Status:</label>
+            <input type="text" id="Arabenglish_firstYear_status" v-model="Arabenglish_firstYear_status">
+        </div>
+        <div>
+            <label for="Arabenglish_secondYear_status">Arabenglish Second Year Status:</label>
+            <input type="text" id="Arabenglish_secondYear_status" v-model="Arabenglish_secondYear_status">
+        </div>
+        <div>
+            <label for="wafdeen_status">Wafdeen Status:</label>
+            <input type="text" id="wafdeen_status" v-model="wafdeen_status">
+        </div>
+        <div>
+            <label for="guide_Url">Guide URL:</label>
+            <input type="text" id="guide_Url" v-model="guide_Url">
+        </div>
+        <br>
+        <button type="submit">Add</button>
+    </form>
         <br>
     </div>
 </template>
@@ -313,16 +317,17 @@ export default {
             price2: '',
 
             // Data properties for "admission"
-            f_name: '',
-            addmission_spec: '',
-            status_transfer: '',
-            thanwyaaAmaaStatus_first: '',
-            thanwyaaAmaaStatus_second: '',
-            ArabEnglishAzhariCertificates_first: '',
-            ArabEnglishAzhariCertificates_second: '',
-            StemNileCertificates_first: '',
-            StemNileCertificates_second: '',
-            InternationalStudents: '',
+            university_admission: '',
+            university_Arabic_Name_admission: '',
+            transfer_status: '',
+            thanwyaa_firstYear_status: '',
+            thanwyaa_secondYear_status: '',
+            azhar_firstYear_status: '',
+            azhar_secondYear_status: '',
+            Arabenglish_firstYear_status: '',
+            Arabenglish_secondYear_status: '',
+            wafdeen_status: '',
+            guide_Url: '',
         };
     },
     methods: {
@@ -344,7 +349,7 @@ export default {
                 wafdeen_score: this.wafdeen_score,
             };
 
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationalfaculty/addnational', formData)
+            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/privatefaculty/addprivate', formData)
                 .then(response => {
                     console.log(response.data);
                     alert('Form sent successfully');
@@ -380,7 +385,7 @@ export default {
                 Wafdeen_Admission_link: this.Wafdeen_Admission_link,
             };
 
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationallinks/add_nationallinks', links_form_data)
+            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/privatelinks/add_privatelinks', links_form_data)
                 .then(() => {
                     alert('Form sent successfully');
                 })
@@ -395,7 +400,7 @@ export default {
                 price: this.price,
             };
 
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/info/addnationaldorms', form)
+            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/info/addprivatedorms', form)
                 .then(() => {
                     alert('Form sent successfully');
                 })
@@ -410,7 +415,7 @@ export default {
                 price: this.price2,
             };
 
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaltrans/addnationaltrans', form)
+            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/privatetrans/addprivatetrans', form)
                 .then(() => {
                     alert('Form sent successfully');
                 })
@@ -420,20 +425,20 @@ export default {
         },
         admission() {
             const form = {
-                university: this.university_Name,
-                university_Arabic_Name: this.university_Arabic_Name,
-                transfer_status: this.status_transfer,
-                thanwyaa_firstYear_status: this.thanwyaaAmaaStatus_first,
-                thanwyaa_secondYear_status: this.thanwyaaAmaaStatus_second,
-                azhar_firstYear_status: this.azhar_firstYear_score,
-                azhar_secondYear_status: this.azhar_secondYear_score,
-                Arabenglish_firstYear_status: this.ArabEnglishAzhariCertificates_first,
-                Arabenglish_secondYear_status: this.ArabEnglishAzhariCertificates_second,
-                wafdeen_status: this.InternationalStudents,
-                guide_Url: this.Uni_Bio,
+                    university_admission: this.university_admission,
+                    university_Arabic_Name_admission: this.university_Arabic_Name_admission,
+                    transfer_status: this.transfer_status,
+                    thanwyaa_firstYear_status: this.thanwyaa_firstYear_status,
+                    thanwyaa_secondYear_status: this.thanwyaa_secondYear_status,
+                    azhar_firstYear_status: this.azhar_firstYear_status,
+                    azhar_secondYear_status: this.azhar_secondYear_status,
+                    Arabenglish_firstYear_status: this.Arabenglish_firstYear_status,
+                    Arabenglish_secondYear_status: this.Arabenglish_secondYear_status,
+                    wafdeen_status: this.wafdeen_status,
+                    guide_Url: this.guide_Url,
             };
 
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaladmission/add', form)
+            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/privateadmission/add', form)
                 .then(() => {
                     alert('Form sent successfully');
                 })

@@ -1,276 +1,257 @@
 <template>
-    <div class="parent">
-        <h1 style="color: #001d3d; font-weight: bold;">NUFT Admin Panel</h1>
-
-        <br><br>
-        <h1 style="color: #ffbf00; font-weight: bold;">الجامعات الاهلية</h1>
-        <br>
-        <h1 style="color: #001d3d; font-weight: bold;">________________</h1>
-        <br>
-        <h1>Add University Faculties</h1>        
-        <div class="container">
-            <form @submit.prevent="handleSubmit">
-                <div>
-                    <label for="university">uni short name:</label>
-                    <input type="text" v-model="university" id="university">
-                </div>
-                <div>
-                    <label for="normal_or_Dual">Type (Normal or Dual):</label>
-                    <input type="text" v-model="normal_or_Dual" id="normal_or_Dual">
-                </div>   
-                 <div>
-                    <label for="faculty">Faculty/International Program Name:</label>
-                    <input type="text" v-model="faculty" id="faculty">
-                </div>                                       
-                <div>
-                    <label for="programs">Faculty Programs/International Program Details:</label>
-                    <input type="text" v-model="programs" id="programs">
-                </div>
-                <div>
-                    <label for="feesEgyption">Egyptian Fees (EGP):</label>
-                    <input type="text" v-model="feesEgyption" id="feesEgyption">
-                </div>
-                <div>
-                    <label for="feesNatives">Wafedeen Fees (USD):</label>
-                    <input type="text" v-model="feesNatives" id="feesNatives">
-                </div>
-                <div>
-                    <label for="section">Section:</label>
-                    <input type="text" v-model="section" id="section">
-                </div>
-                <div>
-                    <label for="thanwyaa_firstYear_score">Thanwya Score (Past):</label>
-                    <input type="text" v-model="thanwyaa_firstYear_score" id="thanwyaa_firstYear_score">
-                </div>
-                <div>
-                    <label for="thanwyaa_secondYear_score">Thanwya Score (Current):</label>
-                    <input type="text" v-model="thanwyaa_secondYear_score" id="thanwyaa_secondYear_score">
-                </div>
-                <div>
-                    <label for="azhar_firstYear_score">Azhar Score (Past):</label>
-                    <input type="text" v-model="azhar_firstYear_score" id="azhar_firstYear_score">
-                </div>
-                <div>
-                    <label for="azhar_secondYear_score">Azhar Score (Current):</label>
-                    <input type="text" v-model="azhar_secondYear_score" id="azhar_secondYear_score">
-                </div>
-                <div>
-                    <label for="Arabenglish_firstYear_score">Arabenglish Score (Past):</label>
-                    <input type="text" v-model="Arabenglish_firstYear_score" id="Arabenglish_firstYear_score">
-                </div>
-                <div>
-                    <label for="Arabenglish_secondYear_score">Arabenglish Score (Current):</label>
-                    <input type="text" v-model="Arabenglish_secondYear_score" id="Arabenglish_secondYear_score">
-                </div>
-                <div>
-                    <label for="wafdeen_score">Wafdeen Score:</label>
-                    <input type="text" v-model="wafdeen_score" id="wafdeen_score">
-                </div>
-                <br>
-                <button type="submit">Add</button>
-            </form>
+  <div class="parent">
+    <!-- Login Form -->
+    <div v-if="!isAuthenticated" class="login-form">
+    <h1 style="color: #ffbf00; font-weight: bold;">الجامعات الاهلية</h1>
+      <h2>Login</h2>
+      <form @submit.prevent="handleLogin">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" v-model="username" id="username" required>
         </div>
-
-         <br>
-        <h1 style="color: #001d3d; font-weight: bold;">________________</h1>
-        <br><br>
-
-        <h1>Add University Info & Links</h1>
-        <form @submit.prevent="links">    
-            <div>
-                <label for="university_Name">uni short name:</label>
-                <input type="text" v-model="university_Name">
-            </div>
-            <div>
-                <label for="university_Arabic_Name">University Arabic Name (short name in brackets):</label>
-                <input type="text" v-model="university_Arabic_Name">
-            </div>
-            <div>
-                <label for="university_Logo">University Logo (/images/Logos/Universites/National/.png):</label>
-                <input type="text" v-model="university_Logo">
-            </div>
-            <div>
-                <label for="Uni_Bio">University Bio (one sentence):</label>
-                <input type="text" v-model="Uni_Bio">
-            </div>
-            <div>
-                <label for="location">Location (https://):</label>
-                <input type="text" v-model="location">
-            </div>
-            <div>
-                <label for="website">Website (https://):</label>
-                <input type="text" v-model="website">
-            </div>
-            <div>
-                <label for="phone">Phone (without tel):</label>
-                <input type="text" v-model="phone">
-            </div>
-            <div>
-                <label for="email">Email (without mailto):</label>
-                <input type="text" v-model="email">
-            </div>
-            <div>
-                <label for="facebook">Facebook (https://):</label>
-                <input type="text" v-model="facebook">
-            </div>
-            <div>
-                <label for="instagram">Instagram (https://):</label>
-                <input type="text" v-model="instagram">
-            </div>
-            <div>
-                <label for="youtube">YouTube (https://):</label>
-                <input type="text" v-model="youtube">
-            </div>
-            <div>
-                <label for="linkedin">LinkedIn (https://):</label>
-                <input type="text" v-model="linkedin">
-            </div>
-            <div>
-                <label for="first_year">Tansik Past Year:</label>
-                <input type="text" v-model="first_year">
-            </div>
-            <div>
-                <label for="second_year">Tansik Current Year:</label>
-                <input type="text" v-model="second_year">
-            </div>
-            <div>
-                <label for="international_programs">International Programs Details (https://):</label>
-                <input type="text" v-model="international_programs">
-            </div>
-            <div>
-                <label for="dorms_link">Dorms Details Link (https://):</label>
-                <input type="text" v-model="dorms_link">
-            </div>
-            <div>
-                <label for="transportation_link">Transportation Details Link (https://):</label>
-                <input type="text" v-model="transportation_link">
-            </div>
-            <div>
-                <label for="scholarship_link">Scholarship Details Link (https://):</label>
-                <input type="text" v-model="scholarship_link">
-            </div>
-            <div>
-                <label for="Egyptian_Admission_link">Egyptians Admission Link (https://):</label>
-                <input type="text" v-model="Egyptian_Admission_link">
-            </div>
-            <div>
-                <label for="Egyptian_Admission_link2">Egyptians International Programs Admission Link (https://):</label>
-                <input type="text" v-model="Egyptian_Admission_link2">
-            </div>
-            <div>
-                <label for="Egyptian_Transfer_link">Egyptians Transfer Link :</label>
-                <input type="text" v-model="Egyptian_Transfer_link">
-            </div>
-            <div>
-                <label for="Wafdeen_Admission_link (https://)">Wafdeen Admission Link:</label>
-                <input type="text" v-model="Wafdeen_Admission_link">
-            </div>
-            <br>
-            <button type="submit">Add</button>
-        </form>
-
-        <br>
-        <h1 style="color: #001d3d; font-weight: bold;">________________</h1>
-        <br><br>
-
-        <h1>Add Dorms</h1>
-        <form @submit.prevent="dorms">
-            <div>
-                <label for="spec">Uni Short Name:</label>
-                <input type="text" id="spec" v-model="spec">
-            </div>
-            <div>
-                <label for="type">Type:</label>
-                <input type="text" id="type" v-model="type">
-            </div>
-            <div>
-                <label for="price">Price:</label>
-                <input type="text" id="price" v-model="price">
-            </div>
-            <br>
-            <button type="submit">Add</button>
-        </form>
-
-        <br>
-        <h1 style="color: #001d3d; font-weight: bold;">________________</h1>
-        <br><br>
-
-        <h1>Add Transportation</h1>
-        <form @submit.prevent="trans">
-          <div>
-                <label for="spec">Uni Short Name:</label>
-                <input type="text" id="spec" v-model="spec2">
-            </div>
-            <div>
-                <label for="type">Route:</label>
-                <input type="text" id="type" v-model="type2">
-            </div>
-            <div>
-                <label for="price">price:</label>
-                <input type="text" id="price" v-model="price2">
-            </div>
-
-            <br>
-            <button type="submit">Add</button>
-        </form>
-        
-        <br>
-        <h1 style="color: #001d3d; font-weight: bold;">________________</h1>
-        <br><br>
-
-        <h1>Add University Admission Status</h1>
-        <form @submit.prevent="admission">
-        <div>
-            <label for="university_admission">Uni short name:</label>
-            <input type="text" id="university_admission" v-model="university_admission">
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" v-model="password" id="password" required>
         </div>
-        <div>
-            <label for="university_Arabic_Name_admission">University Arabic Name (short name in brackets):</label>
-            <input type="text" id="university_Arabic_Name_admission" v-model="university_Arabic_Name_admission">
-        </div>
-        <div>
-            <label for="transfer_status">Transfer Status:</label>
-            <input type="text" id="transfer_status" v-model="transfer_status">
-        </div>
-        <div>
-            <label for="thanwyaa_firstYear_status">Thanwyaa First Year Status:</label>
-            <input type="text" id="thanwyaa_firstYear_status" v-model="thanwyaa_firstYear_status">
-        </div>
-        <div>
-            <label for="thanwyaa_secondYear_status">Thanwyaa Second Year Status:</label>
-            <input type="text" id="thanwyaa_secondYear_status" v-model="thanwyaa_secondYear_status">
-        </div>
-        <div>
-            <label for="azhar_firstYear_status">Azhar First Year Status:</label>
-            <input type="text" id="azhar_firstYear_status" v-model="azhar_firstYear_status">
-        </div>
-        <div>
-            <label for="azhar_secondYear_status">Azhar Second Year Status:</label>
-            <input type="text" id="azhar_secondYear_status" v-model="azhar_secondYear_status">
-        </div>
-        <div>
-            <label for="Arabenglish_firstYear_status">Arabenglish First Year Status:</label>
-            <input type="text" id="Arabenglish_firstYear_status" v-model="Arabenglish_firstYear_status">
-        </div>
-        <div>
-            <label for="Arabenglish_secondYear_status">Arabenglish Second Year Status:</label>
-            <input type="text" id="Arabenglish_secondYear_status" v-model="Arabenglish_secondYear_status">
-        </div>
-        <div>
-            <label for="wafdeen_status">Wafdeen Status:</label>
-            <input type="text" id="wafdeen_status" v-model="wafdeen_status">
-        </div>
-        <div>
-            <label for="guide_Url">Guide URL (/guide/UGRAD/National/):</label>
-            <input type="text" id="guide_Url" v-model="guide_Url">
-        </div>
-        <br>
-        <button type="submit">Add</button>
-    </form>
-        <br>
+        <button type="submit">Login</button>
+      </form>
     </div>
-</template>
 
+    <!-- Admin Panel -->
+    <div v-if="isAuthenticated">
+      <h1 style="color: #001d3d; font-weight: bold;">NUFT Admin Panel</h1>
+
+      <h1 style="color: #ffbf00; font-weight: bold;">الجامعات الاهلية</h1>
+       
+      <div class="form-section">
+      <h1>Add University Faculties</h1>      
+        <form @submit.prevent="handleSubmit">
+          <div class="form-group">
+            <label for="university">Uni Short Name:</label>
+            <input type="text" v-model="university" id="university">
+          </div>
+          <div class="form-group">
+            <label for="normal_or_Dual">Type (Normal or Dual):</label>
+            <input type="text" v-model="normal_or_Dual" id="normal_or_Dual">
+          </div>   
+          <div class="form-group">
+            <label for="faculty">Faculty/International Program Name:</label>
+            <input type="text" v-model="faculty" id="faculty">
+          </div>                                       
+          <div class="form-group">
+            <label for="programs">Faculty Programs/International Program Details:</label>
+            <input type="text" v-model="programs" id="programs">
+          </div>
+          <div class="form-group">
+            <label for="feesEgyption">Egyptian Fees (EGP):</label>
+            <input type="text" v-model="feesEgyption" id="feesEgyption">
+          </div>
+          <div class="form-group">
+            <label for="feesNatives">Wafedeen Fees (USD):</label>
+            <input type="text" v-model="feesNatives" id="feesNatives">
+          </div>
+          <div class="form-group">
+            <label for="section">Section:</label>
+            <input type="text" v-model="section" id="section">
+          </div>
+          <div class="form-group">
+            <label for="thanwyaa_firstYear_score">Thanwya Score (Past):</label>
+            <input type="text" v-model="thanwyaa_firstYear_score" id="thanwyaa_firstYear_score">
+          </div>
+          <div class="form-group">
+            <label for="thanwyaa_secondYear_score">Thanwya Score (Current):</label>
+            <input type="text" v-model="thanwyaa_secondYear_score" id="thanwyaa_secondYear_score">
+          </div>
+          <div class="form-group">
+            <label for="azhar_firstYear_score">Azhar Score (Past):</label>
+            <input type="text" v-model="azhar_firstYear_score" id="azhar_firstYear_score">
+          </div>
+          <div class="form-group">
+            <label for="azhar_secondYear_score">Azhar Score (Current):</label>
+            <input type="text" v-model="azhar_secondYear_score" id="azhar_secondYear_score">
+          </div>
+          <div class="form-group">
+            <label for="Arabenglish_firstYear_score">Arabenglish Score (Past):</label>
+            <input type="text" v-model="Arabenglish_firstYear_score" id="Arabenglish_firstYear_score">
+          </div>
+          <div class="form-group">
+            <label for="Arabenglish_secondYear_score">Arabenglish Score (Current):</label>
+            <input type="text" v-model="Arabenglish_secondYear_score" id="Arabenglish_secondYear_score">
+          </div>
+          <div class="form-group">
+            <label for="wafdeen_score">Wafdeen Score:</label>
+            <input type="text" v-model="wafdeen_score" id="wafdeen_score">
+          </div>
+          <button type="submit">Add</button>
+        </form>
+      </div>
+
+      <div class="form-section">
+      <h1>Add University Info & Links</h1>      
+        <form @submit.prevent="links">
+          <div class="form-group">
+            <label for="university_Name">Uni Short Name:</label>
+            <input type="text" v-model="university_Name">
+          </div>
+          <div class="form-group">
+            <label for="university_Arabic_Name">University Arabic Name (short name in brackets):</label>
+            <input type="text" v-model="university_Arabic_Name">
+          </div>
+          <div class="form-group">
+            <label for="university_Logo">University Logo (/images/Logos/Universites/National/.png):</label>
+            <input type="text" v-model="university_Logo">
+          </div>
+          <div class="form-group">
+            <label for="Uni_Bio">University Bio (one sentence):</label>
+            <input type="text" v-model="Uni_Bio">
+          </div>
+          <div class="form-group">
+            <label for="location">Location (https://):</label>
+            <input type="text" v-model="location">
+          </div>
+          <div class="form-group">
+            <label for="website">Website (https://):</label>
+            <input type="text" v-model="website">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone (without tel):</label>
+            <input type="text" v-model="phone">
+          </div>
+          <div class="form-group">
+            <label for="email">Email (without mailto):</label>
+            <input type="text" v-model="email">
+          </div>
+          <div class="form-group">
+            <label for="facebook">Facebook (https://):</label>
+            <input type="text" v-model="facebook">
+          </div>
+          <div class="form-group">
+            <label for="instagram">Instagram (https://):</label>
+            <input type="text" v-model="instagram">
+          </div>
+          <div class="form-group">
+            <label for="youtube">YouTube (https://):</label>
+            <input type="text" v-model="youtube">
+          </div>
+          <div class="form-group">
+            <label for="linkedin">LinkedIn (https://):</label>
+            <input type="text" v-model="linkedin">
+          </div>
+          <div class="form-group">
+            <label for="first_year">Tansik Past Year:</label>
+            <input type="text" v-model="first_year">
+          </div>
+          <div class="form-group">
+            <label for="second_year">Tansik Current Year:</label>
+            <input type="text" v-model="second_year">
+          </div>
+          <div class="form-group">
+            <label for="international_programs">International Programs Details (https://):</label>
+            <input type="text" v-model="international_programs">
+          </div>
+          <div class="form-group">
+            <label for="dorms_link">Dorms Details Link (https://):</label>
+            <input type="text" v-model="dorms_link">
+          </div>
+          <div class="form-group">
+            <label for="transportation_link">Transportation Details Link (https://):</label>
+            <input type="text" v-model="transportation_link">
+          </div>
+          <div class="form-group">
+            <label for="scholarship_link">Scholarship Details Link (https://):</label>
+            <input type="text" v-model="scholarship_link">
+          </div>
+          <div class="form-group">
+            <label for="Egyptian_Admission_link">Egyptians Admission Link (https://):</label>
+            <input type="text" v-model="Egyptian_Admission_link">
+          </div>
+          <div class="form-group">
+            <label for="Egyptian_Admission_link2">Egyptians International Programs Admission Link (https://):</label>
+            <input type="text" v-model="Egyptian_Admission_link2">
+          </div>
+          <div class="form-group">
+            <label for="Egyptian_Transfer_link">Egyptians Transfer Link:</label>
+            <input type="text" v-model="Egyptian_Transfer_link">
+          </div>
+          <div class="form-group">
+            <label for="Wafdeen_Admission_link">Wafdeen Admission Link:</label>
+            <input type="text" v-model="Wafdeen_Admission_link">
+          </div>
+          <button type="submit">Add</button>
+        </form>
+      </div>
+
+      <div class="form-section">
+      <h1>Add University Dorms</h1>     
+        <form @submit.prevent="dorms">
+          <div class="form-group">
+            <label for="dorms_Name">Dorm Name:</label>
+            <input type="text" v-model="dorms_Name">
+          </div>
+          <div class="form-group">
+            <label for="dorms_Description">Dorm Description:</label>
+            <input type="text" v-model="dorms_Description">
+          </div>
+          <div class="form-group">
+            <label for="dorms_Fees">Dorm Fees (per month):</label>
+            <input type="text" v-model="dorms_Fees">
+          </div>
+          <div class="form-group">
+            <label for="dorms_Facilities">Dorm Facilities:</label>
+            <input type="text" v-model="dorms_Facilities">
+          </div>
+          <button type="submit">Add</button>
+        </form>
+      </div>
+
+      <div class="form-section">
+      <h1>Add University Transportation</h1>   
+        <form @submit.prevent="transportation">
+          <div class="form-group">
+            <label for="transportation_Name">Transportation Name:</label>
+            <input type="text" v-model="transportation_Name">
+          </div>
+          <div class="form-group">
+            <label for="transportation_Description">Transportation Description:</label>
+            <input type="text" v-model="transportation_Description">
+          </div>
+          <div class="form-group">
+            <label for="transportation_Fees">Transportation Fees (per month):</label>
+            <input type="text" v-model="transportation_Fees">
+          </div>
+          <div class="form-group">
+            <label for="transportation_Facilities">Transportation Facilities:</label>
+            <input type="text" v-model="transportation_Facilities">
+          </div>
+          <button type="submit">Add</button>
+        </form>
+      </div>
+
+      <div class="form-section">
+      <h1>Add University Admission Status</h1>
+        <form @submit.prevent="admission">
+          <div class="form-group">
+            <label for="admission_Title">Admission Title:</label>
+            <input type="text" v-model="admission_Title">
+          </div>
+          <div class="form-group">
+            <label for="admission_Description">Admission Description:</label>
+            <input type="text" v-model="admission_Description">
+          </div>
+          <div class="form-group">
+            <label for="admission_Fees">Admission Fees (EGP):</label>
+            <input type="text" v-model="admission_Fees">
+          </div>
+          <div class="form-group">
+            <label for="admission_Facilities">Admission Facilities:</label>
+            <input type="text" v-model="admission_Facilities">
+          </div>
+          <button type="submit">Add</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>
 <script>
 import axios from 'axios';
 
@@ -278,6 +259,10 @@ export default {
     name: 'AdminPanel',
     data() {
         return {
+          // Authentication data
+          username: '',
+           password: '',
+           isAuthenticated: false,
             // Data properties for "handleSubmit"
             university: '',
             faculty: '',
@@ -342,8 +327,16 @@ export default {
             guide_Url: '',
         };
     },
-    methods: {
-        handleSubmit() {
+   methods: {
+    handleLogin() {
+      // Simple hardcoded authentication check
+      if (this.username === 'admin' && this.password === 'admin') {
+        this.isAuthenticated = true;
+      } else {
+        alert('Invalid username or password');
+      }
+    },
+    handleSubmit() {
             const formData = {
                 university: this.university,
                 faculty: this.faculty,
@@ -458,60 +451,104 @@ export default {
 
 <style scoped>
 .parent {
-    margin: 20px;
+  margin: 20px;
 }
 
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+}
+
+.login-form form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.login-form label {
+  margin-bottom: 5px;
+}
+
+.login-form input[type="text"], 
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+.login-form button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-form button:hover {
+  background-color: #45a049;
+}
+
+/* Admin Panel styles */
 .title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .section-title {
-    font-size: 20px;
-    margin-bottom: 10px;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 .section-subtitle {
-    font-size: 18px;
-    margin-top: 20px;
-    margin-bottom: 10px;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .form-section {
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
 }
 
 .form-group {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
 input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
 }
 
 button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: #45a049;
+  background-color: #45a049;
 }
 </style>

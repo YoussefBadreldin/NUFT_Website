@@ -1,6 +1,7 @@
 <template>
   <div class="parent">
     <div v-if="!isAuthenticated" class="login-form">
+   <h1 style="color: #001d3d; font-weight: bold;">NUFT Admin Panel</h1>
       <h2>Login</h2>
       <form @submit.prevent="handleLogin">
         <div>
@@ -17,7 +18,6 @@
     </div>
 
     <div v-else>
-      <h1>NUFT Admin Panel</h1>
       <div class="buttons" dir="rtl">
         <a href="/NUFTawyNumber1-national" class="button">الجامعات الاهلية</a>
         <a href="/NUFTawyNumber1-private" class="button">الجامعات الخاصة</a>

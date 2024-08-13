@@ -268,7 +268,7 @@ export default {
     methods: {
         async get_data() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationalfaculty/getnational');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/privatefaculty/getprivate');
                 console.log('API response data:', response.data);
                 if (response.data && Array.isArray(response.data.faculty)) {
                     this.all_data = response.data.faculty;
@@ -290,7 +290,7 @@ export default {
         },
         async getLinks() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationallinks/get_nationallinks');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/privatelinks/get_privatelinks');
                 this.links = response.data;
                 this.filteredLinks = this.links.filter(index => index.university === 'O6U');
                 console.log(this.filteredLinks);
@@ -324,7 +324,7 @@ export default {
         },
         async getDorms() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaldorms/getnationaldorms');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/privatedorms/getprivatedorms');
                 this.dorms = response.data;
                 this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'O6U');
                 //console.log('dorms table', this.filteredDorms)
@@ -334,7 +334,7 @@ export default {
         },
         async gettrans() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaltrans/getnationaltrans');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/privatetrans/getprivatetrans');
                 this.trans = response.data;
                 this.filteredTrans = this.trans.filter(index => index.spec === 'O6U');
                 console.log('filteredTrans', this.filteredTrans)

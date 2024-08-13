@@ -1,34 +1,37 @@
 <template>
     <div class="parent">
-        <h1>NUFT Admin Panel</h1>
+        <h1 style="color: #001d3d; font-weight: bold;">NUFT Admin Panel</h1>
+
         <br><br>
-        <h1>الجامعات الاهلية</h1>
-        <br><br>
+        <h1 style="color: #ffbf00; font-weight: bold;">الجامعات الدولية</h1>
+        <br>
+        <h1 style="color: #001d3d; font-weight: bold;">________________</h1>
+        <br>
         <h1>Add University Faculties</h1>        
         <div class="container">
             <form @submit.prevent="handleSubmit">
                 <div>
-                    <label for="university">University:</label>
+                    <label for="university">uni short name:</label>
                     <input type="text" v-model="university" id="university">
-                </div>
-                <div>
-                    <label for="faculty">Faculty:</label>
-                    <input type="text" v-model="faculty" id="faculty">
                 </div>
                 <div>
                     <label for="normal_or_Dual">Type (Normal or Dual):</label>
                     <input type="text" v-model="normal_or_Dual" id="normal_or_Dual">
-                </div>                           
+                </div>   
+                 <div>
+                    <label for="faculty">Faculty/International Program Name:</label>
+                    <input type="text" v-model="faculty" id="faculty">
+                </div>                                       
                 <div>
-                    <label for="programs">Programs:</label>
+                    <label for="programs">Faculty Programs/International Program Details:</label>
                     <input type="text" v-model="programs" id="programs">
                 </div>
                 <div>
-                    <label for="feesEgyption">Fees (Egyptian):</label>
+                    <label for="feesEgyption">Egyptian Fees (EGP):</label>
                     <input type="text" v-model="feesEgyption" id="feesEgyption">
                 </div>
                 <div>
-                    <label for="feesNatives">Fees (Wafedeen):</label>
+                    <label for="feesNatives">Wafedeen Fees (USD):</label>
                     <input type="text" v-model="feesNatives" id="feesNatives">
                 </div>
                 <div>
@@ -68,56 +71,58 @@
             </form>
         </div>
 
+         <br>
+        <h1 style="color: #001d3d; font-weight: bold;">________________</h1>
         <br><br>
 
         <h1>Add University Info & Links</h1>
         <form @submit.prevent="links">    
             <div>
-                <label for="university_Name">University:</label>
+                <label for="university_Name">uni short name:</label>
                 <input type="text" v-model="university_Name">
             </div>
             <div>
-                <label for="university_Arabic_Name">University Arabic Name:</label>
+                <label for="university_Arabic_Name">University Arabic Name (short name in brackets):</label>
                 <input type="text" v-model="university_Arabic_Name">
             </div>
             <div>
-                <label for="university_Logo">University Logo:</label>
+                <label for="university_Logo">University Logo (/images/Logos/Universites/National/.png):</label>
                 <input type="text" v-model="university_Logo">
             </div>
             <div>
-                <label for="Uni_Bio">University Bio:</label>
+                <label for="Uni_Bio">University Bio (one sentence):</label>
                 <input type="text" v-model="Uni_Bio">
             </div>
             <div>
-                <label for="location">Location:</label>
+                <label for="location">Location (https://):</label>
                 <input type="text" v-model="location">
             </div>
             <div>
-                <label for="website">Website:</label>
+                <label for="website">Website (https://):</label>
                 <input type="text" v-model="website">
             </div>
             <div>
-                <label for="phone">Phone:</label>
+                <label for="phone">Phone (without tel):</label>
                 <input type="text" v-model="phone">
             </div>
             <div>
-                <label for="email">Email:</label>
+                <label for="email">Email (without mailto):</label>
                 <input type="text" v-model="email">
             </div>
             <div>
-                <label for="facebook">Facebook:</label>
+                <label for="facebook">Facebook (https://):</label>
                 <input type="text" v-model="facebook">
             </div>
             <div>
-                <label for="instagram">Instagram:</label>
+                <label for="instagram">Instagram (https://):</label>
                 <input type="text" v-model="instagram">
             </div>
             <div>
-                <label for="youtube">YouTube:</label>
+                <label for="youtube">YouTube (https://):</label>
                 <input type="text" v-model="youtube">
             </div>
             <div>
-                <label for="linkedin">LinkedIn:</label>
+                <label for="linkedin">LinkedIn (https://):</label>
                 <input type="text" v-model="linkedin">
             </div>
             <div>
@@ -129,47 +134,49 @@
                 <input type="text" v-model="second_year">
             </div>
             <div>
-                <label for="international_programs">International Programs Details:</label>
+                <label for="international_programs">International Programs Details (https://):</label>
                 <input type="text" v-model="international_programs">
             </div>
             <div>
-                <label for="dorms_link">Dorms Details Link:</label>
+                <label for="dorms_link">Dorms Details Link (https://):</label>
                 <input type="text" v-model="dorms_link">
             </div>
             <div>
-                <label for="transportation_link">Transportation Details Link:</label>
+                <label for="transportation_link">Transportation Details Link (https://):</label>
                 <input type="text" v-model="transportation_link">
             </div>
             <div>
-                <label for="scholarship_link">Scholarship Details Link:</label>
+                <label for="scholarship_link">Scholarship Details Link (https://):</label>
                 <input type="text" v-model="scholarship_link">
             </div>
             <div>
-                <label for="Egyptian_Admission_link">Egyptians Admission Link:</label>
+                <label for="Egyptian_Admission_link">Egyptians Admission Link (https://):</label>
                 <input type="text" v-model="Egyptian_Admission_link">
             </div>
             <div>
-                <label for="Egyptian_Admission_link2">Egyptians Admission Link (International Programs):</label>
+                <label for="Egyptian_Admission_link2">Egyptians International Programs Admission Link (https://):</label>
                 <input type="text" v-model="Egyptian_Admission_link2">
             </div>
             <div>
-                <label for="Egyptian_Transfer_link">Egyptians Admission Link (Transfer):</label>
+                <label for="Egyptian_Transfer_link">Egyptians Transfer Link :</label>
                 <input type="text" v-model="Egyptian_Transfer_link">
             </div>
             <div>
-                <label for="Wafdeen_Admission_link">Wafdeen Admission Link:</label>
+                <label for="Wafdeen_Admission_link (https://)">Wafdeen Admission Link:</label>
                 <input type="text" v-model="Wafdeen_Admission_link">
             </div>
             <br>
             <button type="submit">Add</button>
         </form>
 
+        <br>
+        <h1 style="color: #001d3d; font-weight: bold;">________________</h1>
         <br><br>
 
-        <h1>Add University Dorms</h1>
+        <h1>Add Dorms</h1>
         <form @submit.prevent="dorms">
             <div>
-                <label for="spec">University:</label>
+                <label for="spec">Uni Short Name:</label>
                 <input type="text" id="spec" v-model="spec">
             </div>
             <div>
@@ -184,36 +191,41 @@
             <button type="submit">Add</button>
         </form>
 
+        <br>
+        <h1 style="color: #001d3d; font-weight: bold;">________________</h1>
         <br><br>
 
-        <h1>Add University Transportation</h1>
+        <h1>Add Transportation</h1>
         <form @submit.prevent="trans">
-            <div>
-                <label for="spec2">University:</label>
-                <input type="text" id="spec2" v-model="spec2">
+          <div>
+                <label for="spec">Uni Short Name:</label>
+                <input type="text" id="spec" v-model="spec2">
             </div>
             <div>
-                <label for="type2">Type:</label>
-                <input type="text" id="type2" v-model="type2">
+                <label for="type">Route:</label>
+                <input type="text" id="type" v-model="type2">
             </div>
             <div>
-                <label for="price2">Price:</label>
-                <input type="text" id="price2" v-model="price2">
+                <label for="price">price:</label>
+                <input type="text" id="price" v-model="price2">
             </div>
+
             <br>
             <button type="submit">Add</button>
         </form>
-
+        
+        <br>
+        <h1 style="color: #001d3d; font-weight: bold;">________________</h1>
         <br><br>
 
         <h1>Add University Admission Status</h1>
         <form @submit.prevent="admission">
         <div>
-            <label for="university_admission">University:</label>
+            <label for="university_admission">Uni short name:</label>
             <input type="text" id="university_admission" v-model="university_admission">
         </div>
         <div>
-            <label for="university_Arabic_Name_admission">University Arabic Name:</label>
+            <label for="university_Arabic_Name_admission">University Arabic Name (short name in brackets):</label>
             <input type="text" id="university_Arabic_Name_admission" v-model="university_Arabic_Name_admission">
         </div>
         <div>
@@ -249,7 +261,7 @@
             <input type="text" id="wafdeen_status" v-model="wafdeen_status">
         </div>
         <div>
-            <label for="guide_Url">Guide URL:</label>
+            <label for="guide_Url">Guide URL (/guide/UGRAD/National/):</label>
             <input type="text" id="guide_Url" v-model="guide_Url">
         </div>
         <br>
@@ -393,35 +405,29 @@ export default {
                     console.error('Error adding links:', error);
                 });
         },
-        dorms() {
+         dorms(){
             const form = {
-                spec: this.spec,
                 type: this.type,
                 price: this.price,
-            };
-
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/info/addinternationaldorms', form)
-                .then(() => {
-                    alert('Form sent successfully');
-                })
-                .catch(error => {
-                    console.error('Error adding dorms:', error);
-                });
+                spec: this.spec
+            }
+            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationaldorms/addinternationaldorms', form).then(()=>{
+                alert('form sent successfully');
+            }).catch(error=>{
+                console.log(error);
+            })
         },
-        trans() {
+        trans(){
             const form = {
-                spec: this.spec2,
                 type: this.type2,
                 price: this.price2,
-            };
-
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationaltrans/addinternationaltrans', form)
-                .then(() => {
-                    alert('Form sent successfully');
-                })
-                .catch(error => {
-                    console.error('Error adding transportation:', error);
-                });
+                spec: this.spec2
+            }
+            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationaltrans/addinternationaltrans', form).then(()=>{
+                alert('form sent succesffully');
+            }).catch(error=>{
+                console.log(error);
+            })
         },
         admission() {
             const form = {
@@ -450,16 +456,62 @@ export default {
 };
 </script>
 
-
 <style scoped>
-form div {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.parent {
+    margin: 20px;
 }
 
-@media (max-width: 425px) {
-    form div {
-        grid-template-columns: 1fr;
-    }
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.form-section {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
 }
 </style>

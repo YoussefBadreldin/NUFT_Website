@@ -51,8 +51,8 @@
               <th rowspan="2">الرسوم للوافدين (في السنة)</th>
               <th rowspan="2">الشعبة</th>
               <th colspan="2">الحد الأدنى للثانوية العامة وستيم والنيل</th>
-              <th colspan="2">الحد الأدنى للثانوية الأزهرية</th>
-              <th colspan="2">الحد الأدنى للشهادات العربية والأجنبية</th>
+              <th colspan="2">الحد الأدنى للثانوية الأزهرية (بعد المعادلة)</th>
+              <th colspan="2">الحد الأدنى للشهادات العربية والأجنبية (بعد المعادلة)</th>
               <th rowspan="2">الحد الأدنى للوافدين</th>
             </tr>
             <tr>
@@ -86,7 +86,7 @@
       <p>
         الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت)
       </p>
-      <a href="/Status/UGRAD/National" style="display: block; text-align: center;">
+      <a href="/Status/UGRAD/special" style="display: block; text-align: center;">
         <button>اضغط هنا لمعرفة حالة تقديم الجامعة</button>
       </a>
     </section>
@@ -105,8 +105,8 @@
               <th rowspan="2">الرسوم للوافدين (في السنة)</th>
               <th rowspan="2">الشعبة</th>
               <th colspan="2">الحد الأدنى للثانوية العامة وستيم والنيل</th>
-              <th colspan="2">الحد الأدنى للثانوية الأزهرية</th>
-              <th colspan="2">الحد الأدنى للشهادات العربية والأجنبية</th>
+              <th colspan="2">الحد الأدنى للثانوية الأزهرية (بعد المعادلة)</th>
+              <th colspan="2">الحد الأدنى للشهادات العربية والأجنبية (بعد المعادلة)</th>
               <th rowspan="2">الحد الأدنى للوافدين</th>
             </tr>
             <tr>
@@ -268,7 +268,7 @@ export default {
     methods: {
         async get_data() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationalfaculty/getnational');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/specialfaculty/getspecial');
                 console.log('API response data:', response.data);
                 if (response.data && Array.isArray(response.data.faculty)) {
                     this.all_data = response.data.faculty;
@@ -290,7 +290,7 @@ export default {
         },
         async getLinks() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationallinks/get_nationallinks');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/speciallinks/get_speciallinks');
                 this.links = response.data;
                 this.filteredLinks = this.links.filter(index => index.university === 'GIU');
                 console.log(this.filteredLinks);
@@ -324,7 +324,7 @@ export default {
         },
         async getDorms() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaldorms/getnationaldorms');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/specialdorms/getspecialdorms');
                 this.dorms = response.data;
                 this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'GIU');
                 //console.log('dorms table', this.filteredDorms)
@@ -334,7 +334,7 @@ export default {
         },
         async gettrans() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaltrans/getnationaltrans');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/specialtrans/getspecialtrans');
                 this.trans = response.data;
                 this.filteredTrans = this.trans.filter(index => index.spec === 'GIU');
                 console.log('filteredTrans', this.filteredTrans)

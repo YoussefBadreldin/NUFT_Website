@@ -51,8 +51,8 @@
               <th rowspan="2">الرسوم للوافدين (في السنة)</th>
               <th rowspan="2">الشعبة</th>
               <th colspan="2">الحد الأدنى للثانوية العامة وستيم والنيل</th>
-              <th colspan="2">الحد الأدنى للثانوية الأزهرية</th>
-              <th colspan="2">الحد الأدنى للشهادات العربية والأجنبية</th>
+              <th colspan="2">الحد الأدنى للثانوية الأزهرية (بعد المعادلة)</th>
+              <th colspan="2">الحد الأدنى للشهادات العربية والأجنبية (بعد المعادلة)</th>
               <th rowspan="2">الحد الأدنى للوافدين</th>
             </tr>
             <tr>
@@ -105,8 +105,8 @@
               <th rowspan="2">الرسوم للوافدين (في السنة)</th>
               <th rowspan="2">الشعبة</th>
               <th colspan="2">الحد الأدنى للثانوية العامة وستيم والنيل</th>
-              <th colspan="2">الحد الأدنى للثانوية الأزهرية</th>
-              <th colspan="2">الحد الأدنى للشهادات العربية والأجنبية</th>
+              <th colspan="2">الحد الأدنى للثانوية الأزهرية (بعد المعادلة)</th>
+              <th colspan="2">الحد الأدنى للشهادات العربية والأجنبية (بعد المعادلة)</th>
               <th rowspan="2">الحد الأدنى للوافدين</th>
             </tr>
             <tr>
@@ -268,7 +268,7 @@ export default {
     methods: {
         async get_data() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationalfaculty/getnational');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationalfaculty/getinternational');
                 console.log('API response data:', response.data);
                 if (response.data && Array.isArray(response.data.faculty)) {
                     this.all_data = response.data.faculty;
@@ -290,7 +290,7 @@ export default {
         },
         async getLinks() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationallinks/get_nationallinks');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationallinks/get_internationallinks');
                 this.links = response.data;
                 this.filteredLinks = this.links.filter(index => index.university === 'UH');
                 console.log(this.filteredLinks);
@@ -324,7 +324,7 @@ export default {
         },
         async getDorms() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaldorms/getnationaldorms');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationaldorms/getinternationaldorms');
                 this.dorms = response.data;
                 this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'UH');
                 //console.log('dorms table', this.filteredDorms)
@@ -334,7 +334,7 @@ export default {
         },
         async gettrans() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaltrans/getnationaltrans');
+                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationaltrans/getinternationaltrans');
                 this.trans = response.data;
                 this.filteredTrans = this.trans.filter(index => index.spec === 'UH');
                 console.log('filteredTrans', this.filteredTrans)

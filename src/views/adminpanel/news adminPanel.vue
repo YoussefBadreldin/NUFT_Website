@@ -30,24 +30,24 @@
             <input type="text" v-model="news_title" id="news_title" required>
           </div>
           <div class="form-group">
-            <label for="news_photo">Logo URL:</label>
+            <label for="news_photo">Logo URL (/images/Logos/.png):</label>
             <input type="text" v-model="news_photo" id="news_photo">
           </div>
           <div class="form-group">
-            <label for="news_day">Day:</label>
+            <label for="news_day">Day (number):</label>
             <input type="number" v-model="news_day" id="news_day" min="1" max="31" required>
           </div>
           <div class="form-group">
-            <label for="news_month">Month:</label>
+            <label for="news_month">Month (name in arabic):</label>
             <input type="text" v-model="news_month" id="news_month" required>
           </div>
           <div class="form-group">
-            <label for="news_year">Year:</label>
+            <label for="news_year">Year (number):</label>
             <input type="number" v-model="news_year" id="news_year" min="1900" max="2099" required>
           </div>
           <div class="form-group">
-            <label for="news_link">Link:</label>
-            <input type="url" v-model="news_link" id="news_link" required>
+            <label for="news_link">Link (/Guide/UGRAD/ or https://):</label>
+            <input type="text" v-model="news_link" id="news_link" required>
           </div>
           <div class="form-group">
             <label for="news_details">Details:</label>

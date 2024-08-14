@@ -10,7 +10,7 @@
                 <p>كيف يمكنني مساعدتك؟</p>
                 <div class="row">
                     <div class="col-md-4">
-                        <router-link to="/smartAssistant/search">
+                        <router-link to="/smartAssistant/faculties">
                             <button class="btn btn-primary">الجامعات التي تحتوي على كلية معينة</button>
                         </router-link>
                     </div>
@@ -20,7 +20,7 @@
                         </router-link>
                     </div>
                     <div class="col-md-4">
-                        <router-link to="/smartAssistant/faculties">
+                        <router-link to="/smartAssistant/search">
                             <button class="btn btn-primary">البحث عن جامعة معينة</button>
                         </router-link>
                     </div>

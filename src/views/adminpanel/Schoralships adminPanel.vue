@@ -18,7 +18,7 @@
     </div>
 
     <!-- Admin Panel -->
-    <div v-if="isAuthenticated">
+    <div v-if="isAuthenticated" class="admin-panel">
       <h1 class="header-title">NUFT Admin Panel</h1>
       <h1 class="header-title">المنح الدراسية</h1>
 
@@ -26,40 +26,28 @@
         <h2 class="section-title">Add Scholarship</h2>
         <form @submit.prevent="addScholarship">
           <div class="form-group">
-            <label for="scholarship_name">Name:</label>
-            <input type="text" v-model="scholarship_name" id="scholarship_name" required>
+            <label for="scholarship_title">Title:</label>
+            <input type="text" v-model="scholarship_title" id="scholarship_title" required>
           </div>
           <div class="form-group">
-            <label for="scholarship_description">Description:</label>
-            <textarea id="scholarship_description" v-model="scholarship_description" cols="30" rows="5"></textarea>
+            <label for="scholarship_photo">Logo URL (/images/Logos):</label>
+            <input type="text" v-model="scholarship_photo" id="scholarship_photo">
           </div>
           <div class="form-group">
-            <label for="scholarship_image">Image URL:</label>
-            <input type="text" v-model="scholarship_image" id="scholarship_image">
-          </div>
-          <div class="form-group">
-            <label for="scholarship_type">Type:</label>
-            <input type="text" v-model="scholarship_type" id="scholarship_type" required>
-          </div>
-          <div class="form-group">
-            <label for="scholarship_amount">Amount:</label>
-            <input type="number" v-model="scholarship_amount" id="scholarship_amount" required>
-          </div>
-          <div class="form-group">
-            <label for="scholarship_deadline">Deadline:</label>
-            <input type="date" v-model="scholarship_deadline" id="scholarship_deadline" required>
-          </div>
-          <div class="form-group">
-            <label for="scholarship_criteria">Criteria:</label>
-            <textarea id="scholarship_criteria" v-model="scholarship_criteria" cols="30" rows="5"></textarea>
+            <label for="scholarship_details">Description:</label>
+            <textarea id="scholarship_details" v-model="scholarship_details" cols="30" rows="5"></textarea>
           </div>
           <div class="form-group">
             <label for="scholarship_link">Link:</label>
             <input type="text" v-model="scholarship_link" id="scholarship_link" required>
           </div>
           <div class="form-group">
-            <label for="scholarship_status">Status:</label>
-            <input type="text" v-model="scholarship_status" id="scholarship_status" required>
+            <label for="scholarship_type">Type (e.g., Full Scholarship):</label>
+            <input type="text" v-model="scholarship_type" id="scholarship_type" required>
+          </div>
+          <div class="form-group">
+            <label for="due_date">Due Date (Format: YYYY-MM-DD):</label>
+            <input type="text" v-model="due_date" id="due_date" required>
           </div>
           <button type="submit">Add</button>
         </form>
@@ -78,15 +66,12 @@ export default {
       username: '',
       password: '',
       isAuthenticated: false,
-      scholarship_name: '',
-      scholarship_description: '',
-      scholarship_image: '',
+      scholarship_title: '',
+      scholarship_details: '',
+      scholarship_photo: '',
       scholarship_type: '',
-      scholarship_amount: '',
-      scholarship_deadline: '',
-      scholarship_criteria: '',
-      scholarship_link: '',
-      scholarship_status: '',
+      due_date: '',
+      scholarship_link: ''
     };
   },
   methods: {
@@ -100,30 +85,25 @@ export default {
     },
     addScholarship() {
       const formData = {
-        scholarship_name: this.scholarship_name,
-        scholarship_description: this.scholarship_description,
-        scholarship_image: this.scholarship_image,
+        scholarship_title: this.scholarship_title,
+        scholarship_details: this.scholarship_details,
+        scholarship_photo: this.scholarship_photo,
         scholarship_type: this.scholarship_type,
-        scholarship_amount: this.scholarship_amount,
-        scholarship_deadline: this.scholarship_deadline,
-        scholarship_criteria: this.scholarship_criteria,
-        scholarship_link: this.scholarship_link,
-        scholarship_status: this.scholarship_status
+        due_date: this.due_date,
+        scholarship_link: this.scholarship_link
       };
+      
       axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/scholarships/addScholarship', formData)
         .then(() => {
           console.log('Scholarship added successfully');
           alert('Scholarship added successfully');
           // Reset form fields
-          this.scholarship_name = '';
-          this.scholarship_description = '';
-          this.scholarship_image = '';
+          this.scholarship_title = '';
+          this.scholarship_details = '';
+          this.scholarship_photo = '';
           this.scholarship_type = '';
-          this.scholarship_amount = '';
-          this.scholarship_deadline = '';
-          this.scholarship_criteria = '';
+          this.due_date = '';
           this.scholarship_link = '';
-          this.scholarship_status = '';
         })
         .catch(error => {
           console.error('Error adding scholarship:', error);
@@ -172,7 +152,6 @@ export default {
 
 .login-form input[type="text"], 
 .login-form input[type="password"], 
-.login-form input[type="number"],
 .login-form input[type="date"] {
   width: 100%;
   padding: 8px;
@@ -194,6 +173,10 @@ export default {
 }
 
 /* Admin Panel styles */
+.admin-panel {
+  margin-top: 20px;
+}
+
 .form-section {
   border: 1px solid #ddd;
   padding: 20px;
@@ -218,8 +201,6 @@ label {
 }
 
 input[type="text"], 
-input[type="number"], 
-input[type="url"], 
 input[type="date"] {
   width: 100%;
   padding: 8px;

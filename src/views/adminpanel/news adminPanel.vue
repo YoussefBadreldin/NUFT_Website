@@ -2,7 +2,7 @@
   <div class="parent">
     <!-- Login Form -->
     <div v-if="!isAuthenticated" class="login-form">
-    <h1 style="color: #ffbf00; font-weight: bold;">الاخبار</h1>
+      <h1 class="header-title">الاخبار</h1>
       <h2>Login</h2>
       <form @submit.prevent="handleLogin">
         <div class="form-group">
@@ -19,20 +19,43 @@
 
     <!-- Admin Panel -->
     <div v-if="isAuthenticated">
-      <h1 style="color: #001d3d; font-weight: bold;">NUFT Admin Panel</h1>
+      <h1 class="header-title">NUFT Admin Panel</h1>
+      <h1 class="header-title">الاخبار</h1>
 
-      <h1 style="color: #ffbf00; font-weight: bold;">الاخبار</h1>
-      <br>
-      
-      <form @submit.prevent="newsfunction">
-      <h1>Add News</h1>
-        <div class="form-group">
-          <label for="news">News Details:</label>
-          <textarea id="news" v-model="news" cols="30" rows="10"></textarea>
-        </div>
-        <br>
-        <button type="submit">Add</button>
-      </form>
+      <div class="form-section">
+        <h2 class="section-title">Add News</h2>
+        <form @submit.prevent="addNews">
+          <div class="form-group">
+            <label for="news_title">Title:</label>
+            <input type="text" v-model="news_title" id="news_title" required>
+          </div>
+          <div class="form-group">
+            <label for="news_photo">Logo URL:</label>
+            <input type="text" v-model="news_photo" id="news_photo">
+          </div>
+          <div class="form-group">
+            <label for="news_day">Day:</label>
+            <input type="number" v-model="news_day" id="news_day" min="1" max="31" required>
+          </div>
+          <div class="form-group">
+            <label for="news_month">Month:</label>
+            <input type="text" v-model="news_month" id="news_month" required>
+          </div>
+          <div class="form-group">
+            <label for="news_year">Year:</label>
+            <input type="number" v-model="news_year" id="news_year" min="1900" max="2099" required>
+          </div>
+          <div class="form-group">
+            <label for="news_link">Link:</label>
+            <input type="url" v-model="news_link" id="news_link" required>
+          </div>
+          <div class="form-group">
+            <label for="news_details">Details:</label>
+            <textarea id="news_details" v-model="news_details" cols="30" rows="10"></textarea>
+          </div>
+          <button type="submit">Add</button>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -47,7 +70,13 @@ export default {
       username: '',
       password: '',
       isAuthenticated: false,
-      news: '',
+      news_title: '',
+      news_photo: '',
+      news_day: '',
+      news_month: '',
+      news_year: '',
+      news_link: '',
+      news_details: '',
     };
   },
   methods: {
@@ -59,18 +88,32 @@ export default {
         alert('Invalid username or password');
       }
     },
-    newsfunction() {
-      const form = {
-        text: this.news,
+    addNews() {
+      const formData = {
+        news_title: this.news_title,
+        news_photo: this.news_photo,
+        news_day: this.news_day,
+        news_month: this.news_month,
+        news_year: this.news_year,
+        news_details: this.news_details,
+        news_link: this.news_link
       };
-      axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/news/addNews', form)
+      axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/news/addNews', formData)
         .then(() => {
-          console.log('News sent successfully');
-          alert('News sent successfully');
+          console.log('News added successfully');
+          alert('News added successfully');
+          // Reset form fields
+          this.news_title = '';
+          this.news_photo = '';
+          this.news_day = '';
+          this.news_month = '';
+          this.news_year = '';
+          this.news_link = '';
+          this.news_details = '';
         })
         .catch(error => {
-          console.log(error);
-          alert('Error sending news');
+          console.error('Error adding news:', error);
+          alert('Error adding news');
         });
     }
   }
@@ -90,6 +133,11 @@ export default {
   height: 100vh;
 }
 
+.header-title {
+  color: #ffbf00;
+  font-weight: bold;
+}
+
 .login-form h2 {
   margin-bottom: 20px;
 }
@@ -98,6 +146,10 @@ export default {
   display: flex;
   flex-direction: column;
   width: 300px;
+}
+
+.login-form .form-group {
+  margin-bottom: 15px;
 }
 
 .login-form label {
@@ -126,29 +178,17 @@ export default {
 }
 
 /* Admin Panel styles */
-.title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.section-title {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.section-subtitle {
-  font-size: 18px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
 .form-section {
   border: 1px solid #ddd;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 5px;
   background-color: #f9f9f9;
+}
+
+.section-title {
+  color: #ff0000;
+  font-weight: bold;
 }
 
 .form-group {
@@ -161,7 +201,15 @@ label {
   font-weight: bold;
 }
 
-input[type="text"] {
+input[type="text"], 
+input[type="number"], 
+input[type="url"] {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+textarea {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;

@@ -40,7 +40,7 @@
     </section>
 
     <section>
-      <h1>الكليات والبرامج</h1>
+      <h1>الكليات والبرامج (للمصريين والسودانين)</h1>
       <div class="table-responsive" dir="rtl">
         <table style="margin-top: 0;" dir="rtl">
           <thead>
@@ -67,6 +67,8 @@
               <td>{{ faculty.faculty }}</td>
               <td>{{ faculty.programs }}</td>
               <td>{{ faculty.feesEgyption }}</td>
+              <td>{{ faculty.feesEgyption2 }}</td>
+              <td>{{ faculty.feesEgyption3 }}</td>
               <td>{{ faculty.section }}</td>
               <td>{{ faculty.thanwyaa_firstYear_score }}</td>
               <td>{{ faculty.thanwyaa_secondYear_score }}</td>
@@ -82,6 +84,16 @@
       <p>
         الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت)
       </p>
+      <p>
+     فئة أ: من الي
+      <br>
+      فئة ب: من الي 
+       <br>
+       فئة ج: من الي
+      </p>
+            <p>
+     يتم احتساب الدولار للمصريين والسودانين ب 00 جنية
+      </p>      
       <a href="/Status/UGRAD/National" style="display: block; text-align: center;">
         <button>اضغط هنا لمعرفة حالة تقديم الجامعة</button>
       </a>
@@ -90,7 +102,7 @@
     <!-- International Programs -->
     <section>
     <br>
-      <h1>الكليات والبرامج</h1>
+      <h1>الكليات والبرامج (للوافدين)</h1>
       <div class="table-responsive" dir="rtl">
         <table>
           <thead>
@@ -117,6 +129,8 @@
               <td>{{ faculty.faculty }}</td>
               <td>{{ faculty.programs }}</td>
               <td>{{ faculty.feesEgyption }}</td>
+              <td>{{ faculty.feesEgyption2 }}</td>
+              <td>{{ faculty.feesEgyption3 }}</td>
               <td>{{ faculty.section }}</td>
               <td>{{ faculty.thanwyaa_firstYear_score }}</td>
               <td>{{ faculty.thanwyaa_secondYear_score }}</td>
@@ -132,9 +146,16 @@
       <p>
         الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت).
       </p>
-      <a :href="international_programs" target="_blank">
-        <button>مزيد من التفاصيل عن البرامج الدولية</button>
-      </a>
+      <p>
+     فئة أ: من الي
+      <br>
+      فئة ب: من الي 
+       <br>
+       فئة ج: من الي
+      </p>
+      <a href="/Status/UGRAD/National" style="display: block; text-align: center;">
+        <button>اضغط هنا لمعرفة حالة تقديم الجامعة</button>
+      </a> 
     </section>
 
     <!-- Dorms -->

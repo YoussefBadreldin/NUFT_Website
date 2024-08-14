@@ -93,7 +93,9 @@
 <br>
       <p>
      فئة أ: من الي
+      <br>
       فئة ب: من الي 
+       <br>
        فئة ج: من الي
       </p>
       <a href="/Status/UGRAD/National" style="display: block; text-align: center;">

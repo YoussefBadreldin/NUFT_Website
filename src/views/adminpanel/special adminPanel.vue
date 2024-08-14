@@ -98,7 +98,7 @@
             <input type="text" v-model="university_Arabic_Name">
           </div>
           <div class="form-group">
-            <label for="university_Logo">University Logo (/images/Logos/Universites/Private/.png):</label>
+            <label for="university_Logo">University Logo (/images/Logos/Universites/Special/.png):</label>
             <input type="text" v-model="university_Logo">
           </div>
           <div class="form-group">
@@ -264,7 +264,7 @@
             <input type="text" id="wafdeen_status" v-model="wafdeen_status">
           </div>
           <div class="form-group">
-            <label for="guide_Url">Guide URL (/guide/UGRAD/Private/):</label>
+            <label for="guide_Url">Guide URL (/guide/UGRAD/Special/):</label>
             <input type="text" id="guide_Url" v-model="guide_Url">
           </div>
           <button type="submit">Add</button>

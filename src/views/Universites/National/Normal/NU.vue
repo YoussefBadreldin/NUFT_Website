@@ -50,6 +50,7 @@
               <th rowspan="2">الرسوم للمصريين فئة أ (في السنة)</th>
               <th rowspan="2">الرسوم للمصريين فئة ب (في السنة)</th>
               <th rowspan="2">الرسوم للمصريين فئة ج (في السنة)</th>
+              <th rowspan="2">الرسوم للمصريين فئة د (في السنة)</th>
               <th rowspan="2">الرسوم للوافدين (في السنة)</th>
               <th rowspan="2">الشعبة</th>
               <th colspan="2">الحد الأدنى للثانوية العامة وستيم والنيل</th>
@@ -73,6 +74,7 @@
               <td>{{ faculty.feesEgyption }}</td>
               <td>{{ faculty.feesEgyption2 }}</td>
               <td>{{ faculty.feesEgyption3 }}</td>
+              <td>{{ faculty.feesEgyption4 }}</td>
               <td>{{ faculty.feesNatives }}</td>
               <td>{{ faculty.section }}</td>
               <td>{{ faculty.thanwyaa_firstYear_score }}</td>
@@ -97,6 +99,8 @@
       فئة ب: من الي 
        <br>
        فئة ج: من الي
+       <br>
+      فئة د: من الي 
       </p>
       <br>
       <a href="/Status/UGRAD/National" style="display: block; text-align: center;">

@@ -30,7 +30,7 @@
             <input type="text" v-model="news_title" id="news_title" required>
           </div>
           <div class="form-group">
-            <label for="news_photo">Logo URL (/images/Logos/.png):</label>
+            <label for="news_photo">Logo URL (/images/Logos/NEWS/.png):</label>
             <input type="text" v-model="news_photo" id="news_photo">
           </div>
           <div class="form-group">

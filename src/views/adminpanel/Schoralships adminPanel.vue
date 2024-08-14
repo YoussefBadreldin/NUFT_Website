@@ -30,7 +30,7 @@
             <input type="text" v-model="scholarship_title" id="scholarship_title" required>
           </div>
           <div class="form-group">
-            <label for="scholarship_photo">Logo URL (/images/Logos):</label>
+            <label for="scholarship_photo">Logo URL (/images/Logos/Scholarships/png):</label>
             <input type="text" v-model="scholarship_photo" id="scholarship_photo">
           </div>
           <div class="form-group">

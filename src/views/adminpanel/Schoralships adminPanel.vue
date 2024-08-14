@@ -38,7 +38,7 @@
             <textarea id="scholarship_details" v-model="scholarship_details" cols="30" rows="5"></textarea>
           </div>
           <div class="form-group">
-            <label for="scholarship_link">Link:</label>
+            <label for="scholarship_link">Link (https:):</label>
             <input type="text" v-model="scholarship_link" id="scholarship_link" required>
           </div>
           <div class="form-group">
@@ -46,7 +46,7 @@
             <input type="text" v-model="scholarship_type" id="scholarship_type" required>
           </div>
           <div class="form-group">
-            <label for="due_date">Due Date (Format: YYYY-MM-DD):</label>
+            <label for="due_date">Due Date (Full in Arabic):</label>
             <input type="text" v-model="due_date" id="due_date" required>
           </div>
           <button type="submit">Add</button>

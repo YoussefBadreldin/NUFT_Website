@@ -48,12 +48,10 @@
               <th rowspan="2">الكلية</th>
               <th rowspan="2">البرامج</th>
               <th rowspan="2">الرسوم للمصريين (في السنة)</th>
-              <th rowspan="2">الرسوم للوافدين (في السنة)</th>
               <th rowspan="2">الشعبة</th>
               <th colspan="2">الحد الأدنى للثانوية العامة وستيم والنيل</th>
               <th colspan="2">الحد الأدنى للثانوية الأزهرية (بعد المعادلة)</th>
               <th colspan="2">الحد الأدنى للشهادات العربية والأجنبية (بعد المعادلة)</th>
-              <th rowspan="2">الحد الأدنى للوافدين</th>
             </tr>
             <tr>
               <th>{{ firstYear }}</th>
@@ -69,7 +67,6 @@
               <td>{{ faculty.faculty }}</td>
               <td>{{ faculty.programs }}</td>
               <td>{{ faculty.feesEgyption }}</td>
-              <td>{{ faculty.feesNatives }}</td>
               <td>{{ faculty.section }}</td>
               <td>{{ faculty.thanwyaa_firstYear_score }}</td>
               <td>{{ faculty.thanwyaa_secondYear_score }}</td>
@@ -77,7 +74,6 @@
               <td>{{ faculty.azhar_secondYear_score }}</td>
               <td>{{ faculty.Arabenglish_firstYear_score }}</td>
               <td>{{ faculty.Arabenglish_secondYear_score }}</td>
-              <td>{{ faculty.wafdeen_score }}</td>
             </tr>
           </tbody>
         </table>
@@ -86,7 +82,7 @@
       <p>
         الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت)
       </p>
-      <a href="/Status/UGRAD/special" style="display: block; text-align: center;">
+      <a href="/Status/UGRAD/National" style="display: block; text-align: center;">
         <button>اضغط هنا لمعرفة حالة تقديم الجامعة</button>
       </a>
     </section>
@@ -94,20 +90,18 @@
     <!-- International Programs -->
     <section>
     <br>
-      <h2>البرامج الدولية</h2>
+      <h1>الكليات والبرامج</h1>
       <div class="table-responsive" dir="rtl">
         <table>
           <thead>
             <tr>
+              <th rowspan="2">الكلية</th>
               <th rowspan="2">البرامج</th>
-              <th rowspan="2">التفاصيل</th>
               <th rowspan="2">الرسوم للمصريين (في السنة)</th>
-              <th rowspan="2">الرسوم للوافدين (في السنة)</th>
               <th rowspan="2">الشعبة</th>
               <th colspan="2">الحد الأدنى للثانوية العامة وستيم والنيل</th>
               <th colspan="2">الحد الأدنى للثانوية الأزهرية (بعد المعادلة)</th>
               <th colspan="2">الحد الأدنى للشهادات العربية والأجنبية (بعد المعادلة)</th>
-              <th rowspan="2">الحد الأدنى للوافدين</th>
             </tr>
             <tr>
               <th>{{ firstYear }}</th>
@@ -123,7 +117,6 @@
               <td>{{ faculty.faculty }}</td>
               <td>{{ faculty.programs }}</td>
               <td>{{ faculty.feesEgyption }}</td>
-              <td>{{ faculty.feesNatives }}</td>
               <td>{{ faculty.section }}</td>
               <td>{{ faculty.thanwyaa_firstYear_score }}</td>
               <td>{{ faculty.thanwyaa_secondYear_score }}</td>
@@ -131,7 +124,6 @@
               <td>{{ faculty.azhar_secondYear_score }}</td>
               <td>{{ faculty.Arabenglish_firstYear_score }}</td>
               <td>{{ faculty.Arabenglish_secondYear_score }}</td>
-              <td>{{ faculty.wafdeen_score }}</td>
             </tr>
           </tbody>
         </table>

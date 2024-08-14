@@ -58,8 +58,8 @@ export default {
   },
   computed: {
     sortedScholarships() {
-      // Optionally sort the scholarshipData array based on due_date or any other criteria
-      return this.scholarshipData.slice().sort((a, b) => new Date(a.due_date) - new Date(b.due_date));
+      // Sort scholarships by id in ascending order and then reverse to get descending order
+      return this.scholarshipData.slice().sort((a, b) => a.id - b.id).reverse();
     }
   },
   methods: {

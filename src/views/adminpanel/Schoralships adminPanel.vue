@@ -93,7 +93,7 @@ export default {
         scholarship_link: this.scholarship_link
       };
       
-      axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/scholarships/addScholarship', formData)
+      axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/Schoralships/addSchoralships', formData)
         .then(() => {
           console.log('Scholarship added successfully');
           alert('Scholarship added successfully');

@@ -109,7 +109,10 @@ import SPBU from "../views/Universites/International/SPBU.vue";
 import NOVA from "../views/Universites/International/NOVA.vue";
 import ContactUs from "../views/contactUs.vue";
 import NewsPage from "../views/News.vue";
-
+import smartAssistant from "../views/smartAssistant/smartAssistant.vue";
+import searchsmartAssistant from "../views/smartAssistant/search-smartAssistant.vue";
+import scoresmartAssistant from "../views/smartAssistant/score-smartAssistant.vue";
+import facultiessmartAssistant from "../views/smartAssistant/faculties-smartAssistant.vue";
 
 const routes = [
   {
@@ -551,6 +554,26 @@ const routes = [
     path:"/News",
     name:"NewsPage",
     component:NewsPage
+  },
+  {
+    path:"/smartAssistant",
+    name:"smartAssistant",
+    component:smartAssistant
+  },
+  {
+    path:"/smartAssistant/search",
+    name:"searchsmartAssistant",
+    component:searchsmartAssistant
+  },
+  {
+    path:"/smartAssistant/score",
+    name:"scoresmartAssistant",
+    component:scoresmartAssistant
+  },
+  {
+    path:"/smartAssistant/faculties",
+    name:"facultiessmartAssistant",
+    component:facultiessmartAssistant
   },
   {
     path:'/Guide/UGRAD/special',

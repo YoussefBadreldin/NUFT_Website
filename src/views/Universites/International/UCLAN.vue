@@ -12,12 +12,13 @@
         <h2 class="center-text">
           {{ filteredLinks.length > 0 ? filteredLinks[0].university_Arabic_Name : '#' }}
         </h2>
+        
         <p class="center-text">
           {{ filteredLinks.length > 0 ? filteredLinks[0].Uni_Bio : '#' }}
         </p>
-          <div class="hosted-by-section">
-          <h3>Hosted by:</h3>
-          <img src="/images/Logos/Universites/international/GAF.png" alt="Host Photo" class="host-photo"/>
+        <div class="hosted-by-section">
+           <h3>Hosted by:</h3>
+          <img src="/images/Logos/Universites/international/EUE.png" alt="Host Photo" class="host-photo"/>
         </div>
         <br>
         <a 
@@ -231,7 +232,7 @@ import HeaderComponent from '../../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../../public/global/footerComponent.vue';
 
 export default {
-    name: 'UH',
+    name: 'UCLAN',
     data() {
         return {
             all_data: [],
@@ -282,8 +283,8 @@ export default {
                 }
                 if (Array.isArray(this.all_data)) {
                     console.log('All data:', this.all_data);
-                    this.filteredData = this.all_data.filter(index => index.university === 'UH' && index.normal_or_Dual === 'normal');
-                    this.filteredInternational = this.all_data.filter(index => index.normal_or_Dual === 'dual' && index.university === 'UH');
+                    this.filteredData = this.all_data.filter(index => index.university === 'UCLAN' && index.normal_or_Dual === 'normal');
+                    this.filteredInternational = this.all_data.filter(index => index.normal_or_Dual === 'dual' && index.university === 'UCLAN');
                     console.log('Filtered data:', this.filteredData);
                     console.log('Filtered international:', this.filteredInternational);
                 } else {
@@ -297,7 +298,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationallinks/get_internationallinks');
                 this.links = response.data;
-                this.filteredLinks = this.links.filter(index => index.university === 'UH');
+                this.filteredLinks = this.links.filter(index => index.university === 'UCLAN');
                 console.log(this.filteredLinks);
                 if (this.filteredLinks.length > 0) {
                     const linkData = this.filteredLinks[0];
@@ -331,7 +332,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationaldorms/getinternationaldorms');
                 this.dorms = response.data;
-                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'UH');
+                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'UCLAN');
                 //console.log('dorms table', this.filteredDorms)
             } catch (error) {
                 console.log(error);
@@ -341,7 +342,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationaltrans/getinternationaltrans');
                 this.trans = response.data;
-                this.filteredTrans = this.trans.filter(index => index.spec === 'UH');
+                this.filteredTrans = this.trans.filter(index => index.spec === 'UCLAN');
                 console.log('filteredTrans', this.filteredTrans)
             }
             catch (error) {

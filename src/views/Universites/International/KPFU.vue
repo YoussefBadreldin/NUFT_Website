@@ -15,9 +15,9 @@
         <p class="center-text">
           {{ filteredLinks.length > 0 ? filteredLinks[0].Uni_Bio : '#' }}
         </p>
-          <div class="hosted-by-section">
-          <h3>Hosted by:</h3>
-          <img src="/images/Logos/Universites/international/GAF.png" alt="Host Photo" class="host-photo"/>
+        <div class="hosted-by-section">
+           <h3>Hosted by:</h3>
+          <img src="/images/Logos/Universites/international/MGUF.png" alt="Host Photo" class="host-photo"/>
         </div>
         <br>
         <a 
@@ -231,7 +231,7 @@ import HeaderComponent from '../../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../../public/global/footerComponent.vue';
 
 export default {
-    name: 'UH',
+    name: 'KPFU',
     data() {
         return {
             all_data: [],
@@ -282,8 +282,8 @@ export default {
                 }
                 if (Array.isArray(this.all_data)) {
                     console.log('All data:', this.all_data);
-                    this.filteredData = this.all_data.filter(index => index.university === 'UH' && index.normal_or_Dual === 'normal');
-                    this.filteredInternational = this.all_data.filter(index => index.normal_or_Dual === 'dual' && index.university === 'UH');
+                    this.filteredData = this.all_data.filter(index => index.university === 'KPFU' && index.normal_or_Dual === 'normal');
+                    this.filteredInternational = this.all_data.filter(index => index.normal_or_Dual === 'dual' && index.university === 'KPFU');
                     console.log('Filtered data:', this.filteredData);
                     console.log('Filtered international:', this.filteredInternational);
                 } else {
@@ -297,7 +297,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationallinks/get_internationallinks');
                 this.links = response.data;
-                this.filteredLinks = this.links.filter(index => index.university === 'UH');
+                this.filteredLinks = this.links.filter(index => index.university === 'KPFU');
                 console.log(this.filteredLinks);
                 if (this.filteredLinks.length > 0) {
                     const linkData = this.filteredLinks[0];
@@ -331,7 +331,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationaldorms/getinternationaldorms');
                 this.dorms = response.data;
-                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'UH');
+                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'KPFU');
                 //console.log('dorms table', this.filteredDorms)
             } catch (error) {
                 console.log(error);
@@ -341,7 +341,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationaltrans/getinternationaltrans');
                 this.trans = response.data;
-                this.filteredTrans = this.trans.filter(index => index.spec === 'UH');
+                this.filteredTrans = this.trans.filter(index => index.spec === 'KPFU');
                 console.log('filteredTrans', this.filteredTrans)
             }
             catch (error) {
@@ -471,5 +471,10 @@ button {
     margin-bottom: 10px;
     border-radius: 5px; 
     margin-right: 10px;
+}
+.host-photo {
+  width: 150px;  /* Adjust the width to make the image smaller */
+  height: auto; /* Maintain the aspect ratio */
+  border-radius: 8px; /* Optional: Add rounded corners */
 }
 </style>

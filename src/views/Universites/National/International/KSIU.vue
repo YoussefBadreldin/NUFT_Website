@@ -20,10 +20,27 @@
           class="center-text"
         >
           <button @click="openMap(filteredLinks.length > 0 ? filteredLinks[0].location : '')">
-            عرض الموقع على الخرائط
+            (الطور) عرض الموقع على الخرائط
           </button>
         </a>
         
+        <a 
+          :href="filteredLinks.length > 0 ? filteredLinks[0].location2 : '#'" 
+          class="center-text"
+        >
+          <button @click="openMap(filteredLinks.length > 0 ? filteredLinks[0].location2 : '')">
+            عرض الموقع على الخرائط (شرم الشيخ)
+          </button>
+        </a>
+
+        <a 
+          :href="filteredLinks.length > 0 ? filteredLinks[0].location3 : '#'" 
+          class="center-text"
+        >
+          <button @click="openMap(filteredLinks.length > 0 ? filteredLinks[0].location3 : '')">
+             (راس سدر) عرض الموقع على الخرائط
+          </button>
+        </a>
         <!-- Social Media Links -->
         <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
           <ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">
@@ -186,6 +203,8 @@ export default {
             university_Logo: '',
             Uni_Bio: '',
             location: '',
+            location2: '',
+            location3: '',
             website: '',
             phone: '',
             email: '',
@@ -248,6 +267,8 @@ export default {
                     this.university_Logo = linkData.university_Logo;
                     this.Uni_Bio = linkData.Uni_Bio;
                     this.location = linkData.location;
+                    this.location2 = linkData.location2;
+                    this.location3 = linkData.location3;
                     this.website = linkData.website;
                     this.phone = linkData.phone;
                     this.email = linkData.email;

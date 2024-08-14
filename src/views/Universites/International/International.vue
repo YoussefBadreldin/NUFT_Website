@@ -54,55 +54,55 @@ export default {
                     id: 1,
                     name: 'جامعة جزيرة الأمير إدوارد',
                     imgSrc: '/images/Logos/Universites/international/UPEI.png',
-                    link: '/guide/UGRAD/international/UPEI'
+                    link: '/Guide/UGRAD/international/UPEI'
                 },
                 {
                     id: 2,
                     name: 'جامعة رايرسون (جامعة تورنتو متروبوليتان)',
                     imgSrc: '/images/Logos/Universites/international/TMU.png',
-                    link: '/guide/UGRAD/international/TMU'
+                    link: '/Guide/UGRAD/international/TMU'
                 },
                 {
                     id: 3,
                     name: 'جامعة كوفنتري البريطانية',
                     imgSrc: '/images/Logos/Universites/international/Coventry.png',
-                    link: '/guide/UGRAD/international/Coventry'
+                    link: '/Guide/UGRAD/international/Coventry'
                 },
                 {
                     id: 4,
                     name: 'جامعة نوفا ليشبونا البرتغالية',
                     imgSrc: '/images/Logos/Universites/international/NOVA.png',
-                    link: '/guide/UGRAD/international/NOVA'
+                    link: '/Guide/UGRAD/international/NOVA'
                 },
                 {
                     id: 5,
                     name: 'جامعة هيرتفوردشاير البريطانية',
                     imgSrc: '/images/Logos/Universites/international/UH.png',
-                    link: '/guide/UGRAD/international/UH'
+                    link: '/Guide/UGRAD/international/UH'
                 },
                 {
                     id: 6,
                     name: 'جامعة ايست لندن',
                     imgSrc: '/images/Logos/Universites/international/UEL.png',
-                    link: '/guide/UGRAD/international/UEL'
+                    link: '/Guide/UGRAD/international/UEL'
                 },
                 {
                     id: 7,
                     name: 'جامعة وسط لانكشاير',
                     imgSrc: '/images/Logos/Universites/international/UCLAN.png',
-                    link: '/guide/UGRAD/international/UCLAN'
+                    link: '/Guide/UGRAD/international/UCLAN'
                 },
                 {
                     id: 8,
                     name: 'جامعة كازان الفيدرالية الروسية',
                     imgSrc: '/images/Logos/Universites/international/KPFU.png',
-                    link: '/guide/UGRAD/international/KPFU'
+                    link: '/Guide/UGRAD/international/KPFU'
                 },
                 {
                     id: 9,
                     name: 'جامعة سان بطرسبرج الروسية',
                     imgSrc: '/images/Logos/Universites/international/SPBU.png',
-                    link: '/guide/UGRAD/international/SPBU'
+                    link: '/Guide/UGRAD/international/SPBU'
                 }
             ]
         };

@@ -98,6 +98,15 @@ import AOU from "../views/Universites/Special/FrameworkAgreement/AOU.vue";
 import SpecialLaw from "../views/Universites/Special/SpecialLaws/SpecialLaws.vue";
 import UST from "../views/Universites/Special/SpecialLaws/UST.vue";
 import international from "../views/Universites/International/International.vue";
+import UPEI from "../views/Universites/International/UPEI.vue";
+import UH from "../views/Universites/International/UH.vue";
+import TMU from "../views/Universites/International/TMU.vue";
+import Coventry from "../views/Universites/International/Coventry.vue";
+import UEL from "../views/Universites/International/UEL.vue";
+import UCLAN from "../views/Universites/International/UCLAN.vue";
+import KPFU from "../views/Universites/International/KPFU.vue";
+import SPBU from "../views/Universites/International/SPBU.vue";
+import NOVA from "../views/Universites/International/NOVA.vue";
 import ContactUs from "../views/contactUs.vue";
 import NewsPage from "../views/News.vue";
 
@@ -612,6 +621,51 @@ const routes = [
     path:'/Guide/UGRAD/international',
     name:'international',
     component:international,
+  },
+  {
+    path:'/Guide/UGRAD/international/UH',
+    name:'UH',
+    component:UH,
+  },
+  {
+    path:'/Guide/UGRAD/international/UPEI',
+    name:'UPEI',
+    component:UPEI,
+  },
+  {
+    path:'/Guide/UGRAD/international/TMU',
+    name:'TMU',
+    component:TMU,
+  },
+  {
+    path:'/Guide/UGRAD/international/Coventry',
+    name:'Coventry',
+    component:Coventry,
+  },
+  {
+    path:'/Guide/UGRAD/international/UEL',
+    name:'UEL',
+    component:UEL,
+  },
+  {
+    path:'/Guide/UGRAD/international/UCLAN',
+    name:'UCLAN',
+    component:UCLAN,
+  },
+  {
+    path:'/Guide/UGRAD/international/KPFU',
+    name:'KPFU',
+    component:KPFU,
+  },
+  {
+    path:'/Guide/UGRAD/international/SPBU',
+    name:'SPBU',
+    component:SPBU,
+  },
+  {
+    path:'/Guide/UGRAD/international/NOVA',
+    name:'NOVA',
+    component:NOVA,
   },
 ];
 

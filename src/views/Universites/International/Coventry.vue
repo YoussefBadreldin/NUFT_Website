@@ -15,9 +15,9 @@
         <p class="center-text">
           {{ filteredLinks.length > 0 ? filteredLinks[0].Uni_Bio : '#' }}
         </p>
-          <div class="hosted-by-section">
-          <h3>Hosted by:</h3>
-          <img src="/images/Logos/Universites/international/GAF.png" alt="Host Photo" class="host-photo"/>
+        <div class="hosted-by-section">
+           <h3>Hosted by:</h3>
+          <img src="/images/Logos/Universites/international/TKH.png" alt="Host Photo" class="host-photo"/>
         </div>
         <br>
         <a 

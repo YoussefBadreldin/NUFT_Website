@@ -47,9 +47,9 @@
             <tr>
               <th rowspan="2">الكلية</th>
               <th rowspan="2">البرامج</th>
-              <th rowspan="2">الرسوم للمصريين فئة أ (في السنة)</th>
-              <th rowspan="2">الرسوم للمصريين فئة ب (في السنة)</th>
-              <th rowspan="2">الرسوم للمصريين فئة ج (في السنة)</th>
+              <th rowspan="2">الرسوم فئة أ (في السنة)</th>
+              <th rowspan="2">الرسوم فئة ب (في السنة)</th>
+              <th rowspan="2">الرسوم فئة ج (في السنة)</th>
               <th rowspan="2">الشعبة</th>
               <th colspan="2">الحد الأدنى للثانوية العامة وستيم والنيل</th>
               <th colspan="2">الحد الأدنى للثانوية الأزهرية (بعد المعادلة)</th>
@@ -111,13 +111,11 @@
             <tr>
               <th rowspan="2">الكلية</th>
               <th rowspan="2">البرامج</th>
-              <th rowspan="2">الرسوم للمصريين فئة أ (في السنة)</th>
-              <th rowspan="2">الرسوم للمصريين فئة ب (في السنة)</th>
-              <th rowspan="2">الرسوم للمصريين فئة ج (في السنة)</th>
+              <th rowspan="2">الرسوم فئة أ (في السنة)</th>
+              <th rowspan="2">الرسوم فئة ب (في السنة)</th>
+              <th rowspan="2">الرسوم فئة ج (في السنة)</th>
               <th rowspan="2">الشعبة</th>
-              <th colspan="2">الحد الأدنى للثانوية العامة وستيم والنيل</th>
-              <th colspan="2">الحد الأدنى للثانوية الأزهرية (بعد المعادلة)</th>
-              <th colspan="2">الحد الأدنى للشهادات العربية والأجنبية (بعد المعادلة)</th>
+              <th colspan="2">الحد الأدنى</th>
             </tr>
             <tr>
               <th>{{ firstYear }}</th>
@@ -136,12 +134,8 @@
               <td>{{ faculty.feesEgyption2 }}</td>
               <td>{{ faculty.feesEgyption3 }}</td>
               <td>{{ faculty.section }}</td>
-              <td>{{ faculty.thanwyaa_firstYear_score }}</td>
-              <td>{{ faculty.thanwyaa_secondYear_score }}</td>
-              <td>{{ faculty.azhar_firstYear_score }}</td>
-              <td>{{ faculty.azhar_secondYear_score }}</td>
-              <td>{{ faculty.Arabenglish_firstYear_score }}</td>
-              <td>{{ faculty.Arabenglish_secondYear_score }}</td>
+              <td>{{ faculty.wafdeen_score }}</td>
+
             </tr>
           </tbody>
         </table>

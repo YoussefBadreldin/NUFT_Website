@@ -98,6 +98,7 @@
        <br>
        فئة ج: من الي
       </p>
+      <br>
       <a href="/Status/UGRAD/National" style="display: block; text-align: center;">
         <button>اضغط هنا لمعرفة حالة تقديم الجامعة</button>
       </a>

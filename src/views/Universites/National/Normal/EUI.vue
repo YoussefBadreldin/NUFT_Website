@@ -74,6 +74,7 @@
               <td>{{ faculty.feesEgyption }}</td>
               <td>{{ faculty.feesEgyption2 }}</td>
               <td>{{ faculty.feesEgyption3 }}</td>
+              <td>{{ faculty.feesEgyption4 }}</td>
               <td>{{ faculty.feesNatives }}</td>
               <td>{{ faculty.section }}</td>
               <td>{{ faculty.thanwyaa_firstYear_score }}</td>
@@ -101,6 +102,7 @@
        <br>
        فئة د: من الي
       </p>
+      <br>
       <a href="/Status/UGRAD/National" style="display: block; text-align: center;">
         <button>اضغط هنا لمعرفة حالة تقديم الجامعة</button>
       </a>

@@ -117,14 +117,6 @@
               <th rowspan="2">الشعبة</th>
               <th colspan="2">الحد الأدنى</th>
             </tr>
-            <tr>
-              <th>{{ firstYear }}</th>
-              <th>{{ secondYear }}</th>
-              <th>{{ firstYear }}</th>
-              <th>{{ secondYear }}</th>
-              <th>{{ firstYear }}</th>
-              <th>{{ secondYear }}</th>
-            </tr>
           </thead>
           <tbody>
             <tr v-for="(faculty, index) in filteredInternational" :key="index">

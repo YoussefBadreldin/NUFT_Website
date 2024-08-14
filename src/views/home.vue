@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-
+        <smartAssistantComponent />
         <FooterComponent />
     </div>
 </template>
@@ -99,12 +99,15 @@
 <script>
 import $ from 'jquery';
 import HeaderComponent from '../../public/global/headerComponent.vue';
+import smartAssistantComponent from '../../public/global/smartAssistantComponent.vue';
 import FooterComponent from '../../public/global/footerComponent.vue';
+
 
 export default {
     name: 'MainComponent',
     components: {
         HeaderComponent,
+        smartAssistantComponent,      
         FooterComponent
     },
     data() {

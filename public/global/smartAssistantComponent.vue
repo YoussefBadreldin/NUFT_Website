@@ -1,10 +1,10 @@
 <template>
     <div>
         <!-- Smart Assistant Button -->
-        <button id="smart-assistant-icon" @click="toggleModal">
+        <button id="smart-assistant-icon" @click="navigateToSmartAssistant">
             <i class="fas fa-robot"></i>
-            <span><br />SMART</span>
-            <span>ASSISTANT</span>
+            <span><br />المساعد </span>
+            <span>الشخصي</span>
         </button>
 
         <!-- Modal for Smart Assistant -->
@@ -48,8 +48,8 @@ export default {
         };
     },
     methods: {
-        toggleModal() {
-            $('#smartAssistantModal').modal('show');
+        navigateToSmartAssistant() {
+            this.$router.push('/smartAssistant/'); // Navigate to /smartAssistant/
         },
         closeModal() {
             $('#smartAssistantModal').modal('hide');
@@ -62,8 +62,11 @@ export default {
 </script>
 
 <style scoped>
-.chat-window {
-    display: none;
-    /* Add any additional styles for the chat window */
+#smart-assistant-icon {
+    position: fixed;
+    left: 0;
+    font-size: 30px; /* Optional: font size */
+    z-index: 1000; /* Ensure button is on top */
 }
+
 </style>

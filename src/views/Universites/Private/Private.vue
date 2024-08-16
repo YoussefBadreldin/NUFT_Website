@@ -262,7 +262,7 @@ export default {
         },
         {
             id: 36,
-            name: 'جامعة القاهرة ساكسوني للعلوم التطبيقية والتكنولوجيا',
+            name: 'جامعة ساكسوني مصر للعلوم التطبيقية والتكنولوجيا',
             imgSrc: '/images/Logos/Universites/Private/SEU.png',
             link: '/guide/UGRAD/private/SEU'
         }

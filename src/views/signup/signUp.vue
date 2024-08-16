@@ -78,7 +78,7 @@ export default {
             }
         },
         signUp() {
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/auth/signup', {
+            axios.post('https://nuft-website-backend.vercel.app/auth/signup', {
                 email: this.email,
                 password: this.password
             }).then(response => {
@@ -95,7 +95,7 @@ export default {
         },
 
         signIn() {
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/auth/signin', {
+            axios.post('https://nuft-website-backend.vercel.app/auth/signin', {
                 email: this.email,
                 password: this.password,
             }).then(() => {

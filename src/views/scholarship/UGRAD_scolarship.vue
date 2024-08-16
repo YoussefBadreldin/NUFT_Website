@@ -65,7 +65,7 @@ export default {
   methods: {
     async getScholarships() {
       try {
-        const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/Schoralships/all');
+        const response = await axios.get('https://nuft-website-backend.vercel.app/Schoralships/all');
         this.scholarshipData = response.data.map(scholarship => ({
           id: scholarship.id, // Ensure each scholarship item has a unique ID
           scholarship_title: scholarship.scholarship_title,

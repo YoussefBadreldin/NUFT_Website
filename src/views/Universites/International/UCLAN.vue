@@ -274,7 +274,7 @@ export default {
     methods: {
         async get_data() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationalfaculty/getinternational');
+                const response = await axios.get('https://nuft-website-backend.vercel.app/internationalfaculty/getinternational');
                 console.log('API response data:', response.data);
                 if (response.data && Array.isArray(response.data.faculty)) {
                     this.all_data = response.data.faculty;
@@ -296,7 +296,7 @@ export default {
         },
         async getLinks() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationallinks/get_internationallinks');
+                const response = await axios.get('https://nuft-website-backend.vercel.app/internationallinks/get_internationallinks');
                 this.links = response.data;
                 this.filteredLinks = this.links.filter(index => index.university === 'UCLAN');
                 console.log(this.filteredLinks);
@@ -330,7 +330,7 @@ export default {
         },
         async getDorms() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationaldorms/getinternationaldorms');
+                const response = await axios.get('https://nuft-website-backend.vercel.app/internationaldorms/getinternationaldorms');
                 this.dorms = response.data;
                 this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'UCLAN');
                 //console.log('dorms table', this.filteredDorms)
@@ -340,7 +340,7 @@ export default {
         },
         async gettrans() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/internationaltrans/getinternationaltrans');
+                const response = await axios.get('https://nuft-website-backend.vercel.app/internationaltrans/getinternationaltrans');
                 this.trans = response.data;
                 this.filteredTrans = this.trans.filter(index => index.spec === 'UCLAN');
                 console.log('filteredTrans', this.filteredTrans)

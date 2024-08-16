@@ -98,7 +98,7 @@ export default {
         news_details: this.news_details,
         news_link: this.news_link
       };
-      axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/news/addNews', formData)
+      axios.post('https://nuft-website-backend.vercel.app/news/addNews', formData)
         .then(() => {
           console.log('News added successfully');
           alert('News added successfully');

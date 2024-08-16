@@ -375,7 +375,7 @@ export default {
                 wafdeen_score: this.wafdeen_score,
             };
 
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationalfaculty/addnational', formData)
+            axios.post('https://nuft-website-backend.vercel.app/nationalfaculty/addnational', formData)
                 .then(response => {
                     console.log(response.data);
                     alert('Form sent successfully');
@@ -411,7 +411,7 @@ export default {
                 Wafdeen_Admission_link: this.Wafdeen_Admission_link,
             };
 
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationallinks/add_nationallinks', links_form_data)
+            axios.post('https://nuft-website-backend.vercel.app/nationallinks/add_nationallinks', links_form_data)
                 .then(() => {
                     alert('Form sent successfully');
                 })
@@ -425,7 +425,7 @@ export default {
                 price: this.price,
                 spec: this.spec
             }
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaldorms/addnationaldorms', form).then(()=>{
+            axios.post('https://nuft-website-backend.vercel.app/nationaldorms/addnationaldorms', form).then(()=>{
                 alert('form sent successfully');
             }).catch(error=>{
                 console.log(error);
@@ -437,7 +437,7 @@ export default {
                 price: this.price2,
                 spec: this.spec2
             }
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaltrans/addnationaltrans', form).then(()=>{
+            axios.post('https://nuft-website-backend.vercel.app/nationaltrans/addnationaltrans', form).then(()=>{
                 alert('form sent succesffully');
             }).catch(error=>{
                 console.log(error);
@@ -458,7 +458,7 @@ export default {
                     guide_Url: this.guide_Url,
             };
 
-            axios.post('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaladmission/add', form)
+            axios.post('https://nuft-website-backend.vercel.app/nationaladmission/add', form)
                 .then(() => {
                     alert('Form sent successfully');
                 })

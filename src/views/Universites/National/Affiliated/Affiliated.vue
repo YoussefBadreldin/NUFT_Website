@@ -41,78 +41,78 @@ export default {
     return {
         searchQuery: '',
         universities: [
-        {
-            id: 1,
-            name: 'جامعة المنصورة الاهلية  ',
-            imgSrc: '/images/Logos/Universites/National/MansNU.png',
-            link: '/guide/UGRAD/National/MansNU'
-        },
-        {
-            id: 2,
-            name: 'جامعة حلوان الاهلية',
-            imgSrc: '/images/Logos/Universites/National/HNU.png',
-            link: '/guide/UGRAD/National/HNU'
-        },
-        {
-            id: 3,
-            name: 'جامعة بنها الاهلية',
-            imgSrc: '/images/Logos/Universites/National/BNU.png',
-            link: '/guide/UGRAD/National/BNU'
-        },
-        {
-            id: 4,
-            name: 'جامعة بني سويف الاهلية',
-            imgSrc: '/images/Logos/Universites/National/BSNU.png',
-            link: '/guide/UGRAD/National/BSNU'
-       },
-        {
-            id: 5,
-            name: 'جامعة جنوب الوادي الاهلية',
-            imgSrc: '/images/Logos/Universites/National/SVNU.png',
-            link: '/guide/UGRAD/National/SVNU'
-        },
-        {
-            id: 6,
-            name: 'جامعة الزقازيق الاهلية',
-            imgSrc: '/images/Logos/Universites/National/ZNU.png',
-            link: '/guide/UGRAD/National/ZNU'
-        },
-        {
-            id: 7,
-            name: 'جامعة المنيا الاهلية',
-            imgSrc: '/images/Logos/Universites/National/MiniaNU.png',
-            link: '/guide/UGRAD/National/MiniaNU'
-        },
-                {
-            id: 8,
-            name: 'جامعة المنوفية الاهلية',
-            imgSrc: '/images/Logos/Universites/National/MenofiaNU.png',
-            link: '/guide/UGRAD/National/MenofiaNU'
-        },
-                {
-            id: 9,
-            name: 'جامعة شرق بورسعيد الاهلية',
-            imgSrc: '/images/Logos/Universites/National/EPNU.png',
-            link: '/guide/UGRAD/National/EPNU'
-        },
-                {
-            id: 10,
-            name: 'جامعة الاسكندرية الاهلية',
-            imgSrc: '/images/Logos/Universites/National/AlexNU.png',
-            link: '/guide/UGRAD/National/AlexNU'
-        },
-                {
-            id: 11,
-            name: 'جامعة اسيوط الاهلية',
-            imgSrc: '/images/Logos/Universites/National/AssuitNU.png',
-            link: '/guide/UGRAD/National/AssuitNU'
-        },
-                {
-            id: 12,
-            name: 'جامعة الاسماعلية الجديدة الاهلية',
-            imgSrc: '/images/Logos/Universites/National/NINU.png',
-            link: '/guide/UGRAD/National/NINU'
-        }
+       {
+    id: 1,
+    name: 'جامعة الاسكندرية الاهلية',
+    imgSrc: '/images/Logos/Universites/National/AlexNU.png',
+    link: '/guide/UGRAD/National/AlexNU'
+},
+{
+    id: 2,
+    name: 'جامعة اسيوط الاهلية',
+    imgSrc: '/images/Logos/Universites/National/AssuitNU.png',
+    link: '/guide/UGRAD/National/AssuitNU'
+},
+{
+    id: 3,
+    name: 'جامعة بنها الاهلية',
+    imgSrc: '/images/Logos/Universites/National/BNU.png',
+    link: '/guide/UGRAD/National/BNU'
+},
+{
+    id: 4,
+    name: 'جامعة بني سويف الاهلية',
+    imgSrc: '/images/Logos/Universites/National/BSNU.png',
+    link: '/guide/UGRAD/National/BSNU'
+},
+{
+    id: 5,
+    name: 'جامعة حلوان الاهلية',
+    imgSrc: '/images/Logos/Universites/National/HNU.png',
+    link: '/guide/UGRAD/National/HNU'
+},
+{
+    id: 6,
+    name: 'جامعة جنوب الوادي الاهلية',
+    imgSrc: '/images/Logos/Universites/National/SVNU.png',
+    link: '/guide/UGRAD/National/SVNU'
+},
+{
+    id: 7,
+    name: 'جامعة الإسماعيلية الجديدة الاهلية',
+    imgSrc: '/images/Logos/Universites/National/NINU.png',
+    link: '/guide/UGRAD/National/NINU'
+},
+{
+    id: 8,
+    name: 'جامعة المنيا الاهلية',
+    imgSrc: '/images/Logos/Universites/National/MiniaNU.png',
+    link: '/guide/UGRAD/National/MiniaNU'
+},
+{
+    id: 9,
+    name: 'جامعة المنصورة الاهلية',
+    imgSrc: '/images/Logos/Universites/National/MansNU.png',
+    link: '/guide/UGRAD/National/MansNU'
+},
+{
+    id: 10,
+    name: 'جامعة المنوفية الاهلية',
+    imgSrc: '/images/Logos/Universites/National/MenofiaNU.png',
+    link: '/guide/UGRAD/National/MenofiaNU'
+},
+{
+    id: 11,
+    name: 'جامعة شرق بورسعيد الاهلية',
+    imgSrc: '/images/Logos/Universites/National/EPNU.png',
+    link: '/guide/UGRAD/National/EPNU'
+},
+{
+    id: 12,
+    name: 'جامعة الزقازيق الاهلية',
+    imgSrc: '/images/Logos/Universites/National/ZNU.png',
+    link: '/guide/UGRAD/National/ZNU'
+}
         ]
     };
     },

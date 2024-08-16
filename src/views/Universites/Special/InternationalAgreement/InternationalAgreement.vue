@@ -49,41 +49,41 @@ export default {
       searchQuery: '',
       universities: [
                {
-          id: 1,
-          name: 'الجامعة الامريكية بالقاهرة',
-          imgSrc: '/images/Logos/Universites/Special/AUC.png',
-          link: '/Guide/UGRAD/Special/AUC'
-        },
-        {
-          id: 2,
-          name: 'الجامعة المصرية اليبانية',
-          imgSrc: '/images/Logos/Universites/Special/EJUST.png',
-          link: '/Guide/UGRAD/Special/EJUST'
-        },
-        {
-          id: 3,
-          name: 'الجامعة الالمانية الدولية',
-          imgSrc: '/images/Logos/Universites/Special/GIU.png',
-          link: '/Guide/UGRAD/Special/GIU'
-        },
-        {
-          id: 4,
-          name: 'جامعة اسلسكا',
-          imgSrc: '/images/Logos/Universites/Special/EslscaU.png',
-          link: '/Guide/UGRAD/Special/EslscaU'
-        },
-        {
-          id: 5,
-          name: 'جامعة بيرلين',
-          imgSrc: '/images/Logos/Universites/Special/TUB.png',
-          link: '/Guide/UGRAD/Special/TUB'
-        },
-        {
-          id: 6,
-          name: 'جامعة سنجور',
-          imgSrc: '/images/Logos/Universites/Special/SenghorU.png',
-          link: '/Guide/UGRAD/Special/Senghor'
-        } 
+    id: 1,
+    name: 'جامعة اسلسكا',
+    imgSrc: '/images/Logos/Universites/Special/EslscaU.png',
+    link: '/Guide/UGRAD/Special/EslscaU'
+},
+{
+    id: 2,
+    name: 'الجامعة الامريكية بالقاهرة',
+    imgSrc: '/images/Logos/Universites/Special/AUC.png',
+    link: '/Guide/UGRAD/Special/AUC'
+},
+{
+    id: 3,
+    name: 'الجامعة المصرية اليبانية',
+    imgSrc: '/images/Logos/Universites/Special/EJUST.png',
+    link: '/Guide/UGRAD/Special/EJUST'
+},
+{
+    id: 4,
+    name: 'الجامعة الالمانية الدولية',
+    imgSrc: '/images/Logos/Universites/Special/GIU.png',
+    link: '/Guide/UGRAD/Special/GIU'
+},
+{
+    id: 5,
+    name: 'جامعة بيرلين',
+    imgSrc: '/images/Logos/Universites/Special/TUB.png',
+    link: '/Guide/UGRAD/Special/TUB'
+},
+{
+    id: 6,
+    name: 'جامعة سنجور',
+    imgSrc: '/images/Logos/Universites/Special/SenghorU.png',
+    link: '/Guide/UGRAD/Special/Senghor'
+}
       ]
     };
   },

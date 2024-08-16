@@ -42,29 +42,29 @@ export default {
         searchQuery: '',
         universities: [
         {
-            id: 1,
-            name: 'الجامعة الفرنسية بمصر  ',
-            imgSrc: '/images/Logos/Universites/National/UFE.png',
-            link: '/guide/UGRAD/National/UFE'
-        },
-        {
-            id: 2,
-            name: 'جامعة النيل الاهلية',
-            imgSrc: '/images/Logos/Universites/National/NU.png',
-            link: '/guide/UGRAD/National/NU'
-        },
-        {
-            id: 3,
-            name: 'الجامعة المصرية للتعليم الالكتروني',
-            imgSrc: '/images/Logos/Universites/National/EELU.png',
-            link: '/guide/UGRAD/National/EELU'
-        },
-        {
-            id: 4,
-            name: 'جامعة مصر للمعلوماتية',
-            imgSrc: '/images/Logos/Universites/National/EUI.png',
-            link: '/guide/UGRAD/National/EUI'
-        }
+    id: 1,
+    name: 'الجامعة الفرنسية بمصر',
+    imgSrc: '/images/Logos/Universites/National/UFE.png',
+    link: '/guide/UGRAD/National/UFE'
+},
+{
+    id: 2,
+    name: 'الجامعة المصرية للتعليم الالكتروني',
+    imgSrc: '/images/Logos/Universites/National/EELU.png',
+    link: '/guide/UGRAD/National/EELU'
+},
+{
+    id: 3,
+    name: 'جامعة مصر للمعلوماتية',
+    imgSrc: '/images/Logos/Universites/National/EUI.png',
+    link: '/guide/UGRAD/National/EUI'
+},
+{
+    id: 4,
+    name: 'جامعة النيل الاهلية',
+    imgSrc: '/images/Logos/Universites/National/NU.png',
+    link: '/guide/UGRAD/National/NU'
+}
         ]
     };
     },

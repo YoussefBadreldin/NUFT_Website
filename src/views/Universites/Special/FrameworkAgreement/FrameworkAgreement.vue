@@ -49,17 +49,17 @@ export default {
       searchQuery: '',
       universities: [
 {
-          id: 1,
-          name: 'الاكادمية البحرية للعلوم والتكنولوجيا والنقل البحري',
-          imgSrc: '/images/Logos/Universites/Special/AASTMT.png',
-          link: '/Guide/UGRAD/Special/AASTMT'
-        },
-        {
-          id: 2,
-          name: 'الجامعة العربية المفتوحة',
-          imgSrc: '/images/Logos/Universites/Special/AOU.png',
-          link: '/Guide/UGRAD/Special/AOU'
-        }
+    id: 1,
+    name: 'الاكادمية البحرية للعلوم والتكنولوجيا والنقل البحري',
+    imgSrc: '/images/Logos/Universites/Special/AASTMT.png',
+    link: '/Guide/UGRAD/Special/AASTMT'
+},
+{
+    id: 2,
+    name: 'الجامعة العربية المفتوحة',
+    imgSrc: '/images/Logos/Universites/Special/AOU.png',
+    link: '/Guide/UGRAD/Special/AOU'
+}
       ]
     };
   },

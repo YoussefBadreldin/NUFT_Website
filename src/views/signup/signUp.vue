@@ -1,36 +1,15 @@
 <template>
-    <div class="header-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-7 col-md-12 left-item">
-            <ul></ul>
-          </div>
-          <div class="col-lg-5 right-item">
-            <ul>
-             <li><a><strong>بث تجريبي</strong></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item navbar-brand">
-          <a href="">
-            <img src="../../../images/logo.png" alt="Logo" class="d-inline-block align-top" />
-          </a>
-        </li>
-      </ul>
-    </div>
+    <a class="navbar-brand" href="#">
+      <img src="../../../images/logo.png" alt="شعار NUFT - دليلك إلى الجامعات المصرية" class="d-inline-block align-top" />
+    </a>
   </nav>
-    <div class="wrapper">
-        <div class="title">
-            {{ mode === 'signup' ? 'ابدأ الآن' : 'مرحباً بك مجدداً' }}
-        </div>
+
+  <div class="wrapper">
+    <div class="title">
+      <div v-html="mode === 'signup' ? 'ابدأ رحلتك مع<br>أول دليل شامل عن الجامعات المصرية' : 'يرجى تسجيل الدخول'"></div>
+    </div>
+
         <form @submit.prevent="handleSubmit">
             <div class="field">
                 <input type="email" required v-model="email">
@@ -123,7 +102,7 @@ export default {
 
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 * {
     margin: 0;
@@ -137,101 +116,117 @@ html, body {
     height: 100%;
     width: 100%;
     place-items: center;
-    background: #f2f2f2;
+    background: #f5f5f5;
 }
 
 ::selection {
-    background: #4158d0;
+    background: #001d3d;
     color: #fff;
 }
 
 .wrapper {
     width: 100%;
-    max-width: 380px;
+    max-width: 400px;
     background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    margin: 150px auto 100px auto; /* Top margin: 40px, Bottom margin: 60px */
+    margin: auto;
+    margin-top: 50px;
 }
 
-
 .wrapper .title {
-    font-size: 35px;
+    font-size: 28px;
     font-weight: 600;
     text-align: center;
-    line-height: 100px;
+    line-height: 80px;
     color: #fff;
-    border-radius: 15px 15px 0 0;
-    background: linear-gradient(-135deg, #ced2e1, #4158d0);
+    border-radius: 10px 10px 0 0;
+    background: linear-gradient(135deg, #001d3d, #4158d0);
 }
 
 .wrapper form {
-    padding: 20px 30px;
-    margin-top: 20px;
+    padding: 20px;
 }
 
 .wrapper form .field {
-    margin-top: 20px;
+    margin-bottom: 20px;
     position: relative;
 }
 
-.wrapper form .field input {
+.wrapper form .field input,
+.wrapper form .field select {
     width: 100%;
-    height: 50px;
-    padding-left: 20px;
-    border: 1px solid lightgrey;
+    height: 45px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
     border-radius: 25px;
-    font-size: 17px;
+    font-size: 16px;
     outline: none;
+    background: #fff;
     transition: border-color 0.3s ease;
 }
 
 .wrapper form .field input:focus,
-.wrapper form .field input:valid {
+.wrapper form .field input:valid,
+.wrapper form .field select:focus {
     border-color: #4158d0;
 }
 
 .wrapper form .field label {
     position: absolute;
     top: 50%;
-    left: 20px;
+    left: 15px;
     color: #999;
-    font-size: 17px;
+    font-size: 16px;
     pointer-events: none;
     transform: translateY(-50%);
     transition: all 0.3s ease;
 }
 
 .wrapper form .field input:focus ~ label,
-.wrapper form .field input:valid ~ label {
+.wrapper form .field input:valid ~ label,
+.wrapper form .field select:focus ~ label,
+.wrapper form .field select:valid ~ label {
     top: -10px;
-    font-size: 16px;
+    font-size: 14px;
     color: #4158d0;
     background: #fff;
     padding: 0 5px;
 }
 
-.wrapper form .btn-primary {
+.wrapper form .btn-primary,
+.wrapper form .btn-secondary {
     width: 100%;
-    height: 50px;
-    background: linear-gradient(-135deg, #ced2e1, #4158d0);
+    height: 45px;
     border: none;
     border-radius: 25px;
     color: #fff;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 500;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
-.wrapper form .btn-primary:active {
-    transform: scale(0.95);
+.wrapper form .btn-primary {
+    background: linear-gradient(135deg, #001d3d, #4158d0);
+}
+
+.wrapper form .btn-primary:hover {
+    background: linear-gradient(135deg, #003a5d, #334d9b);
+}
+
+.wrapper form .btn-secondary {
+    background: #f5f5f5;
+    color: #001d3d;
+}
+
+.wrapper form .btn-secondary:hover {
+    background: #ddd;
 }
 
 .wrapper form .signup-link {
-    color: #262626;
-    margin-top: 20px;
+    color: #666;
     text-align: center;
 }
 
@@ -244,97 +239,157 @@ html, body {
     text-decoration: underline;
 }
 
-.nav-link {
-    color: #ced2e1 !important;
-    padding-top: 20px; 
-    padding-bottom: 20px;
-    font-size: 1.4rem;
-}
-
-.nav-link p {
-    color: red;
-    font-size: 1.2rem;
-}
-
-nav {
-    background-color: #001d3d !important;
-}
-
-.navbar-nav {
+.input-group {
     display: flex;
-    justify-content: center;
-    align-items: center; /* Align items vertically */
-    width: 100%;
+    gap: 10px;
 }
 
-.nav-item {
-    margin: 0 10px;
+.input-group select,
+.input-group input[type="tel"] {
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding-left: 15px;
+    font-size: 16px;
+    outline: none;
+    background: #fff;
+    transition: border-color 0.3s ease;
 }
 
-.signup-button {
-    background-color: #ffbf00; 
-    color: #001d3d !important; 
-    padding: 15px 20px; /* Increased padding for vertical centering */
+.input-group select:focus,
+.input-group input[type="tel"]:focus {
+    border-color: #4158d0;
+}
+/* Add a wrapper around the checkbox and label for better control */
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Adjust spacing as needed */
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #fff;
+    border: 2px solid #ccc;
     border-radius: 5px;
-    font-weight: bold; 
-    text-align: center; 
+    width: 20px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.btn-primary {
-    color: white; 
+.checkbox-wrapper input[type="checkbox"]:checked {
+    background-color: #4158d0;
+    border-color: #4158d0;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 5px;
+    border: solid #fff;
+    border-width: 0 0 2px 2px;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.checkbox-wrapper label {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #333;
+}
+/* Add a wrapper around each checkbox and its label */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Adjust spacing as needed */
+}
+
+.checkbox-group input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+    background-color: #4158d0;
+    border-color: #4158d0;
+}
+
+.checkbox-group input[type="checkbox"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 5px;
+    border: solid #fff;
+    border-width: 0 0 2px 2px;
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.checkbox-group label {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer; /* Change cursor to pointer for better user interaction */
+}
+.navbar {
+  display: flex;
+  justify-content: center; /* Center the logo horizontally */
 }
 
 .navbar-brand {
-    display: flex;
-    align-items: center;
-    margin-left: -55px; 
-}
-
-.header-top {
-  background-color: #C70039;
-  padding: 5px 0; /* Reduced top and bottom padding */
-  color: white;
-  text-align: center;
-}
-
-.header-top .container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: center; /* Center the logo vertically */
 }
 
-.header-top .row {
+.logo-center {
+  margin: 0 auto; /* Auto margin to center the logo */
+}
+  .navbar {
+    background-color: #001d3d !important;
+  }
+  footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
   width: 100%;
+  text-align: center;
+  padding: 20px;
+  z-index: 1000; /* Ensures the footer stays above other content */
+}
+.groupcheckbox-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Aligns items to the left */
+  gap: 10px; /* Adds spacing between items */
 }
 
-.header-top .left-item,
-.header-top .right-item {
+.groupcheckbox-title {
+  font-weight: bold;
+  margin-bottom: 10px; /* Space between title and checkboxes */
+}
+
+.groupcheckbox-item {
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
-.header-top .left-item ul,
-.header-top .right-item ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
+.error {
+  color: red;
+  font-size: 0.875em; /* Adjust size as needed */
+  margin-top: 0.25em;
 }
-
-.header-top .right-item ul {
-  justify-content: center;
-}
-
-.header-top li {
-  margin-top: -20px;
-  padding: 0; /* Ensure no padding in list items */
-}
-
-.header-top .right-item a {
-  margin: 0; /* Ensure no margin around the link */
-  padding: 0; /* Ensure no padding around the link */
-  line-height: 1.5; /* Adjust line height if needed */
-}
-
 </style>

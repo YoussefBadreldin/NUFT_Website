@@ -268,7 +268,7 @@ export default {
     methods: {
         async get_data() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/specialfaculty/getspecial');
+                const response = await axios.get('https://nuft-website-backend.vercel.app/specialfaculty/getspecial');
                 console.log('API response data:', response.data);
                 if (response.data && Array.isArray(response.data.faculty)) {
                     this.all_data = response.data.faculty;
@@ -290,7 +290,7 @@ export default {
         },
         async getLinks() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/speciallinks/get_speciallinks');
+                const response = await axios.get('https://nuft-website-backend.vercel.app/speciallinks/get_speciallinks');
                 this.links = response.data;
                 this.filteredLinks = this.links.filter(index => index.university === 'GIU');
                 console.log(this.filteredLinks);
@@ -324,7 +324,7 @@ export default {
         },
         async getDorms() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/specialdorms/getspecialdorms');
+                const response = await axios.get('https://nuft-website-backend.vercel.app/specialdorms/getspecialdorms');
                 this.dorms = response.data;
                 this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'GIU');
                 //console.log('dorms table', this.filteredDorms)
@@ -334,7 +334,7 @@ export default {
         },
         async gettrans() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/specialtrans/getspecialtrans');
+                const response = await axios.get('https://nuft-website-backend.vercel.app/specialtrans/getspecialtrans');
                 this.trans = response.data;
                 this.filteredTrans = this.trans.filter(index => index.spec === 'GIU');
                 console.log('filteredTrans', this.filteredTrans)

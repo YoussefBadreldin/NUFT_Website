@@ -70,7 +70,7 @@ export default {
   methods: {
     async getNews() {
       try {
-        const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/news/getNews');
+        const response = await axios.get('https://nuft-website-backend.vercel.app/news/getNews');
         this.newsData = response.data.map(news => ({
           id: news.id, // Ensure each news item has a unique ID
           news_title: news.news_title,

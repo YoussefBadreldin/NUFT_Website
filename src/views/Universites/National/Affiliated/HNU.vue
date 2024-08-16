@@ -216,7 +216,7 @@ export default {
     methods: {
         async get_data() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationalfaculty/getnational');
+                const response = await axios.get('https://nuft-website-backend.vercel.app/nationalfaculty/getnational');
                 console.log('API response data:', response.data);
                 if (response.data && Array.isArray(response.data.faculty)) {
                     this.all_data = response.data.faculty;
@@ -238,7 +238,7 @@ export default {
         },
         async getLinks() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationallinks/get_nationallinks');
+                const response = await axios.get('https://nuft-website-backend.vercel.app/nationallinks/get_nationallinks');
                 this.links = response.data;
                 this.filteredLinks = this.links.filter(index => index.university === 'HNU');
                 console.log(this.filteredLinks);
@@ -272,7 +272,7 @@ export default {
         },
         async getDorms() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaldorms/getnationaldorms');
+                const response = await axios.get('https://nuft-website-backend.vercel.app/nationaldorms/getnationaldorms');
                 this.dorms = response.data;
                 this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'HNU');
                 //console.log('dorms table', this.filteredDorms)
@@ -282,7 +282,7 @@ export default {
         },
         async gettrans() {
             try {
-                const response = await axios.get('https://nuft-website-backend-874bbf91403c.herokuapp.com/nationaltrans/getnationaltrans');
+                const response = await axios.get('https://nuft-website-backend.vercel.app/nationaltrans/getnationaltrans');
                 this.trans = response.data;
                 this.filteredTrans = this.trans.filter(index => index.spec === 'HNU');
                 console.log('filteredTrans', this.filteredTrans)

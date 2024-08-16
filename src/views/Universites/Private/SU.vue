@@ -101,7 +101,7 @@
           <thead>
             <tr>
               <th>النوع</th>
-              <th>الرسوم (في الترم)</th>
+              <th>الرسوم</th>
             </tr>
           </thead>
           <tbody>

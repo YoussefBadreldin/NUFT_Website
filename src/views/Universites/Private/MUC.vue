@@ -47,7 +47,10 @@
             <tr>
               <th rowspan="2">الكلية</th>
               <th rowspan="2">البرامج</th>
-              <th rowspan="2">الرسوم للمصريين (في السنة)</th>
+              <th rowspan="2">الرسوم للمصريين فئة أ (في السنة)</th>
+              <th rowspan="2">الرسوم للمصريين فئة ب (في السنة)</th>
+              <th rowspan="2">الرسوم للمصريين فئة ج (في السنة)</th>
+              <th rowspan="2">الرسوم للمصريين فئة د (في السنة)</th>
               <th rowspan="2">الرسوم للوافدين (في السنة)</th>
               <th rowspan="2">الشعبة</th>
               <th colspan="2">الحد الأدنى للثانوية العامة وستيم والنيل</th>
@@ -69,6 +72,9 @@
               <td>{{ faculty.faculty }}</td>
               <td>{{ faculty.programs }}</td>
               <td>{{ faculty.feesEgyption }}</td>
+              <td>{{ faculty.feesEgyption2 }}</td>
+              <td>{{ faculty.feesEgyption3 }}</td>
+              <td>{{ faculty.feesEgyption4 }}</td>
               <td>{{ faculty.feesNatives }}</td>
               <td>{{ faculty.section }}</td>
               <td>{{ faculty.thanwyaa_firstYear_score }}</td>
@@ -85,6 +91,15 @@
       <br>
       <p>
         الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت)
+      </p>
+      <p>
+     فئة أ: من الي
+      <br>
+      فئة ب: من الي 
+       <br>
+       فئة ج: من الي
+       <br>
+      فئة د: من الي 
       </p>
       <a href="/Status/UGRAD/National" style="display: block; text-align: center;">
         <button>اضغط هنا لمعرفة حالة تقديم الجامعة</button>

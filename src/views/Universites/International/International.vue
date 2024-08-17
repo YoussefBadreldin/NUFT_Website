@@ -3,7 +3,7 @@
     <HeaderComponent />
 
 <div class="page-nav row">
-        <h2>دليل الجامعات الدولية</h2>
+        <h2>دليل افرع الجامعات الاجنبية</h2>
 
     </div>
 

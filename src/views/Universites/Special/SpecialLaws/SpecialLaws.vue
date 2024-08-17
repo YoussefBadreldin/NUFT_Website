@@ -2,13 +2,13 @@
   <div>
     <HeaderComponent />
     <div class="page-nav row">
-      <h2>الجامعات المنشئه بقوانين خاصة</h2>
+       <h2>الجامعات ذات طبيعة خاصة (المنشأة بقوانين خاصة)</h2>
     </div>
     </div>
 
     <div class="Card-Box" dir="rtl">
       <div class="container" style="text-align: center;">
-        <h3>ما هي الجامعات المنشئه بقوانين خاصة؟</h3>
+        <h3>ما هي الجامعات المنشأة بقوانين خاصة؟</h3>
         <p>هي جامعات . وعددهم 1 جامعة</p>
       </div>
 

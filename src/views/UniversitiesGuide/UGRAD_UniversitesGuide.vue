@@ -49,7 +49,7 @@
                                 <img src="/images/Universites/Guide/InternationalGuide.png"
                                     alt="International Universities">
                                 <div class="Box-det" style="text-align: center;">
-                                    <h6>دليل الجامعات الدولية <strong>(قريبا)</strong></h6>
+                                    <h6>دليل افرع الجامعات الاجنبية <strong>(قريبا)</strong></h6>
                                 </div>
                             </div>
                         </router-link>

@@ -19,7 +19,7 @@
                 <div class="Box-card">
                 <img src="/images/Categories/InternationalAgreements.png" alt=" special Universities">
                 <div class="Box-det" style="text-align: center;">
-                    <h6>جامعات باتفاقات دولية</h6>
+                     <h6>الجامعات ذات طبيعة خاصة (المنشأة باتفاقات دولية)</h6>
                 </div>
                 </div>
             </router-link>
@@ -29,7 +29,7 @@
                 <div class="Box-card">
                 <img src="/images/Categories/FrameworkAgreements.png" alt=" special Universities">
                 <div class="Box-det" style="text-align: center;">
-                    <h6>جامعات باتفاقات اطارية</h6>
+                    <h6>الجامعات ذات طبيعة خاصة (المنشأة باتفاقات اطارية)</h6>
                 </div>
                 </div>
             </router-link>
@@ -39,7 +39,7 @@
                 <div class="Box-card">
                 <img src="/images/Categories/SpecialLaw.png" alt=" special Universities">
                 <div class="Box-det" style="text-align: center;">
-                    <h6>جامعات بقوانين خاصة</h6>
+                    <h6>الجامعات ذات طبيعة خاصة (المنشأة بقوانين خاصة)</h6>
                 </div>
                 </div>
             </router-link>

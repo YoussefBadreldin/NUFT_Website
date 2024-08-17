@@ -71,7 +71,7 @@ export default {
                     link: '', // Provide a valid link or remove if not needed
                     imgSrc: '/images/Universites/Status/InternationalStatus.png',
                     altText: 'International Universities',
-                    title: 'حالة تقديمات الجامعات الدولية (قريبا)',
+                    title: 'حالة تقديمات افرع الجامعات الاجنبية (قريبا)',
                 }
             ],
         };

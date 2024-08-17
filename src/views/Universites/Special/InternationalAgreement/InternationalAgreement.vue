@@ -2,13 +2,13 @@
   <div>
     <HeaderComponent />
     <div class="page-nav row">
-      <h2>الجامعات المنشئه باتفاقات دولية</h2>
+      <h2>الجامعات ذات طبيعة خاصة (المنشأة باتفاقات دولية)</h2>
     </div>
     </div>
 
     <div class="Card-Box" dir="rtl">
       <div class="container" style="text-align: center;">
-        <h3>ما هي الجامعات المنشئه باتفاقات دولية؟</h3>
+        <h3>ما هي الجامعات المنشأة باتفاقات دولية؟</h3>
         <p>هي جامعات . وعددهم 2 جامعة</p>
       </div>
 

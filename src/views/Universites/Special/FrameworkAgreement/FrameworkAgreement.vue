@@ -2,13 +2,13 @@
   <div>
     <HeaderComponent />
     <div class="page-nav row">
-      <h2>الجامعات المنشئه باتفاقات اطارية</h2>
+       <h2>الجامعات ذات طبيعة خاصة (المنشأة باتفاقات اطارية)</h2>
     </div>
     </div>
 
     <div class="Card-Box" dir="rtl">
       <div class="container" style="text-align: center;">
-        <h3>ما هي الجامعات المنشئه باتفاقات اطارية؟</h3>
+        <h3>ما هي الجامعات المنشأة باتفاقات اطارية؟</h3>
         <p>هي جامعات . وعددهم 6 جامعات</p>
       </div>
 

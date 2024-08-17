@@ -92,54 +92,7 @@
     </section>
 
     
-    <!-- Dorms -->
-    <section>
-    <br>
-      <h2>السكن</h2>
-      <div class="table-responsive" dir="rtl">
-        <table>
-          <thead>
-            <tr>
-              <th>النوع</th>
-              <th>الرسوم</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(dorm, index) in filteredDorms" :key="index">
-              <td>{{ dorm.type }}</td>
-              <td>{{ dorm.price }}</td>
-            </tr>
-          </tbody>
-        </table>
-        <br>
-      </div>
-      <a :href="dorms_link" target="_blank"><button>مزيد من التفاصيل عن السكن</button></a>
-    </section>
-
-    <!-- Transportation -->
-    <section>
-    <br>
-      <h2>الانتقالات</h2>
-      <div class="table-responsive" dir="rtl">
-        <table>
-          <thead>
-            <tr>
-              <th>الخط</th>
-              <th>الرسوم (في الترم)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(trans, index) in filteredTrans" :key="index">
-              <td>{{ trans.type }}</td>
-              <td>{{ trans.price }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <br>
-      <a :href="transportation_link" target="_blank"><button>مزيد من التفاصيل عن الانتقالات</button></a>
-    </section>
-
+<!-- Arish Dorms --><section><h2>السكن (العريش)</h2><div class="table-responsive" dir="rtl"><img src="/images/SUarishDorms.png" alt="صورة للسكن في العريش" class="img-fluid" /></div><a href="https://www.su.edu.eg/ar/index.php/dorms/" target="_blank"><button>مزيد من التفاصيل عن السكن</button></a></section><!-- Kantra Dorms --><section><h2>السكن (القنطرة)</h2><div class="table-responsive" dir="rtl"><img src="/images/SUkantaraDorms.png" alt="صورة للسكن في القنطرة" class="img-fluid" /></div><a href="https://www.su.edu.eg/ar/index.php/dorms-2/" target="_blank"><button>مزيد من التفاصيل عن السكن</button></a></section><!-- Arish Transportation --><section><h2>الانتقالات (العريش)</h2><div class="table-responsive" dir="rtl"><img src="/images/SUarishTrans.png" alt="صورة للانتقالات في العريش" class="img-fluid" /></div><a href="https://www.su.edu.eg/ar/index.php/%d9%88%d8%b3%d8%a7%d8%a6%d9%84-%d8%a7%d9%84%d8%aa%d9%86%d9%82%d9%84/" target="_blank"><button>مزيد من التفاصيل عن الانتقالات</button></a></section><!-- Kantra Transportation --><section><h2>الانتقالات (القنطرة)</h2><div class="table-responsive" dir="rtl"><img src="/images/SUkantaraTrans.png" alt="صورة للانتقالات في القنطرة" class="img-fluid" /></div><a href="https://www.su.edu.eg/ar/index.php/%d9%85%d9%88%d8%b5%d9%84%d8%a7%d8%aa-%d9%82%d9%86%d8%b7%d8%b1%d8%a9/" target="_blank"><button>مزيد من التفاصيل عن الانتقالات</button></a></section>
     <!-- Scholarships -->
     <section>
       <h2>المنح الدراسية</h2>

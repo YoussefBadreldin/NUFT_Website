@@ -122,7 +122,7 @@
           <thead>
             <tr>
               <th>النوع</th>
-              <th>الرسوم (في الترم)</th>
+              <th>الرسوم</th>
             </tr>
           </thead>
           <tbody>
@@ -146,7 +146,7 @@
           <thead>
             <tr>
               <th>الخط</th>
-              <th>الرسوم (في الترم)</th>
+              <th>الرسوم</th>
             </tr>
           </thead>
           <tbody>

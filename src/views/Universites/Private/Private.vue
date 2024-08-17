@@ -3,7 +3,7 @@
     <HeaderComponent />
 
 <div class="page-nav row">
-        <h2>دليل الجامعات الاهلية</h2>
+        <h2>دليل الجامعات الخاصة</h2>
 
     </div>
 

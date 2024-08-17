@@ -20,10 +20,19 @@
           class="center-text"
         >
           <button @click="openMap(filteredLinks.length > 0 ? filteredLinks[0].location : '')">
-            عرض الموقع على الخرائط
+       عرض الموقع على الخرائط (القنطرة)
           </button>
         </a>
         
+        <a 
+          :href="filteredLinks.length > 0 ? filteredLinks[0].location2 : '#'" 
+          class="center-text"
+        >
+          <button @click="openMap(filteredLinks.length > 0 ? filteredLinks[0].location2 : '')">
+            عرض الموقع على الخرائط (العريش)
+          </button>
+        </a>
+
         <!-- Social Media Links -->
         <div class="social-right-item" style="display: flex; justify-content: center; margin-top: 20px;">
           <ul style="display: flex; justify-content: space-between; width: 100%; max-width: 300px;">

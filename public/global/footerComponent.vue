@@ -23,8 +23,8 @@
                     <li><a href="/Guide/UGRAD/National/International"><i class="fas fa-angle-double-left"></i> دليل الجامعات الأهلية الدولية</a></li>
                     <li><a href="/Guide/UGRAD/National/Affiliated"><i class="fas fa-angle-double-left"></i> دليل الجامعات الأهلية المنبثقة</a></li>
                     <li><a href="/Status/UGRAD/National"><i class="fas fa-angle-double-left"></i> حالة تقديمات الجامعات الأهلية</a></li>                    
-                    <li><a href="#"><i class="fas fa-angle-double-left"></i> دليل الجامعات الخاصة</a></li>
-                    <li><a href="#"><i class="fas fa-angle-double-left"></i> حالة تقديمات الجامعات الخاصة</a></li>
+                    <li><a href="/Guide/UGRAD/Private"><i class="fas fa-angle-double-left"></i> دليل الجامعات الخاصة</a></li>
+                    <li><a href="/Status/UGRAD/Private"><i class="fas fa-angle-double-left"></i> حالة تقديمات الجامعات الخاصة</a></li>
                   </ul>
                 </div>
               </div>

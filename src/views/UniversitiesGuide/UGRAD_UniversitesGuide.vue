@@ -24,11 +24,11 @@
                         </router-link>
                     </div>
                     <div class="col-md-4">
-                        <router-link to="">
+                        <router-link to="/Guide/UGRAD/Private">
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/PrivateGuide.png" alt="Private Universities">
                                 <div class="Box-det" style="text-align: center;">
-                                <h6>دليل الجامعات الخاصة <strong>(قريبا)</strong></h6>
+                                <h6>دليل الجامعات الخاصة</h6>
                                 </div>
                             </div>
                         </router-link>

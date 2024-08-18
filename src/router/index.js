@@ -100,7 +100,7 @@ import UST from "../views/Universites/Special/SpecialLaws/UST.vue";
 import international from "../views/Universites/International/International.vue";
 import UPEI from "../views/Universites/International/UPEI.vue";
 import UH from "../views/Universites/International/UH.vue";
-import TMU from "../views/Universites/International/TMU.vue";
+import UOL from "../views/Universites/International/UOL.vue";
 import Coventry from "../views/Universites/International/Coventry.vue";
 import UEL from "../views/Universites/International/UEL.vue";
 import UCLAN from "../views/Universites/International/UCLAN.vue";
@@ -656,9 +656,9 @@ const routes = [
     component:UPEI,
   },
   {
-    path:'/Guide/UGRAD/international/TMU',
-    name:'TMU',
-    component:TMU,
+    path:'/Guide/UGRAD/international/UOL',
+    name:'UOL',
+    component:UOL,
   },
   {
     path:'/Guide/UGRAD/international/Coventry',

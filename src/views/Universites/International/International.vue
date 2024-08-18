@@ -101,8 +101,8 @@ export default {
 {
     id: 9,
     name: 'جامعة رايرسون (جامعة تورنتو متروبوليتان)',
-    imgSrc: '/images/Logos/Universites/International/TMU.png',
-    link: '/Guide/UGRAD/International/TMU'
+    imgSrc: '/images/Logos/Universites/International/UOL.png',
+    link: '/Guide/UGRAD/International/UOL'
 }
             ]
         };

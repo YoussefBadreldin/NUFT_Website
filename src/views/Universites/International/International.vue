@@ -100,7 +100,7 @@ export default {
 },
 {
     id: 9,
-    name: 'جامعة رايرسون (جامعة تورنتو متروبوليتان)',
+    name: 'جامعة لندن',
     imgSrc: '/images/Logos/Universites/International/UOL.png',
     link: '/Guide/UGRAD/International/UOL'
 }

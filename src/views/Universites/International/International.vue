@@ -71,7 +71,7 @@ export default {
 {
     id: 4,
     name: 'جامعة كوفنتري البريطانية',
-    imgSrc: '/images/Logos/Universites/International/Coventry.png',
+    imgSrc: '/images/Logos/Universites/International/COVENTRY.png',
     link: '/Guide/UGRAD/International/Coventry'
 },
 {
@@ -95,7 +95,7 @@ export default {
 {
     id: 8,
     name: 'جامعة وسط لانكشاير',
-    imgSrc: '/images/Logos/Universites/International/UCLAN.png',
+    imgSrc: '/images/Logos/Universites/International/UCLan.png',
     link: '/Guide/UGRAD/International/UCLAN'
 },
 {

@@ -351,7 +351,7 @@ export default {
    methods: {
     handleLogin() {
       // Simple hardcoded authentication check
-      if (this.username === 'admin' && this.password === 'OMGit'sNUFT') {
+      if (this.username === 'admin' && this.password === 'OMGitsNUFT') {
         this.isAuthenticated = true;
       } else {
         alert('Invalid username or password');

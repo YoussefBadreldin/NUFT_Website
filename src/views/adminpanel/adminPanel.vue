@@ -43,7 +43,7 @@ export default {
   methods: {
     handleLogin() {
       const validUsername = "admin";
-      const validPassword = "OMGit'sNUFT";
+      const validPassword = "OMGitsNUFT";
 
       if (this.username === validUsername && this.password === validPassword) {
         this.isAuthenticated = true;

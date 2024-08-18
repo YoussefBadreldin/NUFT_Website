@@ -17,7 +17,7 @@
         </p>
         <div class="hosted-by-section">
            <h3>Hosted by:</h3>
-          <img src="/images/Logos/Universites/international/MGUF.png" alt="Host Photo" class="host-photo"/>
+          <img src="/images/Logos/Universites/International/MGUF.png" alt="Host Photo" class="host-photo"/>
         </div>
         <br>
         <a 

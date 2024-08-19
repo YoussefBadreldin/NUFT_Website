@@ -231,7 +231,7 @@ import HeaderComponent from '../../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../../public/global/footerComponent.vue';
 
 export default {
-    name: 'UH',
+    name: 'COVENTRY',
     data() {
         return {
             all_data: [],
@@ -282,8 +282,8 @@ export default {
                 }
                 if (Array.isArray(this.all_data)) {
                     console.log('All data:', this.all_data);
-                    this.filteredData = this.all_data.filter(index => index.university === 'UH' && index.normal_or_Dual === 'normal');
-                    this.filteredInternational = this.all_data.filter(index => index.normal_or_Dual === 'dual' && index.university === 'UH');
+                    this.filteredData = this.all_data.filter(index => index.university === 'COVENTRY' && index.normal_or_Dual === 'normal');
+                    this.filteredInternational = this.all_data.filter(index => index.normal_or_Dual === 'dual' && index.university === 'COVENTRY');
                     console.log('Filtered data:', this.filteredData);
                     console.log('Filtered international:', this.filteredInternational);
                 } else {
@@ -297,7 +297,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-website-backend.vercel.app/internationallinks/get_internationallinks');
                 this.links = response.data;
-                this.filteredLinks = this.links.filter(index => index.university === 'UH');
+                this.filteredLinks = this.links.filter(index => index.university === 'COVENTRY');
                 console.log(this.filteredLinks);
                 if (this.filteredLinks.length > 0) {
                     const linkData = this.filteredLinks[0];
@@ -331,7 +331,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-website-backend.vercel.app/internationaldorms/getinternationaldorms');
                 this.dorms = response.data;
-                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'UH');
+                this.filteredDorms = this.dorms.filter(dorm => dorm.spec === 'COVENTRY');
                 //console.log('dorms table', this.filteredDorms)
             } catch (error) {
                 console.log(error);
@@ -341,7 +341,7 @@ export default {
             try {
                 const response = await axios.get('https://nuft-website-backend.vercel.app/internationaltrans/getinternationaltrans');
                 this.trans = response.data;
-                this.filteredTrans = this.trans.filter(index => index.spec === 'UH');
+                this.filteredTrans = this.trans.filter(index => index.spec === 'COVENTRY');
                 console.log('filteredTrans', this.filteredTrans)
             }
             catch (error) {

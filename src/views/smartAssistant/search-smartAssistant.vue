@@ -84,7 +84,7 @@ export default {
                 'ECU': '/Guide/UGRAD/Private/ECU',
                 'جامعة حورس': '/Guide/UGRAD/Private/HUE',
                 'HUE': '/Guide/UGRAD/Private/HUE',
-                'جامعة ميرت': '/Guide/UGRAD/Private/MUE',
+                'جامعة ميريت': '/Guide/UGRAD/Private/MUE',
                 'MUE': '/Guide/UGRAD/Private/MUE',
                 'جامعة السلام': '/Guide/UGRAD/Private/ASU',
                 'ASU': '/Guide/UGRAD/Private/ASU',

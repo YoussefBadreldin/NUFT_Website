@@ -2,7 +2,7 @@
   <div>
     <HeaderComponent />
     <section>
-      <h1>كلية الطب البشري</h1>
+      <h1>كلية الطب البيطري</h1>
       <div class="table-responsive" dir="rtl">
         <table>
           <thead>

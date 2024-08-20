@@ -2,7 +2,7 @@
   <div>
     <HeaderComponent />
     <section>
-      <h1>كلية السياحة</h1>
+      <h1>كلية الطب البشري</h1>
       <div class="table-responsive" dir="rtl">
         <table>
           <thead>
@@ -29,7 +29,9 @@
           </thead>
           <tbody>
             <tr v-for="(faculty, index) in filteredData" :key="index">
-              <td>{{ faculty.university_Arabic_Name }}</td>
+              <td>
+                <a :href="faculty.guide_Url" target="_blank">{{ faculty.university_Arabic_Name }}</a>
+              </td>
               <td>{{ faculty.type }}</td>
               <td>{{ faculty.programs }}</td>
               <td>{{ faculty.feesEgyption }}</td>
@@ -57,7 +59,7 @@ import HeaderComponent from '../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../public/global/footerComponent.vue';
 
 export default {
-  name: 'MED',
+  name: 'TOUR',
   data() {
     return {
       all_data: [],
@@ -74,7 +76,6 @@ export default {
   methods: {
     async getData() {
       try {
-        // Make requests to 4 different URLs using Promise.all
         const [response1, response2, response3, response4] = await Promise.all([
           axios.get('https://nuft-website-backend.vercel.app/nationalfaculty/getnational'),
           axios.get('https://nuft-website-backend.vercel.app/privatefaculty/getprivate'),
@@ -82,7 +83,6 @@ export default {
           axios.get('https://nuft-website-backend.vercel.app/specialfaculty/getspecial')
         ]);
 
-        // Combine or process the data from all responses
         const combinedData = [
           ...(response1.data?.faculty || []),
           ...(response2.data?.faculty || []),
@@ -90,11 +90,9 @@ export default {
           ...(response4.data?.faculty || [])
         ];
 
-        // Filter data based on your conditions
         this.all_data = combinedData;
-        this.filteredData = this.all_data.filter(item => item.faculty_short === 'MED' && item.normal_or_Dual === 'normal');
-        this.filteredInternational = this.all_data.filter(item => item.faculty_short === 'MED' && item.normal_or_Dual === 'dual');
-
+        this.filteredData = this.all_data.filter(item => item.faculty_short === 'TOUR' && item.normal_or_Dual === 'normal');
+        this.filteredInternational = this.all_data.filter(item => item.faculty_short === 'TOUR' && item.normal_or_Dual === 'dual');
       } catch (error) {
         console.error('Error fetching data:', error);
       }

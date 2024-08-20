@@ -113,7 +113,7 @@ import smartAssistant from "../views/smartAssistant/smartAssistant.vue";
 import searchsmartAssistant from "../views/smartAssistant/search-smartAssistant.vue";
 import scoresmartAssistant from "../views/smartAssistant/score-smartAssistant.vue";
 import facultiessmartAssistant from "../views/smartAssistant/faculties-smartAssistant.vue";
-
+import MED from "../views/smartAssistant/MED.vue";
 const routes = [
   {
     path:'/',
@@ -574,6 +574,11 @@ const routes = [
     path:"/smartAssistant/faculties",
     name:"facultiessmartAssistant",
     component:facultiessmartAssistant
+  },
+  {
+    path:"/smartAssistant/faculties/MED",
+    name:"MED",
+    component:MED
   },
   {
     path:'/Guide/UGRAD/special',

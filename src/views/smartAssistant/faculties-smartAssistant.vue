@@ -1,136 +1,194 @@
 <template>
-    <div>
-        <HeaderComponent />
-        <br>
-        <h2>!أهلا بيك</h2>
-        <p><strong>أنا مساعدك الشخصي</strong></p>
-        <p>يرجى إدخال البيانات التالية بدقة لمعرفة الجامعات التي تحتوي علي كليات معينة</p>
-        <br>
+  <div>
+    <HeaderComponent />
 
-        <div class="form-group">
-            <label for="facultySelect">اختر الكلية</label>
-            <select id="facultySelect" v-model="selectedFaculty">
-                <option value="medicine">الطب البشري</option>
-                <option value="computer_science">علوم الحاسب</option>
-                <option value="engineering">الهندسة</option>
-                <!-- Add more options as needed -->
-            </select>
-        </div>
+<div class="page-nav row">
+        <h2>الجامعات التي تحتوي علي كليات معينة</h2>
 
-        <div>
-            <button @click="search">بحث</button>
-        </div>
-
-        <div v-if="result" class="result">
-            <p>{{ result }}</p>
-            <p v-if="resultDetails">{{ resultDetails }}</p>
-            <button v-if="result === 'الطب البشري'" @click="toggleDetails">تفاصيل</button>
-        </div>
-
-        <div v-if="showDetails" class="details">
-            <p>هنا تفاصيل عن الطب البشري...</p>
-        </div>
-        <br>
-        <FooterComponent />
     </div>
+
+    <div class="Card-Box" dir="rtl">
+
+      <div class="Card-Box" dir="rtl">
+        <div class="container">
+          <div class="session-title row"></div>
+          <div class="row Box-ro">
+            <div class="col-md-4" v-for="university in universities" :key="university.id">
+              <router-link :to="university.link">
+                <div class="Box-card">
+                  <img :src="university.imgSrc" :alt="university.name">
+                  <div class="Box-det" style="text-align: center;">
+                    <h6>{{ university.name }}</h6>
+                  </div>
+                </div>
+              </router-link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <FooterComponent />
+  </div>
 </template>
 
 <script>
 import HeaderComponent from '../../../public/global/headerComponent.vue';
-import FooterComponent from '../../../public/global/footerComponent.vue'; 
+import FooterComponent from '../../../public/global/footerComponent.vue';
 
 export default {
-    name: 'MainComponent',
+    name:'interNational',
     components: {
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
     },
     data() {
-        return {
-            selectedFaculty: '',  // Holds the selected faculty
-            result: '',           // Holds the result message
-            resultDetails: '',    // Holds additional result details
-            showDetails: false    // Controls the visibility of details
-        };
-    },
-    methods: {
-        search() {
-            // Example logic for demonstration. Adjust as needed.
-            if (this.selectedFaculty) {
-                this.result = 'تم العثور على التخصص';
-                this.resultDetails = 'في جامعات ';
-                this.$router.push(`/Guide/UGRAD/${this.selectedFaculty}`);
-            } else {
-                this.result = 'يرجى اختيار الكلية';
-                this.resultDetails = '';
-            }
-            this.showDetails = false;  // Hide details when performing a new search
+   return {
+    searchQuery: '',
+    universities: [
+        {
+            id: 1,
+            name: 'كلية الطب البشري',
+            imgSrc: '/images/Logos/Faculties/MED.png',
+            link: '/SmartAssistant/Faculties/MED'
         },
-        toggleDetails() {
-            this.showDetails = !this.showDetails;
-        }
+        {
+    id: 2,
+    name: 'كلية طب الأسنان',
+    imgSrc: '/images/Logos/Faculties/DENT.png',
+    link: '/SmartAssistant/Faculties/DENT'
+},
+{
+    id: 3,
+    name: 'كلية العلاج الطبيعي',
+    imgSrc: '/images/Logos/Faculties/PT.png',
+    link: '/SmartAssistant/Faculties/PT'
+},
+{
+    id: 4,
+    name: 'كلية الصيدلة',
+    imgSrc: '/images/Logos/Faculties/PHARM.png',
+    link: '/SmartAssistant/Faculties/PHARM'
+},
+{
+    id: 5,
+    name: 'كلية الهندسة',
+    imgSrc: '/images/Logos/Faculties/ENG.png',
+    link: '/SmartAssistant/Faculties/ENG'
+},
+{
+    id: 6,
+    name: 'كلية الطب البيطري',
+    imgSrc: '/images/Logos/Faculties/VET.png',
+    link: '/SmartAssistant/Faculties/VET'
+},
+{
+    id: 7,
+    name: 'كلية علوم الحاسب',
+    imgSrc: '/images/Logos/Faculties/CS.png',
+    link: '/SmartAssistant/Faculties/CS'
+},
+{
+    id: 8,
+    name: 'كلية التمريض',
+    imgSrc: '/images/Logos/Faculties/NURS.png',
+    link: '/SmartAssistant/Faculties/NURS'
+},
+{
+    id: 9,
+    name: 'كلية تكنولوجيا العلوم الصحية',
+    imgSrc: '/images/Logos/Faculties/HS.png',
+    link: '/SmartAssistant/Faculties/HS'
+},
+{
+    id: 10,
+    name: 'كلية الفنون',
+    imgSrc: '/images/Logos/Faculties/ART.png',
+    link: '/SmartAssistant/Faculties/ART'
+},
+{
+    id: 11,
+    name: 'كلية الإعلام',
+    imgSrc: '/images/Logos/Faculties/MEDIA.png',
+    link: '/SmartAssistant/Faculties/MEDIA'
+},
+{
+    id: 12,
+    name: 'كلية الآثار',
+    imgSrc: '/images/Logos/Faculties/ARCH.png',
+    link: '/SmartAssistant/Faculties/ARCH'
+},
+{
+    id: 13,
+    name: 'كلية الحقوق',
+    imgSrc: '/images/Logos/Faculties/LAW.png',
+    link: '/SmartAssistant/Faculties/LAW'
+},
+{
+    id: 14,
+    name: 'كلية السياحة',
+    imgSrc: '/images/Logos/Faculties/TOUR.png',
+    link: '/SmartAssistant/Faculties/TOUR'
+},
+{
+    id: 15,
+    name: 'كلية الاقتصاد والإدارة',
+    imgSrc: '/images/Logos/Faculties/ECON.png',
+    link: '/SmartAssistant/Faculties/ECON'
+},
+{
+    id: 16,
+    name: 'كلية العلوم السينمائية',
+    imgSrc: '/images/Logos/Faculties/CINE.png',
+    link: '/SmartAssistant/Faculties/CINE'
+},
+{
+    id: 17,
+    name: 'كلية العلوم الأساسية',
+    imgSrc: '/images/Logos/Faculties/SCI.png',
+    link: '/SmartAssistant/Faculties/SCI'
+},
+{
+    id: 18,
+    name: 'كلية التكنولوجيا الحيوية',
+    imgSrc: '/images/Logos/Faculties/BIOTECH.png',
+    link: '/SmartAssistant/Faculties/BIOTECH'
+},
+{
+    id: 19,
+    name: 'كلية التربية',
+    imgSrc: '/images/Logos/Faculties/EDU.png',
+    link: '/SmartAssistant/Faculties/EDU'
+},
+{
+    id: 20,
+    name: 'كلية اللغات والترجمة',
+    imgSrc: '/images/Logos/Faculties/LANG.png',
+    link: '/SmartAssistant/Faculties/LANG'
+},
+{
+    id: 21,
+    name: 'كلية العلوم الاجتماعية',
+    imgSrc: '/images/Logos/Faculties/SOCSCI.png',
+    link: '/SmartAssistant/Faculties/SOCSCI'
+}
+    ]
+};
+    },
+ methods: {
+    search() {
+      console.log('Search query:', this.searchQuery);
+      // Implement search functionality here
     }
+  },
+  mounted() {
+    window.scrollTo(0, 0);
+  }
 };
 </script>
-
 <style scoped>
-/* Form Group Styles */
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.form-group input,
-.form-group select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-/* Button Styles */
-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    margin-right: 10px; /* Add space between buttons */
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-/* Result Styles */
-.result {
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #f9f9f9;
-}
-
-/* Details Styles */
-.details {
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #f0f0f0;
-}
-
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .carousel-item img {
-        height: 40vh; /* Set height as a percentage of the viewport height */
-        object-fit: cover; /* Ensure image covers the area without distortion */
-    }
+.page-nav {
+    /* Set the width of the page-nav section */
+    width: 100.97%; /* Adjust as needed */
 }
 </style>

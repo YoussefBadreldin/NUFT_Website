@@ -57,7 +57,7 @@ import HeaderComponent from '../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../public/global/footerComponent.vue';
 
 export default {
-  name: 'MED',
+  name: 'VET',
   data() {
     return {
       all_data: [],
@@ -92,8 +92,8 @@ export default {
 
         // Filter data based on your conditions
         this.all_data = combinedData;
-        this.filteredData = this.all_data.filter(item => item.faculty_short === 'MED' && item.normal_or_Dual === 'normal');
-        this.filteredInternational = this.all_data.filter(item => item.faculty_short === 'MED' && item.normal_or_Dual === 'dual');
+        this.filteredData = this.all_data.filter(item => item.faculty_short === 'VET' && item.normal_or_Dual === 'normal');
+        this.filteredInternational = this.all_data.filter(item => item.faculty_short === 'VET' && item.normal_or_Dual === 'dual');
 
       } catch (error) {
         console.error('Error fetching data:', error);

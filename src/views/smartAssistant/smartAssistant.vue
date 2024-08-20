@@ -3,9 +3,9 @@
         <HeaderComponent />
 
         <!-- Options Section -->
-        <div class="options-section">
+        <div class="options-section" dir="rtl">
             <div class="container text-center">
-                <h2>!أهلاً بك</h2>
+                <h2>أهلاً بك!</h2>
                 <p><strong>أنا مساعدك الشخصي</strong></p>
                 <p>كيف يمكنني مساعدتك؟</p>
                 <div class="row">

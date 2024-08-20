@@ -178,7 +178,7 @@ export default {
         },
         {
             id: 22,
-            name: 'جامعة ميرت',
+            name: 'جامعة ميريت',
             imgSrc: '/images/Logos/Universites/Private/MUE.png',
             link: '/guide/UGRAD/private/MUE'
         },

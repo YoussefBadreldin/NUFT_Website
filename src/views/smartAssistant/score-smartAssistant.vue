@@ -37,7 +37,10 @@
             <p>الكليات التي تناسب مجموعك:</p>
             <ul>
                 <li v-for="faculty in matchingFaculties" :key="faculty.name">
-                    {{ faculty.name }}
+                    {{ faculty.name }} 
+                    <span v-if="faculty.name === 'كلية الطب البشري'"> 
+                        (الجامعات المتوافقة: {{ faculty.universities }})
+                    </span>
                 </li>
             </ul>
         </div>
@@ -71,14 +74,14 @@ export default {
             const facultyScores = {
                 'كلية الطب البشري': {
                     '2024': {
-                        'private_universities_except_sinai': 85,
-                        'specific_universities': 83,
-                        'king_salman_sina': 81
+                        'private_universities_except_sinai': { score: 85, universities: 'الجامعات الخاصة عدا (سيناء), الجامعات الاهلية عدا (الجلالة,العلمين الدولية, الملك سلمان الدولية,شرق بورسعيد الاهلية,الاسماعلية الجديدة الاهلية)' },
+                        'specific_universities': { score: 83, universities: 'جامعة سيناء (فرع القنطرة), جامعة الجلالة, جامعة العلمين الدولية, جامعة شرق بورسعيد الاهلية, جامعة الاسماعلية الجديدة الاهلية' },
+                        'king_salman_sina': { score: 81, universities: 'جامعة سيناء (فرع العريش), جامعة الملك سلمان الدولية' }
                     },
                     '2023': {
-                        'private_universities_except_sinai': 90,
-                        'specific_universities': 85,
-                        'king_salman_sina': 83
+                        'private_universities_except_sinai': { score: 90, universities: 'الجامعات الخاصة عدا (سيناء), الجامعات الاهلية عدا (الجلالة,العلمين الدولية, الملك سلمان الدولية,شرق بورسعيد الاهلية,الاسماعلية الجديدة الاهلية)' },
+                        'specific_universities': { score: 85, universities: 'جامعة سيناء (فرع القنطرة), جامعة الجلالة, جامعة العلمين الدولية, جامعة شرق بورسعيد الاهلية, جامعة الاسماعلية الجديدة الاهلية' },
+                        'king_salman_sina': { score: 83, universities: 'جامعة سيناء (فرع العريش), جامعة الملك سلمان الدولية' }
                     }
                 },
                 'كلية التمريض': {
@@ -143,29 +146,37 @@ export default {
             this.matchingFaculties = [];
 
             // Determine the relevant scores based on user input
-            const minScore = facultyScores[this.selectedCertificate] && facultyScores[this.selectedCertificate][this.selectedYear] || 0;
-
             for (const [faculty, scores] of Object.entries(facultyScores)) {
-                let score = minScore;
+                let scoreInfo;
 
                 if (faculty === 'كلية الطب البشري') {
                     if (this.selectedCertificate === 'arabic_foreign') {
                         if (this.selectedYear === '2024') {
-                            if (['private_universities_except_sinai', 'specific_universities', 'king_salman_sina'].includes(this.selectedInstitution)) {
-                                score = scores[this.selectedInstitution];
+                            if (this.percentage >= scores['2024']['private_universities_except_sinai'].score) {
+                                scoreInfo = scores['2024']['private_universities_except_sinai'];
+                            } else if (this.percentage >= scores['2024']['specific_universities'].score) {
+                                scoreInfo = scores['2024']['specific_universities'];
+                            } else if (this.percentage >= scores['2024']['king_salman_sina'].score) {
+                                scoreInfo = scores['2024']['king_salman_sina'];
                             }
                         } else if (this.selectedYear === '2023') {
-                            if (['private_universities_except_sinai', 'specific_universities', 'king_salman_sina'].includes(this.selectedInstitution)) {
-                                score = scores[this.selectedInstitution];
+                            if (this.percentage >= scores['2023']['private_universities_except_sinai'].score) {
+                                scoreInfo = scores['2023']['private_universities_except_sinai'];
+                            } else if (this.percentage >= scores['2023']['specific_universities'].score) {
+                                scoreInfo = scores['2023']['specific_universities'];
+                            } else if (this.percentage >= scores['2023']['king_salman_sina'].score) {
+                                scoreInfo = scores['2023']['king_salman_sina'];
                             }
                         }
                     }
                 } else {
-                    score = scores[this.selectedYear];
+                    if (this.percentage >= scores[this.selectedYear]) {
+                        this.matchingFaculties.push({ name: faculty });
+                    }
                 }
 
-                if (this.percentage >= score) {
-                    this.matchingFaculties.push({ name: faculty });
+                if (scoreInfo) {
+                    this.matchingFaculties.push({ name: faculty, universities: scoreInfo.universities });
                 }
             }
         }

@@ -351,7 +351,7 @@ export default {
    methods: {
     handleLogin() {
       // Simple hardcoded authentication check
-      if (this.username === 'admin' && this.password === 'admin') {
+      if (this.username === 'admin' && this.password === '1231123') {
         this.isAuthenticated = true;
       } else {
         alert('Invalid username or password');

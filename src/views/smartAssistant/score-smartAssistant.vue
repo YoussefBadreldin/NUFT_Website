@@ -33,15 +33,15 @@
             <button @click="search">بحث</button>
         </div>
 
-        <div v-if="result" class="result">
-            <p>{{ result }}</p>
-            <p v-if="resultDetails">{{ resultDetails }}</p>
-            <button v-if="result === 'الطب البشري'" @click="toggleDetails">تفاصيل</button>
+        <div v-if="matchingFaculties.length" class="result">
+            <p>الكليات التي تناسب مجموعك:</p>
+            <ul>
+                <li v-for="faculty in matchingFaculties" :key="faculty.name">
+                    {{ faculty.name }}
+                </li>
+            </ul>
         </div>
 
-        <div v-if="showDetails" class="details">
-            <p>هنا تفاصيل عن الطب البشري...</p>
-        </div>
         <br>
         <FooterComponent />
     </div>
@@ -62,29 +62,112 @@ export default {
             percentage: null,
             selectedCertificate: '',
             selectedYear: '',
-            result: '',           // Holds the result message
-            resultDetails: '',    // Holds additional result details
-            showDetails: false    // Controls the visibility of details
+            matchingFaculties: [],  // Holds the list of faculties that meet the criteria
         };
     },
     methods: {
         search() {
-            if (this.percentage >= 74 && this.percentage <= 79 && this.selectedYear === '2024') {
-                if (['secondary_general', 'stem_nile', 'azhar_secondary'].includes(this.selectedCertificate)) {
-                    this.result = 'الطب البشري';
-                    this.resultDetails = 'في جامعات ';
-                } else {
-                    this.result = 'لا يوجد تخصص مطابق';
-                    this.resultDetails = '';
+            // Define the minimum scores for each faculty and institution
+            const facultyScores = {
+                'كلية الطب البشري': {
+                    '2024': {
+                        'private_universities_except_sinai': 85,
+                        'specific_universities': 83,
+                        'king_salman_sina': 81
+                    },
+                    '2023': {
+                        'private_universities_except_sinai': 90,
+                        'specific_universities': 85,
+                        'king_salman_sina': 83
+                    }
+                },
+                'كلية التمريض': {
+                    '2024': 58,
+                    '2023': 58
+                },
+                'كلية تكنولوجيا العلوم الصحية': {
+                    '2024': 58,
+                    '2023': 58
+                },
+                'كلية الفنون': {
+                    '2024': 58,
+                    '2023': 58
+                },
+                'كلية الإعلام': {
+                    '2024': 58,
+                    '2023': 58
+                },
+                'كلية الآثار': {
+                    '2024': 58,
+                    '2023': 58
+                },
+                'كلية الحقوق': {
+                    '2024': 58,
+                    '2023': 58
+                },
+                'كلية السياحة': {
+                    '2024': 58,
+                    '2023': 58
+                },
+                'كلية الاقتصاد والإدارة': {
+                    '2024': 58,
+                    '2023': 58
+                },
+                'كلية العلوم السينمائية': {
+                    '2024': 58,
+                    '2023': 58
+                },
+                'كلية العلوم الأساسية': {
+                    '2024': 58,
+                    '2023': 58
+                },
+                'كلية التكنولوجيا الحيوية': {
+                    '2024': 58,
+                    '2023': 58
+                },
+                'كلية التربية': {
+                    '2024': 58,
+                    '2023': 58
+                },
+                'كلية اللغات والترجمة': {
+                    '2024': 58,
+                    '2023': 58
+                },
+                'كلية العلوم الاجتماعية': {
+                    '2024': 58,
+                    '2023': 58
                 }
-            } else {
-                this.result = 'المجموع أو السنة غير متوافقين';
-                this.resultDetails = '';
+            };
+
+            // Clear previous results
+            this.matchingFaculties = [];
+
+            // Determine the relevant scores based on user input
+            const minScore = facultyScores[this.selectedCertificate] && facultyScores[this.selectedCertificate][this.selectedYear] || 0;
+
+            for (const [faculty, scores] of Object.entries(facultyScores)) {
+                let score = minScore;
+
+                if (faculty === 'كلية الطب البشري') {
+                    if (this.selectedCertificate === 'arabic_foreign') {
+                        if (this.selectedYear === '2024') {
+                            if (['private_universities_except_sinai', 'specific_universities', 'king_salman_sina'].includes(this.selectedInstitution)) {
+                                score = scores[this.selectedInstitution];
+                            }
+                        } else if (this.selectedYear === '2023') {
+                            if (['private_universities_except_sinai', 'specific_universities', 'king_salman_sina'].includes(this.selectedInstitution)) {
+                                score = scores[this.selectedInstitution];
+                            }
+                        }
+                    }
+                } else {
+                    score = scores[this.selectedYear];
+                }
+
+                if (this.percentage >= score) {
+                    this.matchingFaculties.push({ name: faculty });
+                }
             }
-            this.showDetails = false;  // Hide details when performing a new search
-        },
-        toggleDetails() {
-            this.showDetails = !this.showDetails;
         }
     }
 };

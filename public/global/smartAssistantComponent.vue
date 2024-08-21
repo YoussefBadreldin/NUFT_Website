@@ -18,21 +18,11 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <p>This is where your chat interface would go.</p>
-                        <iframe src="https://example.com/chatbot"
-                            style="width: 100%; height: 400px; border: none;"></iframe>
-                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" @click="closeModal">Close</button>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Chat Window -->
-        <div class="chat-window" v-show="isChatWindowVisible">
-            <iframe src="https://example.com/chatbot" frameborder="0"></iframe>
         </div>
     </div>
 </template>
@@ -53,10 +43,7 @@ export default {
         },
         closeModal() {
             $('#smartAssistantModal').modal('hide');
-        },
-        toggleChatWindow() {
-            this.isChatWindowVisible = !this.isChatWindowVisible;
-        },
+        }
     },
         mounted() {
         window.scrollTo(0, 0);

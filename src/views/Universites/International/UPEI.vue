@@ -91,7 +91,10 @@
       <p>
         الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت)
       </p>
-      <a href="/Status/UGRAD/National" style="display: block; text-align: center;">
+      <a href="https://upei.uofcanada.edu.eg/admission-requirements-2/?device_id=1dca9b1d-15f9-4e02-a880-ad1a8e27a944" target="_blank">
+  <button>اضغط هنا لمعرفة المزيد عن متطلبات التقديم</button>
+</a>
+<a href="/Status/UGRAD/National" style="display: block; text-align: center;">
         <button>اضغط هنا لمعرفة حالة تقديم الجامعة</button>
       </a>
     </section>

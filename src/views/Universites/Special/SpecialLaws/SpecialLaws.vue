@@ -1,30 +1,34 @@
 <template>
   <div>
     <HeaderComponent />
+
     <div class="page-nav row">
       <h2>الجامعات ذات طبيعة خاصة<br>(المنشأة بقوانين خاصة)</h2>
     </div>
 
-      <div class="Card-Box" dir="rtl">
-        <div class="container">
-          <div class="session-title row"></div>
-          <div class="row Box-ro">
-            <div class="col-md-4" v-for="university in universities" :key="university.id">
-              <router-link :to="university.link">
-                <div class="Box-card">
-                  <img :src="university.imgSrc" :alt="university.name">
-                  <div class="Box-det" style="text-align: center;">
-                    <h6>{{ university.name }}</h6>
-                  </div>
+    <div class="Card-Box" dir="rtl">
+      <div class="container">
+        <div class="session-title row"></div>
+        <div class="row Box-ro">
+          <div 
+            class="col-md-4" 
+            v-for="university in universities" 
+            :key="university.id"
+          >
+            <router-link :to="university.link">
+              <div class="Box-card">
+                <img :src="university.imgSrc" :alt="university.name" />
+                <div class="Box-det" style="text-align: center;">
+                  <h6>{{ university.name }}</h6>
                 </div>
-              </router-link>
-            </div>
+              </div>
+            </router-link>
           </div>
         </div>
       </div>
     </div>
 
-        <footer-component />
+    <footer-component />
     <smartAssistantComponent />
   </div>
 </template>

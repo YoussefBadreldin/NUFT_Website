@@ -115,61 +115,67 @@ export default {
 },
 {
     id: 12,
+    name: 'الكليات البولي تيكنيك',
+    imgSrc: '/images/Logos/Faculties/POLY.png',
+    link: '/SmartAssistant/Faculties/POLY'
+},
+{
+    id: 13,
     name: 'كلية الفنون',
     imgSrc: '/images/Logos/Faculties/ART.png',
     link: '/SmartAssistant/Faculties/ART'
 },
 {
-    id: 13,
+    id: 14,
     name: 'كلية الإعلام',
     imgSrc: '/images/Logos/Faculties/MEDIA.png',
     link: '/SmartAssistant/Faculties/MEDIA'
 },
 {
-    id: 14,
+    id: 15,
     name: 'كلية الآثار',
     imgSrc: '/images/Logos/Faculties/ARCH.png',
     link: '/SmartAssistant/Faculties/ARCH'
 },
 {
-    id: 15,
+    id: 16,
     name: 'كلية الحقوق',
     imgSrc: '/images/Logos/Faculties/LAW.png',
     link: '/SmartAssistant/Faculties/LAW'
 },
 {
-    id: 16,
+    id: 17,
     name: 'كلية السياحة',
     imgSrc: '/images/Logos/Faculties/TOUR.png',
     link: '/SmartAssistant/Faculties/TOUR'
 },
 {
-    id: 17,
+    id: 18,
     name: 'كلية الاقتصاد والإدارة',
     imgSrc: '/images/Logos/Faculties/ECON.png',
     link: '/SmartAssistant/Faculties/ECON'
 },
 {
-    id: 18,
+    id: 19,
     name: 'كلية العلوم السينمائية',
     imgSrc: '/images/Logos/Faculties/CINE.png',
     link: '/SmartAssistant/Faculties/CINE'
 },
 
 {
-    id: 19,
+    id: 20,
     name: 'كلية التربية',
     imgSrc: '/images/Logos/Faculties/EDU.png',
     link: '/SmartAssistant/Faculties/EDU'
 },
 {
-    id: 20,
+    id: 21,
     name: 'كلية اللغات والترجمة',
     imgSrc: '/images/Logos/Faculties/LANG.png',
     link: '/SmartAssistant/Faculties/LANG'
 },
 {
-    id: 21,
+    id: 22,
     name: 'كلية العلوم الاجتماعية',
     imgSrc: '/images/Logos/Faculties/SOCSCI.png',
     link: '/SmartAssistant/Faculties/SOCSCI'

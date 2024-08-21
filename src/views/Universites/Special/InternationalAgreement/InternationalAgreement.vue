@@ -30,19 +30,22 @@
       </div>
     </div>
 
-    <FooterComponent />
+        <footer-component />
+    <smartAssistantComponent />
   </div>
 </template>
 
 <script>
 import HeaderComponent from '../../../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../../../public/global/footerComponent.vue';
+import smartAssistantComponent from '../../../../../public/global/smartAssistantComponent.vue';
 
 export default {
   name: 'interSpecial',
   components: {
     HeaderComponent,
     FooterComponent,
+    smartAssistantComponent
   },
   data() {
     return {
@@ -74,16 +77,16 @@ export default {
         },
         {
           id: 5,
-          name: 'جامعة برلين',
-          imgSrc: '/images/Logos/Universites/Special/TUB.png',
-          link: '/Guide/UGRAD/Special/TUB',
+          name: 'جامعة سنجور (دراسات عليا فقط)',
+          imgSrc: '/images/Logos/Universites/Special/SenghorU.png',
+          link: '',
         },
         {
           id: 6,
-          name: 'جامعة سنجور',
-          imgSrc: '/images/Logos/Universites/Special/SenghorU.png',
-          link: '/Guide/UGRAD/Special/Senghor',
-        },
+          name: 'جامعة برلين (اغلقت 2022)',
+          imgSrc: '/images/Logos/Universites/Special/TUB.png',
+          link: '',
+        }
       ],
     };
   },

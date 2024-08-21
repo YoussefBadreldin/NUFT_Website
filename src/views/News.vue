@@ -37,7 +37,8 @@
       </div>
     </div>
 
-    <footer-component />
+        <footer-component />
+    <smartAssistantComponent />
   </div>
 </template>
 
@@ -45,12 +46,14 @@
 import axios from 'axios';
 import HeaderComponent from '../../public/global/headerComponent.vue';
 import FooterComponent from '../../public/global/footerComponent.vue';
+import smartAssistantComponent from '../../public/global/smartAssistantComponent.vue';
 
 export default {
   name: 'NewsPage',
   components: {
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    smartAssistantComponent
   },
   data() {
     return {

@@ -164,14 +164,16 @@
   </ul>
 </section>
 
-    <FooterComponent />
-  </div>
+<FooterComponent />
+        <smartAssistantComponent />
+    </div>
 </template>
 
 <script>
 import axios from 'axios';
 import HeaderComponent from '../../../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../../../public/global/footerComponent.vue';
+import smartAssistantComponent from '../../../../../public/global/smartAssistantComponent.vue';
 
 export default {
     name: 'GIU',
@@ -210,8 +212,9 @@ export default {
         };
     },
     components: {
-        HeaderComponent,
-        FooterComponent
+    HeaderComponent,
+    FooterComponent,
+    smartAssistantComponent
     },
     methods: {
         async get_data() {

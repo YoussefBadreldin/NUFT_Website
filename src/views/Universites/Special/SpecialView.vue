@@ -49,19 +49,21 @@
     </div>
 
 
-    <FooterComponent />
-
+<FooterComponent />
+        <smartAssistantComponent />
     </div>
 </template>
 
 <script>
 import HeaderComponent from '../../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../../public/global/footerComponent.vue';
+import smartAssistantComponent from '../../../../public/global/smartAssistantComponent.vue';
 
 export default {
     components: {
     HeaderComponent,
     FooterComponent,
+    smartAssistantComponent
     }
 }
 </script>

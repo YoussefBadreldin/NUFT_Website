@@ -49,7 +49,8 @@
             </section>
         </div>
 
-        <FooterComponent />
+      <FooterComponent />
+        <smartAssistantComponent />
     </div>
 </template>
 
@@ -57,12 +58,14 @@
 import axios from 'axios';
 import HeaderComponent from '../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../public/global/footerComponent.vue';
+import smartAssistantComponent from '../../../public/global/smartAssistantComponent.vue';
 
 export default {
     name: 'NationalUniversitiesAdmissionsStatus',
     components: {
-        HeaderComponent,
-        FooterComponent,
+    HeaderComponent,
+    FooterComponent,
+    smartAssistantComponent
     },
     data() {
         return {

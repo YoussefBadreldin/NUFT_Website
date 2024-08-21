@@ -189,10 +189,6 @@ export default {
                 'EJUST': '/Guide/UGRAD/Special/EJUST',
                 'الجامعة الألمانية الدولية': '/Guide/UGRAD/Special/GIU',
                 'GIU': '/Guide/UGRAD/Special/GIU',
-                'جامعة برلين': '/Guide/UGRAD/Special/TUB',
-                'TUB': '/Guide/UGRAD/Special/TUB',
-                'جامعة سنجور': '/Guide/UGRAD/Special/SenghorU',
-                'SenghorU': '/Guide/UGRAD/Special/SenghorU',
                 'جامعة العلوم والتكنولوجيا بمدينة زويل': '/Guide/UGRAD/Special/UST',
                 'UST': '/Guide/UGRAD/Special/UST'
             };

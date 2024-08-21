@@ -92,64 +92,15 @@
       <p>
         الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت)
       </p>
-      <a href="/Status/UGRAD/National" style="display: block; text-align: center;">
+      <a href="https://eue.edu.eg/chooseUniversity" target="_blank">
+  <button>اضغط هنا لمعرفة المزيد عن متطلبات التقديم</button>
+</a>
+<a href="/Status/UGRAD/National" style="display: block; text-align: center;">
         <button>اضغط هنا لمعرفة حالة تقديم الجامعة</button>
       </a>
     </section>
 
-    <!-- International Programs -->
-    <section>
-    <br>
-      <h2>البرامج الدولية</h2>
-      <div class="table-responsive" dir="rtl">
-        <table>
-          <thead>
-            <tr>
-              <th rowspan="2">البرامج</th>
-              <th rowspan="2">التفاصيل</th>
-              <th rowspan="2">الرسوم للمصريين (في السنة)</th>
-              <th rowspan="2">الرسوم للوافدين (في السنة)</th>
-              <th rowspan="2">الشعبة</th>
-              <th colspan="2">الحد الأدنى للثانوية العامة وستيم والنيل</th>
-              <th colspan="2">الحد الأدنى للثانوية الأزهرية (بعد المعادلة)</th>
-              <th colspan="2">الحد الأدنى للشهادات العربية والأجنبية (بعد المعادلة)</th>
-              <th rowspan="2">الحد الأدنى للوافدين</th>
-            </tr>
-            <tr>
-              <th>{{ firstYear }}</th>
-              <th>{{ secondYear }}</th>
-              <th>{{ firstYear }}</th>
-              <th>{{ secondYear }}</th>
-              <th>{{ firstYear }}</th>
-              <th>{{ secondYear }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(faculty, index) in filteredInternational" :key="index">
-              <td>{{ faculty.faculty }}</td>
-              <td>{{ faculty.programs }}</td>
-              <td>{{ faculty.feesEgyption }}</td>
-              <td>{{ faculty.feesNatives }}</td>
-              <td>{{ faculty.section }}</td>
-              <td>{{ faculty.thanwyaa_firstYear_score }}</td>
-              <td>{{ faculty.thanwyaa_secondYear_score }}</td>
-              <td>{{ faculty.azhar_firstYear_score }}</td>
-              <td>{{ faculty.azhar_secondYear_score }}</td>
-              <td>{{ faculty.Arabenglish_firstYear_score }}</td>
-              <td>{{ faculty.Arabenglish_secondYear_score }}</td>
-              <td>{{ faculty.wafdeen_score }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <br>
-      <p>
-        الرسوم المذكورة لا تشمل رسوم التقديم (إن وجدت)، المصاريف الإدارية (إن وجدت)، تأمين المعاملات (إن وجد)، رسوم الخدمات التعليمية (إن وجدت)، مصاريف الإقامة والنقل (إن وجدت).
-      </p>
-      <a :href="international_programs" target="_blank">
-        <button>مزيد من التفاصيل عن البرامج الدولية</button>
-      </a>
-    </section>
+     
 
     <!-- Dorms -->
     <section>
@@ -216,20 +167,22 @@
   <h2>روابط التقديم</h2>
   <ul>
     <a :href="Egyptian_Admission_link" target="_blank"><button>رابط التقديم للطلاب المصريين</button></a>
-    <a :href="Egyptian_Admission_link2" target="_blank"><button>رابط التقديم للطلاب المصريين (البرامج الدولية)</button></a>
+   
     <a :href="Egyptian_Transfer_link" target="_blank"><button>رابط التحويل للطلاب المصريين</button></a>
     <a :href="Wafdeen_Admission_link" target="_blank"><button>رابط التقديم للطلاب الوافدين</button></a>
   </ul>
 </section>
 
-    <FooterComponent />
-  </div>
+   <FooterComponent />
+        <smartAssistantComponent />
+    </div>
 </template>
 
 <script>
 import axios from 'axios';
 import HeaderComponent from '../../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../../public/global/footerComponent.vue';
+import smartAssistantComponent from '../../../../public/global/smartAssistantComponent.vue';
 
 export default {
     name: 'UCLAN',
@@ -268,8 +221,9 @@ export default {
         };
     },
     components: {
-        HeaderComponent,
-        FooterComponent
+    HeaderComponent,
+    FooterComponent,
+    smartAssistantComponent
     },
     methods: {
         async get_data() {

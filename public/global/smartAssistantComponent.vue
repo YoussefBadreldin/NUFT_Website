@@ -58,6 +58,9 @@ export default {
             this.isChatWindowVisible = !this.isChatWindowVisible;
         },
     },
+        mounted() {
+        window.scrollTo(0, 0);
+    }
 };
 </script>
 

@@ -90,8 +90,6 @@ import AUC from "../views/Universites/Special/InternationalAgreement/AUC.vue";
 import EJUST from "../views/Universites/Special/InternationalAgreement/EJUST.vue";
 import GIU from "../views/Universites/Special/InternationalAgreement/GIU.vue";
 import EslscaU from "../views/Universites/Special/InternationalAgreement/EslscaU.vue";
-import TUB from "../views/Universites/Special/InternationalAgreement/TUB.vue";
-import Senghor from "../views/Universites/Special/InternationalAgreement/Senghor.vue";
 import FrameworkAgreements from "../views/Universites/Special/FrameworkAgreement/FrameworkAgreement.vue";
 import AASTMT from "../views/Universites/Special/FrameworkAgreement/AASTMT.vue";
 import AOU from "../views/Universites/Special/FrameworkAgreement/AOU.vue";
@@ -730,16 +728,6 @@ const routes = [
     path: '/Guide/UGRAD/special/EslscaU',
     name: "EslscaU",
     component: EslscaU
-  },  
-  {
-    path: '/Guide/UGRAD/special/TUB',
-    name: "TUB",
-    component: TUB
-  },  
-  {
-    path: '/Guide/UGRAD/special/Senghor',
-    name: "Senghor",
-    component: Senghor
   },  
   {
     path:"/Guide/UGRAD/special/FrameworkAgreements",

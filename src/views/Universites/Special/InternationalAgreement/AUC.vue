@@ -47,8 +47,8 @@
             <tr>
               <th rowspan="2">الكلية</th>
               <th rowspan="2">البرامج</th>
-              <th rowspan="2">الرسوم للمصريين (في السنة)</th>
-              <th rowspan="2">الرسوم للوافدين (في السنة)</th>
+              <th rowspan="2">الرسوم للمصريين (للساعة المعتمدة)</th>
+              <th rowspan="2">الرسوم للوافدين (للساعة المعتمدة)</th>
               <th rowspan="2">الشعبة</th>
               <th colspan="2">الحد الأدنى للثانوية العامة وستيم والنيل</th>
               <th colspan="2">الحد الأدنى للثانوية الأزهرية (بعد المعادلة)</th>
@@ -164,14 +164,16 @@
   </ul>
 </section>
 
-    <FooterComponent />
-  </div>
+<FooterComponent />
+        <smartAssistantComponent />
+    </div>
 </template>
 
 <script>
 import axios from 'axios';
 import HeaderComponent from '../../../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../../../public/global/footerComponent.vue';
+import smartAssistantComponent from '../../../../../public/global/smartAssistantComponent.vue';
 
 export default {
     name: 'AUC',
@@ -210,8 +212,9 @@ export default {
         };
     },
     components: {
-        HeaderComponent,
-        FooterComponent
+    HeaderComponent,
+    FooterComponent,
+    smartAssistantComponent
     },
     methods: {
         async get_data() {

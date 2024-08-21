@@ -62,16 +62,16 @@ export default {
                     title: 'حالة تقديمات الجامعات الخاصة',
                 },
                 {
-                    link: '', // Provide a valid link or remove if not needed
+                    link: '/Status/UGRAD/Special', 
                     imgSrc: '/images/Universites/Status/SpecialStatus.png',
                     altText: 'Special Nature Universities',
-                    title: 'حالة تقديمات الجامعات ذات طبيعة خاصة (قريبا)',
+                    title: 'حالة تقديمات الجامعات ذات طبيعة خاصة',
                 },
                 {
-                    link: '', // Provide a valid link or remove if not needed
+                    link: '/Status/UGRAD/International',
                     imgSrc: '/images/Universites/Status/InternationalStatus.png',
                     altText: 'International Universities',
-                    title: 'حالة تقديمات افرع الجامعات الاجنبية (قريبا)',
+                    title: 'حالة تقديمات افرع الجامعات الاجنبية',
                 }
             ],
         };

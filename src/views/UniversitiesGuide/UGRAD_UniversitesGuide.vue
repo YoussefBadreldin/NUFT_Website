@@ -34,22 +34,22 @@
                         </router-link>
                     </div>
                                         <div class="col-md-4">
-                        <router-link to="">
+                        <router-link to="/Guide/UGRAD/Special">
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/SpecialGuide.png" alt="Private Universities">
                                 <div class="Box-det" style="text-align: center;">
-                                <h6>دليل الجامعات ذات طبيعة خاصة <strong>(قريبا)</strong></h6>
+                                <h6>دليل الجامعات ذات طبيعة خاصة</h6>
                                 </div>
                             </div>
                         </router-link>
                     </div>
                   <div class="col-md-4">
-                        <router-link to="">
+                        <router-link to="/Guide/UGRAD/International">
                             <div class="Box-card">
                                 <img src="/images/Universites/Guide/InternationalGuide.png"
                                     alt="International Universities">
                                 <div class="Box-det" style="text-align: center;">
-                                    <h6>دليل افرع الجامعات الاجنبية <strong>(قريبا)</strong></h6>
+                                    <h6>دليل افرع الجامعات الاجنبية</h6>
                                 </div>
                             </div>
                         </router-link>

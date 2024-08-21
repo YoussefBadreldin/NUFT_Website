@@ -574,4 +574,26 @@ footer {
     font-size: 0.875em;
     margin-top: 0.25em;
 }
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    .wrapper {
+        margin-top: 20px;
+        padding: 10px;
+    }
+
+    .input-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .checkbox-group {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .checkbox-column {
+        max-width: 100%; /* Full width for each column */
+    }
+}
 </style>

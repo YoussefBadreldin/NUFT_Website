@@ -118,6 +118,7 @@ import PHARM from "../views/smartAssistant/PHARM.vue";
 import ENG from "../views/smartAssistant/ENG.vue";
 import VET from "../views/smartAssistant/VET.vue";
 import CS from "../views/smartAssistant/CS.vue";
+import POLY from "../views/smartAssistant/POLY.vue";
 import NURS from "../views/smartAssistant/NURS.vue";
 import HS from "../views/smartAssistant/HS.vue";
 import ART from "../views/smartAssistant/ART.vue";
@@ -628,6 +629,11 @@ const routes = [
     path: "/smartAssistant/faculties/CS",
     name: "CS",
     component: CS
+  },
+  {
+    path: "/smartAssistant/faculties/POLY",
+    name: "POLY",
+    component: POLY
   },
   {
     path: "/smartAssistant/faculties/NURS",

@@ -1,105 +1,327 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">
-      <img src="../../../images/logo.png" alt="شعار NUFT - دليلك إلى الجامعات المصرية" class="d-inline-block align-top" />
-    </a>
-  </nav>
+  <div>
+    <HeaderComponent />
 
-  <div class="wrapper">
-    <div class="title">
-      <div v-html="mode === 'signup' ? 'ابدأ رحلتك مع<br>أول دليل شامل عن الجامعات المصرية' : 'يرجى تسجيل الدخول'"></div>
-    </div>
+    <div class="wrapper">
+      <div class="title">
+        <div v-html="mode === 'signup' ? 'ابدأ رحلتك مع<br>أول دليل شامل عن الجامعات المصرية' : 'يرجى تسجيل الدخول'"></div>
+      </div>
 
-        <form @submit.prevent="handleSubmit">
+      <form @submit.prevent="handleSubmit">
+        <div v-if="mode === 'signup'">
+          <!-- Signup Fields -->
+          <div class="input-group">
             <div class="field">
-                <input type="email" required v-model="email">
-                <label>البريد الالكتروني</label>
+              <label>الاسم الأخير</label>
+              <input type="text" required v-model="lastName" placeholder="مثال: البدوي">
             </div>
             <div class="field">
-                <input type="password" required v-model="password">
-                <label>كلمة المرور</label>
+              <label>الاسم الأول</label>
+              <input type="text" required v-model="firstName" placeholder="مثال: احمد">
+            </div>
+          </div>
+
+          <div class="input-group">
+            <div class="field">
+              <label>رقم الهاتف</label>
+              <div class="phone-number-group">
+                <select required v-model="countryCode">
+                  <option value="" disabled>رمز الدولة</option>
+                  <option value="+20">مصر (+20)</option>
+                  <option value="+966">السعودية (+966)</option>
+                  <option value="+962">الأردن (+962)</option>
+                  <option value="+961">لبنان (+961)</option>
+                  <option value="+971">الإمارات (+971)</option>
+                  <option value="+968">عمان (+968)</option>
+                  <option value="+965">الكويت (+965)</option>
+                  <option value="+973">البحرين (+973)</option>
+                  <option value="+970">فلسطين (+970)</option>
+                  <option value="+967">اليمن (+967)</option>
+                  <!-- Add more country codes as needed -->
+                </select>
+                <input type="tel" required v-model="phoneNumber" placeholder=" 10xxxxxxxx :مثال">
+              </div>
             </div>
             <div class="field">
-                <button type="submit" class="btn btn-primary">
-                    {{ mode === 'signup' ? 'انشئ الحساب' : 'تسجيل الدخول' }}
-                </button>
+              <label>الجنسية</label>
+              <select required v-model="nationality">
+                <option value="" disabled>اختر الجنسية</option>
+                <option value="مصر">مصر</option>
+                <option value="السعودية">السعودية</option>
+                <option value="الأردن">الأردن</option>
+                <option value="لبنان">لبنان</option>
+                <option value="الإمارات">الإمارات</option>
+                <option value="عمان">عمان</option>
+                <option value="الكويت">الكويت</option>
+                <option value="البحرين">البحرين</option>
+                <option value="فلسطين">فلسطين</option>
+                <option value="اليمن">اليمن</option>
+                <!-- Add more nationalities as needed -->
+              </select>
             </div>
-            <div class="signup-link">
-                {{ mode === 'signup' ? 'لديك حساب بالفعل؟' : 'ليس لديك حساب؟' }}
-                <a href="#" @click.prevent="toggleMode">
-                    {{ mode === 'signup' ? 'قم بتسجيل الدخول هنا' : 'أنشئ حسابك الان' }}
-                </a>
+          </div>
+
+          <div class="input-group">
+            <div class="field">
+              <label>المجموع بعد المعادلة</label>
+              <input type="number" required v-model="grade" placeholder="مثال: 90">    
             </div>
-        </form>
+            <div class="field">
+              <label>الشعبة</label>
+              <select required v-model="division">
+                <option value="" disabled>اختر الشعبة</option>
+                <option value="ادبي">ادبي</option>
+                <option value="علمي">علمي</option>
+                <option value="علمي علوم">علمي علوم</option>
+                <option value="علمي رياضة">علمي رياضة</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>نوع الشهادة</label>
+              <select required v-model="certificateType">
+                <option value="" disabled>اختر نوع الشهادة</option>
+                <option value="الثانوية العامة">الثانوية العامة</option>
+                <option value="ستيم والنيل">ستيم والنيل</option>
+                <option value="الثانوية الازهرية">الثانوية الازهرية</option>
+                <option value="الشهادات العربية والاجنبية">الشهادات العربية والاجنبية</option>
+              </select>
+            </div>
+          </div>
+ <div class="field">
+          <label>الكليات محل الاهتمام</label>
+          <div class="checkbox-group">
+            <div class="checkbox-column">
+              <div class="checkbox-item">
+                <input type="checkbox" id="college1" value="كلية الطب البشري" v-model="collegesOfInterest">
+                <label for="college1">كلية الطب البشري</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="college2" value="كلية طب الأسنان" v-model="collegesOfInterest">
+                <label for="college2">كلية طب الأسنان</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="college3" value="كلية العلاج الطبيعي" v-model="collegesOfInterest">
+                <label for="college3">كلية العلاج الطبيعي</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="college4" value="كلية الصيدلة" v-model="collegesOfInterest">
+                <label for="college4">كلية الصيدلة</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="college5" value="كلية الطب البيطري" v-model="collegesOfInterest">
+                <label for="college5">كلية الطب البيطري</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="college6" value="كلية التمريض" v-model="collegesOfInterest">
+                <label for="college6">كلية التمريض</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="college7" value="كلية تكنولوجيا العلوم الصحية" v-model="collegesOfInterest">
+                <label for="college7">كلية تكنولوجيا العلوم الصحية</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="college8" value="كلية العلوم الأساسية" v-model="collegesOfInterest">
+                <label for="college8">كلية العلوم الأساسية</label>
+              </div>
+            </div>
+            <div class="checkbox-column">
+              <div class="checkbox-item">
+                <input type="checkbox" id="college9" value="كلية التكنولوجيا الحيوية" v-model="collegesOfInterest">
+                <label for="college9">كلية التكنولوجيا الحيوية</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="college10" value="كلية الهندسة" v-model="collegesOfInterest">
+                <label for="college10">كلية الهندسة</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="college11" value="كلية علوم الحاسب" v-model="collegesOfInterest">
+                <label for="college11">كلية علوم الحاسب</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="college12" value="الكليات البولي تيكنيك" v-model="collegesOfInterest">
+                <label for="college12">الكليات البولي تيكنيك</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="college13" value="كلية الفنون" v-model="collegesOfInterest">
+                <label for="college13">كلية الفنون</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="college14" value="كلية الإعلام" v-model="collegesOfInterest">
+                <label for="college14">كلية الإعلام</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="college15" value="كلية الآثار" v-model="collegesOfInterest">
+                <label for="college15">كلية الآثار</label>
+              </div>
+            </div>
+            <div class="checkbox-column">
+              <div class="checkbox-item">
+                <input type="checkbox" id="college17" value="كلية السياحة" v-model="collegesOfInterest">
+                <label for="college17">كلية السياحة</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="college18" value="كلية الاقتصاد والإدارة" v-model="collegesOfInterest">
+                <label for="college18">كلية الاقتصاد والإدارة</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="college19" value="كلية العلوم السينمائية" v-model="collegesOfInterest">
+                <label for="college19">كلية العلوم السينمائية</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="college20" value="كلية التربية" v-model="collegesOfInterest">
+                <label for="college20">كلية التربية</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="college21" value="كلية اللغات والترجمة" v-model="collegesOfInterest">
+                <label for="college21">كلية اللغات والترجمة</label>
+              </div>
+              <div class="checkbox-item">
+                <input type="checkbox" id="college22" value="كلية العلوم الاجتماعية" v-model="collegesOfInterest">
+                <label for="college22">كلية العلوم الاجتماعية</label>
+              </div>
+                <div class="checkbox-item">
+                <input type="checkbox" id="college16" value="كلية الحقوق" v-model="collegesOfInterest">
+                <label for="college16">كلية الحقوق</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="field">
+            <label>البريد الالكتروني</label>
+            <input type="email" required v-model="email" placeholder="example@domain.com :مثال">
+          </div>
+
+          <div class="input-group">
+            <div class="field">
+              <label>تأكيد كلمة المرور</label>
+              <input type="password" required v-model="confirmPassword" placeholder=" Ahmed2024$ :مثال"> 
+            </div>
+            <div class="field">
+              <label>كلمة المرور</label>
+              <input type="password" required v-model="password" placeholder=" Ahmed2024$ :مثال"> 
+            </div>
+          </div>
+        </div>
+
+        <div class="field" v-if="mode !== 'signup'">
+          <label>البريد الالكتروني</label>
+          <input type="email" required v-model="email">
+        </div>
+
+        <div class="field" v-if="mode !== 'signup'">
+          <label>كلمة المرور</label>
+          <input type="password" required v-model="password">
+        </div>
+
+        <div class="field">
+          <button type="submit" class="btn btn-primary">
+            {{ mode === 'signup' ? 'انشئ الحساب' : 'تسجيل الدخول' }}
+          </button>
+        </div>
+
+        <div class="signup-link">
+          {{ mode === 'signup' ? 'لديك حساب بالفعل؟' : 'ليس لديك حساب؟' }}
+          <a href="#" @click.prevent="toggleMode">
+            {{ mode === 'signup' ? 'قم بتسجيل الدخول هنا' : 'أنشئ حسابك الان' }}
+          </a>
+        </div>
+      </form>
     </div>
+    <br> <br> <br>
+    <FooterComponent />
+  </div>
 </template>
 
 <script>
 import axios from 'axios';
+import HeaderComponent from '../../../public/global/headerComponent.vue';
+import FooterComponent from '../../../public/global/footerComponent.vue';
 
 export default {
-    name: "AuthForm",
-    data() {
-        return {
-            email: '',
-            password: '',
-            mode: 'signin' // Initial mode is signin
-        };
+  name: "AuthForm",
+  data() {
+    return {
+      email: '',
+      password: '',
+      confirmPassword: '',
+      lastName: '',
+      firstName: '',
+      phoneNumber: '',
+      countryCode: '', // Default value to show disabled option
+      nationality: '', // Default value to show disabled option
+      grade: '',
+      division: '', // Default value to show disabled option
+      certificateType: '', // Default value to show disabled option
+      collegesOfInterest: [],
+      mode: 'signin' // Initial mode is signin
+    };
+  },
+  components: {
+    HeaderComponent,
+    FooterComponent
+  },
+  methods: {
+    handleSubmit() {
+      if (this.mode === 'signup') {
+        this.signUp();
+      } else {
+        this.signIn();
+      }
     },
-    components: {
-    },
-    methods: {
-        handleSubmit() {
-            if (this.mode === 'signup') {
-                this.signUp();
-            } else {
-                this.signIn();
-            }
-        },
-        signUp() {
-            axios.post('https://nuft-website-backend.vercel.app/auth/signup', {
-                email: this.email,
-                password: this.password
-            }).then(response => {
-                console.log('User created successfully:', response.data);
-                // Optionally, switch mode after successful signup
-                this.mode = 'signin';
-            }).catch(error => {
-                if (error.response && error.response.status === 500) {
-                    alert('Email is already registered');
-                } else {
-                    console.error('Error creating user:', error);
-                }
-            });
-        },
-
-        signIn() {
-            axios.post('https://nuft-website-backend.vercel.app/auth/signin', {
-                email: this.email,
-                password: this.password,
-            }).then(() => {
-                console.log('Logged in successfully');
-                this.$router.push('/Home'); // Redirect to Home upon successful login
-                localStorage.setItem('name', this.email); // Store user's name in local storage
-            }).catch(error => {
-                if (error.response && error.response.status === 404) {
-                    alert('User not found');
-                } else if (error.response && error.response.status === 401) {
-                    alert('Incorrect email or password');
-                } else {
-                    console.error('Error with login:', error);
-                }
-            });
-        },
-
-        toggleMode() {
-            // Toggle between signup and signin modes
-            this.mode = this.mode === 'signup' ? 'signin' : 'signup';
+    signUp() {
+    axios.post('https://nuft-website-backend.vercel.app/auth/signup', {
+        email: this.email,
+        password: this.password,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        countryCode: this.countryCode,
+        phoneNumber: this.phoneNumber,
+        nationality: this.nationality,
+        grade: this.grade,
+        division: this.division,
+        certificateType: this.certificateType,
+        collegesOfInterest: this.collegesOfInterest,
+    }).then(response => {
+        console.log('User created successfully:', response.data);
+        // Optionally, switch mode after successful signup
+        this.mode = 'signin';
+    }).catch(error => {
+        if (error.response && error.response.status === 500) {
+            alert('Email is already registered');
+        } else {
+            console.error('Error creating user:', error);
         }
-    }
+    });
+},
+    signIn() {
+      axios.post('https://nuft-website-backend.vercel.app/auth/signin', {
+        email: this.email,
+        password: this.password,
+      }).then(() => {
+        console.log('Logged in successfully');
+        this.$router.push('/Home'); // Redirect to Home upon successful login
+        localStorage.setItem('name', this.email); // Store user's name in local storage
+      }).catch(error => {
+        if (error.response && error.response.status === 404) {
+          alert('User not found');
+        } else if (error.response && error.response.status === 401) {
+          alert('Incorrect email or password');
+        } else {
+          console.error('Error with login:', error);
+        }
+      });
+    },
+    toggleMode() {
+      // Toggle between signup and signin modes
+      this.mode = this.mode === 'signup' ? 'signin' : 'signup';
+    },
+  },
+  mounted() {
+    window.scrollTo(0, 0);
+  }
 }
 </script>
-
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
@@ -126,7 +348,7 @@ html, body {
 
 .wrapper {
     width: 100%;
-    max-width: 400px;
+    max-width: 600px; /* Adjust as needed */
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -149,16 +371,17 @@ html, body {
     padding: 20px;
 }
 
-.wrapper form .field {
-    margin-bottom: 20px;
+.field {
     position: relative;
+    margin-bottom: 20px; /* Adjust spacing as needed */
 }
 
-.wrapper form .field input,
-.wrapper form .field select {
+.field input,
+.field select {
     width: 100%;
     height: 45px;
     padding-left: 15px;
+    text-align: center; /* Center text (including placeholders) */
     border: 1px solid #ccc;
     border-radius: 25px;
     font-size: 16px;
@@ -167,32 +390,40 @@ html, body {
     transition: border-color 0.3s ease;
 }
 
-.wrapper form .field input:focus,
-.wrapper form .field input:valid,
-.wrapper form .field select:focus {
+.field input::placeholder {
+    text-align: center; /* Center the placeholder text */
+}
+
+.field select:invalid {
+    color: #999;
+}
+
+.field select option[value=""][disabled] {
+    display: none;
+}
+
+.field input:focus,
+.field select:focus {
     border-color: #4158d0;
 }
 
-.wrapper form .field label {
-    position: absolute;
-    top: 50%;
-    left: 15px;
+.field label {
+    position: static; /* Change to static positioning */
+    display: block; /* Ensure label takes up full width */
+    margin-bottom: 5px; /* Space between label and input field */
     color: #999;
     font-size: 16px;
-    pointer-events: none;
-    transform: translateY(-50%);
     transition: all 0.3s ease;
 }
 
-.wrapper form .field input:focus ~ label,
-.wrapper form .field input:valid ~ label,
-.wrapper form .field select:focus ~ label,
-.wrapper form .field select:valid ~ label {
-    top: -10px;
-    font-size: 14px;
+.field input:focus ~ label,
+.field input:valid ~ label,
+.field select:focus ~ label,
+.field select:valid ~ label {
     color: #4158d0;
+    font-size: 14px; /* Adjust font size */
     background: #fff;
-    padding: 0 5px;
+    padding: 0;
 }
 
 .wrapper form .btn-primary,
@@ -242,154 +473,105 @@ html, body {
 .input-group {
     display: flex;
     gap: 10px;
+    margin-bottom: 20px;
 }
 
-.input-group select,
-.input-group input[type="tel"] {
+.input-group .field {
     flex: 1;
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    padding-left: 15px;
-    font-size: 16px;
-    outline: none;
-    background: #fff;
-    transition: border-color 0.3s ease;
+    min-width: 150px;
 }
 
-.input-group select:focus,
-.input-group input[type="tel"]:focus {
-    border-color: #4158d0;
-}
-/* Add a wrapper around the checkbox and label for better control */
-.checkbox-wrapper {
+.phone-number-group {
     display: flex;
-    align-items: center;
-    margin-bottom: 20px; /* Adjust spacing as needed */
+    gap: 10px;
 }
 
-.checkbox-wrapper input[type="checkbox"] {
-    appearance: none;
-    -webkit-appearance: none;
-    background-color: #fff;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    width: 20px;
-    height: 20px;
-    position: relative;
-    cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+.phone-number-group select {
+    flex: 1;
 }
 
-.checkbox-wrapper input[type="checkbox"]:checked {
-    background-color: #4158d0;
-    border-color: #4158d0;
+.phone-number-group input[type="tel"] {
+    flex: 2;
 }
 
-.checkbox-wrapper input[type="checkbox"]:checked::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 10px;
-    height: 5px;
-    border: solid #fff;
-    border-width: 0 0 2px 2px;
-    transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-.checkbox-wrapper label {
-    margin-left: 10px;
-    font-size: 16px;
-    color: #333;
-}
-/* Add a wrapper around each checkbox and its label */
-.checkbox-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; /* Adjust spacing as needed */
-}
-
-.checkbox-group input[type="checkbox"] {
-    appearance: none;
-    -webkit-appearance: none;
-    background-color: #fff;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    width: 20px;
-    height: 20px;
-    position: relative;
-    cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.checkbox-group input[type="checkbox"]:checked {
-    background-color: #4158d0;
-    border-color: #4158d0;
-}
-
-.checkbox-group input[type="checkbox"]:checked::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 10px;
-    height: 5px;
-    border: solid #fff;
-    border-width: 0 0 2px 2px;
-    transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-.checkbox-group label {
-    margin-left: 10px;
-    font-size: 16px;
-    color: #333;
-    cursor: pointer; /* Change cursor to pointer for better user interaction */
-}
 .navbar {
-  display: flex;
-  justify-content: center; /* Center the logo horizontally */
+    display: flex;
+    justify-content: center; /* Center the logo horizontally */
 }
 
 .navbar-brand {
-  display: flex;
-  align-items: center; /* Center the logo vertically */
+    display: flex;
+    align-items: center; /* Center the logo vertically */
 }
 
 .logo-center {
-  margin: 0 auto; /* Auto margin to center the logo */
+    margin: 0 auto; /* Auto margin to center the logo */
 }
-  .navbar {
+
+.navbar {
     background-color: #001d3d !important;
-  }
-  footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  padding: 20px;
-  z-index: 1000; /* Ensures the footer stays above other content */
-}
-.groupcheckbox-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Aligns items to the left */
-  gap: 10px; /* Adds spacing between items */
 }
 
-.groupcheckbox-title {
-  font-weight: bold;
-  margin-bottom: 10px; /* Space between title and checkboxes */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    z-index: 1000;
 }
 
-.groupcheckbox-item {
-  display: flex;
-  align-items: center;
+.checkbox-group {
+    display: flex;
+    justify-content: center; /* Center the columns horizontally */
+    gap: 20px;
+}
+
+.checkbox-column {
+    flex: 1;
+    max-width: 200px;
+    margin: 0;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.checkbox-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    appearance: none;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+}
+
+.checkbox-item input[type="checkbox"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 10px;
+    height: 10px;
+    background-color: #4158d0;
+    clip-path: polygon(0% 0%, 100% 100%, 100% 0%, 0% 100%);
+}
+
+.checkbox-item label {
+    font-size: 14px;
+    margin-left: 0;
 }
 
 .error {
-  color: red;
-  font-size: 0.875em; /* Adjust size as needed */
-  margin-top: 0.25em;
+    color: red;
+    font-size: 0.875em;
+    margin-top: 0.25em;
 }
 </style>

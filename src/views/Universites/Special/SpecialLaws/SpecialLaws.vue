@@ -5,12 +5,6 @@
       <h2>الجامعات ذات طبيعة خاصة<br>(المنشأة بقوانين خاصة)</h2>
     </div>
 
-    <div class="Card-Box" dir="rtl">
-      <div class="container" style="text-align: center;">
-        <h3>ما هي الجامعات المنشأة بقوانين خاصة؟</h3>
-        <p>هي جامعة واحدة</p>
-      </div>
-
       <div class="Card-Box" dir="rtl">
         <div class="container">
           <div class="session-title row"></div>

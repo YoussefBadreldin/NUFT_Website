@@ -5,11 +5,6 @@
       <h2>الجامعات ذات طبيعة خاصة<br>(المنشأة باتفاقات اطارية)</h2>
     </div>
 
-    <div class="Card-Box" dir="rtl">
-      <div class="container" style="text-align: center;">
-        <h3>ما هي الجامعات المنشأة باتفاقات اطارية؟</h3>
-        <p>هي جامعات وعددها ٦</p>
-      </div>
 
       <div class="Card-Box" dir="rtl">
         <div class="container">

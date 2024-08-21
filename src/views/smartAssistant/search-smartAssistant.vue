@@ -8,7 +8,7 @@
         <br>
         <div class="form-group">
             <label for="universityName">اسم الجامعة (باللغة العربية)</label>
-            <input type="text" id="universityName" v-model="universityName" placeholder="أدخل اسم الجامعة">
+            <input type="text" id="universityName" v-model="universityName">
         </div>
 
         <div>

@@ -8,7 +8,7 @@
         <br>
         <div class="form-group">
             <label for="percentage">ادخل مجموعك بالنسبة المئوية (بعد المعادلة)</label>
-            <input type="number" id="percentage" v-model="percentage" placeholder="أدخل النسبة المئوية">
+            <input type="number" id="percentage" v-model="percentage">
         </div>
 
         <div class="form-group">

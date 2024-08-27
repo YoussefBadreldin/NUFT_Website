@@ -13,9 +13,6 @@ export default {
     const pdfViewer = ref(null);
     const error = ref(false);
     const pdfUrl = '/images/guide2023-2024.pdf'; // Path to your PDF file
-    const pdfjsLib = window.pdfjsLib;
-    let pdfDoc = null;
-    let pageCache = new Map(); // Cache for pages to avoid re-rendering
 
     onMounted(() => {
       if (!pdfViewer.value) return;
@@ -24,90 +21,76 @@ export default {
       const script = document.createElement('script');
       script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js';
       script.onload = () => {
+        const pdfjsLib = window.pdfjsLib;
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
 
         const loadingTask = pdfjsLib.getDocument(pdfUrl);
         loadingTask.promise.then(
           pdf => {
-            pdfDoc = pdf;
+            const renderPage = (pageNumber) => {
+              pdf.getPage(pageNumber).then(page => {
+                const viewport = page.getViewport({ scale: 1.5 }); // Adjust scale for performance
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                const devicePixelRatio = window.devicePixelRatio || 1;
+
+                // Set canvas dimensions
+                canvas.width = viewport.width * devicePixelRatio;
+                canvas.height = viewport.height * devicePixelRatio;
+                context.scale(devicePixelRatio, devicePixelRatio);
+
+                // Append canvas to viewer
+                canvas.dataset.page = pageNumber; // Store page number for caching
+                pdfViewer.value.appendChild(canvas);
+
+                const renderContext = {
+                  canvasContext: context,
+                  viewport: viewport,
+                };
+                page.render(renderContext).promise.then(() => {
+                  console.log(`Page ${pageNumber} rendered`);
+                });
+              });
+            };
+
+            // Render pages on demand
+            const renderVisiblePages = () => {
+              if (!pdfViewer.value) return;
+
+              const viewer = pdfViewer.value;
+              const scrollTop = viewer.scrollTop;
+              const clientHeight = viewer.clientHeight;
+
+              // Calculate the range of visible pages
+              const startPage = Math.floor(scrollTop / clientHeight) + 1;
+              const endPage = Math.ceil((scrollTop + clientHeight) / clientHeight);
+
+              // Render visible pages
+              for (let i = startPage; i <= endPage; i++) {
+                if (!pdfViewer.value.querySelector(`[data-page="${i}"]`)) {
+                  renderPage(i);
+                }
+              }
+            };
+
+            // Initial rendering of visible pages
             renderVisiblePages();
+
+            // Scroll event listener for lazy loading
+            const onScroll = () => {
+              renderVisiblePages();
+            };
+
+            pdfViewer.value.addEventListener('scroll', onScroll);
           },
           reason => {
-            console.error(reason);
+            console.error('Error loading PDF:', reason);
             error.value = true;
           }
         );
-
-        // Scroll event listener for lazy loading
-        const onScroll = () => {
-          const viewer = pdfViewer.value;
-          const scrollTop = viewer.scrollTop;
-          const clientHeight = viewer.clientHeight;
-          const scrollHeight = viewer.scrollHeight;
-
-          // Calculate the range of visible pages
-          const startPage = Math.floor(scrollTop / clientHeight) + 1;
-          const endPage = Math.ceil((scrollTop + clientHeight) / clientHeight);
-
-          // Render visible pages
-          for (let i = startPage; i <= endPage; i++) {
-            if (!pageCache.has(i)) {
-              renderPage(i);
-            }
-          }
-        };
-
-        pdfViewer.value.addEventListener('scroll', onScroll);
       };
       document.head.appendChild(script);
     });
-
-    const renderPage = (pageNumber) => {
-      if (!pdfDoc) return;
-
-      pdfDoc.getPage(pageNumber).then(page => {
-        const viewport = page.getViewport({ scale: 1.5 }); // Adjust scale for performance
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-        const devicePixelRatio = window.devicePixelRatio || 1;
-
-        // Set canvas dimensions
-        canvas.width = viewport.width * devicePixelRatio;
-        canvas.height = viewport.height * devicePixelRatio;
-        context.scale(devicePixelRatio, devicePixelRatio);
-
-        // Append canvas to viewer
-        pdfViewer.value.appendChild(canvas);
-
-        const renderContext = {
-          canvasContext: context,
-          viewport: viewport,
-        };
-        page.render(renderContext).promise.then(() => {
-          console.log(`Page ${pageNumber} rendered`);
-          pageCache.set(pageNumber, canvas); // Cache the rendered page
-        });
-      });
-    };
-
-    const renderVisiblePages = () => {
-      if (!pdfDoc || !pdfViewer.value) return;
-
-      const viewer = pdfViewer.value;
-      const scrollTop = viewer.scrollTop;
-      const clientHeight = viewer.clientHeight;
-
-      // Calculate the range of visible pages
-      const startPage = Math.floor(scrollTop / clientHeight) + 1;
-      const endPage = Math.ceil((scrollTop + clientHeight) / clientHeight);
-
-      // Render visible pages
-      for (let i = startPage; i <= endPage; i++) {
-        if (!pageCache.has(i)) {
-          renderPage(i);
-        }
-      }
-    };
 
     return {
       pdfViewer,

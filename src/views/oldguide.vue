@@ -24,9 +24,13 @@ export default {
         const pdfjsLib = window.pdfjsLib;
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
 
+        // Load the PDF document
         const loadingTask = pdfjsLib.getDocument(pdfUrl);
         loadingTask.promise.then(
           pdf => {
+            console.log(`PDF loaded successfully: ${pdfUrl}`);
+            
+            // Render each page
             const renderPage = (pageNumber) => {
               pdf.getPage(pageNumber).then(page => {
                 const viewport = page.getViewport({ scale: 1.5 }); // Adjust scale for better quality
@@ -40,7 +44,6 @@ export default {
                 context.scale(devicePixelRatio, devicePixelRatio);
 
                 // Append canvas to viewer
-                canvas.dataset.page = pageNumber; // Store page number for caching
                 pdfViewer.value.appendChild(canvas);
 
                 const renderContext = {
@@ -49,9 +52,12 @@ export default {
                 };
                 page.render(renderContext).promise.then(() => {
                   console.log(`Page ${pageNumber} rendered`);
+                }).catch(renderError => {
+                  console.error(`Error rendering page ${pageNumber}:`, renderError);
+                  error.value = true;
                 });
-              }).catch(err => {
-                console.error(`Error rendering page ${pageNumber}:`, err);
+              }).catch(pageError => {
+                console.error(`Error fetching page ${pageNumber}:`, pageError);
                 error.value = true;
               });
             };

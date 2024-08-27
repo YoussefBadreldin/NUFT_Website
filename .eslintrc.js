@@ -9,7 +9,7 @@ module.exports = {
     "plugin:prettier/recommended",
   ],
   rules: {
-    'prettier/prettier':0,
-    
+    'prettier/prettier': 0,  
+    'vue/multi-word-component-names': 'off',  
   },
 };

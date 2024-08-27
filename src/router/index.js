@@ -106,6 +106,8 @@ import KPFU from "../views/Universites/International/KPFU.vue";
 import SPBU from "../views/Universites/International/SPBU.vue";
 import NOVA from "../views/Universites/International/NOVA.vue";
 import ContactUs from "../views/contactUs.vue";
+import oldguide from "../views/oldguide.vue";
+import portfolio from "../views/portfolio.vue";
 import NewsPage from "../views/News.vue";
 import smartAssistant from "../views/smartAssistant/smartAssistant.vue";
 import searchsmartAssistant from "../views/smartAssistant/search-smartAssistant.vue";
@@ -574,6 +576,17 @@ const routes = [
     path:"/News",
     name:"NewsPage",
     component:NewsPage
+  },
+
+  {
+    path:"/guide2023-2024",
+    name:"oldguide",
+    component:oldguide
+  },
+  {
+    path:"/portfolio",
+    name:"portfolio",
+    component:portfolio
   },
   {
     path:"/smartAssistant",

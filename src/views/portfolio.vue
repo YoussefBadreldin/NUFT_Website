@@ -1,28 +1,81 @@
 <template>
   <div class="pdf-container">
-    <iframe
-      :src="pdfSrc"
-      class="pdf-iframe"
-      @error="handleError"
-      allow="fullscreen"
-    ></iframe>
+    <div ref="pdfViewer" class="pdf-viewer"></div>
     <div v-if="error" class="error-message">Unable to load the PDF. Please check the file path or the PDF itself.</div>
   </div>
 </template>
 
 <script>
+import { ref, onMounted } from 'vue';
+
 export default {
   name: 'PortfolioView',
-  data() {
+  setup() {
+    const pdfViewer = ref(null);
+    const error = ref(false);
+    const pdfUrl = '/images/portfolio.pdf'; // Path to your PDF file
+
+    onMounted(() => {
+      if (!pdfViewer.value) return;
+
+      // Load PDF.js from CDN
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js';
+      script.onload = () => {
+        const pdfjsLib = window.pdfjsLib;
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+
+        const loadingTask = pdfjsLib.getDocument(pdfUrl);
+        loadingTask.promise.then(
+          pdf => {
+            const renderPage = (pageNumber) => {
+              pdf.getPage(pageNumber).then(page => {
+                const viewport = page.getViewport({ scale: 2 }); // Adjust scale as needed
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                const devicePixelRatio = window.devicePixelRatio || 1;
+
+                // Set canvas dimensions
+                canvas.width = viewport.width * devicePixelRatio;
+                canvas.height = viewport.height * devicePixelRatio;
+                context.scale(devicePixelRatio, devicePixelRatio);
+
+                // Append canvas to viewer
+                pdfViewer.value.appendChild(canvas);
+
+                const renderContext = {
+                  canvasContext: context,
+                  viewport: viewport,
+                };
+                page.render(renderContext).promise.then(() => {
+                  console.log(`Page ${pageNumber} rendered`);
+                });
+              });
+            };
+
+            // Render all pages
+            const renderAllPages = () => {
+              for (let i = 1; i <= pdf.numPages; i++) {
+                renderPage(i);
+              }
+            };
+
+            // Render pages with a delay to ensure previous pages are processed
+            setTimeout(renderAllPages, 500);
+          },
+          reason => {
+            console.error(reason);
+            error.value = true;
+          }
+        );
+      };
+      document.head.appendChild(script);
+    });
+
     return {
-      pdfSrc: '/images/portfolio.pdf', // Path to your PDF file
-      error: false,
+      pdfViewer,
+      error
     };
-  },
-  methods: {
-    handleError() {
-      this.error = true;
-    },
   },
 };
 </script>
@@ -37,14 +90,11 @@ export default {
   overflow: auto; /* Allow scrolling if content exceeds viewport */
 }
 
-.pdf-iframe {
+.pdf-viewer {
+  display: flex;
+  flex-direction: column; /* Stack pages vertically */
   width: 100%;
-  height: 100%;
-  border: none;
-  max-width: 1000px; /* Limit max width for larger screens */
-  max-height: 100vh; /* Ensure iframe fits the viewport height */
-  min-width: 320px; /* Ensure iframe is not too small on small screens */
-  display: block; /* Ensure iframe is displayed as a block element */
+  height: auto;
 }
 
 .error-message {

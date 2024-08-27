@@ -15,7 +15,7 @@ export default {
   name: 'PortfolioView',
   data() {
     return {
-      pdfSrc: '/images/portfolio.pdf',
+      pdfSrc: '/images/portfolio.pdf', // Path to your PDF file
       error: false,
     };
   },
@@ -32,9 +32,9 @@ export default {
   height: 100vh; /* Full height to take up the screen */
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Align to start to allow scrolling */
   position: relative;
-  overflow: hidden; /* Prevent scrollbars */
+  overflow: auto; /* Allow scrolling if content exceeds viewport */
 }
 
 .pdf-iframe {
@@ -42,8 +42,9 @@ export default {
   height: 100%;
   border: none;
   max-width: 1000px; /* Limit max width for larger screens */
-  max-height: 90vh; /* Ensure iframe doesn't exceed viewport height */
+  max-height: 100vh; /* Ensure iframe fits the viewport height */
   min-width: 320px; /* Ensure iframe is not too small on small screens */
+  display: block; /* Ensure iframe is displayed as a block element */
 }
 
 .error-message {

@@ -55,12 +55,12 @@ export default {
       if (!pdf) return;
 
       pdf.getPage(pageNumber).then(page => {
-        const viewport = page.getViewport({ scale: getScale() });
+        const viewport = page.getViewport({ scale: 2 }); // Use a higher scale for better quality
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
         const devicePixelRatio = window.devicePixelRatio || 1;
 
-        // Set canvas dimensions
+        // Set canvas dimensions for high quality
         canvas.width = viewport.width * devicePixelRatio;
         canvas.height = viewport.height * devicePixelRatio;
         context.scale(devicePixelRatio, devicePixelRatio);
@@ -90,11 +90,6 @@ export default {
       });
     };
 
-    const getScale = () => {
-      // Return a scale value for zooming out more
-      return window.innerWidth < 768 ? 1 : 0.50; // 50% zoom for desktops and larger screens
-    };
-
     return {
       pdfViewer,
       error,
@@ -106,20 +101,20 @@ export default {
 
 <style scoped>
 .pdf-container {
-  height: 100vh;
+  height: 100vh; /* Full viewport height */
+  width: 100vw;  /* Full viewport width */
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start; /* Align to start for scrolling */
   position: relative;
-  overflow: auto;
+  overflow: auto; /* Allow scrolling */
 }
 
 .pdf-viewer {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column; /* Stack pages vertically */
-  width: 100%;
-  height: auto;
 }
 
 .error-message {

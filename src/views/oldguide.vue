@@ -28,21 +28,23 @@ export default {
 
 <style scoped>
 .pdf-container {
-  height: 100vh; /* Full height to take up the screen */
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  overflow: hidden; /* Prevent scrollbars */
+  overflow: hidden;
 }
 
 .pdf-iframe {
   width: 100%;
   height: 100%;
   border: none;
-  max-width: 1000px; /* Limit max width for larger screens */
-  max-height: 90vh; /* Ensure iframe doesn't exceed viewport height */
-  min-width: 320px; /* Ensure iframe is not too small on small screens */
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 320px;
+  min-height: 320px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Optional: add a shadow for better visual separation */
 }
 
 .error-message {
@@ -53,7 +55,7 @@ export default {
   color: red;
   text-align: center;
   padding: 10px;
-  background: rgba(255, 255, 255, 0.8); /* Slight background to improve readability */
-  border-radius: 5px; /* Optional: add rounded corners for better look */
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
 }
 </style>

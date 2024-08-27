@@ -29,13 +29,15 @@ export default {
           pdf => {
             const renderPage = (pageNumber) => {
               pdf.getPage(pageNumber).then(page => {
-                const viewport = page.getViewport({ scale: 1 }); // Use scale 1 to get original size
+                const viewport = page.getViewport({ scale: 2 }); // Increase scale for higher quality
                 const canvas = document.createElement('canvas');
                 const context = canvas.getContext('2d');
-                canvas.height = viewport.height;
-                canvas.width = viewport.width;
+                const devicePixelRatio = window.devicePixelRatio || 1;
 
-                // Append canvas to viewer
+                canvas.width = viewport.width * devicePixelRatio;
+                canvas.height = viewport.height * devicePixelRatio;
+                context.scale(devicePixelRatio, devicePixelRatio);
+
                 pdfViewer.value.appendChild(canvas);
 
                 const renderContext = {

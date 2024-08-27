@@ -30,7 +30,7 @@ export default {
           pdf => {
             const renderPage = (pageNumber) => {
               pdf.getPage(pageNumber).then(page => {
-                const viewport = page.getViewport({ scale: 1.5 }); // Adjust scale for better quality
+                const viewport = page.getViewport({ scale: 2 }); // Adjust scale as needed
                 const canvas = document.createElement('canvas');
                 const context = canvas.getContext('2d');
                 const devicePixelRatio = window.devicePixelRatio || 1;
@@ -69,10 +69,6 @@ export default {
           }
         );
       };
-      script.onerror = () => {
-        console.error('Failed to load PDF.js script');
-        error.value = true;
-      };
       document.head.appendChild(script);
     });
 
@@ -86,20 +82,19 @@ export default {
 
 <style scoped>
 .pdf-container {
-  height: 100vh; /* Full viewport height */
-  width: 100vw;  /* Full viewport width */
+  height: 100vh; /* Full height to take up the screen */
   display: flex;
   justify-content: center;
-  align-items: center; /* Center content */
+  align-items: flex-start; /* Align to start to allow scrolling */
   position: relative;
-  overflow: hidden; /* Hide scrollbars */
+  overflow: auto; /* Allow scrolling if content exceeds viewport */
 }
 
 .pdf-viewer {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column; /* Stack pages vertically */
+  width: 100%;
+  height: auto;
 }
 
 .error-message {

@@ -4,6 +4,7 @@
       :src="pdfSrc"
       class="pdf-iframe"
       @error="handleError"
+      allow="fullscreen"
     ></iframe>
     <div v-if="error" class="error-message">Unable to load the PDF. Please check the file path or the PDF itself.</div>
   </div>
@@ -41,7 +42,8 @@ export default {
   height: 100%;
   border: none;
   max-width: 1000px; /* Limit max width for larger screens */
-  max-height: 100vh; /* Ensure iframe doesn't exceed viewport height */
+  max-height: 90vh; /* Ensure iframe doesn't exceed viewport height */
+  min-width: 320px; /* Ensure iframe is not too small on small screens */
 }
 
 .error-message {
@@ -53,5 +55,6 @@ export default {
   text-align: center;
   padding: 10px;
   background: rgba(255, 255, 255, 0.8); /* Slight background to improve readability */
+  border-radius: 5px; /* Optional: add rounded corners for better look */
 }
 </style>

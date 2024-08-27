@@ -29,22 +29,26 @@ export default {
           pdf => {
             const renderPage = (pageNumber) => {
               pdf.getPage(pageNumber).then(page => {
-                const viewport = page.getViewport({ scale: 2 }); // Increase scale for higher quality
+                const viewport = page.getViewport({ scale: 3 }); // High scale for better quality
                 const canvas = document.createElement('canvas');
                 const context = canvas.getContext('2d');
                 const devicePixelRatio = window.devicePixelRatio || 1;
 
+                // Set canvas dimensions
                 canvas.width = viewport.width * devicePixelRatio;
                 canvas.height = viewport.height * devicePixelRatio;
                 context.scale(devicePixelRatio, devicePixelRatio);
 
+                // Append canvas to viewer
                 pdfViewer.value.appendChild(canvas);
 
                 const renderContext = {
                   canvasContext: context,
                   viewport: viewport,
                 };
-                page.render(renderContext);
+                page.render(renderContext).promise.then(() => {
+                  console.log(`Page ${pageNumber} rendered`);
+                });
               });
             };
 

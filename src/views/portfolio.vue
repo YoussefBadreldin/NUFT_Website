@@ -30,7 +30,7 @@ export default {
           pdf => {
             const renderPage = (pageNumber) => {
               pdf.getPage(pageNumber).then(page => {
-                const viewport = page.getViewport({ scale: 2 }); // Adjust scale as needed
+                const viewport = page.getViewport({ scale: 2 }); // Adjust scale for better quality
                 const canvas = document.createElement('canvas');
                 const context = canvas.getContext('2d');
                 const devicePixelRatio = window.devicePixelRatio || 1;

@@ -29,12 +29,13 @@ export default {
           pdf => {
             const renderPage = (pageNumber) => {
               pdf.getPage(pageNumber).then(page => {
-                const scale = 0.5; // More pronounced zoom-out
-                const viewport = page.getViewport({ scale: scale });
+                const viewport = page.getViewport({ scale: 1 }); // Use scale 1 to get original size
                 const canvas = document.createElement('canvas');
                 const context = canvas.getContext('2d');
                 canvas.height = viewport.height;
                 canvas.width = viewport.width;
+
+                // Append canvas to viewer
                 pdfViewer.value.appendChild(canvas);
 
                 const renderContext = {
@@ -46,9 +47,14 @@ export default {
             };
 
             // Render all pages
-            for (let i = 1; i <= pdf.numPages; i++) {
-              renderPage(i);
-            }
+            const renderAllPages = () => {
+              for (let i = 1; i <= pdf.numPages; i++) {
+                renderPage(i);
+              }
+            };
+
+            // Render pages with a delay to ensure previous pages are processed
+            setTimeout(renderAllPages, 500);
           },
           reason => {
             console.error(reason);

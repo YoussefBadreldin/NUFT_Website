@@ -3,6 +3,11 @@
     <div ref="pdfViewer" class="pdf-viewer"></div>
     <div v-if="error" class="error-message">Unable to load the PDF. Please check the file path or the PDF itself.</div>
     <div v-if="loading" class="loading-message">Loading PDF...</div>
+    <div class="zoom-controls">
+      <button @click="setZoomLevel(0.5)">Zoom Out</button>
+      <button @click="setZoomLevel(1)">Normal Zoom</button>
+      <button @click="setZoomLevel(1.5)">Zoom In</button>
+    </div>
   </div>
 </template>
 
@@ -14,9 +19,9 @@ export default {
     const pdfViewer = ref(null);
     const error = ref(false);
     const loading = ref(true);
+    const zoomLevel = ref(1); // Default zoom level
     const pdfUrl = '/images/guide2023-2024.pdf'; // Ensure this URL is correct
     let pdf = null;
-    const currentPage = ref(1);
 
     onMounted(() => {
       if (!pdfViewer.value) return;
@@ -35,7 +40,7 @@ export default {
             pdf = loadedPdf;
             console.log(`PDF loaded successfully: ${pdfUrl}`);
             loading.value = false;
-            renderPage(currentPage.value); // Render the first page initially
+            renderPage(1); // Render the first page initially
           },
           reason => {
             console.error('Error loading PDF:', reason);
@@ -56,7 +61,7 @@ export default {
       if (!pdf) return;
 
       pdf.getPage(pageNumber).then(page => {
-        const viewport = page.getViewport({ scale: 1.0 }); // Adjust scale for better fit
+        const viewport = page.getViewport({ scale: zoomLevel.value });
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
         const devicePixelRatio = window.devicePixelRatio || 1;
@@ -91,10 +96,17 @@ export default {
       });
     };
 
+    const setZoomLevel = (level) => {
+      zoomLevel.value = level;
+      pdfViewer.value.innerHTML = ''; // Clear the current pages
+      renderPage(1); // Re-render the first page with new zoom level
+    };
+
     return {
       pdfViewer,
       error,
       loading,
+      setZoomLevel,
     };
   },
 };
@@ -104,10 +116,11 @@ export default {
 .pdf-container {
   height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Align to start for scrolling */
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   position: relative;
-  overflow: auto; /* Allow scrolling */
+  overflow: auto;
 }
 
 .pdf-viewer {
@@ -139,5 +152,13 @@ export default {
   padding: 10px;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 5px;
+}
+
+.zoom-controls {
+  margin-top: 10px;
+}
+
+.zoom-controls button {
+  margin: 0 5px;
 }
 </style>

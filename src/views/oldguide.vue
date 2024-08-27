@@ -12,32 +12,43 @@ export default {
   setup() {
     const pdfViewer = ref(null);
     const error = ref(false);
-    const pdfUrl = '/images/guide2023-2024.pdf';
+    const pdfUrl = '/images/guide2023-2024.pdf'; // Path to your PDF file
 
     onMounted(() => {
       if (!pdfViewer.value) return;
 
-      // Load PDF.js
+      // Load PDF.js from CDN
       const script = document.createElement('script');
       script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js';
       script.onload = () => {
-        const loadingTask = window.pdfjsLib.getDocument(pdfUrl);
+        const pdfjsLib = window.pdfjsLib;
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+
+        const loadingTask = pdfjsLib.getDocument(pdfUrl);
         loadingTask.promise.then(
           pdf => {
-            pdf.getPage(1).then(page => {
-              const viewport = page.getViewport({ scale: 1 });
-              const canvas = document.createElement('canvas');
-              const context = canvas.getContext('2d');
-              canvas.height = viewport.height;
-              canvas.width = viewport.width;
-              pdfViewer.value.appendChild(canvas);
+            const renderPage = (pageNumber) => {
+              pdf.getPage(pageNumber).then(page => {
+                const scale = 0.5; // More pronounced zoom-out
+                const viewport = page.getViewport({ scale: scale });
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                pdfViewer.value.appendChild(canvas);
 
-              const renderContext = {
-                canvasContext: context,
-                viewport: viewport,
-              };
-              page.render(renderContext);
-            });
+                const renderContext = {
+                  canvasContext: context,
+                  viewport: viewport,
+                };
+                page.render(renderContext);
+              });
+            };
+
+            // Render all pages
+            for (let i = 1; i <= pdf.numPages; i++) {
+              renderPage(i);
+            }
           },
           reason => {
             console.error(reason);
@@ -61,15 +72,16 @@ export default {
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start; /* Align to start for scrolling */
   position: relative;
-  overflow: hidden;
+  overflow: auto; /* Allow scrolling */
 }
 
 .pdf-viewer {
+  display: flex;
+  flex-direction: column; /* Stack pages vertically */
   width: 100%;
-  height: 100%;
-  overflow: auto;
+  height: auto;
 }
 
 .error-message {

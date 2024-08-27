@@ -3,11 +3,6 @@
     <div ref="pdfViewer" class="pdf-viewer"></div>
     <div v-if="error" class="error-message">Unable to load the PDF. Please check the file path or the PDF itself.</div>
     <div v-if="loading" class="loading-message">Loading PDF...</div>
-    <div class="zoom-controls">
-      <button @click="setZoomLevel(0.5)">Zoom Out</button>
-      <button @click="setZoomLevel(1)">Normal Zoom</button>
-      <button @click="setZoomLevel(1.5)">Zoom In</button>
-    </div>
   </div>
 </template>
 
@@ -19,7 +14,6 @@ export default {
     const pdfViewer = ref(null);
     const error = ref(false);
     const loading = ref(true);
-    const zoomLevel = ref(1); // Default zoom level
     const pdfUrl = '/images/guide2023-2024.pdf'; // Ensure this URL is correct
     let pdf = null;
 
@@ -61,7 +55,7 @@ export default {
       if (!pdf) return;
 
       pdf.getPage(pageNumber).then(page => {
-        const viewport = page.getViewport({ scale: zoomLevel.value });
+        const viewport = page.getViewport({ scale: getScale() });
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
         const devicePixelRatio = window.devicePixelRatio || 1;
@@ -96,17 +90,15 @@ export default {
       });
     };
 
-    const setZoomLevel = (level) => {
-      zoomLevel.value = level;
-      pdfViewer.value.innerHTML = ''; // Clear the current pages
-      renderPage(1); // Re-render the first page with new zoom level
+    const getScale = () => {
+      // Return a scale value for zooming out more
+      return window.innerWidth < 768 ? 1 : 0.50; // 50% zoom for desktops and larger screens
     };
 
     return {
       pdfViewer,
       error,
       loading,
-      setZoomLevel,
     };
   },
 };
@@ -152,13 +144,5 @@ export default {
   padding: 10px;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 5px;
-}
-
-.zoom-controls {
-  margin-top: 10px;
-}
-
-.zoom-controls button {
-  margin: 0 5px;
 }
 </style>

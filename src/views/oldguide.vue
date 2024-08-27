@@ -12,7 +12,7 @@ export default {
   setup() {
     const pdfViewer = ref(null);
     const error = ref(false);
-    const pdfUrl = '/images/guide2023-2024.pdf'; // Path to your PDF file
+    const pdfUrl = '/images/guide2023-2024.pdf'; // Ensure this URL is correct
 
     onMounted(() => {
       if (!pdfViewer.value) return;
@@ -29,7 +29,7 @@ export default {
           pdf => {
             const renderPage = (pageNumber) => {
               pdf.getPage(pageNumber).then(page => {
-                const viewport = page.getViewport({ scale: 1.5 }); // Adjust scale for performance
+                const viewport = page.getViewport({ scale: 1.5 }); // Adjust scale for better quality
                 const canvas = document.createElement('canvas');
                 const context = canvas.getContext('2d');
                 const devicePixelRatio = window.devicePixelRatio || 1;
@@ -50,44 +50,30 @@ export default {
                 page.render(renderContext).promise.then(() => {
                   console.log(`Page ${pageNumber} rendered`);
                 });
+              }).catch(err => {
+                console.error(`Error rendering page ${pageNumber}:`, err);
+                error.value = true;
               });
             };
 
-            // Render pages on demand
-            const renderVisiblePages = () => {
-              if (!pdfViewer.value) return;
-
-              const viewer = pdfViewer.value;
-              const scrollTop = viewer.scrollTop;
-              const clientHeight = viewer.clientHeight;
-
-              // Calculate the range of visible pages
-              const startPage = Math.floor(scrollTop / clientHeight) + 1;
-              const endPage = Math.ceil((scrollTop + clientHeight) / clientHeight);
-
-              // Render visible pages
-              for (let i = startPage; i <= endPage; i++) {
-                if (!pdfViewer.value.querySelector(`[data-page="${i}"]`)) {
-                  renderPage(i);
-                }
+            // Render all pages
+            const renderAllPages = () => {
+              for (let i = 1; i <= pdf.numPages; i++) {
+                renderPage(i);
               }
             };
 
-            // Initial rendering of visible pages
-            renderVisiblePages();
-
-            // Scroll event listener for lazy loading
-            const onScroll = () => {
-              renderVisiblePages();
-            };
-
-            pdfViewer.value.addEventListener('scroll', onScroll);
+            renderAllPages();
           },
           reason => {
             console.error('Error loading PDF:', reason);
             error.value = true;
           }
         );
+      };
+      script.onerror = () => {
+        console.error('Failed to load PDF.js script');
+        error.value = true;
       };
       document.head.appendChild(script);
     });

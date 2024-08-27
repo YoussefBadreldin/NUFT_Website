@@ -1,27 +1,57 @@
 <template>
   <div class="pdf-container">
-    <iframe
-      :src="pdfSrc"
-      class="pdf-iframe"
-      @error="handleError"
-      allow="fullscreen"
-    ></iframe>
+    <div ref="pdfViewer" class="pdf-viewer"></div>
     <div v-if="error" class="error-message">Unable to load the PDF. Please check the file path or the PDF itself.</div>
   </div>
 </template>
 
 <script>
+import { ref, onMounted } from 'vue';
+
 export default {
-  data() {
+  setup() {
+    const pdfViewer = ref(null);
+    const error = ref(false);
+    const pdfUrl = '/images/guide2023-2024.pdf';
+
+    onMounted(() => {
+      if (!pdfViewer.value) return;
+
+      // Load PDF.js
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js';
+      script.onload = () => {
+        const loadingTask = window.pdfjsLib.getDocument(pdfUrl);
+        loadingTask.promise.then(
+          pdf => {
+            pdf.getPage(1).then(page => {
+              const viewport = page.getViewport({ scale: 1 });
+              const canvas = document.createElement('canvas');
+              const context = canvas.getContext('2d');
+              canvas.height = viewport.height;
+              canvas.width = viewport.width;
+              pdfViewer.value.appendChild(canvas);
+
+              const renderContext = {
+                canvasContext: context,
+                viewport: viewport,
+              };
+              page.render(renderContext);
+            });
+          },
+          reason => {
+            console.error(reason);
+            error.value = true;
+          }
+        );
+      };
+      document.head.appendChild(script);
+    });
+
     return {
-      pdfSrc: '/images/guide2023-2024.pdf',
-      error: false,
+      pdfViewer,
+      error
     };
-  },
-  methods: {
-    handleError() {
-      this.error = true;
-    },
   },
 };
 </script>
@@ -36,15 +66,10 @@ export default {
   overflow: hidden;
 }
 
-.pdf-iframe {
+.pdf-viewer {
   width: 100%;
   height: 100%;
-  border: none;
-  max-width: 100%;
-  max-height: 100%;
-  min-width: 320px;
-  min-height: 320px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Optional: add a shadow for better visual separation */
+  overflow: auto;
 }
 
 .error-message {

@@ -13,6 +13,7 @@ export default {
     const pdfViewer = ref(null);
     const error = ref(false);
     const pdfUrl = '/images/guide2023-2024.pdf'; // Path to your PDF file
+    const pdfjsLib = window.pdfjsLib;
 
     onMounted(() => {
       if (!pdfViewer.value) return;
@@ -21,7 +22,6 @@ export default {
       const script = document.createElement('script');
       script.src = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js';
       script.onload = () => {
-        const pdfjsLib = window.pdfjsLib;
         pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
 
         const loadingTask = pdfjsLib.getDocument(pdfUrl);
@@ -29,7 +29,7 @@ export default {
           pdf => {
             const renderPage = (pageNumber) => {
               pdf.getPage(pageNumber).then(page => {
-                const viewport = page.getViewport({ scale: 3 }); // High scale for better quality
+                const viewport = page.getViewport({ scale: 1.5 }); // Adjust scale for balance between quality and performance
                 const canvas = document.createElement('canvas');
                 const context = canvas.getContext('2d');
                 const devicePixelRatio = window.devicePixelRatio || 1;
@@ -52,15 +52,26 @@ export default {
               });
             };
 
-            // Render all pages
-            const renderAllPages = () => {
-              for (let i = 1; i <= pdf.numPages; i++) {
-                renderPage(i);
+            // Render the first page initially
+            renderPage(1);
+
+            // Add a scroll event listener to load more pages as user scrolls
+            const loadMorePages = () => {
+              const viewer = pdfViewer.value;
+              const scrollTop = viewer.scrollTop;
+              const clientHeight = viewer.clientHeight;
+              const scrollHeight = viewer.scrollHeight;
+
+              // Load next page when user scrolls near the bottom
+              if (scrollTop + clientHeight >= scrollHeight - 100) {
+                const nextPage = Math.ceil(scrollTop / clientHeight) + 1;
+                if (nextPage <= pdf.numPages) {
+                  renderPage(nextPage);
+                }
               }
             };
 
-            // Render pages with a delay to ensure previous pages are processed
-            setTimeout(renderAllPages, 500);
+            pdfViewer.value.addEventListener('scroll', loadMorePages);
           },
           reason => {
             console.error(reason);

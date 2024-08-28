@@ -1,19 +1,23 @@
 <template>
-  <div class="pdf-container">
+  <div class="pdf-container" ref="scrollContainer">
     <div ref="pdfViewer" class="pdf-viewer"></div>
     <div v-if="error" class="error-message">Unable to load the PDF. Please check the file path or the PDF itself.</div>
   </div>
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onBeforeUnmount } from 'vue';
 
 export default {
   name: 'PortfolioView',
   setup() {
     const pdfViewer = ref(null);
+    const scrollContainer = ref(null);
     const error = ref(false);
     const pdfUrl = '/images/portfolio.pdf'; // Path to your PDF file
+    let pdf = null;
+    let renderedPages = new Set();
+    let observer = null;
 
     onMounted(() => {
       if (!pdfViewer.value) return;
@@ -27,41 +31,9 @@ export default {
 
         const loadingTask = pdfjsLib.getDocument(pdfUrl);
         loadingTask.promise.then(
-          pdf => {
-            const renderPage = (pageNumber) => {
-              pdf.getPage(pageNumber).then(page => {
-                const viewport = page.getViewport({ scale: 2 }); // Adjust scale as needed
-                const canvas = document.createElement('canvas');
-                const context = canvas.getContext('2d');
-                const devicePixelRatio = window.devicePixelRatio || 1;
-
-                // Set canvas dimensions
-                canvas.width = viewport.width * devicePixelRatio;
-                canvas.height = viewport.height * devicePixelRatio;
-                context.scale(devicePixelRatio, devicePixelRatio);
-
-                // Append canvas to viewer
-                pdfViewer.value.appendChild(canvas);
-
-                const renderContext = {
-                  canvasContext: context,
-                  viewport: viewport,
-                };
-                page.render(renderContext).promise.then(() => {
-                  console.log(`Page ${pageNumber} rendered`);
-                });
-              });
-            };
-
-            // Render all pages
-            const renderAllPages = () => {
-              for (let i = 1; i <= pdf.numPages; i++) {
-                renderPage(i);
-              }
-            };
-
-            // Render pages with a delay to ensure previous pages are processed
-            setTimeout(renderAllPages, 500);
+          loadedPdf => {
+            pdf = loadedPdf;
+            initializeObserver(); // Initialize lazy loading
           },
           reason => {
             console.error(reason);
@@ -72,8 +44,79 @@ export default {
       document.head.appendChild(script);
     });
 
+    const renderPage = (pageNumber) => {
+      if (!pdf || renderedPages.has(pageNumber)) return;
+
+      pdf.getPage(pageNumber).then(page => {
+        const viewport = page.getViewport({ scale: 1.5 }); // Adjust scale as needed
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        const devicePixelRatio = window.devicePixelRatio || 1;
+
+        // Set canvas dimensions for high quality
+        canvas.width = viewport.width * devicePixelRatio;
+        canvas.height = viewport.height * devicePixelRatio;
+        context.scale(devicePixelRatio, devicePixelRatio);
+
+        // Append canvas to viewer
+        pdfViewer.value.appendChild(canvas);
+
+        const renderContext = {
+          canvasContext: context,
+          viewport: viewport,
+        };
+
+        page.render(renderContext).promise.then(() => {
+          console.log(`Page ${pageNumber} rendered`);
+          renderedPages.add(pageNumber); // Mark page as rendered
+        }).catch(renderError => {
+          console.error(`Error rendering page ${pageNumber}:`, renderError);
+          error.value = true;
+        });
+      }).catch(pageError => {
+        console.error(`Error fetching page ${pageNumber}:`, pageError);
+        error.value = true;
+      });
+    };
+
+    const initializeObserver = () => {
+      observer = new IntersectionObserver(handleIntersection, {
+        root: scrollContainer.value,
+        rootMargin: '0px',
+        threshold: 0.1, // Adjust this threshold to balance performance
+      });
+
+      // Add observer to each page placeholder (initially invisible)
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const pagePlaceholder = document.createElement('div');
+        pagePlaceholder.setAttribute('data-page-number', i);
+        pagePlaceholder.style.height = '800px'; // Adjust based on page height
+        pagePlaceholder.style.width = '100%';
+        pdfViewer.value.appendChild(pagePlaceholder);
+        observer.observe(pagePlaceholder); // Observe each placeholder
+      }
+    };
+
+    const handleIntersection = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const pageNumber = parseInt(entry.target.getAttribute('data-page-number'));
+          renderPage(pageNumber); // Render page when it is in view
+          observer.unobserve(entry.target); // Stop observing once the page is rendered
+          entry.target.remove(); // Remove placeholder after rendering
+        }
+      });
+    };
+
+    onBeforeUnmount(() => {
+      if (observer) {
+        observer.disconnect(); // Clean up observer when the component is destroyed
+      }
+    });
+
     return {
       pdfViewer,
+      scrollContainer,
       error
     };
   },
@@ -94,7 +137,6 @@ export default {
   display: flex;
   flex-direction: column; /* Stack pages vertically */
   width: 100%;
-  height: auto;
 }
 
 .error-message {

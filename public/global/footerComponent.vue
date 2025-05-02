@@ -3,29 +3,15 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4 order-md-1 glink" style="margin-top: 20px; text-align: center;">
-          <h2>روابط سريعة</h2>
+
           <div class="row">
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-6 col-6">
-                  <ul dir="rtl" style="display: inline-block; text-align: right; margin-left: -40px; margin-right: -60px;">              
-                    <li><a href="/Guide/UGRAD/International"><i class="fas fa-angle-double-left"></i> دليل افرع الجامعات الاجنبية</a></li>
-                    <li><a href="/Status/UGRAD/International"><i class="fas fa-angle-double-left"></i> حالة تقديمات افرع الجامعات الاجنبية</a></li>
-                    <li><a href="/Guide/UGRAD/Special/InternationalAgreements"><i class="fas fa-angle-double-left"></i> دليل الجامعات ذات طبيعة خاصة (المنشأة باتفاقات دولية)</a></li>
-                    <li><a href="/Guide/UGRAD/Special/FrameworkAgreements"><i class="fas fa-angle-double-left"></i> دليل الجامعات ذات طبيعة خاصة (المنشأة باتفاقات اطارية)</a></li>
-                    <li><a href="/Guide/UGRAD/Special/SpecialLaw"><i class="fas fa-angle-double-left"></i> دليل الجامعات ذات طبيعة خاصة (المنشأة بقوانين خاصة)</a></li>                                
-                    <li><a href="/Status/UGRAD/Special"><i class="fas fa-angle-double-left"></i> حالة تقديمات الجامعات ذات طبيعة خاصة</a></li>                    
-                  </ul>
+
                 </div>
                 <div class="col-md-6 col-6">
-                 <ul dir="rtl" style="display: inline-block; text-align: right; margin-right: 10px;">
-                    <li><a href="/Guide/UGRAD/National/Normal"><i class="fas fa-angle-double-left"></i> دليل الجامعات الأهلية</a></li>
-                    <li><a href="/Guide/UGRAD/National/International"><i class="fas fa-angle-double-left"></i> دليل الجامعات الأهلية الدولية</a></li>
-                    <li><a href="/Guide/UGRAD/National/Affiliated"><i class="fas fa-angle-double-left"></i> دليل الجامعات الأهلية المنبثقة</a></li>
-                    <li><a href="/Status/UGRAD/National"><i class="fas fa-angle-double-left"></i> حالة تقديمات الجامعات الأهلية</a></li>                    
-                    <li><a href="/Guide/UGRAD/Private"><i class="fas fa-angle-double-left"></i> دليل الجامعات الخاصة</a></li>
-                    <li><a href="/Status/UGRAD/Private"><i class="fas fa-angle-double-left"></i> حالة تقديمات الجامعات الخاصة</a></li>
-                  </ul>
+
                 </div>
               </div>
             </div>
@@ -74,7 +60,6 @@
           </div>
           <br>
           <br>
-          <p>تم اطلاق الموقع يوم 9 أغسطس 2024 </p>
         </div>
       </div>
     </div>

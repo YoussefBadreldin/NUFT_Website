@@ -54,43 +54,6 @@
             </div>
         </div>
 
-        <!-- Our Team -->
-        <div class="Our-Team">
-            <div class="container" dir="rtl">
-                <div class="session-title row">
-                    <h2>فريقنا</h2>
-                </div>
-                <div class="Member-row row">
-                    <div v-for="(member, index) in teamMembers" :key="index" class="col-md-4">
-                        <div class="Member-card">
-                            <img :src="member.image" :alt="member.name" />
-                            <h6>{{ member.name }}</h6>
-                            <p>{{ member.position }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Our Partners -->
-        <div class="Our-Partners">
-            <div class="container">
-                <div class="session-title row">
-                    <h2>شركاء النجاح</h2>
-                </div>
-                <div class="row-partners row">
-                    <!-- Partner content with links -->
-                    <div class="col-md-4">
-                        <a href="http://www.pill-network.com" target="_blank" class="partner-link">
-                            <div class="partner-item">
-                                <img src="/images/Partners/PillNetwork.png" alt="Pill Network Partner" class="img-fluid">
-                            </div>
-                        </a>
-                    </div>
-                    <!-- Add more partners with links as needed -->
-                </div>
-            </div>
-        </div>
 <FooterComponent />
         <smartAssistantComponent />
     </div>

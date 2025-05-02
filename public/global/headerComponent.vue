@@ -46,18 +46,7 @@
   <link rel="stylesheet" href="/plugins/slider/css/owl.theme.default.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
-    <div class="header-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-7 col-md-12 left-item">
-            <ul></ul>
-          </div>
-          <ul>
-            <li><a><strong>بث تجريبي</strong></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <a class="navbar-brand" href="/Home">

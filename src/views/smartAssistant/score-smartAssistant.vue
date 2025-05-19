@@ -11,7 +11,7 @@
                     <div class="welcome-text">
                         <h1 class="welcome-title">أهلا بيك!</h1>
                         <p class="assistant-intro"><strong>أنا مساعدك الشخصي الذكي</strong></p>
-                        <p class="search-instruction">يرجى إدخال البيانات التالية بدقة لمعرفة الكليات التي تناسب مجموعك</p>
+                        <p class="search-instruction">أنا هنا لمساعدتك للبحث عن الكليات التي تناسب مجموعك <br> يرجى إدخال البيانات التالية بدقة لنبدء</p>
                     </div>
                 </div>
 

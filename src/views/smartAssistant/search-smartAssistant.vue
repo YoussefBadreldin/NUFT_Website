@@ -11,7 +11,7 @@
                     <div class="welcome-text">
                         <h1 class="welcome-title">أهلا بيك!</h1>
                         <p class="assistant-intro"><strong>أنا مساعدك الشخصي الذكي</strong></p>
-                        <p class="search-instruction">يرجى إدخال اسم الجامعة للبحث</p>
+                         <p class="search-instruction">أنا هنا لمساعدتك للبحث عن معلومات تفصيلية عن الجامعة التي تهمك <br> يرجى إدخال اسم الجامعة لنبدء</p>
                     </div>
                 </div>
 

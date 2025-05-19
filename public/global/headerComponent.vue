@@ -59,10 +59,29 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item" v-if="!name">
-            <a class="nav-link signup-button" href="/user">تسجيل الدخول</a>
+            <a class="nav-link signup-button" href="/Login">تسجيل الدخول</a>
           </li>
-          <li class="nav-item" v-if="name">
-            <button class="btn btn-primary btn-sm" @click="logout">تسجيل الخروج</button>
+          <li class="nav-item dropdown" v-if="name">
+            <div class="account-dropdown">
+              <button class="account-btn" @click="handleAccountClick">
+                <i class="fas fa-user-circle"></i>
+              </button>
+              <div class="dropdown-menu" v-show="isDropdownOpen">
+                <a v-if="isAdmin" href="/admin" class="dropdown-item">
+                  <i class="fas fa-cog"></i>
+                  لوحة التحكم
+                </a>
+                <a v-else href="/account" class="dropdown-item">
+                  <i class="fas fa-user"></i>
+                  حسابي
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="#" class="dropdown-item" @click="logout">
+                  <i class="fas fa-sign-out-alt"></i>
+                  تسجيل الخروج
+                </a>
+              </div>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/Contact">تواصل معنا</a>
@@ -97,17 +116,64 @@ export default {
   data() {
     return {
       name: '',
+      isDropdownOpen: false,
+      isAdmin: false
     };
   },
   methods: {
     logout() {
       localStorage.removeItem('name');
+      localStorage.removeItem('isAdmin');
       this.name = '';
+      this.isAdmin = false;
+      this.isDropdownOpen = false;
+      this.$router.push('/Login');
     },
+    handleAccountClick() {
+      if (this.isAdmin) {
+        this.$router.push('/admin');
+      } else {
+        this.$router.push('/account');
+      }
+    },
+    toggleDropdown() {
+      this.isDropdownOpen = !this.isDropdownOpen;
+    },
+    closeDropdown(event) {
+      if (!event.target.closest('.account-dropdown')) {
+        this.isDropdownOpen = false;
+      }
+    }
   },
   created() {
     this.name = localStorage.getItem('name');
+    this.isAdmin = localStorage.getItem('isAdmin') === 'true';
+    document.addEventListener('click', this.closeDropdown);
+
+    // Redirect if trying to access login while logged in
+    if (this.name && this.$route.path === '/Login') {
+      if (this.isAdmin) {
+        this.$router.push('/admin');
+      } else {
+        this.$router.push('/account');
+      }
+    }
   },
+  watch: {
+    '$route'(to) {
+      // Prevent access to login page when logged in
+      if (to.path === '/Login' && this.name) {
+        if (this.isAdmin) {
+          this.$router.push('/admin');
+        } else {
+          this.$router.push('/account');
+        }
+      }
+    }
+  },
+  beforeUnmount() {
+    document.removeEventListener('click', this.closeDropdown);
+  }
 };
 </script>
 
@@ -214,6 +280,77 @@ export default {
     .header-top {
       margin-top: -10px;
       margin-bottom: -20px;
+    }
+  }
+
+  .account-dropdown {
+    position: relative;
+  }
+
+  .account-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+
+  .account-btn:hover {
+    color: #ffbf00;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    z-index: 1000;
+    margin-top: 0.5rem;
+  }
+
+  .dropdown-item {
+    padding: 0.75rem 1rem;
+    color: #2c3e50;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #001d3d;
+  }
+
+  .dropdown-divider {
+    height: 1px;
+    background-color: #dee2e6;
+    margin: 0.5rem 0;
+  }
+
+  .dropdown-item i {
+    width: 20px;
+    text-align: center;
+  }
+
+  @media (max-width: 991px) {
+    .dropdown-menu {
+      position: static;
+      box-shadow: none;
+      border: 1px solid #dee2e6;
+      margin-top: 0.5rem;
+    }
+    
+    .account-btn {
+      font-size: 1.2rem;
     }
   }
 </style>

@@ -87,38 +87,38 @@
         <h2 class="section-title">{{ isEditing ? 'تعديل الخبر' : 'إضافة خبر جديد' }}</h2>
         <form @submit.prevent="isEditing ? updateNews() : addNews()">
           <div class="form-grid">
-            <div class="form-group">
+          <div class="form-group">
               <label for="news_title">عنوان الخبر</label>
-              <input type="text" v-model="news_title" id="news_title" required>
-            </div>
+            <input type="text" v-model="news_title" id="news_title" required>
+          </div>
 
-            <div class="form-group">
+          <div class="form-group">
               <label for="news_photo">رابط الصورة</label>
               <div class="input-with-hint">
-                <input type="text" v-model="news_photo" id="news_photo">
+            <input type="text" v-model="news_photo" id="news_photo">
                 <span class="hint">/images/Logos/NEWS/.png</span>
               </div>
-            </div>
+          </div>
 
-            <div class="form-group">
+          <div class="form-group">
               <label for="news_day">اليوم</label>
-              <input type="number" v-model="news_day" id="news_day" min="1" max="31" required>
-            </div>
+            <input type="number" v-model="news_day" id="news_day" min="1" max="31" required>
+          </div>
 
-            <div class="form-group">
+          <div class="form-group">
               <label for="news_month">الشهر</label>
               <input type="text" v-model="news_month" id="news_month" placeholder="باللغة العربية" required>
-            </div>
+          </div>
 
-            <div class="form-group">
+          <div class="form-group">
               <label for="news_year">السنة</label>
-              <input type="number" v-model="news_year" id="news_year" min="1900" max="2099" required>
-            </div>
+            <input type="number" v-model="news_year" id="news_year" min="1900" max="2099" required>
+          </div>
 
-            <div class="form-group">
+          <div class="form-group">
               <label for="news_link">رابط الخبر</label>
               <div class="input-with-hint">
-                <input type="text" v-model="news_link" id="news_link" required>
+            <input type="text" v-model="news_link" id="news_link" required>
                 <span class="hint">/Guide/UGRAD/ أو https://</span>
               </div>
             </div>
@@ -270,13 +270,13 @@ export default {
       this.activeTab = 'manage'; // Switch back to manage tab
     },
     resetForm() {
-      this.news_title = '';
-      this.news_photo = '';
-      this.news_day = '';
-      this.news_month = '';
-      this.news_year = '';
-      this.news_link = '';
-      this.news_details = '';
+          this.news_title = '';
+          this.news_photo = '';
+          this.news_day = '';
+          this.news_month = '';
+          this.news_year = '';
+          this.news_link = '';
+          this.news_details = '';
     }
   },
   created() {
@@ -554,8 +554,8 @@ label {
   font-weight: 500;
 }
 
-input[type="text"],
-input[type="number"],
+input[type="text"], 
+input[type="number"], 
 textarea {
   width: 100%;
   padding: 0.75rem;

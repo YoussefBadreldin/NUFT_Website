@@ -304,7 +304,7 @@ export default {
       }).then(() => {
         console.log('Logged in successfully');
         localStorage.setItem('name', this.email);
-        localStorage.setItem('userType', isAdmin ? 'admin' : 'normal');
+        localStorage.setItem('isAdmin', isAdmin);
         
         // Redirect based on user type
         if (isAdmin) {
@@ -329,6 +329,18 @@ export default {
   },
   mounted() {
     window.scrollTo(0, 0);
+    
+    // Check if already logged in
+    const name = localStorage.getItem('name');
+    const isAdmin = localStorage.getItem('isAdmin') === 'true';
+    
+    if (name) {
+      if (isAdmin) {
+        this.$router.push('/admin');
+      } else {
+        this.$router.push('/account');
+      }
+    }
   }
 }
 </script>

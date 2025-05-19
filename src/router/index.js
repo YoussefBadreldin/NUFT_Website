@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import MainComponent from "../views/User/Home.vue";
-import signUp from "../views/User/Login.vue";
+import Login from "../views/User/Login.vue";
 import adminPanel from "../views/Admin/adminPanel.vue";
 import UniversityData from "../views/Admin/UniversityData.vue";
 import adminPanelnews from "../views/Admin/news.vue";
@@ -41,6 +41,8 @@ import BIOTECH from "../views/smartAssistant/BIOTECH.vue";
 import EDU from "../views/smartAssistant/EDU.vue";
 import LANG from "../views/smartAssistant/LANG.vue";
 import SOCSCI from "../views/smartAssistant/SOCSCI.vue";
+import StatusData from "../views/Admin/StatusData.vue";
+import Account from "../views/User/Account.vue";
 
 const routes = [
   {
@@ -54,9 +56,15 @@ const routes = [
     component:MainComponent
   },
   {
-    path:'/user',
-    name:'user',
-    component: signUp
+    path:'/Login',
+    name:'Login',
+    component: Login
+  },
+  {
+    path:'/account',
+    name:'Account',
+    component: Account,
+    meta: { requiresAuth: true }
   },
   {
     path: '/admin/users',
@@ -258,12 +266,35 @@ const routes = [
     path: "/smartAssistant/faculties/SOCSCI",
     name: "SOCSCI",
     component: SOCSCI
+  },
+  {
+    path: '/admin/admission-status',
+    name: 'StatusData',
+    component: StatusData,
+    meta: { requiresAuth: true }
   }
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = localStorage.getItem('name');
+  const isAdmin = localStorage.getItem('isAdmin') === 'true';
+
+  if (to.meta.requiresAuth && !isAuthenticated) {
+    next('/user');
+  } else if (to.path === '/user' && isAuthenticated) {
+    if (isAdmin) {
+      next('/admin');
+    } else {
+      next('/account');
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;

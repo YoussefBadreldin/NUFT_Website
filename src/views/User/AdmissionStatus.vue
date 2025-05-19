@@ -26,9 +26,13 @@
                                 {{ pair[0].university_Arabic_Name }}
                             </a>
                         </h3>
+                        <button class="toggle-btn" @click="toggleSection(index)">
+                            <i class="fas" :class="isSectionOpen(index) ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                            {{ isSectionOpen(index) ? 'إغلاق' : 'فتح' }}
+                        </button>
                     </div>
                     
-                    <div class="status-container">
+                    <div class="status-container" v-show="isSectionOpen(index)">
                         <div class="status-section">
                             <div class="status-item">
                                 <span class="status-label">التحويل</span>
@@ -164,6 +168,7 @@ export default {
             universities: [],
             all_data: [],
             isLoading: false,
+            openSections: new Set(),
             tabs: [
                 { id: 'national', name: 'الجامعات الأهلية' },
                 { id: 'private', name: 'الجامعات الخاصة' },
@@ -229,6 +234,16 @@ export default {
             } catch (error) {
                 console.log(error);
             }
+        },
+        toggleSection(index) {
+            if (this.openSections.has(index)) {
+                this.openSections.delete(index);
+            } else {
+                this.openSections.add(index);
+            }
+        },
+        isSectionOpen(index) {
+            return this.openSections.has(index);
         }
     },
     watch: {
@@ -310,6 +325,9 @@ export default {
     background-color: #2c3e50;
     padding: 1rem;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .pair-header h3 {
@@ -317,6 +335,7 @@ export default {
     color: white;
     font-size: 1.2rem;
     font-weight: 600;
+    flex: 1;
 }
 
 .university-link {
@@ -329,8 +348,32 @@ export default {
     color: #3498db;
 }
 
+.toggle-btn {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    margin-right: 1rem;
+}
+
+.toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.toggle-btn i {
+    transition: transform 0.3s ease;
+}
+
 .status-container {
     padding: 1.5rem;
+    transition: all 0.3s ease;
+    overflow: hidden;
 }
 
 .status-section {

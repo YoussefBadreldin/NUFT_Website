@@ -16,7 +16,7 @@
             <span class="description">إدارة بيانات الجامعات</span>
           </div>
         </a>
-        <a href="/admin/universities-status" class="option-card">
+        <a href="/admin/status-data" class="option-card">
           <div class="icon-wrapper">
             <i class="fas fa-chart-line"></i>
           </div>
@@ -61,7 +61,23 @@
             <span class="description">إدارة حسابات المستخدمين</span>
           </div>
         </a>
+        <a href="/admin/smart-assistant" class="option-card">
+          <div class="icon-wrapper">
+            <i class="fas fa-robot"></i>
+          </div>
+          <div class="content">
+            <span class="title">المساعد الشخصي الذكي</span>
+            <span class="description">إدارة المساعد الذكي</span>
+          </div>
+        </a>
       </div>
+    </div>
+
+    <div class="logout-container">
+      <button class="logout-btn" @click="logout">
+        <i class="fas fa-sign-out-alt"></i>
+        تسجيل الخروج
+      </button>
     </div>
   </div>
 </template>
@@ -71,9 +87,18 @@ export default {
   name: 'AdminPanel',
   mounted() {
     // Check if user is admin
-    const userType = localStorage.getItem('userType');
-    if (userType !== 'admin') {
-      this.$router.push('/login');
+    const isAdmin = localStorage.getItem('isAdmin') === 'true';
+    const name = localStorage.getItem('name');
+    
+    if (!isAdmin || !name) {
+      this.$router.push('/user');
+    }
+  },
+  methods: {
+    logout() {
+      localStorage.removeItem('name');
+      localStorage.removeItem('isAdmin');
+      this.$router.push('/Login');
     }
   }
 };
@@ -239,6 +264,54 @@ export default {
 
   .option-card {
     padding: 1rem;
+  }
+}
+
+.logout-container {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.logout-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.logout-btn:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.logout-btn i {
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .logout-container {
+    bottom: 1rem;
+  }
+  
+  .logout-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
   }
 }
 </style>

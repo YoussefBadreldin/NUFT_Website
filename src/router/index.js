@@ -15,34 +15,14 @@ import UniversityTemplate from "../views/User/UniversityTemplate.vue";
 import ContactUs from "../views/User/Contact.vue";
 import Portfolio from "../views/User/Portfolio.vue";
 import NewsPage from "../views/User/News.vue";
-import smartAssistant from "../views/smartAssistant/smartAssistant.vue";
-import searchsmartAssistant from "../views/smartAssistant/search-smartAssistant.vue";
-import scoresmartAssistant from "../views/smartAssistant/score-smartAssistant.vue";
-import facultiessmartAssistant from "../views/smartAssistant/faculties-smartAssistant.vue";
-import MED from "../views/smartAssistant/MED.vue";
-import DENT from "../views/smartAssistant/DENT.vue";
-import PT from "../views/smartAssistant/PT.vue";
-import PHARM from "../views/smartAssistant/PHARM.vue";
-import ENG from "../views/smartAssistant/ENG.vue";
-import VET from "../views/smartAssistant/VET.vue";
-import CS from "../views/smartAssistant/CS.vue";
-import POLY from "../views/smartAssistant/POLY.vue";
-import NURS from "../views/smartAssistant/NURS.vue";
-import HS from "../views/smartAssistant/HS.vue";
-import ART from "../views/smartAssistant/ART.vue";
-import MEDIA from "../views/smartAssistant/MEDIA.vue";
-import ARCH from "../views/smartAssistant/ARCH.vue";
-import LAW from "../views/smartAssistant/LAW.vue";
-import TOUR from "../views/smartAssistant/TOUR.vue";
-import ECON from "../views/smartAssistant/ECON.vue";
-import CINE from "../views/smartAssistant/CINE.vue";
-import SCI from "../views/smartAssistant/SCI.vue";
-import BIOTECH from "../views/smartAssistant/BIOTECH.vue";
-import EDU from "../views/smartAssistant/EDU.vue";
-import LANG from "../views/smartAssistant/LANG.vue";
-import SOCSCI from "../views/smartAssistant/SOCSCI.vue";
+import smartAssistant from "../views/smartAssistant/SmartAssistant.vue";
+import searchsmartAssistant from "../views/smartAssistant/UniSearch.vue";
+import scoresmartAssistant from "../views/smartAssistant/ScoreMatch.vue";
+import facultiessmartAssistant from "../views/smartAssistant/Faculties.vue";
+import FacultyTemplate from "../views/smartAssistant/FacultyTemplate.vue";
 import StatusData from "../views/Admin/StatusData.vue";
 import Account from "../views/User/Account.vue";
+
 
 const routes = [
   {
@@ -158,114 +138,10 @@ const routes = [
     component:facultiessmartAssistant
   },
   {
-    path:"/smartAssistant/faculties/MED",
-    name:"MED",
-    component:MED
-  },
-  {
-    path: "/smartAssistant/faculties/DENT",
-    name: "DENT",
-    component: DENT
-  },
-  {
-    path: "/smartAssistant/faculties/PT",
-    name: "PT",
-    component: PT
-  },
-  {
-    path: "/smartAssistant/faculties/PHARM",
-    name: "PHARM",
-    component: PHARM
-  },
-  {
-    path: "/smartAssistant/faculties/ENG",
-    name: "ENG",
-    component: ENG
-  },
-  {
-    path: "/smartAssistant/faculties/VET",
-    name: "VET",
-    component: VET
-  },
-  {
-    path: "/smartAssistant/faculties/CS",
-    name: "CS",
-    component: CS
-  },
-  {
-    path: "/smartAssistant/faculties/POLY",
-    name: "POLY",
-    component: POLY
-  },
-  {
-    path: "/smartAssistant/faculties/NURS",
-    name: "NURS",
-    component: NURS
-  },
-  {
-    path: "/smartAssistant/faculties/HS",
-    name: "HS",
-    component: HS
-  },
-  {
-    path: "/smartAssistant/faculties/ART",
-    name: "ART",
-    component: ART
-  },
-  {
-    path: "/smartAssistant/faculties/MEDIA",
-    name: "MEDIA",
-    component: MEDIA
-  },
-  {
-    path: "/smartAssistant/faculties/ARCH",
-    name: "ARCH",
-    component: ARCH
-  },
-  {
-    path: "/smartAssistant/faculties/LAW",
-    name: "LAW",
-    component: LAW
-  },
-  {
-    path: "/smartAssistant/faculties/TOUR",
-    name: "TOUR",
-    component: TOUR
-  },
-  {
-    path: "/smartAssistant/faculties/ECON",
-    name: "ECON",
-    component: ECON
-  },
-  {
-    path: "/smartAssistant/faculties/CINE",
-    name: "CINE",
-    component: CINE
-  },
-  {
-    path: "/smartAssistant/faculties/SCI",
-    name: "SCI",
-    component: SCI
-  },
-  {
-    path: "/smartAssistant/faculties/BIOTECH",
-    name: "BIOTECH",
-    component: BIOTECH
-  },
-  {
-    path: "/smartAssistant/faculties/EDU",
-    name: "EDU",
-    component: EDU
-  },
-  {
-    path: "/smartAssistant/faculties/LANG",
-    name: "LANG",
-    component: LANG
-  },
-  {
-    path: "/smartAssistant/faculties/SOCSCI",
-    name: "SOCSCI",
-    component: SOCSCI
+    path:"/smartAssistant/faculties/:faculty",
+    name:"FacultyTemplate",
+    component:FacultyTemplate,
+    props: true
   },
   {
     path: '/admin/admission-status',

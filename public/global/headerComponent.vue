@@ -71,7 +71,7 @@
             <a class="nav-link" href="/News">الأخبار</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/Calculator">معادلة الشهادات</a>
+            <a class="nav-link" href="/Equivalency">معادلة الشهادات</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/Scholarships">المنح</a>

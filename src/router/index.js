@@ -2,22 +2,17 @@ import { createRouter, createWebHistory } from "vue-router";
 import MainComponent from "../views/User/Home.vue";
 import signUp from "../views/User/Login.vue";
 import adminPanel from "../views/Admin/adminPanel.vue";
-import adminPanelnational from "../views/Admin/national adminPanel.vue";
-import adminPanelprivate from "../views/Admin/private adminPanel.vue";
-import adminPanelspecial from "../views/Admin/special adminPanel.vue";
-import adminPanelinternational from "../views/Admin/international adminPanel.vue";
+import UniversityData from "../views/Admin/UniversityData.vue";
 import adminPanelnews from "../views/Admin/news.vue";
 import adminPanelSchoralships from "../views/Admin/SchoralshipsData.vue";
 import getUsers from "../views/Admin/users";
 import ContactList from "../views/Admin/messages.vue";
 import AdmissionStatus from "../views/User/AdmissionStatus.vue";
-import CertificatesCalculator from "../views/certificateCalc/certificateCalc.vue";
-import americanView from '../views/certificateCalc/American.vue';
-import IGCSECalculator from "../views/certificateCalc/IGCSE.vue";
+import Equivalency from "../views/User/Equivalency.vue";
 import ScholarShips from "../views/User/Scholarships.vue";
 import Universities from "../views/User/Universities.vue";
 import UniversityTemplate from "../views/User/UniversityTemplate.vue";
-import ContactUs from "../views/User/ContactUs.vue";
+import ContactUs from "../views/User/Contact.vue";
 import Portfolio from "../views/User/Portfolio.vue";
 import NewsPage from "../views/User/News.vue";
 import smartAssistant from "../views/smartAssistant/smartAssistant.vue";
@@ -79,24 +74,9 @@ const routes = [
     component: adminPanel
   },
   {
-    path:'/NUFTawyNumber1-national',
-    name:'adminPanelnational',
-    component: adminPanelnational
-  },
-  {
-    path:'/NUFTawyNumber1-private',
-    name:'adminPanelprivate',
-    component: adminPanelprivate
-  },
-  {
-    path:'/NUFTawyNumber1-special',
-    name:'adminPanelspecial',
-    component: adminPanelspecial
-  },
-  {
-    path:'/NUFTawyNumber1-international',
-    name:'adminPanelinternational',
-    component: adminPanelinternational
+    path:'/admin/universities-data',
+    name:'UniversityData',
+    component: UniversityData
   },
   {
     path:'/admin/news',
@@ -114,19 +94,9 @@ const routes = [
     component:AdmissionStatus
   },
   {
-    path:"/Calculator",
-    name:"Calculator",
-    component:CertificatesCalculator,
-  },
-  {
-    path:"/Calculator/American",
-    name:"americanView",
-    component:americanView,
-  },
-  {
-    path:'/Calculator/IGCSE',
-    name:"IGCSECalculator",
-    component:IGCSECalculator
+    path:"/Equivalency",
+    name:"Equivalency",
+    component:Equivalency,
   },
   {
     path:"/Scholarships",

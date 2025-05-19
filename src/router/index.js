@@ -16,7 +16,6 @@ import ContactUs from "../views/User/Contact.vue";
 import Portfolio from "../views/User/Portfolio.vue";
 import NewsPage from "../views/User/News.vue";
 import smartAssistant from "../views/User/SmartAssistant/SmartAssistant.vue";
-import searchsmartAssistant from "../views/User/SmartAssistant/UniSearch.vue";
 import scoresmartAssistant from "../views/User/SmartAssistant/ScoreMatch.vue";
 import facultiessmartAssistant from "../views/User/SmartAssistant/Faculties.vue";
 import FacultyTemplate from "../views/User/SmartAssistant/FacultyTemplate.vue";
@@ -136,11 +135,6 @@ const routes = [
     path:"/smartAssistant",
     name:"smartAssistant",
     component:smartAssistant
-  },
-  {
-    path:"/smartAssistant/search",
-    name:"searchsmartAssistant",
-    component:searchsmartAssistant
   },
   {
     path:"/smartAssistant/score",

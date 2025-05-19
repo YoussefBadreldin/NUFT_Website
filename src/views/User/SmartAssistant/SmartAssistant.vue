@@ -34,14 +34,6 @@
                             <p>اعرف الكليات المتاحة بناءً على مجموعك</p>
                         </div>
                     </router-link>
-
-                    <router-link to="/smartAssistant/search" class="option-card">
-                        <div class="card-content">
-                            <i class="fas fa-search"></i>
-                            <h3>البحث عن جامعة معينة</h3>
-                            <p>ابحث عن معلومات تفصيلية عن الجامعة التي تهمك</p>
-                        </div>
-                    </router-link>
                 </div>
             </div>
         </div>

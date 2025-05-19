@@ -18,8 +18,18 @@
                 </button>
             </div>
 
+            <!-- Search Input -->
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    v-model="searchQuery" 
+                    :placeholder="'ابحث عن ' + getCurrentTabName()"
+                    class="search-input"
+                >
+            </div>
+
             <div class="universities-grid" v-if="!isLoading">
-                <div v-for="(pair, index) in pairedUniversities" :key="index" class="university-pair-card">
+                <div v-for="(pair, index) in filteredPairedUniversities" :key="index" class="university-pair-card">
                     <div class="pair-header">
                         <h3>
                             <a :href="pair[0].guide_Url" target="_blank" class="university-link">
@@ -139,6 +149,11 @@
                 <p class="loading-text">جاري التحميل...</p>
             </div>
 
+            <!-- No Results Message -->
+            <div v-if="!isLoading && !hasResults" class="no-results">
+                <p>لا توجد نتائج للبحث</p>
+            </div>
+
             <p class="update-notice">يتم تحديث حالة تقديم الجامعات بشكل دوري●</p>
         </div>
 
@@ -169,6 +184,7 @@ export default {
             all_data: [],
             isLoading: false,
             openSections: new Set(),
+            searchQuery: '',
             tabs: [
                 { id: 'national', name: 'الجامعات الأهلية' },
                 { id: 'private', name: 'الجامعات الخاصة' },
@@ -178,15 +194,27 @@ export default {
         }
     },
     computed: {
-        pairedUniversities() {
+        filteredUniversities() {
+            return this.universities.filter(uni => 
+                uni.university_Arabic_Name.toLowerCase().includes(this.searchQuery.toLowerCase())
+            );
+        },
+        filteredPairedUniversities() {
             const pairs = [];
-            for (let i = 0; i < this.universities.length; i += 2) {
-                pairs.push(this.universities.slice(i, i + 2));
+            for (let i = 0; i < this.filteredUniversities.length; i += 2) {
+                pairs.push(this.filteredUniversities.slice(i, i + 2));
             }
             return pairs;
+        },
+        hasResults() {
+            return this.filteredUniversities.length > 0;
         }
     },
     methods: {
+        getCurrentTabName() {
+            const currentTab = this.tabs.find(tab => tab.id === this.activeTab);
+            return currentTab ? currentTab.name : '';
+        },
         getStatusClass(status) {
             if (status.includes('انتهي')) {
                 return 'status-ended';
@@ -480,6 +508,10 @@ export default {
     .tab-button {
         width: 100%;
     }
+
+    .search-container {
+        padding: 0 0.5rem;
+    }
 }
 
 .loading-container {
@@ -509,5 +541,38 @@ export default {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.search-container {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    padding: 0 1rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Cairo', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #2c3e50;
+    box-shadow: 0 0 0 2px rgba(44, 62, 80, 0.1);
+}
+
+.search-input::placeholder {
+    color: #9e9e9e;
+}
+
+.no-results {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-size: 1.1rem;
 }
 </style>

@@ -16,7 +16,7 @@
             <span class="description">إدارة بيانات الجامعات</span>
           </div>
         </a>
-        <a href="/admin/status-data" class="option-card">
+        <a href="/admin/admission-status" class="option-card">
           <div class="icon-wrapper">
             <i class="fas fa-chart-line"></i>
           </div>

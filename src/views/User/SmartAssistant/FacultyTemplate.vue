@@ -29,7 +29,11 @@
             <div class="program-details">
               <div class="info-group">
                 <h4>البرامج</h4>
-                <p>{{ faculty.programs }}</p>
+                <ul class="programs-list">
+                  <li v-for="(program, index) in formatPrograms(faculty.programs)" :key="index">
+                    {{ program }}
+                  </li>
+                </ul>
               </div>
 
               <div class="info-group">
@@ -143,6 +147,17 @@ export default {
     }
   },
   methods: {
+    formatPrograms(programs) {
+      if (!programs) return [];
+      if (typeof programs === 'string') {
+        // Replace Arabic comma with regular comma, then split by comma or hyphen
+        return programs.replace(/،/g, ',')
+                      .split(/[,-]/)
+                      .map(p => p.trim())
+                      .filter(p => p.length > 0); // Remove empty strings
+      }
+      return Array.isArray(programs) ? programs : [];
+    },
     async getData() {
       try {
         const [response1, response2, response3, response4] = await Promise.all([
@@ -508,5 +523,22 @@ export default {
   .requirement-category {
     padding: 0.35rem;
   }
+}
+
+.programs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.programs-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e8eaf6;
+  color: #1a237e;
+  font-size: 0.95rem;
+}
+
+.programs-list li:last-child {
+  border-bottom: none;
 }
 </style>

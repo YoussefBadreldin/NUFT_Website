@@ -4,6 +4,18 @@
     <div class="content" dir="rtl">
       <h1 class="title">دليل الجامعات المصرية</h1>
       
+      <!-- Type Selector Tabs -->
+      <div class="status-tabs">
+        <button 
+          v-for="tab in tabs" 
+          :key="tab.id"
+          :class="['tab-button', { active: activeTab === tab.id }]"
+          @click="activeTab = tab.id"
+        >
+          {{ tab.name }}
+        </button>
+      </div>
+
       <!-- Loading State -->
       <div v-if="loading" class="loading-container">
         <div class="loading-spinner"></div>
@@ -19,8 +31,7 @@
       <!-- Content -->
       <div v-else class="universities-grid">
         <!-- Private Universities -->
-        <div v-if="privateUniversities.length" class="university-section">
-          <h2 class="section-title">الجامعات الخاصة</h2>
+        <div v-if="activeTab === 'private' && privateUniversities.length" class="university-section">
           <div class="universities-list">
             <div v-for="uni in privateUniversities" :key="uni.id" class="university-card" @click="navigateToUniversity('private', uni.id)">
               <img :src="uni.logo" :alt="uni.name" class="university-logo" @error="handleImageError">
@@ -30,8 +41,7 @@
         </div>
 
         <!-- National Universities -->
-        <div v-if="nationalUniversities.length" class="university-section">
-          <h2 class="section-title">الجامعات الأهلية</h2>
+        <div v-if="activeTab === 'national' && nationalUniversities.length" class="university-section">
           <div class="universities-list">
             <div v-for="uni in nationalUniversities" :key="uni.id" class="university-card" @click="navigateToUniversity('national', uni.id)">
               <img :src="uni.logo" :alt="uni.name" class="university-logo" @error="handleImageError">
@@ -41,8 +51,7 @@
         </div>
 
         <!-- Special Universities -->
-        <div v-if="specialUniversities.length" class="university-section">
-          <h2 class="section-title">الجامعات ذات طبيعة خاصة</h2>
+        <div v-if="activeTab === 'special' && specialUniversities.length" class="university-section">
           <div class="universities-list">
             <div v-for="uni in specialUniversities" :key="uni.id" class="university-card" @click="navigateToUniversity('special', uni.id)">
               <img :src="uni.logo" :alt="uni.name" class="university-logo" @error="handleImageError">
@@ -52,8 +61,7 @@
         </div>
 
         <!-- International Universities -->
-        <div v-if="internationalUniversities.length" class="university-section">
-          <h2 class="section-title">الجامعات الدولية</h2>
+        <div v-if="activeTab === 'international' && internationalUniversities.length" class="university-section">
           <div class="universities-list">
             <div v-for="uni in internationalUniversities" :key="uni.id" class="university-card" @click="navigateToUniversity('international', uni.id)">
               <img :src="uni.logo" :alt="uni.name" class="university-logo" @error="handleImageError">
@@ -84,10 +92,18 @@ export default {
     const router = useRouter();
     const loading = ref(true);
     const error = ref(null);
+    const activeTab = ref('private');
     const privateUniversities = ref([]);
     const nationalUniversities = ref([]);
     const specialUniversities = ref([]);
     const internationalUniversities = ref([]);
+
+    const tabs = [
+      { id: 'private', name: 'الجامعات الخاصة' },
+      { id: 'national', name: 'الجامعات الأهلية' },
+      { id: 'special', name: 'الجامعات ذات طبيعة خاصة' },
+      { id: 'international', name: 'الجامعات الدولية' }
+    ];
 
     const fetchAllUniversities = async () => {
       loading.value = true;
@@ -374,6 +390,8 @@ export default {
     return {
       loading,
       error,
+      activeTab,
+      tabs,
       privateUniversities,
       nationalUniversities,
       specialUniversities,
@@ -405,6 +423,34 @@ export default {
   margin-bottom: 2rem;
   font-size: 2.5rem;
   font-weight: 700;
+}
+
+.status-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tab-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  color: #1a237e;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Cairo', sans-serif;
+}
+
+.tab-button:hover {
+  background-color: #e9ecef;
+}
+
+.tab-button.active {
+  background-color: #1a237e;
+  color: white;
 }
 
 .loading-container {
@@ -526,6 +572,14 @@ export default {
   .university-logo {
     width: 100px;
     height: 100px;
+  }
+
+  .status-tabs {
+    flex-wrap: wrap;
+  }
+
+  .tab-button {
+    width: 100%;
   }
 }
 </style> 

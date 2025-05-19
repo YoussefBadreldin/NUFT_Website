@@ -68,7 +68,7 @@
     <div class="CopyRights">
       <p> 2024© جميع الحقوق محفوظة
         <br>
-        <a href="https://pill-network.com" target="_blank" rel="noopener noreferrer">Pill Network </a> تصميم وتطوير بواسطة</p>
+       NUFT for Universities</p>
     </div>
   </div>
 </template>

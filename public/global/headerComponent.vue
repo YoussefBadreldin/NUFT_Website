@@ -84,10 +84,16 @@
             </div>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/join-us">انضم إلينا</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/Contact">تواصل معنا</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/News">الأخبار</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/articles">المقالات</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/Equivalency">معادلة الشهادات</a>

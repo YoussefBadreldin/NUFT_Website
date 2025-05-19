@@ -23,7 +23,10 @@ import FacultyTemplate from "../views/User/SmartAssistant/FacultyTemplate.vue";
 import StatusData from "../views/Admin/StatusData.vue";
 import Account from "../views/User/Account.vue";
 import SmartAssistantAdmin from "../views/Admin/SmartAssistantAdmin.vue";
-import ArticleManagement from '../views/Admin/ArticleManagement.vue'
+import ArticleManagement from '../views/Admin/ArticleManagement.vue';
+import JoinUsAdmin from '../views/Admin/JoinUsAdmin.vue';
+import Articles from '../views/User/Articles.vue';
+import JoinUs from '../views/User/JoinUs.vue';
 
 
 const routes = [
@@ -115,9 +118,19 @@ const routes = [
     component:NewsPage
   },
   {
+    path: '/articles',
+    name: 'Articles',
+    component: Articles
+  },
+  {
     path:"/Portfolio",
     name:"Portfolio",
     component:Portfolio
+  },
+  {
+    path:'/join-us',
+    name:'JoinUs',
+    component: JoinUs
   },
   {
     path:"/smartAssistant",
@@ -161,6 +174,12 @@ const routes = [
     path: '/admin/articles',
     name: 'ArticleManagement',
     component: ArticleManagement,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/admin/join-us',
+    name: 'JoinUsAdmin',
+    component: JoinUsAdmin,
     meta: { requiresAuth: true }
   }
 ];

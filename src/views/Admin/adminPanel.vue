@@ -65,7 +65,25 @@
             <span class="description">إدارة حسابات المستخدمين</span>
           </div>
         </a>
-        <a href="/admin/smart-assistant" class="option-card">
+        <a href="/admin/articles" class="option-card">
+          <div class="icon-wrapper">
+            <i class="fas fa-newspaper"></i>
+          </div>
+          <div class="content">
+            <span class="title"> المقالات</span>
+            <span class="description">إدارة المقالات والمحتوى</span>
+          </div>
+        </a>
+        <a href="/admin/join-us" class="option-card">
+          <div class="icon-wrapper">
+            <i class="fas fa-user-plus"></i>
+          </div>
+          <div class="content">
+            <span class="title"> طلبات الانضمام</span>
+            <span class="description">مراجعة طلبات الانضمام الجديدة</span>
+          </div>
+        </a>
+       <a href="/admin/smart-assistant" class="option-card">
           <div class="icon-wrapper">
             <i class="fas fa-robot"></i>
           </div>
@@ -73,16 +91,7 @@
             <span class="title">المساعد الشخصي الذكي</span>
             <span class="description">إدارة المساعد الذكي</span>
           </div>
-        </a>
-        <a href="/admin/articles" class="option-card">
-          <div class="icon-wrapper">
-            <i class="fas fa-newspaper"></i>
-          </div>
-          <div class="content">
-            <span class="title">ادارة المقالات</span>
-            <span class="description">إدارة المقالات والمحتوى</span>
-          </div>
-        </a>
+        </a> 
       </div>
     </div>
 

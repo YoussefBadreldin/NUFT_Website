@@ -430,7 +430,7 @@ export default {
       if (universityData) {
         // Store the university data in localStorage before navigation
         localStorage.setItem('currentUniversityData', JSON.stringify(universityData));
-        router.push(`/Guide/UGRAD/${type}/${id}`);
+        router.push(`/Guide/${type}/${id}`);
       }
     };
 

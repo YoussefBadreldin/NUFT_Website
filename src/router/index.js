@@ -101,7 +101,7 @@ const routes = [
     component:Universities
   },
   {
-    path: '/Guide/UGRAD/:type/:id',
+    path: '/Guide/:type/:id',
     name: 'UniversityTemplate',
     component: UniversityTemplate,
     props: true

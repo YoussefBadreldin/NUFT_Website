@@ -15,13 +15,14 @@ import UniversityTemplate from "../views/User/UniversityTemplate.vue";
 import ContactUs from "../views/User/Contact.vue";
 import Portfolio from "../views/User/Portfolio.vue";
 import NewsPage from "../views/User/News.vue";
-import smartAssistant from "../views/smartAssistant/SmartAssistant.vue";
-import searchsmartAssistant from "../views/smartAssistant/UniSearch.vue";
-import scoresmartAssistant from "../views/smartAssistant/ScoreMatch.vue";
-import facultiessmartAssistant from "../views/smartAssistant/Faculties.vue";
-import FacultyTemplate from "../views/smartAssistant/FacultyTemplate.vue";
+import smartAssistant from "../views/User/SmartAssistant/SmartAssistant.vue";
+import searchsmartAssistant from "../views/User/SmartAssistant/UniSearch.vue";
+import scoresmartAssistant from "../views/User/SmartAssistant/ScoreMatch.vue";
+import facultiessmartAssistant from "../views/User/SmartAssistant/Faculties.vue";
+import FacultyTemplate from "../views/User/SmartAssistant/FacultyTemplate.vue";
 import StatusData from "../views/Admin/StatusData.vue";
 import Account from "../views/User/Account.vue";
+import SmartAssistantAdmin from "../views/Admin/SmartAssistantAdmin.vue";
 
 
 const routes = [
@@ -147,6 +148,12 @@ const routes = [
     path: '/admin/admission-status',
     name: 'StatusData',
     component: StatusData,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/admin/smart-assistant',
+    name: 'SmartAssistantAdmin',
+    component: SmartAssistantAdmin,
     meta: { requiresAuth: true }
   }
 ];

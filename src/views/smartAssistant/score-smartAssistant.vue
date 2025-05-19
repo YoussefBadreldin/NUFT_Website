@@ -1,48 +1,82 @@
 <template>
     <div>
         <HeaderComponent />
-        <br>
-        <h2>!أهلا بيك</h2>
-        <p><strong>أنا مساعدك الشخصي</strong></p>
-        <p>يرجى إدخال البيانات التالية بدقة لمعرفة الكليات التي تناسب مجموعك</p>
-        <br>
-        <div class="form-group">
-            <label for="percentage">ادخل مجموعك بالنسبة المئوية (بعد المعادلة)</label>
-            <input type="number" id="percentage" v-model="percentage">
+        
+        <div class="score-assistant-content" dir="rtl">
+            <div class="score-container">
+                <div class="welcome-content">
+                    <div class="assistant-illustration">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="welcome-text">
+                        <h1 class="welcome-title">أهلا بيك!</h1>
+                        <p class="assistant-intro"><strong>أنا مساعدك الشخصي الذكي</strong></p>
+                        <p class="search-instruction">يرجى إدخال البيانات التالية بدقة لمعرفة الكليات التي تناسب مجموعك</p>
+                    </div>
+                </div>
+
+                <div class="form-container">
+                    <div class="form-group">
+                        <label for="percentage">
+                            <i class="fas fa-percentage"></i>
+                            مجموعك بالنسبة المئوية (بعد المعادلة)
+                        </label>
+                        <input 
+                            type="number" 
+                            id="percentage" 
+                            v-model="percentage"
+                            placeholder="أدخل مجموعك هنا..."
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="certificateType">
+                            <i class="fas fa-graduation-cap"></i>
+                            نوع شهادتك
+                        </label>
+                        <select id="certificateType" v-model="selectedCertificate">
+                            <option value="secondary_general">الثانوية العامة المصرية</option>
+                            <option value="secondary_general">ستم والنيل</option>
+                            <option value="azhar_secondary">الثانوية الأزهرية</option>
+                            <option value="arabic_foreign">شهادة عربية أو أجنبية</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="year">
+                            <i class="fas fa-calendar"></i>
+                            سنة الحصول
+                        </label>
+                        <select id="year" v-model="selectedYear">
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                        </select>
+                    </div>
+
+                    <button class="search-button" @click="search">
+                        <i class="fas fa-search"></i>
+                        <span>بحث</span>
+                    </button>
+                </div>
+
+                <div v-if="result" class="result-container" :class="{ 'error': !showDetails }">
+                    <div class="result-content">
+                        <i :class="showDetails ? 'fas fa-info-circle' : 'fas fa-info-circle'"></i>
+                        <p>{{ result }}</p>
+                    </div>
+                    <div v-if="resultDetails" class="result-details" v-html="resultDetails"></div>
+                    <button v-if="result === 'الطب البشري'" class="details-button" @click="toggleDetails">
+                        <i class="fas fa-info-circle"></i>
+                        <span>تفاصيل</span>
+                    </button>
+                </div>
+
+                <div v-if="showDetails" class="details-container">
+                    <p>هنا تفاصيل عن الطب البشري...</p>
+                </div>
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="certificateType">اختر نوع شهادتك</label>
-            <select id="certificateType" v-model="selectedCertificate">
-                <option value="secondary_general">الثانوية العامة المصرية</option>
-                <option value="secondary_general">ستم والنيل</option>
-                <option value="azhar_secondary">الثانوية الأزهرية</option>
-                <option value="arabic_foreign">شهادة عربية أو أجنبية</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="year">اختر سنة الحصول</label>
-            <select id="year" v-model="selectedYear">
-                <option value="2023">2023</option>
-                <option value="2024">2024</option>
-            </select>
-        </div>
-
-        <div>
-            <button @click="search">بحث</button>
-        </div>
-
-        <div v-if="result" class="result">
-            <p>{{ result }}</p>
-            <div v-if="resultDetails" class="result-details" v-html="resultDetails"></div>
-            <button v-if="result === 'الطب البشري'" @click="toggleDetails">تفاصيل</button>
-        </div>
-
-        <div v-if="showDetails" class="details">
-            <p>هنا تفاصيل عن الطب البشري...</p>
-        </div>
-        <br>
         <FooterComponent />
     </div>
 </template>
@@ -177,11 +211,11 @@ export default {
                             'جامعة سيناء (فرع القنطرة),جامعة الجلالة,جامعة العلمين الدولية, جامعة شرق بورسعيد الاهلية,جامعة الاسماعلية الجديدة الاهلية': 75,
                             'جامعة سيناء (فرع العريش),جامعة الملك سلمان الدولية': 73
                         },
-                        'الطب البيطري': {
+                        'الصيدلة': {
                             'الجامعات الخاصة عدا (سيناء) والجامعات الاهلية عدا (الجلالة,العلمين الدولية, الملك سلمان الدولية,شرق بورسعيد الاهلية,الاسماعلية الجديدة الاهلية)': 58,
                             'جامعة سيناء (فرع العريش),جامعة الملك سلمان الدولية': 58
                         },
-                        'الصيدلة': {
+                        'الطب البيطري': {
                             'الجامعات الخاصة عدا (سيناء) والجامعات الاهلية عدا (الجلالة,العلمين الدولية, الملك سلمان الدولية,شرق بورسعيد الاهلية,الاسماعلية الجديدة الاهلية)': 75,
                             'جامعة سيناء (فرع القنطرة),جامعة الجلالة,جامعة العلمين الدولية, جامعة شرق بورسعيد الاهلية,جامعة الاسماعلية الجديدة الاهلية': 70,
                             'جامعة سيناء (فرع العريش),جامعة الملك سلمان الدولية': 68
@@ -583,10 +617,6 @@ export default {
                 "جامعة سيناء (فرع القنطرة),جامعة الجلالة,جامعة العلمين الدولية, جامعة شرق بورسعيد الاهلية,جامعة الاسماعلية الجديدة الاهلية": 75,
                 "جامعة سيناء (فرع العريش),جامعة الملك سلمان الدولية": 73
             },
-            "الطب البيطري": {
-                "الجامعات الخاصة عدا (سيناء) والجامعات الاهلية عدا (الجلالة,العلمين الدولية, الملك سلمان الدولية,شرق بورسعيد الاهلية,الاسماعلية الجديدة الاهلية)": 58,
-                "جامعة سيناء (فرع العريش),جامعة الملك سلمان الدولية": 58
-            },
             "الصيدلة": {
                 "الجامعات الخاصة عدا (سيناء) والجامعات الاهلية عدا (الجلالة,العلمين الدولية, الملك سلمان الدولية,شرق بورسعيد الاهلية,الاسماعلية الجديدة الاهلية)": 75,
                 "جامعة سيناء (فرع القنطرة),جامعة الجلالة,جامعة العلمين الدولية, جامعة شرق بورسعيد الاهلية,جامعة الاسماعلية الجديدة الاهلية": 70,
@@ -750,97 +780,267 @@ export default {
 };
 </script>
 
-
 <style scoped>
-.result {
-    margin-top: 20px;
+.score-assistant-content {
+    min-height: calc(100vh - 200px);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 40px 20px;
 }
 
-.result-details {
-    font-size: 16px;
+.score-container {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.result-item {
-    margin-bottom: 10px;
+.welcome-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    background: linear-gradient(135deg, #2B32B2, #1488CC);
+    padding: 40px;
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(43, 50, 178, 0.2);
 }
 
-.result-item a {
-    font-weight: bold;
-    color: #007bff;
-    text-decoration: none;
+.welcome-text {
+    flex: 1;
+    padding-right: 40px;
 }
 
-.result-item a:hover {
-    text-decoration: underline;
-}
-
-.result-places {
-    margin-top: 5px;
-    font-size: 14px;
-    color: #555;
-}
-
-.details {
-    margin-top: 20px;
-}
-
-/* Form Group Styles */
-.form-group {
+.welcome-title {
+    font-size: 2.5rem;
     margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.assistant-intro {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.search-instruction {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.assistant-illustration {
+    font-size: 5rem;
+    opacity: 0.9;
+    animation: float 3s ease-in-out infinite;
+}
+
+.form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px;
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #2B32B2;
+}
+
+.form-group label i {
+    font-size: 1.2rem;
+    color: #6B48FF;
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 12px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
 }
 
-/* Button Styles */
-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #6B48FF;
+    box-shadow: 0 0 0 3px rgba(107, 72, 255, 0.1);
+}
+
+.search-button {
+    background: linear-gradient(135deg, #6B48FF, #1CB5E0);
     color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
     cursor: pointer;
-    margin-right: 10px; /* Add space between buttons */
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    width: 100%;
+    justify-content: center;
 }
 
-button:hover {
-    background-color: #0056b3;
+.search-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(107, 72, 255, 0.2);
 }
 
-/* Result Styles */
-.result {
+.result-container {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+    border-left: 4px solid #6B48FF;
 }
 
-/* Details Styles */
-.details {
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #f0f0f0;
+.result-container.error {
+    background: #f8f9fa;
+    border-left: 4px solid #6B48FF;
+}
+
+.result-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.result-content i {
+    font-size: 1.5rem;
+    color: #6B48FF;
+}
+
+.result-container.error i {
+    color: #6B48FF;
+}
+
+.result-content p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.result-details {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.result-item {
+    margin-bottom: 15px;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.result-item a {
+    color: #2B32B2;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.result-item a:hover {
+    color: #6B48FF;
+}
+
+.result-places {
+    margin-top: 8px;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.details-button {
+    background: linear-gradient(135deg, #2B32B2, #1488CC);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+.details-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(43, 50, 178, 0.2);
+}
+
+.details-container {
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .carousel-item img {
-        height: 40vh; /* Set height as a percentage of the viewport height */
-        object-fit: cover; /* Ensure image covers the area without distortion */
+    .welcome-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .welcome-text {
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .welcome-title {
+        font-size: 2rem;
+    }
+
+    .assistant-intro {
+        font-size: 1.2rem;
+    }
+
+    .search-instruction {
+        font-size: 1rem;
+    }
+
+    .assistant-illustration {
+        font-size: 4rem;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 1rem;
     }
 }
 </style>

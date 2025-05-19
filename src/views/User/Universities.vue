@@ -63,6 +63,7 @@
         </div>
       </div>
     </div>
+    <smartAssistantComponent />
   </div>
 </template>
 
@@ -71,11 +72,13 @@ import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
 import Header from '../../../public/global/headerComponent.vue';
+import smartAssistantComponent from '../../../public/global/smartAssistantComponent.vue';
 
 export default {
   name: 'Universities',
   components: {
-    Header
+    Header,
+    smartAssistantComponent
   },
   setup() {
     const router = useRouter();

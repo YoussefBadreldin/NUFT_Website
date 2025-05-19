@@ -1,24 +1,46 @@
 <template>
     <div>
         <HeaderComponent />
-        <br>
-        <h2>!أهلا بيك</h2>
-        <p><strong>أنا مساعدك الشخصي</strong></p>
-        <p>يرجى إدخال البيانات التالية بدقة للبحث عن الجامعة</p>
-        <br>
-        <div class="form-group">
-            <label for="universityName">اسم الجامعة (باللغة العربية)</label>
-            <input type="text" id="universityName" v-model="universityName">
+        
+        <div class="search-assistant-content" dir="rtl">
+            <div class="search-container">
+                <div class="welcome-content">
+                    <div class="assistant-illustration">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="welcome-text">
+                        <h1 class="welcome-title">أهلا بيك!</h1>
+                        <p class="assistant-intro"><strong>أنا مساعدك الشخصي الذكي</strong></p>
+                        <p class="search-instruction">يرجى إدخال اسم الجامعة للبحث</p>
+                    </div>
+                </div>
+
+                <div class="search-box">
+                    <div class="search-input-wrapper">
+                        <i class="fas fa-search search-icon"></i>
+                        <input 
+                            type="text" 
+                            id="universityName" 
+                            v-model="universityName"
+                            placeholder="اكتب اسم الجامعة هنا..."
+                            @keyup.enter="search"
+                        >
+                    </div>
+                    <button class="search-button" @click="search">
+                        <i class="fas fa-search"></i>
+                        <span>بحث</span>
+                    </button>
+                </div>
+
+                <div v-if="result" class="result-container" :class="{ 'error': !showDetails }">
+                    <div class="result-content">
+                        <i :class="showDetails ? 'fas fa-check-circle' : 'fas fa-exclamation-circle'"></i>
+                        <p>{{ result }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div>
-            <button @click="search">بحث</button>
-        </div>
-
-        <div v-if="result" class="result">
-            <p>{{ result }}</p>
-        </div>
-        <br>
         <FooterComponent />
     </div>
 </template>
@@ -246,63 +268,208 @@ export default {
 </script>
 
 <style scoped>
-/* Form Group Styles */
-.form-group {
+.search-assistant-content {
+    min-height: calc(100vh - 200px); /* Adjust based on your header/footer height */
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 40px 20px;
+}
+
+.search-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.welcome-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    background: linear-gradient(135deg, #2B32B2, #1488CC);
+    padding: 40px;
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(43, 50, 178, 0.2);
+}
+
+.welcome-text {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.welcome-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.assistant-intro {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.search-instruction {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+.assistant-illustration {
+    font-size: 5rem;
+    opacity: 0.9;
+    animation: float 3s ease-in-out infinite;
+}
+
+.search-box {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.search-input-wrapper {
+    position: relative;
     margin-bottom: 20px;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6B48FF;
+    font-size: 1.2rem;
 }
 
-.form-group input,
-.form-group select {
+input {
     width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 15px 45px 15px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
 }
 
-/* Button Styles */
-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    background-color: #007bff;
+input:focus {
+    outline: none;
+    border-color: #6B48FF;
+    box-shadow: 0 0 0 3px rgba(107, 72, 255, 0.1);
+}
+
+.search-button {
+    background: linear-gradient(135deg, #6B48FF, #1CB5E0);
     color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
     cursor: pointer;
-    margin-right: 10px; /* Add space between buttons */
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
 }
 
-button:hover {
-    background-color: #0056b3;
+.search-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(107, 72, 255, 0.2);
 }
 
-/* Result Styles */
-.result {
+.search-button i {
+    font-size: 1.2rem;
+}
+
+.result-container {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #f9f9f9;
+    transition: all 0.3s ease;
 }
 
-/* Details Styles */
-.details {
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: #f0f0f0;
+.result-container.error {
+    background: #fff5f5;
+    border-left: 4px solid #ff4d4d;
+}
+
+.result-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.result-content i {
+    font-size: 1.5rem;
+    color: #6B48FF;
+}
+
+.result-container.error i {
+    color: #ff4d4d;
+}
+
+.result-content p {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .carousel-item img {
-        height: 40vh; /* Set height as a percentage of the viewport height */
-        object-fit: cover; /* Ensure image covers the area without distortion */
+    .search-assistant-content {
+        padding: 20px;
+    }
+
+    .welcome-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .welcome-text {
+        padding-right: 0;
+        margin-bottom: 30px;
+    }
+
+    .welcome-title {
+        font-size: 2rem;
+    }
+
+    .assistant-intro {
+        font-size: 1.2rem;
+    }
+
+    .search-instruction {
+        font-size: 1rem;
+    }
+
+    .assistant-illustration {
+        font-size: 4rem;
+    }
+
+    .search-box {
+        padding: 20px;
+    }
+
+    input {
+        font-size: 1rem;
+    }
+
+    .search-button {
+        width: 100%;
+        justify-content: center;
     }
 }
 </style>

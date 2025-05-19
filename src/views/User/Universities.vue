@@ -4,28 +4,29 @@
     <div class="content" dir="rtl">
       <h1 class="title">دليل الجامعات المصرية</h1>
       
-      <!-- Type Selector Tabs -->
-      <div class="status-tabs">
+      <!-- Type Tabs -->
+      <div class="type-tabs">
         <button 
-          v-for="tab in tabs" 
-          :key="tab.id"
-          :class="['tab-button', { active: activeTab === tab.id }]"
-          @click="activeTab = tab.id"
+          v-for="type in universityTypes" 
+          :key="type.value"
+          :class="['type-tab', { active: selectedType === type.value }]"
+          @click="selectedType = type.value"
         >
-          {{ tab.name }}
+          {{ type.label }}
         </button>
       </div>
 
-      <!-- Search Input -->
+      <!-- Search Bar -->
       <div class="search-container">
         <input 
           type="text" 
           v-model="searchQuery" 
-          :placeholder="'ابحث عن ' + getCurrentTabName()"
+          placeholder="ابحث عن جامعة..." 
           class="search-input"
         >
+        <i class="fas fa-search search-icon"></i>
       </div>
-
+      
       <!-- Loading State -->
       <div v-if="loading" class="loading-container">
         <div class="loading-spinner"></div>
@@ -41,7 +42,8 @@
       <!-- Content -->
       <div v-else class="universities-grid">
         <!-- Private Universities -->
-        <div v-if="activeTab === 'private' && filteredPrivateUniversities.length" class="university-section">
+        <div v-if="filteredPrivateUniversities.length" class="university-section">
+          <h2 class="section-title">الجامعات الخاصة</h2>
           <div class="universities-list">
             <div v-for="uni in filteredPrivateUniversities" :key="uni.id" class="university-card" @click="navigateToUniversity('private', uni.id)">
               <img :src="uni.logo" :alt="uni.name" class="university-logo" @error="handleImageError">
@@ -51,7 +53,8 @@
         </div>
 
         <!-- National Universities -->
-        <div v-if="activeTab === 'national' && filteredNationalUniversities.length" class="university-section">
+        <div v-if="filteredNationalUniversities.length" class="university-section">
+          <h2 class="section-title">الجامعات الأهلية</h2>
           <div class="universities-list">
             <div v-for="uni in filteredNationalUniversities" :key="uni.id" class="university-card" @click="navigateToUniversity('national', uni.id)">
               <img :src="uni.logo" :alt="uni.name" class="university-logo" @error="handleImageError">
@@ -61,7 +64,8 @@
         </div>
 
         <!-- Special Universities -->
-        <div v-if="activeTab === 'special' && filteredSpecialUniversities.length" class="university-section">
+        <div v-if="filteredSpecialUniversities.length" class="university-section">
+          <h2 class="section-title">الجامعات ذات طبيعة خاصة</h2>
           <div class="universities-list">
             <div v-for="uni in filteredSpecialUniversities" :key="uni.id" class="university-card" @click="navigateToUniversity('special', uni.id)">
               <img :src="uni.logo" :alt="uni.name" class="university-logo" @error="handleImageError">
@@ -71,7 +75,8 @@
         </div>
 
         <!-- International Universities -->
-        <div v-if="activeTab === 'international' && filteredInternationalUniversities.length" class="university-section">
+        <div v-if="filteredInternationalUniversities.length" class="university-section">
+          <h2 class="section-title">الجامعات الدولية</h2>
           <div class="universities-list">
             <div v-for="uni in filteredInternationalUniversities" :key="uni.id" class="university-card" @click="navigateToUniversity('international', uni.id)">
               <img :src="uni.logo" :alt="uni.name" class="university-logo" @error="handleImageError">
@@ -81,8 +86,8 @@
         </div>
 
         <!-- No Results Message -->
-        <div v-if="!hasResults" class="no-results">
-          <p>لا توجد نتائج للبحث</p>
+        <div v-if="!hasFilteredResults" class="no-results">
+          <p>لا توجد جامعات تطابق البحث</p>
         </div>
       </div>
     </div>
@@ -107,64 +112,53 @@ export default {
     const router = useRouter();
     const loading = ref(true);
     const error = ref(null);
-    const activeTab = ref('private');
-    const searchQuery = ref('');
     const privateUniversities = ref([]);
     const nationalUniversities = ref([]);
     const specialUniversities = ref([]);
     const internationalUniversities = ref([]);
+    const searchQuery = ref('');
+    const selectedType = ref('all');
 
-    const tabs = [
-      { id: 'private', name: 'الجامعات الخاصة' },
-      { id: 'national', name: 'الجامعات الأهلية' },
-      { id: 'special', name: 'الجامعات ذات طبيعة خاصة' },
-      { id: 'international', name: 'الجامعات الدولية' }
+    const universityTypes = [
+      { label: 'الكل', value: 'all' },
+      { label: 'الجامعات الخاصة', value: 'private' },
+      { label: 'الجامعات الأهلية', value: 'national' },
+      { label: 'الجامعات ذات طبيعة خاصة', value: 'special' },
+      { label: 'الجامعات الدولية', value: 'international' }
     ];
 
-    // Computed properties for filtered universities
-    const filteredPrivateUniversities = computed(() => {
-      return privateUniversities.value.filter(uni => 
+    const filterUniversities = (universities) => {
+      return universities.filter(uni => 
         uni.name.toLowerCase().includes(searchQuery.value.toLowerCase())
       );
+    };
+
+    const filteredPrivateUniversities = computed(() => {
+      if (selectedType.value !== 'all' && selectedType.value !== 'private') return [];
+      return filterUniversities(privateUniversities.value);
     });
 
     const filteredNationalUniversities = computed(() => {
-      return nationalUniversities.value.filter(uni => 
-        uni.name.toLowerCase().includes(searchQuery.value.toLowerCase())
-      );
+      if (selectedType.value !== 'all' && selectedType.value !== 'national') return [];
+      return filterUniversities(nationalUniversities.value);
     });
 
     const filteredSpecialUniversities = computed(() => {
-      return specialUniversities.value.filter(uni => 
-        uni.name.toLowerCase().includes(searchQuery.value.toLowerCase())
-      );
+      if (selectedType.value !== 'all' && selectedType.value !== 'special') return [];
+      return filterUniversities(specialUniversities.value);
     });
 
     const filteredInternationalUniversities = computed(() => {
-      return internationalUniversities.value.filter(uni => 
-        uni.name.toLowerCase().includes(searchQuery.value.toLowerCase())
-      );
+      if (selectedType.value !== 'all' && selectedType.value !== 'international') return [];
+      return filterUniversities(internationalUniversities.value);
     });
 
-    const hasResults = computed(() => {
-      switch (activeTab.value) {
-        case 'private':
-          return filteredPrivateUniversities.value.length > 0;
-        case 'national':
-          return filteredNationalUniversities.value.length > 0;
-        case 'special':
-          return filteredSpecialUniversities.value.length > 0;
-        case 'international':
-          return filteredInternationalUniversities.value.length > 0;
-        default:
-          return false;
-      }
+    const hasFilteredResults = computed(() => {
+      return filteredPrivateUniversities.value.length > 0 ||
+             filteredNationalUniversities.value.length > 0 ||
+             filteredSpecialUniversities.value.length > 0 ||
+             filteredInternationalUniversities.value.length > 0;
     });
-
-    const getCurrentTabName = () => {
-      const currentTab = tabs.find(tab => tab.id === activeTab.value);
-      return currentTab ? currentTab.name : '';
-    };
 
     const fetchAllUniversities = async () => {
       loading.value = true;
@@ -436,7 +430,7 @@ export default {
       if (universityData) {
         // Store the university data in localStorage before navigation
         localStorage.setItem('currentUniversityData', JSON.stringify(universityData));
-        router.push(`/Guide/${id}`);
+        router.push(`/Guide/UGRAD/${type}/${id}`);
       }
     };
 
@@ -451,22 +445,21 @@ export default {
     return {
       loading,
       error,
-      activeTab,
-      tabs,
-      searchQuery,
       privateUniversities,
       nationalUniversities,
       specialUniversities,
       internationalUniversities,
+      fetchAllUniversities,
+      navigateToUniversity,
+      handleImageError,
+      searchQuery,
+      selectedType,
+      universityTypes,
       filteredPrivateUniversities,
       filteredNationalUniversities,
       filteredSpecialUniversities,
       filteredInternationalUniversities,
-      hasResults,
-      getCurrentTabName,
-      fetchAllUniversities,
-      navigateToUniversity,
-      handleImageError
+      hasFilteredResults
     };
   }
 };
@@ -493,58 +486,63 @@ export default {
   font-weight: 700;
 }
 
-.status-tabs {
+.type-tabs {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
 }
 
-.tab-button {
+.type-tab {
   padding: 0.75rem 1.5rem;
-  border: none;
+  border: 2px solid #1a237e;
   border-radius: 8px;
-  background-color: #f8f9fa;
+  background: white;
   color: #1a237e;
-  font-weight: bold;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: 'Cairo', sans-serif;
 }
 
-.tab-button:hover {
-  background-color: #e9ecef;
+.type-tab:hover {
+  background: #e8eaf6;
 }
 
-.tab-button.active {
-  background-color: #1a237e;
+.type-tab.active {
+  background: #1a237e;
   color: white;
 }
 
 .search-container {
+  position: relative;
   max-width: 600px;
   margin: 0 auto 2rem;
-  padding: 0 1rem;
 }
 
 .search-input {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 1rem 3rem 1rem 1rem;
   border: 2px solid #e0e0e0;
   border-radius: 8px;
-  font-size: 1rem;
-  font-family: 'Cairo', sans-serif;
+  font-size: 1.1rem;
   transition: all 0.3s ease;
+  background-color: white;
 }
 
 .search-input:focus {
   outline: none;
   border-color: #1a237e;
-  box-shadow: 0 0 0 2px rgba(26, 35, 126, 0.1);
+  box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
 }
 
-.search-input::placeholder {
-  color: #9e9e9e;
+.search-icon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  font-size: 1.2rem;
 }
 
 .loading-container {
@@ -651,9 +649,9 @@ export default {
 
 .no-results {
   text-align: center;
-  padding: 2rem;
+  padding: 3rem;
   color: #666;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 @media (max-width: 768px) {
@@ -675,16 +673,18 @@ export default {
     height: 100px;
   }
 
-  .status-tabs {
-    flex-wrap: wrap;
+  .type-tabs {
+    gap: 0.5rem;
   }
 
-  .tab-button {
-    width: 100%;
+  .type-tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
 
-  .search-container {
-    padding: 0 0.5rem;
+  .search-input {
+    font-size: 1rem;
+    padding: 0.75rem 2.5rem 0.75rem 0.75rem;
   }
 }
 </style> 

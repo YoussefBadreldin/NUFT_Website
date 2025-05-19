@@ -26,6 +26,7 @@
                     :placeholder="'ابحث عن ' + getCurrentTabName()"
                     class="search-input"
                 >
+                <i class="fas fa-search search-icon"></i>
             </div>
 
             <div class="universities-grid" v-if="!isLoading">
@@ -50,7 +51,7 @@
                                     <span class="status-value" :class="getStatusClass(pair[0].transfer_status)">
                                         {{ pair[0].transfer_status }}
                                     </span>
-                                    <span class="status-value" :class="getStatusClass(pair[1].transfer_status)">
+                                    <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].transfer_status)">
                                         آخر موعد: {{ pair[1].transfer_status }}
                                     </span>
                                 </div>
@@ -64,7 +65,7 @@
                                         <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_firstYear_status)">
                                             {{ pair[0].thanwyaa_firstYear_status }}
                                         </span>
-                                        <span class="status-value" :class="getStatusClass(pair[1].thanwyaa_firstYear_status)">
+                                        <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_firstYear_status)">
                                             آخر موعد: {{ pair[1].thanwyaa_firstYear_status }}
                                         </span>
                                     </div>
@@ -73,7 +74,7 @@
                                         <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_secondYear_status)">
                                             {{ pair[0].thanwyaa_secondYear_status }}
                                         </span>
-                                        <span class="status-value" :class="getStatusClass(pair[1].thanwyaa_secondYear_status)">
+                                        <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_secondYear_status)">
                                             آخر موعد: {{ pair[1].thanwyaa_secondYear_status }}
                                         </span>
                                     </div>
@@ -88,7 +89,7 @@
                                         <span class="status-value" :class="getStatusClass(pair[0].azhar_firstYear_status)">
                                             {{ pair[0].azhar_firstYear_status }}
                                         </span>
-                                        <span class="status-value" :class="getStatusClass(pair[1].azhar_firstYear_status)">
+                                        <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_firstYear_status)">
                                             آخر موعد: {{ pair[1].azhar_firstYear_status }}
                                         </span>
                                     </div>
@@ -97,7 +98,7 @@
                                         <span class="status-value" :class="getStatusClass(pair[0].azhar_secondYear_status)">
                                             {{ pair[0].azhar_secondYear_status }}
                                         </span>
-                                        <span class="status-value" :class="getStatusClass(pair[1].azhar_secondYear_status)">
+                                        <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_secondYear_status)">
                                             آخر موعد: {{ pair[1].azhar_secondYear_status }}
                                         </span>
                                     </div>
@@ -112,7 +113,7 @@
                                         <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_firstYear_status)">
                                             {{ pair[0].Arabenglish_firstYear_status }}
                                         </span>
-                                        <span class="status-value" :class="getStatusClass(pair[1].Arabenglish_firstYear_status)">
+                                        <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_firstYear_status)">
                                             آخر موعد: {{ pair[1].Arabenglish_firstYear_status }}
                                         </span>
                                     </div>
@@ -121,7 +122,7 @@
                                         <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_secondYear_status)">
                                             {{ pair[0].Arabenglish_secondYear_status }}
                                         </span>
-                                        <span class="status-value" :class="getStatusClass(pair[1].Arabenglish_secondYear_status)">
+                                        <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_secondYear_status)">
                                             آخر موعد: {{ pair[1].Arabenglish_secondYear_status }}
                                         </span>
                                     </div>
@@ -134,7 +135,7 @@
                                     <span class="status-value" :class="getStatusClass(pair[0].wafdeen_status)">
                                         {{ pair[0].wafdeen_status }}
                                     </span>
-                                    <span class="status-value" :class="getStatusClass(pair[1].wafdeen_status)">
+                                    <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].wafdeen_status)">
                                         آخر موعد: {{ pair[1].wafdeen_status }}
                                     </span>
                                 </div>
@@ -177,7 +178,7 @@ export default {
     },
     data() {
         return {
-            activeTab: 'national',
+            activeTab: 'all',
             firstYear: '',
             secondYear: '',
             universities: [],
@@ -186,6 +187,7 @@ export default {
             openSections: new Set(),
             searchQuery: '',
             tabs: [
+                { id: 'all', name: 'الكل' },
                 { id: 'national', name: 'الجامعات الأهلية' },
                 { id: 'private', name: 'الجامعات الخاصة' },
                 { id: 'special', name: 'الجامعات ذات طبيعة خاصة' },
@@ -195,9 +197,21 @@ export default {
     },
     computed: {
         filteredUniversities() {
-            return this.universities.filter(uni => 
-                uni.university_Arabic_Name.toLowerCase().includes(this.searchQuery.toLowerCase())
-            );
+            let filtered = this.universities;
+            
+            // Filter by search query
+            if (this.searchQuery) {
+                filtered = filtered.filter(uni => 
+                    uni.university_Arabic_Name.toLowerCase().includes(this.searchQuery.toLowerCase())
+                );
+            }
+
+            // Filter by tab if not 'all'
+            if (this.activeTab !== 'all') {
+                filtered = filtered.filter(uni => uni.type === this.activeTab);
+            }
+
+            return filtered;
         },
         filteredPairedUniversities() {
             const pairs = [];
@@ -235,13 +249,34 @@ export default {
             };
 
             try {
-                const response = await axios.get(endpoints[this.activeTab]);
-                this.universities = response.data.map(university => ({
-                    ...university,
-                    guide_guide_Url: university.guide_guide_Url || '#',
-                }));
+                if (this.activeTab === 'all') {
+                    // Fetch all types of universities
+                    const responses = await Promise.all([
+                        axios.get(endpoints.national),
+                        axios.get(endpoints.private),
+                        axios.get(endpoints.special),
+                        axios.get(endpoints.international)
+                    ]);
+
+                    this.universities = responses.flatMap((response, index) => {
+                        const type = ['national', 'private', 'special', 'international'][index];
+                        return response.data.map(university => ({
+                            ...university,
+                            type,
+                            guide_guide_Url: university.guide_guide_Url || '#',
+                        }));
+                    });
+                } else {
+                    // Fetch specific type
+                    const response = await axios.get(endpoints[this.activeTab]);
+                    this.universities = response.data.map(university => ({
+                        ...university,
+                        type: this.activeTab,
+                        guide_guide_Url: university.guide_guide_Url || '#',
+                    }));
+                }
             } catch (error) {
-                console.log(error);
+                console.error('Error fetching admission data:', error);
             } finally {
                 this.isLoading = false;
             }
@@ -255,12 +290,21 @@ export default {
             };
 
             try {
-                const response = await axios.get(endpoints[this.activeTab]);
-                this.all_data = response.data;
-                this.firstYear = this.all_data[0].first_year;
-                this.secondYear = this.all_data[0].second_year;
+                if (this.activeTab === 'all') {
+                    // Get years from national universities as default
+                    const response = await axios.get(endpoints.national);
+                    this.all_data = response.data;
+                } else {
+                    const response = await axios.get(endpoints[this.activeTab]);
+                    this.all_data = response.data;
+                }
+                
+                if (this.all_data.length > 0) {
+                    this.firstYear = this.all_data[0].first_year;
+                    this.secondYear = this.all_data[0].second_year;
+                }
             } catch (error) {
-                console.log(error);
+                console.error('Error fetching years:', error);
             }
         },
         toggleSection(index) {
@@ -311,7 +355,8 @@ export default {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
 }
 
 .tab-button {
@@ -544,6 +589,7 @@ export default {
 }
 
 .search-container {
+    position: relative;
     max-width: 600px;
     margin: 0 auto 2rem;
     padding: 0 1rem;
@@ -551,12 +597,21 @@ export default {
 
 .search-input {
     width: 100%;
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 2.5rem 0.75rem 1rem;
     border: 2px solid #e0e0e0;
     border-radius: 8px;
     font-size: 1rem;
     font-family: 'Cairo', sans-serif;
     transition: all 0.3s ease;
+}
+
+.search-icon {
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 1.2rem;
 }
 
 .search-input:focus {

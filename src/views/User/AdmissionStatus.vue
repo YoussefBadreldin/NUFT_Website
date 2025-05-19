@@ -54,8 +54,8 @@
                                             <span class="status-value" :class="getStatusClass(pair[0].transfer_status)">
                                                 {{ pair[0].transfer_status }}
                                             </span>
-                                            <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].transfer_status)">
-                                                آخر موعد: {{ pair[1].transfer_status }}
+                                            <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.transfer_status)">
+                                                آخر موعد: {{ pair[0].deadline.transfer_status }}
                                             </span>
                                         </div>
                                     </div>
@@ -68,8 +68,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_firstYear_status)">
                                                     {{ pair[0].thanwyaa_firstYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_firstYear_status)">
-                                                    آخر موعد: {{ pair[1].thanwyaa_firstYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.thanwyaa_firstYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.thanwyaa_firstYear_status }}
                                                 </span>
                                             </div>
                                             <div class="year-column">
@@ -77,8 +77,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_secondYear_status)">
                                                     {{ pair[0].thanwyaa_secondYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_secondYear_status)">
-                                                    آخر موعد: {{ pair[1].thanwyaa_secondYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.thanwyaa_secondYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.thanwyaa_secondYear_status }}
                                                 </span>
                                             </div>
                                         </div>
@@ -92,8 +92,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].azhar_firstYear_status)">
                                                     {{ pair[0].azhar_firstYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_firstYear_status)">
-                                                    آخر موعد: {{ pair[1].azhar_firstYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.azhar_firstYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.azhar_firstYear_status }}
                                                 </span>
                                             </div>
                                             <div class="year-column">
@@ -101,8 +101,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].azhar_secondYear_status)">
                                                     {{ pair[0].azhar_secondYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_secondYear_status)">
-                                                    آخر موعد: {{ pair[1].azhar_secondYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.azhar_secondYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.azhar_secondYear_status }}
                                                 </span>
                                             </div>
                                         </div>
@@ -116,8 +116,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_firstYear_status)">
                                                     {{ pair[0].Arabenglish_firstYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_firstYear_status)">
-                                                    آخر موعد: {{ pair[1].Arabenglish_firstYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.Arabenglish_firstYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.Arabenglish_firstYear_status }}
                                                 </span>
                                             </div>
                                             <div class="year-column">
@@ -125,8 +125,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_secondYear_status)">
                                                     {{ pair[0].Arabenglish_secondYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_secondYear_status)">
-                                                    آخر موعد: {{ pair[1].Arabenglish_secondYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.Arabenglish_secondYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.Arabenglish_secondYear_status }}
                                                 </span>
                                             </div>
                                         </div>
@@ -138,8 +138,8 @@
                                             <span class="status-value" :class="getStatusClass(pair[0].wafdeen_status)">
                                                 {{ pair[0].wafdeen_status }}
                                             </span>
-                                            <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].wafdeen_status)">
-                                                آخر موعد: {{ pair[1].wafdeen_status }}
+                                            <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.wafdeen_status)">
+                                                آخر موعد: {{ pair[0].deadline.wafdeen_status }}
                                             </span>
                                         </div>
                                     </div>
@@ -173,8 +173,8 @@
                                             <span class="status-value" :class="getStatusClass(pair[0].transfer_status)">
                                                 {{ pair[0].transfer_status }}
                                             </span>
-                                            <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].transfer_status)">
-                                                آخر موعد: {{ pair[1].transfer_status }}
+                                            <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.transfer_status)">
+                                                آخر موعد: {{ pair[0].deadline.transfer_status }}
                                             </span>
                                         </div>
                                     </div>
@@ -187,8 +187,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_firstYear_status)">
                                                     {{ pair[0].thanwyaa_firstYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_firstYear_status)">
-                                                    آخر موعد: {{ pair[1].thanwyaa_firstYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.thanwyaa_firstYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.thanwyaa_firstYear_status }}
                                                 </span>
                                             </div>
                                             <div class="year-column">
@@ -196,8 +196,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_secondYear_status)">
                                                     {{ pair[0].thanwyaa_secondYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_secondYear_status)">
-                                                    آخر موعد: {{ pair[1].thanwyaa_secondYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.thanwyaa_secondYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.thanwyaa_secondYear_status }}
                                                 </span>
                                             </div>
                                         </div>
@@ -211,8 +211,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].azhar_firstYear_status)">
                                                     {{ pair[0].azhar_firstYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_firstYear_status)">
-                                                    آخر موعد: {{ pair[1].azhar_firstYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.azhar_firstYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.azhar_firstYear_status }}
                                                 </span>
                                             </div>
                                             <div class="year-column">
@@ -220,8 +220,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].azhar_secondYear_status)">
                                                     {{ pair[0].azhar_secondYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_secondYear_status)">
-                                                    آخر موعد: {{ pair[1].azhar_secondYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.azhar_secondYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.azhar_secondYear_status }}
                                                 </span>
                                             </div>
                                         </div>
@@ -235,8 +235,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_firstYear_status)">
                                                     {{ pair[0].Arabenglish_firstYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_firstYear_status)">
-                                                    آخر موعد: {{ pair[1].Arabenglish_firstYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.Arabenglish_firstYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.Arabenglish_firstYear_status }}
                                                 </span>
                                             </div>
                                             <div class="year-column">
@@ -244,8 +244,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_secondYear_status)">
                                                     {{ pair[0].Arabenglish_secondYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_secondYear_status)">
-                                                    آخر موعد: {{ pair[1].Arabenglish_secondYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.Arabenglish_secondYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.Arabenglish_secondYear_status }}
                                                 </span>
                                             </div>
                                         </div>
@@ -257,8 +257,8 @@
                                             <span class="status-value" :class="getStatusClass(pair[0].wafdeen_status)">
                                                 {{ pair[0].wafdeen_status }}
                                             </span>
-                                            <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].wafdeen_status)">
-                                                آخر موعد: {{ pair[1].wafdeen_status }}
+                                            <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.wafdeen_status)">
+                                                آخر موعد: {{ pair[0].deadline.wafdeen_status }}
                                             </span>
                                         </div>
                                     </div>
@@ -292,8 +292,8 @@
                                             <span class="status-value" :class="getStatusClass(pair[0].transfer_status)">
                                                 {{ pair[0].transfer_status }}
                                             </span>
-                                            <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].transfer_status)">
-                                                آخر موعد: {{ pair[1].transfer_status }}
+                                            <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.transfer_status)">
+                                                آخر موعد: {{ pair[0].deadline.transfer_status }}
                                             </span>
                                         </div>
                                     </div>
@@ -306,8 +306,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_firstYear_status)">
                                                     {{ pair[0].thanwyaa_firstYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_firstYear_status)">
-                                                    آخر موعد: {{ pair[1].thanwyaa_firstYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.thanwyaa_firstYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.thanwyaa_firstYear_status }}
                                                 </span>
                                             </div>
                                             <div class="year-column">
@@ -315,8 +315,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_secondYear_status)">
                                                     {{ pair[0].thanwyaa_secondYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_secondYear_status)">
-                                                    آخر موعد: {{ pair[1].thanwyaa_secondYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.thanwyaa_secondYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.thanwyaa_secondYear_status }}
                                                 </span>
                                             </div>
                                         </div>
@@ -330,8 +330,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].azhar_firstYear_status)">
                                                     {{ pair[0].azhar_firstYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_firstYear_status)">
-                                                    آخر موعد: {{ pair[1].azhar_firstYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.azhar_firstYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.azhar_firstYear_status }}
                                                 </span>
                                             </div>
                                             <div class="year-column">
@@ -339,8 +339,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].azhar_secondYear_status)">
                                                     {{ pair[0].azhar_secondYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_secondYear_status)">
-                                                    آخر موعد: {{ pair[1].azhar_secondYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.azhar_secondYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.azhar_secondYear_status }}
                                                 </span>
                                             </div>
                                         </div>
@@ -354,8 +354,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_firstYear_status)">
                                                     {{ pair[0].Arabenglish_firstYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_firstYear_status)">
-                                                    آخر موعد: {{ pair[1].Arabenglish_firstYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.Arabenglish_firstYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.Arabenglish_firstYear_status }}
                                                 </span>
                                             </div>
                                             <div class="year-column">
@@ -363,8 +363,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_secondYear_status)">
                                                     {{ pair[0].Arabenglish_secondYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_secondYear_status)">
-                                                    آخر موعد: {{ pair[1].Arabenglish_secondYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.Arabenglish_secondYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.Arabenglish_secondYear_status }}
                                                 </span>
                                             </div>
                                         </div>
@@ -376,8 +376,8 @@
                                             <span class="status-value" :class="getStatusClass(pair[0].wafdeen_status)">
                                                 {{ pair[0].wafdeen_status }}
                                             </span>
-                                            <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].wafdeen_status)">
-                                                آخر موعد: {{ pair[1].wafdeen_status }}
+                                            <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.wafdeen_status)">
+                                                آخر موعد: {{ pair[0].deadline.wafdeen_status }}
                                             </span>
                                         </div>
                                     </div>
@@ -411,8 +411,8 @@
                                             <span class="status-value" :class="getStatusClass(pair[0].transfer_status)">
                                                 {{ pair[0].transfer_status }}
                                             </span>
-                                            <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].transfer_status)">
-                                                آخر موعد: {{ pair[1].transfer_status }}
+                                            <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.transfer_status)">
+                                                آخر موعد: {{ pair[0].deadline.transfer_status }}
                                             </span>
                                         </div>
                                     </div>
@@ -425,8 +425,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_firstYear_status)">
                                                     {{ pair[0].thanwyaa_firstYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_firstYear_status)">
-                                                    آخر موعد: {{ pair[1].thanwyaa_firstYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.thanwyaa_firstYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.thanwyaa_firstYear_status }}
                                                 </span>
                                             </div>
                                             <div class="year-column">
@@ -434,8 +434,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_secondYear_status)">
                                                     {{ pair[0].thanwyaa_secondYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_secondYear_status)">
-                                                    آخر موعد: {{ pair[1].thanwyaa_secondYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.thanwyaa_secondYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.thanwyaa_secondYear_status }}
                                                 </span>
                                             </div>
                                         </div>
@@ -449,8 +449,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].azhar_firstYear_status)">
                                                     {{ pair[0].azhar_firstYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_firstYear_status)">
-                                                    آخر موعد: {{ pair[1].azhar_firstYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.azhar_firstYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.azhar_firstYear_status }}
                                                 </span>
                                             </div>
                                             <div class="year-column">
@@ -458,8 +458,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].azhar_secondYear_status)">
                                                     {{ pair[0].azhar_secondYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_secondYear_status)">
-                                                    آخر موعد: {{ pair[1].azhar_secondYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.azhar_secondYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.azhar_secondYear_status }}
                                                 </span>
                                             </div>
                                         </div>
@@ -473,8 +473,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_firstYear_status)">
                                                     {{ pair[0].Arabenglish_firstYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_firstYear_status)">
-                                                    آخر موعد: {{ pair[1].Arabenglish_firstYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.Arabenglish_firstYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.Arabenglish_firstYear_status }}
                                                 </span>
                                             </div>
                                             <div class="year-column">
@@ -482,8 +482,8 @@
                                                 <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_secondYear_status)">
                                                     {{ pair[0].Arabenglish_secondYear_status }}
                                                 </span>
-                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_secondYear_status)">
-                                                    آخر موعد: {{ pair[1].Arabenglish_secondYear_status }}
+                                                <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.Arabenglish_secondYear_status)">
+                                                    آخر موعد: {{ pair[0].deadline.Arabenglish_secondYear_status }}
                                                 </span>
                                             </div>
                                         </div>
@@ -495,8 +495,8 @@
                                             <span class="status-value" :class="getStatusClass(pair[0].wafdeen_status)">
                                                 {{ pair[0].wafdeen_status }}
                                             </span>
-                                            <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].wafdeen_status)">
-                                                آخر موعد: {{ pair[1].wafdeen_status }}
+                                            <span v-if="pair[0].deadline" class="status-value deadline" :class="getStatusClass(pair[0].deadline.wafdeen_status)">
+                                                آخر موعد: {{ pair[0].deadline.wafdeen_status }}
                                             </span>
                                         </div>
                                     </div>
@@ -622,20 +622,72 @@ export default {
 
                     this.universities = responses.flatMap((response, index) => {
                         const type = ['national', 'private', 'special', 'international'][index];
-                        return response.data.map(university => ({
-                            ...university,
-                            type,
-                            guide_guide_Url: university.guide_guide_Url || '#',
-                        }));
+                        const universities = response.data;
+                        
+                        // Group universities by their university field
+                        const groupedUniversities = {};
+                        universities.forEach(uni => {
+                            if (!groupedUniversities[uni.university]) {
+                                groupedUniversities[uni.university] = {
+                                    current: null,
+                                    deadline: null
+                                };
+                            }
+                            
+                            // If it's the main university entry (contains the name)
+                            if (uni.university_Arabic_Name !== 'اخر موعد للتقديم') {
+                                groupedUniversities[uni.university].current = {
+                                    ...uni,
+                                    type
+                                };
+                            } else {
+                                // If it's the deadline entry
+                                groupedUniversities[uni.university].deadline = uni;
+                            }
+                        });
+
+                        // Convert grouped data to array format
+                        return Object.values(groupedUniversities)
+                            .filter(group => group.current) // Only include if we have current data
+                            .map(group => ({
+                                ...group.current,
+                                deadline: group.deadline
+                            }));
                     });
                 } else {
                     // Fetch specific type
                     const response = await axios.get(endpoints[this.activeTab]);
-                    this.universities = response.data.map(university => ({
-                        ...university,
-                        type: this.activeTab,
-                        guide_guide_Url: university.guide_guide_Url || '#',
-                    }));
+                    const universities = response.data;
+                    
+                    // Group universities by their university field
+                    const groupedUniversities = {};
+                    universities.forEach(uni => {
+                        if (!groupedUniversities[uni.university]) {
+                            groupedUniversities[uni.university] = {
+                                current: null,
+                                deadline: null
+                            };
+                        }
+                        
+                        // If it's the main university entry (contains the name)
+                        if (uni.university_Arabic_Name !== 'اخر موعد للتقديم') {
+                            groupedUniversities[uni.university].current = {
+                                ...uni,
+                                type: this.activeTab
+                            };
+                        } else {
+                            // If it's the deadline entry
+                            groupedUniversities[uni.university].deadline = uni;
+                        }
+                    });
+
+                    // Convert grouped data to array format
+                    this.universities = Object.values(groupedUniversities)
+                        .filter(group => group.current) // Only include if we have current data
+                        .map(group => ({
+                            ...group.current,
+                            deadline: group.deadline
+                        }));
                 }
             } catch (error) {
                 console.error('Error fetching admission data:', error);
@@ -889,6 +941,28 @@ export default {
 }
 
 .status-not-started {
+    background-color: #e8eaf6;
+    color: #1a237e;
+}
+
+.status-value.deadline {
+    background-color: #fff3e0;
+    color: #e65100;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+}
+
+.status-value.deadline.status-ended {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+.status-value.deadline.status-available {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.status-value.deadline.status-not-started {
     background-color: #e8eaf6;
     color: #1a237e;
 }

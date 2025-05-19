@@ -30,119 +30,481 @@
             </div>
 
             <div class="universities-grid" v-if="!isLoading">
-                <div v-for="(pair, index) in filteredPairedUniversities" :key="index" class="university-pair-card">
-                    <div class="pair-header">
-                        <h3>
-                            <a :href="pair[0].guide_Url" target="_blank" class="university-link">
-                                {{ pair[0].university_Arabic_Name }}
-                            </a>
-                        </h3>
-                        <button class="toggle-btn" @click="toggleSection(index)">
-                            <i class="fas" :class="isSectionOpen(index) ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
-                            {{ isSectionOpen(index) ? 'إغلاق' : 'فتح' }}
-                        </button>
-                    </div>
-                    
-                    <div class="status-container" v-show="isSectionOpen(index)">
-                        <div class="status-section">
-                            <div class="status-item">
-                                <span class="status-label">التحويل</span>
-                                <div class="status-values single-column">
-                                    <span class="status-value" :class="getStatusClass(pair[0].transfer_status)">
-                                        {{ pair[0].transfer_status }}
-                                    </span>
-                                    <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].transfer_status)">
-                                        آخر موعد: {{ pair[1].transfer_status }}
-                                    </span>
-                                </div>
+                <template v-if="activeTab === 'all' || activeTab === 'private'">
+                    <div v-if="filteredUniversities.filter(uni => uni.type === 'private').length" class="university-section">
+                        <h2 class="section-title">الجامعات الخاصة</h2>
+                        <div v-for="(pair, index) in filteredPairedUniversities.filter(pair => pair[0].type === 'private')" :key="index" class="university-pair-card">
+                            <div class="pair-header">
+                                <h3>
+                                    <a :href="pair[0].guide_Url" target="_blank" class="university-link">
+                                        {{ pair[0].university_Arabic_Name }}
+                                    </a>
+                                </h3>
+                                <button class="toggle-btn" @click="toggleSection('private-' + index)">
+                                    <i class="fas" :class="isSectionOpen('private-' + index) ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                                    {{ isSectionOpen('private-' + index) ? 'إغلاق' : 'فتح' }}
+                                </button>
                             </div>
                             
-                            <div class="status-item">
-                                <span class="status-label">الثانوية العامة وستيم والنيل</span>
-                                <div class="status-values">
-                                    <div class="year-column">
-                                        <span class="year-label">{{ firstYear }}</span>
-                                        <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_firstYear_status)">
-                                            {{ pair[0].thanwyaa_firstYear_status }}
-                                        </span>
-                                        <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_firstYear_status)">
-                                            آخر موعد: {{ pair[1].thanwyaa_firstYear_status }}
-                                        </span>
+                            <div class="status-container" v-show="isSectionOpen('private-' + index)">
+                                <div class="status-section">
+                                    <div class="status-item">
+                                        <span class="status-label">التحويل</span>
+                                        <div class="status-values single-column">
+                                            <span class="status-value" :class="getStatusClass(pair[0].transfer_status)">
+                                                {{ pair[0].transfer_status }}
+                                            </span>
+                                            <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].transfer_status)">
+                                                آخر موعد: {{ pair[1].transfer_status }}
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="year-column">
-                                        <span class="year-label">{{ secondYear }}</span>
-                                        <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_secondYear_status)">
-                                            {{ pair[0].thanwyaa_secondYear_status }}
-                                        </span>
-                                        <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_secondYear_status)">
-                                            آخر موعد: {{ pair[1].thanwyaa_secondYear_status }}
-                                        </span>
+                                    
+                                    <div class="status-item">
+                                        <span class="status-label">الثانوية العامة وستيم والنيل</span>
+                                        <div class="status-values">
+                                            <div class="year-column">
+                                                <span class="year-label">{{ firstYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_firstYear_status)">
+                                                    {{ pair[0].thanwyaa_firstYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_firstYear_status)">
+                                                    آخر موعد: {{ pair[1].thanwyaa_firstYear_status }}
+                                                </span>
+                                            </div>
+                                            <div class="year-column">
+                                                <span class="year-label">{{ secondYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_secondYear_status)">
+                                                    {{ pair[0].thanwyaa_secondYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_secondYear_status)">
+                                                    آخر موعد: {{ pair[1].thanwyaa_secondYear_status }}
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            
-                            <div class="status-item">
-                                <span class="status-label">الثانوية الأزهرية</span>
-                                <div class="status-values">
-                                    <div class="year-column">
-                                        <span class="year-label">{{ firstYear }}</span>
-                                        <span class="status-value" :class="getStatusClass(pair[0].azhar_firstYear_status)">
-                                            {{ pair[0].azhar_firstYear_status }}
-                                        </span>
-                                        <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_firstYear_status)">
-                                            آخر موعد: {{ pair[1].azhar_firstYear_status }}
-                                        </span>
+                                    
+                                    <div class="status-item">
+                                        <span class="status-label">الثانوية الأزهرية</span>
+                                        <div class="status-values">
+                                            <div class="year-column">
+                                                <span class="year-label">{{ firstYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].azhar_firstYear_status)">
+                                                    {{ pair[0].azhar_firstYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_firstYear_status)">
+                                                    آخر موعد: {{ pair[1].azhar_firstYear_status }}
+                                                </span>
+                                            </div>
+                                            <div class="year-column">
+                                                <span class="year-label">{{ secondYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].azhar_secondYear_status)">
+                                                    {{ pair[0].azhar_secondYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_secondYear_status)">
+                                                    آخر موعد: {{ pair[1].azhar_secondYear_status }}
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="year-column">
-                                        <span class="year-label">{{ secondYear }}</span>
-                                        <span class="status-value" :class="getStatusClass(pair[0].azhar_secondYear_status)">
-                                            {{ pair[0].azhar_secondYear_status }}
-                                        </span>
-                                        <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_secondYear_status)">
-                                            آخر موعد: {{ pair[1].azhar_secondYear_status }}
-                                        </span>
+                                    
+                                    <div class="status-item">
+                                        <span class="status-label">الشهادات العربية والإجنبية</span>
+                                        <div class="status-values">
+                                            <div class="year-column">
+                                                <span class="year-label">{{ firstYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_firstYear_status)">
+                                                    {{ pair[0].Arabenglish_firstYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_firstYear_status)">
+                                                    آخر موعد: {{ pair[1].Arabenglish_firstYear_status }}
+                                                </span>
+                                            </div>
+                                            <div class="year-column">
+                                                <span class="year-label">{{ secondYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_secondYear_status)">
+                                                    {{ pair[0].Arabenglish_secondYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_secondYear_status)">
+                                                    آخر موعد: {{ pair[1].Arabenglish_secondYear_status }}
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                            
-                            <div class="status-item">
-                                <span class="status-label">الشهادات العربية والإجنبية</span>
-                                <div class="status-values">
-                                    <div class="year-column">
-                                        <span class="year-label">{{ firstYear }}</span>
-                                        <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_firstYear_status)">
-                                            {{ pair[0].Arabenglish_firstYear_status }}
-                                        </span>
-                                        <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_firstYear_status)">
-                                            آخر موعد: {{ pair[1].Arabenglish_firstYear_status }}
-                                        </span>
+                                    
+                                    <div class="status-item">
+                                        <span class="status-label">الوافدين</span>
+                                        <div class="status-values single-column">
+                                            <span class="status-value" :class="getStatusClass(pair[0].wafdeen_status)">
+                                                {{ pair[0].wafdeen_status }}
+                                            </span>
+                                            <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].wafdeen_status)">
+                                                آخر موعد: {{ pair[1].wafdeen_status }}
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="year-column">
-                                        <span class="year-label">{{ secondYear }}</span>
-                                        <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_secondYear_status)">
-                                            {{ pair[0].Arabenglish_secondYear_status }}
-                                        </span>
-                                        <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_secondYear_status)">
-                                            آخر موعد: {{ pair[1].Arabenglish_secondYear_status }}
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="status-item">
-                                <span class="status-label">الوافدين</span>
-                                <div class="status-values single-column">
-                                    <span class="status-value" :class="getStatusClass(pair[0].wafdeen_status)">
-                                        {{ pair[0].wafdeen_status }}
-                                    </span>
-                                    <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].wafdeen_status)">
-                                        آخر موعد: {{ pair[1].wafdeen_status }}
-                                    </span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </template>
+
+                <template v-if="activeTab === 'all' || activeTab === 'national'">
+                    <div v-if="filteredUniversities.filter(uni => uni.type === 'national').length" class="university-section">
+                        <h2 class="section-title">الجامعات الأهلية</h2>
+                        <div v-for="(pair, index) in filteredPairedUniversities.filter(pair => pair[0].type === 'national')" :key="index" class="university-pair-card">
+                            <div class="pair-header">
+                                <h3>
+                                    <a :href="pair[0].guide_Url" target="_blank" class="university-link">
+                                        {{ pair[0].university_Arabic_Name }}
+                                    </a>
+                                </h3>
+                                <button class="toggle-btn" @click="toggleSection('national-' + index)">
+                                    <i class="fas" :class="isSectionOpen('national-' + index) ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                                    {{ isSectionOpen('national-' + index) ? 'إغلاق' : 'فتح' }}
+                                </button>
+                            </div>
+                            
+                            <div class="status-container" v-show="isSectionOpen('national-' + index)">
+                                <div class="status-section">
+                                    <div class="status-item">
+                                        <span class="status-label">التحويل</span>
+                                        <div class="status-values single-column">
+                                            <span class="status-value" :class="getStatusClass(pair[0].transfer_status)">
+                                                {{ pair[0].transfer_status }}
+                                            </span>
+                                            <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].transfer_status)">
+                                                آخر موعد: {{ pair[1].transfer_status }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="status-item">
+                                        <span class="status-label">الثانوية العامة وستيم والنيل</span>
+                                        <div class="status-values">
+                                            <div class="year-column">
+                                                <span class="year-label">{{ firstYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_firstYear_status)">
+                                                    {{ pair[0].thanwyaa_firstYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_firstYear_status)">
+                                                    آخر موعد: {{ pair[1].thanwyaa_firstYear_status }}
+                                                </span>
+                                            </div>
+                                            <div class="year-column">
+                                                <span class="year-label">{{ secondYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_secondYear_status)">
+                                                    {{ pair[0].thanwyaa_secondYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_secondYear_status)">
+                                                    آخر موعد: {{ pair[1].thanwyaa_secondYear_status }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="status-item">
+                                        <span class="status-label">الثانوية الأزهرية</span>
+                                        <div class="status-values">
+                                            <div class="year-column">
+                                                <span class="year-label">{{ firstYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].azhar_firstYear_status)">
+                                                    {{ pair[0].azhar_firstYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_firstYear_status)">
+                                                    آخر موعد: {{ pair[1].azhar_firstYear_status }}
+                                                </span>
+                                            </div>
+                                            <div class="year-column">
+                                                <span class="year-label">{{ secondYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].azhar_secondYear_status)">
+                                                    {{ pair[0].azhar_secondYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_secondYear_status)">
+                                                    آخر موعد: {{ pair[1].azhar_secondYear_status }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="status-item">
+                                        <span class="status-label">الشهادات العربية والإجنبية</span>
+                                        <div class="status-values">
+                                            <div class="year-column">
+                                                <span class="year-label">{{ firstYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_firstYear_status)">
+                                                    {{ pair[0].Arabenglish_firstYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_firstYear_status)">
+                                                    آخر موعد: {{ pair[1].Arabenglish_firstYear_status }}
+                                                </span>
+                                            </div>
+                                            <div class="year-column">
+                                                <span class="year-label">{{ secondYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_secondYear_status)">
+                                                    {{ pair[0].Arabenglish_secondYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_secondYear_status)">
+                                                    آخر موعد: {{ pair[1].Arabenglish_secondYear_status }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="status-item">
+                                        <span class="status-label">الوافدين</span>
+                                        <div class="status-values single-column">
+                                            <span class="status-value" :class="getStatusClass(pair[0].wafdeen_status)">
+                                                {{ pair[0].wafdeen_status }}
+                                            </span>
+                                            <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].wafdeen_status)">
+                                                آخر موعد: {{ pair[1].wafdeen_status }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <template v-if="activeTab === 'all' || activeTab === 'special'">
+                    <div v-if="filteredUniversities.filter(uni => uni.type === 'special').length" class="university-section">
+                        <h2 class="section-title">الجامعات ذات طبيعة خاصة</h2>
+                        <div v-for="(pair, index) in filteredPairedUniversities.filter(pair => pair[0].type === 'special')" :key="index" class="university-pair-card">
+                            <div class="pair-header">
+                                <h3>
+                                    <a :href="pair[0].guide_Url" target="_blank" class="university-link">
+                                        {{ pair[0].university_Arabic_Name }}
+                                    </a>
+                                </h3>
+                                <button class="toggle-btn" @click="toggleSection('special-' + index)">
+                                    <i class="fas" :class="isSectionOpen('special-' + index) ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                                    {{ isSectionOpen('special-' + index) ? 'إغلاق' : 'فتح' }}
+                                </button>
+                            </div>
+                            
+                            <div class="status-container" v-show="isSectionOpen('special-' + index)">
+                                <div class="status-section">
+                                    <div class="status-item">
+                                        <span class="status-label">التحويل</span>
+                                        <div class="status-values single-column">
+                                            <span class="status-value" :class="getStatusClass(pair[0].transfer_status)">
+                                                {{ pair[0].transfer_status }}
+                                            </span>
+                                            <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].transfer_status)">
+                                                آخر موعد: {{ pair[1].transfer_status }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="status-item">
+                                        <span class="status-label">الثانوية العامة وستيم والنيل</span>
+                                        <div class="status-values">
+                                            <div class="year-column">
+                                                <span class="year-label">{{ firstYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_firstYear_status)">
+                                                    {{ pair[0].thanwyaa_firstYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_firstYear_status)">
+                                                    آخر موعد: {{ pair[1].thanwyaa_firstYear_status }}
+                                                </span>
+                                            </div>
+                                            <div class="year-column">
+                                                <span class="year-label">{{ secondYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_secondYear_status)">
+                                                    {{ pair[0].thanwyaa_secondYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_secondYear_status)">
+                                                    آخر موعد: {{ pair[1].thanwyaa_secondYear_status }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="status-item">
+                                        <span class="status-label">الثانوية الأزهرية</span>
+                                        <div class="status-values">
+                                            <div class="year-column">
+                                                <span class="year-label">{{ firstYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].azhar_firstYear_status)">
+                                                    {{ pair[0].azhar_firstYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_firstYear_status)">
+                                                    آخر موعد: {{ pair[1].azhar_firstYear_status }}
+                                                </span>
+                                            </div>
+                                            <div class="year-column">
+                                                <span class="year-label">{{ secondYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].azhar_secondYear_status)">
+                                                    {{ pair[0].azhar_secondYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_secondYear_status)">
+                                                    آخر موعد: {{ pair[1].azhar_secondYear_status }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="status-item">
+                                        <span class="status-label">الشهادات العربية والإجنبية</span>
+                                        <div class="status-values">
+                                            <div class="year-column">
+                                                <span class="year-label">{{ firstYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_firstYear_status)">
+                                                    {{ pair[0].Arabenglish_firstYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_firstYear_status)">
+                                                    آخر موعد: {{ pair[1].Arabenglish_firstYear_status }}
+                                                </span>
+                                            </div>
+                                            <div class="year-column">
+                                                <span class="year-label">{{ secondYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_secondYear_status)">
+                                                    {{ pair[0].Arabenglish_secondYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_secondYear_status)">
+                                                    آخر موعد: {{ pair[1].Arabenglish_secondYear_status }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="status-item">
+                                        <span class="status-label">الوافدين</span>
+                                        <div class="status-values single-column">
+                                            <span class="status-value" :class="getStatusClass(pair[0].wafdeen_status)">
+                                                {{ pair[0].wafdeen_status }}
+                                            </span>
+                                            <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].wafdeen_status)">
+                                                آخر موعد: {{ pair[1].wafdeen_status }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <template v-if="activeTab === 'all' || activeTab === 'international'">
+                    <div v-if="filteredUniversities.filter(uni => uni.type === 'international').length" class="university-section">
+                        <h2 class="section-title">الجامعات الدولية</h2>
+                        <div v-for="(pair, index) in filteredPairedUniversities.filter(pair => pair[0].type === 'international')" :key="index" class="university-pair-card">
+                            <div class="pair-header">
+                                <h3>
+                                    <a :href="pair[0].guide_Url" target="_blank" class="university-link">
+                                        {{ pair[0].university_Arabic_Name }}
+                                    </a>
+                                </h3>
+                                <button class="toggle-btn" @click="toggleSection('international-' + index)">
+                                    <i class="fas" :class="isSectionOpen('international-' + index) ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                                    {{ isSectionOpen('international-' + index) ? 'إغلاق' : 'فتح' }}
+                                </button>
+                            </div>
+                            
+                            <div class="status-container" v-show="isSectionOpen('international-' + index)">
+                                <div class="status-section">
+                                    <div class="status-item">
+                                        <span class="status-label">التحويل</span>
+                                        <div class="status-values single-column">
+                                            <span class="status-value" :class="getStatusClass(pair[0].transfer_status)">
+                                                {{ pair[0].transfer_status }}
+                                            </span>
+                                            <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].transfer_status)">
+                                                آخر موعد: {{ pair[1].transfer_status }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="status-item">
+                                        <span class="status-label">الثانوية العامة وستيم والنيل</span>
+                                        <div class="status-values">
+                                            <div class="year-column">
+                                                <span class="year-label">{{ firstYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_firstYear_status)">
+                                                    {{ pair[0].thanwyaa_firstYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_firstYear_status)">
+                                                    آخر موعد: {{ pair[1].thanwyaa_firstYear_status }}
+                                                </span>
+                                            </div>
+                                            <div class="year-column">
+                                                <span class="year-label">{{ secondYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].thanwyaa_secondYear_status)">
+                                                    {{ pair[0].thanwyaa_secondYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].thanwyaa_secondYear_status)">
+                                                    آخر موعد: {{ pair[1].thanwyaa_secondYear_status }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="status-item">
+                                        <span class="status-label">الثانوية الأزهرية</span>
+                                        <div class="status-values">
+                                            <div class="year-column">
+                                                <span class="year-label">{{ firstYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].azhar_firstYear_status)">
+                                                    {{ pair[0].azhar_firstYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_firstYear_status)">
+                                                    آخر موعد: {{ pair[1].azhar_firstYear_status }}
+                                                </span>
+                                            </div>
+                                            <div class="year-column">
+                                                <span class="year-label">{{ secondYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].azhar_secondYear_status)">
+                                                    {{ pair[0].azhar_secondYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].azhar_secondYear_status)">
+                                                    آخر موعد: {{ pair[1].azhar_secondYear_status }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="status-item">
+                                        <span class="status-label">الشهادات العربية والإجنبية</span>
+                                        <div class="status-values">
+                                            <div class="year-column">
+                                                <span class="year-label">{{ firstYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_firstYear_status)">
+                                                    {{ pair[0].Arabenglish_firstYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_firstYear_status)">
+                                                    آخر موعد: {{ pair[1].Arabenglish_firstYear_status }}
+                                                </span>
+                                            </div>
+                                            <div class="year-column">
+                                                <span class="year-label">{{ secondYear }}</span>
+                                                <span class="status-value" :class="getStatusClass(pair[0].Arabenglish_secondYear_status)">
+                                                    {{ pair[0].Arabenglish_secondYear_status }}
+                                                </span>
+                                                <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].Arabenglish_secondYear_status)">
+                                                    آخر موعد: {{ pair[1].Arabenglish_secondYear_status }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="status-item">
+                                        <span class="status-label">الوافدين</span>
+                                        <div class="status-values single-column">
+                                            <span class="status-value" :class="getStatusClass(pair[0].wafdeen_status)">
+                                                {{ pair[0].wafdeen_status }}
+                                            </span>
+                                            <span v-if="pair[1]" class="status-value" :class="getStatusClass(pair[1].wafdeen_status)">
+                                                آخر موعد: {{ pair[1].wafdeen_status }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
             </div>
 
             <div v-else class="loading-container">
@@ -184,7 +546,7 @@ export default {
             universities: [],
             all_data: [],
             isLoading: false,
-            openSections: new Set(),
+            openSection: null,
             searchQuery: '',
             tabs: [
                 { id: 'all', name: 'الكل' },
@@ -307,15 +669,15 @@ export default {
                 console.error('Error fetching years:', error);
             }
         },
-        toggleSection(index) {
-            if (this.openSections.has(index)) {
-                this.openSections.delete(index);
+        toggleSection(sectionId) {
+            if (this.openSection === sectionId) {
+                this.openSection = null;
             } else {
-                this.openSections.add(index);
+                this.openSection = sectionId;
             }
         },
-        isSectionOpen(index) {
-            return this.openSections.has(index);
+        isSectionOpen(sectionId) {
+            return this.openSection === sectionId;
         }
     },
     watch: {
@@ -345,7 +707,7 @@ export default {
 }
 
 .page-header h2 {
-    color: #2c3e50;
+    color: #1a237e;
     font-size: 2rem;
     margin: 0;
     font-weight: 700;
@@ -361,10 +723,10 @@ export default {
 
 .tab-button {
     padding: 0.75rem 1.5rem;
-    border: none;
+    border: 2px solid #1a237e;
     border-radius: 8px;
-    background-color: #f8f9fa;
-    color: #2c3e50;
+    background-color: white;
+    color: #1a237e;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -372,11 +734,11 @@ export default {
 }
 
 .tab-button:hover {
-    background-color: #e9ecef;
+    background-color: #e8eaf6;
 }
 
 .tab-button.active {
-    background-color: #2c3e50;
+    background-color: #1a237e;
     color: white;
 }
 
@@ -387,15 +749,30 @@ export default {
     margin-bottom: 2rem;
 }
 
+.university-section {
+    margin-bottom: 3rem;
+    grid-column: 1 / -1;
+}
+
+.section-title {
+    color: #1a237e;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #1a237e;
+    padding-bottom: 0.5rem;
+    font-weight: 700;
+}
+
 .university-pair-card {
     background: white;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    margin-bottom: 2rem;
 }
 
 .pair-header {
-    background-color: #2c3e50;
+    background-color: #1a237e;
     padding: 1rem;
     text-align: center;
     display: flex;
@@ -418,7 +795,7 @@ export default {
 }
 
 .university-link:hover {
-    color: #3498db;
+    color: #e8eaf6;
 }
 
 .toggle-btn {
@@ -468,7 +845,7 @@ export default {
 .status-label {
     display: block;
     font-weight: bold;
-    color: #2c3e50;
+    color: #1a237e;
     margin-bottom: 0.75rem;
     font-size: 1rem;
 }
@@ -487,10 +864,10 @@ export default {
 
 .year-label {
     font-weight: bold;
-    color: #666;
+    color: #1a237e;
     text-align: center;
     padding: 0.25rem;
-    background-color: #f8f9fa;
+    background-color: #e8eaf6;
     border-radius: 4px;
 }
 
@@ -512,8 +889,8 @@ export default {
 }
 
 .status-not-started {
-    background-color: #f3e5f5;
-    color: #6a1b9a;
+    background-color: #e8eaf6;
+    color: #1a237e;
 }
 
 .update-notice {
@@ -572,13 +949,13 @@ export default {
     width: 50px;
     height: 50px;
     border: 5px solid #f3f3f3;
-    border-top: 5px solid #2c3e50;
+    border-top: 5px solid #1a237e;
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
 
 .loading-text {
-    color: #2c3e50;
+    color: #1a237e;
     font-size: 1.2rem;
     font-weight: 500;
 }
@@ -616,8 +993,8 @@ export default {
 
 .search-input:focus {
     outline: none;
-    border-color: #2c3e50;
-    box-shadow: 0 0 0 2px rgba(44, 62, 80, 0.1);
+    border-color: #1a237e;
+    box-shadow: 0 0 0 2px rgba(26, 35, 126, 0.1);
 }
 
 .search-input::placeholder {

@@ -622,7 +622,11 @@ export default {
     formatPrograms(programs) {
       if (!programs) return [];
       if (typeof programs === 'string') {
-        return programs.split(',').map(p => p.trim());
+        // Replace Arabic comma with regular comma, then split by comma or hyphen
+        return programs.replace(/،/g, ',')
+                      .split(/[,-]/)
+                      .map(p => p.trim())
+                      .filter(p => p.length > 0); // Remove empty strings
       }
       return Array.isArray(programs) ? programs : [];
     },

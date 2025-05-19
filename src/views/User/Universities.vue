@@ -16,6 +16,16 @@
         </button>
       </div>
 
+      <!-- Search Input -->
+      <div class="search-container">
+        <input 
+          type="text" 
+          v-model="searchQuery" 
+          :placeholder="'ابحث عن ' + getCurrentTabName()"
+          class="search-input"
+        >
+      </div>
+
       <!-- Loading State -->
       <div v-if="loading" class="loading-container">
         <div class="loading-spinner"></div>
@@ -31,9 +41,9 @@
       <!-- Content -->
       <div v-else class="universities-grid">
         <!-- Private Universities -->
-        <div v-if="activeTab === 'private' && privateUniversities.length" class="university-section">
+        <div v-if="activeTab === 'private' && filteredPrivateUniversities.length" class="university-section">
           <div class="universities-list">
-            <div v-for="uni in privateUniversities" :key="uni.id" class="university-card" @click="navigateToUniversity('private', uni.id)">
+            <div v-for="uni in filteredPrivateUniversities" :key="uni.id" class="university-card" @click="navigateToUniversity('private', uni.id)">
               <img :src="uni.logo" :alt="uni.name" class="university-logo" @error="handleImageError">
               <h3 class="university-name">{{ uni.name }}</h3>
             </div>
@@ -41,9 +51,9 @@
         </div>
 
         <!-- National Universities -->
-        <div v-if="activeTab === 'national' && nationalUniversities.length" class="university-section">
+        <div v-if="activeTab === 'national' && filteredNationalUniversities.length" class="university-section">
           <div class="universities-list">
-            <div v-for="uni in nationalUniversities" :key="uni.id" class="university-card" @click="navigateToUniversity('national', uni.id)">
+            <div v-for="uni in filteredNationalUniversities" :key="uni.id" class="university-card" @click="navigateToUniversity('national', uni.id)">
               <img :src="uni.logo" :alt="uni.name" class="university-logo" @error="handleImageError">
               <h3 class="university-name">{{ uni.name }}</h3>
             </div>
@@ -51,9 +61,9 @@
         </div>
 
         <!-- Special Universities -->
-        <div v-if="activeTab === 'special' && specialUniversities.length" class="university-section">
+        <div v-if="activeTab === 'special' && filteredSpecialUniversities.length" class="university-section">
           <div class="universities-list">
-            <div v-for="uni in specialUniversities" :key="uni.id" class="university-card" @click="navigateToUniversity('special', uni.id)">
+            <div v-for="uni in filteredSpecialUniversities" :key="uni.id" class="university-card" @click="navigateToUniversity('special', uni.id)">
               <img :src="uni.logo" :alt="uni.name" class="university-logo" @error="handleImageError">
               <h3 class="university-name">{{ uni.name }}</h3>
             </div>
@@ -61,13 +71,18 @@
         </div>
 
         <!-- International Universities -->
-        <div v-if="activeTab === 'international' && internationalUniversities.length" class="university-section">
+        <div v-if="activeTab === 'international' && filteredInternationalUniversities.length" class="university-section">
           <div class="universities-list">
-            <div v-for="uni in internationalUniversities" :key="uni.id" class="university-card" @click="navigateToUniversity('international', uni.id)">
+            <div v-for="uni in filteredInternationalUniversities" :key="uni.id" class="university-card" @click="navigateToUniversity('international', uni.id)">
               <img :src="uni.logo" :alt="uni.name" class="university-logo" @error="handleImageError">
               <h3 class="university-name">{{ uni.name }}</h3>
             </div>
           </div>
+        </div>
+
+        <!-- No Results Message -->
+        <div v-if="!hasResults" class="no-results">
+          <p>لا توجد نتائج للبحث</p>
         </div>
       </div>
     </div>
@@ -76,7 +91,7 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
 import Header from '../../../public/global/headerComponent.vue';
@@ -93,6 +108,7 @@ export default {
     const loading = ref(true);
     const error = ref(null);
     const activeTab = ref('private');
+    const searchQuery = ref('');
     const privateUniversities = ref([]);
     const nationalUniversities = ref([]);
     const specialUniversities = ref([]);
@@ -104,6 +120,51 @@ export default {
       { id: 'special', name: 'الجامعات ذات طبيعة خاصة' },
       { id: 'international', name: 'الجامعات الدولية' }
     ];
+
+    // Computed properties for filtered universities
+    const filteredPrivateUniversities = computed(() => {
+      return privateUniversities.value.filter(uni => 
+        uni.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+      );
+    });
+
+    const filteredNationalUniversities = computed(() => {
+      return nationalUniversities.value.filter(uni => 
+        uni.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+      );
+    });
+
+    const filteredSpecialUniversities = computed(() => {
+      return specialUniversities.value.filter(uni => 
+        uni.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+      );
+    });
+
+    const filteredInternationalUniversities = computed(() => {
+      return internationalUniversities.value.filter(uni => 
+        uni.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+      );
+    });
+
+    const hasResults = computed(() => {
+      switch (activeTab.value) {
+        case 'private':
+          return filteredPrivateUniversities.value.length > 0;
+        case 'national':
+          return filteredNationalUniversities.value.length > 0;
+        case 'special':
+          return filteredSpecialUniversities.value.length > 0;
+        case 'international':
+          return filteredInternationalUniversities.value.length > 0;
+        default:
+          return false;
+      }
+    });
+
+    const getCurrentTabName = () => {
+      const currentTab = tabs.find(tab => tab.id === activeTab.value);
+      return currentTab ? currentTab.name : '';
+    };
 
     const fetchAllUniversities = async () => {
       loading.value = true;
@@ -392,10 +453,17 @@ export default {
       error,
       activeTab,
       tabs,
+      searchQuery,
       privateUniversities,
       nationalUniversities,
       specialUniversities,
       internationalUniversities,
+      filteredPrivateUniversities,
+      filteredNationalUniversities,
+      filteredSpecialUniversities,
+      filteredInternationalUniversities,
+      hasResults,
+      getCurrentTabName,
       fetchAllUniversities,
       navigateToUniversity,
       handleImageError
@@ -451,6 +519,32 @@ export default {
 .tab-button.active {
   background-color: #1a237e;
   color: white;
+}
+
+.search-container {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  padding: 0 1rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Cairo', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #1a237e;
+  box-shadow: 0 0 0 2px rgba(26, 35, 126, 0.1);
+}
+
+.search-input::placeholder {
+  color: #9e9e9e;
 }
 
 .loading-container {
@@ -555,6 +649,13 @@ export default {
   font-weight: 600;
 }
 
+.no-results {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  font-size: 1.1rem;
+}
+
 @media (max-width: 768px) {
   .content {
     padding: 1rem;
@@ -580,6 +681,10 @@ export default {
 
   .tab-button {
     width: 100%;
+  }
+
+  .search-container {
+    padding: 0 0.5rem;
   }
 }
 </style> 

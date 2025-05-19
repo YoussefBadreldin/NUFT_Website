@@ -189,7 +189,7 @@
 
           <div class="field">
             <label>البريد الالكتروني</label>
-            <input type="email" required v-model="email" placeholder="example@domain.com أو admin">
+            <input type="email" required v-model="email" placeholder="example@domain.com">
           </div>
 
           <div class="input-group">

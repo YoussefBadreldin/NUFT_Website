@@ -2,7 +2,7 @@
     <div>
         <HeaderComponent />
 
-        <div class="page-nav row">
+        <div class="page-header" dir="rtl">
             <h2>معادلة الشهادات</h2>
         </div>
 
@@ -278,19 +278,18 @@ export default {
 </script>
 
 <style scoped>
-.page-nav {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 3rem;
+.page-header {
     padding: 2rem 0;
-    color: #1a237e;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
-.page-nav h2 {
+.page-header h2 {
     margin: 0;
     font-size: 2.5rem;
     font-weight: 700;
     font-family: 'Cairo', sans-serif;
+    color: #1a237e;
 }
 
 .container {
@@ -395,7 +394,7 @@ input[readonly] {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .page-nav h2 {
+    .page-header h2 {
         font-size: 2rem;
     }
 

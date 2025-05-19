@@ -1,6 +1,10 @@
 <template>
   <div class="parent" dir="rtl">
     <div class="admin-header">
+      <button class="back-button" @click="goBack">
+        <i class="fas fa-arrow-right"></i>
+        الصفحة الرئيسية
+      </button>
       <h1>لوحة تحكم NUFT</h1>
       <p class="welcome-text">مرحباً بك في لوحة التحكم</p>
     </div>
@@ -95,6 +99,9 @@ export default {
     }
   },
   methods: {
+    goBack() {
+      this.$router.push('/');
+    },
     logout() {
       localStorage.removeItem('name');
       localStorage.removeItem('isAdmin');
@@ -125,6 +132,29 @@ export default {
   text-align: center;
   margin-bottom: 3rem;
   padding: 2rem 0;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: #e3f2fd;
+  color: #1976d2;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: #bbdefb;
+  transform: translateX(-2px);
 }
 
 .admin-header h1 {

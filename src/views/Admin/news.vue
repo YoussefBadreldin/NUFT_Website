@@ -1,6 +1,10 @@
 <template>
   <div class="news-container" dir="rtl">
     <div class="header">
+      <button class="back-button" @click="goBack">
+        <i class="fas fa-arrow-right"></i>
+        رجوع
+      </button>
       <h1>إدارة الأخبار</h1>
       <p class="subtitle">إضافة وتعديل الأخبار</p>
     </div>
@@ -169,6 +173,9 @@ export default {
     };
   },
   methods: {
+    goBack() {
+      this.$router.go(-1);
+    },
     async fetchNews() {
       try {
         const response = await axios.get('https://nuft-website-backend.vercel.app/news/getNews');
@@ -304,6 +311,7 @@ export default {
 .header {
   text-align: center;
   margin-bottom: 2rem;
+  position: relative;
 }
 
 .header h1 {
@@ -627,6 +635,28 @@ textarea {
 .cancel-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.back-button {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: #e3f2fd;
+  color: #1976d2;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: #bbdefb;
+  transform: translateX(-2px);
 }
 
 @media (max-width: 768px) {

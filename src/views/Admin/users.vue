@@ -1,6 +1,10 @@
 <template>
   <div class="users-container" dir="rtl">
     <div class="header">
+      <button class="back-button" @click="goBack">
+        <i class="fas fa-arrow-right"></i>
+        رجوع
+      </button>
       <h1>إدارة المستخدمين</h1>
       <p class="subtitle">عرض وإدارة حسابات المستخدمين</p>
     </div>
@@ -71,6 +75,9 @@ export default {
     };
   },
   methods: {
+    goBack() {
+      this.$router.go(-1);
+    },
     getAllusers() {
       axios.get('https://nuft-website-backend.vercel.app/auth/getallusers')
         .then(response => {
@@ -121,6 +128,7 @@ export default {
 .header {
   text-align: center;
   margin-bottom: 2rem;
+  position: relative;
 }
 
 .header h1 {
@@ -303,6 +311,28 @@ export default {
   .user-card {
     padding: 1rem;
   }
+}
+
+.back-button {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: #e3f2fd;
+  color: #1976d2;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: #bbdefb;
+  transform: translateX(-2px);
 }
 </style>
   

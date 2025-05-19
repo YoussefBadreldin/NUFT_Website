@@ -1,6 +1,10 @@
 <template>
   <div class="admission-admin-container" dir="rtl">
     <div class="header">
+      <button class="back-button" @click="goBack">
+        <i class="fas fa-arrow-right"></i>
+        رجوع
+      </button>
       <h1>إدارة حالة التقديمات</h1>
       <p class="subtitle">إدارة وتعديل حالة التقديمات للجامعات</p>
     </div>
@@ -309,6 +313,9 @@ export default {
     }
   },
   methods: {
+    goBack() {
+      this.$router.go(-1);
+    },
     async fetchData() {
       this.loading = true;
       const endpoints = {
@@ -408,6 +415,7 @@ export default {
 .header {
   text-align: center;
   margin-bottom: 2rem;
+  position: relative;
 }
 
 .header h1 {
@@ -642,6 +650,28 @@ export default {
   font-size: 0.9rem;
   color: #495057;
   margin-bottom: 0.5rem;
+}
+
+.back-button {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: #e3f2fd;
+  color: #1976d2;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: #bbdefb;
+  transform: translateX(-2px);
 }
 
 @media (max-width: 768px) {

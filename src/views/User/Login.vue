@@ -206,7 +206,7 @@
 
         <div class="field" v-if="mode !== 'signup'">
           <label>اسم المستخدم</label>
-          <input type="text" required v-model="email" placeholder="example@domain.com أو admin">
+          <input type="text" required v-model="email" placeholder="example@domain.com">
         </div>
 
         <div class="field" v-if="mode !== 'signup'">

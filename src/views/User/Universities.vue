@@ -195,8 +195,28 @@ export default {
         if (privateResponse.status === 'fulfilled' && privateResponse.value.data && Array.isArray(privateResponse.value.data)) {
           privateUniversities.value = privateResponse.value.data.map(uni => ({
             id: uni.university_code,
-            name: uni.university_name,
-            logo: uni.university_logo || '/images/default-university.png'
+            name: uni.university_Arabic_Name,
+            logo: uni.university_Logo || '/images/default-university.png',
+            type: 'private',
+            bio: uni.Uni_Bio,
+            location: uni.location,
+            website: uni.website,
+            phone: uni.phone,
+            email: uni.email,
+            facebook: uni.facebook,
+            instagram: uni.instagram,
+            youtube: uni.youtube,
+            linkedin: uni.linkedin,
+            firstYear: uni.first_year,
+            secondYear: uni.second_year,
+            international_programs: uni.international_programs,
+            dorms_link: uni.dorms_link,
+            transportation_link: uni.transportation_link,
+            scholarship_link: uni.scholarship_link,
+            Egyptian_Admission_link: uni.Egyptian_Admission_link,
+            Egyptian_Admission_link2: uni.Egyptian_Admission_link2,
+            Egyptian_Transfer_link: uni.Egyptian_Transfer_link,
+            Wafdeen_Admission_link: uni.Wafdeen_Admission_link
           }));
         } else {
           privateUniversities.value = hardcodedUniversities.private;
@@ -206,8 +226,28 @@ export default {
         if (nationalResponse.status === 'fulfilled' && nationalResponse.value.data && Array.isArray(nationalResponse.value.data)) {
           nationalUniversities.value = nationalResponse.value.data.map(uni => ({
             id: uni.university_code,
-            name: uni.university_name,
-            logo: uni.university_logo || '/images/default-university.png'
+            name: uni.university_Arabic_Name,
+            logo: uni.university_Logo || '/images/default-university.png',
+            type: 'national',
+            bio: uni.Uni_Bio,
+            location: uni.location,
+            website: uni.website,
+            phone: uni.phone,
+            email: uni.email,
+            facebook: uni.facebook,
+            instagram: uni.instagram,
+            youtube: uni.youtube,
+            linkedin: uni.linkedin,
+            firstYear: uni.first_year,
+            secondYear: uni.second_year,
+            international_programs: uni.international_programs,
+            dorms_link: uni.dorms_link,
+            transportation_link: uni.transportation_link,
+            scholarship_link: uni.scholarship_link,
+            Egyptian_Admission_link: uni.Egyptian_Admission_link,
+            Egyptian_Admission_link2: uni.Egyptian_Admission_link2,
+            Egyptian_Transfer_link: uni.Egyptian_Transfer_link,
+            Wafdeen_Admission_link: uni.Wafdeen_Admission_link
           }));
         } else {
           nationalUniversities.value = hardcodedUniversities.national;
@@ -217,8 +257,28 @@ export default {
         if (specialResponse.status === 'fulfilled' && specialResponse.value.data && Array.isArray(specialResponse.value.data)) {
           specialUniversities.value = specialResponse.value.data.map(uni => ({
             id: uni.university_code,
-            name: uni.university_name,
-            logo: uni.university_logo || '/images/default-university.png'
+            name: uni.university_Arabic_Name,
+            logo: uni.university_Logo || '/images/default-university.png',
+            type: 'special',
+            bio: uni.Uni_Bio,
+            location: uni.location,
+            website: uni.website,
+            phone: uni.phone,
+            email: uni.email,
+            facebook: uni.facebook,
+            instagram: uni.instagram,
+            youtube: uni.youtube,
+            linkedin: uni.linkedin,
+            firstYear: uni.first_year,
+            secondYear: uni.second_year,
+            international_programs: uni.international_programs,
+            dorms_link: uni.dorms_link,
+            transportation_link: uni.transportation_link,
+            scholarship_link: uni.scholarship_link,
+            Egyptian_Admission_link: uni.Egyptian_Admission_link,
+            Egyptian_Admission_link2: uni.Egyptian_Admission_link2,
+            Egyptian_Transfer_link: uni.Egyptian_Transfer_link,
+            Wafdeen_Admission_link: uni.Wafdeen_Admission_link
           }));
         } else {
           specialUniversities.value = hardcodedUniversities.special;
@@ -228,8 +288,28 @@ export default {
         if (internationalResponse.status === 'fulfilled' && internationalResponse.value.data && Array.isArray(internationalResponse.value.data)) {
           internationalUniversities.value = internationalResponse.value.data.map(uni => ({
             id: uni.university_code,
-            name: uni.university_name,
-            logo: uni.university_logo || '/images/default-university.png'
+            name: uni.university_Arabic_Name,
+            logo: uni.university_Logo || '/images/default-university.png',
+            type: 'international',
+            bio: uni.Uni_Bio,
+            location: uni.location,
+            website: uni.website,
+            phone: uni.phone,
+            email: uni.email,
+            facebook: uni.facebook,
+            instagram: uni.instagram,
+            youtube: uni.youtube,
+            linkedin: uni.linkedin,
+            firstYear: uni.first_year,
+            secondYear: uni.second_year,
+            international_programs: uni.international_programs,
+            dorms_link: uni.dorms_link,
+            transportation_link: uni.transportation_link,
+            scholarship_link: uni.scholarship_link,
+            Egyptian_Admission_link: uni.Egyptian_Admission_link,
+            Egyptian_Admission_link2: uni.Egyptian_Admission_link2,
+            Egyptian_Transfer_link: uni.Egyptian_Transfer_link,
+            Wafdeen_Admission_link: uni.Wafdeen_Admission_link
           }));
         } else {
           internationalUniversities.value = hardcodedUniversities.international;
@@ -256,7 +336,28 @@ export default {
     };
 
     const navigateToUniversity = (type, id) => {
-      router.push(`/Guide/UGRAD/${type}/${id}`);
+      // Find the university data from the appropriate array
+      let universityData;
+      switch (type) {
+        case 'private':
+          universityData = privateUniversities.value.find(uni => uni.id === id);
+          break;
+        case 'national':
+          universityData = nationalUniversities.value.find(uni => uni.id === id);
+          break;
+        case 'special':
+          universityData = specialUniversities.value.find(uni => uni.id === id);
+          break;
+        case 'international':
+          universityData = internationalUniversities.value.find(uni => uni.id === id);
+          break;
+      }
+
+      if (universityData) {
+        // Store the university data in localStorage before navigation
+        localStorage.setItem('currentUniversityData', JSON.stringify(universityData));
+        router.push(`/Guide/UGRAD/${type}/${id}`);
+      }
     };
 
     const handleImageError = (event) => {

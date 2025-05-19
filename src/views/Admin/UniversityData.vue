@@ -165,26 +165,482 @@
       <div class="form-card">
         <h2 class="section-title">{{ isEditing ? 'تعديل الجامعة' : 'إضافة جامعة جديدة' }}</h2>
         <form @submit.prevent="isEditing ? updateUniversity() : addUniversity()">
-          <div class="form-grid">
-            <div class="form-group">
-              <label for="university_Arabic_Name">اسم الجامعة</label>
-              <input type="text" v-model="university_Arabic_Name" id="university_Arabic_Name" required>
-            </div>
+          <!-- Basic University Information -->
+          <div class="form-category">
+            <h3 class="category-title">
+              <i class="fas fa-university"></i>
+              بيانات الجامعة الأساسية
+            </h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="university_code">
+                  <i class="fas fa-hashtag"></i>
+                  الرمز المختصر للجامعة
+                </label>
+                <input 
+                  type="text" 
+                  v-model="formData.university_code" 
+                  id="university_code" 
+                  required
+                  placeholder="مثال: ACU, BUE, etc."
+                >
+              </div>
 
-            <div class="form-group">
-              <label for="university_Logo">رابط الشعار</label>
-              <div class="input-with-hint">
-                <input type="text" v-model="university_Logo" id="university_Logo">
-                <span class="hint">/images/Logos/Universities/.png</span>
+              <div class="form-group">
+                <label for="university_Arabic_Name">
+                  <i class="fas fa-graduation-cap"></i>
+                  اسم الجامعة
+                </label>
+                <input 
+                  type="text" 
+                  v-model="formData.university_Arabic_Name" 
+                  id="university_Arabic_Name" 
+                  required
+                  placeholder="أدخل اسم الجامعة"
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="university_Logo">
+                  <i class="fas fa-image"></i>
+                  رابط الشعار
+                </label>
+                <div class="input-with-hint">
+                  <input 
+                    type="text" 
+                    v-model="formData.university_Logo" 
+                    id="university_Logo"
+                    placeholder="أدخل رابط الشعار"
+                  >
+                  <span class="hint">/images/Logos/Universities/.png</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="type">
+                  <i class="fas fa-tag"></i>
+                  نوع الجامعة
+                </label>
+                <select v-model="formData.type" id="type" required>
+                  <option value="national">أهلية</option>
+                  <option value="private">خاصة</option>
+                  <option value="special">ذات طبيعة خاصة</option>
+                  <option value="international">دولية</option>
+                </select>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="Uni_Bio">
+                  <i class="fas fa-info-circle"></i>
+                  نبذة عن الجامعة
+                </label>
+                <textarea 
+                  v-model="formData.Uni_Bio" 
+                  id="Uni_Bio" 
+                  rows="4"
+                  placeholder="أدخل نبذة مختصرة عن الجامعة"
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="location">
+                  <i class="fas fa-map-marker-alt"></i>
+                  الموقع
+                </label>
+                <input 
+                  type="text" 
+                  v-model="formData.location" 
+                  id="location"
+                  placeholder="أدخل موقع الجامعة"
+                >
               </div>
             </div>
+          </div>
 
+          <!-- Contact Information -->
+          <div class="form-category">
+            <h3 class="category-title">
+              <i class="fas fa-address-book"></i>
+              معلومات الاتصال
+            </h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="website">
+                  <i class="fas fa-globe"></i>
+                  الموقع الإلكتروني
+                </label>
+                <input 
+                  type="url" 
+                  v-model="formData.website" 
+                  id="website"
+                  placeholder="https://example.com"
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="phone">
+                  <i class="fas fa-phone"></i>
+                  رقم الهاتف
+                </label>
+                <input 
+                  type="tel" 
+                  v-model="formData.phone" 
+                  id="phone"
+                  placeholder="+20 XXX XXX XXXX"
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="email">
+                  <i class="fas fa-envelope"></i>
+                  البريد الإلكتروني
+                </label>
+                <input 
+                  type="email" 
+                  v-model="formData.email" 
+                  id="email"
+                  placeholder="example@university.edu"
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Media Links -->
+          <div class="form-category">
+            <h3 class="category-title">
+              <i class="fas fa-share-alt"></i>
+              روابط التواصل الاجتماعي
+            </h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="facebook">
+                  <i class="fab fa-facebook"></i>
+                  فيسبوك
+                </label>
+                <input 
+                  type="url" 
+                  v-model="formData.facebook" 
+                  id="facebook"
+                  placeholder="https://facebook.com/..."
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="instagram">
+                  <i class="fab fa-instagram"></i>
+                  انستجرام
+                </label>
+                <input 
+                  type="url" 
+                  v-model="formData.instagram" 
+                  id="instagram"
+                  placeholder="https://instagram.com/..."
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="youtube">
+                  <i class="fab fa-youtube"></i>
+                  يوتيوب
+                </label>
+                <input 
+                  type="url" 
+                  v-model="formData.youtube" 
+                  id="youtube"
+                  placeholder="https://youtube.com/..."
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="linkedin">
+                  <i class="fab fa-linkedin"></i>
+                  لينكد إن
+                </label>
+                <input 
+                  type="url" 
+                  v-model="formData.linkedin" 
+                  id="linkedin"
+                  placeholder="https://linkedin.com/..."
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Programs -->
+          <div class="form-category">
+            <h3 class="category-title">
+              <i class="fas fa-book"></i>
+              البرامج الدراسية
+            </h3>
+            <div class="programs-list">
+              <div v-for="(faculty, index) in formData.faculties" :key="index" class="faculty-item">
+                <div class="faculty-header">
+                  <h4>
+                    <i class="fas fa-graduation-cap"></i>
+                    كلية {{ index + 1 }}
+                  </h4>
+                  <button type="button" class="remove-btn" @click="removeFaculty(index)">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label :for="'faculty_' + index">اسم الكلية</label>
+                    <input 
+                      type="text" 
+                      v-model="faculty.faculty" 
+                      :id="'faculty_' + index"
+                      placeholder="أدخل اسم الكلية"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label :for="'section_' + index">الشعبة</label>
+                    <input 
+                      type="text" 
+                      v-model="faculty.section" 
+                      :id="'section_' + index"
+                      placeholder="أدخل اسم الشعبة"
+                    >
+                  </div>
+                  <div class="form-group full-width">
+                    <label :for="'programs_' + index">البرامج</label>
+                    <textarea 
+                      v-model="faculty.programs" 
+                      :id="'programs_' + index" 
+                      rows="3" 
+                      placeholder="أدخل البرامج مفصولة بفواصل"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="add-btn" @click="addFaculty">
+                <i class="fas fa-plus"></i>
+                إضافة كلية
+              </button>
+            </div>
+          </div>
+
+          <!-- International Programs -->
+          <div class="form-category">
+            <h3 class="category-title">
+              <i class="fas fa-globe-americas"></i>
+              البرامج الدولية
+            </h3>
             <div class="form-group">
-              <label for="type">نوع الجامعة</label>
-              <select v-model="type" id="type" required>
-                <option value="national">حكومية</option>
-                <option value="private">خاصة</option>
-              </select>
+              <label for="international_programs">معلومات البرامج الدولية</label>
+              <textarea 
+                v-model="formData.international_programs" 
+                id="international_programs" 
+                rows="4"
+                placeholder="أدخل معلومات البرامج الدولية"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Dorms -->
+          <div class="form-category">
+            <h3 class="category-title">
+              <i class="fas fa-home"></i>
+              السكن الجامعي
+            </h3>
+            <div class="dorms-list">
+              <div v-for="(dorm, index) in formData.dorms" :key="index" class="dorm-item">
+                <div class="dorm-header">
+                  <h4>
+                    <i class="fas fa-building"></i>
+                    سكن {{ index + 1 }}
+                  </h4>
+                  <button type="button" class="remove-btn" @click="removeDorm(index)">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label :for="'dorm_name_' + index">اسم السكن</label>
+                    <input 
+                      type="text" 
+                      v-model="dorm.name" 
+                      :id="'dorm_name_' + index"
+                      placeholder="أدخل اسم السكن"
+                    >
+                  </div>
+                  <div class="form-group full-width">
+                    <label :for="'dorm_description_' + index">الوصف</label>
+                    <textarea 
+                      v-model="dorm.description" 
+                      :id="'dorm_description_' + index" 
+                      rows="3"
+                      placeholder="أدخل وصف السكن"
+                    ></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label :for="'dorm_price_' + index">السعر</label>
+                    <input 
+                      type="text" 
+                      v-model="dorm.price" 
+                      :id="'dorm_price_' + index"
+                      placeholder="أدخل سعر السكن"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label :for="'dorm_location_' + index">الموقع</label>
+                    <input 
+                      type="text" 
+                      v-model="dorm.location" 
+                      :id="'dorm_location_' + index"
+                      placeholder="أدخل موقع السكن"
+                    >
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="add-btn" @click="addDorm">
+                <i class="fas fa-plus"></i>
+                إضافة سكن
+              </button>
+            </div>
+            <div class="form-group">
+              <label for="dorms_link">
+                <i class="fas fa-link"></i>
+                رابط المزيد عن السكن
+              </label>
+              <input 
+                type="url" 
+                v-model="formData.dorms_link" 
+                id="dorms_link"
+                placeholder="https://example.com/dorms"
+              >
+            </div>
+          </div>
+
+          <!-- Transportation -->
+          <div class="form-category">
+            <h3 class="category-title">
+              <i class="fas fa-bus"></i>
+              وسائل المواصلات
+            </h3>
+            <div class="transportation-list">
+              <div v-for="(trans, index) in formData.transportation" :key="index" class="transportation-item">
+                <div class="transportation-header">
+                  <h4>
+                    <i class="fas fa-route"></i>
+                    وسيلة نقل {{ index + 1 }}
+                  </h4>
+                  <button type="button" class="remove-btn" @click="removeTransportation(index)">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label :for="'trans_name_' + index">اسم وسيلة النقل</label>
+                    <input 
+                      type="text" 
+                      v-model="trans.name" 
+                      :id="'trans_name_' + index"
+                      placeholder="أدخل اسم وسيلة النقل"
+                    >
+                  </div>
+                  <div class="form-group full-width">
+                    <label :for="'trans_description_' + index">الوصف</label>
+                    <textarea 
+                      v-model="trans.description" 
+                      :id="'trans_description_' + index" 
+                      rows="3"
+                      placeholder="أدخل وصف وسيلة النقل"
+                    ></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label :for="'trans_price_' + index">السعر</label>
+                    <input 
+                      type="text" 
+                      v-model="trans.price" 
+                      :id="'trans_price_' + index"
+                      placeholder="أدخل سعر وسيلة النقل"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label :for="'trans_route_' + index">المسار</label>
+                    <input 
+                      type="text" 
+                      v-model="trans.route" 
+                      :id="'trans_route_' + index"
+                      placeholder="أدخل مسار وسيلة النقل"
+                    >
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="add-btn" @click="addTransportation">
+                <i class="fas fa-plus"></i>
+                إضافة وسيلة نقل
+              </button>
+            </div>
+            <div class="form-group">
+              <label for="transportation_link">
+                <i class="fas fa-link"></i>
+                رابط المزيد عن المواصلات
+              </label>
+              <input 
+                type="url" 
+                v-model="formData.transportation_link" 
+                id="transportation_link"
+                placeholder="https://example.com/transportation"
+              >
+            </div>
+          </div>
+
+          <!-- Scholarships -->
+          <div class="form-category">
+            <h3 class="category-title">
+              <i class="fas fa-award"></i>
+              المنح الدراسية
+            </h3>
+            <div class="form-group">
+              <label for="scholarship_link">رابط المنح الدراسية</label>
+              <input 
+                type="url" 
+                v-model="formData.scholarship_link" 
+                id="scholarship_link"
+                placeholder="https://example.com/scholarships"
+              >
+            </div>
+          </div>
+
+          <!-- Admission Links -->
+          <div class="form-category">
+            <h3 class="category-title">
+              <i class="fas fa-user-graduate"></i>
+              روابط التقديم
+            </h3>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="Egyptian_Admission_link">رابط التقديم للطلاب المصريين</label>
+                <input 
+                  type="url" 
+                  v-model="formData.Egyptian_Admission_link" 
+                  id="Egyptian_Admission_link"
+                  placeholder="https://example.com/egyptian-admission"
+                >
+              </div>
+              <div class="form-group">
+                <label for="Egyptian_Transfer_link">رابط التحويل للطلاب المصريين</label>
+                <input 
+                  type="url" 
+                  v-model="formData.Egyptian_Transfer_link" 
+                  id="Egyptian_Transfer_link"
+                  placeholder="https://example.com/egyptian-transfer"
+                >
+              </div>
+              <div class="form-group">
+                <label for="Wafdeen_Admission_link">رابط التقديم للطلاب الوافدين</label>
+                <input 
+                  type="url" 
+                  v-model="formData.Wafdeen_Admission_link" 
+                  id="Wafdeen_Admission_link"
+                  placeholder="https://example.com/wafdeen-admission"
+                >
+              </div>
             </div>
           </div>
 
@@ -212,9 +668,31 @@ export default {
   data() {
     return {
       // Form fields
-      university_Arabic_Name: '',
-      university_Logo: '',
-      type: 'national',
+      formData: {
+        university_code: '', // Added university short name
+        university_Arabic_Name: '',
+        university_Logo: '',
+        type: 'national',
+        Uni_Bio: '',
+        location: '',
+        website: '',
+        phone: '',
+        email: '',
+        facebook: '',
+        instagram: '',
+        youtube: '',
+        linkedin: '',
+        faculties: [],
+        international_programs: '',
+        dorms: [],
+        transportation: [],
+        dorms_link: '',
+        transportation_link: '',
+        scholarship_link: '',
+        Egyptian_Admission_link: '',
+        Egyptian_Transfer_link: '',
+        Wafdeen_Admission_link: ''
+      },
 
       // State management
       universitiesData: [],
@@ -415,18 +893,164 @@ export default {
     handleImageError(event) {
       event.target.src = '/images/default-university.png';
     },
-    async addUniversity() {
-      const formData = {
-        university_Arabic_Name: this.university_Arabic_Name,
-        university_Logo: this.university_Logo
+    addFaculty() {
+      this.formData.faculties.push({
+        faculty: '',
+        section: '',
+        programs: '',
+        feesNatives: '',
+        feesEgyption: '',
+        thanwyaa_secondYear_score: '',
+        thanwyaa_firstYear_score: '',
+        azhar_secondYear_score: '',
+        azhar_firstYear_score: '',
+        Arabenglish_secondYear_score: '',
+        Arabenglish_firstYear_score: '',
+        wafdeen_score: ''
+      });
+    },
+    removeFaculty(index) {
+      this.formData.faculties.splice(index, 1);
+    },
+    addDorm() {
+      this.formData.dorms.push({
+        name: '',
+        description: '',
+        price: '',
+        location: ''
+      });
+    },
+    removeDorm(index) {
+      this.formData.dorms.splice(index, 1);
+    },
+    addTransportation() {
+      this.formData.transportation.push({
+        name: '',
+        description: '',
+        price: '',
+        route: ''
+      });
+    },
+    removeTransportation(index) {
+      this.formData.transportation.splice(index, 1);
+    },
+    editUniversity(university) {
+      this.isEditing = true;
+      this.editingId = university.id;
+      this.formData = {
+        ...this.formData,
+        ...university,
+        faculties: university.faculties || [],
+        dorms: university.dorms || [],
+        transportation: university.transportation || []
       };
-
+      this.activeTab = 'add';
+    },
+    async addUniversity() {
       try {
-        const endpoint = this.type === 'national' 
-          ? 'https://nuft-website-backend.vercel.app/nationallinks/add'
-          : 'https://nuft-website-backend.vercel.app/privatelinks/add';
+        let endpoint;
+        switch (this.formData.type) {
+          case 'national':
+            endpoint = 'https://nuft-website-backend.vercel.app/nationallinks/add_nationallinks';
+            break;
+          case 'private':
+            endpoint = 'https://nuft-website-backend.vercel.app/privatelinks/add_privatelinks';
+            break;
+          case 'special':
+            endpoint = 'https://nuft-website-backend.vercel.app/speciallinks/add_speciallinks';
+            break;
+          case 'international':
+            endpoint = 'https://nuft-website-backend.vercel.app/internationallinks/add_internationallinks';
+            break;
+        }
 
-        await axios.post(endpoint, formData);
+        // Add university info and links
+        await axios.post(endpoint, {
+          ...this.formData,
+          university_code: this.formData.university_code.toUpperCase() // Ensure uppercase
+        });
+
+        // Add faculties
+        if (this.formData.faculties && this.formData.faculties.length > 0) {
+          const facultyEndpoint = this.formData.type === 'national' 
+            ? 'https://nuft-website-backend.vercel.app/nationalfaculty/addnational'
+            : this.formData.type === 'private'
+            ? 'https://nuft-website-backend.vercel.app/privatefaculty/addprivate'
+            : this.formData.type === 'special'
+            ? 'https://nuft-website-backend.vercel.app/specialfaculty/addspecial'
+            : 'https://nuft-website-backend.vercel.app/internationalfaculty/addinternational';
+
+          for (const faculty of this.formData.faculties) {
+            await axios.post(facultyEndpoint, {
+              ...faculty,
+              university: this.formData.university_Arabic_Name,
+              university_code: this.formData.university_code.toUpperCase()
+            });
+          }
+        }
+
+        // Add dorms
+        if (this.formData.dorms && this.formData.dorms.length > 0) {
+          const dormEndpoint = this.formData.type === 'national'
+            ? 'https://nuft-website-backend.vercel.app/nationaldorms/addnationaldorms'
+            : this.formData.type === 'private'
+            ? 'https://nuft-website-backend.vercel.app/privatedorms/addprivatedorms'
+            : this.formData.type === 'special'
+            ? 'https://nuft-website-backend.vercel.app/specialdorms/addspecialdorms'
+            : 'https://nuft-website-backend.vercel.app/internationaldorms/addinternationaldorms';
+
+          for (const dorm of this.formData.dorms) {
+            await axios.post(dormEndpoint, {
+              ...dorm,
+              spec: this.formData.university_Arabic_Name,
+              university_code: this.formData.university_code.toUpperCase()
+            });
+          }
+        }
+
+        // Add transportation
+        if (this.formData.transportation && this.formData.transportation.length > 0) {
+          const transEndpoint = this.formData.type === 'national'
+            ? 'https://nuft-website-backend.vercel.app/nationaltrans/addnationaltrans'
+            : this.formData.type === 'private'
+            ? 'https://nuft-website-backend.vercel.app/privatetrans/addprivatetrans'
+            : this.formData.type === 'special'
+            ? 'https://nuft-website-backend.vercel.app/specialtrans/addspecialtrans'
+            : 'https://nuft-website-backend.vercel.app/internationaltrans/addinternationaltrans';
+
+          for (const trans of this.formData.transportation) {
+            await axios.post(transEndpoint, {
+              ...trans,
+              spec: this.formData.university_Arabic_Name,
+              university_code: this.formData.university_code.toUpperCase()
+            });
+          }
+        }
+
+        // Add admission status
+        const admissionEndpoint = this.formData.type === 'national'
+          ? 'https://nuft-website-backend.vercel.app/nationaladmission/add'
+          : this.formData.type === 'private'
+          ? 'https://nuft-website-backend.vercel.app/privateadmission/add'
+          : this.formData.type === 'special'
+          ? 'https://nuft-website-backend.vercel.app/specialadmission/add'
+          : 'https://nuft-website-backend.vercel.app/internationaladmission/add';
+
+        await axios.post(admissionEndpoint, {
+          university: this.formData.university_Arabic_Name,
+          university_Arabic_Name: this.formData.university_Arabic_Name,
+          university_code: this.formData.university_code.toUpperCase(),
+          transfer_status: '',
+          thanwyaa_firstYear_status: '',
+          thanwyaa_secondYear_status: '',
+          azhar_firstYear_status: '',
+          azhar_secondYear_status: '',
+          Arabenglish_firstYear_status: '',
+          Arabenglish_secondYear_status: '',
+          wafdeen_status: '',
+          guide_Url: `/guide/UGRAD/${this.formData.type}/`
+        });
+
         alert('تم إضافة الجامعة بنجاح');
         this.resetForm();
         this.fetchUniversities();
@@ -436,26 +1060,111 @@ export default {
         alert('حدث خطأ أثناء إضافة الجامعة');
       }
     },
-    editUniversity(university) {
-      this.isEditing = true;
-      this.editingId = university.id;
-      this.type = university.type;
-      this.university_Arabic_Name = university.university_Arabic_Name;
-      this.university_Logo = university.university_Logo;
-      this.activeTab = 'add';
-    },
     async updateUniversity() {
-      const formData = {
-        university_Arabic_Name: this.university_Arabic_Name,
-        university_Logo: this.university_Logo
-      };
-
       try {
-        const endpoint = this.type === 'national'
-          ? `https://nuft-website-backend.vercel.app/nationallinks/update/${this.editingId}`
-          : `https://nuft-website-backend.vercel.app/privatelinks/update/${this.editingId}`;
+        let endpoint;
+        switch (this.formData.type) {
+          case 'national':
+            endpoint = `https://nuft-website-backend.vercel.app/nationallinks/update/${this.editingId}`;
+            break;
+          case 'private':
+            endpoint = `https://nuft-website-backend.vercel.app/privatelinks/update/${this.editingId}`;
+            break;
+          case 'special':
+            endpoint = `https://nuft-website-backend.vercel.app/speciallinks/update/${this.editingId}`;
+            break;
+          case 'international':
+            endpoint = `https://nuft-website-backend.vercel.app/internationallinks/update/${this.editingId}`;
+            break;
+        }
 
-        await axios.put(endpoint, formData);
+        // Update university info and links
+        await axios.put(endpoint, {
+          ...this.formData,
+          university_code: this.formData.university_code.toUpperCase()
+        });
+
+        // Update faculties
+        if (this.formData.faculties && this.formData.faculties.length > 0) {
+          const facultyEndpoint = this.formData.type === 'national' 
+            ? `https://nuft-website-backend.vercel.app/nationalfaculty/update/${this.editingId}`
+            : this.formData.type === 'private'
+            ? `https://nuft-website-backend.vercel.app/privatefaculty/update/${this.editingId}`
+            : this.formData.type === 'special'
+            ? `https://nuft-website-backend.vercel.app/specialfaculty/update/${this.editingId}`
+            : `https://nuft-website-backend.vercel.app/internationalfaculty/update/${this.editingId}`;
+
+          for (const faculty of this.formData.faculties) {
+            await axios.put(facultyEndpoint, {
+              ...faculty,
+              university: this.formData.university_Arabic_Name,
+              university_code: this.formData.university_code.toUpperCase()
+            });
+          }
+        }
+
+        // Update dorms
+        if (this.formData.dorms && this.formData.dorms.length > 0) {
+          const dormEndpoint = this.formData.type === 'national'
+            ? `https://nuft-website-backend.vercel.app/nationaldorms/update/${this.editingId}`
+            : this.formData.type === 'private'
+            ? `https://nuft-website-backend.vercel.app/privatedorms/update/${this.editingId}`
+            : this.formData.type === 'special'
+            ? `https://nuft-website-backend.vercel.app/specialdorms/update/${this.editingId}`
+            : `https://nuft-website-backend.vercel.app/internationaldorms/update/${this.editingId}`;
+
+          for (const dorm of this.formData.dorms) {
+            await axios.put(dormEndpoint, {
+              ...dorm,
+              spec: this.formData.university_Arabic_Name,
+              university_code: this.formData.university_code.toUpperCase()
+            });
+          }
+        }
+
+        // Update transportation
+        if (this.formData.transportation && this.formData.transportation.length > 0) {
+          const transEndpoint = this.formData.type === 'national'
+            ? `https://nuft-website-backend.vercel.app/nationaltrans/update/${this.editingId}`
+            : this.formData.type === 'private'
+            ? `https://nuft-website-backend.vercel.app/privatetrans/update/${this.editingId}`
+            : this.formData.type === 'special'
+            ? `https://nuft-website-backend.vercel.app/specialtrans/update/${this.editingId}`
+            : `https://nuft-website-backend.vercel.app/internationaltrans/update/${this.editingId}`;
+
+          for (const trans of this.formData.transportation) {
+            await axios.put(transEndpoint, {
+              ...trans,
+              spec: this.formData.university_Arabic_Name,
+              university_code: this.formData.university_code.toUpperCase()
+            });
+          }
+        }
+
+        // Update admission status
+        const admissionEndpoint = this.formData.type === 'national'
+          ? `https://nuft-website-backend.vercel.app/nationaladmission/update/${this.editingId}`
+          : this.formData.type === 'private'
+          ? `https://nuft-website-backend.vercel.app/privateadmission/update/${this.editingId}`
+          : this.formData.type === 'special'
+          ? `https://nuft-website-backend.vercel.app/specialadmission/update/${this.editingId}`
+          : `https://nuft-website-backend.vercel.app/internationaladmission/update/${this.editingId}`;
+
+        await axios.put(admissionEndpoint, {
+          university: this.formData.university_Arabic_Name,
+          university_Arabic_Name: this.formData.university_Arabic_Name,
+          university_code: this.formData.university_code.toUpperCase(),
+          transfer_status: '',
+          thanwyaa_firstYear_status: '',
+          thanwyaa_secondYear_status: '',
+          azhar_firstYear_status: '',
+          azhar_secondYear_status: '',
+          Arabenglish_firstYear_status: '',
+          Arabenglish_secondYear_status: '',
+          wafdeen_status: '',
+          guide_Url: `/guide/UGRAD/${this.formData.type}/`
+        });
+
         alert('تم تحديث الجامعة بنجاح');
         this.cancelEdit();
         this.fetchUniversities();
@@ -468,9 +1177,21 @@ export default {
     async deleteUniversity(id) {
       try {
         const university = this.universitiesData.find(u => u.id === id);
-        const endpoint = university.type === 'national'
-          ? `https://nuft-website-backend.vercel.app/nationallinks/delete/${id}`
-          : `https://nuft-website-backend.vercel.app/privatelinks/delete/${id}`;
+        let endpoint;
+        switch (university.type) {
+          case 'national':
+            endpoint = `https://nuft-website-backend.vercel.app/nationallinks/delete/${id}`;
+            break;
+          case 'private':
+            endpoint = `https://nuft-website-backend.vercel.app/privatelinks/delete/${id}`;
+            break;
+          case 'special':
+            endpoint = `https://nuft-website-backend.vercel.app/speciallinks/delete/${id}`;
+            break;
+          case 'international':
+            endpoint = `https://nuft-website-backend.vercel.app/internationallinks/delete/${id}`;
+            break;
+        }
 
         await axios.delete(endpoint);
         alert('تم حذف الجامعة بنجاح');
@@ -492,9 +1213,31 @@ export default {
       this.activeTab = 'manage';
     },
     resetForm() {
-      this.university_Arabic_Name = '';
-      this.university_Logo = '';
-      this.type = 'national';
+      this.formData = {
+        university_code: '', // Added university short name
+        university_Arabic_Name: '',
+        university_Logo: '',
+        type: 'national',
+        Uni_Bio: '',
+        location: '',
+        website: '',
+        phone: '',
+        email: '',
+        facebook: '',
+        instagram: '',
+        youtube: '',
+        linkedin: '',
+        faculties: [],
+        international_programs: '',
+        dorms: [],
+        transportation: [],
+        dorms_link: '',
+        transportation_link: '',
+        scholarship_link: '',
+        Egyptian_Admission_link: '',
+        Egyptian_Transfer_link: '',
+        Wafdeen_Admission_link: ''
+      };
     }
   },
   created() {
@@ -730,6 +1473,27 @@ export default {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
+.form-category {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid #e9ecef;
+}
+
+.category-title {
+  color: #1a237e;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.category-title i {
+  color: #4158d0;
+}
+
 .form-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -741,25 +1505,44 @@ export default {
   margin-bottom: 1rem;
 }
 
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
 label {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   margin-bottom: 0.5rem;
   color: #495057;
   font-weight: 500;
 }
 
+label i {
+  color: #4158d0;
+}
+
 input[type="text"],
-select {
+input[type="url"],
+input[type="tel"],
+input[type="email"],
+select,
+textarea {
   width: 100%;
   padding: 0.75rem;
   border: 1px solid #dee2e6;
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.3s ease;
+  background: white;
 }
 
 input[type="text"]:focus,
-select:focus {
+input[type="url"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus {
   outline: none;
   border-color: #4158d0;
   box-shadow: 0 0 0 3px rgba(65, 88, 208, 0.1);
@@ -777,6 +1560,78 @@ select:focus {
   color: #adb5bd;
   font-size: 0.875rem;
   pointer-events: none;
+}
+
+.faculty-item,
+.dorm-item,
+.transportation-item {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e9ecef;
+}
+
+.faculty-header,
+.dorm-header,
+.transportation-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.faculty-header h4,
+.dorm-header h4,
+.transportation-header h4 {
+  color: #1a237e;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.remove-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background: #fde7e7;
+  color: #d32f2f;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.remove-btn:hover {
+  background: #ffebee;
+  transform: translateY(-2px);
+}
+
+.add-btn {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px dashed #dee2e6;
+  border-radius: 8px;
+  background: transparent;
+  color: #4158d0;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.add-btn:hover {
+  border-color: #4158d0;
+  background: #f8f9fa;
 }
 
 .form-actions {

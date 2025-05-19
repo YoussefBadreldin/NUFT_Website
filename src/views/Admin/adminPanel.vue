@@ -74,6 +74,15 @@
             <span class="description">إدارة المساعد الذكي</span>
           </div>
         </a>
+        <a href="/admin/articles" class="option-card">
+          <div class="icon-wrapper">
+            <i class="fas fa-newspaper"></i>
+          </div>
+          <div class="content">
+            <span class="title">ادارة المقالات</span>
+            <span class="description">إدارة المقالات والمحتوى</span>
+          </div>
+        </a>
       </div>
     </div>
 

@@ -23,6 +23,7 @@ import FacultyTemplate from "../views/User/SmartAssistant/FacultyTemplate.vue";
 import StatusData from "../views/Admin/StatusData.vue";
 import Account from "../views/User/Account.vue";
 import SmartAssistantAdmin from "../views/Admin/SmartAssistantAdmin.vue";
+import ArticleManagement from '../views/Admin/ArticleManagement.vue'
 
 
 const routes = [
@@ -154,6 +155,12 @@ const routes = [
     path: '/admin/smart-assistant',
     name: 'SmartAssistantAdmin',
     component: SmartAssistantAdmin,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/admin/articles',
+    name: 'ArticleManagement',
+    component: ArticleManagement,
     meta: { requiresAuth: true }
   }
 ];

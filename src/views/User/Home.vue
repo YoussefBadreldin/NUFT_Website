@@ -23,7 +23,7 @@
             </div>
 
             <!-- About Us -->
-            <div class="About-Us">
+            <div class="About-Us" ref="aboutSection">
                 <div class="inner-lay">
                     <div class="container">
                         <div class="row session-title">
@@ -32,7 +32,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-3 numb" v-for="(stat, index) in stats" :key="index">
-                                <h3>{{ stat.number }}</h3>
+                                <h3>{{ animatedStats[index] }}</h3>
                                 <span>{{ stat.description }}</span>
                             </div>
                         </div>
@@ -123,11 +123,13 @@ export default {
     data() {
         return {
             stats: [
-                { number: '250k+', description: 'مستخدم' },
+                { number: '150k+', description: 'مستخدم' },
                 { number: '10+', description: 'خدمة مختلفة' },
                 { number: '80+', description: 'عضو في الفريق' },
                 { number: '5+', description: 'سنين من الخبرة' }
             ],
+            animatedStats: ['0', '0', '0', '0'],
+            animationStarted: false,
             faqs: [
                 {
                     question: 'ما هي خدمات NUFT؟',
@@ -187,9 +189,45 @@ export default {
         };
     },
     mounted() {
-        // Implement any logic you need when the component is mounted
+        // Create Intersection Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !this.animationStarted) {
+                    this.startCountingAnimation();
+                    this.animationStarted = true;
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Start observing the About Us section
+        if (this.$refs.aboutSection) {
+            observer.observe(this.$refs.aboutSection);
+        }
     },
     methods: {
+        startCountingAnimation() {
+            this.stats.forEach((stat, index) => {
+                const targetNumber = parseInt(stat.number);
+                const duration = 2000; // 2 seconds
+                const steps = 60; // 60 steps for smooth animation
+                const stepDuration = duration / steps;
+                let currentStep = 0;
+
+                const animate = () => {
+                    if (currentStep < steps) {
+                        const progress = currentStep / steps;
+                        const currentNumber = Math.floor(targetNumber * progress);
+                        this.animatedStats[index] = currentNumber + (stat.number.includes('+') ? '+' : '');
+                        currentStep++;
+                        setTimeout(animate, stepDuration);
+                    } else {
+                        this.animatedStats[index] = stat.number;
+                    }
+                };
+
+                animate();
+            });
+        },
         loadNews() {
             $.get('/News', (data) => {
                 const newsHtml = $(data);
@@ -244,6 +282,19 @@ export default {
 .About-Us .numb {
     text-align: center;
     margin-bottom: 20px;
+}
+
+.About-Us .numb h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.About-Us .numb span {
+    color: #ffffff;
+    font-size: 1.1rem;
 }
 
 /* Our Team Styles */

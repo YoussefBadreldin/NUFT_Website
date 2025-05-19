@@ -15,19 +15,19 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="../../images/slider/slider-1.jpg" class="d-block w-100" alt="Slider Image 1">
+                        <img src="../../../images/slider/slider-1.jpg" class="d-block w-100" alt="Slider Image 1">
                         <div class="carousel-caption d-none d-md-block">
                          
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="../../images/slider/slider-2.jpg" class="d-block w-100" alt="Slider Image 2">
+                        <img src="../../../images/slider/slider-2.jpg" class="d-block w-100" alt="Slider Image 2">
                         <div class="carousel-caption d-none d-md-block">
                         
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="../../images/slider/slider-3.jpg" class="d-block w-100" alt="Slider Image 3">
+                        <img src="../../../images/slider/slider-3.jpg" class="d-block w-100" alt="Slider Image 3">
                         <div class="carousel-caption d-none d-md-block">
                         
                         </div>
@@ -61,9 +61,9 @@
 
 <script>
 import $ from 'jquery';
-import HeaderComponent from '../../public/global/headerComponent.vue';
-import FooterComponent from '../../public/global/footerComponent.vue';
-import smartAssistantComponent from '../../public/global/smartAssistantComponent.vue';
+import HeaderComponent from '../../../public/global/headerComponent.vue';
+import FooterComponent from '../../../public/global/footerComponent.vue';
+import smartAssistantComponent from '../../../public/global/smartAssistantComponent.vue';
 
 
 export default {

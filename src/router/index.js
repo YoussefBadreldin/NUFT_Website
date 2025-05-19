@@ -1,30 +1,25 @@
 import { createRouter, createWebHistory } from "vue-router";
-import MainComponent from "../views/Home.vue";
-import signUp from "../views/signup/signUp.vue";
-import adminPanel from "../views/adminpanel/adminPanel.vue";
-import adminPanelnational from "../views/adminpanel/national adminPanel.vue";
-import adminPanelprivate from "../views/adminpanel/private adminPanel.vue";
-import adminPanelspecial from "../views/adminpanel/special adminPanel.vue";
-import adminPanelinternational from "../views/adminpanel/international adminPanel.vue";
-import adminPanelnews from "../views/adminpanel/news adminPanel.vue";
-import adminPanelSchoralships from "../views/adminpanel/Schoralships adminPanel.vue";
-import getUsers from "../views/adminpanel/users";
-import ContactList from "../views/adminpanel/getContact.vue";
-import AdmissionStatus from "../views/AdmissionStatus/AdmissionStatus.vue";
-import Ugrad_AdmissionStatus from "../views/AdmissionStatus/Ugrad_AdmissionStatus.vue";
-import NationalStatus from "../views/AdmissionStatus/nationaladmissionstatus.vue";
-import PrivateStatus from "../views/AdmissionStatus/privateadmissionstatus.vue";
-import specialStatus from "../views/AdmissionStatus/specialadmissionstatus.vue";
-import internationalStatus from "../views/AdmissionStatus/internationaladmissionstatus.vue";
+import MainComponent from "../views/User/Home.vue";
+import signUp from "../views/User/Login.vue";
+import adminPanel from "../views/Admin/adminPanel.vue";
+import adminPanelnational from "../views/Admin/national adminPanel.vue";
+import adminPanelprivate from "../views/Admin/private adminPanel.vue";
+import adminPanelspecial from "../views/Admin/special adminPanel.vue";
+import adminPanelinternational from "../views/Admin/international adminPanel.vue";
+import adminPanelnews from "../views/Admin/news.vue";
+import adminPanelSchoralships from "../views/Admin/SchoralshipsData.vue";
+import getUsers from "../views/Admin/users";
+import ContactList from "../views/Admin/messages.vue";
+import AdmissionStatus from "../views/User/AdmissionStatus.vue";
 import CertificatesCalculator from "../views/certificateCalc/certificateCalc.vue";
 import americanView from '../views/certificateCalc/American.vue';
 import IGCSECalculator from "../views/certificateCalc/IGCSE.vue";
-import ScholarShips from "../views/Scholarships.vue";
-import Universities from "../views/Universities.vue";
-import UniversityTemplate from "../views/UniversityTemplate.vue";
-import ContactUs from "../views/ContactUs.vue";
-import Portfolio from "../views/Portfolio.vue";
-import NewsPage from "../views/News.vue";
+import ScholarShips from "../views/User/Scholarships.vue";
+import Universities from "../views/User/Universities.vue";
+import UniversityTemplate from "../views/User/UniversityTemplate.vue";
+import ContactUs from "../views/User/ContactUs.vue";
+import Portfolio from "../views/User/Portfolio.vue";
+import NewsPage from "../views/User/News.vue";
 import smartAssistant from "../views/smartAssistant/smartAssistant.vue";
 import searchsmartAssistant from "../views/smartAssistant/search-smartAssistant.vue";
 import scoresmartAssistant from "../views/smartAssistant/score-smartAssistant.vue";
@@ -69,17 +64,17 @@ const routes = [
     component: signUp
   },
   {
-    path: '/users',
+    path: '/admin/users',
     name: "getUsers",
     component: getUsers
   },
   {
-    path: '/getContact',
+    path: '/admin/messages',
     name: "ContactList",
     component: ContactList,
   },
   {
-    path:'/NUFTawyNumber1',
+    path:'/admin',
     name:'adminpanel',
     component: adminPanel
   },
@@ -104,12 +99,12 @@ const routes = [
     component: adminPanelinternational
   },
   {
-    path:'/NUFTawyNumber1-news',
+    path:'/admin/news',
     name:'adminPanelnews',
     component: adminPanelnews
   },
   {
-    path:'/NUFTawyNumber1-Scholarships',
+    path:'/admin/scholarships',
     name:'adminPanelSchoralships',
     component: adminPanelSchoralships
   },
@@ -117,31 +112,6 @@ const routes = [
     path:"/Status",
     name:"Status",
     component:AdmissionStatus
-  },
-  {
-    path:"/Status/UGRAD",
-    name:"Status/UGRAD",
-    component:Ugrad_AdmissionStatus
-  },
-  {
-    path:"/Status/UGRAD/National",
-    name:"Status/UGRAD/National",
-    component:NationalStatus,
-  },
-  {
-    path:"/Status/UGRAD/Private",
-    name:"PrivateStatus",
-    component:PrivateStatus,
-  },
-  {
-    path:"/Status/UGRAD/special",
-    name:"specialStatus",
-    component:specialStatus,
-  },
-  {
-    path:"/Status/UGRAD/international",
-    name:"internationalStatus",
-    component:internationalStatus,
   },
   {
     path:"/Calculator",

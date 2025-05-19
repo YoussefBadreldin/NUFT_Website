@@ -189,7 +189,7 @@
 
           <div class="field">
             <label>البريد الالكتروني</label>
-            <input type="email" required v-model="email" placeholder="example@domain.com :مثال">
+            <input type="email" required v-model="email" placeholder="example@domain.com أو admin">
           </div>
 
           <div class="input-group">
@@ -205,8 +205,8 @@
         </div>
 
         <div class="field" v-if="mode !== 'signup'">
-          <label>البريد الالكتروني</label>
-          <input type="email" required v-model="email">
+          <label>اسم المستخدم</label>
+          <input type="text" required v-model="email" placeholder="example@domain.com أو admin">
         </div>
 
         <div class="field" v-if="mode !== 'signup'">
@@ -295,18 +295,28 @@ export default {
     });
 },
     signIn() {
+      // Determine user type based on username
+      const isAdmin = this.email.toLowerCase() === 'admin';
+      
       axios.post('https://nuft-website-backend.vercel.app/auth/signin', {
         email: this.email,
         password: this.password,
       }).then(() => {
         console.log('Logged in successfully');
-        this.$router.push('/Home'); // Redirect to Home upon successful login
-        localStorage.setItem('name', this.email); // Store user's name in local storage
+        localStorage.setItem('name', this.email);
+        localStorage.setItem('userType', isAdmin ? 'admin' : 'normal');
+        
+        // Redirect based on user type
+        if (isAdmin) {
+          this.$router.push('/admin');
+        } else {
+          this.$router.push('/Home');
+        }
       }).catch(error => {
         if (error.response && error.response.status === 404) {
           alert('User not found');
         } else if (error.response && error.response.status === 401) {
-          alert('Incorrect email or password');
+          alert('Incorrect username or password');
         } else {
           console.error('Error with login:', error);
         }

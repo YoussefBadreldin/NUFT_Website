@@ -1,19 +1,19 @@
 <template>
   <div class="universities-container">
     <Header />
-    <div class="content">
+    <div class="content" dir="rtl">
       <h1 class="title">دليل الجامعات المصرية</h1>
       
       <!-- Loading State -->
       <div v-if="loading" class="loading-container">
         <div class="loading-spinner"></div>
-        <p>...جاري تحميل الجامعات</p>
+        <p>جاري تحميل الجامعات...</p>
       </div>
 
       <!-- Error State -->
       <div v-else-if="error" class="error-container">
         <p>{{ error }}</p>
-        <button @click="fetchAllUniversities" class="retry-button">Retry</button>
+        <button @click="fetchAllUniversities" class="retry-button">إعادة المحاولة</button>
       </div>
 
       <!-- Content -->
@@ -31,7 +31,7 @@
 
         <!-- National Universities -->
         <div v-if="nationalUniversities.length" class="university-section">
-          <h2 class="section-title">الجامعات الاهلية</h2>
+          <h2 class="section-title">الجامعات الأهلية</h2>
           <div class="universities-list">
             <div v-for="uni in nationalUniversities" :key="uni.id" class="university-card" @click="navigateToUniversity('national', uni.id)">
               <img :src="uni.logo" :alt="uni.name" class="university-logo" @error="handleImageError">
@@ -70,7 +70,7 @@
 import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
-import Header from '../../public/global/headerComponent.vue';
+import Header from '../../../public/global/headerComponent.vue';
 
 export default {
   name: 'Universities',
@@ -286,6 +286,7 @@ export default {
 .universities-container {
   min-height: 100vh;
   background-color: #f5f5f5;
+  font-family: 'Cairo', sans-serif;
 }
 
 .content {
@@ -299,6 +300,7 @@ export default {
   color: #1a237e;
   margin-bottom: 2rem;
   font-size: 2.5rem;
+  font-weight: 700;
 }
 
 .loading-container {
@@ -307,6 +309,7 @@ export default {
   align-items: center;
   justify-content: center;
   min-height: 400px;
+  gap: 1rem;
 }
 
 .loading-spinner {
@@ -316,7 +319,12 @@ export default {
   border-top: 5px solid #1a237e;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin-bottom: 1rem;
+}
+
+.loading-container p {
+  color: #1a237e;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 @keyframes spin {
@@ -328,16 +336,21 @@ export default {
   text-align: center;
   color: #d32f2f;
   padding: 2rem;
+  font-size: 1.1rem;
 }
 
 .retry-button {
   background-color: #1a237e;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 4px;
   cursor: pointer;
   margin-top: 1rem;
+  font-family: 'Cairo', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
 }
 
 .retry-button:hover {
@@ -354,6 +367,7 @@ export default {
   font-size: 1.8rem;
   border-bottom: 2px solid #1a237e;
   padding-bottom: 0.5rem;
+  font-weight: 700;
 }
 
 .universities-list {
@@ -388,6 +402,7 @@ export default {
   color: #1a237e;
   font-size: 1.2rem;
   margin: 0;
+  font-weight: 600;
 }
 
 @media (max-width: 768px) {

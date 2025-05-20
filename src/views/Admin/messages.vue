@@ -97,7 +97,7 @@ export default {
       this.$router.go(-1);
     },
     fetchContacts() {
-      axios.get('https://nuft-website-backend.vercel.app/contact/get')
+      axios.get('https://nuft-website-backend.vercel.app/contact')
         .then(response => {
           this.contacts = response.data;
           this.filteredMessages = response.data;

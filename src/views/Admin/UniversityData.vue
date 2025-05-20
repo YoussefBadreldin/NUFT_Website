@@ -315,11 +315,11 @@
                   </div>
                 </div>
                 <button type="button" class="add-btn" @click="addFaculty('add')">
-                  <i class="fas fa-plus"></i>
+        <i class="fas fa-plus"></i>
                   إضافة كلية
-                </button>
+      </button>
               </div>
-            </div>
+    </div>
 
             <!-- International Programs -->
             <div class="form-category">
@@ -563,11 +563,11 @@
               </div>
               <h3 class="university-name">{{ university.university_Arabic_Name }}</h3>
               <div class="university-actions">
-                <button class="action-btn edit" @click="editUniversity(university)">
+                <button class="action-btn edit" @click="handleEditFromList(university)">
                   <i class="fas fa-edit"></i>
                   تعديل
                 </button>
-                <button class="action-btn delete" @click="confirmDelete(university.id)">
+                <button class="action-btn delete" @click="handleDeleteFromList(university)">
                   <i class="fas fa-trash"></i>
                   حذف
                 </button>
@@ -590,11 +590,11 @@
               </div>
               <h3 class="university-name">{{ university.university_Arabic_Name }}</h3>
               <div class="university-actions">
-                <button class="action-btn edit" @click="editUniversity(university)">
+                <button class="action-btn edit" @click="handleEditFromList(university)">
                   <i class="fas fa-edit"></i>
                   تعديل
                 </button>
-                <button class="action-btn delete" @click="confirmDelete(university.id)">
+                <button class="action-btn delete" @click="handleDeleteFromList(university)">
                   <i class="fas fa-trash"></i>
                   حذف
                 </button>
@@ -617,11 +617,11 @@
               </div>
               <h3 class="university-name">{{ university.university_Arabic_Name }}</h3>
               <div class="university-actions">
-                <button class="action-btn edit" @click="editUniversity(university)">
+                <button class="action-btn edit" @click="handleEditFromList(university)">
                   <i class="fas fa-edit"></i>
                   تعديل
                 </button>
-                <button class="action-btn delete" @click="confirmDelete(university.id)">
+                <button class="action-btn delete" @click="handleDeleteFromList(university)">
                   <i class="fas fa-trash"></i>
                   حذف
                 </button>
@@ -644,11 +644,11 @@
               </div>
               <h3 class="university-name">{{ university.university_Arabic_Name }}</h3>
               <div class="university-actions">
-                <button class="action-btn edit" @click="editUniversity(university)">
+                <button class="action-btn edit" @click="handleEditFromList(university)">
                   <i class="fas fa-edit"></i>
                   تعديل
                 </button>
-                <button class="action-btn delete" @click="confirmDelete(university.id)">
+                <button class="action-btn delete" @click="handleDeleteFromList(university)">
                   <i class="fas fa-trash"></i>
                   حذف
                 </button>
@@ -2010,6 +2010,18 @@ export default {
     switchToDelete() {
       this.activeTab = 'delete';
       this.selectedType = 'all';
+      this.filterDeleteUniversities();
+    },
+    handleEditFromList(university) {
+      this.activeTab = 'edit';
+      this.selectedType = 'all';
+      this.selectUniversityForEdit(university);
+      this.filterEditUniversities();
+    },
+    handleDeleteFromList(university) {
+      this.activeTab = 'delete';
+      this.selectedType = 'all';
+      this.selectUniversityForDelete(university);
       this.filterDeleteUniversities();
     },
   },

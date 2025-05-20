@@ -11,7 +11,7 @@
                 <button 
                     v-for="tab in tabs" 
                     :key="tab.id"
-                    :class="['tab-button', { active: activeTab === tab.id }]"
+                    :class="['type-tab', { active: activeTab === tab.id }]"
                     @click="activeTab = tab.id"
                 >
                     {{ tab.name }}
@@ -762,24 +762,24 @@ export default {
     flex-wrap: wrap;
 }
 
-.tab-button {
+.type-tab {
     padding: 0.75rem 1.5rem;
     border: 2px solid #1a237e;
     border-radius: 8px;
-    background-color: white;
+    background: white;
     color: #1a237e;
-    font-weight: bold;
+    font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
     font-family: 'Cairo', sans-serif;
 }
 
-.tab-button:hover {
-    background-color: #e8eaf6;
+.type-tab:hover {
+    background: #e8eaf6;
 }
 
-.tab-button.active {
-    background-color: #1a237e;
+.type-tab.active {
+    background: #1a237e;
     color: white;
 }
 
@@ -982,11 +982,12 @@ export default {
     }
 
     .status-tabs {
-        flex-wrap: wrap;
+        gap: 0.5rem;
     }
 
-    .tab-button {
-        width: 100%;
+    .type-tab {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
     }
 
     .search-container {

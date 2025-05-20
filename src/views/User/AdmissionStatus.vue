@@ -622,10 +622,10 @@ export default {
         async getAdmission() {
             this.isLoading = true;
             const endpoints = {
-                national: 'https://nuft-website-backend.vercel.app/nationaladmission/get',
-                private: 'https://nuft-website-backend.vercel.app/privateadmission/get',
-                special: 'https://nuft-website-backend.vercel.app/specialadmission/get',
-                international: 'https://nuft-website-backend.vercel.app/internationaladmission/get'
+                national: 'https://nuft-website-backend.vercel.app/national/admission',
+                private: 'https://nuft-website-backend.vercel.app/private/admission',
+                special: 'https://nuft-website-backend.vercel.app/special/admission',
+                international: 'https://nuft-website-backend.vercel.app/international/admission'
             };
 
             try {
@@ -686,10 +686,10 @@ export default {
         },
         async getYears() {
             const endpoints = {
-                national: 'https://nuft-website-backend.vercel.app/nationallinks/get_nationallinks',
-                private: 'https://nuft-website-backend.vercel.app/privatelinks/get_privatelinks',
-                special: 'https://nuft-website-backend.vercel.app/speciallinks/get_speciallinks',
-                international: 'https://nuft-website-backend.vercel.app/internationallinks/get_internationallinks'
+                national: 'https://nuft-website-backend.vercel.app/national/links',
+                private: 'https://nuft-website-backend.vercel.app/private/links',
+                special: 'https://nuft-website-backend.vercel.app/special/links',
+                international: 'https://nuft-website-backend.vercel.app/international/links'
             };
 
             try {

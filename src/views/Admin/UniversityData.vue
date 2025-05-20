@@ -303,14 +303,28 @@
                   <div class="faculty-header">
                     <h4>
                       <i class="fas fa-graduation-cap"></i>
-                      كلية {{ index + 1 }}
+                      {{ faculty.faculty || `كلية ${index + 1}` }}
                     </h4>
-                    <button type="button" class="remove-btn" @click="removeFaculty(index, 'add')">
-                      <i class="fas fa-trash"></i>
-                      حذف
-                    </button>
+                    <div class="faculty-actions">
+                      <template v-if="!collapsedSections.faculties[index]">
+                        <button type="button" class="save-btn" @click="saveFaculty(index, 'add')">
+                          <i class="fas fa-save"></i>
+                          حفظ
+                        </button>
+                      </template>
+                      <template v-else>
+                        <button type="button" class="toggle-btn" @click="toggleSection('faculties', index)">
+                          <i class="fas fa-edit"></i>
+                          تعديل
+                        </button>
+                      </template>
+                      <button type="button" class="remove-btn" @click="removeFaculty(index, 'add')">
+                        <i class="fas fa-trash"></i>
+                        حذف
+                      </button>
+                    </div>
                   </div>
-                  <div class="form-grid">
+                  <div class="form-grid" v-show="!collapsedSections.faculties[index]">
                     <div class="form-group">
                       <label :for="'faculty_' + index">اسم الكلية</label>
                       <input 
@@ -454,6 +468,7 @@
                         type="number" 
                         v-model="faculty.wafdeen_score" 
                         placeholder="الحد الأدنى للوافدين"
+                        class="full-width-input"
                       >
                     </div>
                   </div>
@@ -502,14 +517,28 @@
                   <div class="dorm-header">
                     <h4>
                       <i class="fas fa-building"></i>
-                      سكن {{ index + 1 }}
+                      {{ dorm.type || `سكن ${index + 1}` }}
                     </h4>
-                    <button type="button" class="remove-btn" @click="removeDorm(index, 'add')">
-                      <i class="fas fa-trash"></i>
-                      حذف
-                    </button>
+                    <div class="dorm-actions">
+                      <template v-if="!collapsedSections.dorms[index]">
+                        <button type="button" class="save-btn" @click="saveDorm(index, 'add')">
+                          <i class="fas fa-save"></i>
+                          حفظ
+                        </button>
+                      </template>
+                      <template v-else>
+                        <button type="button" class="toggle-btn" @click="toggleSection('dorms', index)">
+                          <i class="fas fa-edit"></i>
+                          تعديل
+                        </button>
+                      </template>
+                      <button type="button" class="remove-btn" @click="removeDorm(index, 'add')">
+                        <i class="fas fa-trash"></i>
+                        حذف
+                      </button>
+                    </div>
                   </div>
-                  <div class="form-grid">
+                  <div class="form-grid" v-show="!collapsedSections.dorms[index]">
                     <div class="form-group">
                       <label :for="'dorm_type_' + index">نوع السكن</label>
                       <input 
@@ -526,6 +555,7 @@
                         v-model="dorm.price" 
                         :id="'dorm_price_' + index"
                         placeholder="أدخل سعر السكن"
+                        class="full-width-input"
                       >
                     </div>
                   </div>
@@ -557,14 +587,28 @@
                   <div class="transportation-header">
                     <h4>
                       <i class="fas fa-route"></i>
-                      وسيلة نقل {{ index + 1 }}
+                      {{ trans.type || `وسيلة نقل ${index + 1}` }}
                     </h4>
-                    <button type="button" class="remove-btn" @click="removeTransportation(index, 'add')">
-                      <i class="fas fa-trash"></i>
-                      حذف
-                    </button>
+                    <div class="transportation-actions">
+                      <template v-if="!collapsedSections.transportation[index]">
+                        <button type="button" class="save-btn" @click="saveTransportation(index, 'add')">
+                          <i class="fas fa-save"></i>
+                          حفظ
+                        </button>
+                      </template>
+                      <template v-else>
+                        <button type="button" class="toggle-btn" @click="toggleSection('transportation', index)">
+                          <i class="fas fa-edit"></i>
+                          تعديل
+                        </button>
+                      </template>
+                      <button type="button" class="remove-btn" @click="removeTransportation(index, 'add')">
+                        <i class="fas fa-trash"></i>
+                        حذف
+                      </button>
+                    </div>
                   </div>
-                  <div class="form-grid">
+                  <div class="form-grid" v-show="!collapsedSections.transportation[index]">
                     <div class="form-group">
                       <label :for="'trans_type_' + index">نوع الوسيلة</label>
                       <input 
@@ -581,6 +625,7 @@
                         v-model="trans.price" 
                         :id="'trans_price_' + index"
                         placeholder="أدخل سعر وسيلة النقل"
+                        class="full-width-input"
                       >
                     </div>
                   </div>
@@ -1136,14 +1181,28 @@
                 <div class="faculty-header">
                   <h4>
                     <i class="fas fa-graduation-cap"></i>
-                    كلية {{ index + 1 }}
+                    {{ faculty.faculty || `كلية ${index + 1}` }}
                   </h4>
-                  <button type="button" class="remove-btn" @click="removeFaculty(index)">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
+                  <div class="faculty-actions">
+                    <template v-if="!collapsedSections.faculties[index]">
+                      <button type="button" class="save-btn" @click="saveFaculty(index)">
+                        <i class="fas fa-save"></i>
+                        حفظ
+                      </button>
+                    </template>
+                    <template v-else>
+                      <button type="button" class="toggle-btn" @click="toggleSection('faculties', index)">
+                        <i class="fas fa-edit"></i>
+                        تعديل
+                      </button>
+                    </template>
+                    <button type="button" class="remove-btn" @click="removeFaculty(index)">
+                      <i class="fas fa-trash"></i>
+                      حذف
+                    </button>
+                  </div>
                 </div>
-                <div class="form-grid">
+                <div class="form-grid" v-show="!collapsedSections.faculties[index]">
                   <div class="form-group">
                     <label :for="'faculty_' + index">اسم الكلية</label>
                     <input 
@@ -1287,6 +1346,7 @@
                       type="number" 
                       v-model="faculty.wafdeen_score" 
                       placeholder="الحد الأدنى للوافدين"
+                      class="full-width-input"
                     >
                   </div>
                 </div>
@@ -1326,14 +1386,28 @@
                 <div class="dorm-header">
                   <h4>
                     <i class="fas fa-building"></i>
-                    سكن {{ index + 1 }}
+                    {{ dorm.type || `سكن ${index + 1}` }}
                   </h4>
-                  <button type="button" class="remove-btn" @click="removeDorm(index)">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
+                  <div class="dorm-actions">
+                    <template v-if="!collapsedSections.dorms[index]">
+                      <button type="button" class="save-btn" @click="saveDorm(index)">
+                        <i class="fas fa-save"></i>
+                        حفظ
+                      </button>
+                    </template>
+                    <template v-else>
+                      <button type="button" class="toggle-btn" @click="toggleSection('dorms', index)">
+                        <i class="fas fa-edit"></i>
+                        تعديل
+                      </button>
+                    </template>
+                    <button type="button" class="remove-btn" @click="removeDorm(index)">
+                      <i class="fas fa-trash"></i>
+                      حذف
+                    </button>
+                  </div>
                 </div>
-                <div class="form-grid">
+                <div class="form-grid" v-show="!collapsedSections.dorms[index]">
                   <div class="form-group">
                     <label :for="'dorm_type_' + index">نوع السكن</label>
                     <input 
@@ -1350,6 +1424,7 @@
                       v-model="dorm.price" 
                       :id="'dorm_price_' + index"
                       placeholder="أدخل سعر السكن"
+                      class="full-width-input"
                     >
                   </div>
                 </div>
@@ -1384,14 +1459,28 @@
                 <div class="transportation-header">
                   <h4>
                     <i class="fas fa-route"></i>
-                    وسيلة نقل {{ index + 1 }}
+                    {{ trans.type || `وسيلة نقل ${index + 1}` }}
                   </h4>
-                  <button type="button" class="remove-btn" @click="removeTransportation(index)">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
+                  <div class="transportation-actions">
+                    <template v-if="!collapsedSections.transportation[index]">
+                      <button type="button" class="save-btn" @click="saveTransportation(index)">
+                        <i class="fas fa-save"></i>
+                        حفظ
+                      </button>
+                    </template>
+                    <template v-else>
+                      <button type="button" class="toggle-btn" @click="toggleSection('transportation', index)">
+                        <i class="fas fa-edit"></i>
+                        تعديل
+                      </button>
+                    </template>
+                    <button type="button" class="remove-btn" @click="removeTransportation(index)">
+                      <i class="fas fa-trash"></i>
+                      حذف
+                    </button>
+                  </div>
                 </div>
-                <div class="form-grid">
+                <div class="form-grid" v-show="!collapsedSections.transportation[index]">
                   <div class="form-group">
                     <label :for="'trans_type_' + index">نوع الوسيلة</label>
                     <input 
@@ -1408,6 +1497,7 @@
                       v-model="trans.price" 
                       :id="'trans_price_' + index"
                       placeholder="أدخل سعر وسيلة النقل"
+                      class="full-width-input"
                     >
                   </div>
                 </div>
@@ -1879,7 +1969,12 @@ export default {
         Egyptian_Admission_link: { label: 'رابط التقديم للطلاب المصريين' },
         Egyptian_Transfer_link: { label: 'رابط التحويل للطلاب المصريين' },
         Wafdeen_Admission_link: { label: 'رابط التقديم للطلاب الوافدين' }
-      }
+      },
+      collapsedSections: {
+        faculties: {},
+        dorms: {},
+        transportation: {}
+      },
     };
   },
   computed: {
@@ -2690,7 +2785,40 @@ export default {
         console.error('Error deleting link:', error);
         alert('حدث خطأ أثناء حذف الرابط');
       }
-    }
+    },
+    saveFaculty(index, mode = 'edit') {
+      const faculty = mode === 'add' ? this.addFormData.faculties[index] : this.editFormData.faculties[index];
+      if (!faculty.faculty) {
+        alert('الرجاء إدخال اسم الكلية');
+        return;
+      }
+      // Set the section as collapsed
+      this.collapsedSections.faculties[index] = true;
+    },
+
+    saveDorm(index, mode = 'edit') {
+      const dorm = mode === 'add' ? this.addFormData.dorms[index] : this.editFormData.dorms[index];
+      if (!dorm.type) {
+        alert('الرجاء إدخال نوع السكن');
+        return;
+      }
+      // Set the section as collapsed
+      this.collapsedSections.dorms[index] = true;
+    },
+
+    saveTransportation(index, mode = 'edit') {
+      const transport = mode === 'add' ? this.addFormData.transportation[index] : this.editFormData.transportation[index];
+      if (!transport.type) {
+        alert('الرجاء إدخال نوع وسيلة النقل');
+        return;
+      }
+      // Set the section as collapsed
+      this.collapsedSections.transportation[index] = true;
+    },
+
+    toggleSection(section, index) {
+      this.collapsedSections[section][index] = !this.collapsedSections[section][index];
+    },
   },
   created() {
     this.fetchUniversities();
@@ -3682,5 +3810,87 @@ textarea:focus {
   outline: none;
   border-color: #4158d0;
   box-shadow: 0 0 0 2px rgba(65, 88, 208, 0.1);
+}
+
+.faculty-actions,
+.dorm-actions,
+.transportation-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.save-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.save-btn:hover {
+  background-color: #45a049;
+}
+
+.save-btn i {
+  font-size: 0.9rem;
+}
+
+.faculty-item,
+.dorm-item,
+.transportation-item {
+  position: relative;
+}
+
+.faculty-item .form-grid,
+.dorm-item .form-grid,
+.transportation-item .form-grid {
+  transition: all 0.3s ease;
+}
+
+.toggle-btn {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+  background: #bbdefb;
+  transform: translateY(-2px);
+}
+
+.toggle-btn i {
+  font-size: 0.9rem;
+}
+
+.toggle-btn.expanded i {
+  transform: rotate(180deg);
+}
+
+.full-width-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.full-width-input:focus {
+  outline: none;
+  border-color: #4158d0;
+  box-shadow: 0 0 0 3px rgba(65, 88, 208, 0.1);
 }
 </style> 

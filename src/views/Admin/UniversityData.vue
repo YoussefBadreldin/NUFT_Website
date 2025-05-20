@@ -1178,29 +1178,12 @@
             </h3>
             <div class="programs-list">
               <div v-for="(faculty, index) in editFormData.faculties" :key="index" class="faculty-item">
-                <div class="faculty-header">
-                  <h4>
-                    <i class="fas fa-graduation-cap"></i>
-                    {{ faculty.faculty || `كلية ${index + 1}` }}
-                  </h4>
-                  <div class="faculty-actions">
-                    <template v-if="!collapsedSections.faculties[index]">
-                      <button type="button" class="save-btn" @click="saveFaculty(index)">
-                        <i class="fas fa-save"></i>
-                        حفظ
-                      </button>
-                    </template>
-                    <template v-else>
-                      <button type="button" class="toggle-btn" @click="toggleSection('faculties', index)">
-                        <i class="fas fa-edit"></i>
-                        تعديل
-                      </button>
-                    </template>
-                    <button type="button" class="remove-btn" @click="removeFaculty(index)">
-                      <i class="fas fa-trash"></i>
-                      حذف
-                    </button>
-                  </div>
+                <div class="form-header">
+                  <h4>{{ faculty.faculty || 'كلية جديدة' }}</h4>
+                  <button type="button" class="toggle-btn" @click="toggleSection('faculties', index)">
+                    <i class="fas" :class="collapsedSections.faculties[index] ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
+                    {{ collapsedSections.faculties[index] ? 'عرض' : 'إخفاء' }}
+                  </button>
                 </div>
                 <div class="form-grid" v-show="!collapsedSections.faculties[index]">
                   <div class="form-group">
@@ -1237,124 +1220,9 @@
                       placeholder="أدخل البرامج مفصولة بفواصل"
                     ></textarea>
                   </div>
-
-                  <!-- Fees Section -->
-                  <div class="form-group">
-                    <label>رسوم الوافدين</label>
-                    <div class="fees-grid">
-                      <input 
-                        type="number" 
-                        v-model="faculty.feesNatives" 
-                        placeholder="السنة الأولى"
-                      >
-                      <input 
-                        type="number" 
-                        v-model="faculty.feesNatives2" 
-                        placeholder="السنة الثانية"
-                      >
-                      <input 
-                        type="number" 
-                        v-model="faculty.feesNatives3" 
-                        placeholder="السنة الثالثة"
-                      >
-                      <input 
-                        type="number" 
-                        v-model="faculty.feesNatives4" 
-                        placeholder="السنة الرابعة"
-                      >
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label>رسوم المصريين</label>
-                    <div class="fees-grid">
-                      <input 
-                        type="number" 
-                        v-model="faculty.feesEgyption" 
-                        placeholder="السنة الأولى"
-                      >
-                      <input 
-                        type="number" 
-                        v-model="faculty.feesEgyption2" 
-                        placeholder="السنة الثانية"
-                      >
-                      <input 
-                        type="number" 
-                        v-model="faculty.feesEgyption3" 
-                        placeholder="السنة الثالثة"
-                      >
-                      <input 
-                        type="number" 
-                        v-model="faculty.feesEgyption4" 
-                        placeholder="السنة الرابعة"
-                      >
-                    </div>
-                  </div>
-
-                  <!-- Admission Scores Section -->
-                  <div class="form-group">
-                    <label>الحدود الدنيا - ثانوية عامة</label>
-                    <div class="scores-grid">
-                      <input 
-                        type="number" 
-                        v-model="faculty.thanwyaa_firstYear_score" 
-                        placeholder="السنة الأولى"
-                      >
-                      <input 
-                        type="number" 
-                        v-model="faculty.thanwyaa_secondYear_score" 
-                        placeholder="السنة الثانية"
-                      >
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label>الحدود الدنيا - أزهر</label>
-                    <div class="scores-grid">
-                      <input 
-                        type="number" 
-                        v-model="faculty.azhar_firstYear_score" 
-                        placeholder="السنة الأولى"
-                      >
-                      <input 
-                        type="number" 
-                        v-model="faculty.azhar_secondYear_score" 
-                        placeholder="السنة الثانية"
-                      >
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label>الحدود الدنيا - عربي/انجليزي</label>
-                    <div class="scores-grid">
-                      <input 
-                        type="number" 
-                        v-model="faculty.Arabenglish_firstYear_score" 
-                        placeholder="السنة الأولى"
-                      >
-                      <input 
-                        type="number" 
-                        v-model="faculty.Arabenglish_secondYear_score" 
-                        placeholder="السنة الثانية"
-                      >
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label>الحدود الدنيا - وافدين</label>
-                    <input 
-                      type="number" 
-                      v-model="faculty.wafdeen_score" 
-                      placeholder="الحد الأدنى للوافدين"
-                      class="full-width-input"
-                    >
-                  </div>
                 </div>
               </div>
-              <button type="button" class="add-btn" @click="addFaculty">
-                <i class="fas fa-plus"></i>
-                إضافة كلية
-              </button>
+              <!-- Remove the add faculty button -->
             </div>
           </div>
 
@@ -1381,70 +1249,34 @@
               <i class="fas fa-home"></i>
               السكن الجامعي
             </h3>
-            <div class="dorms-list">
-              <div v-for="(dorm, index) in editFormData.dorms" :key="index" class="dorm-item">
-                <div class="dorm-header">
-                  <h4>
-                    <i class="fas fa-building"></i>
-                    {{ dorm.type || `سكن ${index + 1}` }}
-                  </h4>
-                  <div class="dorm-actions">
-                    <template v-if="!collapsedSections.dorms[index]">
-                      <button type="button" class="save-btn" @click="saveDorm(index)">
-                        <i class="fas fa-save"></i>
-                        حفظ
-                      </button>
-                    </template>
-                    <template v-else>
-                      <button type="button" class="toggle-btn" @click="toggleSection('dorms', index)">
-                        <i class="fas fa-edit"></i>
-                        تعديل
-                      </button>
-                    </template>
-                    <button type="button" class="remove-btn" @click="removeDorm(index)">
-                      <i class="fas fa-trash"></i>
-                      حذف
-                    </button>
-                  </div>
+            <div v-for="(dorm, index) in editFormData.dorms" :key="index" class="dorm-item">
+              <div class="form-header">
+                <h4>{{ dorm.type || 'سكن جديد' }}</h4>
+                <button type="button" class="toggle-btn" @click="toggleSection('dorms', index)">
+                  <i class="fas" :class="collapsedSections.dorms[index] ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
+                  {{ collapsedSections.dorms[index] ? 'عرض' : 'إخفاء' }}
+                </button>
+              </div>
+              <div class="form-grid" v-show="!collapsedSections.dorms[index]">
+                <div class="form-group">
+                  <label :for="'dorm_type_' + index">نوع السكن</label>
+                  <input 
+                    type="text" 
+                    v-model="dorm.type" 
+                    :id="'dorm_type_' + index"
+                    placeholder="أدخل نوع السكن"
+                  >
                 </div>
-                <div class="form-grid" v-show="!collapsedSections.dorms[index]">
-                  <div class="form-group">
-                    <label :for="'dorm_type_' + index">نوع السكن</label>
-                    <input 
-                      type="text" 
-                      v-model="dorm.type" 
-                      :id="'dorm_type_' + index"
-                      placeholder="أدخل نوع السكن"
-                    >
-                  </div>
-                  <div class="form-group">
-                    <label :for="'dorm_price_' + index">السعر</label>
-                    <input 
-                      type="number" 
-                      v-model="dorm.price" 
-                      :id="'dorm_price_' + index"
-                      placeholder="أدخل سعر السكن"
-                      class="full-width-input"
-                    >
-                  </div>
+                <div class="form-group">
+                  <label :for="'dorm_price_' + index">السعر</label>
+                  <input 
+                    type="text" 
+                    v-model="dorm.price" 
+                    :id="'dorm_price_' + index"
+                    placeholder="أدخل السعر"
+                  >
                 </div>
               </div>
-              <button type="button" class="add-btn" @click="addDorm">
-                <i class="fas fa-plus"></i>
-                إضافة سكن
-              </button>
-            </div>
-            <div class="form-group">
-              <label for="dorms_link">
-                <i class="fas fa-link"></i>
-                رابط المزيد عن السكن
-              </label>
-              <input 
-                type="url" 
-                v-model="editFormData.dorms_link" 
-                id="dorms_link"
-                placeholder="https://example.com/dorms"
-              >
             </div>
           </div>
 
@@ -1452,72 +1284,36 @@
           <div class="form-category">
             <h3 class="category-title">
               <i class="fas fa-bus"></i>
-              الأنتقالات
+              المواصلات
             </h3>
-            <div class="transportation-list">
-              <div v-for="(trans, index) in editFormData.transportation" :key="index" class="transportation-item">
-                <div class="transportation-header">
-                  <h4>
-                    <i class="fas fa-route"></i>
-                    {{ trans.type || `وسيلة نقل ${index + 1}` }}
-                  </h4>
-                  <div class="transportation-actions">
-                    <template v-if="!collapsedSections.transportation[index]">
-                      <button type="button" class="save-btn" @click="saveTransportation(index)">
-                        <i class="fas fa-save"></i>
-                        حفظ
-                      </button>
-                    </template>
-                    <template v-else>
-                      <button type="button" class="toggle-btn" @click="toggleSection('transportation', index)">
-                        <i class="fas fa-edit"></i>
-                        تعديل
-                      </button>
-                    </template>
-                    <button type="button" class="remove-btn" @click="removeTransportation(index)">
-                      <i class="fas fa-trash"></i>
-                      حذف
-                    </button>
-                  </div>
+            <div v-for="(trans, index) in editFormData.transportation" :key="index" class="transportation-item">
+              <div class="form-header">
+                <h4>{{ trans.type || 'مواصلات جديدة' }}</h4>
+                <button type="button" class="toggle-btn" @click="toggleSection('transportation', index)">
+                  <i class="fas" :class="collapsedSections.transportation[index] ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
+                  {{ collapsedSections.transportation[index] ? 'عرض' : 'إخفاء' }}
+                </button>
+              </div>
+              <div class="form-grid" v-show="!collapsedSections.transportation[index]">
+                <div class="form-group">
+                  <label :for="'trans_type_' + index">نوع المواصلات</label>
+                  <input 
+                    type="text" 
+                    v-model="trans.type" 
+                    :id="'trans_type_' + index"
+                    placeholder="أدخل نوع المواصلات"
+                  >
                 </div>
-                <div class="form-grid" v-show="!collapsedSections.transportation[index]">
-                  <div class="form-group">
-                    <label :for="'trans_type_' + index">نوع الوسيلة</label>
-                    <input 
-                      type="text" 
-                      v-model="trans.type" 
-                      :id="'trans_type_' + index"
-                      placeholder="أدخل نوع وسيلة النقل"
-                    >
-                  </div>
-                  <div class="form-group">
-                    <label :for="'trans_price_' + index">السعر</label>
-                    <input 
-                      type="number" 
-                      v-model="trans.price" 
-                      :id="'trans_price_' + index"
-                      placeholder="أدخل سعر وسيلة النقل"
-                      class="full-width-input"
-                    >
-                  </div>
+                <div class="form-group">
+                  <label :for="'trans_price_' + index">السعر</label>
+                  <input 
+                    type="text" 
+                    v-model="trans.price" 
+                    :id="'trans_price_' + index"
+                    placeholder="أدخل السعر"
+                  >
                 </div>
               </div>
-              <button type="button" class="add-btn" @click="addTransportation">
-                <i class="fas fa-plus"></i>
-                إضافة وسيلة نقل
-              </button>
-            </div>
-            <div class="form-group">
-              <label for="transportation_link">
-                <i class="fas fa-link"></i>
-                رابط المزيد عن المواصلات
-              </label>
-              <input 
-                type="url" 
-                v-model="editFormData.transportation_link" 
-                id="transportation_link"
-                placeholder="https://example.com/transportation"
-              >
             </div>
           </div>
 
@@ -2817,7 +2613,10 @@ export default {
     },
 
     toggleSection(section, index) {
-      this.collapsedSections[section][index] = !this.collapsedSections[section][index];
+      if (!this.collapsedSections[section]) {
+        this.$set(this.collapsedSections, section, {});
+      }
+      this.$set(this.collapsedSections[section], index, !this.collapsedSections[section][index]);
     },
   },
   created() {

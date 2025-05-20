@@ -574,7 +574,7 @@
                 الأنتقالات
               </h3>
               <div class="form-group">
-                <label for="transportation_link">رابط المواصلات</label>
+                <label for="transportation_link">رابط الأنتقالات</label>
                 <input 
                   type="url" 
                   v-model="addFormData.transportation_link" 
@@ -728,9 +728,17 @@
           >
         </div>
       </div>
-      <div class="universities-grid">
+      <div v-if="loading.all" class="loading-container">
+        <div class="spinner"></div>
+        <p>جاري تحميل الجامعات...</p>
+      </div>
+      <div v-else class="universities-grid">
         <!-- Private Universities -->
-        <div v-if="privateUniversities.length" class="university-section">
+        <div v-if="loading.private" class="loading-section">
+          <div class="spinner"></div>
+          <p>جاري تحميل الجامعات الخاصة...</p>
+        </div>
+        <div v-else-if="privateUniversities.length" class="university-section">
           <h2 class="section-title">الجامعات الخاصة</h2>
           <div class="universities-list">
             <div v-for="university in privateUniversities" :key="university.id" class="university-card">
@@ -757,7 +765,11 @@
         </div>
 
         <!-- National Universities -->
-        <div v-if="nationalUniversities.length" class="university-section">
+        <div v-if="loading.national" class="loading-section">
+          <div class="spinner"></div>
+          <p>جاري تحميل الجامعات الأهلية...</p>
+        </div>
+        <div v-else-if="nationalUniversities.length" class="university-section">
           <h2 class="section-title">الجامعات الأهلية</h2>
           <div class="universities-list">
             <div v-for="university in nationalUniversities" :key="university.id" class="university-card">
@@ -784,7 +796,11 @@
         </div>
 
         <!-- Special Universities -->
-        <div v-if="specialUniversities.length" class="university-section">
+        <div v-if="loading.special" class="loading-section">
+          <div class="spinner"></div>
+          <p>جاري تحميل الجامعات ذات طبيعة خاصة...</p>
+        </div>
+        <div v-else-if="specialUniversities.length" class="university-section">
           <h2 class="section-title">الجامعات ذات طبيعة خاصة</h2>
           <div class="universities-list">
             <div v-for="university in specialUniversities" :key="university.id" class="university-card">
@@ -811,7 +827,11 @@
         </div>
 
         <!-- International Universities -->
-        <div v-if="internationalUniversities.length" class="university-section">
+        <div v-if="loading.international" class="loading-section">
+          <div class="spinner"></div>
+          <p>جاري تحميل الجامعات الدولية...</p>
+        </div>
+        <div v-else-if="internationalUniversities.length" class="university-section">
           <h2 class="section-title">الجامعات الدولية</h2>
           <div class="universities-list">
             <div v-for="university in internationalUniversities" :key="university.id" class="university-card">
@@ -1249,6 +1269,15 @@
               <i class="fas fa-home"></i>
               السكن الجامعي
             </h3>
+            <div class="form-group">
+              <label for="dorms_link">رابط معلومات السكن</label>
+              <input 
+                type="url" 
+                v-model="editFormData.dorms_link" 
+                id="dorms_link"
+                placeholder="https://example.com/dorms"
+              >
+            </div>
             <div v-for="(dorm, index) in editFormData.dorms" :key="index" class="dorm-item">
               <div class="form-header">
                 <h4>{{ dorm.type || 'سكن جديد' }}</h4>
@@ -1284,8 +1313,17 @@
           <div class="form-category">
             <h3 class="category-title">
               <i class="fas fa-bus"></i>
-              المواصلات
+              الأنتقالات
             </h3>
+            <div class="form-group">
+              <label for="transportation_link">رابط الأنتقالات</label>
+              <input 
+                type="url" 
+                v-model="editFormData.transportation_link" 
+                id="transportation_link"
+                placeholder="https://example.com/transportation"
+              >
+            </div>
             <div v-for="(trans, index) in editFormData.transportation" :key="index" class="transportation-item">
               <div class="form-header">
                 <h4>{{ trans.type || 'مواصلات جديدة' }}</h4>
@@ -1296,12 +1334,12 @@
               </div>
               <div class="form-grid" v-show="!collapsedSections.transportation[index]">
                 <div class="form-group">
-                  <label :for="'trans_type_' + index">نوع المواصلات</label>
+                  <label :for="'trans_type_' + index">نوع الأنتقالات</label>
                   <input 
                     type="text" 
                     v-model="trans.type" 
                     :id="'trans_type_' + index"
-                    placeholder="أدخل نوع المواصلات"
+                    placeholder="أدخل نوع الأنتقالات"
                   >
                 </div>
                 <div class="form-group">
@@ -1518,7 +1556,7 @@
                 حذف الجامعة بالكامل
               </h3>
               <div class="warning-message">
-                <p>سيتم حذف جميع البيانات المرتبطة بالجامعة بما في ذلك الكليات والسكن والمواصلات.</p>
+                <p>سيتم حذف جميع البيانات المرتبطة بالجامعة بما في ذلك الكليات والسكن والأنتقالات.</p>
                 <button class="delete-university-btn" @click="confirmDeleteUniversity">
                   <i class="fas fa-trash"></i>
                   حذف الجامعة بالكامل
@@ -1539,6 +1577,146 @@
               </button>
             </div>
 
+            <!-- Basic Information Section -->
+            <div v-if="activeDeleteSection === 'basic'" class="delete-section">
+              <h3 class="delete-section-title">
+                <i class="fas fa-university"></i>
+                بيانات الجامعة الأساسية
+              </h3>
+              <div class="delete-items-list">
+                <div class="delete-item">
+                  <div class="item-info">
+                    <h4>الرمز المختصر</h4>
+                    <p>{{ selectedUniversityForDelete?.university_code }}</p>
+                  </div>
+                  <button class="delete-item-btn" @click="deleteBasicInfo('university_code')">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+                <div class="delete-item">
+                  <div class="item-info">
+                    <h4>اسم الجامعة</h4>
+                    <p>{{ selectedUniversityForDelete?.university_Arabic_Name }}</p>
+                  </div>
+                  <button class="delete-item-btn" @click="deleteBasicInfo('university_Arabic_Name')">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+                <div class="delete-item">
+                  <div class="item-info">
+                    <h4>نوع الجامعة</h4>
+                    <p>{{ getUniversityTypeName(selectedUniversityForDelete?.type) }}</p>
+                  </div>
+                  <button class="delete-item-btn" @click="deleteBasicInfo('type')">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+                <div class="delete-item">
+                  <div class="item-info">
+                    <h4>نبذة عن الجامعة</h4>
+                    <p>{{ selectedUniversityForDelete?.Uni_Bio }}</p>
+                  </div>
+                  <button class="delete-item-btn" @click="deleteBasicInfo('Uni_Bio')">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Information Section -->
+            <div v-if="activeDeleteSection === 'contact'" class="delete-section">
+              <h3 class="delete-section-title">
+                <i class="fas fa-address-book"></i>
+                معلومات الاتصال
+              </h3>
+              <div class="delete-items-list">
+                <div class="delete-item">
+                  <div class="item-info">
+                    <h4>الموقع الإلكتروني</h4>
+                    <p>{{ selectedUniversityForDelete?.website }}</p>
+                  </div>
+                  <button class="delete-item-btn" @click="deleteContactInfo('website')">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+                <div class="delete-item">
+                  <div class="item-info">
+                    <h4>رقم الهاتف</h4>
+                    <p>{{ selectedUniversityForDelete?.phone }}</p>
+                  </div>
+                  <button class="delete-item-btn" @click="deleteContactInfo('phone')">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+                <div class="delete-item">
+                  <div class="item-info">
+                    <h4>البريد الإلكتروني</h4>
+                    <p>{{ selectedUniversityForDelete?.email }}</p>
+                  </div>
+                  <button class="delete-item-btn" @click="deleteContactInfo('email')">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Media Section -->
+            <div v-if="activeDeleteSection === 'social'" class="delete-section">
+              <h3 class="delete-section-title">
+                <i class="fas fa-share-alt"></i>
+                روابط التواصل الاجتماعي
+              </h3>
+              <div class="delete-items-list">
+                <div class="delete-item">
+                  <div class="item-info">
+                    <h4>فيسبوك</h4>
+                    <p>{{ selectedUniversityForDelete?.facebook }}</p>
+                  </div>
+                  <button class="delete-item-btn" @click="deleteSocialMedia('facebook')">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+                <div class="delete-item">
+                  <div class="item-info">
+                    <h4>انستجرام</h4>
+                    <p>{{ selectedUniversityForDelete?.instagram }}</p>
+                  </div>
+                  <button class="delete-item-btn" @click="deleteSocialMedia('instagram')">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+                <div class="delete-item">
+                  <div class="item-info">
+                    <h4>يوتيوب</h4>
+                    <p>{{ selectedUniversityForDelete?.youtube }}</p>
+                  </div>
+                  <button class="delete-item-btn" @click="deleteSocialMedia('youtube')">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+                <div class="delete-item">
+                  <div class="item-info">
+                    <h4>لينكد إن</h4>
+                    <p>{{ selectedUniversityForDelete?.linkedin }}</p>
+                  </div>
+                  <button class="delete-item-btn" @click="deleteSocialMedia('linkedin')">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+              </div>
+            </div>
+
             <!-- Faculties Section -->
             <div v-if="activeDeleteSection === 'faculties'" class="delete-section">
               <h3 class="delete-section-title">
@@ -1551,8 +1729,9 @@
                      class="delete-item">
                   <div class="item-info">
                     <h4>{{ faculty.faculty }}</h4>
-                    <p>{{ faculty.section }}</p>
-                    <p class="programs">{{ faculty.programs }}</p>
+                    <p>الشعبة: {{ faculty.section }}</p>
+                    <p>نوع البرنامج: {{ faculty.normal_or_Dual === 'normal' ? 'عادي' : 'مزدوج' }}</p>
+                    <p class="programs">البرامج: {{ faculty.programs }}</p>
                   </div>
                   <button class="delete-item-btn" @click="deleteFaculty(faculty)">
                     <i class="fas fa-trash"></i>
@@ -1569,14 +1748,18 @@
                 السكن الجامعي
               </h3>
               <div class="delete-items-list">
+                <div class="delete-item">
+                  <div class="item-info">
+                    <h4>رابط معلومات السكن</h4>
+                    <p>{{ selectedUniversityForDelete?.dorms_link }}</p>
+                  </div>
+                </div>
                 <div v-for="(dorm, index) in selectedUniversityForDelete?.dorms" 
                      :key="index" 
                      class="delete-item">
                   <div class="item-info">
-                    <h4>{{ dorm.name }}</h4>
-                    <p>{{ dorm.location }}</p>
-                    <p class="price">{{ dorm.price }}</p>
-                    <p class="description">{{ dorm.description }}</p>
+                    <h4>{{ dorm.type }}</h4>
+                    <p class="price">السعر: {{ dorm.price }}</p>
                   </div>
                   <button class="delete-item-btn" @click="deleteDorm(dorm)">
                     <i class="fas fa-trash"></i>
@@ -1593,14 +1776,18 @@
                 الأنتقالات
               </h3>
               <div class="delete-items-list">
+                <div class="delete-item">
+                  <div class="item-info">
+                    <h4>رابط الأنتقالات</h4>
+                    <p>{{ selectedUniversityForDelete?.transportation_link }}</p>
+                  </div>
+                </div>
                 <div v-for="(trans, index) in selectedUniversityForDelete?.transportation" 
                      :key="index" 
                      class="delete-item">
                   <div class="item-info">
-                    <h4>{{ trans.name }}</h4>
-                    <p>{{ trans.route }}</p>
-                    <p class="price">{{ trans.price }}</p>
-                    <p class="description">{{ trans.description }}</p>
+                    <h4>{{ trans.type }}</h4>
+                    <p class="price">السعر: {{ trans.price }}</p>
                   </div>
                   <button class="delete-item-btn" @click="deleteTransportation(trans)">
                     <i class="fas fa-trash"></i>
@@ -1619,7 +1806,8 @@
               <div class="delete-items-list">
                 <div class="delete-item">
                   <div class="item-info">
-                    <p class="description">{{ selectedUniversityForDelete?.international_programs }}</p>
+                    <h4>رابط البرامج الدولية</h4>
+                    <p>{{ selectedUniversityForDelete?.international_programs }}</p>
                   </div>
                   <button class="delete-item-btn" @click="deleteInternationalPrograms">
                     <i class="fas fa-trash"></i>
@@ -1629,21 +1817,49 @@
               </div>
             </div>
 
-            <!-- Links Section -->
-            <div v-if="activeDeleteSection === 'links'" class="delete-section">
+            <!-- Admission Links Section -->
+            <div v-if="activeDeleteSection === 'admission'" class="delete-section">
               <h3 class="delete-section-title">
-                <i class="fas fa-link"></i>
-                الروابط
+                <i class="fas fa-user-graduate"></i>
+                روابط التقديم
               </h3>
               <div class="delete-items-list">
-                <div v-for="(link, key) in universityLinks" 
-                     :key="key" 
-                     class="delete-item">
+                <div class="delete-item">
                   <div class="item-info">
-                    <h4>{{ link.label }}</h4>
-                    <p>{{ selectedUniversityForDelete?.[key] }}</p>
+                    <h4>رابط التقديم للطلاب المصريين</h4>
+                    <p>{{ selectedUniversityForDelete?.Egyptian_Admission_link }}</p>
                   </div>
-                  <button class="delete-item-btn" @click="deleteLink(key)">
+                  <button class="delete-item-btn" @click="deleteAdmissionLink('Egyptian_Admission_link')">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+                <div class="delete-item">
+                  <div class="item-info">
+                    <h4>رابط التقديم للطلاب المصريين (البرامج الدولية)</h4>
+                    <p>{{ selectedUniversityForDelete?.Egyptian_Admission_link2 }}</p>
+                  </div>
+                  <button class="delete-item-btn" @click="deleteAdmissionLink('Egyptian_Admission_link2')">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+                <div class="delete-item">
+                  <div class="item-info">
+                    <h4>رابط التحويل للطلاب المصريين</h4>
+                    <p>{{ selectedUniversityForDelete?.Egyptian_Transfer_link }}</p>
+                  </div>
+                  <button class="delete-item-btn" @click="deleteAdmissionLink('Egyptian_Transfer_link')">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+                <div class="delete-item">
+                  <div class="item-info">
+                    <h4>رابط التقديم للطلاب الوافدين</h4>
+                    <p>{{ selectedUniversityForDelete?.Wafdeen_Admission_link }}</p>
+                  </div>
+                  <button class="delete-item-btn" @click="deleteAdmissionLink('Wafdeen_Admission_link')">
                     <i class="fas fa-trash"></i>
                     حذف
                   </button>
@@ -1659,6 +1875,89 @@
 
 <script>
 import axios from 'axios';
+
+// API Configuration
+const API_CONFIG = {
+  BASE_URL: 'https://nuft-website-backend.vercel.app',
+  ENDPOINTS: {
+    NATIONAL: {
+      LINKS: '/national/links',
+      FACULTY: {
+        ADD: '/national/faculty/add',
+        GET: (code) => `/national/faculty/${code}`,
+        UPDATE: (code) => `/national/faculty/${code}`
+      },
+      DORMS: {
+        ADD: '/national/dorms/add',
+        GET: (code) => `/national/dorms/${code}`,
+        UPDATE: (code) => `/national/dorms/${code}`
+      },
+      TRANSPORTATION: {
+        ADD: '/national/transportation/add',
+        GET: (code) => `/national/transportation/${code}`,
+        UPDATE: (code) => `/national/transportation/${code}`
+      },
+      DELETE: (code) => `/national/${code}`
+    },
+    PRIVATE: {
+      LINKS: '/private/links',
+      FACULTY: {
+        ADD: '/private/faculty/add',
+        GET: (code) => `/private/faculty/${code}`,
+        UPDATE: (code) => `/private/faculty/${code}`
+      },
+      DORMS: {
+        ADD: '/private/dorms/add',
+        GET: (code) => `/private/dorms/${code}`,
+        UPDATE: (code) => `/private/dorms/${code}`
+      },
+      TRANSPORTATION: {
+        ADD: '/private/transportation/add',
+        GET: (code) => `/private/transportation/${code}`,
+        UPDATE: (code) => `/private/transportation/${code}`
+      },
+      DELETE: (code) => `/private/${code}`
+    },
+    SPECIAL: {
+      LINKS: '/special/links',
+      FACULTY: {
+        ADD: '/special/faculty/add',
+        GET: (code) => `/special/faculty/${code}`,
+        UPDATE: (code) => `/special/faculty/${code}`
+      },
+      DORMS: {
+        ADD: '/special/dorms/add',
+        GET: (code) => `/special/dorms/${code}`,
+        UPDATE: (code) => `/special/dorms/${code}`
+      },
+      TRANSPORTATION: {
+        ADD: '/special/transportation/add',
+        GET: (code) => `/special/transportation/${code}`,
+        UPDATE: (code) => `/special/transportation/${code}`
+      },
+      DELETE: (code) => `/special/${code}`
+    },
+    INTERNATIONAL: {
+      LINKS: '/international/links',
+      FACULTY: {
+        ADD: '/international/faculty/add',
+        GET: (code) => `/international/faculty/${code}`,
+        UPDATE: (code) => `/international/faculty/${code}`
+      },
+      DORMS: {
+        ADD: '/international/dorms/add',
+        GET: (code) => `/international/dorms/${code}`,
+        UPDATE: (code) => `/international/dorms/${code}`
+      },
+      TRANSPORTATION: {
+        ADD: '/international/transportation/add',
+        GET: (code) => `/international/transportation/${code}`,
+        UPDATE: (code) => `/international/transportation/${code}`
+      },
+      DELETE: (code) => `/international/${code}`
+    }
+  }
+};
 
 export default {
   name: 'UniversityAdmin',
@@ -1721,9 +2020,22 @@ export default {
         Wafdeen_Admission_link: ''
       },
 
-      // State management
+      // Updated state management
       universitiesData: [],
-      loading: true,
+      loading: {
+        private: false,
+        national: false,
+        special: false,
+        international: false,
+        all: false,
+        details: {} // Add loading state for individual university details
+      },
+      error: {
+        private: null,
+        national: null,
+        special: null,
+        international: null
+      },
       searchQuery: '',
       filteredUniversities: [],
       isEditing: false,
@@ -1747,11 +2059,14 @@ export default {
       selectedUniversityForDelete: null,
       activeDeleteSection: 'faculties',
       deleteSections: [
+        { id: 'basic', label: 'البيانات الأساسية', icon: 'fas fa-university' },
+        { id: 'contact', label: 'معلومات الاتصال', icon: 'fas fa-address-book' },
+        { id: 'social', label: 'التواصل الاجتماعي', icon: 'fas fa-share-alt' },
         { id: 'faculties', label: 'الكليات', icon: 'fas fa-graduation-cap' },
         { id: 'dorms', label: 'السكن الجامعي', icon: 'fas fa-home' },
         { id: 'transportation', label: 'الأنتقالات', icon: 'fas fa-bus' },
         { id: 'international', label: 'البرامج الدولية', icon: 'fas fa-globe-americas' },
-        { id: 'links', label: 'الروابط', icon: 'fas fa-link' }
+        { id: 'admission', label: 'روابط التقديم', icon: 'fas fa-user-graduate' }
       ],
       universityLinks: {
         website: { label: 'الموقع الإلكتروني' },
@@ -1760,7 +2075,7 @@ export default {
         youtube: { label: 'يوتيوب' },
         linkedin: { label: 'لينكد إن' },
         dorms_link: { label: 'رابط السكن' },
-        transportation_link: { label: 'رابط المواصلات' },
+        transportation_link: { label: 'رابط الأنتقالات' },
         scholarship_link: { label: 'رابط المنح' },
         Egyptian_Admission_link: { label: 'رابط التقديم للطلاب المصريين' },
         Egyptian_Transfer_link: { label: 'رابط التحويل للطلاب المصريين' },
@@ -1771,6 +2086,13 @@ export default {
         dorms: {},
         transportation: {}
       },
+      // Add pagination state
+      pagination: {
+        page: 1,
+        limit: 10,
+        total: 0
+      },
+      expandedUniversities: new Set() // Track which universities are expanded
     };
   },
   computed: {
@@ -1795,119 +2117,124 @@ export default {
     goBack() {
       this.$router.go(-1);
     },
+
     async fetchUniversities() {
+      this.loading.all = true;
       try {
-        // Fetch from API
-        const [privateResponse, nationalResponse, specialResponse, internationalResponse] = await Promise.allSettled([
-          axios.get('https://nuft-website-backend.vercel.app/private/links'),
-          axios.get('https://nuft-website-backend.vercel.app/national/links'),
-          axios.get('https://nuft-website-backend.vercel.app/special/links'),
-          axios.get('https://nuft-website-backend.vercel.app/international/links')
-        ]);
+        // Fetch universities in parallel based on selected type
+        const typesToFetch = this.selectedType === 'all' 
+          ? ['private', 'national', 'special', 'international']
+          : [this.selectedType];
 
-        this.universitiesData = [];
+        const fetchPromises = typesToFetch.map(type => this.fetchUniversityType(type));
+        await Promise.all(fetchPromises);
 
-        // Process private universities
-        if (privateResponse.status === 'fulfilled' && privateResponse.value.data && Array.isArray(privateResponse.value.data)) {
-          const privateUnis = await Promise.all(privateResponse.value.data.map(async uni => {
-            const [dorms, transportation, faculty] = await Promise.allSettled([
-              axios.get(`https://nuft-website-backend.vercel.app/private/dorms/${uni.university || uni.university_code}`),
-              axios.get(`https://nuft-website-backend.vercel.app/private/transportation/${uni.university || uni.university_code}`),
-              axios.get(`https://nuft-website-backend.vercel.app/private/faculty/${uni.university || uni.university_code}`)
-            ]);
-
-            return {
-              id: uni.university || uni.university_code,
-              university_Arabic_Name: uni.university_Arabic_Name,
-              university_Logo: uni.university_Logo || '/images/default-university.png',
-              type: 'private',
-              dorms: dorms.status === 'fulfilled' ? dorms.value.data : [],
-              transportation: transportation.status === 'fulfilled' ? transportation.value.data : [],
-              faculties: faculty.status === 'fulfilled' ? faculty.value.data : [],
-              ...uni
-            };
-          }));
-          this.universitiesData = [...this.universitiesData, ...privateUnis];
-        }
-
-        // Process national universities
-        if (nationalResponse.status === 'fulfilled' && nationalResponse.value.data && Array.isArray(nationalResponse.value.data)) {
-          const nationalUnis = await Promise.all(nationalResponse.value.data.map(async uni => {
-            const [dorms, transportation, faculty] = await Promise.allSettled([
-              axios.get(`https://nuft-website-backend.vercel.app/national/dorms/${uni.university || uni.university_code}`),
-              axios.get(`https://nuft-website-backend.vercel.app/national/transportation/${uni.university || uni.university_code}`),
-              axios.get(`https://nuft-website-backend.vercel.app/national/faculty/${uni.university || uni.university_code}`)
-            ]);
-
-            return {
-              id: uni.university || uni.university_code,
-              university_Arabic_Name: uni.university_Arabic_Name,
-              university_Logo: uni.university_Logo || '/images/default-university.png',
-              type: 'national',
-              dorms: dorms.status === 'fulfilled' ? dorms.value.data : [],
-              transportation: transportation.status === 'fulfilled' ? transportation.value.data : [],
-              faculties: faculty.status === 'fulfilled' ? faculty.value.data : [],
-              ...uni
-            };
-          }));
-          this.universitiesData = [...this.universitiesData, ...nationalUnis];
-        }
-
-        // Process special universities
-        if (specialResponse.status === 'fulfilled' && specialResponse.value.data && Array.isArray(specialResponse.value.data)) {
-          const specialUnis = await Promise.all(specialResponse.value.data.map(async uni => {
-            const [dorms, transportation, faculty] = await Promise.allSettled([
-              axios.get(`https://nuft-website-backend.vercel.app/special/dorms/${uni.university || uni.university_code}`),
-              axios.get(`https://nuft-website-backend.vercel.app/special/transportation/${uni.university || uni.university_code}`),
-              axios.get(`https://nuft-website-backend.vercel.app/special/faculty/${uni.university || uni.university_code}`)
-            ]);
-
-            return {
-              id: uni.university || uni.university_code,
-              university_Arabic_Name: uni.university_Arabic_Name,
-              university_Logo: uni.university_Logo || '/images/default-university.png',
-              type: 'special',
-              dorms: dorms.status === 'fulfilled' ? dorms.value.data : [],
-              transportation: transportation.status === 'fulfilled' ? transportation.value.data : [],
-              faculties: faculty.status === 'fulfilled' ? faculty.value.data : [],
-              ...uni
-            };
-          }));
-          this.universitiesData = [...this.universitiesData, ...specialUnis];
-        }
-
-        // Process international universities
-        if (internationalResponse.status === 'fulfilled' && internationalResponse.value.data && Array.isArray(internationalResponse.value.data)) {
-          const internationalUnis = await Promise.all(internationalResponse.value.data.map(async uni => {
-            const [dorms, transportation, faculty] = await Promise.allSettled([
-              axios.get(`https://nuft-website-backend.vercel.app/international/dorms/${uni.university || uni.university_code}`),
-              axios.get(`https://nuft-website-backend.vercel.app/international/transportation/${uni.university || uni.university_code}`),
-              axios.get(`https://nuft-website-backend.vercel.app/international/faculty/${uni.university || uni.university_code}`)
-            ]);
-
-            return {
-              id: uni.university || uni.university_code,
-              university_Arabic_Name: uni.university_Arabic_Name,
-              university_Logo: uni.university_Logo || '/images/default-university.png',
-              type: 'international',
-              dorms: dorms.status === 'fulfilled' ? dorms.value.data : [],
-              transportation: transportation.status === 'fulfilled' ? transportation.value.data : [],
-              faculties: faculty.status === 'fulfilled' ? faculty.value.data : [],
-              ...uni
-            };
-          }));
-          this.universitiesData = [...this.universitiesData, ...internationalUnis];
-        }
-
+        // No longer fetch all details upfront
         this.filteredUniversities = this.universitiesData;
-        this.loading = false;
+        this.filteredEditUniversities = this.universitiesData;
+        this.filteredDeleteUniversities = this.universitiesData;
       } catch (error) {
         console.error('Error fetching universities:', error);
         this.universitiesData = [];
         this.filteredUniversities = [];
-        this.loading = false;
+      } finally {
+        this.loading.all = false;
       }
     },
+
+    async fetchUniversityType(type) {
+      this.loading[type] = true;
+      this.error[type] = null;
+
+      try {
+        const endpoint = `${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS[type.toUpperCase()].LINKS}`;
+        const response = await axios.get(endpoint);
+        
+        if (!response.data || !Array.isArray(response.data)) {
+          throw new Error(`Invalid data format for ${type} universities`);
+        }
+
+        // Add basic university data without details
+        const universities = response.data.map(uni => ({
+          id: uni.university || uni.university_code,
+          university_Arabic_Name: uni.university_Arabic_Name,
+          university_Logo: uni.university_Logo || '/images/default-university.png',
+          type: type,
+          dorms: [],
+          transportation: [],
+          faculties: [],
+          ...uni
+        }));
+
+        this.universitiesData = [
+          ...this.universitiesData.filter(u => u.type !== type),
+          ...universities
+        ];
+
+      } catch (error) {
+        console.error(`Error fetching ${type} universities:`, error);
+        this.error[type] = `Failed to load ${type} universities`;
+      } finally {
+        this.loading[type] = false;
+      }
+    },
+
+    // Add new method to toggle university expansion
+    async toggleUniversityExpansion(university) {
+      const universityId = university.id;
+      
+      if (this.expandedUniversities.has(universityId)) {
+        // If already expanded, collapse
+        this.expandedUniversities.delete(universityId);
+      } else {
+        // If not expanded, expand and load details
+        this.expandedUniversities.add(universityId);
+        await this.loadUniversityDetails(university);
+      }
+    },
+
+    // New method to load university details
+    async loadUniversityDetails(university) {
+      const universityId = university.id;
+      this.loading.details[universityId] = true;
+
+      try {
+        await this.fetchUniversityDetails(university, university.type);
+      } catch (error) {
+        console.error(`Error loading details for ${university.university_Arabic_Name}:`, error);
+      } finally {
+        this.loading.details[universityId] = false;
+      }
+    },
+
+    // Modify the existing fetchUniversityDetails method
+    async fetchUniversityDetails(university, type) {
+      try {
+        const universityCode = university.university || university.university_code;
+        const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+
+        const [dorms, transportation, faculty] = await Promise.allSettled([
+          axios.get(`${API_CONFIG.BASE_URL}${typeConfig.DORMS.GET(universityCode)}`),
+          axios.get(`${API_CONFIG.BASE_URL}${typeConfig.TRANSPORTATION.GET(universityCode)}`),
+          axios.get(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.GET(universityCode)}`)
+        ]);
+
+        // Update the university in the data array
+        const index = this.universitiesData.findIndex(u => u.id === university.id);
+        if (index !== -1) {
+          this.universitiesData[index] = {
+            ...this.universitiesData[index],
+            dorms: dorms.status === 'fulfilled' ? dorms.value.data : [],
+            transportation: transportation.status === 'fulfilled' ? transportation.value.data : [],
+            faculties: faculty.status === 'fulfilled' ? faculty.value.data : []
+          };
+        }
+      } catch (error) {
+        console.error(`Error fetching details for ${university.university_Arabic_Name}:`, error);
+        throw error; // Re-throw to handle in the calling method
+      }
+    },
+
     filterUniversities() {
       if (!this.searchQuery) {
         this.filteredUniversities = this.universitiesData;
@@ -2018,81 +2345,45 @@ export default {
     },
     async addUniversity() {
       try {
-        let endpoint;
-        switch (this.addFormData.type) {
-          case 'national':
-            endpoint = 'https://nuft-website-backend.vercel.app/national/faculty/add';
-            break;
-          case 'private':
-            endpoint = 'https://nuft-website-backend.vercel.app/private/faculty/add';
-            break;
-          case 'special':
-            endpoint = 'https://nuft-website-backend.vercel.app/special/faculty/add';
-            break;
-          case 'international':
-            endpoint = 'https://nuft-website-backend.vercel.app/international/faculty/add';
-            break;
-        }
+        const type = this.addFormData.type.toUpperCase();
+        const typeConfig = API_CONFIG.ENDPOINTS[type];
+        const universityCode = this.addFormData.university_code.toUpperCase();
 
         // Add university info and links
-        await axios.post(endpoint, {
+        await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.ADD}`, {
           ...this.addFormData,
-          university_code: this.addFormData.university_code.toUpperCase() // Ensure uppercase
+          university_code: universityCode
         });
 
         // Add faculties
         if (this.addFormData.faculties && this.addFormData.faculties.length > 0) {
-          const facultyEndpoint = this.addFormData.type === 'national' 
-            ? 'https://nuft-website-backend.vercel.app/national/faculty/add'
-            : this.addFormData.type === 'private'
-            ? 'https://nuft-website-backend.vercel.app/private/faculty/add'
-            : this.addFormData.type === 'special'
-            ? 'https://nuft-website-backend.vercel.app/special/faculty/add'
-            : 'https://nuft-website-backend.vercel.app/international/faculty/add';
-
           for (const faculty of this.addFormData.faculties) {
-            await axios.post(facultyEndpoint, {
+            await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.ADD}`, {
               ...faculty,
               university: this.addFormData.university_Arabic_Name,
-              university_code: this.addFormData.university_code.toUpperCase()
+              university_code: universityCode
             });
           }
         }
 
         // Add dorms
         if (this.addFormData.dorms && this.addFormData.dorms.length > 0) {
-          const dormEndpoint = this.addFormData.type === 'national'
-            ? 'https://nuft-website-backend.vercel.app/national/dorms/add'
-            : this.addFormData.type === 'private'
-            ? 'https://nuft-website-backend.vercel.app/private/dorms/add'
-            : this.addFormData.type === 'special'
-            ? 'https://nuft-website-backend.vercel.app/special/dorms/add'
-            : 'https://nuft-website-backend.vercel.app/international/dorms/add';
-
           for (const dorm of this.addFormData.dorms) {
-            await axios.post(dormEndpoint, {
+            await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.DORMS.ADD}`, {
               ...dorm,
               spec: this.addFormData.university_Arabic_Name,
-              university_code: this.addFormData.university_code.toUpperCase()
+              university_code: universityCode
             });
           }
         }
 
         // Add transportation
         if (this.addFormData.transportation && this.addFormData.transportation.length > 0) {
-          const transEndpoint = this.addFormData.type === 'national'
-            ? 'https://nuft-website-backend.vercel.app/national/transportation/add'
-            : this.addFormData.type === 'private'
-            ? 'https://nuft-website-backend.vercel.app/private/transportation/add'
-            : this.addFormData.type === 'special'
-            ? 'https://nuft-website-backend.vercel.app/special/transportation/add'
-            : 'https://nuft-website-backend.vercel.app/international/transportation/add';
-
           for (const trans of this.addFormData.transportation) {
-            await axios.post(transEndpoint, {
+            await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.TRANSPORTATION.ADD}`, {
               ...trans,
               spec: this.addFormData.university_Arabic_Name,
-              university_code: this.addFormData.university_code.toUpperCase()
+              university_code: universityCode
             });
           }
         }
@@ -2108,27 +2399,12 @@ export default {
     },
     async updateUniversity() {
       try {
-        let endpoint;
+        const type = this.editFormData.type.toUpperCase();
+        const typeConfig = API_CONFIG.ENDPOINTS[type];
         const universityCode = this.editFormData.university_code.toUpperCase();
-        
-        // Determine the correct endpoint based on university type
-        switch (this.editFormData.type) {
-          case 'national':
-            endpoint = `https://nuft-website-backend.vercel.app/national/faculty/${universityCode}`;
-            break;
-          case 'private':
-            endpoint = `https://nuft-website-backend.vercel.app/private/${universityCode}`;
-            break;
-          case 'special':
-            endpoint = `https://nuft-website-backend.vercel.app/special/${universityCode}`;
-            break;
-          case 'international':
-            endpoint = `https://nuft-website-backend.vercel.app/international/${universityCode}`;
-            break;
-        }
 
         // Update university basic information
-        await axios.put(endpoint, {
+        await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.UPDATE(universityCode)}`, {
           university_code: universityCode,
           university_Arabic_Name: this.editFormData.university_Arabic_Name,
           university_Logo: this.editFormData.university_Logo,
@@ -2151,11 +2427,10 @@ export default {
           Wafdeen_Admission_link: this.editFormData.Wafdeen_Admission_link
         });
 
-        // Update faculties if they exist
+        // Update faculties
         if (this.editFormData.faculties && this.editFormData.faculties.length > 0) {
-          const facultyEndpoint = `${endpoint}/faculty`;
           for (const faculty of this.editFormData.faculties) {
-            await axios.put(facultyEndpoint, {
+            await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.UPDATE(universityCode)}`, {
               ...faculty,
               university_code: universityCode,
               university: this.editFormData.university_Arabic_Name
@@ -2163,11 +2438,10 @@ export default {
           }
         }
 
-        // Update dorms if they exist
+        // Update dorms
         if (this.editFormData.dorms && this.editFormData.dorms.length > 0) {
-          const dormEndpoint = `${endpoint}/dorms`;
           for (const dorm of this.editFormData.dorms) {
-            await axios.put(dormEndpoint, {
+            await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.DORMS.UPDATE(universityCode)}`, {
               ...dorm,
               university_code: universityCode,
               spec: this.editFormData.university_Arabic_Name
@@ -2175,11 +2449,10 @@ export default {
           }
         }
 
-        // Update transportation if it exists
+        // Update transportation
         if (this.editFormData.transportation && this.editFormData.transportation.length > 0) {
-          const transEndpoint = `${endpoint}/transportation`;
           for (const trans of this.editFormData.transportation) {
-            await axios.put(transEndpoint, {
+            await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.TRANSPORTATION.UPDATE(universityCode)}`, {
               ...trans,
               university_code: universityCode,
               spec: this.editFormData.university_Arabic_Name
@@ -2204,26 +2477,11 @@ export default {
         }
 
         const universityCode = university.university_code || id;
-        let endpoint;
-
-        // Determine the correct endpoint based on university type
-        switch (university.type) {
-          case 'national':
-            endpoint = `https://nuft-website-backend.vercel.app/national/${universityCode}`;
-            break;
-          case 'private':
-            endpoint = `https://nuft-website-backend.vercel.app/private/${universityCode}`;
-            break;
-          case 'special':
-            endpoint = `https://nuft-website-backend.vercel.app/special/${universityCode}`;
-            break;
-          case 'international':
-            endpoint = `https://nuft-website-backend.vercel.app/international/${universityCode}`;
-            break;
-        }
+        const type = university.type.toUpperCase();
+        const typeConfig = API_CONFIG.ENDPOINTS[type];
 
         // Delete the university and all associated data
-        await axios.delete(endpoint);
+        await axios.delete(`${API_CONFIG.BASE_URL}${typeConfig.DELETE(universityCode)}`);
 
         // Remove the university from the local state
         this.universitiesData = this.universitiesData.filter(u => u.id !== id);
@@ -2410,178 +2668,12 @@ export default {
       this.selectUniversityForDelete(university);
       this.filterDeleteUniversities();
     },
-    async deleteFaculty(faculty) {
-      try {
-        const university = this.selectedUniversityForDelete;
-        const universityCode = university.university_code || university.id;
-        let endpoint;
-
-        switch (university.type) {
-          case 'national':
-            endpoint = `https://nuft-website-backend.vercel.app/national/${universityCode}/faculty/${faculty.id}`;
-            break;
-          case 'private':
-            endpoint = `https://nuft-website-backend.vercel.app/private/${universityCode}/faculty/${faculty.id}`;
-            break;
-          case 'special':
-            endpoint = `https://nuft-website-backend.vercel.app/special/${universityCode}/faculty/${faculty.id}`;
-            break;
-          case 'international':
-            endpoint = `https://nuft-website-backend.vercel.app/international/${universityCode}/faculty/${faculty.id}`;
-            break;
-        }
-
-        await axios.delete(endpoint);
-        
-        // Update local state
-        const index = university.faculties.findIndex(f => f.id === faculty.id);
-        if (index !== -1) {
-          university.faculties.splice(index, 1);
-        }
-
-        alert('تم حذف الكلية بنجاح');
-      } catch (error) {
-        console.error('Error deleting faculty:', error);
-        alert('حدث خطأ أثناء حذف الكلية');
-      }
-    },
-
-    async deleteDorm(dorm) {
-      try {
-        const university = this.selectedUniversityForDelete;
-        const universityCode = university.university_code || university.id;
-        let endpoint;
-
-        switch (university.type) {
-          case 'national':
-            endpoint = `https://nuft-website-backend.vercel.app/national/${universityCode}/dorms/${dorm.id}`;
-            break;
-          case 'private':
-            endpoint = `https://nuft-website-backend.vercel.app/private/${universityCode}/dorms/${dorm.id}`;
-            break;
-          case 'special':
-            endpoint = `https://nuft-website-backend.vercel.app/special/${universityCode}/dorms/${dorm.id}`;
-            break;
-          case 'international':
-            endpoint = `https://nuft-website-backend.vercel.app/international/${universityCode}/dorms/${dorm.id}`;
-            break;
-        }
-
-        await axios.delete(endpoint);
-        
-        // Update local state
-        const index = university.dorms.findIndex(d => d.id === dorm.id);
-        if (index !== -1) {
-          university.dorms.splice(index, 1);
-        }
-
-        alert('تم حذف السكن بنجاح');
-      } catch (error) {
-        console.error('Error deleting dorm:', error);
-        alert('حدث خطأ أثناء حذف السكن');
-      }
-    },
-
-    async deleteTransportation(trans) {
-      try {
-        const university = this.selectedUniversityForDelete;
-        const universityCode = university.university_code || university.id;
-        let endpoint;
-
-        switch (university.type) {
-          case 'national':
-            endpoint = `https://nuft-website-backend.vercel.app/national/${universityCode}/transportation/${trans.id}`;
-            break;
-          case 'private':
-            endpoint = `https://nuft-website-backend.vercel.app/private/${universityCode}/transportation/${trans.id}`;
-            break;
-          case 'special':
-            endpoint = `https://nuft-website-backend.vercel.app/special/${universityCode}/transportation/${trans.id}`;
-            break;
-          case 'international':
-            endpoint = `https://nuft-website-backend.vercel.app/international/${universityCode}/transportation/${trans.id}`;
-            break;
-        }
-
-        await axios.delete(endpoint);
-        
-        // Update local state
-        const index = university.transportation.findIndex(t => t.id === trans.id);
-        if (index !== -1) {
-          university.transportation.splice(index, 1);
-        }
-
-        alert('تم حذف وسيلة النقل بنجاح');
-      } catch (error) {
-        console.error('Error deleting transportation:', error);
-        alert('حدث خطأ أثناء حذف وسيلة النقل');
-      }
-    },
     async confirmDeleteUniversity() {
       if (confirm('هل أنت متأكد من حذف الجامعة بالكامل؟ سيتم حذف جميع البيانات المرتبطة بها.')) {
         await this.deleteUniversity(this.selectedUniversityForDelete.id);
       }
     },
 
-    async deleteInternationalPrograms() {
-      try {
-        const university = this.selectedUniversityForDelete;
-        const universityCode = university.university_code || university.id;
-        let endpoint;
-
-        switch (university.type) {
-          case 'national':
-            endpoint = `https://nuft-website-backend.vercel.app/national/${universityCode}/international`;
-            break;
-          case 'private':
-            endpoint = `https://nuft-website-backend.vercel.app/private/${universityCode}/international`;
-            break;
-          case 'special':
-            endpoint = `https://nuft-website-backend.vercel.app/special/${universityCode}/international`;
-            break;
-          case 'international':
-            endpoint = `https://nuft-website-backend.vercel.app/international/${universityCode}/international`;
-            break;
-        }
-
-        await axios.delete(endpoint);
-        university.international_programs = '';
-        alert('تم حذف البرامج الدولية بنجاح');
-      } catch (error) {
-        console.error('Error deleting international programs:', error);
-        alert('حدث خطأ أثناء حذف البرامج الدولية');
-      }
-    },
-
-    async deleteLink(linkKey) {
-      try {
-        const university = this.selectedUniversityForDelete;
-        const universityCode = university.university_code || university.id;
-        let endpoint;
-
-        switch (university.type) {
-          case 'national':
-            endpoint = `https://nuft-website-backend.vercel.app/national/${universityCode}/links/${linkKey}`;
-            break;
-          case 'private':
-            endpoint = `https://nuft-website-backend.vercel.app/private/${universityCode}/links/${linkKey}`;
-            break;
-          case 'special':
-            endpoint = `https://nuft-website-backend.vercel.app/special/${universityCode}/links/${linkKey}`;
-            break;
-          case 'international':
-            endpoint = `https://nuft-website-backend.vercel.app/international/${universityCode}/links/${linkKey}`;
-            break;
-        }
-
-        await axios.delete(endpoint);
-        university[linkKey] = '';
-        alert('تم حذف الرابط بنجاح');
-      } catch (error) {
-        console.error('Error deleting link:', error);
-        alert('حدث خطأ أثناء حذف الرابط');
-      }
-    },
     saveFaculty(index, mode = 'edit') {
       const faculty = mode === 'add' ? this.addFormData.faculties[index] : this.editFormData.faculties[index];
       if (!faculty.faculty) {
@@ -2618,17 +2710,118 @@ export default {
       }
       this.$set(this.collapsedSections[section], index, !this.collapsedSections[section][index]);
     },
+
+    async deleteBasicInfo(field) {
+      if (confirm(`هل أنت متأكد من حذف ${field}؟`)) {
+        try {
+          const type = this.selectedUniversityForDelete.type.toUpperCase();
+          const typeConfig = API_CONFIG.ENDPOINTS[type];
+          const universityCode = this.selectedUniversityForDelete.university_code;
+
+          await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.UPDATE(universityCode)}`, {
+            ...this.selectedUniversityForDelete,
+            [field]: ''
+          });
+
+          this.selectedUniversityForDelete[field] = '';
+          alert('تم الحذف بنجاح');
+        } catch (error) {
+          console.error('Error deleting basic info:', error);
+          alert('حدث خطأ أثناء الحذف');
+        }
+      }
+    },
+
+    async deleteContactInfo(field) {
+      if (confirm(`هل أنت متأكد من حذف ${field}؟`)) {
+        try {
+          const type = this.selectedUniversityForDelete.type.toUpperCase();
+          const typeConfig = API_CONFIG.ENDPOINTS[type];
+          const universityCode = this.selectedUniversityForDelete.university_code;
+
+          await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.UPDATE(universityCode)}`, {
+            ...this.selectedUniversityForDelete,
+            [field]: ''
+          });
+
+          this.selectedUniversityForDelete[field] = '';
+          alert('تم الحذف بنجاح');
+        } catch (error) {
+          console.error('Error deleting contact info:', error);
+          alert('حدث خطأ أثناء الحذف');
+        }
+      }
+    },
+
+    async deleteSocialMedia(field) {
+      if (confirm(`هل أنت متأكد من حذف ${field}؟`)) {
+        try {
+          const type = this.selectedUniversityForDelete.type.toUpperCase();
+          const typeConfig = API_CONFIG.ENDPOINTS[type];
+          const universityCode = this.selectedUniversityForDelete.university_code;
+
+          await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.UPDATE(universityCode)}`, {
+            ...this.selectedUniversityForDelete,
+            [field]: ''
+          });
+
+          this.selectedUniversityForDelete[field] = '';
+          alert('تم الحذف بنجاح');
+        } catch (error) {
+          console.error('Error deleting social media:', error);
+          alert('حدث خطأ أثناء الحذف');
+        }
+      }
+    },
+
+    async deleteInternationalPrograms() {
+      if (confirm('هل أنت متأكد من حذف رابط البرامج الدولية؟')) {
+        try {
+          const type = this.selectedUniversityForDelete.type.toUpperCase();
+          const typeConfig = API_CONFIG.ENDPOINTS[type];
+          const universityCode = this.selectedUniversityForDelete.university_code;
+
+          await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.UPDATE(universityCode)}`, {
+            ...this.selectedUniversityForDelete,
+            international_programs: ''
+          });
+
+          this.selectedUniversityForDelete.international_programs = '';
+          alert('تم الحذف بنجاح');
+        } catch (error) {
+          console.error('Error deleting international programs:', error);
+          alert('حدث خطأ أثناء الحذف');
+        }
+      }
+    },
+
+    async deleteAdmissionLink(field) {
+      if (confirm(`هل أنت متأكد من حذف ${field}؟`)) {
+        try {
+          const type = this.selectedUniversityForDelete.type.toUpperCase();
+          const typeConfig = API_CONFIG.ENDPOINTS[type];
+          const universityCode = this.selectedUniversityForDelete.university_code;
+
+          await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.UPDATE(universityCode)}`, {
+            ...this.selectedUniversityForDelete,
+            [field]: ''
+          });
+
+          this.selectedUniversityForDelete[field] = '';
+          alert('تم الحذف بنجاح');
+        } catch (error) {
+          console.error('Error deleting admission link:', error);
+          alert('حدث خطأ أثناء الحذف');
+        }
+      }
+    },
   },
   created() {
     this.fetchUniversities();
-    this.filteredEditUniversities = this.universitiesData;
-    this.filteredDeleteUniversities = this.universitiesData;
   },
   watch: {
     selectedType() {
-      this.filterUniversities();
-      this.filterEditUniversities();
-      this.filterDeleteUniversities();
+      this.fetchUniversities();
     },
     editSearchQuery() {
       this.filterEditUniversities();
@@ -3691,5 +3884,47 @@ textarea:focus {
   outline: none;
   border-color: #4158d0;
   box-shadow: 0 0 0 3px rgba(65, 88, 208, 0.1);
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  padding: 2rem;
+}
+
+.loading-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.loading-container p,
+.loading-section p {
+  margin-top: 1rem;
+  color: #6c757d;
+  font-size: 1.1rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #4158d0;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 </style> 

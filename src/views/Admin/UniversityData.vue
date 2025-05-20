@@ -145,7 +145,7 @@
                 <div class="form-group">
                   <label for="location">
                     <i class="fas fa-map-marker-alt"></i>
-                    الموقع
+                    الموقع علي الخرائط
                   </label>
                   <input 
                     type="text" 
@@ -541,7 +541,7 @@
             <div class="form-category">
               <h3 class="category-title">
                 <i class="fas fa-bus"></i>
-                وسائل المواصلات
+                الأنتقالات
               </h3>
               <div class="form-group">
                 <label for="transportation_link">رابط المواصلات</label>
@@ -978,7 +978,7 @@
               <div class="form-group">
                 <label for="location">
                   <i class="fas fa-map-marker-alt"></i>
-                  الموقع
+                  الموقع علي الخرائط
                 </label>
                 <input 
                   type="text" 
@@ -1377,7 +1377,7 @@
           <div class="form-category">
             <h3 class="category-title">
               <i class="fas fa-bus"></i>
-              وسائل المواصلات
+              الأنتقالات
             </h3>
             <div class="transportation-list">
               <div v-for="(trans, index) in editFormData.transportation" :key="index" class="transportation-item">
@@ -1704,7 +1704,7 @@
             <div v-if="activeDeleteSection === 'transportation'" class="delete-section">
               <h3 class="delete-section-title">
                 <i class="fas fa-bus"></i>
-                وسائل المواصلات
+                الأنتقالات
               </h3>
               <div class="delete-items-list">
                 <div v-for="(trans, index) in selectedUniversityForDelete?.transportation" 
@@ -1814,6 +1814,8 @@ export default {
         type: 'national',
         Uni_Bio: '',
         location: '',
+        first_year: '',
+        second_year: '',
         website: '',
         phone: '',
         email: '',
@@ -1861,7 +1863,7 @@ export default {
       deleteSections: [
         { id: 'faculties', label: 'الكليات', icon: 'fas fa-graduation-cap' },
         { id: 'dorms', label: 'السكن الجامعي', icon: 'fas fa-home' },
-        { id: 'transportation', label: 'وسائل المواصلات', icon: 'fas fa-bus' },
+        { id: 'transportation', label: 'الأنتقالات', icon: 'fas fa-bus' },
         { id: 'international', label: 'البرامج الدولية', icon: 'fas fa-globe-americas' },
         { id: 'links', label: 'الروابط', icon: 'fas fa-link' }
       ],
@@ -2444,6 +2446,8 @@ export default {
         type: university.type,
         Uni_Bio: university.Uni_Bio || '',
         location: university.location || '',
+        first_year: university.first_year || '',
+        second_year: university.second_year || '',
         website: university.website || '',
         phone: university.phone || '',
         email: university.email || '',

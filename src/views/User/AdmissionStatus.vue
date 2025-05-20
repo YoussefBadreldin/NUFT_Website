@@ -908,7 +908,6 @@ export default {
     color: #1a237e;
     text-align: center;
     padding: 0.25rem;
-    background-color: #e8eaf6;
     border-radius: 4px;
 }
 
@@ -935,24 +934,20 @@ export default {
 }
 
 .status-value.deadline {
-    background-color: #fff3e0;
     color: #e65100;
     font-size: 0.85rem;
     margin-top: 0.25rem;
 }
 
 .status-value.deadline.status-ended {
-    background-color: #ffebee;
     color: #c62828;
 }
 
 .status-value.deadline.status-available {
-    background-color: #e8f5e9;
     color: #2e7d32;
 }
 
 .status-value.deadline.status-not-started {
-    background-color: #e8eaf6;
     color: #1a237e;
 }
 

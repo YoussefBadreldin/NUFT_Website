@@ -1916,44 +1916,92 @@ export default {
 
         // Process private universities
         if (privateResponse.status === 'fulfilled' && privateResponse.value.data && Array.isArray(privateResponse.value.data)) {
-          const privateUnis = privateResponse.value.data.map(uni => ({
-            id: uni.university || uni.university_code,
-            university_Arabic_Name: uni.university_Arabic_Name,
-            university_Logo: uni.university_Logo || '/images/default-university.png',
-            type: 'private'
+          const privateUnis = await Promise.all(privateResponse.value.data.map(async uni => {
+            const [dorms, transportation, faculty] = await Promise.allSettled([
+              axios.get(`https://nuft-website-backend.vercel.app/private/dorms/${uni.university || uni.university_code}`),
+              axios.get(`https://nuft-website-backend.vercel.app/private/transportation/${uni.university || uni.university_code}`),
+              axios.get(`https://nuft-website-backend.vercel.app/private/faculty/${uni.university || uni.university_code}`)
+            ]);
+
+            return {
+              id: uni.university || uni.university_code,
+              university_Arabic_Name: uni.university_Arabic_Name,
+              university_Logo: uni.university_Logo || '/images/default-university.png',
+              type: 'private',
+              dorms: dorms.status === 'fulfilled' ? dorms.value.data : [],
+              transportation: transportation.status === 'fulfilled' ? transportation.value.data : [],
+              faculties: faculty.status === 'fulfilled' ? faculty.value.data : [],
+              ...uni
+            };
           }));
           this.universitiesData = [...this.universitiesData, ...privateUnis];
         }
 
         // Process national universities
         if (nationalResponse.status === 'fulfilled' && nationalResponse.value.data && Array.isArray(nationalResponse.value.data)) {
-          const nationalUnis = nationalResponse.value.data.map(uni => ({
-            id: uni.university || uni.university_code,
-            university_Arabic_Name: uni.university_Arabic_Name,
-            university_Logo: uni.university_Logo || '/images/default-university.png',
-            type: 'national'
+          const nationalUnis = await Promise.all(nationalResponse.value.data.map(async uni => {
+            const [dorms, transportation, faculty] = await Promise.allSettled([
+              axios.get(`https://nuft-website-backend.vercel.app/national/dorms/${uni.university || uni.university_code}`),
+              axios.get(`https://nuft-website-backend.vercel.app/national/transportation/${uni.university || uni.university_code}`),
+              axios.get(`https://nuft-website-backend.vercel.app/national/faculty/${uni.university || uni.university_code}`)
+            ]);
+
+            return {
+              id: uni.university || uni.university_code,
+              university_Arabic_Name: uni.university_Arabic_Name,
+              university_Logo: uni.university_Logo || '/images/default-university.png',
+              type: 'national',
+              dorms: dorms.status === 'fulfilled' ? dorms.value.data : [],
+              transportation: transportation.status === 'fulfilled' ? transportation.value.data : [],
+              faculties: faculty.status === 'fulfilled' ? faculty.value.data : [],
+              ...uni
+            };
           }));
           this.universitiesData = [...this.universitiesData, ...nationalUnis];
         }
 
         // Process special universities
         if (specialResponse.status === 'fulfilled' && specialResponse.value.data && Array.isArray(specialResponse.value.data)) {
-          const specialUnis = specialResponse.value.data.map(uni => ({
-            id: uni.university || uni.university_code,
-            university_Arabic_Name: uni.university_Arabic_Name,
-            university_Logo: uni.university_Logo || '/images/default-university.png',
-            type: 'special'
+          const specialUnis = await Promise.all(specialResponse.value.data.map(async uni => {
+            const [dorms, transportation, faculty] = await Promise.allSettled([
+              axios.get(`https://nuft-website-backend.vercel.app/special/dorms/${uni.university || uni.university_code}`),
+              axios.get(`https://nuft-website-backend.vercel.app/special/transportation/${uni.university || uni.university_code}`),
+              axios.get(`https://nuft-website-backend.vercel.app/special/faculty/${uni.university || uni.university_code}`)
+            ]);
+
+            return {
+              id: uni.university || uni.university_code,
+              university_Arabic_Name: uni.university_Arabic_Name,
+              university_Logo: uni.university_Logo || '/images/default-university.png',
+              type: 'special',
+              dorms: dorms.status === 'fulfilled' ? dorms.value.data : [],
+              transportation: transportation.status === 'fulfilled' ? transportation.value.data : [],
+              faculties: faculty.status === 'fulfilled' ? faculty.value.data : [],
+              ...uni
+            };
           }));
           this.universitiesData = [...this.universitiesData, ...specialUnis];
         }
 
         // Process international universities
         if (internationalResponse.status === 'fulfilled' && internationalResponse.value.data && Array.isArray(internationalResponse.value.data)) {
-          const internationalUnis = internationalResponse.value.data.map(uni => ({
-            id: uni.university || uni.university_code,
-            university_Arabic_Name: uni.university_Arabic_Name,
-            university_Logo: uni.university_Logo || '/images/default-university.png',
-            type: 'international'
+          const internationalUnis = await Promise.all(internationalResponse.value.data.map(async uni => {
+            const [dorms, transportation, faculty] = await Promise.allSettled([
+              axios.get(`https://nuft-website-backend.vercel.app/international/dorms/${uni.university || uni.university_code}`),
+              axios.get(`https://nuft-website-backend.vercel.app/international/transportation/${uni.university || uni.university_code}`),
+              axios.get(`https://nuft-website-backend.vercel.app/international/faculty/${uni.university || uni.university_code}`)
+            ]);
+
+            return {
+              id: uni.university || uni.university_code,
+              university_Arabic_Name: uni.university_Arabic_Name,
+              university_Logo: uni.university_Logo || '/images/default-university.png',
+              type: 'international',
+              dorms: dorms.status === 'fulfilled' ? dorms.value.data : [],
+              transportation: transportation.status === 'fulfilled' ? transportation.value.data : [],
+              faculties: faculty.status === 'fulfilled' ? faculty.value.data : [],
+              ...uni
+            };
           }));
           this.universitiesData = [...this.universitiesData, ...internationalUnis];
         }
@@ -2080,16 +2128,16 @@ export default {
         let endpoint;
         switch (this.addFormData.type) {
           case 'national':
-            endpoint = 'https://nuft-website-backend.vercel.app/national/add';
+            endpoint = 'https://nuft-website-backend.vercel.app/national/faculty/add';
             break;
           case 'private':
-            endpoint = 'https://nuft-website-backend.vercel.app/private/add';
+            endpoint = 'https://nuft-website-backend.vercel.app/private/faculty/add';
             break;
           case 'special':
-            endpoint = 'https://nuft-website-backend.vercel.app/special/add';
+            endpoint = 'https://nuft-website-backend.vercel.app/special/faculty/add';
             break;
           case 'international':
-            endpoint = 'https://nuft-website-backend.vercel.app/international/add';
+            endpoint = 'https://nuft-website-backend.vercel.app/international/faculty/add';
             break;
         }
 
@@ -2173,7 +2221,7 @@ export default {
         // Determine the correct endpoint based on university type
         switch (this.editFormData.type) {
           case 'national':
-            endpoint = `https://nuft-website-backend.vercel.app/national/${universityCode}`;
+            endpoint = `https://nuft-website-backend.vercel.app/national/faculty/${universityCode}`;
             break;
           case 'private':
             endpoint = `https://nuft-website-backend.vercel.app/private/${universityCode}`;
@@ -2390,10 +2438,30 @@ export default {
       this.editingId = university.id;
       this.editFormData = {
         ...this.editFormData,
-        ...university,
+        university_code: university.university_code || university.id,
+        university_Arabic_Name: university.university_Arabic_Name,
+        university_Logo: university.university_Logo,
+        type: university.type,
+        Uni_Bio: university.Uni_Bio || '',
+        location: university.location || '',
+        website: university.website || '',
+        phone: university.phone || '',
+        email: university.email || '',
+        facebook: university.facebook || '',
+        instagram: university.instagram || '',
+        youtube: university.youtube || '',
+        linkedin: university.linkedin || '',
         faculties: university.faculties || [],
+        international_programs: university.international_programs || '',
         dorms: university.dorms || [],
-        transportation: university.transportation || []
+        transportation: university.transportation || [],
+        dorms_link: university.dorms_link || '',
+        transportation_link: university.transportation_link || '',
+        scholarship_link: university.scholarship_link || '',
+        Egyptian_Admission_link: university.Egyptian_Admission_link || '',
+        Egyptian_Admission_link2: university.Egyptian_Admission_link2 || '',
+        Egyptian_Transfer_link: university.Egyptian_Transfer_link || '',
+        Wafdeen_Admission_link: university.Wafdeen_Admission_link || ''
       };
     },
     selectUniversityForDelete(university) {

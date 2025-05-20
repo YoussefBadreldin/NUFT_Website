@@ -84,7 +84,7 @@ export default {
   methods: {
     async getNews() {
       try {
-        const response = await axios.get('https://nuft-website-backend.vercel.app/news/getNews');
+        const response = await axios.get('https://nuft-website-backend.vercel.app/news');
         this.newsData = response.data.map(news => ({
           id: news.id,
           news_title: news.news_title,

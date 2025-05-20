@@ -72,7 +72,7 @@ export default {
   methods: {
     async getScholarships() {
       try {
-        const response = await axios.get('https://nuft-website-backend.vercel.app/Schoralships/all');
+        const response = await axios.get('https://nuft-website-backend.vercel.app/scholarships');
         this.scholarshipData = response.data.map(scholarship => ({
           id: scholarship.id,
           scholarship_title: scholarship.scholarship_title,

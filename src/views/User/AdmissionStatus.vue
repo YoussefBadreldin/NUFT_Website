@@ -576,11 +576,29 @@ export default {
             return filtered;
         },
         filteredPairedUniversities() {
-            const pairs = [];
-            for (let i = 0; i < this.filteredUniversities.length; i += 2) {
-                pairs.push(this.filteredUniversities.slice(i, i + 2));
-            }
-            return pairs;
+            // Group universities by their university field
+            const groupedUniversities = {};
+            this.filteredUniversities.forEach(uni => {
+                if (!groupedUniversities[uni.university]) {
+                    groupedUniversities[uni.university] = {
+                        current: null,
+                        deadline: null
+                    };
+                }
+                
+                // If it's the main university entry (contains the name)
+                if (uni.university_Arabic_Name !== 'اخر موعد للتقديم') {
+                    groupedUniversities[uni.university].current = uni;
+                } else {
+                    // If it's the deadline entry
+                    groupedUniversities[uni.university].deadline = uni;
+                }
+            });
+
+            // Convert grouped data to array format
+            return Object.values(groupedUniversities)
+                .filter(group => group.current) // Only include if we have current data
+                .map(group => [group.current]); // Return as array to maintain compatibility
         },
         hasResults() {
             return this.filteredUniversities.length > 0;
@@ -611,52 +629,17 @@ export default {
             };
 
             try {
-                if (this.activeTab === 'all') {
-                    // Fetch all types of universities
-                    const responses = await Promise.all([
-                        axios.get(endpoints.national),
-                        axios.get(endpoints.private),
-                        axios.get(endpoints.special),
-                        axios.get(endpoints.international)
-                    ]);
+                // Always fetch all types of universities
+                const responses = await Promise.all([
+                    axios.get(endpoints.national),
+                    axios.get(endpoints.private),
+                    axios.get(endpoints.special),
+                    axios.get(endpoints.international)
+                ]);
 
-                    this.universities = responses.flatMap((response, index) => {
-                        const type = ['national', 'private', 'special', 'international'][index];
-                        const universities = response.data;
-                        
-                        // Group universities by their university field
-                        const groupedUniversities = {};
-                        universities.forEach(uni => {
-                            if (!groupedUniversities[uni.university]) {
-                                groupedUniversities[uni.university] = {
-                                    current: null,
-                                    deadline: null
-                                };
-                            }
-                            
-                            // If it's the main university entry (contains the name)
-                            if (uni.university_Arabic_Name !== 'اخر موعد للتقديم') {
-                                groupedUniversities[uni.university].current = {
-                                    ...uni,
-                                    type
-                                };
-                            } else {
-                                // If it's the deadline entry
-                                groupedUniversities[uni.university].deadline = uni;
-                            }
-                        });
-
-                        // Convert grouped data to array format
-                        return Object.values(groupedUniversities)
-                            .filter(group => group.current) // Only include if we have current data
-                            .map(group => ({
-                                ...group.current,
-                                deadline: group.deadline
-                            }));
-                    });
-                } else {
-                    // Fetch specific type
-                    const response = await axios.get(endpoints[this.activeTab]);
+                // Process all responses regardless of active tab
+                const allUniversities = responses.flatMap((response, index) => {
+                    const type = ['national', 'private', 'special', 'international'][index];
                     const universities = response.data;
                     
                     // Group universities by their university field
@@ -673,7 +656,7 @@ export default {
                         if (uni.university_Arabic_Name !== 'اخر موعد للتقديم') {
                             groupedUniversities[uni.university].current = {
                                 ...uni,
-                                type: this.activeTab
+                                type
                             };
                         } else {
                             // If it's the deadline entry
@@ -682,13 +665,19 @@ export default {
                     });
 
                     // Convert grouped data to array format
-                    this.universities = Object.values(groupedUniversities)
+                    return Object.values(groupedUniversities)
                         .filter(group => group.current) // Only include if we have current data
                         .map(group => ({
                             ...group.current,
                             deadline: group.deadline
                         }));
-                }
+                });
+
+                // Filter based on active tab if not 'all'
+                this.universities = this.activeTab === 'all' 
+                    ? allUniversities 
+                    : allUniversities.filter(uni => uni.type === this.activeTab);
+
             } catch (error) {
                 console.error('Error fetching admission data:', error);
             } finally {

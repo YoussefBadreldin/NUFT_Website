@@ -47,7 +47,8 @@
                         <h2>آراء المستخدمين</h2>
                         <p>ما يقوله عنا الطلاب وأولياء الامور</p>
                     </div>
-                    <div class="row">
+                    <!-- Desktop View -->
+                    <div class="row d-none d-md-flex">
                         <div class="col-md-4" v-for="(feedback, index) in feedbacks" :key="index">
                             <div class="feedback-card">
                                 <div class="user-info">
@@ -63,6 +64,40 @@
                                         <span v-for="n in 5" :key="n" class="star" :class="{ 'filled': n <= feedback.rating }">★</span>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Mobile View -->
+                    <div class="d-md-none">
+                        <div id="feedbackCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="10000">
+                            <div class="carousel-inner">
+                                <div v-for="(feedback, index) in feedbacks" :key="index" 
+                                     class="carousel-item" :class="{ 'active': index === 0 }">
+                                    <div class="feedback-card">
+                                        <div class="user-info">
+                                            <img :src="feedback.userImage" :alt="feedback.userName" class="user-image">
+                                            <div class="user-details">
+                                                <h5>{{ feedback.userName }}</h5>
+                                                <p>{{ feedback.userTitle }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="feedback-content">
+                                            <p>{{ feedback.comment }}</p>
+                                            <div class="rating">
+                                                <span v-for="n in 5" :key="n" class="star" :class="{ 'filled': n <= feedback.rating }">★</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-indicators">
+                                <button v-for="(feedback, index) in feedbacks" :key="index"
+                                        type="button" 
+                                        data-bs-target="#feedbackCarousel" 
+                                        :data-bs-slide-to="index"
+                                        :class="{ 'active': index === 0 }"
+                                        :aria-label="'Slide ' + (index + 1)">
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -688,6 +723,88 @@ export default {
     
     .user-image {
         margin: 0 0 10px 0;
+    }
+}
+
+/* Remove these styles since we're not using the arrows anymore */
+.Feedback-Section .carousel-control-prev,
+.Feedback-Section .carousel-control-next {
+    display: none;
+}
+
+.Feedback-Section .carousel-indicators {
+    margin-bottom: 0;
+    position: relative;
+    margin-top: 20px;
+}
+
+.Feedback-Section .carousel-indicators button {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin: 0 4px;
+    background-color: #ccc;
+}
+
+.Feedback-Section .carousel-indicators button.active {
+    background-color: #007bff;
+}
+
+.Feedback-Section .carousel {
+    margin: 0 -15px;
+}
+
+.Feedback-Section .carousel-inner {
+    padding: 15px;
+}
+
+.Feedback-Section .carousel-control-prev,
+.Feedback-Section .carousel-control-next {
+    display: none;
+}
+
+.Feedback-Section .carousel-indicators {
+    margin-bottom: 0;
+    position: relative;
+    margin-top: 20px;
+}
+
+.Feedback-Section .carousel-indicators button {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin: 0 4px;
+    background-color: #ccc;
+}
+
+.Feedback-Section .carousel-indicators button.active {
+    background-color: #007bff;
+}
+
+@media (max-width: 768px) {
+    .Feedback-Section .carousel-item {
+        padding: 0 15px;
+    }
+    
+    .Feedback-Section .feedback-card {
+        margin: 0;
+    }
+
+    .Feedback-Section .user-image {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        margin-right: 15px;
+        margin-left: 0;
+        object-fit: cover;
+        border: 3px solid #f0f4f8;
+    }
+
+    .Feedback-Section .user-info {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        flex-direction: row-reverse;
     }
 }
 </style>

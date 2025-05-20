@@ -553,7 +553,7 @@ export default {
                 { id: 'national', name: 'الجامعات الأهلية' },
                 { id: 'private', name: 'الجامعات الخاصة' },
                 { id: 'special', name: 'الجامعات ذات طبيعة خاصة' },
-                { id: 'international', name: 'الجامعات الأجنبية' }
+                { id: 'international', name: 'الجامعات الدولية' }
             ]
         }
     },

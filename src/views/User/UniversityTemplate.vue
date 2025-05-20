@@ -53,356 +53,11 @@
     </section>
 
     <!-- Faculties Section -->
-    <section class="faculties-section">
+    <section class="faculties-section" v-if="hasValidFaculties">
       <div class="container">
         <h2 class="section-title">الكليات والبرامج</h2>
         <div class="faculties-grid" ref="facultiesGrid">
-          <div v-for="faculty in universityData.faculties" 
-               :key="faculty.id" 
-               class="faculty-card"
-               :style="{ transform: `translateX(${currentSlide * -100}%)` }">
-            <div class="faculty-header">
-              <h3 class="faculty-name">{{ faculty.faculty }}</h3>
-              <span class="faculty-type">الشعبة: {{ faculty.section }}</span>
-            </div>
-            
-            <div class="faculty-details">
-              <div class="programs" v-if="faculty.programs && faculty.programs.length">
-                <h4>البرامج</h4>
-                <ul>
-                  <li v-for="program in faculty.programs" :key="program">{{ program }}</li>
-                </ul>
-              </div>
-
-              <div class="fees">
-                <h4>الرسوم الدراسية</h4>
-                <div class="fees-grid">
-                  <div class="fee-category">
-                    <h5>الوافدين</h5>
-                    <template v-if="faculty.feesNatives2 || faculty.feesNatives3 || faculty.feesNatives4">
-                      <div class="fee-item">
-                        <span>{{ formatFee(faculty.feesNatives) }}</span>
-                        <span>فئة أ</span>
-                      </div>
-                      <div class="fee-item" v-if="faculty.feesNatives2">
-                        <span>{{ formatFee(faculty.feesNatives2) }}</span>
-                        <span>فئة ب</span>
-                      </div>
-                      <div class="fee-item" v-if="faculty.feesNatives3">
-                        <span>{{ formatFee(faculty.feesNatives3) }}</span>
-                        <span>فئة ج</span>
-                      </div>
-                      <div class="fee-item" v-if="faculty.feesNatives4">
-                        <span>{{ formatFee(faculty.feesNatives4) }}</span>
-                        <span>فئة د</span>
-                      </div>
-                    </template>
-                    <template v-else>
-                      <div class="fee-item single-fee">
-                        <span>{{ formatFee(faculty.feesNatives) }}</span>
-                      </div>
-                    </template>
-                  </div>
-                  
-                  <div class="fee-category">
-                    <h5>المصريين</h5>
-                    <template v-if="faculty.feesEgyption2 || faculty.feesEgyption3 || faculty.feesEgyption4">
-                      <div class="fee-item">
-                        <span>{{ formatFee(faculty.feesEgyption) }}</span>
-                        <span>فئة أ</span>
-                      </div>
-                      <div class="fee-item" v-if="faculty.feesEgyption2">
-                        <span>{{ formatFee(faculty.feesEgyption2) }}</span>
-                        <span>فئة ب</span>
-                      </div>
-                      <div class="fee-item" v-if="faculty.feesEgyption3">
-                        <span>{{ formatFee(faculty.feesEgyption3) }}</span>
-                        <span>فئة ج</span>
-                      </div>
-                      <div class="fee-item" v-if="faculty.feesEgyption4">
-                        <span>{{ formatFee(faculty.feesEgyption4) }}</span>
-                        <span>فئة د</span>
-                      </div>
-                    </template>
-                    <template v-else>
-                      <div class="fee-item single-fee">
-                        <span>{{ formatFee(faculty.feesEgyption) }}</span>
-                      </div>
-                    </template>
-                  </div>
-                </div>
-              </div>
-
-              <div class="requirements">
-                <h4>الحد الأدني</h4>
-                <div class="requirements-grid">
-                  <div class="requirement-category" v-if="shouldShowRequirements">
-                    <h5>الثانوية<br> العامة</h5>
-                    <template v-if="universityType === 'national'">
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2025</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">{{ formatScore(faculty.thanwyaa_secondYear_score) }}</span>
-                        <span class="year">2024</span>
-                      </div>
-                    </template>
-                    
-                    <template v-else-if="universityType === 'private'">
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2025</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">{{ formatScore(faculty.thanwyaa_secondYear_score) }}</span>
-                        <span class="year">2024</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">{{ formatScore(faculty.thanwyaa_firstYear_score) }}</span>
-                        <span class="year">2023</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2022</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2021</span>
-                      </div>
-                    </template>
-                    
-                    <template v-else>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2025</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">{{ formatScore(faculty.thanwyaa_secondYear_score) }}</span>
-                        <span class="year">2024</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">{{ formatScore(faculty.thanwyaa_firstYear_score) }}</span>
-                        <span class="year">2023</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2022</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2021</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2020</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2019</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2018</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2017</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2016</span>
-                      </div>
-                    </template>
-                  </div>
-                  <div class="requirement-category" v-if="shouldShowRequirements">
-                    <h5>الثانوية<br> الأزهرية</h5>
-                    <template v-if="universityType === 'national'">
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2025</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">{{ formatScore(faculty.azhar_secondYear_score) }}</span>
-                        <span class="year">2024</span>
-                      </div>
-                    </template>
-                    
-                    <template v-else-if="universityType === 'private'">
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2025</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">{{ formatScore(faculty.azhar_secondYear_score) }}</span>
-                        <span class="year">2024</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">{{ formatScore(faculty.azhar_firstYear_score) }}</span>
-                        <span class="year">2023</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2022</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2021</span>
-                      </div>
-                    </template>
-                    
-                    <template v-else>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2025</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">{{ formatScore(faculty.azhar_secondYear_score) }}</span>
-                        <span class="year">2024</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">{{ formatScore(faculty.azhar_firstYear_score) }}</span>
-                        <span class="year">2023</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2022</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2021</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2020</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2019</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2018</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2017</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2016</span>
-                      </div>
-                    </template>
-                  </div>
-                  <div class="requirement-category" v-if="shouldShowRequirements">
-                    <h5>الشهادات العربية والأجنبية</h5>
-                    <template v-if="universityType === 'national'">
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2025</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">{{ formatScore(faculty.Arabenglish_secondYear_score) }}</span>
-                        <span class="year">2024</span>
-                      </div>
-                    </template>
-                    
-                    <template v-else-if="universityType === 'private'">
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2025</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">{{ formatScore(faculty.Arabenglish_secondYear_score) }}</span>
-                        <span class="year">2024</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">{{ formatScore(faculty.Arabenglish_firstYear_score) }}</span>
-                        <span class="year">2023</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2022</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2021</span>
-                      </div>
-                    </template>
-                    
-                    <template v-else>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2025</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">{{ formatScore(faculty.Arabenglish_secondYear_score) }}</span>
-                        <span class="year">2024</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">{{ formatScore(faculty.Arabenglish_firstYear_score) }}</span>
-                        <span class="year">2023</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2022</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2021</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2020</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2019</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2018</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2017</span>
-                      </div>
-                      <div class="requirement-item">
-                        <span class="score">0%</span>
-                        <span class="year">2016</span>
-                      </div>
-                    </template>
-                  </div>
-                </div>
-                <div class="requirements-grid wafdeen-grid">
-                  <div class="requirement-category">
-                    <h5>الوافدين</h5>
-                    <div class="requirement-item">
-                      <span class="score">{{ formatScore(faculty.wafdeen_score) }}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Mobile Navigation Dots -->
-        <div class="mobile-nav-dots" v-if="isMobile">
-          <span v-for="(_, index) in universityData.faculties" 
-                :key="index"
-                :class="{ active: currentSlide === index }"
-                @click="goToSlide(index)">
-          </span>
-        </div>
-      </div>
-    </section>
-
-    <!-- International Programs Section -->
-    <section class="international-programs-section" v-if="universityData.international_programs || dualPrograms.length">
-      <div class="container">
-        <h2 class="section-title">البرامج الدولية</h2>
-        <div class="faculties-grid" ref="dualFacultiesGrid">
-          <div v-for="faculty in dualPrograms" 
+          <div v-for="faculty in validFaculties" 
                :key="faculty._id" 
                class="faculty-card"
                :style="{ transform: `translateX(${currentSlide * -100}%)` }">
@@ -731,10 +386,354 @@
             </div>
           </div>
         </div>
-
         <!-- Mobile Navigation Dots -->
         <div class="mobile-nav-dots" v-if="isMobile">
-          <span v-for="(_, index) in dualPrograms" 
+          <span v-for="(_, index) in validFaculties" 
+                :key="index"
+                :class="{ active: currentSlide === index }"
+                @click="goToSlide(index)">
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- International Programs Section -->
+    <section class="international-programs-section" v-if="hasValidDualPrograms || universityData.international_programs">
+      <div class="container">
+        <h2 class="section-title">البرامج الدولية</h2>
+        <div class="faculties-grid" ref="dualFacultiesGrid" v-if="hasValidDualPrograms">
+          <div v-for="faculty in validDualPrograms" 
+               :key="faculty._id" 
+               class="faculty-card"
+               :style="{ transform: `translateX(${currentSlide * -100}%)` }">
+            <div class="faculty-header">
+              <h3 class="faculty-name">{{ faculty.faculty }}</h3>
+              <span class="faculty-type">الشعبة: {{ faculty.section }}</span>
+            </div>
+            
+            <div class="faculty-details">
+              <div class="programs" v-if="faculty.programs && faculty.programs.length">
+                <h4>البرامج</h4>
+                <ul>
+                  <li v-for="program in faculty.programs" :key="program">{{ program }}</li>
+                </ul>
+              </div>
+
+              <div class="fees">
+                <h4>الرسوم الدراسية</h4>
+                <div class="fees-grid">
+                  <div class="fee-category">
+                    <h5>الوافدين</h5>
+                    <template v-if="faculty.feesNatives2 || faculty.feesNatives3 || faculty.feesNatives4">
+                      <div class="fee-item">
+                        <span>{{ formatFee(faculty.feesNatives) }}</span>
+                        <span>فئة أ</span>
+                      </div>
+                      <div class="fee-item" v-if="faculty.feesNatives2">
+                        <span>{{ formatFee(faculty.feesNatives2) }}</span>
+                        <span>فئة ب</span>
+                      </div>
+                      <div class="fee-item" v-if="faculty.feesNatives3">
+                        <span>{{ formatFee(faculty.feesNatives3) }}</span>
+                        <span>فئة ج</span>
+                      </div>
+                      <div class="fee-item" v-if="faculty.feesNatives4">
+                        <span>{{ formatFee(faculty.feesNatives4) }}</span>
+                        <span>فئة د</span>
+                      </div>
+                    </template>
+                    <template v-else>
+                      <div class="fee-item single-fee">
+                        <span>{{ formatFee(faculty.feesNatives) }}</span>
+                      </div>
+                    </template>
+                  </div>
+                  
+                  <div class="fee-category">
+                    <h5>المصريين</h5>
+                    <template v-if="faculty.feesEgyption2 || faculty.feesEgyption3 || faculty.feesEgyption4">
+                      <div class="fee-item">
+                        <span>{{ formatFee(faculty.feesEgyption) }}</span>
+                        <span>فئة أ</span>
+                      </div>
+                      <div class="fee-item" v-if="faculty.feesEgyption2">
+                        <span>{{ formatFee(faculty.feesEgyption2) }}</span>
+                        <span>فئة ب</span>
+                      </div>
+                      <div class="fee-item" v-if="faculty.feesEgyption3">
+                        <span>{{ formatFee(faculty.feesEgyption3) }}</span>
+                        <span>فئة ج</span>
+                      </div>
+                      <div class="fee-item" v-if="faculty.feesEgyption4">
+                        <span>{{ formatFee(faculty.feesEgyption4) }}</span>
+                        <span>فئة د</span>
+                      </div>
+                    </template>
+                    <template v-else>
+                      <div class="fee-item single-fee">
+                        <span>{{ formatFee(faculty.feesEgyption) }}</span>
+                      </div>
+                    </template>
+                  </div>
+                </div>
+              </div>
+
+              <div class="requirements">
+                <h4>الحد الأدني</h4>
+                <div class="requirements-grid">
+                  <div class="requirement-category" v-if="shouldShowRequirements">
+                    <h5>الثانوية<br> العامة</h5>
+                    <template v-if="universityType === 'national'">
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2025</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">{{ formatScore(faculty.thanwyaa_secondYear_score) }}</span>
+                        <span class="year">2024</span>
+                      </div>
+                    </template>
+                    
+                    <template v-else-if="universityType === 'private'">
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2025</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">{{ formatScore(faculty.thanwyaa_secondYear_score) }}</span>
+                        <span class="year">2024</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">{{ formatScore(faculty.thanwyaa_firstYear_score) }}</span>
+                        <span class="year">2023</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2022</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2021</span>
+                      </div>
+                    </template>
+                    
+                    <template v-else>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2025</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">{{ formatScore(faculty.thanwyaa_secondYear_score) }}</span>
+                        <span class="year">2024</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">{{ formatScore(faculty.thanwyaa_firstYear_score) }}</span>
+                        <span class="year">2023</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2022</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2021</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2020</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2019</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2018</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2017</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2016</span>
+                      </div>
+                    </template>
+                  </div>
+                  <div class="requirement-category" v-if="shouldShowRequirements">
+                    <h5>الثانوية<br> الأزهرية</h5>
+                    <template v-if="universityType === 'national'">
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2025</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">{{ formatScore(faculty.azhar_secondYear_score) }}</span>
+                        <span class="year">2024</span>
+                      </div>
+                    </template>
+                    
+                    <template v-else-if="universityType === 'private'">
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2025</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">{{ formatScore(faculty.azhar_secondYear_score) }}</span>
+                        <span class="year">2024</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">{{ formatScore(faculty.azhar_firstYear_score) }}</span>
+                        <span class="year">2023</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2022</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2021</span>
+                      </div>
+                    </template>
+                    
+                    <template v-else>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2025</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">{{ formatScore(faculty.azhar_secondYear_score) }}</span>
+                        <span class="year">2024</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">{{ formatScore(faculty.azhar_firstYear_score) }}</span>
+                        <span class="year">2023</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2022</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2021</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2020</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2019</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2018</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2017</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2016</span>
+                      </div>
+                    </template>
+                  </div>
+                  <div class="requirement-category" v-if="shouldShowRequirements">
+                    <h5>الشهادات العربية والأجنبية</h5>
+                    <template v-if="universityType === 'national'">
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2025</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">{{ formatScore(faculty.Arabenglish_secondYear_score) }}</span>
+                        <span class="year">2024</span>
+                      </div>
+                    </template>
+                    
+                    <template v-else-if="universityType === 'private'">
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2025</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">{{ formatScore(faculty.Arabenglish_secondYear_score) }}</span>
+                        <span class="year">2024</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">{{ formatScore(faculty.Arabenglish_firstYear_score) }}</span>
+                        <span class="year">2023</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2022</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2021</span>
+                      </div>
+                    </template>
+                    
+                    <template v-else>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2025</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">{{ formatScore(faculty.Arabenglish_secondYear_score) }}</span>
+                        <span class="year">2024</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">{{ formatScore(faculty.Arabenglish_firstYear_score) }}</span>
+                        <span class="year">2023</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2022</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2021</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2020</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2019</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2018</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2017</span>
+                      </div>
+                      <div class="requirement-item">
+                        <span class="score">0%</span>
+                        <span class="year">2016</span>
+                      </div>
+                    </template>
+                  </div>
+                </div>
+                <div class="requirements-grid wafdeen-grid">
+                  <div class="requirement-category">
+                    <h5>الوافدين</h5>
+                    <div class="requirement-item">
+                      <span class="score">{{ formatScore(faculty.wafdeen_score) }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Mobile Navigation Dots -->
+        <div class="mobile-nav-dots" v-if="isMobile && hasValidDualPrograms">
+          <span v-for="(_, index) in validDualPrograms" 
                 :key="index"
                 :class="{ active: currentSlide === index }"
                 @click="goToSlide(index)">
@@ -752,17 +751,17 @@
     </section>
 
     <!-- Dorms Section -->
-    <section class="dorms-section" v-if="universityData.dorms && universityData.dorms.length">
+    <section class="dorms-section" v-if="universityData.dorms && universityData.dorms.length && hasValidDorms">
       <div class="container">
         <h2 class="section-title">السكن الجامعي</h2>
         <div class="dorms-grid">
-          <div v-for="dorm in universityData.dorms" :key="dorm.id" class="dorm-card">
+          <div v-for="dorm in validDorms" :key="dorm._id" class="dorm-card">
             <div class="dorm-header">
               <h3>{{ dorm.type }}</h3>
             </div>
             <div class="dorm-details">
               <div class="dorm-info">
-                <span><i class="fas fa-money-bill-wave"></i> {{ dorm.fees }}</span>
+                <span><i class="fas fa-money-bill-wave"></i> {{ dorm.price }}</span>
               </div>
             </div>
           </div>
@@ -777,17 +776,17 @@
     </section>
 
     <!-- Transportation Section -->
-    <section class="transportation-section" v-if="universityData.transportation && universityData.transportation.length">
+    <section class="transportation-section" v-if="universityData.transportation && universityData.transportation.length && hasValidTransportation">
       <div class="container">
         <h2 class="section-title">الأنتقالات</h2>
         <div class="transportation-grid">
-          <div v-for="trans in universityData.transportation" :key="trans._id" class="transportation-card">
+          <div v-for="trans in validTransportation" :key="trans._id" class="transportation-card">
             <div class="transportation-header">
               <h3>{{ trans.type }}</h3>
             </div>
             <div class="transportation-details">
               <div class="transportation-info">
-                <span><i class="fas fa-money-bill-wave"></i> {{ trans.fees }}</span>
+                <span><i class="fas fa-money-bill-wave"></i> {{ trans.price }}</span>
               </div>
             </div>
           </div>
@@ -818,23 +817,35 @@
     </section>
 
     <!-- Admission Links Section -->
-    <section class="admission-section">
+    <section class="admission-section" v-if="hasValidAdmissionLinks">
       <div class="container">
         <h2 class="section-title">روابط التقديم</h2>
         <div class="admission-links">
-          <a :href="universityData.Egyptian_Admission_link" target="_blank" class="admission-btn">
+          <a v-if="universityData.Egyptian_Admission_link" 
+             :href="universityData.Egyptian_Admission_link" 
+             target="_blank" 
+             class="admission-btn">
             <i class="fas fa-user-graduate"></i>
             رابط التقديم للطلاب المصريين
           </a>
-          <a :href="universityData.Egyptian_Transfer_link" target="_blank" class="admission-btn">
+          <a v-if="universityData.Egyptian_Transfer_link" 
+             :href="universityData.Egyptian_Transfer_link" 
+             target="_blank" 
+             class="admission-btn">
             <i class="fas fa-exchange-alt"></i>
             رابط التحويل للطلاب المصريين
           </a>
-          <a :href="universityData.Wafdeen_Admission_link" target="_blank" class="admission-btn">
+          <a v-if="universityData.Wafdeen_Admission_link" 
+             :href="universityData.Wafdeen_Admission_link" 
+             target="_blank" 
+             class="admission-btn">
             <i class="fas fa-globe-americas"></i>
             رابط التقديم للطلاب الوافدين
           </a>
-          <a v-if="universityData.Egyptian_Admission_link2" :href="universityData.Egyptian_Admission_link2" target="_blank" class="admission-btn">
+          <a v-if="universityData.Egyptian_Admission_link2" 
+             :href="universityData.Egyptian_Admission_link2" 
+             target="_blank" 
+             class="admission-btn">
             <i class="fas fa-graduation-cap"></i>
             رابط التقديم للبرامج الدولية
           </a>
@@ -990,7 +1001,7 @@ export default {
 
         // Fetch dorms data
         const dormsResponse = await axios.get(`https://nuft-website-backend.vercel.app/${apiEndpoint}/dorms`);
-        console.log('Dorms Response:', dormsResponse.data);
+        console.log('Raw Dorms Response:', dormsResponse.data);
         
         const filteredDorms = dormsResponse.data.filter(dorm => dorm.spec === universityId);
         console.log('Filtered Dorms:', filteredDorms);
@@ -998,7 +1009,7 @@ export default {
 
         // Fetch transportation data
         const transResponse = await axios.get(`https://nuft-website-backend.vercel.app/${apiEndpoint}/transportation`);
-        console.log('Transportation Response:', transResponse.data);
+        console.log('Raw Transportation Response:', transResponse.data);
         
         if (transResponse.data && Array.isArray(transResponse.data)) {
           const filteredTrans = transResponse.data.filter(trans => trans.spec === universityId);
@@ -1116,6 +1127,56 @@ export default {
     dualPrograms() {
       console.log('Computing dual programs from:', this.universityData.dualFaculties);
       return this.universityData.dualFaculties || [];
+    },
+    hasValidDorms() {
+      return this.validDorms.length > 0;
+    },
+    validDorms() {
+      if (!this.universityData.dorms) return [];
+      return this.universityData.dorms.filter(dorm => 
+        dorm.price && 
+        dorm.price !== 'لم يعلن' && 
+        dorm.price !== 'غير متوفر'
+      );
+    },
+    hasValidTransportation() {
+      return this.validTransportation.length > 0;
+    },
+    validTransportation() {
+      if (!this.universityData.transportation) return [];
+      return this.universityData.transportation.filter(trans => 
+        trans.price && 
+        trans.price !== 'لم يعلن' && 
+        trans.price !== 'غير متوفر'
+      );
+    },
+    hasValidFaculties() {
+      return this.validFaculties.length > 0;
+    },
+    validFaculties() {
+      if (!this.universityData.faculties) return [];
+      return this.universityData.faculties.filter(faculty => 
+        faculty && 
+        faculty.faculty && 
+        faculty.section
+      );
+    },
+    hasValidDualPrograms() {
+      return this.validDualPrograms.length > 0;
+    },
+    validDualPrograms() {
+      if (!this.universityData.dualFaculties) return [];
+      return this.universityData.dualFaculties.filter(faculty => 
+        faculty && 
+        faculty.faculty && 
+        faculty.section
+      );
+    },
+    hasValidAdmissionLinks() {
+      return this.universityData.Egyptian_Admission_link ||
+             this.universityData.Egyptian_Transfer_link ||
+             this.universityData.Wafdeen_Admission_link ||
+             this.universityData.Egyptian_Admission_link2;
     }
   }
 };
@@ -1459,7 +1520,13 @@ export default {
   justify-content: center;
   gap: 2rem;
   margin-top: 1rem;
-  color: #666;
+  color: #000000;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.dorm-info i {
+  color: #1a237e;
 }
 
 /* Transportation Section Styles */
@@ -1502,7 +1569,13 @@ export default {
   justify-content: center;
   gap: 2rem;
   margin-top: 1rem;
-  color: #666;
+  color: #000000;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.transportation-info i {
+  color: #1a237e;
 }
 
 /* Scholarship Section Styles */

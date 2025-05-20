@@ -259,133 +259,65 @@ export default {
       try {
         // Try to fetch from API first
         const [privateResponse, nationalResponse, specialResponse, internationalResponse] = await Promise.allSettled([
-          axios.get('https://nuft-website-backend.vercel.app/private/faculty'),
-          axios.get('https://nuft-website-backend.vercel.app/national/faculty'),
-          axios.get('https://nuft-website-backend.vercel.app/special/faculty'),
-          axios.get('https://nuft-website-backend.vercel.app/international/faculty')
+          axios.get('https://nuft-website-backend.vercel.app/private/links'),
+          axios.get('https://nuft-website-backend.vercel.app/national/links'),
+          axios.get('https://nuft-website-backend.vercel.app/special/links'),
+          axios.get('https://nuft-website-backend.vercel.app/international/links')
         ]);
 
         // Process private universities
         if (privateResponse.status === 'fulfilled' && privateResponse.value.data && Array.isArray(privateResponse.value.data)) {
           privateUniversities.value = privateResponse.value.data.map(uni => ({
-            id: uni.university_code,
+            id: uni.university || uni.university_code, // Try both possible field names
             name: uni.university_Arabic_Name,
             logo: uni.university_Logo || '/images/default-university.png',
-            type: 'private',
-            bio: uni.Uni_Bio,
-            location: uni.location,
-            website: uni.website,
-            phone: uni.phone,
-            email: uni.email,
-            facebook: uni.facebook,
-            instagram: uni.instagram,
-            youtube: uni.youtube,
-            linkedin: uni.linkedin,
-            firstYear: uni.first_year,
-            secondYear: uni.second_year,
-            international_programs: uni.international_programs,
-            dorms_link: uni.dorms_link,
-            transportation_link: uni.transportation_link,
-            scholarship_link: uni.scholarship_link,
-            Egyptian_Admission_link: uni.Egyptian_Admission_link,
-            Egyptian_Admission_link2: uni.Egyptian_Admission_link2,
-            Egyptian_Transfer_link: uni.Egyptian_Transfer_link,
-            Wafdeen_Admission_link: uni.Wafdeen_Admission_link
+            type: 'private'
           }));
+          console.log('Private Universities:', privateUniversities.value);
         } else {
+          console.warn('Using fallback data for private universities');
           privateUniversities.value = hardcodedUniversities.private;
         }
 
         // Process national universities
         if (nationalResponse.status === 'fulfilled' && nationalResponse.value.data && Array.isArray(nationalResponse.value.data)) {
           nationalUniversities.value = nationalResponse.value.data.map(uni => ({
-            id: uni.university_code,
+            id: uni.university || uni.university_code, // Try both possible field names
             name: uni.university_Arabic_Name,
             logo: uni.university_Logo || '/images/default-university.png',
-            type: 'national',
-            bio: uni.Uni_Bio,
-            location: uni.location,
-            website: uni.website,
-            phone: uni.phone,
-            email: uni.email,
-            facebook: uni.facebook,
-            instagram: uni.instagram,
-            youtube: uni.youtube,
-            linkedin: uni.linkedin,
-            firstYear: uni.first_year,
-            secondYear: uni.second_year,
-            international_programs: uni.international_programs,
-            dorms_link: uni.dorms_link,
-            transportation_link: uni.transportation_link,
-            scholarship_link: uni.scholarship_link,
-            Egyptian_Admission_link: uni.Egyptian_Admission_link,
-            Egyptian_Admission_link2: uni.Egyptian_Admission_link2,
-            Egyptian_Transfer_link: uni.Egyptian_Transfer_link,
-            Wafdeen_Admission_link: uni.Wafdeen_Admission_link
+            type: 'national'
           }));
+          console.log('National Universities:', nationalUniversities.value);
         } else {
+          console.warn('Using fallback data for national universities');
           nationalUniversities.value = hardcodedUniversities.national;
         }
 
         // Process special universities
         if (specialResponse.status === 'fulfilled' && specialResponse.value.data && Array.isArray(specialResponse.value.data)) {
           specialUniversities.value = specialResponse.value.data.map(uni => ({
-            id: uni.university_code,
+            id: uni.university || uni.university_code, // Try both possible field names
             name: uni.university_Arabic_Name,
             logo: uni.university_Logo || '/images/default-university.png',
-            type: 'special',
-            bio: uni.Uni_Bio,
-            location: uni.location,
-            website: uni.website,
-            phone: uni.phone,
-            email: uni.email,
-            facebook: uni.facebook,
-            instagram: uni.instagram,
-            youtube: uni.youtube,
-            linkedin: uni.linkedin,
-            firstYear: uni.first_year,
-            secondYear: uni.second_year,
-            international_programs: uni.international_programs,
-            dorms_link: uni.dorms_link,
-            transportation_link: uni.transportation_link,
-            scholarship_link: uni.scholarship_link,
-            Egyptian_Admission_link: uni.Egyptian_Admission_link,
-            Egyptian_Admission_link2: uni.Egyptian_Admission_link2,
-            Egyptian_Transfer_link: uni.Egyptian_Transfer_link,
-            Wafdeen_Admission_link: uni.Wafdeen_Admission_link
+            type: 'special'
           }));
+          console.log('Special Universities:', specialUniversities.value);
         } else {
+          console.warn('Using fallback data for special universities');
           specialUniversities.value = hardcodedUniversities.special;
         }
 
         // Process international universities
         if (internationalResponse.status === 'fulfilled' && internationalResponse.value.data && Array.isArray(internationalResponse.value.data)) {
           internationalUniversities.value = internationalResponse.value.data.map(uni => ({
-            id: uni.university_code,
+            id: uni.university || uni.university_code, // Try both possible field names
             name: uni.university_Arabic_Name,
             logo: uni.university_Logo || '/images/default-university.png',
-            type: 'international',
-            bio: uni.Uni_Bio,
-            location: uni.location,
-            website: uni.website,
-            phone: uni.phone,
-            email: uni.email,
-            facebook: uni.facebook,
-            instagram: uni.instagram,
-            youtube: uni.youtube,
-            linkedin: uni.linkedin,
-            firstYear: uni.first_year,
-            secondYear: uni.second_year,
-            international_programs: uni.international_programs,
-            dorms_link: uni.dorms_link,
-            transportation_link: uni.transportation_link,
-            scholarship_link: uni.scholarship_link,
-            Egyptian_Admission_link: uni.Egyptian_Admission_link,
-            Egyptian_Admission_link2: uni.Egyptian_Admission_link2,
-            Egyptian_Transfer_link: uni.Egyptian_Transfer_link,
-            Wafdeen_Admission_link: uni.Wafdeen_Admission_link
+            type: 'international'
           }));
+          console.log('International Universities:', internationalUniversities.value);
         } else {
+          console.warn('Using fallback data for international universities');
           internationalUniversities.value = hardcodedUniversities.international;
         }
 
@@ -410,6 +342,8 @@ export default {
     };
 
     const navigateToUniversity = (type, id) => {
+      console.log('Navigating to university:', { type, id });
+      
       // Find the university data from the appropriate array
       let universityData;
       switch (type) {
@@ -427,10 +361,15 @@ export default {
           break;
       }
 
-      if (universityData) {
+      console.log('Found university data:', universityData);
+
+      if (universityData && universityData.id) {
         // Store the university data in localStorage before navigation
         localStorage.setItem('currentUniversityData', JSON.stringify(universityData));
-        router.push(`/Guide/${type}/${id}`);
+        // Use the university code from the API response
+        router.push(`/Guide/${type}/${universityData.id}`);
+      } else {
+        console.error('University data or ID not found:', { type, id, universityData });
       }
     };
 

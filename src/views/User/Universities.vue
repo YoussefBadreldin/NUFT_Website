@@ -259,10 +259,10 @@ export default {
       try {
         // Try to fetch from API first
         const [privateResponse, nationalResponse, specialResponse, internationalResponse] = await Promise.allSettled([
-          axios.get('https://nuft-website-backend.vercel.app/privatefaculty/getprivate'),
-          axios.get('https://nuft-website-backend.vercel.app/nationalfaculty/getnational'),
-          axios.get('https://nuft-website-backend.vercel.app/specialfaculty/getspecial'),
-          axios.get('https://nuft-website-backend.vercel.app/internationalfaculty/getinternational')
+          axios.get('https://nuft-website-backend.vercel.app/private/faculty'),
+          axios.get('https://nuft-website-backend.vercel.app/national/faculty'),
+          axios.get('https://nuft-website-backend.vercel.app/special/faculty'),
+          axios.get('https://nuft-website-backend.vercel.app/international/faculty')
         ]);
 
         // Process private universities

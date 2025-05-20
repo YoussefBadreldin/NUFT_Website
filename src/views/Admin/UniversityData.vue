@@ -138,7 +138,7 @@
                     v-model="addFormData.Uni_Bio" 
                     id="Uni_Bio" 
                     rows="4"
-                    placeholder="أدخل نبذة ختصرة عن الجامعة"
+                    placeholder="أدخل نبذة مختصرة عن الجامعة"
                   ></textarea>
                 </div>
 
@@ -152,6 +152,32 @@
                     v-model="addFormData.location" 
                     id="location"
                     placeholder="أدخل موقع الجامعة"
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="first_year">
+                    <i class="fas fa-calendar"></i>
+                    السنة الأولى
+                  </label>
+                  <input 
+                    type="text" 
+                    v-model="addFormData.first_year" 
+                    id="first_year"
+                    placeholder="أدخل السنة الأولى"
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="second_year">
+                    <i class="fas fa-calendar"></i>
+                    السنة الثانية
+                  </label>
+                  <input 
+                    type="text" 
+                    v-model="addFormData.second_year" 
+                    id="second_year"
+                    placeholder="أدخل السنة الثانية"
                   >
                 </div>
               </div>
@@ -289,7 +315,7 @@
                       <label :for="'faculty_' + index">اسم الكلية</label>
                       <input 
                         type="text" 
-                        v-model="addFormData.faculties[index].faculty" 
+                        v-model="faculty.faculty" 
                         :id="'faculty_' + index"
                         placeholder="أدخل اسم الكلية"
                       >
@@ -298,28 +324,146 @@
                       <label :for="'section_' + index">الشعبة</label>
                       <input 
                         type="text" 
-                        v-model="addFormData.faculties[index].section" 
+                        v-model="faculty.section" 
                         :id="'section_' + index"
                         placeholder="أدخل اسم الشعبة"
                       >
                     </div>
+                    <div class="form-group">
+                      <label :for="'normal_or_Dual_' + index">نوع البرنامج</label>
+                      <select v-model="faculty.normal_or_Dual" :id="'normal_or_Dual_' + index">
+                        <option value="normal">عادي</option>
+                        <option value="dual">مزدوج</option>
+                      </select>
+                    </div>
                     <div class="form-group full-width">
                       <label :for="'programs_' + index">البرامج</label>
                       <textarea 
-                        v-model="addFormData.faculties[index].programs" 
+                        v-model="faculty.programs" 
                         :id="'programs_' + index" 
                         rows="3" 
                         placeholder="أدخل البرامج مفصولة بفواصل"
                       ></textarea>
                     </div>
+
+                    <!-- Fees Section -->
+                    <div class="form-group">
+                      <label>رسوم الوافدين</label>
+                      <div class="fees-grid">
+                        <input 
+                          type="number" 
+                          v-model="faculty.feesNatives" 
+                          placeholder="السنة الأولى"
+                        >
+                        <input 
+                          type="number" 
+                          v-model="faculty.feesNatives2" 
+                          placeholder="السنة الثانية"
+                        >
+                        <input 
+                          type="number" 
+                          v-model="faculty.feesNatives3" 
+                          placeholder="السنة الثالثة"
+                        >
+                        <input 
+                          type="number" 
+                          v-model="faculty.feesNatives4" 
+                          placeholder="السنة الرابعة"
+                        >
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label>رسوم المصريين</label>
+                      <div class="fees-grid">
+                        <input 
+                          type="number" 
+                          v-model="faculty.feesEgyption" 
+                          placeholder="السنة الأولى"
+                        >
+                        <input 
+                          type="number" 
+                          v-model="faculty.feesEgyption2" 
+                          placeholder="السنة الثانية"
+                        >
+                        <input 
+                          type="number" 
+                          v-model="faculty.feesEgyption3" 
+                          placeholder="السنة الثالثة"
+                        >
+                        <input 
+                          type="number" 
+                          v-model="faculty.feesEgyption4" 
+                          placeholder="السنة الرابعة"
+                        >
+                      </div>
+                    </div>
+
+                    <!-- Admission Scores Section -->
+                    <div class="form-group">
+                      <label>الحدود الدنيا - ثانوية عامة</label>
+                      <div class="scores-grid">
+                        <input 
+                          type="number" 
+                          v-model="faculty.thanwyaa_firstYear_score" 
+                          placeholder="السنة الأولى"
+                        >
+                        <input 
+                          type="number" 
+                          v-model="faculty.thanwyaa_secondYear_score" 
+                          placeholder="السنة الثانية"
+                        >
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label>الحدود الدنيا - أزهر</label>
+                      <div class="scores-grid">
+                        <input 
+                          type="number" 
+                          v-model="faculty.azhar_firstYear_score" 
+                          placeholder="السنة الأولى"
+                        >
+                        <input 
+                          type="number" 
+                          v-model="faculty.azhar_secondYear_score" 
+                          placeholder="السنة الثانية"
+                        >
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label>الحدود الدنيا - عربي/انجليزي</label>
+                      <div class="scores-grid">
+                        <input 
+                          type="number" 
+                          v-model="faculty.Arabenglish_firstYear_score" 
+                          placeholder="السنة الأولى"
+                        >
+                        <input 
+                          type="number" 
+                          v-model="faculty.Arabenglish_secondYear_score" 
+                          placeholder="السنة الثانية"
+                        >
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label>الحدود الدنيا - وافدين</label>
+                      <input 
+                        type="number" 
+                        v-model="faculty.wafdeen_score" 
+                        placeholder="الحد الأدنى للوافدين"
+                      >
+                    </div>
                   </div>
                 </div>
                 <button type="button" class="add-btn" @click="addFaculty('add')">
-        <i class="fas fa-plus"></i>
+                  <i class="fas fa-plus"></i>
                   إضافة كلية
-      </button>
+                </button>
               </div>
-    </div>
+            </div>
 
             <!-- International Programs -->
             <div class="form-category">
@@ -328,13 +472,13 @@
                 البرامج الدولية
               </h3>
               <div class="form-group">
-                <label for="international_programs">معلومات البرامج الدولية</label>
-                <textarea 
+                <label for="international_programs">رابط معلومات البرامج الدولية</label>
+                <input 
+                  type="url" 
                   v-model="addFormData.international_programs" 
-                  id="international_programs" 
-                  rows="4"
-                  placeholder="أدخل معلومات البرامج الدولية"
-                ></textarea>
+                  id="international_programs"
+                  placeholder="https://example.com/international-programs"
+                >
               </div>
             </div>
 
@@ -344,6 +488,15 @@
                 <i class="fas fa-home"></i>
                 السكن الجامعي
               </h3>
+              <div class="form-group">
+                <label for="dorms_link">رابط معلومات السكن</label>
+                <input 
+                  type="url" 
+                  v-model="addFormData.dorms_link" 
+                  id="dorms_link"
+                  placeholder="https://example.com/dorms"
+                >
+              </div>
               <div class="dorms-list">
                 <div v-for="(dorm, index) in addFormData.dorms" :key="index" class="dorm-item">
                   <div class="dorm-header">
@@ -358,39 +511,21 @@
                   </div>
                   <div class="form-grid">
                     <div class="form-group">
-                      <label :for="'dorm_name_' + index">اسم السكن</label>
+                      <label :for="'dorm_type_' + index">نوع السكن</label>
                       <input 
                         type="text" 
-                        v-model="addFormData.dorms[index].name" 
-                        :id="'dorm_name_' + index"
-                        placeholder="أدخل اسم السكن"
+                        v-model="dorm.type" 
+                        :id="'dorm_type_' + index"
+                        placeholder="أدخل نوع السكن"
                       >
-                    </div>
-                    <div class="form-group full-width">
-                      <label :for="'dorm_description_' + index">الوصف</label>
-                      <textarea 
-                        v-model="addFormData.dorms[index].description" 
-                        :id="'dorm_description_' + index" 
-                        rows="3"
-                        placeholder="أدخل وصف السكن"
-                      ></textarea>
                     </div>
                     <div class="form-group">
                       <label :for="'dorm_price_' + index">السعر</label>
                       <input 
-                        type="text" 
-                        v-model="addFormData.dorms[index].price" 
+                        type="number" 
+                        v-model="dorm.price" 
                         :id="'dorm_price_' + index"
                         placeholder="أدخل سعر السكن"
-                      >
-                    </div>
-                    <div class="form-group">
-                      <label :for="'dorm_location_' + index">الموقع</label>
-                      <input 
-                        type="text" 
-                        v-model="addFormData.dorms[index].location" 
-                        :id="'dorm_location_' + index"
-                        placeholder="أدخل موقع السكن"
                       >
                     </div>
                   </div>
@@ -408,6 +543,15 @@
                 <i class="fas fa-bus"></i>
                 وسائل المواصلات
               </h3>
+              <div class="form-group">
+                <label for="transportation_link">رابط المواصلات</label>
+                <input 
+                  type="url" 
+                  v-model="addFormData.transportation_link" 
+                  id="transportation_link"
+                  placeholder="https://example.com/transportation"
+                >
+              </div>
               <div class="transportation-list">
                 <div v-for="(trans, index) in addFormData.transportation" :key="index" class="transportation-item">
                   <div class="transportation-header">
@@ -422,39 +566,21 @@
                   </div>
                   <div class="form-grid">
                     <div class="form-group">
-                      <label :for="'trans_name_' + index">اسم وسيلة النقل</label>
+                      <label :for="'trans_type_' + index">نوع الوسيلة</label>
                       <input 
                         type="text" 
-                        v-model="addFormData.transportation[index].name" 
-                        :id="'trans_name_' + index"
-                        placeholder="أدخل اسم وسيلة النقل"
+                        v-model="trans.type" 
+                        :id="'trans_type_' + index"
+                        placeholder="أدخل نوع وسيلة النقل"
                       >
-                    </div>
-                    <div class="form-group full-width">
-                      <label :for="'trans_description_' + index">الوصف</label>
-                      <textarea 
-                        v-model="addFormData.transportation[index].description" 
-                        :id="'trans_description_' + index" 
-                        rows="3"
-                        placeholder="أدخل وصف وسيلة النقل"
-                      ></textarea>
                     </div>
                     <div class="form-group">
                       <label :for="'trans_price_' + index">السعر</label>
                       <input 
-                        type="text" 
-                        v-model="addFormData.transportation[index].price" 
+                        type="number" 
+                        v-model="trans.price" 
                         :id="'trans_price_' + index"
                         placeholder="أدخل سعر وسيلة النقل"
-                      >
-                    </div>
-                    <div class="form-group">
-                      <label :for="'trans_route_' + index">المسار</label>
-                      <input 
-                        type="text" 
-                        v-model="addFormData.transportation[index].route" 
-                        :id="'trans_route_' + index"
-                        placeholder="أدخل مسار وسيلة النقل"
                       >
                     </div>
                   </div>
@@ -473,7 +599,7 @@
                 المنح الدراسية
               </h3>
               <div class="form-group">
-                <label for="scholarship_link">رابط المنح الدراسية</label>
+                <label for="scholarship_link">رابط تفاصيل المنح</label>
                 <input 
                   type="url" 
                   v-model="addFormData.scholarship_link" 
@@ -497,6 +623,15 @@
                     v-model="addFormData.Egyptian_Admission_link" 
                     id="Egyptian_Admission_link"
                     placeholder="https://example.com/egyptian-admission"
+                  >
+                </div>
+                <div class="form-group">
+                  <label for="Egyptian_Admission_link2">رابط التقديم للطلاب المصريين (البرامج الدولية)</label>
+                  <input 
+                    type="url" 
+                    v-model="addFormData.Egyptian_Admission_link2" 
+                    id="Egyptian_Admission_link2"
+                    placeholder="https://example.com/egyptian-admission-international"
                   >
                 </div>
                 <div class="form-group">
@@ -852,6 +987,32 @@
                   placeholder="أدخل موقع الجامعة"
                 >
               </div>
+
+              <div class="form-group">
+                <label for="first_year">
+                  <i class="fas fa-calendar"></i>
+                  السنة الأولى
+                </label>
+                <input 
+                  type="text" 
+                  v-model="editFormData.first_year" 
+                  id="first_year"
+                  placeholder="أدخل السنة الأولى"
+                >
+              </div>
+
+              <div class="form-group">
+                <label for="second_year">
+                  <i class="fas fa-calendar"></i>
+                  السنة الثانية
+                </label>
+                <input 
+                  type="text" 
+                  v-model="editFormData.second_year" 
+                  id="second_year"
+                  placeholder="أدخل السنة الثانية"
+                >
+              </div>
             </div>
           </div>
 
@@ -1001,6 +1162,13 @@
                       placeholder="أدخل اسم الشعبة"
                     >
                   </div>
+                  <div class="form-group">
+                    <label :for="'normal_or_Dual_' + index">نوع البرنامج</label>
+                    <select v-model="faculty.normal_or_Dual" :id="'normal_or_Dual_' + index">
+                      <option value="normal">عادي</option>
+                      <option value="dual">مزدوج</option>
+                    </select>
+                  </div>
                   <div class="form-group full-width">
                     <label :for="'programs_' + index">البرامج</label>
                     <textarea 
@@ -1009,6 +1177,117 @@
                       rows="3" 
                       placeholder="أدخل البرامج مفصولة بفواصل"
                     ></textarea>
+                  </div>
+
+                  <!-- Fees Section -->
+                  <div class="form-group">
+                    <label>رسوم الوافدين</label>
+                    <div class="fees-grid">
+                      <input 
+                        type="number" 
+                        v-model="faculty.feesNatives" 
+                        placeholder="السنة الأولى"
+                      >
+                      <input 
+                        type="number" 
+                        v-model="faculty.feesNatives2" 
+                        placeholder="السنة الثانية"
+                      >
+                      <input 
+                        type="number" 
+                        v-model="faculty.feesNatives3" 
+                        placeholder="السنة الثالثة"
+                      >
+                      <input 
+                        type="number" 
+                        v-model="faculty.feesNatives4" 
+                        placeholder="السنة الرابعة"
+                      >
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>رسوم المصريين</label>
+                    <div class="fees-grid">
+                      <input 
+                        type="number" 
+                        v-model="faculty.feesEgyption" 
+                        placeholder="السنة الأولى"
+                      >
+                      <input 
+                        type="number" 
+                        v-model="faculty.feesEgyption2" 
+                        placeholder="السنة الثانية"
+                      >
+                      <input 
+                        type="number" 
+                        v-model="faculty.feesEgyption3" 
+                        placeholder="السنة الثالثة"
+                      >
+                      <input 
+                        type="number" 
+                        v-model="faculty.feesEgyption4" 
+                        placeholder="السنة الرابعة"
+                      >
+                    </div>
+                  </div>
+
+                  <!-- Admission Scores Section -->
+                  <div class="form-group">
+                    <label>الحدود الدنيا - ثانوية عامة</label>
+                    <div class="scores-grid">
+                      <input 
+                        type="number" 
+                        v-model="faculty.thanwyaa_firstYear_score" 
+                        placeholder="السنة الأولى"
+                      >
+                      <input 
+                        type="number" 
+                        v-model="faculty.thanwyaa_secondYear_score" 
+                        placeholder="السنة الثانية"
+                      >
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>الحدود الدنيا - أزهر</label>
+                    <div class="scores-grid">
+                      <input 
+                        type="number" 
+                        v-model="faculty.azhar_firstYear_score" 
+                        placeholder="السنة الأولى"
+                      >
+                      <input 
+                        type="number" 
+                        v-model="faculty.azhar_secondYear_score" 
+                        placeholder="السنة الثانية"
+                      >
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>الحدود الدنيا - عربي/انجليزي</label>
+                    <div class="scores-grid">
+                      <input 
+                        type="number" 
+                        v-model="faculty.Arabenglish_firstYear_score" 
+                        placeholder="السنة الأولى"
+                      >
+                      <input 
+                        type="number" 
+                        v-model="faculty.Arabenglish_secondYear_score" 
+                        placeholder="السنة الثانية"
+                      >
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>الحدود الدنيا - وافدين</label>
+                    <input 
+                      type="number" 
+                      v-model="faculty.wafdeen_score" 
+                      placeholder="الحد الأدنى للوافدين"
+                    >
                   </div>
                 </div>
               </div>
@@ -1026,13 +1305,13 @@
               البرامج الدولية
             </h3>
             <div class="form-group">
-              <label for="international_programs">معلومات البرامج الدولية</label>
-              <textarea 
+              <label for="international_programs">رابط معلومات البرامج الدولية</label>
+              <input 
+                type="url" 
                 v-model="editFormData.international_programs" 
-                id="international_programs" 
-                rows="4"
-                placeholder="أدخل معلومات البرامج الدولية"
-              ></textarea>
+                id="international_programs"
+                placeholder="https://example.com/international-programs"
+              >
             </div>
           </div>
 
@@ -1056,39 +1335,21 @@
                 </div>
                 <div class="form-grid">
                   <div class="form-group">
-                    <label :for="'dorm_name_' + index">اسم السكن</label>
+                    <label :for="'dorm_type_' + index">نوع السكن</label>
                     <input 
                       type="text" 
-                      v-model="dorm.name" 
-                      :id="'dorm_name_' + index"
-                      placeholder="أدخل اسم السكن"
+                      v-model="dorm.type" 
+                      :id="'dorm_type_' + index"
+                      placeholder="أدخل نوع السكن"
                     >
-                  </div>
-                  <div class="form-group full-width">
-                    <label :for="'dorm_description_' + index">الوصف</label>
-                    <textarea 
-                      v-model="dorm.description" 
-                      :id="'dorm_description_' + index" 
-                      rows="3"
-                      placeholder="أدخل وصف السكن"
-                    ></textarea>
                   </div>
                   <div class="form-group">
                     <label :for="'dorm_price_' + index">السعر</label>
                     <input 
-                      type="text" 
+                      type="number" 
                       v-model="dorm.price" 
                       :id="'dorm_price_' + index"
                       placeholder="أدخل سعر السكن"
-                    >
-                  </div>
-                  <div class="form-group">
-                    <label :for="'dorm_location_' + index">الموقع</label>
-                    <input 
-                      type="text" 
-                      v-model="dorm.location" 
-                      :id="'dorm_location_' + index"
-                      placeholder="أدخل موقع السكن"
                     >
                   </div>
                 </div>
@@ -1132,39 +1393,21 @@
                 </div>
                 <div class="form-grid">
                   <div class="form-group">
-                    <label :for="'trans_name_' + index">اسم وسيلة النقل</label>
+                    <label :for="'trans_type_' + index">نوع الوسيلة</label>
                     <input 
                       type="text" 
-                      v-model="trans.name" 
-                      :id="'trans_name_' + index"
-                      placeholder="أدخل اسم وسيلة النقل"
+                      v-model="trans.type" 
+                      :id="'trans_type_' + index"
+                      placeholder="أدخل نوع وسيلة النقل"
                     >
-                  </div>
-                  <div class="form-group full-width">
-                    <label :for="'trans_description_' + index">الوصف</label>
-                    <textarea 
-                      v-model="trans.description" 
-                      :id="'trans_description_' + index" 
-                      rows="3"
-                      placeholder="أدخل وصف وسيلة النقل"
-                    ></textarea>
                   </div>
                   <div class="form-group">
                     <label :for="'trans_price_' + index">السعر</label>
                     <input 
-                      type="text" 
+                      type="number" 
                       v-model="trans.price" 
                       :id="'trans_price_' + index"
                       placeholder="أدخل سعر وسيلة النقل"
-                    >
-                  </div>
-                  <div class="form-group">
-                    <label :for="'trans_route_' + index">المسار</label>
-                    <input 
-                      type="text" 
-                      v-model="trans.route" 
-                      :id="'trans_route_' + index"
-                      placeholder="أدخل مسار وسيلة النقل"
                     >
                   </div>
                 </div>
@@ -1195,7 +1438,7 @@
               المنح الدراسية
             </h3>
             <div class="form-group">
-              <label for="scholarship_link">رابط المنح الدراسية</label>
+              <label for="scholarship_link">رابط تفاصيل المنح</label>
               <input 
                 type="url" 
                 v-model="editFormData.scholarship_link" 
@@ -1219,6 +1462,15 @@
                   v-model="editFormData.Egyptian_Admission_link" 
                   id="Egyptian_Admission_link"
                   placeholder="https://example.com/egyptian-admission"
+                >
+              </div>
+              <div class="form-group">
+                <label for="Egyptian_Admission_link2">رابط التقديم للطلاب المصريين (البرامج الدولية)</label>
+                <input 
+                  type="url" 
+                  v-model="editFormData.Egyptian_Admission_link2" 
+                  id="Egyptian_Admission_link2"
+                  placeholder="https://example.com/egyptian-admission-international"
                 >
               </div>
               <div class="form-group">
@@ -1260,7 +1512,7 @@
     <!-- Delete University Section -->
     <div v-if="activeTab === 'delete'" class="section-container">
       <div class="section-header">
-        <h2>حذف جامعة حالية</h2>
+        <h2>حذف بيانات الجامعة</h2>
         <div class="search-bar">
           <input 
             type="text" 
@@ -1354,7 +1606,7 @@
       <div v-else class="form-section">
         <div class="form-card">
           <div class="form-header">
-            <h2 class="section-title">تأكيد حذف الجامعة</h2>
+            <h2 class="section-title">حذف بيانات الجامعة</h2>
             <button class="back-btn" @click="selectedUniversityForDelete = null">
               <i class="fas fa-arrow-right"></i>
               العودة للقائمة
@@ -1372,20 +1624,145 @@
               <h3>{{ selectedUniversityForDelete?.university_Arabic_Name }}</h3>
               <p class="university-type">{{ getUniversityTypeName(selectedUniversityForDelete?.type) }}</p>
             </div>
-            <div class="warning-message">
-              <i class="fas fa-exclamation-triangle"></i>
-              <p>هل أنت متأكد من حذف هذه الجامعة؟</p>
-              <p class="warning-details">سيتم حذف جميع البيانات المرتبطة بالجامعة بما في ذلك الكليات والسكن والمواصلات.</p>
+
+            <!-- Delete Whole University Option -->
+            <div class="delete-section warning-section">
+              <h3 class="delete-section-title">
+                <i class="fas fa-exclamation-triangle"></i>
+                حذف الجامعة بالكامل
+              </h3>
+              <div class="warning-message">
+                <p>سيتم حذف جميع البيانات المرتبطة بالجامعة بما في ذلك الكليات والسكن والمواصلات.</p>
+                <button class="delete-university-btn" @click="confirmDeleteUniversity">
+                  <i class="fas fa-trash"></i>
+                  حذف الجامعة بالكامل
+                </button>
+              </div>
             </div>
-            <div class="delete-actions">
-              <button class="confirm-delete-btn" @click="deleteUniversity(selectedUniversityForDelete?.id)">
-                <i class="fas fa-trash"></i>
-                تأكيد الحذف
+
+            <!-- Delete Sections -->
+            <div class="delete-sections-nav">
+              <button 
+                v-for="section in deleteSections" 
+                :key="section.id"
+                :class="['section-nav-btn', { active: activeDeleteSection === section.id }]"
+                @click="activeDeleteSection = section.id"
+              >
+                <i :class="section.icon"></i>
+                {{ section.label }}
               </button>
-              <button class="cancel-delete-btn" @click="selectedUniversityForDelete = null">
-                <i class="fas fa-times"></i>
-                إلغاء
-              </button>
+            </div>
+
+            <!-- Faculties Section -->
+            <div v-if="activeDeleteSection === 'faculties'" class="delete-section">
+              <h3 class="delete-section-title">
+                <i class="fas fa-graduation-cap"></i>
+                الكليات
+              </h3>
+              <div class="delete-items-list">
+                <div v-for="(faculty, index) in selectedUniversityForDelete?.faculties" 
+                     :key="index" 
+                     class="delete-item">
+                  <div class="item-info">
+                    <h4>{{ faculty.faculty }}</h4>
+                    <p>{{ faculty.section }}</p>
+                    <p class="programs">{{ faculty.programs }}</p>
+                  </div>
+                  <button class="delete-item-btn" @click="deleteFaculty(faculty)">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dorms Section -->
+            <div v-if="activeDeleteSection === 'dorms'" class="delete-section">
+              <h3 class="delete-section-title">
+                <i class="fas fa-home"></i>
+                السكن الجامعي
+              </h3>
+              <div class="delete-items-list">
+                <div v-for="(dorm, index) in selectedUniversityForDelete?.dorms" 
+                     :key="index" 
+                     class="delete-item">
+                  <div class="item-info">
+                    <h4>{{ dorm.name }}</h4>
+                    <p>{{ dorm.location }}</p>
+                    <p class="price">{{ dorm.price }}</p>
+                    <p class="description">{{ dorm.description }}</p>
+                  </div>
+                  <button class="delete-item-btn" @click="deleteDorm(dorm)">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Transportation Section -->
+            <div v-if="activeDeleteSection === 'transportation'" class="delete-section">
+              <h3 class="delete-section-title">
+                <i class="fas fa-bus"></i>
+                وسائل المواصلات
+              </h3>
+              <div class="delete-items-list">
+                <div v-for="(trans, index) in selectedUniversityForDelete?.transportation" 
+                     :key="index" 
+                     class="delete-item">
+                  <div class="item-info">
+                    <h4>{{ trans.name }}</h4>
+                    <p>{{ trans.route }}</p>
+                    <p class="price">{{ trans.price }}</p>
+                    <p class="description">{{ trans.description }}</p>
+                  </div>
+                  <button class="delete-item-btn" @click="deleteTransportation(trans)">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- International Programs Section -->
+            <div v-if="activeDeleteSection === 'international'" class="delete-section">
+              <h3 class="delete-section-title">
+                <i class="fas fa-globe-americas"></i>
+                البرامج الدولية
+              </h3>
+              <div class="delete-items-list">
+                <div class="delete-item">
+                  <div class="item-info">
+                    <p class="description">{{ selectedUniversityForDelete?.international_programs }}</p>
+                  </div>
+                  <button class="delete-item-btn" @click="deleteInternationalPrograms">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Links Section -->
+            <div v-if="activeDeleteSection === 'links'" class="delete-section">
+              <h3 class="delete-section-title">
+                <i class="fas fa-link"></i>
+                الروابط
+              </h3>
+              <div class="delete-items-list">
+                <div v-for="(link, key) in universityLinks" 
+                     :key="key" 
+                     class="delete-item">
+                  <div class="item-info">
+                    <h4>{{ link.label }}</h4>
+                    <p>{{ selectedUniversityForDelete?.[key] }}</p>
+                  </div>
+                  <button class="delete-item-btn" @click="deleteLink(key)">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1409,6 +1786,8 @@ export default {
         type: 'national',
         Uni_Bio: '',
         location: '',
+        first_year: '',
+        second_year: '',
         website: '',
         phone: '',
         email: '',
@@ -1424,6 +1803,7 @@ export default {
         transportation_link: '',
         scholarship_link: '',
         Egyptian_Admission_link: '',
+        Egyptian_Admission_link2: '',
         Egyptian_Transfer_link: '',
         Wafdeen_Admission_link: ''
       },
@@ -1477,6 +1857,27 @@ export default {
       ],
       selectedUniversityForEdit: null,
       selectedUniversityForDelete: null,
+      activeDeleteSection: 'faculties',
+      deleteSections: [
+        { id: 'faculties', label: 'الكليات', icon: 'fas fa-graduation-cap' },
+        { id: 'dorms', label: 'السكن الجامعي', icon: 'fas fa-home' },
+        { id: 'transportation', label: 'وسائل المواصلات', icon: 'fas fa-bus' },
+        { id: 'international', label: 'البرامج الدولية', icon: 'fas fa-globe-americas' },
+        { id: 'links', label: 'الروابط', icon: 'fas fa-link' }
+      ],
+      universityLinks: {
+        website: { label: 'الموقع الإلكتروني' },
+        facebook: { label: 'فيسبوك' },
+        instagram: { label: 'انستجرام' },
+        youtube: { label: 'يوتيوب' },
+        linkedin: { label: 'لينكد إن' },
+        dorms_link: { label: 'رابط السكن' },
+        transportation_link: { label: 'رابط المواصلات' },
+        scholarship_link: { label: 'رابط المنح' },
+        Egyptian_Admission_link: { label: 'رابط التقديم للطلاب المصريين' },
+        Egyptian_Transfer_link: { label: 'رابط التحويل للطلاب المصريين' },
+        Wafdeen_Admission_link: { label: 'رابط التقديم للطلاب الوافدين' }
+      }
     };
   },
   computed: {
@@ -1583,15 +1984,22 @@ export default {
       const faculty = {
         faculty: '',
         section: '',
+        normal_or_Dual: 'normal',
         programs: '',
         feesNatives: '',
+        feesNatives2: '',
+        feesNatives3: '',
+        feesNatives4: '',
         feesEgyption: '',
-        thanwyaa_secondYear_score: '',
+        feesEgyption2: '',
+        feesEgyption3: '',
+        feesEgyption4: '',
         thanwyaa_firstYear_score: '',
-        azhar_secondYear_score: '',
+        thanwyaa_secondYear_score: '',
         azhar_firstYear_score: '',
-        Arabenglish_secondYear_score: '',
+        azhar_secondYear_score: '',
         Arabenglish_firstYear_score: '',
+        Arabenglish_secondYear_score: '',
         wafdeen_score: ''
       };
       
@@ -1612,10 +2020,8 @@ export default {
 
     addDorm(formType) {
       const dorm = {
-        name: '',
-        description: '',
-        price: '',
-        location: ''
+        type: '',
+        price: ''
       };
       
       if (formType === 'add') {
@@ -1635,10 +2041,8 @@ export default {
 
     addTransportation(formType) {
       const trans = {
-        name: '',
-        description: '',
-        price: '',
-        route: ''
+        type: '',
+        price: ''
       };
       
       if (formType === 'add') {
@@ -1764,80 +2168,80 @@ export default {
     async updateUniversity() {
       try {
         let endpoint;
+        const universityCode = this.editFormData.university_code.toUpperCase();
+        
+        // Determine the correct endpoint based on university type
         switch (this.editFormData.type) {
           case 'national':
-            endpoint = `https://nuft-website-backend.vercel.app/national/${this.editingId}`;
+            endpoint = `https://nuft-website-backend.vercel.app/national/${universityCode}`;
             break;
           case 'private':
-            endpoint = `https://nuft-website-backend.vercel.app/private/${this.editingId}`;
+            endpoint = `https://nuft-website-backend.vercel.app/private/${universityCode}`;
             break;
           case 'special':
-            endpoint = `https://nuft-website-backend.vercel.app/special/${this.editingId}`;
+            endpoint = `https://nuft-website-backend.vercel.app/special/${universityCode}`;
             break;
           case 'international':
-            endpoint = `https://nuft-website-backend.vercel.app/international/${this.editingId}`;
+            endpoint = `https://nuft-website-backend.vercel.app/international/${universityCode}`;
             break;
         }
 
-        // Update university info and links
+        // Update university basic information
         await axios.put(endpoint, {
-          ...this.editFormData,
-          university_code: this.editFormData.university_code.toUpperCase()
+          university_code: universityCode,
+          university_Arabic_Name: this.editFormData.university_Arabic_Name,
+          university_Logo: this.editFormData.university_Logo,
+          type: this.editFormData.type,
+          Uni_Bio: this.editFormData.Uni_Bio,
+          location: this.editFormData.location,
+          website: this.editFormData.website,
+          phone: this.editFormData.phone,
+          email: this.editFormData.email,
+          facebook: this.editFormData.facebook,
+          instagram: this.editFormData.instagram,
+          youtube: this.editFormData.youtube,
+          linkedin: this.editFormData.linkedin,
+          international_programs: this.editFormData.international_programs,
+          dorms_link: this.editFormData.dorms_link,
+          transportation_link: this.editFormData.transportation_link,
+          scholarship_link: this.editFormData.scholarship_link,
+          Egyptian_Admission_link: this.editFormData.Egyptian_Admission_link,
+          Egyptian_Transfer_link: this.editFormData.Egyptian_Transfer_link,
+          Wafdeen_Admission_link: this.editFormData.Wafdeen_Admission_link
         });
 
-        // Update faculties
+        // Update faculties if they exist
         if (this.editFormData.faculties && this.editFormData.faculties.length > 0) {
-          const facultyEndpoint = this.editFormData.type === 'national' 
-            ? `https://nuft-website-backend.vercel.app/national/faculty/${this.editingId}`
-            : this.editFormData.type === 'private'
-            ? `https://nuft-website-backend.vercel.app/private/faculty/${this.editingId}`
-            : this.editFormData.type === 'special'
-            ? `https://nuft-website-backend.vercel.app/special/faculty/${this.editingId}`
-            : `https://nuft-website-backend.vercel.app/international/faculty/${this.editingId}`;
-
+          const facultyEndpoint = `${endpoint}/faculty`;
           for (const faculty of this.editFormData.faculties) {
             await axios.put(facultyEndpoint, {
               ...faculty,
-              university: this.editFormData.university_Arabic_Name,
-              university_code: this.editFormData.university_code.toUpperCase()
+              university_code: universityCode,
+              university: this.editFormData.university_Arabic_Name
             });
           }
         }
 
-        // Update dorms
+        // Update dorms if they exist
         if (this.editFormData.dorms && this.editFormData.dorms.length > 0) {
-          const dormEndpoint = this.editFormData.type === 'national'
-            ? `https://nuft-website-backend.vercel.app/national/dorms/${this.editingId}`
-            : this.editFormData.type === 'private'
-            ? `https://nuft-website-backend.vercel.app/private/dorms/${this.editingId}`
-            : this.editFormData.type === 'special'
-            ? `https://nuft-website-backend.vercel.app/special/dorms/${this.editingId}`
-            : `https://nuft-website-backend.vercel.app/international/dorms/${this.editingId}`;
-
+          const dormEndpoint = `${endpoint}/dorms`;
           for (const dorm of this.editFormData.dorms) {
             await axios.put(dormEndpoint, {
               ...dorm,
-              spec: this.editFormData.university_Arabic_Name,
-              university_code: this.editFormData.university_code.toUpperCase()
+              university_code: universityCode,
+              spec: this.editFormData.university_Arabic_Name
             });
           }
         }
 
-        // Update transportation
+        // Update transportation if it exists
         if (this.editFormData.transportation && this.editFormData.transportation.length > 0) {
-          const transEndpoint = this.editFormData.type === 'national'
-            ? `https://nuft-website-backend.vercel.app/national/transportation/${this.editingId}`
-            : this.editFormData.type === 'private'
-            ? `https://nuft-website-backend.vercel.app/private/transportation/${this.editingId}`
-            : this.editFormData.type === 'special'
-            ? `https://nuft-website-backend.vercel.app/special/transportation/${this.editingId}`
-            : `https://nuft-website-backend.vercel.app/international/transportation/${this.editingId}`;
-
+          const transEndpoint = `${endpoint}/transportation`;
           for (const trans of this.editFormData.transportation) {
             await axios.put(transEndpoint, {
               ...trans,
-              spec: this.editFormData.university_Arabic_Name,
-              university_code: this.editFormData.university_code.toUpperCase()
+              university_code: universityCode,
+              spec: this.editFormData.university_Arabic_Name
             });
           }
         }
@@ -1854,24 +2258,40 @@ export default {
     async deleteUniversity(id) {
       try {
         const university = this.universitiesData.find(u => u.id === id);
+        if (!university) {
+          throw new Error('University not found');
+        }
+
+        const universityCode = university.university_code || id;
         let endpoint;
+
+        // Determine the correct endpoint based on university type
         switch (university.type) {
           case 'national':
-            endpoint = `https://nuft-website-backend.vercel.app/national/${id}`;
+            endpoint = `https://nuft-website-backend.vercel.app/national/${universityCode}`;
             break;
           case 'private':
-            endpoint = `https://nuft-website-backend.vercel.app/private/${id}`;
+            endpoint = `https://nuft-website-backend.vercel.app/private/${universityCode}`;
             break;
           case 'special':
-            endpoint = `https://nuft-website-backend.vercel.app/special/${id}`;
+            endpoint = `https://nuft-website-backend.vercel.app/special/${universityCode}`;
             break;
           case 'international':
-            endpoint = `https://nuft-website-backend.vercel.app/international/${id}`;
+            endpoint = `https://nuft-website-backend.vercel.app/international/${universityCode}`;
             break;
         }
 
+        // Delete the university and all associated data
         await axios.delete(endpoint);
+
+        // Remove the university from the local state
+        this.universitiesData = this.universitiesData.filter(u => u.id !== id);
+        this.filteredUniversities = this.filteredUniversities.filter(u => u.id !== id);
+        this.filteredEditUniversities = this.filteredEditUniversities.filter(u => u.id !== id);
+        this.filteredDeleteUniversities = this.filteredDeleteUniversities.filter(u => u.id !== id);
+
         alert('تم حذف الجامعة بنجاح');
+        this.selectedUniversityForDelete = null;
         this.fetchUniversities();
       } catch (error) {
         console.error('Error deleting university:', error);
@@ -1908,6 +2328,8 @@ export default {
         type: 'national',
         Uni_Bio: '',
         location: '',
+        first_year: '',
+        second_year: '',
         website: '',
         phone: '',
         email: '',
@@ -1923,6 +2345,7 @@ export default {
         transportation_link: '',
         scholarship_link: '',
         Egyptian_Admission_link: '',
+        Egyptian_Admission_link2: '',
         Egyptian_Transfer_link: '',
         Wafdeen_Admission_link: ''
       };
@@ -2024,6 +2447,178 @@ export default {
       this.selectUniversityForDelete(university);
       this.filterDeleteUniversities();
     },
+    async deleteFaculty(faculty) {
+      try {
+        const university = this.selectedUniversityForDelete;
+        const universityCode = university.university_code || university.id;
+        let endpoint;
+
+        switch (university.type) {
+          case 'national':
+            endpoint = `https://nuft-website-backend.vercel.app/national/${universityCode}/faculty/${faculty.id}`;
+            break;
+          case 'private':
+            endpoint = `https://nuft-website-backend.vercel.app/private/${universityCode}/faculty/${faculty.id}`;
+            break;
+          case 'special':
+            endpoint = `https://nuft-website-backend.vercel.app/special/${universityCode}/faculty/${faculty.id}`;
+            break;
+          case 'international':
+            endpoint = `https://nuft-website-backend.vercel.app/international/${universityCode}/faculty/${faculty.id}`;
+            break;
+        }
+
+        await axios.delete(endpoint);
+        
+        // Update local state
+        const index = university.faculties.findIndex(f => f.id === faculty.id);
+        if (index !== -1) {
+          university.faculties.splice(index, 1);
+        }
+
+        alert('تم حذف الكلية بنجاح');
+      } catch (error) {
+        console.error('Error deleting faculty:', error);
+        alert('حدث خطأ أثناء حذف الكلية');
+      }
+    },
+
+    async deleteDorm(dorm) {
+      try {
+        const university = this.selectedUniversityForDelete;
+        const universityCode = university.university_code || university.id;
+        let endpoint;
+
+        switch (university.type) {
+          case 'national':
+            endpoint = `https://nuft-website-backend.vercel.app/national/${universityCode}/dorms/${dorm.id}`;
+            break;
+          case 'private':
+            endpoint = `https://nuft-website-backend.vercel.app/private/${universityCode}/dorms/${dorm.id}`;
+            break;
+          case 'special':
+            endpoint = `https://nuft-website-backend.vercel.app/special/${universityCode}/dorms/${dorm.id}`;
+            break;
+          case 'international':
+            endpoint = `https://nuft-website-backend.vercel.app/international/${universityCode}/dorms/${dorm.id}`;
+            break;
+        }
+
+        await axios.delete(endpoint);
+        
+        // Update local state
+        const index = university.dorms.findIndex(d => d.id === dorm.id);
+        if (index !== -1) {
+          university.dorms.splice(index, 1);
+        }
+
+        alert('تم حذف السكن بنجاح');
+      } catch (error) {
+        console.error('Error deleting dorm:', error);
+        alert('حدث خطأ أثناء حذف السكن');
+      }
+    },
+
+    async deleteTransportation(trans) {
+      try {
+        const university = this.selectedUniversityForDelete;
+        const universityCode = university.university_code || university.id;
+        let endpoint;
+
+        switch (university.type) {
+          case 'national':
+            endpoint = `https://nuft-website-backend.vercel.app/national/${universityCode}/transportation/${trans.id}`;
+            break;
+          case 'private':
+            endpoint = `https://nuft-website-backend.vercel.app/private/${universityCode}/transportation/${trans.id}`;
+            break;
+          case 'special':
+            endpoint = `https://nuft-website-backend.vercel.app/special/${universityCode}/transportation/${trans.id}`;
+            break;
+          case 'international':
+            endpoint = `https://nuft-website-backend.vercel.app/international/${universityCode}/transportation/${trans.id}`;
+            break;
+        }
+
+        await axios.delete(endpoint);
+        
+        // Update local state
+        const index = university.transportation.findIndex(t => t.id === trans.id);
+        if (index !== -1) {
+          university.transportation.splice(index, 1);
+        }
+
+        alert('تم حذف وسيلة النقل بنجاح');
+      } catch (error) {
+        console.error('Error deleting transportation:', error);
+        alert('حدث خطأ أثناء حذف وسيلة النقل');
+      }
+    },
+    async confirmDeleteUniversity() {
+      if (confirm('هل أنت متأكد من حذف الجامعة بالكامل؟ سيتم حذف جميع البيانات المرتبطة بها.')) {
+        await this.deleteUniversity(this.selectedUniversityForDelete.id);
+      }
+    },
+
+    async deleteInternationalPrograms() {
+      try {
+        const university = this.selectedUniversityForDelete;
+        const universityCode = university.university_code || university.id;
+        let endpoint;
+
+        switch (university.type) {
+          case 'national':
+            endpoint = `https://nuft-website-backend.vercel.app/national/${universityCode}/international`;
+            break;
+          case 'private':
+            endpoint = `https://nuft-website-backend.vercel.app/private/${universityCode}/international`;
+            break;
+          case 'special':
+            endpoint = `https://nuft-website-backend.vercel.app/special/${universityCode}/international`;
+            break;
+          case 'international':
+            endpoint = `https://nuft-website-backend.vercel.app/international/${universityCode}/international`;
+            break;
+        }
+
+        await axios.delete(endpoint);
+        university.international_programs = '';
+        alert('تم حذف البرامج الدولية بنجاح');
+      } catch (error) {
+        console.error('Error deleting international programs:', error);
+        alert('حدث خطأ أثناء حذف البرامج الدولية');
+      }
+    },
+
+    async deleteLink(linkKey) {
+      try {
+        const university = this.selectedUniversityForDelete;
+        const universityCode = university.university_code || university.id;
+        let endpoint;
+
+        switch (university.type) {
+          case 'national':
+            endpoint = `https://nuft-website-backend.vercel.app/national/${universityCode}/links/${linkKey}`;
+            break;
+          case 'private':
+            endpoint = `https://nuft-website-backend.vercel.app/private/${universityCode}/links/${linkKey}`;
+            break;
+          case 'special':
+            endpoint = `https://nuft-website-backend.vercel.app/special/${universityCode}/links/${linkKey}`;
+            break;
+          case 'international':
+            endpoint = `https://nuft-website-backend.vercel.app/international/${universityCode}/links/${linkKey}`;
+            break;
+        }
+
+        await axios.delete(endpoint);
+        university[linkKey] = '';
+        alert('تم حذف الرابط بنجاح');
+      } catch (error) {
+        console.error('Error deleting link:', error);
+        alert('حدث خطأ أثناء حذف الرابط');
+      }
+    }
   },
   created() {
     this.fetchUniversities();
@@ -2854,5 +3449,166 @@ textarea:focus {
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
   }
+}
+
+.delete-section {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.delete-section-title {
+  color: #1a237e;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.delete-section-title i {
+  color: #4158d0;
+}
+
+.delete-items-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.delete-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.item-info h4 {
+  color: #1a237e;
+  margin-bottom: 0.25rem;
+}
+
+.item-info p {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.delete-item-btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background: #fde7e7;
+  color: #d32f2f;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.delete-item-btn:hover {
+  background: #ffebee;
+  transform: translateY(-2px);
+}
+
+.delete-sections-nav {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.section-nav-btn {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #1a237e;
+  border-radius: 8px;
+  background: white;
+  color: #1a237e;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.section-nav-btn:hover {
+  background: #e8eaf6;
+}
+
+.section-nav-btn.active {
+  background: #1a237e;
+  color: white;
+}
+
+.warning-section {
+  background: #fff3cd;
+  border: 1px solid #ffeeba;
+}
+
+.warning-message {
+  text-align: center;
+  padding: 1rem;
+}
+
+.warning-message p {
+  color: #856404;
+  margin-bottom: 1rem;
+}
+
+.delete-university-btn {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  background: #dc3545;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.delete-university-btn:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+}
+
+.programs, .price, .description {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+.description {
+  font-style: italic;
+}
+
+.fees-grid,
+.scores-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.fees-grid input,
+.scores-grid input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.fees-grid input:focus,
+.scores-grid input:focus {
+  outline: none;
+  border-color: #4158d0;
+  box-shadow: 0 0 0 2px rgba(65, 88, 208, 0.1);
 }
 </style> 

@@ -36,7 +36,7 @@
                         <div v-for="(pair, index) in filteredPairedUniversities.filter(pair => pair[0].type === 'private')" :key="index" class="university-pair-card">
                             <div class="pair-header">
                                 <h3>
-                                    <a :href="pair[0].guide_Url" target="_blank" class="university-link">
+                                    <a :href="`/guide/${pair[0].type}/${pair[0].university}`" target="_blank" class="university-link">
                                         {{ pair[0].university_Arabic_Name }}
                                     </a>
                                 </h3>
@@ -155,7 +155,7 @@
                         <div v-for="(pair, index) in filteredPairedUniversities.filter(pair => pair[0].type === 'national')" :key="index" class="university-pair-card">
                             <div class="pair-header">
                                 <h3>
-                                    <a :href="pair[0].guide_Url" target="_blank" class="university-link">
+                                    <a :href="`/guide/${pair[0].type}/${pair[0].university}`" target="_blank" class="university-link">
                                         {{ pair[0].university_Arabic_Name }}
                                     </a>
                                 </h3>
@@ -274,7 +274,7 @@
                         <div v-for="(pair, index) in filteredPairedUniversities.filter(pair => pair[0].type === 'special')" :key="index" class="university-pair-card">
                             <div class="pair-header">
                                 <h3>
-                                    <a :href="pair[0].guide_Url" target="_blank" class="university-link">
+                                    <a :href="`/guide/${pair[0].type}/${pair[0].university}`" target="_blank" class="university-link">
                                         {{ pair[0].university_Arabic_Name }}
                                     </a>
                                 </h3>
@@ -393,7 +393,7 @@
                         <div v-for="(pair, index) in filteredPairedUniversities.filter(pair => pair[0].type === 'international')" :key="index" class="university-pair-card">
                             <div class="pair-header">
                                 <h3>
-                                    <a :href="pair[0].guide_Url" target="_blank" class="university-link">
+                                    <a :href="`/guide/${pair[0].type}/${pair[0].university}`" target="_blank" class="university-link">
                                         {{ pair[0].university_Arabic_Name }}
                                     </a>
                                 </h3>

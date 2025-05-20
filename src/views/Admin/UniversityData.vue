@@ -551,7 +551,7 @@
                     <div class="form-group">
                       <label :for="'dorm_price_' + index">السعر</label>
                       <input 
-                        type="number" 
+                        type="text" 
                         v-model="dorm.price" 
                         :id="'dorm_price_' + index"
                         placeholder="أدخل سعر السكن"
@@ -1278,34 +1278,49 @@
                 placeholder="https://example.com/dorms"
               >
             </div>
-            <div v-for="(dorm, index) in editFormData.dorms" :key="index" class="dorm-item">
-              <div class="form-header">
-                <h4>{{ dorm.type || 'سكن جديد' }}</h4>
-                <button type="button" class="toggle-btn" @click="toggleSection('dorms', index)">
-                  <i class="fas" :class="collapsedSections.dorms[index] ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
-                  {{ collapsedSections.dorms[index] ? 'عرض' : 'إخفاء' }}
-                </button>
-              </div>
-              <div class="form-grid" v-show="!collapsedSections.dorms[index]">
-                <div class="form-group">
-                  <label :for="'dorm_type_' + index">نوع السكن</label>
-                  <input 
-                    type="text" 
-                    v-model="dorm.type" 
-                    :id="'dorm_type_' + index"
-                    placeholder="أدخل نوع السكن"
-                  >
+            <div class="dorms-list">
+              <div v-for="(dorm, index) in editFormData.dorms" :key="index" class="dorm-item">
+                <div class="dorm-header">
+                  <h4>
+                    <i class="fas fa-building"></i>
+                    {{ dorm.type || `سكن ${index + 1}` }}
+                  </h4>
+                  <div class="dorm-actions">
+                    <button type="button"
+                            class="toggle-btn"
+                            @click="collapsedSections.dorms[index] ? toggleSection('dorms', index) : saveDorm(index, 'edit')">
+                      <i class="fas" :class="collapsedSections.dorms[index] ? 'fa-edit' : 'fa-save'"></i>
+                      {{ collapsedSections.dorms[index] ? 'تعديل' : 'حفظ' }}
+                    </button>
+                    <button type="button" class="remove-btn" @click="removeDorm(index, 'edit')">
+                      <i class="fas fa-trash"></i>
+                      حذف
+                    </button>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <label :for="'dorm_price_' + index">السعر</label>
-                  <input 
-                    type="text" 
-                    v-model="dorm.price" 
-                    :id="'dorm_price_' + index"
-                    placeholder="أدخل السعر"
-                  >
+                <div class="form-grid" v-show="!collapsedSections.dorms[index]">
+                  <div class="form-group">
+                    <label :for="'dorm_type_' + index">نوع السكن</label>
+                    <input 
+                      type="text" 
+                      v-model="dorm.type" 
+                      :id="'dorm_type_' + index"
+                      placeholder="أدخل نوع السكن"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label :for="'dorm_price_' + index">السعر</label>
+                    <input 
+                      type="text" 
+                      v-model="dorm.price" 
+                      :id="'dorm_price_' + index"
+                      placeholder="أدخل سعر السكن"
+                      class="full-width-input"
+                    >
+                  </div>
                 </div>
               </div>
+              <!-- No add dorm button in edit mode -->
             </div>
           </div>
 
@@ -2583,7 +2598,35 @@ export default {
       this.resetEditForm();
       this.activeTab = 'manage';
     },
-    selectUniversityForEdit(university) {
+    async selectUniversityForEdit(university) {
+      // 1. Get the type and code
+      const type = university.type.toLowerCase();
+      const universityCode = university.university_code || university.id;
+
+      // 2. Fetch dorms for this type
+      let dorms = [];
+      try {
+        const response = await axios.get(`https://nuft-website-backend.vercel.app/${type}/dorms`);
+        // 3. Filter dorms for this university
+        dorms = response.data.filter(dorm => dorm.spec === universityCode);
+      } catch (e) {
+        dorms = [];
+      }
+
+      // Initialize all sections as collapsed
+      this.collapsedSections = {
+        faculties: {},
+        dorms: {},
+        transportation: {}
+      };
+      // Set all dorm items as collapsed by default
+      if (dorms) {
+        dorms.forEach((_, index) => {
+          this.collapsedSections.dorms[index] = true;
+        });
+      }
+
+      // 4. Set editFormData as before, but with dorms
       this.selectedUniversityForEdit = university;
       this.isEditing = true;
       this.editingId = university.id;
@@ -2606,7 +2649,7 @@ export default {
         linkedin: university.linkedin || '',
         faculties: university.faculties || [],
         international_programs: university.international_programs || '',
-        dorms: university.dorms || [],
+        dorms: dorms, // <-- set the fetched dorms here
         transportation: university.transportation || [],
         dorms_link: university.dorms_link || '',
         transportation_link: university.transportation_link || '',
@@ -2706,9 +2749,9 @@ export default {
 
     toggleSection(section, index) {
       if (!this.collapsedSections[section]) {
-        this.$set(this.collapsedSections, section, {});
+        this.collapsedSections[section] = {};
       }
-      this.$set(this.collapsedSections[section], index, !this.collapsedSections[section][index]);
+      this.collapsedSections[section][index] = !this.collapsedSections[section][index];
     },
 
     async deleteBasicInfo(field) {

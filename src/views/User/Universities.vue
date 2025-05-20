@@ -164,100 +164,8 @@ export default {
       loading.value = true;
       error.value = null;
 
-      // Hardcoded university data as fallback
-      const hardcodedUniversities = {
-        private: [
-          // Original private universities
-          { id: 'AHUC', name: 'جامعة الحياة بالقاهرة', logo: '/images/Logos/Universites/Private/AHUC.png' },
-          { id: 'ACU', name: 'جامعة الأهرام الكندية', logo: '/images/Logos/Universites/Private/ACU.png' },
-          { id: 'ASU', name: 'جامعة السلام', logo: '/images/Logos/Universites/Private/ASU.png' },
-          { id: 'GUC', name: 'الجامعة الألمانية بالقاهرة', logo: '/images/Logos/Universites/Private/GUC.png' },
-          { id: 'BADYA', name: 'جامعة باديا', logo: '/images/Logos/Universites/Private/BADYA.png' },
-          { id: 'BUC', name: 'جامعة بدر بالقاهرة', logo: '/images/Logos/Universites/Private/BUC.png' },
-          { id: 'BUA', name: 'جامعة بدر بأسيوط', logo: '/images/Logos/Universites/Private/BUA.png' },
-          { id: 'BUE', name: 'الجامعة البريطانية في مصر', logo: '/images/Logos/Universites/Private/BUE.png' },
-          { id: 'CUC', name: 'جامعة المدينة بالقاهرة', logo: '/images/Logos/Universites/Private/CUC.png' },
-          { id: 'DU', name: 'جامعة الدلتا للعلوم والتكنولوجيا', logo: '/images/Logos/Universites/Private/DU.png' },
-          { id: 'ERU', name: 'الجامعة المصرية الروسية', logo: '/images/Logos/Universites/Private/ERU.png' },
-          { id: 'ECU', name: 'الجامعة المصرية الصينية', logo: '/images/Logos/Universites/Private/ECU.png' },
-          { id: 'FUE', name: 'جامعة المستقبل', logo: '/images/Logos/Universites/Private/FUE.png' },
-          { id: 'NGU', name: 'جامعة الجيزة الجديدة', logo: '/images/Logos/Universites/Private/NGU.png' },
-          { id: 'HU', name: 'جامعة هيليوبليس', logo: '/images/Logos/Universites/Private/HU.png' },
-          { id: 'HUE', name: 'جامعة حورس', logo: '/images/Logos/Universites/Private/HUE.png' },
-          { id: 'IU', name: 'جامعة الابتكار', logo: '/images/Logos/Universites/Private/IU.png' },
-          { id: 'DerayaU', name: 'جامعة دراية', logo: '/images/Logos/Universites/Private/DerayaU.png' },
-          { id: 'LUM', name: 'جامعة اللوتس', logo: '/images/Logos/Universites/Private/LOTUS.png' },
-          { id: 'MSA', name: 'جامعة أكتوبر للعلوم الحديثة والآداب', logo: '/images/Logos/Universites/Private/MSA.png' },
-          { id: 'MUC', name: 'جامعة مايو بالقاهرة', logo: '/images/Logos/Universites/Private/MUC.png' },
-          { id: 'MUE', name: 'جامعة ميريت', logo: '/images/Logos/Universites/Private/MUE.png' },
-          { id: 'MIU', name: 'جامعة مصر الدولية', logo: '/images/Logos/Universites/Private/MIU.png' },
-          { id: 'MUST', name: 'جامعة مصر للعلوم والتكنولوجيا', logo: '/images/Logos/Universites/Private/MUST.png' },
-          { id: 'MTI', name: 'الجامعة الحديثة للتكنولوجيا والمعلومات', logo: '/images/Logos/Universites/Private/MTI.png' },
-          { id: 'NUB', name: 'جامعة النهضة ببني سويف', logo: '/images/Logos/Universites/Private/NUB.png' },
-          { id: 'NVU', name: 'جامعة وادي النيل', logo: '/images/Logos/Universites/Private/NVU.png' },
-          { id: 'O6U', name: 'جامعة 6 اكتوبر', logo: '/images/Logos/Universites/Private/O6U.png' },
-          { id: 'PUA', name: 'جامعة فاروس بالإسكندرية', logo: '/images/Logos/Universites/Private/PUA.png' },
-          { id: 'RU', name: 'جامعة رشيد', logo: '/images/Logos/Universites/Private/RU.png' },
-          { id: 'RST', name: 'جامعة الريادة للعلوم والتكنولوجيا', logo: '/images/Logos/Universites/Private/RST.png' },
-          { id: 'SUT', name: 'جامعة السويدي للتكنولوجيا', logo: '/images/Logos/Universites/Private/SUT.png' },
-          { id: 'SGU', name: 'جامعة الصالحية الجديدة', logo: '/images/Logos/Universites/Private/SGU.png' },
-          { id: 'SU', name: 'جامعة سيناء', logo: '/images/Logos/Universites/Private/SU.png' },
-          { id: 'SphinxU', name: 'جامعة سفنكس', logo: '/images/Logos/Universites/Private/SphinxU.png' },
-          { id: 'SEU', name: 'جامعة ساكسوني مصر للعلوم التطبيقية والتكنولوجيا', logo: '/images/Logos/Universites/Private/SEU.png' }
-        ],
-        national: [
-          // National universities
-          { id: 'AlexNU', name: 'جامعة الاسكندرية الاهلية', logo: '/images/Logos/Universites/National/AlexNU.png' },
-          { id: 'AssuitNU', name: 'جامعة اسيوط الاهلية', logo: '/images/Logos/Universites/National/AssuitNU.png' },
-          { id: 'BNU', name: 'جامعة بنها الاهلية', logo: '/images/Logos/Universites/National/BNU.png' },
-          { id: 'BSNU', name: 'جامعة بني سويف الاهلية', logo: '/images/Logos/Universites/National/BSNU.png' },
-          { id: 'HNU', name: 'جامعة حلوان الاهلية', logo: '/images/Logos/Universites/National/HNU.png' },
-          { id: 'SVNU', name: 'جامعة جنوب الوادي الاهلية', logo: '/images/Logos/Universites/National/SVNU.png' },
-          { id: 'NINU', name: 'جامعة الإسماعيلية الجديدة الاهلية', logo: '/images/Logos/Universites/National/NINU.png' },
-          { id: 'MiniaNU', name: 'جامعة المنيا الاهلية', logo: '/images/Logos/Universites/National/MiniaNU.png' },
-          { id: 'MansNU', name: 'جامعة المنصورة الاهلية', logo: '/images/Logos/Universites/National/MansNU.png' },
-          { id: 'MenofiaNU', name: 'جامعة المنوفية الاهلية', logo: '/images/Logos/Universites/National/MenofiaNU.png' },
-          { id: 'EPNU', name: 'جامعة شرق بورسعيد الاهلية', logo: '/images/Logos/Universites/National/EPNU.png' },
-          { id: 'ZNU', name: 'جامعة الزقازيق الاهلية', logo: '/images/Logos/Universites/National/ZNU.png' },
-          // National International universities
-          { id: 'GU', name: 'جامعة الجلالة', logo: '/images/Logos/Universites/National/GU.png' },
-          { id: 'AIU', name: 'جامعة العلمين الدولية', logo: '/images/Logos/Universites/National/AIU.png' },
-          { id: 'KSIU', name: 'جامعة الملك سلمان الدولية', logo: '/images/Logos/Universites/National/KSIU.png' },
-          { id: 'NMU', name: 'جامعة المنصورة الجديدة', logo: '/images/Logos/Universites/National/NMU.png' },
-          // Other National universities
-          { id: 'UFE', name: 'الجامعة الفرنسية بمصر', logo: '/images/Logos/Universites/National/UFE.png' },
-          { id: 'EELU', name: 'الجامعة المصرية للتعليم الالكتروني', logo: '/images/Logos/Universites/National/EELU.png' },
-          { id: 'EUI', name: 'جامعة مصر للمعلوماتية', logo: '/images/Logos/Universites/National/EUI.png' },
-          { id: 'NU', name: 'جامعة النيل الاهلية', logo: '/images/Logos/Universites/National/NU.png' }
-        ],
-        special: [
-          // Framework Agreement universities
-          { id: 'AASTMT', name: 'الأكاديمية البحرية للعلوم والتكنولوجيا والنقل البحري', logo: '/images/Logos/Universites/Special/AASTMT.png' },
-          { id: 'AOU', name: 'الجامعة العربية المفتوحة', logo: '/images/Logos/Universites/Special/AOU.png' },
-          // International Agreement universities
-          { id: 'EslscaU', name: 'جامعة اسلسكا', logo: '/images/Logos/Universites/Special/EslscaU.png' },
-          { id: 'AUC', name: 'الجامعة الأمريكية بالقاهرة', logo: '/images/Logos/Universites/Special/AUC.png' },
-          { id: 'EJUST', name: 'الجامعة المصرية اليابانية', logo: '/images/Logos/Universites/Special/EJUST.png' },
-          { id: 'GIU', name: 'الجامعة الألمانية الدولية', logo: '/images/Logos/Universites/Special/GIU.png' },
-          // Special Law universities
-          { id: 'UST', name: 'جامعة العلوم والتكنولوجيا بمدينة زويل', logo: '/images/Logos/Universites/Special/UST.png' }
-        ],
-        international: [
-          // International branch universities
-          { id: 'UEL', name: 'جامعة ايست لندن', logo: '/images/Logos/Universites/International/UEL.png' },
-          { id: 'UPEI', name: 'جامعة جزيرة الأمير إدوارد', logo: '/images/Logos/Universites/International/UPEI.png' },
-          { id: 'KPFU', name: 'جامعة كازان الفيدرالية الروسية', logo: '/images/Logos/Universites/International/KPFU.png' },
-          { id: 'Coventry', name: 'جامعة كوفنتري البريطانية', logo: '/images/Logos/Universites/International/COVENTRY.png' },
-          { id: 'NOVA', name: 'جامعة نوفا ليشبونا البرتغالية', logo: '/images/Logos/Universites/International/NOVA.png' },
-          { id: 'SPBU', name: 'جامعة سان بطرسبرج الروسية', logo: '/images/Logos/Universites/International/SPBU.png' },
-          { id: 'UH', name: 'جامعة هيرتفوردشاير البريطانية', logo: '/images/Logos/Universites/International/UH.png' },
-          { id: 'UCLAN', name: 'جامعة وسط لانكشاير', logo: '/images/Logos/Universites/International/UCLan.png' },
-          { id: 'UOL', name: 'جامعة لندن', logo: '/images/Logos/Universites/International/UOL.png' }
-        ]
-      };
-
       try {
-        // Try to fetch from API first
+        // Try to fetch from API
         const [privateResponse, nationalResponse, specialResponse, internationalResponse] = await Promise.allSettled([
           axios.get('https://nuft-website-backend.vercel.app/private/links'),
           axios.get('https://nuft-website-backend.vercel.app/national/links'),
@@ -268,57 +176,49 @@ export default {
         // Process private universities
         if (privateResponse.status === 'fulfilled' && privateResponse.value.data && Array.isArray(privateResponse.value.data)) {
           privateUniversities.value = privateResponse.value.data.map(uni => ({
-            id: uni.university || uni.university_code, // Try both possible field names
+            id: uni.university || uni.university_code,
             name: uni.university_Arabic_Name,
             logo: uni.university_Logo || '/images/default-university.png',
             type: 'private'
           }));
-          console.log('Private Universities:', privateUniversities.value);
         } else {
-          console.warn('Using fallback data for private universities');
-          privateUniversities.value = hardcodedUniversities.private;
+          throw new Error('Failed to fetch private universities');
         }
 
         // Process national universities
         if (nationalResponse.status === 'fulfilled' && nationalResponse.value.data && Array.isArray(nationalResponse.value.data)) {
           nationalUniversities.value = nationalResponse.value.data.map(uni => ({
-            id: uni.university || uni.university_code, // Try both possible field names
+            id: uni.university || uni.university_code,
             name: uni.university_Arabic_Name,
             logo: uni.university_Logo || '/images/default-university.png',
             type: 'national'
           }));
-          console.log('National Universities:', nationalUniversities.value);
         } else {
-          console.warn('Using fallback data for national universities');
-          nationalUniversities.value = hardcodedUniversities.national;
+          throw new Error('Failed to fetch national universities');
         }
 
         // Process special universities
         if (specialResponse.status === 'fulfilled' && specialResponse.value.data && Array.isArray(specialResponse.value.data)) {
           specialUniversities.value = specialResponse.value.data.map(uni => ({
-            id: uni.university || uni.university_code, // Try both possible field names
+            id: uni.university || uni.university_code,
             name: uni.university_Arabic_Name,
             logo: uni.university_Logo || '/images/default-university.png',
             type: 'special'
           }));
-          console.log('Special Universities:', specialUniversities.value);
         } else {
-          console.warn('Using fallback data for special universities');
-          specialUniversities.value = hardcodedUniversities.special;
+          throw new Error('Failed to fetch special universities');
         }
 
         // Process international universities
         if (internationalResponse.status === 'fulfilled' && internationalResponse.value.data && Array.isArray(internationalResponse.value.data)) {
           internationalUniversities.value = internationalResponse.value.data.map(uni => ({
-            id: uni.university || uni.university_code, // Try both possible field names
+            id: uni.university || uni.university_code,
             name: uni.university_Arabic_Name,
             logo: uni.university_Logo || '/images/default-university.png',
             type: 'international'
           }));
-          console.log('International Universities:', internationalUniversities.value);
         } else {
-          console.warn('Using fallback data for international universities');
-          internationalUniversities.value = hardcodedUniversities.international;
+          throw new Error('Failed to fetch international universities');
         }
 
         // Check if any universities were loaded
@@ -331,11 +231,7 @@ export default {
 
       } catch (err) {
         console.error('Error fetching universities:', err);
-        // Use hardcoded data as fallback
-        privateUniversities.value = hardcodedUniversities.private;
-        nationalUniversities.value = hardcodedUniversities.national;
-        specialUniversities.value = hardcodedUniversities.special;
-        internationalUniversities.value = hardcodedUniversities.international;
+        error.value = 'Failed to load universities. Please try again later.';
       } finally {
         loading.value = false;
       }

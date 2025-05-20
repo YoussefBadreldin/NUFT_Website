@@ -6,31 +6,537 @@
         رجوع
       </button>
       <h1>إدارة الجامعات</h1>
-      <p class="subtitle">إضافة وتعديل بيانات الجامعات</p>
+      <p class="subtitle">إضافة وتعديل وحذف بيانات الجامعات</p>
     </div>
 
     <!-- Navigation Tabs -->
     <div class="nav-tabs">
       <button 
         class="nav-tab" 
-        :class="{ active: activeTab === 'manage' }"
-        @click="activeTab = 'manage'"
-      >
-        <i class="fas fa-university"></i>
-        متابعة وتعديل الجامعات
-      </button>
-      <button 
-        class="nav-tab" 
         :class="{ active: activeTab === 'add' }"
         @click="activeTab = 'add'"
       >
         <i class="fas fa-plus"></i>
-        إضافة جامعة جديدة
+        اضافة جامعة جديدة
+      </button>
+      <button 
+        class="nav-tab" 
+        :class="{ active: activeTab === 'manage' }"
+        @click="activeTab = 'manage'"
+      >
+        <i class="fas fa-university"></i>
+        الجامعات الحالية
+      </button>
+      <button 
+        class="nav-tab" 
+        :class="{ active: activeTab === 'edit' }"
+        @click="switchToEdit"
+      >
+        <i class="fas fa-edit"></i>
+        تحديث جامعة حالية
+      </button>
+      <button 
+        class="nav-tab" 
+        :class="{ active: activeTab === 'delete' }"
+        @click="switchToDelete"
+      >
+        <i class="fas fa-trash"></i>
+        حذف جامعة حالية
       </button>
     </div>
 
-    <!-- Universities List Section -->
-    <div v-if="activeTab === 'manage'" class="universities-list-section">
+    <!-- Category Tabs -->
+    <div v-if="activeTab !== 'add'" class="type-tabs">
+      <button 
+        v-for="type in universityTypes" 
+        :key="type.value"
+        :class="['type-tab', { active: selectedType === type.value }]"
+        @click="selectedType = type.value"
+      >
+        {{ type.label }}
+      </button>
+    </div>
+
+    <!-- Add New University Section -->
+    <div v-if="activeTab === 'add'" class="section-container">
+      <div class="section-header">
+        <h2>إضافة جامعة جديدة</h2>
+      </div>
+      <div class="form-section">
+        <div class="form-card">
+          <form @submit.prevent="addUniversity()">
+            <!-- Basic University Information -->
+            <div class="form-category">
+              <h3 class="category-title">
+                <i class="fas fa-university"></i>
+                بيانات الجامعة الأساسية
+              </h3>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="university_code">
+                    <i class="fas fa-hashtag"></i>
+                    الرمز المختصر للجامعة
+                  </label>
+                  <input 
+                    type="text" 
+                    v-model="addFormData.university_code" 
+                    id="university_code" 
+                    required
+                    placeholder="مثال: ACU, BUE, etc."
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="university_Arabic_Name">
+                    <i class="fas fa-graduation-cap"></i>
+                    اسم الجامعة
+                  </label>
+                  <input 
+                    type="text" 
+                    v-model="addFormData.university_Arabic_Name" 
+                    id="university_Arabic_Name" 
+                    required
+                    placeholder="أدخل اسم الجامعة"
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="university_Logo">
+                    <i class="fas fa-image"></i>
+                    رابط الشعار
+                  </label>
+                  <div class="input-with-hint">
+                    <input 
+                      type="text" 
+                      v-model="addFormData.university_Logo" 
+                      id="university_Logo"
+                      placeholder="أدخل رابط الشعار"
+                    >
+                    <span class="hint">/images/Logos/Universities/.png</span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="type">
+                    <i class="fas fa-tag"></i>
+                    نوع الجامعة
+                  </label>
+                  <select v-model="addFormData.type" id="type" required>
+                    <option value="national">أهلية</option>
+                    <option value="private">خاصة</option>
+                    <option value="special">ذات طبيعة خاصة</option>
+                    <option value="international">دولية</option>
+                  </select>
+                </div>
+
+                <div class="form-group full-width">
+                  <label for="Uni_Bio">
+                    <i class="fas fa-info-circle"></i>
+                    نبذة عن الجامعة
+                  </label>
+                  <textarea 
+                    v-model="addFormData.Uni_Bio" 
+                    id="Uni_Bio" 
+                    rows="4"
+                    placeholder="أدخل نبذة ختصرة عن الجامعة"
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    الموقع
+                  </label>
+                  <input 
+                    type="text" 
+                    v-model="addFormData.location" 
+                    id="location"
+                    placeholder="أدخل موقع الجامعة"
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="form-category">
+              <h3 class="category-title">
+                <i class="fas fa-address-book"></i>
+                معلومات الاتصال
+              </h3>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="website">
+                    <i class="fas fa-globe"></i>
+                    الموقع الإلكتروني
+                  </label>
+                  <input 
+                    type="url" 
+                    v-model="addFormData.website" 
+                    id="website"
+                    placeholder="https://example.com"
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">
+                    <i class="fas fa-phone"></i>
+                    رقم الهاتف
+                  </label>
+                  <input 
+                    type="tel" 
+                    v-model="addFormData.phone" 
+                    id="phone"
+                    placeholder="+20 XXX XXX XXXX"
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="email">
+                    <i class="fas fa-envelope"></i>
+                    البريد الإلكتروني
+                  </label>
+                  <input 
+                    type="email" 
+                    v-model="addFormData.email" 
+                    id="email"
+                    placeholder="example@university.edu"
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="form-category">
+              <h3 class="category-title">
+                <i class="fas fa-share-alt"></i>
+                روابط التواصل الاجتماعي
+              </h3>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="facebook">
+                    <i class="fab fa-facebook"></i>
+                    فيسبوك
+                  </label>
+                  <input 
+                    type="url" 
+                    v-model="addFormData.facebook" 
+                    id="facebook"
+                    placeholder="https://facebook.com/..."
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="instagram">
+                    <i class="fab fa-instagram"></i>
+                    انستجرام
+                  </label>
+                  <input 
+                    type="url" 
+                    v-model="addFormData.instagram" 
+                    id="instagram"
+                    placeholder="https://instagram.com/..."
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="youtube">
+                    <i class="fab fa-youtube"></i>
+                    يوتيوب
+                  </label>
+                  <input 
+                    type="url" 
+                    v-model="addFormData.youtube" 
+                    id="youtube"
+                    placeholder="https://youtube.com/..."
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="linkedin">
+                    <i class="fab fa-linkedin"></i>
+                    لينكد إن
+                  </label>
+                  <input 
+                    type="url" 
+                    v-model="addFormData.linkedin" 
+                    id="linkedin"
+                    placeholder="https://linkedin.com/..."
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Programs -->
+            <div class="form-category">
+              <h3 class="category-title">
+                <i class="fas fa-book"></i>
+                البرامج الدراسية
+              </h3>
+              <div class="programs-list">
+                <div v-for="(faculty, index) in addFormData.faculties" :key="index" class="faculty-item">
+                  <div class="faculty-header">
+                    <h4>
+                      <i class="fas fa-graduation-cap"></i>
+                      كلية {{ index + 1 }}
+                    </h4>
+                    <button type="button" class="remove-btn" @click="removeFaculty(index, 'add')">
+                      <i class="fas fa-trash"></i>
+                      حذف
+                    </button>
+                  </div>
+                  <div class="form-grid">
+                    <div class="form-group">
+                      <label :for="'faculty_' + index">اسم الكلية</label>
+                      <input 
+                        type="text" 
+                        v-model="addFormData.faculties[index].faculty" 
+                        :id="'faculty_' + index"
+                        placeholder="أدخل اسم الكلية"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label :for="'section_' + index">الشعبة</label>
+                      <input 
+                        type="text" 
+                        v-model="addFormData.faculties[index].section" 
+                        :id="'section_' + index"
+                        placeholder="أدخل اسم الشعبة"
+                      >
+                    </div>
+                    <div class="form-group full-width">
+                      <label :for="'programs_' + index">البرامج</label>
+                      <textarea 
+                        v-model="addFormData.faculties[index].programs" 
+                        :id="'programs_' + index" 
+                        rows="3" 
+                        placeholder="أدخل البرامج مفصولة بفواصل"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+                <button type="button" class="add-btn" @click="addFaculty('add')">
+                  <i class="fas fa-plus"></i>
+                  إضافة كلية
+                </button>
+              </div>
+            </div>
+
+            <!-- International Programs -->
+            <div class="form-category">
+              <h3 class="category-title">
+                <i class="fas fa-globe-americas"></i>
+                البرامج الدولية
+              </h3>
+              <div class="form-group">
+                <label for="international_programs">معلومات البرامج الدولية</label>
+                <textarea 
+                  v-model="addFormData.international_programs" 
+                  id="international_programs" 
+                  rows="4"
+                  placeholder="أدخل معلومات البرامج الدولية"
+                ></textarea>
+              </div>
+            </div>
+
+            <!-- Dorms -->
+            <div class="form-category">
+              <h3 class="category-title">
+                <i class="fas fa-home"></i>
+                السكن الجامعي
+              </h3>
+              <div class="dorms-list">
+                <div v-for="(dorm, index) in addFormData.dorms" :key="index" class="dorm-item">
+                  <div class="dorm-header">
+                    <h4>
+                      <i class="fas fa-building"></i>
+                      سكن {{ index + 1 }}
+                    </h4>
+                    <button type="button" class="remove-btn" @click="removeDorm(index, 'add')">
+                      <i class="fas fa-trash"></i>
+                      حذف
+                    </button>
+                  </div>
+                  <div class="form-grid">
+                    <div class="form-group">
+                      <label :for="'dorm_name_' + index">اسم السكن</label>
+                      <input 
+                        type="text" 
+                        v-model="addFormData.dorms[index].name" 
+                        :id="'dorm_name_' + index"
+                        placeholder="أدخل اسم السكن"
+                      >
+                    </div>
+                    <div class="form-group full-width">
+                      <label :for="'dorm_description_' + index">الوصف</label>
+                      <textarea 
+                        v-model="addFormData.dorms[index].description" 
+                        :id="'dorm_description_' + index" 
+                        rows="3"
+                        placeholder="أدخل وصف السكن"
+                      ></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label :for="'dorm_price_' + index">السعر</label>
+                      <input 
+                        type="text" 
+                        v-model="addFormData.dorms[index].price" 
+                        :id="'dorm_price_' + index"
+                        placeholder="أدخل سعر السكن"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label :for="'dorm_location_' + index">الموقع</label>
+                      <input 
+                        type="text" 
+                        v-model="addFormData.dorms[index].location" 
+                        :id="'dorm_location_' + index"
+                        placeholder="أدخل موقع السكن"
+                      >
+                    </div>
+                  </div>
+                </div>
+                <button type="button" class="add-btn" @click="addDorm('add')">
+                  <i class="fas fa-plus"></i>
+                  إضافة سكن
+                </button>
+              </div>
+            </div>
+
+            <!-- Transportation -->
+            <div class="form-category">
+              <h3 class="category-title">
+                <i class="fas fa-bus"></i>
+                وسائل المواصلات
+              </h3>
+              <div class="transportation-list">
+                <div v-for="(trans, index) in addFormData.transportation" :key="index" class="transportation-item">
+                  <div class="transportation-header">
+                    <h4>
+                      <i class="fas fa-route"></i>
+                      وسيلة نقل {{ index + 1 }}
+                    </h4>
+                    <button type="button" class="remove-btn" @click="removeTransportation(index, 'add')">
+                      <i class="fas fa-trash"></i>
+                      حذف
+                    </button>
+                  </div>
+                  <div class="form-grid">
+                    <div class="form-group">
+                      <label :for="'trans_name_' + index">اسم وسيلة النقل</label>
+                      <input 
+                        type="text" 
+                        v-model="addFormData.transportation[index].name" 
+                        :id="'trans_name_' + index"
+                        placeholder="أدخل اسم وسيلة النقل"
+                      >
+                    </div>
+                    <div class="form-group full-width">
+                      <label :for="'trans_description_' + index">الوصف</label>
+                      <textarea 
+                        v-model="addFormData.transportation[index].description" 
+                        :id="'trans_description_' + index" 
+                        rows="3"
+                        placeholder="أدخل وصف وسيلة النقل"
+                      ></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label :for="'trans_price_' + index">السعر</label>
+                      <input 
+                        type="text" 
+                        v-model="addFormData.transportation[index].price" 
+                        :id="'trans_price_' + index"
+                        placeholder="أدخل سعر وسيلة النقل"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label :for="'trans_route_' + index">المسار</label>
+                      <input 
+                        type="text" 
+                        v-model="addFormData.transportation[index].route" 
+                        :id="'trans_route_' + index"
+                        placeholder="أدخل مسار وسيلة النقل"
+                      >
+                    </div>
+                  </div>
+                </div>
+                <button type="button" class="add-btn" @click="addTransportation('add')">
+                  <i class="fas fa-plus"></i>
+                  إضافة وسيلة نقل
+                </button>
+              </div>
+            </div>
+
+            <!-- Scholarships -->
+            <div class="form-category">
+              <h3 class="category-title">
+                <i class="fas fa-award"></i>
+                المنح الدراسية
+              </h3>
+              <div class="form-group">
+                <label for="scholarship_link">رابط المنح الدراسية</label>
+                <input 
+                  type="url" 
+                  v-model="addFormData.scholarship_link" 
+                  id="scholarship_link"
+                  placeholder="https://example.com/scholarships"
+                >
+              </div>
+            </div>
+
+            <!-- Admission Links -->
+            <div class="form-category">
+              <h3 class="category-title">
+                <i class="fas fa-user-graduate"></i>
+                روابط التقديم
+              </h3>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="Egyptian_Admission_link">رابط التقديم للطلاب المصريين</label>
+                  <input 
+                    type="url" 
+                    v-model="addFormData.Egyptian_Admission_link" 
+                    id="Egyptian_Admission_link"
+                    placeholder="https://example.com/egyptian-admission"
+                  >
+                </div>
+                <div class="form-group">
+                  <label for="Egyptian_Transfer_link">رابط التحويل للطلاب المصريين</label>
+                  <input 
+                    type="url" 
+                    v-model="addFormData.Egyptian_Transfer_link" 
+                    id="Egyptian_Transfer_link"
+                    placeholder="https://example.com/egyptian-transfer"
+                  >
+                </div>
+                <div class="form-group">
+                  <label for="Wafdeen_Admission_link">رابط التقديم للطلاب الوافدين</label>
+                  <input 
+                    type="url" 
+                    v-model="addFormData.Wafdeen_Admission_link" 
+                    id="Wafdeen_Admission_link"
+                    placeholder="https://example.com/wafdeen-admission"
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="submit-btn">
+                <i :class="activeTab === 'edit' ? 'fas fa-save' : 'fas fa-plus'"></i>
+                {{ activeTab === 'edit' ? 'حفظ التعديلات' : 'إضافة الجامعة' }}
+              </button>
+              <button v-if="activeTab === 'edit'" type="button" class="cancel-btn" @click="cancelEdit">
+                <i class="fas fa-times"></i>
+                إلغاء
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Current Universities Section -->
+    <div v-if="activeTab === 'manage'" class="section-container">
       <div class="section-header">
         <h2>الجامعات الحالية</h2>
         <div class="search-bar">
@@ -42,18 +548,7 @@
           >
         </div>
       </div>
-
-      <div v-if="loading" class="loading-state">
-        <div class="spinner"></div>
-        <p>جاري التحميل...</p>
-      </div>
-
-      <div v-else-if="filteredUniversities.length === 0" class="no-results">
-        <i class="fas fa-university"></i>
-        <p>لا توجد جامعات</p>
-      </div>
-
-      <div v-else class="universities-grid">
+      <div class="universities-grid">
         <!-- Private Universities -->
         <div v-if="privateUniversities.length" class="university-section">
           <h2 class="section-title">الجامعات الخاصة</h2>
@@ -164,11 +659,110 @@
       </div>
     </div>
 
-    <!-- Add/Edit University Form -->
-    <div v-if="activeTab === 'add' || isEditing" class="form-section">
+    <!-- Edit University Section -->
+    <div v-if="activeTab === 'edit'" class="section-container">
+      <div class="section-header">
+        <h2>تحديث جامعة حالية</h2>
+        <div class="search-bar">
+          <input 
+            type="text" 
+            v-model="editSearchQuery" 
+            placeholder="ابحث عن جامعة..."
+            @input="filterEditUniversities"
+          >
+        </div>
+      </div>
+      <div v-if="!selectedUniversityForEdit" class="universities-grid">
+        <!-- Private Universities -->
+        <div v-if="filteredEditUniversities.filter(uni => uni.type === 'private').length" class="university-section">
+          <h2 class="section-title">الجامعات الخاصة</h2>
+          <div class="universities-list">
+            <div v-for="university in filteredEditUniversities.filter(uni => uni.type === 'private')" 
+                 :key="university.id" 
+                 class="university-card"
+                 @click="selectUniversityForEdit(university)">
+              <div class="university-image">
+                <img 
+                  :src="university.university_Logo" 
+                  :alt="university.university_Arabic_Name"
+                  @error="handleImageError"
+                >
+              </div>
+              <h3 class="university-name">{{ university.university_Arabic_Name }}</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- National Universities -->
+        <div v-if="filteredEditUniversities.filter(uni => uni.type === 'national').length" class="university-section">
+          <h2 class="section-title">الجامعات الأهلية</h2>
+          <div class="universities-list">
+            <div v-for="university in filteredEditUniversities.filter(uni => uni.type === 'national')" 
+                 :key="university.id" 
+                 class="university-card"
+                 @click="selectUniversityForEdit(university)">
+              <div class="university-image">
+                <img 
+                  :src="university.university_Logo" 
+                  :alt="university.university_Arabic_Name"
+                  @error="handleImageError"
+                >
+              </div>
+              <h3 class="university-name">{{ university.university_Arabic_Name }}</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Special Universities -->
+        <div v-if="filteredEditUniversities.filter(uni => uni.type === 'special').length" class="university-section">
+          <h2 class="section-title">الجامعات ذات طبيعة خاصة</h2>
+          <div class="universities-list">
+            <div v-for="university in filteredEditUniversities.filter(uni => uni.type === 'special')" 
+                 :key="university.id" 
+                 class="university-card"
+                 @click="selectUniversityForEdit(university)">
+              <div class="university-image">
+                <img 
+                  :src="university.university_Logo" 
+                  :alt="university.university_Arabic_Name"
+                  @error="handleImageError"
+                >
+              </div>
+              <h3 class="university-name">{{ university.university_Arabic_Name }}</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- International Universities -->
+        <div v-if="filteredEditUniversities.filter(uni => uni.type === 'international').length" class="university-section">
+          <h2 class="section-title">الجامعات الدولية</h2>
+          <div class="universities-list">
+            <div v-for="university in filteredEditUniversities.filter(uni => uni.type === 'international')" 
+                 :key="university.id" 
+                 class="university-card"
+                 @click="selectUniversityForEdit(university)">
+              <div class="university-image">
+                <img 
+                  :src="university.university_Logo" 
+                  :alt="university.university_Arabic_Name"
+                  @error="handleImageError"
+                >
+              </div>
+              <h3 class="university-name">{{ university.university_Arabic_Name }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-else class="form-section">
       <div class="form-card">
-        <h2 class="section-title">{{ isEditing ? 'تعديل الجامعة' : 'إضافة جامعة جديدة' }}</h2>
-        <form @submit.prevent="isEditing ? updateUniversity() : addUniversity()">
+          <div class="form-header">
+            <h2 class="section-title">تعديل بيانات الجامعة</h2>
+            <button class="back-btn" @click="selectedUniversityForEdit = null">
+              <i class="fas fa-arrow-right"></i>
+              العودة للقائمة
+            </button>
+          </div>
+          <form @submit.prevent="updateUniversity()">
           <!-- Basic University Information -->
           <div class="form-category">
             <h3 class="category-title">
@@ -183,7 +777,7 @@
                 </label>
                 <input 
                   type="text" 
-                  v-model="formData.university_code" 
+                  v-model="editFormData.university_code" 
                   id="university_code" 
                   required
                   placeholder="مثال: ACU, BUE, etc."
@@ -197,7 +791,7 @@
                 </label>
                 <input 
                   type="text" 
-                  v-model="formData.university_Arabic_Name" 
+                  v-model="editFormData.university_Arabic_Name" 
                   id="university_Arabic_Name" 
                   required
                   placeholder="أدخل اسم الجامعة"
@@ -212,7 +806,7 @@
                 <div class="input-with-hint">
                   <input 
                     type="text" 
-                    v-model="formData.university_Logo" 
+                    v-model="editFormData.university_Logo" 
                     id="university_Logo"
                     placeholder="أدخل رابط الشعار"
                   >
@@ -225,7 +819,7 @@
                   <i class="fas fa-tag"></i>
                   نوع الجامعة
                 </label>
-                <select v-model="formData.type" id="type" required>
+                <select v-model="editFormData.type" id="type" required>
                   <option value="national">أهلية</option>
                   <option value="private">خاصة</option>
                   <option value="special">ذات طبيعة خاصة</option>
@@ -239,7 +833,7 @@
                   نبذة عن الجامعة
                 </label>
                 <textarea 
-                  v-model="formData.Uni_Bio" 
+                  v-model="editFormData.Uni_Bio" 
                   id="Uni_Bio" 
                   rows="4"
                   placeholder="أدخل نبذة مختصرة عن الجامعة"
@@ -253,7 +847,7 @@
                 </label>
                 <input 
                   type="text" 
-                  v-model="formData.location" 
+                  v-model="editFormData.location" 
                   id="location"
                   placeholder="أدخل موقع الجامعة"
                 >
@@ -275,7 +869,7 @@
                 </label>
                 <input 
                   type="url" 
-                  v-model="formData.website" 
+                  v-model="editFormData.website" 
                   id="website"
                   placeholder="https://example.com"
                 >
@@ -288,7 +882,7 @@
                 </label>
                 <input 
                   type="tel" 
-                  v-model="formData.phone" 
+                  v-model="editFormData.phone" 
                   id="phone"
                   placeholder="+20 XXX XXX XXXX"
                 >
@@ -301,7 +895,7 @@
                 </label>
                 <input 
                   type="email" 
-                  v-model="formData.email" 
+                  v-model="editFormData.email" 
                   id="email"
                   placeholder="example@university.edu"
                 >
@@ -323,7 +917,7 @@
                 </label>
                 <input 
                   type="url" 
-                  v-model="formData.facebook" 
+                  v-model="editFormData.facebook" 
                   id="facebook"
                   placeholder="https://facebook.com/..."
                 >
@@ -336,7 +930,7 @@
                 </label>
                 <input 
                   type="url" 
-                  v-model="formData.instagram" 
+                  v-model="editFormData.instagram" 
                   id="instagram"
                   placeholder="https://instagram.com/..."
                 >
@@ -349,7 +943,7 @@
                 </label>
                 <input 
                   type="url" 
-                  v-model="formData.youtube" 
+                  v-model="editFormData.youtube" 
                   id="youtube"
                   placeholder="https://youtube.com/..."
                 >
@@ -362,7 +956,7 @@
                 </label>
                 <input 
                   type="url" 
-                  v-model="formData.linkedin" 
+                  v-model="editFormData.linkedin" 
                   id="linkedin"
                   placeholder="https://linkedin.com/..."
                 >
@@ -377,7 +971,7 @@
               البرامج الدراسية
             </h3>
             <div class="programs-list">
-              <div v-for="(faculty, index) in formData.faculties" :key="index" class="faculty-item">
+              <div v-for="(faculty, index) in editFormData.faculties" :key="index" class="faculty-item">
                 <div class="faculty-header">
                   <h4>
                     <i class="fas fa-graduation-cap"></i>
@@ -434,7 +1028,7 @@
             <div class="form-group">
               <label for="international_programs">معلومات البرامج الدولية</label>
               <textarea 
-                v-model="formData.international_programs" 
+                v-model="editFormData.international_programs" 
                 id="international_programs" 
                 rows="4"
                 placeholder="أدخل معلومات البرامج الدولية"
@@ -449,7 +1043,7 @@
               السكن الجامعي
             </h3>
             <div class="dorms-list">
-              <div v-for="(dorm, index) in formData.dorms" :key="index" class="dorm-item">
+              <div v-for="(dorm, index) in editFormData.dorms" :key="index" class="dorm-item">
                 <div class="dorm-header">
                   <h4>
                     <i class="fas fa-building"></i>
@@ -511,7 +1105,7 @@
               </label>
               <input 
                 type="url" 
-                v-model="formData.dorms_link" 
+                v-model="editFormData.dorms_link" 
                 id="dorms_link"
                 placeholder="https://example.com/dorms"
               >
@@ -525,7 +1119,7 @@
               وسائل المواصلات
             </h3>
             <div class="transportation-list">
-              <div v-for="(trans, index) in formData.transportation" :key="index" class="transportation-item">
+              <div v-for="(trans, index) in editFormData.transportation" :key="index" class="transportation-item">
                 <div class="transportation-header">
                   <h4>
                     <i class="fas fa-route"></i>
@@ -587,7 +1181,7 @@
               </label>
               <input 
                 type="url" 
-                v-model="formData.transportation_link" 
+                v-model="editFormData.transportation_link" 
                 id="transportation_link"
                 placeholder="https://example.com/transportation"
               >
@@ -604,7 +1198,7 @@
               <label for="scholarship_link">رابط المنح الدراسية</label>
               <input 
                 type="url" 
-                v-model="formData.scholarship_link" 
+                v-model="editFormData.scholarship_link" 
                 id="scholarship_link"
                 placeholder="https://example.com/scholarships"
               >
@@ -622,7 +1216,7 @@
                 <label for="Egyptian_Admission_link">رابط التقديم للطلاب المصريين</label>
                 <input 
                   type="url" 
-                  v-model="formData.Egyptian_Admission_link" 
+                  v-model="editFormData.Egyptian_Admission_link" 
                   id="Egyptian_Admission_link"
                   placeholder="https://example.com/egyptian-admission"
                 >
@@ -631,7 +1225,7 @@
                 <label for="Egyptian_Transfer_link">رابط التحويل للطلاب المصريين</label>
                 <input 
                   type="url" 
-                  v-model="formData.Egyptian_Transfer_link" 
+                  v-model="editFormData.Egyptian_Transfer_link" 
                   id="Egyptian_Transfer_link"
                   placeholder="https://example.com/egyptian-transfer"
                 >
@@ -640,7 +1234,7 @@
                 <label for="Wafdeen_Admission_link">رابط التقديم للطلاب الوافدين</label>
                 <input 
                   type="url" 
-                  v-model="formData.Wafdeen_Admission_link" 
+                  v-model="editFormData.Wafdeen_Admission_link" 
                   id="Wafdeen_Admission_link"
                   placeholder="https://example.com/wafdeen-admission"
                 >
@@ -650,15 +1244,151 @@
 
           <div class="form-actions">
             <button type="submit" class="submit-btn">
-              <i :class="isEditing ? 'fas fa-save' : 'fas fa-plus'"></i>
-              {{ isEditing ? 'حفظ التعديلات' : 'إضافة الجامعة' }}
+                <i :class="activeTab === 'edit' ? 'fas fa-save' : 'fas fa-plus'"></i>
+                {{ activeTab === 'edit' ? 'حفظ التعديلات' : 'إضافة الجامعة' }}
             </button>
-            <button v-if="isEditing" type="button" class="cancel-btn" @click="cancelEdit">
+              <button v-if="activeTab === 'edit'" type="button" class="cancel-btn" @click="cancelEdit">
               <i class="fas fa-times"></i>
               إلغاء
             </button>
           </div>
         </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete University Section -->
+    <div v-if="activeTab === 'delete'" class="section-container">
+      <div class="section-header">
+        <h2>حذف جامعة حالية</h2>
+        <div class="search-bar">
+          <input 
+            type="text" 
+            v-model="deleteSearchQuery" 
+            placeholder="ابحث عن جامعة..."
+            @input="filterDeleteUniversities"
+          >
+        </div>
+      </div>
+      <div v-if="!selectedUniversityForDelete" class="universities-grid">
+        <!-- Private Universities -->
+        <div v-if="filteredDeleteUniversities.filter(uni => uni.type === 'private').length" class="university-section">
+          <h2 class="section-title">الجامعات الخاصة</h2>
+          <div class="universities-list">
+            <div v-for="university in filteredDeleteUniversities.filter(uni => uni.type === 'private')" 
+                 :key="university.id" 
+                 class="university-card"
+                 @click="selectUniversityForDelete(university)">
+              <div class="university-image">
+                <img 
+                  :src="university.university_Logo" 
+                  :alt="university.university_Arabic_Name"
+                  @error="handleImageError"
+                >
+              </div>
+              <h3 class="university-name">{{ university.university_Arabic_Name }}</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- National Universities -->
+        <div v-if="filteredDeleteUniversities.filter(uni => uni.type === 'national').length" class="university-section">
+          <h2 class="section-title">الجامعات الأهلية</h2>
+          <div class="universities-list">
+            <div v-for="university in filteredDeleteUniversities.filter(uni => uni.type === 'national')" 
+                 :key="university.id" 
+                 class="university-card"
+                 @click="selectUniversityForDelete(university)">
+              <div class="university-image">
+                <img 
+                  :src="university.university_Logo" 
+                  :alt="university.university_Arabic_Name"
+                  @error="handleImageError"
+                >
+              </div>
+              <h3 class="university-name">{{ university.university_Arabic_Name }}</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Special Universities -->
+        <div v-if="filteredDeleteUniversities.filter(uni => uni.type === 'special').length" class="university-section">
+          <h2 class="section-title">الجامعات ذات طبيعة خاصة</h2>
+          <div class="universities-list">
+            <div v-for="university in filteredDeleteUniversities.filter(uni => uni.type === 'special')" 
+                 :key="university.id" 
+                 class="university-card"
+                 @click="selectUniversityForDelete(university)">
+              <div class="university-image">
+                <img 
+                  :src="university.university_Logo" 
+                  :alt="university.university_Arabic_Name"
+                  @error="handleImageError"
+                >
+              </div>
+              <h3 class="university-name">{{ university.university_Arabic_Name }}</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- International Universities -->
+        <div v-if="filteredDeleteUniversities.filter(uni => uni.type === 'international').length" class="university-section">
+          <h2 class="section-title">الجامعات الدولية</h2>
+          <div class="universities-list">
+            <div v-for="university in filteredDeleteUniversities.filter(uni => uni.type === 'international')" 
+                 :key="university.id" 
+                 class="university-card"
+                 @click="selectUniversityForDelete(university)">
+              <div class="university-image">
+                <img 
+                  :src="university.university_Logo" 
+                  :alt="university.university_Arabic_Name"
+                  @error="handleImageError"
+                >
+              </div>
+              <h3 class="university-name">{{ university.university_Arabic_Name }}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-else class="form-section">
+        <div class="form-card">
+          <div class="form-header">
+            <h2 class="section-title">تأكيد حذف الجامعة</h2>
+            <button class="back-btn" @click="selectedUniversityForDelete = null">
+              <i class="fas fa-arrow-right"></i>
+              العودة للقائمة
+            </button>
+          </div>
+          <div class="delete-content">
+            <div class="university-info">
+              <div class="university-image">
+                <img 
+                  :src="selectedUniversityForDelete?.university_Logo" 
+                  :alt="selectedUniversityForDelete?.university_Arabic_Name"
+                  @error="handleImageError"
+                >
+              </div>
+              <h3>{{ selectedUniversityForDelete?.university_Arabic_Name }}</h3>
+              <p class="university-type">{{ getUniversityTypeName(selectedUniversityForDelete?.type) }}</p>
+            </div>
+            <div class="warning-message">
+              <i class="fas fa-exclamation-triangle"></i>
+              <p>هل أنت متأكد من حذف هذه الجامعة؟</p>
+              <p class="warning-details">سيتم حذف جميع البيانات المرتبطة بالجامعة بما في ذلك الكليات والسكن والمواصلات.</p>
+            </div>
+            <div class="delete-actions">
+              <button class="confirm-delete-btn" @click="deleteUniversity(selectedUniversityForDelete?.id)">
+                <i class="fas fa-trash"></i>
+                تأكيد الحذف
+              </button>
+              <button class="cancel-delete-btn" @click="selectedUniversityForDelete = null">
+                <i class="fas fa-times"></i>
+                إلغاء
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -672,8 +1402,33 @@ export default {
   data() {
     return {
       // Form fields
-      formData: {
-        university_code: '', // Added university short name
+      addFormData: {
+        university_code: '',
+        university_Arabic_Name: '',
+        university_Logo: '',
+        type: 'national',
+        Uni_Bio: '',
+        location: '',
+        website: '',
+        phone: '',
+        email: '',
+        facebook: '',
+        instagram: '',
+        youtube: '',
+        linkedin: '',
+        faculties: [],
+        international_programs: '',
+        dorms: [],
+        transportation: [],
+        dorms_link: '',
+        transportation_link: '',
+        scholarship_link: '',
+        Egyptian_Admission_link: '',
+        Egyptian_Transfer_link: '',
+        Wafdeen_Admission_link: ''
+      },
+      editFormData: {
+        university_code: '',
         university_Arabic_Name: '',
         university_Logo: '',
         type: 'national',
@@ -705,104 +1460,40 @@ export default {
       filteredUniversities: [],
       isEditing: false,
       editingId: null,
+      isDeleting: false,
+      selectedUniversity: null,
       activeTab: 'manage',
-
-      // Hardcoded universities data
-      hardcodedUniversities: {
-        private: [
-          { id: 'AHUC', university_Arabic_Name: 'جامعة الحياة بالقاهرة', university_Logo: '/images/Logos/Universites/Private/AHUC.png', type: 'private' },
-          { id: 'ACU', university_Arabic_Name: 'جامعة الأهرام الكندية', university_Logo: '/images/Logos/Universites/Private/ACU.png', type: 'private' },
-          { id: 'ASU', university_Arabic_Name: 'جامعة السلام', university_Logo: '/images/Logos/Universites/Private/ASU.png', type: 'private' },
-          { id: 'GUC', university_Arabic_Name: 'الجامعة الألمانية بالقاهرة', university_Logo: '/images/Logos/Universites/Private/GUC.png', type: 'private' },
-          { id: 'BADYA', university_Arabic_Name: 'جامعة باديا', university_Logo: '/images/Logos/Universites/Private/BADYA.png', type: 'private' },
-          { id: 'BUC', university_Arabic_Name: 'جامعة بدر بالقاهرة', university_Logo: '/images/Logos/Universites/Private/BUC.png', type: 'private' },
-          { id: 'BUA', university_Arabic_Name: 'جامعة بدر بأسيوط', university_Logo: '/images/Logos/Universites/Private/BUA.png', type: 'private' },
-          { id: 'BUE', university_Arabic_Name: 'الجامعة البريطانية في مصر', university_Logo: '/images/Logos/Universites/Private/BUE.png', type: 'private' },
-          { id: 'CUC', university_Arabic_Name: 'جامعة المدينة بالقاهرة', university_Logo: '/images/Logos/Universites/Private/CUC.png', type: 'private' },
-          { id: 'DU', university_Arabic_Name: 'جامعة الدلتا للعلوم والتكنولوجيا', university_Logo: '/images/Logos/Universites/Private/DU.png', type: 'private' },
-          { id: 'ERU', university_Arabic_Name: 'الجامعة المصرية الروسية', university_Logo: '/images/Logos/Universites/Private/ERU.png', type: 'private' },
-          { id: 'ECU', university_Arabic_Name: 'الجامعة المصرية الصينية', university_Logo: '/images/Logos/Universites/Private/ECU.png', type: 'private' },
-          { id: 'FUE', university_Arabic_Name: 'جامعة المستقبل', university_Logo: '/images/Logos/Universites/Private/FUE.png', type: 'private' },
-          { id: 'NGU', university_Arabic_Name: 'جامعة الجيزة الجديدة', university_Logo: '/images/Logos/Universites/Private/NGU.png', type: 'private' },
-          { id: 'HU', university_Arabic_Name: 'جامعة هيليوبليس', university_Logo: '/images/Logos/Universites/Private/HU.png', type: 'private' },
-          { id: 'HUE', university_Arabic_Name: 'جامعة حورس', university_Logo: '/images/Logos/Universites/Private/HUE.png', type: 'private' },
-          { id: 'IU', university_Arabic_Name: 'جامعة الابتكار', university_Logo: '/images/Logos/Universites/Private/IU.png', type: 'private' },
-          { id: 'DerayaU', university_Arabic_Name: 'جامعة دراية', university_Logo: '/images/Logos/Universites/Private/DerayaU.png', type: 'private' },
-          { id: 'LUM', university_Arabic_Name: 'جامعة اللوتس', university_Logo: '/images/Logos/Universites/Private/LOTUS.png', type: 'private' },
-          { id: 'MSA', university_Arabic_Name: 'جامعة أكتوبر للعلوم الحديثة والآداب', university_Logo: '/images/Logos/Universites/Private/MSA.png', type: 'private' },
-          { id: 'MUC', university_Arabic_Name: 'جامعة مايو بالقاهرة', university_Logo: '/images/Logos/Universites/Private/MUC.png', type: 'private' },
-          { id: 'MUE', university_Arabic_Name: 'جامعة ميريت', university_Logo: '/images/Logos/Universites/Private/MUE.png', type: 'private' },
-          { id: 'MIU', university_Arabic_Name: 'جامعة مصر الدولية', university_Logo: '/images/Logos/Universites/Private/MIU.png', type: 'private' },
-          { id: 'MUST', university_Arabic_Name: 'جامعة مصر للعلوم والتكنولوجيا', university_Logo: '/images/Logos/Universites/Private/MUST.png', type: 'private' },
-          { id: 'MTI', university_Arabic_Name: 'الجامعة الحديثة للتكنولوجيا والمعلومات', university_Logo: '/images/Logos/Universites/Private/MTI.png', type: 'private' },
-          { id: 'NUB', university_Arabic_Name: 'جامعة النهضة ببني سويف', university_Logo: '/images/Logos/Universites/Private/NUB.png', type: 'private' },
-          { id: 'NVU', university_Arabic_Name: 'جامعة وادي النيل', university_Logo: '/images/Logos/Universites/Private/NVU.png', type: 'private' },
-          { id: 'O6U', university_Arabic_Name: 'جامعة 6 اكتوبر', university_Logo: '/images/Logos/Universites/Private/O6U.png', type: 'private' },
-          { id: 'PUA', university_Arabic_Name: 'جامعة فاروس بالإسكندرية', university_Logo: '/images/Logos/Universites/Private/PUA.png', type: 'private' },
-          { id: 'RU', university_Arabic_Name: 'جامعة رشيد', university_Logo: '/images/Logos/Universites/Private/RU.png', type: 'private' },
-          { id: 'RST', university_Arabic_Name: 'جامعة الريادة للعلوم والتكنولوجيا', university_Logo: '/images/Logos/Universites/Private/RST.png', type: 'private' },
-          { id: 'SUT', university_Arabic_Name: 'جامعة السويدي للتكنولوجيا', university_Logo: '/images/Logos/Universites/Private/SUT.png', type: 'private' },
-          { id: 'SGU', university_Arabic_Name: 'جامعة الصالحية الجديدة', university_Logo: '/images/Logos/Universites/Private/SGU.png', type: 'private' },
-          { id: 'SU', university_Arabic_Name: 'جامعة سيناء', university_Logo: '/images/Logos/Universites/Private/SU.png', type: 'private' },
-          { id: 'SphinxU', university_Arabic_Name: 'جامعة سفنكس', university_Logo: '/images/Logos/Universites/Private/SphinxU.png', type: 'private' },
-          { id: 'SEU', university_Arabic_Name: 'جامعة ساكسوني مصر للعلوم التطبيقية والتكنولوجيا', university_Logo: '/images/Logos/Universites/Private/SEU.png', type: 'private' }
-        ],
-        national: [
-          { id: 'AlexNU', university_Arabic_Name: 'جامعة الاسكندرية الاهلية', university_Logo: '/images/Logos/Universites/National/AlexNU.png', type: 'national' },
-          { id: 'AssuitNU', university_Arabic_Name: 'جامعة اسيوط الاهلية', university_Logo: '/images/Logos/Universites/National/AssuitNU.png', type: 'national' },
-          { id: 'BNU', university_Arabic_Name: 'جامعة بنها الاهلية', university_Logo: '/images/Logos/Universites/National/BNU.png', type: 'national' },
-          { id: 'BSNU', university_Arabic_Name: 'جامعة بني سويف الاهلية', university_Logo: '/images/Logos/Universites/National/BSNU.png', type: 'national' },
-          { id: 'HNU', university_Arabic_Name: 'جامعة حلوان الاهلية', university_Logo: '/images/Logos/Universites/National/HNU.png', type: 'national' },
-          { id: 'SVNU', university_Arabic_Name: 'جامعة جنوب الوادي الاهلية', university_Logo: '/images/Logos/Universites/National/SVNU.png', type: 'national' },
-          { id: 'NINU', university_Arabic_Name: 'جامعة الإسماعيلية الجديدة الاهلية', university_Logo: '/images/Logos/Universites/National/NINU.png', type: 'national' },
-          { id: 'MiniaNU', university_Arabic_Name: 'جامعة المنيا الاهلية', university_Logo: '/images/Logos/Universites/National/MiniaNU.png', type: 'national' },
-          { id: 'MansNU', university_Arabic_Name: 'جامعة المنصورة الاهلية', university_Logo: '/images/Logos/Universites/National/MansNU.png', type: 'national' },
-          { id: 'MenofiaNU', university_Arabic_Name: 'جامعة المنوفية الاهلية', university_Logo: '/images/Logos/Universites/National/MenofiaNU.png', type: 'national' },
-          { id: 'EPNU', university_Arabic_Name: 'جامعة شرق بورسعيد الاهلية', university_Logo: '/images/Logos/Universites/National/EPNU.png', type: 'national' },
-          { id: 'ZNU', university_Arabic_Name: 'جامعة الزقازيق الاهلية', university_Logo: '/images/Logos/Universites/National/ZNU.png', type: 'national' },
-          { id: 'GU', university_Arabic_Name: 'جامعة الجلالة', university_Logo: '/images/Logos/Universites/National/GU.png', type: 'national' },
-          { id: 'AIU', university_Arabic_Name: 'جامعة العلمين الدولية', university_Logo: '/images/Logos/Universites/National/AIU.png', type: 'national' },
-          { id: 'KSIU', university_Arabic_Name: 'جامعة الملك سلمان الدولية', university_Logo: '/images/Logos/Universites/National/KSIU.png', type: 'national' },
-          { id: 'NMU', university_Arabic_Name: 'جامعة المنصورة الجديدة', university_Logo: '/images/Logos/Universites/National/NMU.png', type: 'national' },
-          { id: 'UFE', university_Arabic_Name: 'الجامعة الفرنسية بمصر', university_Logo: '/images/Logos/Universites/National/UFE.png', type: 'national' },
-          { id: 'EELU', university_Arabic_Name: 'الجامعة المصرية للتعليم الالكتروني', university_Logo: '/images/Logos/Universites/National/EELU.png', type: 'national' },
-          { id: 'EUI', university_Arabic_Name: 'جامعة مصر للمعلوماتية', university_Logo: '/images/Logos/Universites/National/EUI.png', type: 'national' },
-          { id: 'NU', university_Arabic_Name: 'جامعة النيل الاهلية', university_Logo: '/images/Logos/Universites/National/NU.png', type: 'national' }
-        ],
-        special: [
-          { id: 'AASTMT', university_Arabic_Name: 'الأكاديمية البحرية للعلوم والتكنولوجيا والنقل البحري', university_Logo: '/images/Logos/Universites/Special/AASTMT.png', type: 'special' },
-          { id: 'AOU', university_Arabic_Name: 'الجامعة العربية المفتوحة', university_Logo: '/images/Logos/Universites/Special/AOU.png', type: 'special' },
-          { id: 'EslscaU', university_Arabic_Name: 'جامعة اسلسكا', university_Logo: '/images/Logos/Universites/Special/EslscaU.png', type: 'special' },
-          { id: 'AUC', university_Arabic_Name: 'الجامعة الأمريكية بالقاهرة', university_Logo: '/images/Logos/Universites/Special/AUC.png', type: 'special' },
-          { id: 'EJUST', university_Arabic_Name: 'الجامعة المصرية اليابانية', university_Logo: '/images/Logos/Universites/Special/EJUST.png', type: 'special' },
-          { id: 'GIU', university_Arabic_Name: 'الجامعة الألمانية الدولية', university_Logo: '/images/Logos/Universites/Special/GIU.png', type: 'special' },
-          { id: 'UST', university_Arabic_Name: 'جامعة العلوم والتكنولوجيا بمدينة زويل', university_Logo: '/images/Logos/Universites/Special/UST.png', type: 'special' }
-        ],
-        international: [
-          { id: 'UEL', university_Arabic_Name: 'جامعة ايست لندن', university_Logo: '/images/Logos/Universites/International/UEL.png', type: 'international' },
-          { id: 'UPEI', university_Arabic_Name: 'جامعة جزيرة الأمير إدوارد', university_Logo: '/images/Logos/Universites/International/UPEI.png', type: 'international' },
-          { id: 'KPFU', university_Arabic_Name: 'جامعة كازان الفيدرالية الروسية', university_Logo: '/images/Logos/Universites/International/KPFU.png', type: 'international' },
-          { id: 'Coventry', university_Arabic_Name: 'جامعة كوفنتري البريطانية', university_Logo: '/images/Logos/Universites/International/COVENTRY.png', type: 'international' },
-          { id: 'NOVA', university_Arabic_Name: 'جامعة نوفا ليشبونا البرتغالية', university_Logo: '/images/Logos/Universites/International/NOVA.png', type: 'international' },
-          { id: 'SPBU', university_Arabic_Name: 'جامعة سان بطرسبرج الروسية', university_Logo: '/images/Logos/Universites/International/SPBU.png', type: 'international' },
-          { id: 'UH', university_Arabic_Name: 'جامعة هيرتفوردشاير البريطانية', university_Logo: '/images/Logos/Universites/International/UH.png', type: 'international' },
-          { id: 'UCLAN', university_Arabic_Name: 'جامعة وسط لانكشاير', university_Logo: '/images/Logos/Universites/International/UCLan.png', type: 'international' },
-          { id: 'UOL', university_Arabic_Name: 'جامعة لندن', university_Logo: '/images/Logos/Universites/International/UOL.png', type: 'international' }
-        ]
-      }
+      editSearchQuery: '',
+      deleteSearchQuery: '',
+      filteredEditUniversities: [],
+      filteredDeleteUniversities: [],
+      selectedType: 'all',
+      universityTypes: [
+        { label: 'الكل', value: 'all' },
+        { label: 'الجامعات الخاصة', value: 'private' },
+        { label: 'الجامعات الأهلية', value: 'national' },
+        { label: 'الجامعات ذات طبيعة خاصة', value: 'special' },
+        { label: 'الجامعات الدولية', value: 'international' }
+      ],
+      selectedUniversityForEdit: null,
+      selectedUniversityForDelete: null,
     };
   },
   computed: {
     privateUniversities() {
+      if (this.selectedType !== 'all' && this.selectedType !== 'private') return [];
       return this.filteredUniversities.filter(uni => uni.type === 'private');
     },
     nationalUniversities() {
+      if (this.selectedType !== 'all' && this.selectedType !== 'national') return [];
       return this.filteredUniversities.filter(uni => uni.type === 'national');
     },
     specialUniversities() {
+      if (this.selectedType !== 'all' && this.selectedType !== 'special') return [];
       return this.filteredUniversities.filter(uni => uni.type === 'special');
     },
     internationalUniversities() {
+      if (this.selectedType !== 'all' && this.selectedType !== 'international') return [];
       return this.filteredUniversities.filter(uni => uni.type === 'international');
     }
   },
@@ -812,78 +1503,66 @@ export default {
     },
     async fetchUniversities() {
       try {
-        // Try to fetch from API first
+        // Fetch from API
         const [privateResponse, nationalResponse, specialResponse, internationalResponse] = await Promise.allSettled([
-          axios.get('https://nuft-website-backend.vercel.app/privatefaculty/getprivate'),
-          axios.get('https://nuft-website-backend.vercel.app/nationalfaculty/getnational'),
-          axios.get('https://nuft-website-backend.vercel.app/specialfaculty/getspecial'),
-          axios.get('https://nuft-website-backend.vercel.app/internationalfaculty/getinternational')
+          axios.get('https://nuft-website-backend.vercel.app/private/links'),
+          axios.get('https://nuft-website-backend.vercel.app/national/links'),
+          axios.get('https://nuft-website-backend.vercel.app/special/links'),
+          axios.get('https://nuft-website-backend.vercel.app/international/links')
         ]);
+
+        this.universitiesData = [];
 
         // Process private universities
         if (privateResponse.status === 'fulfilled' && privateResponse.value.data && Array.isArray(privateResponse.value.data)) {
           const privateUnis = privateResponse.value.data.map(uni => ({
-            id: uni.university_code,
-            university_Arabic_Name: uni.university_name,
-            university_Logo: uni.university_logo || '/images/default-university.png',
+            id: uni.university || uni.university_code,
+            university_Arabic_Name: uni.university_Arabic_Name,
+            university_Logo: uni.university_Logo || '/images/default-university.png',
             type: 'private'
           }));
           this.universitiesData = [...this.universitiesData, ...privateUnis];
-        } else {
-          this.universitiesData = [...this.universitiesData, ...this.hardcodedUniversities.private];
         }
 
         // Process national universities
         if (nationalResponse.status === 'fulfilled' && nationalResponse.value.data && Array.isArray(nationalResponse.value.data)) {
           const nationalUnis = nationalResponse.value.data.map(uni => ({
-            id: uni.university_code,
-            university_Arabic_Name: uni.university_name,
-            university_Logo: uni.university_logo || '/images/default-university.png',
+            id: uni.university || uni.university_code,
+            university_Arabic_Name: uni.university_Arabic_Name,
+            university_Logo: uni.university_Logo || '/images/default-university.png',
             type: 'national'
           }));
           this.universitiesData = [...this.universitiesData, ...nationalUnis];
-        } else {
-          this.universitiesData = [...this.universitiesData, ...this.hardcodedUniversities.national];
         }
 
         // Process special universities
         if (specialResponse.status === 'fulfilled' && specialResponse.value.data && Array.isArray(specialResponse.value.data)) {
           const specialUnis = specialResponse.value.data.map(uni => ({
-            id: uni.university_code,
-            university_Arabic_Name: uni.university_name,
-            university_Logo: uni.university_logo || '/images/default-university.png',
+            id: uni.university || uni.university_code,
+            university_Arabic_Name: uni.university_Arabic_Name,
+            university_Logo: uni.university_Logo || '/images/default-university.png',
             type: 'special'
           }));
           this.universitiesData = [...this.universitiesData, ...specialUnis];
-        } else {
-          this.universitiesData = [...this.universitiesData, ...this.hardcodedUniversities.special];
         }
 
         // Process international universities
         if (internationalResponse.status === 'fulfilled' && internationalResponse.value.data && Array.isArray(internationalResponse.value.data)) {
           const internationalUnis = internationalResponse.value.data.map(uni => ({
-            id: uni.university_code,
-            university_Arabic_Name: uni.university_name,
-            university_Logo: uni.university_logo || '/images/default-university.png',
+            id: uni.university || uni.university_code,
+            university_Arabic_Name: uni.university_Arabic_Name,
+            university_Logo: uni.university_Logo || '/images/default-university.png',
             type: 'international'
           }));
           this.universitiesData = [...this.universitiesData, ...internationalUnis];
-        } else {
-          this.universitiesData = [...this.universitiesData, ...this.hardcodedUniversities.international];
         }
 
         this.filteredUniversities = this.universitiesData;
         this.loading = false;
       } catch (error) {
         console.error('Error fetching universities:', error);
-        // Use hardcoded data as fallback
-        this.universitiesData = [
-          ...this.hardcodedUniversities.private,
-          ...this.hardcodedUniversities.national,
-          ...this.hardcodedUniversities.special,
-          ...this.hardcodedUniversities.international
-        ];
-        this.filteredUniversities = this.universitiesData;
+        this.universitiesData = [];
+        this.filteredUniversities = [];
         this.loading = false;
       }
     },
@@ -900,8 +1579,8 @@ export default {
     handleImageError(event) {
       event.target.src = '/images/default-university.png';
     },
-    addFaculty() {
-      this.formData.faculties.push({
+    addFaculty(formType) {
+      const faculty = {
         faculty: '',
         section: '',
         programs: '',
@@ -914,152 +1593,167 @@ export default {
         Arabenglish_secondYear_score: '',
         Arabenglish_firstYear_score: '',
         wafdeen_score: ''
-      });
+      };
+      
+      if (formType === 'add') {
+        this.addFormData.faculties.push(faculty);
+      } else {
+        this.editFormData.faculties.push(faculty);
+      }
     },
-    removeFaculty(index) {
-      this.formData.faculties.splice(index, 1);
+
+    removeFaculty(index, formType) {
+      if (formType === 'add') {
+        this.addFormData.faculties.splice(index, 1);
+      } else {
+        this.editFormData.faculties.splice(index, 1);
+      }
     },
-    addDorm() {
-      this.formData.dorms.push({
+
+    addDorm(formType) {
+      const dorm = {
         name: '',
         description: '',
         price: '',
         location: ''
-      });
+      };
+      
+      if (formType === 'add') {
+        this.addFormData.dorms.push(dorm);
+      } else {
+        this.editFormData.dorms.push(dorm);
+      }
     },
-    removeDorm(index) {
-      this.formData.dorms.splice(index, 1);
+
+    removeDorm(index, formType) {
+      if (formType === 'add') {
+        this.addFormData.dorms.splice(index, 1);
+      } else {
+        this.editFormData.dorms.splice(index, 1);
+      }
     },
-    addTransportation() {
-      this.formData.transportation.push({
+
+    addTransportation(formType) {
+      const trans = {
         name: '',
         description: '',
         price: '',
         route: ''
-      });
+      };
+      
+      if (formType === 'add') {
+        this.addFormData.transportation.push(trans);
+      } else {
+        this.editFormData.transportation.push(trans);
+      }
     },
-    removeTransportation(index) {
-      this.formData.transportation.splice(index, 1);
+
+    removeTransportation(index, formType) {
+      if (formType === 'add') {
+        this.addFormData.transportation.splice(index, 1);
+      } else {
+        this.editFormData.transportation.splice(index, 1);
+      }
     },
+
     editUniversity(university) {
+      this.selectedUniversity = university;
       this.isEditing = true;
       this.editingId = university.id;
-      this.formData = {
-        ...this.formData,
+      this.editFormData = {
+        ...this.editFormData,
         ...university,
         faculties: university.faculties || [],
         dorms: university.dorms || [],
         transportation: university.transportation || []
       };
-      this.activeTab = 'add';
+      this.activeTab = 'edit';
+      this.selectedType = 'all';
+      this.filterEditUniversities();
     },
     async addUniversity() {
       try {
         let endpoint;
-        switch (this.formData.type) {
+        switch (this.addFormData.type) {
           case 'national':
-            endpoint = 'https://nuft-website-backend.vercel.app/nationallinks/add_nationallinks';
+            endpoint = 'https://nuft-website-backend.vercel.app/national/add';
             break;
           case 'private':
-            endpoint = 'https://nuft-website-backend.vercel.app/privatelinks/add_privatelinks';
+            endpoint = 'https://nuft-website-backend.vercel.app/private/add';
             break;
           case 'special':
-            endpoint = 'https://nuft-website-backend.vercel.app/speciallinks/add_speciallinks';
+            endpoint = 'https://nuft-website-backend.vercel.app/special/add';
             break;
           case 'international':
-            endpoint = 'https://nuft-website-backend.vercel.app/internationallinks/add_internationallinks';
+            endpoint = 'https://nuft-website-backend.vercel.app/international/add';
             break;
         }
 
         // Add university info and links
         await axios.post(endpoint, {
-          ...this.formData,
-          university_code: this.formData.university_code.toUpperCase() // Ensure uppercase
+          ...this.addFormData,
+          university_code: this.addFormData.university_code.toUpperCase() // Ensure uppercase
         });
 
         // Add faculties
-        if (this.formData.faculties && this.formData.faculties.length > 0) {
-          const facultyEndpoint = this.formData.type === 'national' 
-            ? 'https://nuft-website-backend.vercel.app/nationalfaculty/addnational'
-            : this.formData.type === 'private'
-            ? 'https://nuft-website-backend.vercel.app/privatefaculty/addprivate'
-            : this.formData.type === 'special'
-            ? 'https://nuft-website-backend.vercel.app/specialfaculty/addspecial'
-            : 'https://nuft-website-backend.vercel.app/internationalfaculty/addinternational';
+        if (this.addFormData.faculties && this.addFormData.faculties.length > 0) {
+          const facultyEndpoint = this.addFormData.type === 'national' 
+            ? 'https://nuft-website-backend.vercel.app/national/faculty/add'
+            : this.addFormData.type === 'private'
+            ? 'https://nuft-website-backend.vercel.app/private/faculty/add'
+            : this.addFormData.type === 'special'
+            ? 'https://nuft-website-backend.vercel.app/special/faculty/add'
+            : 'https://nuft-website-backend.vercel.app/international/faculty/add';
 
-          for (const faculty of this.formData.faculties) {
+          for (const faculty of this.addFormData.faculties) {
             await axios.post(facultyEndpoint, {
               ...faculty,
-              university: this.formData.university_Arabic_Name,
-              university_code: this.formData.university_code.toUpperCase()
+              university: this.addFormData.university_Arabic_Name,
+              university_code: this.addFormData.university_code.toUpperCase()
             });
           }
         }
 
         // Add dorms
-        if (this.formData.dorms && this.formData.dorms.length > 0) {
-          const dormEndpoint = this.formData.type === 'national'
-            ? 'https://nuft-website-backend.vercel.app/nationaldorms/addnationaldorms'
-            : this.formData.type === 'private'
-            ? 'https://nuft-website-backend.vercel.app/privatedorms/addprivatedorms'
-            : this.formData.type === 'special'
-            ? 'https://nuft-website-backend.vercel.app/specialdorms/addspecialdorms'
-            : 'https://nuft-website-backend.vercel.app/internationaldorms/addinternationaldorms';
+        if (this.addFormData.dorms && this.addFormData.dorms.length > 0) {
+          const dormEndpoint = this.addFormData.type === 'national'
+            ? 'https://nuft-website-backend.vercel.app/national/dorms/add'
+            : this.addFormData.type === 'private'
+            ? 'https://nuft-website-backend.vercel.app/private/dorms/add'
+            : this.addFormData.type === 'special'
+            ? 'https://nuft-website-backend.vercel.app/special/dorms/add'
+            : 'https://nuft-website-backend.vercel.app/international/dorms/add';
 
-          for (const dorm of this.formData.dorms) {
+          for (const dorm of this.addFormData.dorms) {
             await axios.post(dormEndpoint, {
               ...dorm,
-              spec: this.formData.university_Arabic_Name,
-              university_code: this.formData.university_code.toUpperCase()
+              spec: this.addFormData.university_Arabic_Name,
+              university_code: this.addFormData.university_code.toUpperCase()
             });
           }
         }
 
         // Add transportation
-        if (this.formData.transportation && this.formData.transportation.length > 0) {
-          const transEndpoint = this.formData.type === 'national'
-            ? 'https://nuft-website-backend.vercel.app/nationaltrans/addnationaltrans'
-            : this.formData.type === 'private'
-            ? 'https://nuft-website-backend.vercel.app/privatetrans/addprivatetrans'
-            : this.formData.type === 'special'
-            ? 'https://nuft-website-backend.vercel.app/specialtrans/addspecialtrans'
-            : 'https://nuft-website-backend.vercel.app/internationaltrans/addinternationaltrans';
+        if (this.addFormData.transportation && this.addFormData.transportation.length > 0) {
+          const transEndpoint = this.addFormData.type === 'national'
+            ? 'https://nuft-website-backend.vercel.app/national/transportation/add'
+            : this.addFormData.type === 'private'
+            ? 'https://nuft-website-backend.vercel.app/private/transportation/add'
+            : this.addFormData.type === 'special'
+            ? 'https://nuft-website-backend.vercel.app/special/transportation/add'
+            : 'https://nuft-website-backend.vercel.app/international/transportation/add';
 
-          for (const trans of this.formData.transportation) {
+          for (const trans of this.addFormData.transportation) {
             await axios.post(transEndpoint, {
               ...trans,
-              spec: this.formData.university_Arabic_Name,
-              university_code: this.formData.university_code.toUpperCase()
+              spec: this.addFormData.university_Arabic_Name,
+              university_code: this.addFormData.university_code.toUpperCase()
             });
           }
         }
 
-        // Add admission status
-        const admissionEndpoint = this.formData.type === 'national'
-          ? 'https://nuft-website-backend.vercel.app/nationaladmission/add'
-          : this.formData.type === 'private'
-          ? 'https://nuft-website-backend.vercel.app/privateadmission/add'
-          : this.formData.type === 'special'
-          ? 'https://nuft-website-backend.vercel.app/specialadmission/add'
-          : 'https://nuft-website-backend.vercel.app/internationaladmission/add';
-
-        await axios.post(admissionEndpoint, {
-          university: this.formData.university_Arabic_Name,
-          university_Arabic_Name: this.formData.university_Arabic_Name,
-          university_code: this.formData.university_code.toUpperCase(),
-          transfer_status: '',
-          thanwyaa_firstYear_status: '',
-          thanwyaa_secondYear_status: '',
-          azhar_firstYear_status: '',
-          azhar_secondYear_status: '',
-          Arabenglish_firstYear_status: '',
-          Arabenglish_secondYear_status: '',
-          wafdeen_status: '',
-          guide_Url: `/guide/UGRAD/${this.formData.type}/`
-        });
-
         alert('تم إضافة الجامعة بنجاح');
-        this.resetForm();
+        this.resetAddForm();
         this.fetchUniversities();
         this.activeTab = 'manage';
       } catch (error) {
@@ -1070,107 +1764,83 @@ export default {
     async updateUniversity() {
       try {
         let endpoint;
-        switch (this.formData.type) {
+        switch (this.editFormData.type) {
           case 'national':
-            endpoint = `https://nuft-website-backend.vercel.app/nationallinks/update/${this.editingId}`;
+            endpoint = `https://nuft-website-backend.vercel.app/national/${this.editingId}`;
             break;
           case 'private':
-            endpoint = `https://nuft-website-backend.vercel.app/privatelinks/update/${this.editingId}`;
+            endpoint = `https://nuft-website-backend.vercel.app/private/${this.editingId}`;
             break;
           case 'special':
-            endpoint = `https://nuft-website-backend.vercel.app/speciallinks/update/${this.editingId}`;
+            endpoint = `https://nuft-website-backend.vercel.app/special/${this.editingId}`;
             break;
           case 'international':
-            endpoint = `https://nuft-website-backend.vercel.app/internationallinks/update/${this.editingId}`;
+            endpoint = `https://nuft-website-backend.vercel.app/international/${this.editingId}`;
             break;
         }
 
         // Update university info and links
         await axios.put(endpoint, {
-          ...this.formData,
-          university_code: this.formData.university_code.toUpperCase()
+          ...this.editFormData,
+          university_code: this.editFormData.university_code.toUpperCase()
         });
 
         // Update faculties
-        if (this.formData.faculties && this.formData.faculties.length > 0) {
-          const facultyEndpoint = this.formData.type === 'national' 
-            ? `https://nuft-website-backend.vercel.app/nationalfaculty/update/${this.editingId}`
-            : this.formData.type === 'private'
-            ? `https://nuft-website-backend.vercel.app/privatefaculty/update/${this.editingId}`
-            : this.formData.type === 'special'
-            ? `https://nuft-website-backend.vercel.app/specialfaculty/update/${this.editingId}`
-            : `https://nuft-website-backend.vercel.app/internationalfaculty/update/${this.editingId}`;
+        if (this.editFormData.faculties && this.editFormData.faculties.length > 0) {
+          const facultyEndpoint = this.editFormData.type === 'national' 
+            ? `https://nuft-website-backend.vercel.app/national/faculty/${this.editingId}`
+            : this.editFormData.type === 'private'
+            ? `https://nuft-website-backend.vercel.app/private/faculty/${this.editingId}`
+            : this.editFormData.type === 'special'
+            ? `https://nuft-website-backend.vercel.app/special/faculty/${this.editingId}`
+            : `https://nuft-website-backend.vercel.app/international/faculty/${this.editingId}`;
 
-          for (const faculty of this.formData.faculties) {
+          for (const faculty of this.editFormData.faculties) {
             await axios.put(facultyEndpoint, {
               ...faculty,
-              university: this.formData.university_Arabic_Name,
-              university_code: this.formData.university_code.toUpperCase()
+              university: this.editFormData.university_Arabic_Name,
+              university_code: this.editFormData.university_code.toUpperCase()
             });
           }
         }
 
         // Update dorms
-        if (this.formData.dorms && this.formData.dorms.length > 0) {
-          const dormEndpoint = this.formData.type === 'national'
-            ? `https://nuft-website-backend.vercel.app/nationaldorms/update/${this.editingId}`
-            : this.formData.type === 'private'
-            ? `https://nuft-website-backend.vercel.app/privatedorms/update/${this.editingId}`
-            : this.formData.type === 'special'
-            ? `https://nuft-website-backend.vercel.app/specialdorms/update/${this.editingId}`
-            : `https://nuft-website-backend.vercel.app/internationaldorms/update/${this.editingId}`;
+        if (this.editFormData.dorms && this.editFormData.dorms.length > 0) {
+          const dormEndpoint = this.editFormData.type === 'national'
+            ? `https://nuft-website-backend.vercel.app/national/dorms/${this.editingId}`
+            : this.editFormData.type === 'private'
+            ? `https://nuft-website-backend.vercel.app/private/dorms/${this.editingId}`
+            : this.editFormData.type === 'special'
+            ? `https://nuft-website-backend.vercel.app/special/dorms/${this.editingId}`
+            : `https://nuft-website-backend.vercel.app/international/dorms/${this.editingId}`;
 
-          for (const dorm of this.formData.dorms) {
+          for (const dorm of this.editFormData.dorms) {
             await axios.put(dormEndpoint, {
               ...dorm,
-              spec: this.formData.university_Arabic_Name,
-              university_code: this.formData.university_code.toUpperCase()
+              spec: this.editFormData.university_Arabic_Name,
+              university_code: this.editFormData.university_code.toUpperCase()
             });
           }
         }
 
         // Update transportation
-        if (this.formData.transportation && this.formData.transportation.length > 0) {
-          const transEndpoint = this.formData.type === 'national'
-            ? `https://nuft-website-backend.vercel.app/nationaltrans/update/${this.editingId}`
-            : this.formData.type === 'private'
-            ? `https://nuft-website-backend.vercel.app/privatetrans/update/${this.editingId}`
-            : this.formData.type === 'special'
-            ? `https://nuft-website-backend.vercel.app/specialtrans/update/${this.editingId}`
-            : `https://nuft-website-backend.vercel.app/internationaltrans/update/${this.editingId}`;
+        if (this.editFormData.transportation && this.editFormData.transportation.length > 0) {
+          const transEndpoint = this.editFormData.type === 'national'
+            ? `https://nuft-website-backend.vercel.app/national/transportation/${this.editingId}`
+            : this.editFormData.type === 'private'
+            ? `https://nuft-website-backend.vercel.app/private/transportation/${this.editingId}`
+            : this.editFormData.type === 'special'
+            ? `https://nuft-website-backend.vercel.app/special/transportation/${this.editingId}`
+            : `https://nuft-website-backend.vercel.app/international/transportation/${this.editingId}`;
 
-          for (const trans of this.formData.transportation) {
+          for (const trans of this.editFormData.transportation) {
             await axios.put(transEndpoint, {
               ...trans,
-              spec: this.formData.university_Arabic_Name,
-              university_code: this.formData.university_code.toUpperCase()
+              spec: this.editFormData.university_Arabic_Name,
+              university_code: this.editFormData.university_code.toUpperCase()
             });
           }
         }
-
-        // Update admission status
-        const admissionEndpoint = this.formData.type === 'national'
-          ? `https://nuft-website-backend.vercel.app/nationaladmission/update/${this.editingId}`
-          : this.formData.type === 'private'
-          ? `https://nuft-website-backend.vercel.app/privateadmission/update/${this.editingId}`
-          : this.formData.type === 'special'
-          ? `https://nuft-website-backend.vercel.app/specialadmission/update/${this.editingId}`
-          : `https://nuft-website-backend.vercel.app/internationaladmission/update/${this.editingId}`;
-
-        await axios.put(admissionEndpoint, {
-          university: this.formData.university_Arabic_Name,
-          university_Arabic_Name: this.formData.university_Arabic_Name,
-          university_code: this.formData.university_code.toUpperCase(),
-          transfer_status: '',
-          thanwyaa_firstYear_status: '',
-          thanwyaa_secondYear_status: '',
-          azhar_firstYear_status: '',
-          azhar_secondYear_status: '',
-          Arabenglish_firstYear_status: '',
-          Arabenglish_secondYear_status: '',
-          wafdeen_status: '',
-          guide_Url: `/guide/UGRAD/${this.formData.type}/`
-        });
 
         alert('تم تحديث الجامعة بنجاح');
         this.cancelEdit();
@@ -1187,16 +1857,16 @@ export default {
         let endpoint;
         switch (university.type) {
           case 'national':
-            endpoint = `https://nuft-website-backend.vercel.app/nationallinks/delete/${id}`;
+            endpoint = `https://nuft-website-backend.vercel.app/national/${id}`;
             break;
           case 'private':
-            endpoint = `https://nuft-website-backend.vercel.app/privatelinks/delete/${id}`;
+            endpoint = `https://nuft-website-backend.vercel.app/private/${id}`;
             break;
           case 'special':
-            endpoint = `https://nuft-website-backend.vercel.app/speciallinks/delete/${id}`;
+            endpoint = `https://nuft-website-backend.vercel.app/special/${id}`;
             break;
           case 'international':
-            endpoint = `https://nuft-website-backend.vercel.app/internationallinks/delete/${id}`;
+            endpoint = `https://nuft-website-backend.vercel.app/international/${id}`;
             break;
         }
 
@@ -1209,19 +1879,30 @@ export default {
       }
     },
     confirmDelete(id) {
-      if (confirm('هل أنت متأكد من حذف هذه الجامعة؟')) {
-        this.deleteUniversity(id);
+      const university = this.universitiesData.find(u => u.id === id);
+      if (university) {
+        this.selectedUniversity = university;
+        this.isDeleting = true;
+        this.activeTab = 'delete';
       }
     },
-    cancelEdit() {
-      this.isEditing = false;
-      this.editingId = null;
-      this.resetForm();
+    cancelDelete() {
+      this.isDeleting = false;
+      this.selectedUniversity = null;
       this.activeTab = 'manage';
     },
-    resetForm() {
-      this.formData = {
-        university_code: '', // Added university short name
+    getUniversityTypeName(type) {
+      const types = {
+        'national': 'جامعة أهلية',
+        'private': 'جامعة خاصة',
+        'special': 'جامعة ذات طبيعة خاصة',
+        'international': 'جامعة دولية'
+      };
+      return types[type] || type;
+    },
+    resetAddForm() {
+      this.addFormData = {
+        university_code: '',
         university_Arabic_Name: '',
         university_Logo: '',
         type: 'national',
@@ -1245,10 +1926,110 @@ export default {
         Egyptian_Transfer_link: '',
         Wafdeen_Admission_link: ''
       };
-    }
+    },
+    resetEditForm() {
+      this.editFormData = {
+        university_code: '',
+        university_Arabic_Name: '',
+        university_Logo: '',
+        type: 'national',
+        Uni_Bio: '',
+        location: '',
+        website: '',
+        phone: '',
+        email: '',
+        facebook: '',
+        instagram: '',
+        youtube: '',
+        linkedin: '',
+        faculties: [],
+        international_programs: '',
+        dorms: [],
+        transportation: [],
+        dorms_link: '',
+        transportation_link: '',
+        scholarship_link: '',
+        Egyptian_Admission_link: '',
+        Egyptian_Transfer_link: '',
+        Wafdeen_Admission_link: ''
+      };
+    },
+    cancelEdit() {
+      this.isEditing = false;
+      this.editingId = null;
+      this.selectedUniversityForEdit = null;
+      this.resetEditForm();
+      this.activeTab = 'manage';
+    },
+    selectUniversityForEdit(university) {
+      this.selectedUniversityForEdit = university;
+      this.isEditing = true;
+      this.editingId = university.id;
+      this.editFormData = {
+        ...this.editFormData,
+        ...university,
+        faculties: university.faculties || [],
+        dorms: university.dorms || [],
+        transportation: university.transportation || []
+      };
+    },
+    selectUniversityForDelete(university) {
+      this.selectedUniversityForDelete = university;
+    },
+    filterEditUniversities() {
+      if (!this.editSearchQuery) {
+        this.filteredEditUniversities = this.universitiesData.filter(uni => 
+          this.selectedType === 'all' || uni.type === this.selectedType
+        );
+        return;
+      }
+      const query = this.editSearchQuery.toLowerCase();
+      this.filteredEditUniversities = this.universitiesData.filter(university => 
+        university.university_Arabic_Name.toLowerCase().includes(query) &&
+        (this.selectedType === 'all' || university.type === this.selectedType)
+      );
+    },
+    filterDeleteUniversities() {
+      if (!this.deleteSearchQuery) {
+        this.filteredDeleteUniversities = this.universitiesData.filter(uni => 
+          this.selectedType === 'all' || uni.type === this.selectedType
+        );
+        return;
+      }
+      const query = this.deleteSearchQuery.toLowerCase();
+      this.filteredDeleteUniversities = this.universitiesData.filter(university => 
+        university.university_Arabic_Name.toLowerCase().includes(query) &&
+        (this.selectedType === 'all' || university.type === this.selectedType)
+      );
+    },
+    switchToEdit() {
+      this.activeTab = 'edit';
+      this.selectedType = 'all';
+      this.filterEditUniversities();
+    },
+    switchToDelete() {
+      this.activeTab = 'delete';
+      this.selectedType = 'all';
+      this.filterDeleteUniversities();
+    },
   },
   created() {
     this.fetchUniversities();
+    this.filteredEditUniversities = this.universitiesData;
+    this.filteredDeleteUniversities = this.universitiesData;
+  },
+  watch: {
+    selectedType() {
+      this.filterUniversities();
+      this.filterEditUniversities();
+      this.filterDeleteUniversities();
+    },
+    editSearchQuery() {
+      this.filterEditUniversities();
+    },
+    deleteSearchQuery() {
+      this.filterDeleteUniversities();
+    }
   }
 };
 </script>
@@ -1291,23 +2072,26 @@ export default {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  padding: 0 2rem;
 }
 
 .nav-tab {
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 2rem;
   border: none;
   border-radius: 8px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 500;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
   transition: all 0.3s ease;
   background: white;
   color: #495057;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  flex: 1;
+  justify-content: center;
 }
 
 .nav-tab:hover {
@@ -1321,7 +2105,18 @@ export default {
 }
 
 .nav-tab i {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .nav-tabs {
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  .nav-tab {
+    width: 100%;
+  }
 }
 
 .universities-list-section {
@@ -1726,5 +2521,326 @@ textarea:focus {
 .back-button:hover {
   background: #bbdefb;
   transform: translateX(-2px);
+}
+
+.delete-section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.delete-card {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.delete-content {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.university-info {
+  margin-bottom: 2rem;
+}
+
+.university-info .university-image {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1rem;
+}
+
+.university-info .university-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.university-info h3 {
+  color: #1a237e;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.university-type {
+  color: #6c757d;
+  font-size: 1.1rem;
+}
+
+.warning-message {
+  background: #fff3cd;
+  border: 1px solid #ffeeba;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.warning-message i {
+  color: #856404;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.warning-message p {
+  color: #856404;
+  margin: 0.5rem 0;
+}
+
+.warning-details {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.delete-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.confirm-delete-btn,
+.cancel-delete-btn {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.confirm-delete-btn {
+  background: #dc3545;
+  color: white;
+}
+
+.cancel-delete-btn {
+  background: #6c757d;
+  color: white;
+}
+
+.confirm-delete-btn:hover,
+.cancel-delete-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.back-btn {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #bbdefb;
+  transform: translateX(-2px);
+}
+
+.university-card {
+  cursor: pointer;
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.section-header h2 {
+  color: #1a237e;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.search-bar {
+  flex: 0 0 300px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #4158d0;
+  box-shadow: 0 0 0 3px rgba(65, 88, 208, 0.1);
+}
+
+.universities-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.university-section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.section-title {
+  color: #1a237e;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #1a237e;
+}
+
+.universities-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.university-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.university-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-section {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.form-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.back-btn {
+  background: #e3f2fd;
+  color: #1976d2;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #bbdefb;
+  transform: translateX(-2px);
+}
+
+@media (max-width: 768px) {
+  .section-container {
+    padding: 1rem;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .search-bar {
+    flex: 0 0 100%;
+  }
+
+  .universities-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.type-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding: 0 2rem;
+  flex-wrap: wrap;
+}
+
+.type-tab {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #1a237e;
+  border-radius: 8px;
+  background: white;
+  color: #1a237e;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.type-tab:hover {
+  background: #e8eaf6;
+}
+
+.type-tab.active {
+  background: #1a237e;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .type-tabs {
+    gap: 0.5rem;
+  }
+
+  .type-tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
 }
 </style> 

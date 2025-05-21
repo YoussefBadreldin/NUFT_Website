@@ -837,6 +837,15 @@
 
       <div v-else class="delete-confirmation">
         <div class="confirmation-content">
+          <div class="university-info-delete">
+            <div class="university-logo-delete" v-if="universityLinks[universityToDelete.university]?.university_Logo">
+              <img :src="universityLinks[universityToDelete.university].university_Logo" :alt="universityToDelete.university_Arabic_Name">
+            </div>
+            <div class="university-details">
+              <h3>{{ universityToDelete.university_Arabic_Name }}</h3>
+              <p class="university-type">{{ getUniversityTypeLabel(selectedType) }}</p>
+            </div>
+          </div>
           <i class="fas fa-exclamation-triangle"></i>
           <h3>هل أنت متأكد من حذف حالة الجامعة {{ universityToDelete?.university_Arabic_Name }}؟</h3>
           <p>سيتم حذف جميع بيانات حالة الجامعة بشكل نهائي</p>
@@ -2014,5 +2023,46 @@ export default {
 .confirm-delete-btn:hover {
     background: #c82333;
     transform: translateY(-2px);
+}
+
+.university-info-delete {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.university-logo-delete {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #e9ecef;
+  flex-shrink: 0;
+}
+
+.university-logo-delete img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.university-details {
+  flex: 1;
+}
+
+.university-details h3 {
+  color: #001d3d;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+}
+
+.university-type {
+  color: #6c757d;
+  margin: 0;
+  font-size: 1rem;
 }
 </style> 

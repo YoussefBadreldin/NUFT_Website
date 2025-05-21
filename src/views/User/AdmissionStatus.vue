@@ -134,7 +134,7 @@
                                 </div>
                             </div>
                             <div class="university-guide-button">
-                                <a :href="universityLinks[university.university]?.guide_Url" target="_blank" class="guide-link">
+                                <a :href="getGuideUrl(university)" target="_blank" class="guide-link">
                                     معرفة المزيد عن الجامعة
                                     <i class="fas fa-external-link-alt"></i>
                                 </a>
@@ -228,7 +228,8 @@ export default {
                         azhar_secondYear_deadline: deadline.azhar_secondYear_deadline,
                         Arabenglish_firstYear_deadline: deadline.Arabenglish_firstYear_deadline,
                         Arabenglish_secondYear_deadline: deadline.Arabenglish_secondYear_deadline,
-                        wafdeen_deadline: deadline.wafdeen_deadline
+                        wafdeen_deadline: deadline.wafdeen_deadline,
+                        guide_Url: status.guide_Url
                     };
                 });
           
@@ -245,6 +246,13 @@ export default {
             } finally {
                 this.loading = false;
             }
+        },
+  
+        getGuideUrl(university) {
+            const baseUrl = window.location.origin;
+            const guideUrl = university.guide_Url;
+            if (!guideUrl) return '#';
+            return `${baseUrl}${guideUrl}`;
         },
   
         filterUniversities() {

@@ -133,10 +133,11 @@
                     آخر موعد للتحويل
                   </label>
                   <input 
-                    type="date" 
+                    type="text" 
                     v-model="addFormData.transfer_deadline" 
                     id="transfer_deadline"
                     required
+                    placeholder="أدخل آخر موعد للتحويل"
                   >
                 </div>
 
@@ -159,10 +160,11 @@
                     آخر موعد للثانوية العامة (السنة الأولي)
                   </label>
                   <input 
-                    type="date" 
+                    type="text" 
                     v-model="addFormData.thanwyaa_firstYear_deadline" 
                     id="thanwyaa_first_year_deadline"
                     required
+                    placeholder="أدخل آخر موعد للثانوية العامة (السنة الأولي)"
                   >
                 </div>
 
@@ -185,10 +187,11 @@
                     آخر موعد للثانوية العامة (السنة الثاني)
                   </label>
                   <input 
-                    type="date" 
+                    type="text" 
                     v-model="addFormData.thanwyaa_secondYear_deadline" 
                     id="thanwyaa_second_year_deadline"
                     required
+                    placeholder="أدخل آخر موعد للثانوية العامة (السنة الثاني)"
                   >
                 </div>
 
@@ -211,10 +214,11 @@
                     آخر موعد للثانوية الأزهرية (السنة الأولي)
                   </label>
                   <input 
-                    type="date" 
+                    type="text" 
                     v-model="addFormData.azhar_firstYear_deadline" 
                     id="azhar_first_year_deadline"
                     required
+                    placeholder="أدخل آخر موعد للثانوية الأزهرية (السنة الأولي)"
                   >
                 </div>
 
@@ -237,10 +241,11 @@
                     آخر موعد للثانوية الأزهرية (السنة الثانية)
                   </label>
                   <input 
-                    type="date" 
+                    type="text" 
                     v-model="addFormData.azhar_secondYear_deadline" 
                     id="azhar_second_year_deadline"
                     required
+                    placeholder="أدخل آخر موعد للثانوية الأزهرية (السنة الثانية)"
                   >
                 </div>
 
@@ -263,10 +268,11 @@
                     آخر موعد للشهادات العربية والإجنبية (السنة الأولي)
                   </label>
                   <input 
-                    type="date" 
+                    type="text" 
                     v-model="addFormData.Arabenglish_firstYear_deadline" 
                     id="arab_english_first_year_deadline"
                     required
+                    placeholder="أدخل آخر موعد للشهادات العربية والإجنبية (السنة الأولي)"
                   >
                 </div>
 
@@ -289,10 +295,11 @@
                     آخر موعد للشهادات العربية والإجنبية (السنة الثانية)
                   </label>
                   <input 
-                    type="date" 
+                    type="text" 
                     v-model="addFormData.Arabenglish_secondYear_deadline" 
                     id="arab_english_second_year_deadline"
                     required
+                    placeholder="أدخل آخر موعد للشهادات العربية والإجنبية (السنة الثانية)"
                   >
                 </div>
 
@@ -315,10 +322,11 @@
                     آخر موعد للوافدين
                   </label>
                   <input 
-                    type="date" 
+                    type="text" 
                     v-model="addFormData.wafdeen_deadline" 
                     id="wafdeen_deadline"
                     required
+                    placeholder="أدخل آخر موعد للوافدين"
                   >
                 </div>
               </div>
@@ -383,7 +391,7 @@
                 <div class="status-row">
                   <div class="status-item">
                     <p>الحالة: {{ university.transfer_status }}</p>
-                    <p>آخر موعد: {{ university.transfer_deadline }}</p>
+                    <p>آخر موعد: {{ formatDate(university.transfer_deadline) }}</p>
                   </div>
                 </div>
               </div>
@@ -394,13 +402,13 @@
                 <div class="status-row">
                   <div class="status-item">
                     <h5>السنة الأولي</h5>
-                    <p>الحالة: {{ university.thanwyaa_firstYear_status }}</p>
-                    <p>آخر موعد: {{ university.thanwyaa_firstYear_deadline }}</p>
+                    <p><span>الحالة: <br> {{ university.thanwyaa_firstYear_status }}</span></p>
+                    <p><span>آخر موعد: <br> {{ formatDate(university.thanwyaa_firstYear_deadline) }}</span></p>
                   </div>
                   <div class="status-item">
                     <h5>السنة الثانية</h5>
-                    <p>الحالة: {{ university.thanwyaa_secondYear_status }}</p>
-                    <p>آخر موعد: {{ university.thanwyaa_secondYear_deadline }}</p>
+                    <p><span>الحالة: <br> {{ university.thanwyaa_secondYear_status }}</span></p>
+                    <p><span>آخر موعد: <br> {{ formatDate(university.thanwyaa_secondYear_deadline) }}</span></p>
                   </div>
                 </div>
               </div>
@@ -411,13 +419,13 @@
                 <div class="status-row">
                   <div class="status-item">
                     <h5>السنة الأولي</h5>
-                    <p>الحالة: {{ university.azhar_firstYear_status }}</p>
-                    <p>آخر موعد: {{ university.azhar_firstYear_deadline }}</p>
+                    <p><span>الحالة: <br> {{ university.azhar_firstYear_status }}</span></p>
+                    <p><span>آخر موعد: <br> {{ formatDate(university.azhar_firstYear_deadline) }}</span></p>
                   </div>
                   <div class="status-item">
                     <h5>السنة الثانية</h5>
-                    <p>الحالة: {{ university.azhar_secondYear_status }}</p>
-                    <p>آخر موعد: {{ university.azhar_secondYear_deadline }}</p>
+                    <p><span>الحالة: <br> {{ university.azhar_secondYear_status }}</span></p>
+                    <p><span>آخر موعد: <br> {{ formatDate(university.azhar_secondYear_deadline) }}</span></p>
                   </div>
                 </div>
               </div>
@@ -428,13 +436,13 @@
                 <div class="status-row">
                   <div class="status-item">
                     <h5>السنة الأولي</h5>
-                    <p>الحالة: {{ university.Arabenglish_firstYear_status }}</p>
-                    <p>آخر موعد: {{ university.Arabenglish_firstYear_deadline }}</p>
+                    <p><span>الحالة: <br> {{ university.Arabenglish_firstYear_status }}</span></p>
+                    <p><span>آخر موعد: <br> {{ formatDate(university.Arabenglish_firstYear_deadline) }}</span></p>
                   </div>
                   <div class="status-item">
                     <h5>السنة الثانية</h5>
-                    <p>الحالة: {{ university.Arabenglish_secondYear_status }}</p>
-                    <p>آخر موعد: {{ university.Arabenglish_secondYear_deadline }}</p>
+                    <p><span>الحالة: <br> {{ university.Arabenglish_secondYear_status }}</span></p>
+                    <p><span>آخر موعد: <br> {{ formatDate(university.Arabenglish_secondYear_deadline) }}</span></p>
                   </div>
                 </div>
               </div>
@@ -445,7 +453,7 @@
                 <div class="status-row">
                   <div class="status-item">
                     <p>الحالة: {{ university.wafdeen_status }}</p>
-                    <p>آخر موعد: {{ university.wafdeen_deadline }}</p>
+                    <p>آخر موعد: {{ formatDate(university.wafdeen_deadline) }}</p>
                   </div>
                 </div>
               </div>
@@ -526,7 +534,7 @@
                 </div>
                 <div class="status-input">
                     <label>آخر موعد</label>
-                    <input type="date" v-model="university.transfer_deadline">
+                    <input type="text" v-model="university.transfer_deadline" placeholder="أدخل آخر موعد للتحويل">
                 </div>
               </div>
             </div>
@@ -545,7 +553,7 @@
                   </div>
                   <div class="status-input">
                     <label>آخر موعد</label>
-                    <input type="date" v-model="university.thanwyaa_firstYear_deadline">
+                    <input type="text" v-model="university.thanwyaa_firstYear_deadline" placeholder="أدخل آخر موعد للثانوية العامة (السنة الأولي)">
                   </div>
                 </div>
               </div>
@@ -564,7 +572,7 @@
                   </div>
                   <div class="status-input">
                     <label>آخر موعد</label>
-                    <input type="date" v-model="university.thanwyaa_secondYear_deadline">
+                    <input type="text" v-model="university.thanwyaa_secondYear_deadline" placeholder="أدخل آخر موعد للثانوية العامة (السنة الثاني)">
                 </div>
               </div>
             </div>
@@ -583,7 +591,7 @@
                   </div>
                   <div class="status-input">
                     <label>آخر موعد</label>
-                    <input type="date" v-model="university.azhar_firstYear_deadline">
+                    <input type="text" v-model="university.azhar_firstYear_deadline" placeholder="أدخل آخر موعد للثانوية الأزهرية (السنة الأولي)">
                   </div>
                 </div>
               </div>
@@ -602,7 +610,7 @@
                   </div>
                   <div class="status-input">
                     <label>آخر موعد</label>
-                    <input type="date" v-model="university.azhar_secondYear_deadline">
+                    <input type="text" v-model="university.azhar_secondYear_deadline" placeholder="أدخل آخر موعد للثانوية الأزهرية (السنة الثانية)">
                 </div>
               </div>
             </div>
@@ -621,7 +629,7 @@
                   </div>
                   <div class="status-input">
                     <label>آخر موعد</label>
-                    <input type="date" v-model="university.Arabenglish_firstYear_deadline">
+                    <input type="text" v-model="university.Arabenglish_firstYear_deadline" placeholder="أدخل آخر موعد للشهادات العربية والإجنبية (السنة الأولي)">
                   </div>
                 </div>
               </div>
@@ -640,7 +648,7 @@
                   </div>
                   <div class="status-input">
                     <label>آخر موعد</label>
-                    <input type="date" v-model="university.Arabenglish_secondYear_deadline">
+                    <input type="text" v-model="university.Arabenglish_secondYear_deadline" placeholder="أدخل آخر موعد للشهادات العربية والإجنبية (السنة الثانية)">
                 </div>
               </div>
             </div>
@@ -659,7 +667,7 @@
                 </div>
                 <div class="status-input">
                     <label>آخر موعد</label>
-                    <input type="date" v-model="university.wafdeen_deadline">
+                    <input type="text" v-model="university.wafdeen_deadline" placeholder="أدخل آخر موعد للوافدين">
                   </div>
                 </div>
               </div>
@@ -756,6 +764,8 @@ export default {
       activeTab: 'manage',
       selectedType: 'private',
       universities: [],
+      universityStatuses: [],
+      universityDeadlines: [],
       universityLinks: {},
       loading: true,
       searchQuery: '',
@@ -797,11 +807,18 @@ export default {
     },
     async fetchData() {
       this.loading = true;
-      const endpoints = {
+      const statusEndpoints = {
         national: 'https://nuft-website-backend.vercel.app/national/admission',
         private: 'https://nuft-website-backend.vercel.app/private/admission',
         special: 'https://nuft-website-backend.vercel.app/special/admission',
         international: 'https://nuft-website-backend.vercel.app/international/admission'
+      };
+
+      const deadlineEndpoints = {
+        national: 'https://nuft-website-backend.vercel.app/national/deadline',
+        private: 'https://nuft-website-backend.vercel.app/private/deadline',
+        special: 'https://nuft-website-backend.vercel.app/special/deadline',
+        international: 'https://nuft-website-backend.vercel.app/international/deadline'
       };
 
       const linkEndpoints = {
@@ -812,12 +829,31 @@ export default {
       };
 
       try {
-        const [admissionResponse, linksResponse] = await Promise.all([
-          axios.get(endpoints[this.selectedType]),
+        const [statusResponse, deadlineResponse, linksResponse] = await Promise.all([
+          axios.get(statusEndpoints[this.selectedType]),
+          axios.get(deadlineEndpoints[this.selectedType]),
           axios.get(linkEndpoints[this.selectedType])
         ]);
         
-        this.universities = admissionResponse.data;
+        this.universityStatuses = statusResponse.data;
+        this.universityDeadlines = deadlineResponse.data;
+        
+        // Merge status and deadline data
+        this.universities = this.universityStatuses.map(status => {
+          const deadline = this.universityDeadlines.find(d => d.university === status.university) || {};
+          return {
+            ...status,
+            transfer_deadline: deadline.transfer_deadline,
+            thanwyaa_firstYear_deadline: deadline.thanwyaa_firstYear_deadline,
+            thanwyaa_secondYear_deadline: deadline.thanwyaa_secondYear_deadline,
+            azhar_firstYear_deadline: deadline.azhar_firstYear_deadline,
+            azhar_secondYear_deadline: deadline.azhar_secondYear_deadline,
+            Arabenglish_firstYear_deadline: deadline.Arabenglish_firstYear_deadline,
+            Arabenglish_secondYear_deadline: deadline.Arabenglish_secondYear_deadline,
+            wafdeen_deadline: deadline.wafdeen_deadline
+          };
+        });
+        
         this.filteredUniversities = this.universities;
         
         // Create a map of university links using university code as key
@@ -845,15 +881,49 @@ export default {
     },
 
     async saveUniversity(university) {
-      const endpoints = {
+      const statusEndpoints = {
         national: 'https://nuft-website-backend.vercel.app/national/admission',
         private: 'https://nuft-website-backend.vercel.app/private/admission',
         special: 'https://nuft-website-backend.vercel.app/special/admission',
         international: 'https://nuft-website-backend.vercel.app/international/admission'
       };
 
+      const deadlineEndpoints = {
+        national: 'https://nuft-website-backend.vercel.app/national/deadline',
+        private: 'https://nuft-website-backend.vercel.app/private/deadline',
+        special: 'https://nuft-website-backend.vercel.app/special/deadline',
+        international: 'https://nuft-website-backend.vercel.app/international/deadline'
+      };
+
       try {
-        await axios.put(`${endpoints[this.selectedType]}/${university.id}`, university);
+        // Save status data
+        await axios.put(`${statusEndpoints[this.selectedType]}/${university.id}`, {
+          university: university.university,
+          university_Arabic_Name: university.university_Arabic_Name,
+          transfer_status: university.transfer_status,
+          thanwyaa_firstYear_status: university.thanwyaa_firstYear_status,
+          thanwyaa_secondYear_status: university.thanwyaa_secondYear_status,
+          azhar_firstYear_status: university.azhar_firstYear_status,
+          azhar_secondYear_status: university.azhar_secondYear_status,
+          Arabenglish_firstYear_status: university.Arabenglish_firstYear_status,
+          Arabenglish_secondYear_status: university.Arabenglish_secondYear_status,
+          wafdeen_status: university.wafdeen_status,
+          guide_Url: university.guide_Url
+        });
+
+        // Save deadline data
+        await axios.put(`${deadlineEndpoints[this.selectedType]}/${university.id}`, {
+          university: university.university,
+          transfer_deadline: university.transfer_deadline,
+          thanwyaa_firstYear_deadline: university.thanwyaa_firstYear_deadline,
+          thanwyaa_secondYear_deadline: university.thanwyaa_secondYear_deadline,
+          azhar_firstYear_deadline: university.azhar_firstYear_deadline,
+          azhar_secondYear_deadline: university.azhar_secondYear_deadline,
+          Arabenglish_firstYear_deadline: university.Arabenglish_firstYear_deadline,
+          Arabenglish_secondYear_deadline: university.Arabenglish_secondYear_deadline,
+          wafdeen_deadline: university.wafdeen_deadline
+        });
+
         alert('تم حفظ التغييرات بنجاح');
         this.fetchData();
       } catch (error) {
@@ -863,39 +933,85 @@ export default {
     },
 
     async addUniversityStatus() {
-      const endpoints = {
+      const statusEndpoints = {
         national: 'https://nuft-website-backend.vercel.app/national/admission/add',
         private: 'https://nuft-website-backend.vercel.app/private/admission/add',
         special: 'https://nuft-website-backend.vercel.app/special/admission/add',
         international: 'https://nuft-website-backend.vercel.app/international/admission/add'
       };
 
+      const deadlineEndpoints = {
+        national: 'https://nuft-website-backend.vercel.app/national/deadline/add',
+        private: 'https://nuft-website-backend.vercel.app/private/deadline/add',
+        special: 'https://nuft-website-backend.vercel.app/special/deadline/add',
+        international: 'https://nuft-website-backend.vercel.app/international/deadline/add'
+      };
+
       try {
-        await axios.post(endpoints[this.addFormData.type], this.addFormData);
-        alert('تم إضافة حالة الجامعة بنجاح');
+        // Add status data
+        await axios.post(statusEndpoints[this.addFormData.type], {
+          university: this.addFormData.university,
+          university_Arabic_Name: this.addFormData.university_Arabic_Name,
+          transfer_status: this.addFormData.transfer_status,
+          thanwyaa_firstYear_status: this.addFormData.thanwyaa_firstYear_status,
+          thanwyaa_secondYear_status: this.addFormData.thanwyaa_secondYear_status,
+          azhar_firstYear_status: this.addFormData.azhar_firstYear_status,
+          azhar_secondYear_status: this.addFormData.azhar_secondYear_status,
+          Arabenglish_firstYear_status: this.addFormData.Arabenglish_firstYear_status,
+          Arabenglish_secondYear_status: this.addFormData.Arabenglish_secondYear_status,
+          wafdeen_status: this.addFormData.wafdeen_status,
+          guide_Url: this.addFormData.guide_Url
+        });
+
+        // Add deadline data
+        await axios.post(deadlineEndpoints[this.addFormData.type], {
+          university: this.addFormData.university,
+          transfer_deadline: this.addFormData.transfer_deadline,
+          thanwyaa_firstYear_deadline: this.addFormData.thanwyaa_firstYear_deadline,
+          thanwyaa_secondYear_deadline: this.addFormData.thanwyaa_secondYear_deadline,
+          azhar_firstYear_deadline: this.addFormData.azhar_firstYear_deadline,
+          azhar_secondYear_deadline: this.addFormData.azhar_secondYear_deadline,
+          Arabenglish_firstYear_deadline: this.addFormData.Arabenglish_firstYear_deadline,
+          Arabenglish_secondYear_deadline: this.addFormData.Arabenglish_secondYear_deadline,
+          wafdeen_deadline: this.addFormData.wafdeen_deadline
+        });
+
+        alert('تم إضافة الجامعة بنجاح');
         this.resetAddForm();
         this.fetchData();
       } catch (error) {
-        console.error('Error adding university status:', error);
-        alert('حدث خطأ أثناء إضافة حالة الجامعة');
+        console.error('Error adding university:', error);
+        alert('حدث خطأ أثناء إضافة الجامعة');
       }
     },
 
     async deleteUniversity(university) {
-      const endpoints = {
+      const statusEndpoints = {
         national: 'https://nuft-website-backend.vercel.app/national/admission',
         private: 'https://nuft-website-backend.vercel.app/private/admission',
         special: 'https://nuft-website-backend.vercel.app/special/admission',
         international: 'https://nuft-website-backend.vercel.app/international/admission'
       };
 
+      const deadlineEndpoints = {
+        national: 'https://nuft-website-backend.vercel.app/national/deadline',
+        private: 'https://nuft-website-backend.vercel.app/private/deadline',
+        special: 'https://nuft-website-backend.vercel.app/special/deadline',
+        international: 'https://nuft-website-backend.vercel.app/international/deadline'
+      };
+
       try {
-        await axios.delete(`${endpoints[this.selectedType]}/${university.id}`);
-        alert('تم حذف حالة الجامعة بنجاح');
+        // Delete both status and deadline data
+        await Promise.all([
+          axios.delete(`${statusEndpoints[this.selectedType]}/${university.id}`),
+          axios.delete(`${deadlineEndpoints[this.selectedType]}/${university.id}`)
+        ]);
+        
+        alert('تم حذف الجامعة بنجاح');
         this.fetchData();
       } catch (error) {
-        console.error('Error deleting university status:', error);
-        alert('حدث خطأ أثناء حذف حالة الجامعة');
+        console.error('Error deleting university:', error);
+        alert('حدث خطأ أثناء حذف الجامعة');
       }
     },
 
@@ -951,6 +1067,16 @@ export default {
       } else {
         this.expandedUniversityId = universityId;
       }
+    },
+
+    formatDate(dateString) {
+      if (!dateString) return 'غير محدد';
+      return dateString;
+    },
+
+    formatDateForInput(dateString) {
+      if (!dateString) return '';
+      return dateString;
     },
   },
   watch: {
@@ -1297,14 +1423,25 @@ export default {
   font-size: 0.9rem;
   margin: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.5rem;
+  padding: 0.35rem;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #e9ecef;
+  margin-bottom: 0.35rem;
 }
 
 .status-info p:before {
   content: "•";
   color: #4158d0;
   font-weight: bold;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.status-info p span {
+  flex: 1;
 }
 
 .status-inputs {
@@ -1517,13 +1654,25 @@ export default {
   font-size: 0.9rem;
   margin: 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.5rem;
   padding: 0.35rem;
   background: white;
   border-radius: 4px;
   border: 1px solid #e9ecef;
   margin-bottom: 0.35rem;
+}
+
+.status-item p:before {
+  content: "•";
+  color: #4158d0;
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.status-item p span {
+  flex: 1;
 }
 
 .status-item p:last-child {

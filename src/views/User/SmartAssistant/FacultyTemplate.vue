@@ -161,10 +161,10 @@ export default {
     async getData() {
       try {
         const [response1, response2, response3, response4] = await Promise.all([
-          axios.get('https://nuft-website-backend.vercel.app/nationalfaculty/getnational'),
-          axios.get('https://nuft-website-backend.vercel.app/privatefaculty/getprivate'),
-          axios.get('https://nuft-website-backend.vercel.app/internationalfaculty/getinternational'),
-          axios.get('https://nuft-website-backend.vercel.app/specialfaculty/getspecial')
+          axios.get('https://nuft-website-backend.vercel.app/national/faculty'),
+          axios.get('https://nuft-website-backend.vercel.app/private/faculty'),
+          axios.get('https://nuft-website-backend.vercel.app/international/faculty'),
+          axios.get('https://nuft-website-backend.vercel.app/special/faculty')
         ]);
 
         const combinedData = [
@@ -185,7 +185,7 @@ export default {
     },
     async getLinks() {
       try {
-        const response = await axios.get('https://nuft-website-backend.vercel.app/privatelinks/get_privatelinks');
+        const response = await axios.get('https://nuft-website-backend.vercel.app/private/links');
         const links = response.data;
         const linkData = links.find(index => index.university === 'IU');
         if (linkData) {

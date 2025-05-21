@@ -17,7 +17,7 @@
         @click="activeTab = 'manage'"
       >
         <i class="fas fa-graduation-cap"></i>
-        متابعة وتعديل المنح
+        المنح الحالية
       </button>
       <button 
         class="nav-tab" 

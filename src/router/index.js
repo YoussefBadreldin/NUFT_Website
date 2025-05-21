@@ -26,6 +26,7 @@ import ArticleManagement from '../views/Admin/ArticleManagement.vue';
 import JoinUsAdmin from '../views/Admin/JoinUsAdmin.vue';
 import Articles from '../views/User/Articles.vue';
 import JoinUs from '../views/User/JoinUs.vue';
+import ReviewsData from '../views/Admin/reviewsData.vue';
 
 
 const routes = [
@@ -174,6 +175,12 @@ const routes = [
     path: '/admin/join-us',
     name: 'JoinUsAdmin',
     component: JoinUsAdmin,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/admin/reviews',
+    name: 'ReviewsData',
+    component: ReviewsData,
     meta: { requiresAuth: true }
   }
 ];

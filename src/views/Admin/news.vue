@@ -17,7 +17,7 @@
         @click="activeTab = 'manage'"
       >
         <i class="fas fa-newspaper"></i>
-        متابعة وتعديل الأخبار
+          الأخبار الحالية
       </button>
       <button 
         class="nav-tab" 

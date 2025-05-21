@@ -44,25 +44,7 @@
           </div>
           <div class="content">
             <span class="title">الاخبار</span>
-            <span class="description">إدارة الأخبار والمقالات</span>
-          </div>
-        </a>
-        <a href="/admin/messages" class="option-card">
-          <div class="icon-wrapper">
-            <i class="fas fa-envelope"></i>
-          </div>
-          <div class="content">
-            <span class="title">الرسائل</span>
-            <span class="description">إدارة الرسائل والطلبات</span>
-          </div>
-        </a>
-        <a href="/admin/users" class="option-card">
-          <div class="icon-wrapper">
-            <i class="fas fa-users"></i>
-          </div>
-          <div class="content">
-            <span class="title">الحسابات</span>
-            <span class="description">إدارة حسابات المستخدمين</span>
+            <span class="description">إدارة الأخبار </span>
           </div>
         </a>
         <a href="/admin/articles" class="option-card">
@@ -74,6 +56,34 @@
             <span class="description">إدارة المقالات والمحتوى</span>
           </div>
         </a>
+        <a href="/admin/messages" class="option-card">
+          <div class="icon-wrapper">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="content">
+            <span class="title">الرسائل</span>
+            <span class="description">إدارة الرسائل والطلبات</span>
+          </div>
+        </a>
+        <a href="/admin/reviews" class="option-card">
+          <div class="icon-wrapper">
+            <i class="fas fa-comments"></i>
+          </div>
+          <div class="content">
+            <span class="title">آراء المستخدمين</span>
+            <span class="description">إدارة آراء وتقييمات المستخدمين</span>
+          </div>
+        </a>
+        <a href="/admin/users" class="option-card">
+          <div class="icon-wrapper">
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="content">
+            <span class="title">الحسابات</span>
+            <span class="description">إدارة حسابات المستخدمين</span>
+          </div>
+        </a>
+
         <a href="/admin/join-us" class="option-card">
           <div class="icon-wrapper">
             <i class="fas fa-user-plus"></i>
@@ -92,6 +102,7 @@
             <span class="description">إدارة المساعد الذكي</span>
           </div>
         </a> 
+        
       </div>
     </div>
 

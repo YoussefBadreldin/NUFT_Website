@@ -136,7 +136,7 @@ export default {
       firstYear: '',
       secondYear: '',
       facultyName: '',
-      facultyShort: ''
+      faculty_short: ''
     };
   },
   computed: {
@@ -161,22 +161,22 @@ export default {
     async getData() {
       try {
         const [response1, response2, response3, response4] = await Promise.all([
-          axios.get('https://nuft-website-backend.vercel.app/national/faculty'),
-          axios.get('https://nuft-website-backend.vercel.app/private/faculty'),
-          axios.get('https://nuft-website-backend.vercel.app/international/faculty'),
-          axios.get('https://nuft-website-backend.vercel.app/special/faculty')
+          axios.get('https://nuft-website-backend.vercel.app/national/faculty/'),
+          axios.get('https://nuft-website-backend.vercel.app/private/faculty/'),
+          axios.get('https://nuft-website-backend.vercel.app/international/faculty/'),
+          axios.get('https://nuft-website-backend.vercel.app/special/faculty/')
         ]);
 
         const combinedData = [
-          ...(response1.data?.faculty || []),
-          ...(response2.data?.faculty || []),
-          ...(response3.data?.faculty || []),
-          ...(response4.data?.faculty || [])
+          ...(response1.data || []),
+          ...(response2.data || []),
+          ...(response3.data || []),
+          ...(response4.data || [])
         ];
 
         this.all_data = combinedData;
         this.filteredData = this.all_data.filter(item => 
-          item.faculty_short === this.facultyShort && 
+          item.faculty_short === this.faculty_short && 
           item.normal_or_Dual === 'normal'
         );
       } catch (error) {
@@ -185,7 +185,7 @@ export default {
     },
     async getLinks() {
       try {
-        const response = await axios.get('https://nuft-website-backend.vercel.app/private/links');
+        const response = await axios.get('https://nuft-website-backend.vercel.app/private/links/');
         const links = response.data;
         const linkData = links.find(index => index.university === 'IU');
         if (linkData) {
@@ -230,8 +230,8 @@ export default {
         'SOCSCI': 'كلية العلوم الاجتماعية'
       };
 
-      this.facultyShort = this.$route.params.faculty;
-      this.facultyName = facultyMap[this.facultyShort] || this.facultyShort;
+      this.faculty_short = this.$route.params.faculty;
+      this.facultyName = facultyMap[this.faculty_short] || this.faculty_short;
     }
   },
   created() {

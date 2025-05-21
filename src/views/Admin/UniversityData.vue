@@ -497,13 +497,13 @@
                       </div>
                     <div class="form-group">
                       <label :for="'Arabenglish_secondYear_score_' + index">حد ادني الشهادات العربية والأجنبية (السنة الثانية)</label>
-                      <input 
+                        <input 
                         type="text" 
-                        v-model="faculty.Arabenglish_secondYear_score" 
+                          v-model="faculty.Arabenglish_secondYear_score" 
                         :id="'Arabenglish_secondYear_score_' + index"
                         placeholder="أدخل الدرجة"
-                      >
-                    </div>
+                        >
+                      </div>
                     <div class="form-group">
                       <label :for="'wafdeen_score_' + index">حد ادني الطلاب الوافدين</label>
                       <input 
@@ -1317,7 +1317,7 @@
                       :id="'wafdeen_score_' + index"
                       placeholder="أدخل حد أدنى الوافدين"
                     >
-                  </div>
+                </div>
                   <div class="form-group">
                     <label :for="'feesEgyption_' + index">رسوم الطلاب المصريين (فئة أ)</label>
                     <input 
@@ -1326,7 +1326,7 @@
                       :id="'feesEgyption_' + index"
                       placeholder="أدخل الرسوم"
                     >
-                </div>
+              </div>
                   <div class="form-group">
                     <label :for="'feesEgyption2_' + index">رسوم الطلاب المصريين (فئة ب)</label>
                     <input 
@@ -2476,22 +2476,22 @@ export default {
     async removeFaculty(index, formType) {
         try {
             const faculty = formType === 'add' ? this.addFormData.faculties[index] : this.editFormData.faculties[index];
-            const type = formType === 'add' ? this.addFormData.type : this.editFormData.type;
+          const type = formType === 'add' ? this.addFormData.type : this.editFormData.type;
 
             if (formType === 'edit' && faculty._id) {
                 await this.deleteFacultyAPI(type.toLowerCase(), faculty._id);
-            }
-            
-            if (formType === 'add') {
-                this.addFormData.faculties.splice(index, 1);
-            } else {
-                this.editFormData.faculties.splice(index, 1);
+      }
+      
+      if (formType === 'add') {
+        this.addFormData.faculties.splice(index, 1);
+      } else {
+        this.editFormData.faculties.splice(index, 1);
             }
 
         } catch (error) {
             console.error('Error removing faculty:', error);
             alert('حدث خطأ أثناء حذف الكلية');
-        }
+      }
     },
 
     addDorm(formType) {
@@ -2620,33 +2620,32 @@ export default {
           throw new Error('No response data received from server');
         }
 
-        // 2. Add all faculties
-        for (const faculty of this.addFormData.faculties) {
-          const facultyData = {
-            ...faculty,
-            university: universityCode,
-            university_Arabic_Name: universityName,
-            type: type
-          };
-          await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.ADD}`, facultyData);
-        }
+        // 2. Add all faculties as an array
+        const facultyData = this.addFormData.faculties.map(faculty => ({
+          ...faculty,
+          university: universityCode,
+          university_Arabic_Name: universityName,
+          type: type
+        }));
+        
+        await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.ADD}`, facultyData);
 
-        // 3. Add all dorms
-        for (const dorm of this.addFormData.dorms) {
-          const dormData = {
+        // 3. Add all dorms (send as array)
+        if (this.addFormData.dorms.length > 0) {
+          const dormsData = this.addFormData.dorms.map(dorm => ({
             ...dorm,
             spec: universityCode
-          };
-          await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.DORMS.ADD}`, dormData);
+          }));
+          await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.DORMS.ADD}`, dormsData);
         }
 
-        // 4. Add all transportation
-        for (const transport of this.addFormData.transportation) {
-          const transportData = {
+        // 4. Add all transportation (send as array)
+        if (this.addFormData.transportation.length > 0) {
+          const transportationData = this.addFormData.transportation.map(transport => ({
             ...transport,
             spec: universityCode
-          };
-          await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.TRANSPORTATION.ADD}`, transportData);
+          }));
+          await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.TRANSPORTATION.ADD}`, transportationData);
         }
 
         alert('تمت إضافة الجامعة وكل البيانات بنجاح');

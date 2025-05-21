@@ -2,6 +2,11 @@
     <div>
         <header-component />
 
+        <!-- Page Title -->
+        <div class="page-header" dir="rtl">
+            <h2>حالة التقديمات</h2>
+        </div>
+
         <div class="admission-admin-container" dir="rtl">
             <!-- Category Tabs -->
             <div class="type-tabs">
@@ -568,5 +573,19 @@ export default {
 
 .university-name-toggle:hover {
     color: #4158d0;
+}
+
+.page-header {
+    padding: 2rem 0;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.page-header h2 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-family: 'Cairo', sans-serif;
+    color: #1a237e;
 }
 </style>

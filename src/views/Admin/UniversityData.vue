@@ -335,6 +335,24 @@
                       >
                     </div>
                     <div class="form-group">
+                      <label :for="'faculty_short_' + index">الرمز المختصر للكلية</label>
+                      <input 
+                        type="text" 
+                        v-model="faculty.faculty_short" 
+                        :id="'faculty_short_' + index"
+                        placeholder="أدخل الرمز المختصر للكلية"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label :for="'guide_Url_' + index">رابط الدليل</label>
+                      <input 
+                        type="url" 
+                        v-model="faculty.guide_Url" 
+                        :id="'guide_Url_' + index"
+                        placeholder="أدخل رابط الدليل"
+                      >
+                    </div>
+                    <div class="form-group">
                       <label :for="'section_' + index">الشعبة</label>
                       <input 
                         type="text" 
@@ -358,6 +376,15 @@
                         rows="3" 
                         placeholder="أدخل البرامج مفصولة بفواصل"
                       ></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label :for="'wafdeen_score_' + index">حد أدنى الوافدين</label>
+                      <input 
+                        type="number" 
+                        v-model="faculty.wafdeen_score" 
+                        :id="'wafdeen_score_' + index"
+                        placeholder="أدخل حد أدنى الوافدين"
+                      >
                     </div>
                     <div class="form-group">
                       <label :for="'feesEgyption_' + index">رسوم الطلاب المصريين (فئة أ)</label>
@@ -1239,6 +1266,24 @@
                     >
                   </div>
                   <div class="form-group">
+                    <label :for="'faculty_short_' + index">الرمز المختصر للكلية</label>
+                    <input 
+                      type="text" 
+                      v-model="faculty.faculty_short" 
+                      :id="'faculty_short_' + index"
+                      placeholder="أدخل الرمز المختصر للكلية"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label :for="'guide_Url_' + index">رابط الدليل</label>
+                    <input 
+                      type="url" 
+                      v-model="faculty.guide_Url" 
+                      :id="'guide_Url_' + index"
+                      placeholder="أدخل رابط الدليل"
+                    >
+                  </div>
+                  <div class="form-group">
                     <label :for="'section_' + index">الشعبة</label>
                     <input 
                       type="text" 
@@ -1262,6 +1307,15 @@
                       rows="3" 
                       placeholder="أدخل البرامج مفصولة بفواصل"
                     ></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label :for="'wafdeen_score_' + index">حد أدنى الوافدين</label>
+                    <input 
+                      type="number" 
+                      v-model="faculty.wafdeen_score" 
+                      :id="'wafdeen_score_' + index"
+                      placeholder="أدخل حد أدنى الوافدين"
+                    >
                   </div>
                   <div class="form-group">
                     <label :for="'feesEgyption_' + index">رسوم الطلاب المصريين (فئة أ)</label>
@@ -1439,6 +1493,24 @@
                     >
                   </div>
                   <div class="form-group">
+                    <label :for="'faculty_short_' + index">الرمز المختصر للكلية</label>
+                    <input 
+                      type="text" 
+                      v-model="faculty.faculty_short" 
+                      :id="'faculty_short_' + index"
+                      placeholder="أدخل الرمز المختصر للكلية"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label :for="'guide_Url_' + index">رابط الدليل</label>
+                    <input 
+                      type="url" 
+                      v-model="faculty.guide_Url" 
+                      :id="'guide_Url_' + index"
+                      placeholder="أدخل رابط الدليل"
+                    >
+                  </div>
+                  <div class="form-group">
                     <label :for="'section_' + index">الشعبة</label>
                     <input 
                       type="text" 
@@ -1462,6 +1534,15 @@
                       rows="3" 
                       placeholder="أدخل البرامج مفصولة بفواصل"
                     ></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label :for="'wafdeen_score_' + index">حد أدنى الوافدين</label>
+                    <input 
+                      type="number" 
+                      v-model="faculty.wafdeen_score" 
+                      :id="'wafdeen_score_' + index"
+                      placeholder="أدخل حد أدنى الوافدين"
+                    >
                   </div>
                   <div class="form-group">
                     <label :for="'feesEgyption_' + index">رسوم الطلاب المصريين (فئة أ)</label>
@@ -1929,9 +2010,9 @@
                 {{ section.label }}
               </button>
             </div>
-          </div>
-        </div>
-      </div>
+                  </div>
+                </div>
+                  </div>
     </div>
   </div>
 </template>
@@ -2344,9 +2425,11 @@ export default {
     addFaculty(formType) {
       const faculty = {
         faculty: '',
+        faculty_short: '',
         section: '',
         normal_or_Dual: 'normal',
         programs: '',
+        guide_Url: '',
         feesNatives: '',
         feesNatives2: '',
         feesNatives3: '',
@@ -2366,8 +2449,6 @@ export default {
       
       if (formType === 'add') {
         this.addFormData.faculties.push(faculty);
-        // Set the new faculty section as open
-        this.collapsedSections.faculties[this.addFormData.faculties.length - 1] = false;
       } else {
         this.editFormData.faculties.push(faculty);
       }
@@ -2375,24 +2456,23 @@ export default {
 
     async removeFaculty(index, formType) {
         try {
-        const faculty = formType === 'add' ? this.addFormData.faculties[index] : this.editFormData.faculties[index];
-          const type = formType === 'add' ? this.addFormData.type : this.editFormData.type;
+            const faculty = formType === 'add' ? this.addFormData.faculties[index] : this.editFormData.faculties[index];
+            const type = formType === 'add' ? this.addFormData.type : this.editFormData.type;
 
-        if (formType === 'edit' && faculty._id) {
-          await this.deleteFacultyAPI(type.toLowerCase(), faculty._id);
-      }
-      
-      if (formType === 'add') {
-        this.addFormData.faculties.splice(index, 1);
-      } else {
-        this.editFormData.faculties.splice(index, 1);
+            if (formType === 'edit' && faculty._id) {
+                await this.deleteFacultyAPI(type.toLowerCase(), faculty._id);
+            }
+            
+            if (formType === 'add') {
+                this.addFormData.faculties.splice(index, 1);
+            } else {
+                this.editFormData.faculties.splice(index, 1);
+            }
+
+        } catch (error) {
+            console.error('Error removing faculty:', error);
+            alert('حدث خطأ أثناء حذف الكلية');
         }
-
-        this.$toast.success('تم حذف الكلية بنجاح');
-      } catch (error) {
-        console.error('Error removing faculty:', error);
-        this.$toast.error('حدث خطأ أثناء حذف الكلية');
-      }
     },
 
     addDorm(formType) {
@@ -2403,8 +2483,6 @@ export default {
       
       if (formType === 'add') {
         this.addFormData.dorms.push(dorm);
-        // Set the new dorm section as open
-        this.collapsedSections.dorms[this.addFormData.dorms.length - 1] = false;
       } else {
         this.editFormData.dorms.push(dorm);
       }
@@ -2440,8 +2518,6 @@ export default {
       
       if (formType === 'add') {
         this.addFormData.transportation.push(trans);
-        // Set the new transportation section as open
-        this.collapsedSections.transportation[this.addFormData.transportation.length - 1] = false;
       } else {
         this.editFormData.transportation.push(trans);
       }
@@ -2490,21 +2566,47 @@ export default {
         const type = this.addFormData.type.toLowerCase();
         const universityCode = this.addFormData.university_code;
         const universityName = this.addFormData.university_Arabic_Name;
+
         // Prepare main university data (links/info)
         const mainData = {
-          ...this.addFormData
+          university: universityCode,
+          university_Arabic_Name: universityName,
+          university_Logo: this.addFormData.university_Logo,
+          Uni_Bio: this.addFormData.Uni_Bio,
+          location: this.addFormData.location,
+          website: this.addFormData.website,
+          phone: this.addFormData.phone,
+          email: this.addFormData.email,
+          facebook: this.addFormData.facebook,
+          instagram: this.addFormData.instagram,
+          youtube: this.addFormData.youtube,
+          linkedin: this.addFormData.linkedin,
+          first_year: this.addFormData.first_year,
+          second_year: this.addFormData.second_year,
+          international_programs: this.addFormData.international_programs,
+          dorms_link: this.addFormData.dorms_link,
+          transportation_link: this.addFormData.transportation_link,
+          scholarship_link: this.addFormData.scholarship_link,
+          Egyptian_Admission_link: this.addFormData.Egyptian_Admission_link,
+          Egyptian_Admission_link2: this.addFormData.Egyptian_Admission_link2,
+          Egyptian_Transfer_link: this.addFormData.Egyptian_Transfer_link,
+          Wafdeen_Admission_link: this.addFormData.Wafdeen_Admission_link
         };
+
         // Post main university info (links)
         await this.addLinkAPI(type, mainData);
+
         // 2. Add all faculties
         for (const faculty of this.addFormData.faculties) {
           const facultyData = {
             ...faculty,
-            university: universityName,
-            university_code: universityCode
+            university: universityCode,
+            university_Arabic_Name: universityName,
+            type: type
           };
           await this.addFacultyAPI(type, facultyData);
         }
+
         // 3. Add all dorms
         for (const dorm of this.addFormData.dorms) {
           const dormData = {
@@ -2513,6 +2615,7 @@ export default {
           };
           await this.addDormAPI(type, dormData);
         }
+
         // 4. Add all transportation
         for (const transport of this.addFormData.transportation) {
           const transportData = {
@@ -2521,8 +2624,10 @@ export default {
           };
           await this.addTransportationAPI(type, transportData);
         }
+
         this.$toast.success('تمت إضافة الجامعة وكل البيانات بنجاح');
         this.resetAddForm();
+        this.fetchUniversities(); // Refresh the universities list
       } catch (error) {
         console.error('Error adding university:', error);
         this.$toast.error('حدث خطأ أثناء إضافة الجامعة أو البيانات');
@@ -2899,10 +3004,10 @@ export default {
           
           return;
         } else {
-          if (dorm.id) {
-            await this.updateDormAPI(type, dorm.id, dormData);
-          } else {
-            await this.addDormAPI(type, dormData);
+        if (dorm.id) {
+          await this.updateDormAPI(type, dorm.id, dormData);
+        } else {
+          await this.addDormAPI(type, dormData);
           }
         }
 
@@ -2935,10 +3040,10 @@ export default {
           
           return;
         } else {
-          if (transport.id) {
-            await this.updateTransportationAPI(type, transport.id, transportData);
-          } else {
-            await this.addTransportationAPI(type, transportData);
+        if (transport.id) {
+          await this.updateTransportationAPI(type, transport.id, transportData);
+        } else {
+          await this.addTransportationAPI(type, transportData);
           }
         }
 

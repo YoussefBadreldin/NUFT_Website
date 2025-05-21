@@ -6,7 +6,7 @@
         رجوع
       </button>
       <h1>إدارة حالة التقديمات</h1>
-      <p class="subtitle">إدارة وتعديل حالة التقديمات للجامعات</p>
+      <p class="subtitle">إدارة وتعديل وحذف حالة التقديمات للجامعات</p>
     </div>
 
     <!-- Navigation Tabs -->
@@ -518,17 +518,17 @@ export default {
   data() {
     return {
       activeTab: 'manage',
-      selectedType: 'national',
+      selectedType: 'private',
       universities: [],
       loading: true,
       searchQuery: '',
       filteredUniversities: [],
       openSections: new Set(),
       universityTypes: [
-        { value: 'national', label: 'أهلية' },
-        { value: 'private', label: 'خاصة' },
-        { value: 'special', label: 'ذات طبيعة خاصة' },
-        { value: 'international', label: 'دولية' }
+      { label: 'الجامعات الخاصة', value: 'private' },
+        { label: 'الجامعات الأهلية', value: 'national' },
+        { label: 'الجامعات الدولية', value: 'international' },
+        { label: 'الجامعات ذات طبيعة خاصة', value: 'special' }
       ],
       addFormData: {
         type: 'national',

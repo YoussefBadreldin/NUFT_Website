@@ -2252,13 +2252,12 @@ export default {
       deleteSearchQuery: '',
       filteredEditUniversities: [],
       filteredDeleteUniversities: [],
-      selectedType: 'all',
+      selectedType: 'private',
       universityTypes: [
-        { label: 'الكل', value: 'all' },
         { label: 'الجامعات الخاصة', value: 'private' },
         { label: 'الجامعات الأهلية', value: 'national' },
-        { label: 'الجامعات ذات طبيعة خاصة', value: 'special' },
-        { label: 'الجامعات الدولية', value: 'international' }
+        { label: 'الجامعات الدولية', value: 'international' },
+        { label: 'الجامعات ذات طبيعة خاصة', value: 'special' }
       ],
       selectedUniversityForEdit: null,
       selectedUniversityForDelete: null,

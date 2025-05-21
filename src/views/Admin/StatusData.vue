@@ -370,13 +370,25 @@
       <div v-else class="universities-grid">
         <div v-for="university in filteredUniversities" :key="university.id" class="university-card">
           <div class="university-header">
-            <div class="university-title">
-              <div class="university-logo" v-if="universityLinks[university.university]?.university_Logo">
-                <img :src="universityLinks[university.university].university_Logo" :alt="university.university_Arabic_Name">
+            <div class="university-info">
+              <div class="university-title">
+                <div class="university-logo" v-if="universityLinks[university.university]?.university_Logo">
+                  <img :src="universityLinks[university.university].university_Logo" :alt="university.university_Arabic_Name">
+                </div>
+                <h3 @click="toggleUniversity(university.id)" class="university-name-toggle">
+                  {{ university.university_Arabic_Name }}
+                </h3>
               </div>
-              <h3 @click="toggleUniversity(university.id)" class="university-name-toggle">
-                {{ university.university_Arabic_Name }}
-              </h3>
+              <div class="header-actions">
+                <button class="edit-btn" @click="editUniversity(university)">
+                  <i class="fas fa-edit"></i>
+                  تعديل
+                </button>
+                <button class="delete-btn" @click="confirmDelete(university)">
+                  <i class="fas fa-trash"></i>
+                  حذف
+                </button>
+              </div>
             </div>
             <div class="dropdown-icon" :class="{ 'expanded': expandedUniversityId === university.id }">
               <i class="fas fa-chevron-down"></i>
@@ -390,7 +402,7 @@
               <h4>التحويل</h4>
                 <div class="status-row">
                   <div class="status-item">
-                    <p>الحالة: {{ university.transfer_status }}</p>
+                    <p>الحالة: <span :class="getStatusClass(university.transfer_status)">{{ university.transfer_status }}</span></p>
                     <p>آخر موعد: {{ formatDate(university.transfer_deadline) }}</p>
                   </div>
                 </div>
@@ -402,12 +414,12 @@
                 <div class="status-row">
                   <div class="status-item">
                     <h5>السنة الأولي</h5>
-                    <p><span>الحالة: <br> {{ university.thanwyaa_firstYear_status }}</span></p>
+                    <p><span>الحالة: <br> <span :class="getStatusClass(university.thanwyaa_firstYear_status)">{{ university.thanwyaa_firstYear_status }}</span></span></p>
                     <p><span>آخر موعد: <br> {{ formatDate(university.thanwyaa_firstYear_deadline) }}</span></p>
                   </div>
                   <div class="status-item">
                     <h5>السنة الثانية</h5>
-                    <p><span>الحالة: <br> {{ university.thanwyaa_secondYear_status }}</span></p>
+                    <p><span>الحالة: <br> <span :class="getStatusClass(university.thanwyaa_secondYear_status)">{{ university.thanwyaa_secondYear_status }}</span></span></p>
                     <p><span>آخر موعد: <br> {{ formatDate(university.thanwyaa_secondYear_deadline) }}</span></p>
                   </div>
                 </div>
@@ -419,12 +431,12 @@
                 <div class="status-row">
                   <div class="status-item">
                     <h5>السنة الأولي</h5>
-                    <p><span>الحالة: <br> {{ university.azhar_firstYear_status }}</span></p>
+                    <p><span>الحالة: <br> <span :class="getStatusClass(university.azhar_firstYear_status)">{{ university.azhar_firstYear_status }}</span></span></p>
                     <p><span>آخر موعد: <br> {{ formatDate(university.azhar_firstYear_deadline) }}</span></p>
                   </div>
                   <div class="status-item">
                     <h5>السنة الثانية</h5>
-                    <p><span>الحالة: <br> {{ university.azhar_secondYear_status }}</span></p>
+                    <p><span>الحالة: <br> <span :class="getStatusClass(university.azhar_secondYear_status)">{{ university.azhar_secondYear_status }}</span></span></p>
                     <p><span>آخر موعد: <br> {{ formatDate(university.azhar_secondYear_deadline) }}</span></p>
                   </div>
                 </div>
@@ -436,12 +448,12 @@
                 <div class="status-row">
                   <div class="status-item">
                     <h5>السنة الأولي</h5>
-                    <p><span>الحالة: <br> {{ university.Arabenglish_firstYear_status }}</span></p>
+                    <p><span>الحالة: <br> <span :class="getStatusClass(university.Arabenglish_firstYear_status)">{{ university.Arabenglish_firstYear_status }}</span></span></p>
                     <p><span>آخر موعد: <br> {{ formatDate(university.Arabenglish_firstYear_deadline) }}</span></p>
                   </div>
                   <div class="status-item">
                     <h5>السنة الثانية</h5>
-                    <p><span>الحالة: <br> {{ university.Arabenglish_secondYear_status }}</span></p>
+                    <p><span>الحالة: <br> <span :class="getStatusClass(university.Arabenglish_secondYear_status)">{{ university.Arabenglish_secondYear_status }}</span></span></p>
                     <p><span>آخر موعد: <br> {{ formatDate(university.Arabenglish_secondYear_deadline) }}</span></p>
                   </div>
                 </div>
@@ -452,7 +464,7 @@
                 <h4>الوافدين</h4>
                 <div class="status-row">
                   <div class="status-item">
-                    <p>الحالة: {{ university.wafdeen_status }}</p>
+                    <p>الحالة: <span :class="getStatusClass(university.wafdeen_status)">{{ university.wafdeen_status }}</span></p>
                     <p>آخر موعد: {{ formatDate(university.wafdeen_deadline) }}</p>
                   </div>
                 </div>
@@ -490,13 +502,25 @@
       <div v-else class="universities-grid">
         <div v-for="university in filteredUniversities" :key="university.id" class="university-card">
           <div class="university-header">
-            <div class="university-title">
-              <div class="university-logo" v-if="universityLinks[university.university]?.university_Logo">
-                <img :src="universityLinks[university.university].university_Logo" :alt="university.university_Arabic_Name">
+            <div class="university-info">
+              <div class="university-title">
+                <div class="university-logo" v-if="universityLinks[university.university]?.university_Logo">
+                  <img :src="universityLinks[university.university].university_Logo" :alt="university.university_Arabic_Name">
+                </div>
+                <h3 @click="toggleUniversity(university.id)" class="university-name-toggle">
+                  {{ university.university_Arabic_Name }}
+                </h3>
               </div>
-              <h3 @click="toggleUniversity(university.id)" class="university-name-toggle">
-                {{ university.university_Arabic_Name }}
-              </h3>
+              <div class="header-actions">
+                <button class="edit-btn" @click="editUniversity(university)">
+                  <i class="fas fa-edit"></i>
+                  تعديل
+                </button>
+                <button class="delete-btn" @click="confirmDelete(university)">
+                  <i class="fas fa-trash"></i>
+                  حذف
+                </button>
+              </div>
             </div>
             <div class="dropdown-icon" :class="{ 'expanded': expandedUniversityId === university.id }">
               <i class="fas fa-chevron-down"></i>
@@ -722,13 +746,25 @@
       <div v-else class="universities-grid">
         <div v-for="university in filteredUniversities" :key="university.id" class="university-card">
           <div class="university-header">
-            <div class="university-title">
-              <div class="university-logo" v-if="universityLinks[university.university]?.university_Logo">
-                <img :src="universityLinks[university.university].university_Logo" :alt="university.university_Arabic_Name">
+            <div class="university-info">
+              <div class="university-title">
+                <div class="university-logo" v-if="universityLinks[university.university]?.university_Logo">
+                  <img :src="universityLinks[university.university].university_Logo" :alt="university.university_Arabic_Name">
+                </div>
+                <h3 @click="toggleUniversity(university.id)" class="university-name-toggle">
+                  {{ university.university_Arabic_Name }}
+                </h3>
               </div>
-              <h3 @click="toggleUniversity(university.id)" class="university-name-toggle">
-                {{ university.university_Arabic_Name }}
-              </h3>
+              <div class="header-actions">
+                <button class="edit-btn" @click="editUniversity(university)">
+                  <i class="fas fa-edit"></i>
+                  تعديل
+                </button>
+                <button class="delete-btn" @click="confirmDelete(university)">
+                  <i class="fas fa-trash"></i>
+                  حذف
+                </button>
+              </div>
             </div>
           </div>
 
@@ -1078,6 +1114,26 @@ export default {
       if (!dateString) return '';
       return dateString;
     },
+
+    getStatusClass(status) {
+      if (!status) return '';
+      if (status.includes('انتهي')) return 'status-ended';
+      if (status.includes('متاح')) return 'status-available';
+      if (status.includes('لم يبداء')) return 'status-not-started';
+      return '';
+    },
+
+    editUniversity(university) {
+      this.activeTab = 'edit';
+      this.expandedUniversityId = university.id;
+      // Scroll to the edit section
+      this.$nextTick(() => {
+        const editSection = document.querySelector('.section-container');
+        if (editSection) {
+          editSection.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    },
   },
   watch: {
     selectedType() {
@@ -1327,6 +1383,13 @@ export default {
   background-color: #f8f9fa;
 }
 
+.university-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+}
+
 .university-title {
   display: flex;
   align-items: center;
@@ -1495,8 +1558,8 @@ export default {
 }
 
 .delete-btn {
-  background: #dc3545;
-  color: white;
+  background: #ffebee;
+  color: #d32f2f;
 }
 
 .save-btn:hover,
@@ -1697,5 +1760,61 @@ export default {
 }
 .university-name-toggle:hover {
   color: #4158d0;
+}
+
+.status-ended {
+    color: #dc3545;
+    font-weight: 500;
+}
+
+.status-available {
+    color: #28a745;
+    font-weight: 500;
+}
+
+.status-not-started {
+    color: #6f42c1;
+    font-weight: 500;
+}
+
+.header-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-right: 1rem;
+}
+
+.edit-btn,
+.delete-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    flex: 1;
+    justify-content: center;
+}
+
+.edit-btn {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.edit-btn:hover {
+    background: #bbdefb;
+    transform: translateY(-2px);
+}
+
+.delete-btn {
+    background: #ffebee;
+    color: #d32f2f;
+}
+
+.delete-btn:hover {
+    background: #ffcdd2;
+    transform: translateY(-2px);
 }
 </style> 

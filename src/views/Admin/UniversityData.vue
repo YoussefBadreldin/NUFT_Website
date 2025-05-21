@@ -307,8 +307,8 @@
                     </h4>
                     <div class="faculty-actions">
                       <template v-if="!collapsedSections.faculties[index]">
-                        <button type="button" class="save-btn" @click="saveFaculty(index, 'add')">
-                          <i class="fas fa-save"></i>
+                        <button type="button" class="toggle-btn" @click="toggleSection('faculties', index)">
+                          <i class="fas fa-check"></i>
                           حفظ
                         </button>
                       </template>
@@ -361,7 +361,7 @@
                     </div>
                     <div class="form-group">
                       <label :for="'feesEgyption_' + index">رسوم الطلاب المصريين (فئة أ)</label>
-                      <input 
+                        <input 
                         type="text" 
                         v-model="faculty.feesEgyption" 
                         :id="'feesEgyption_' + index"
@@ -370,7 +370,7 @@
                     </div>
                     <div class="form-group">
                       <label :for="'feesEgyption2_' + index">رسوم الطلاب المصريين (فئة ب)</label>
-                      <input 
+                        <input 
                         type="text" 
                         v-model="faculty.feesEgyption2" 
                         :id="'feesEgyption2_' + index"
@@ -379,7 +379,7 @@
                     </div>
                     <div class="form-group">
                       <label :for="'feesEgyption3_' + index">رسوم الطلاب المصريين (فئة ج)</label>
-                      <input 
+                        <input 
                         type="text" 
                         v-model="faculty.feesEgyption3" 
                         :id="'feesEgyption3_' + index"
@@ -388,16 +388,16 @@
                     </div>
                     <div class="form-group">
                       <label :for="'feesEgyption4_' + index">رسوم الطلاب المصريين (فئة د)</label>
-                      <input 
+                        <input 
                         type="text" 
                         v-model="faculty.feesEgyption4" 
                         :id="'feesEgyption4_' + index"
                         placeholder="أدخل الرسوم"
-                      >
-                    </div>
+                        >
+                      </div>
                     <div class="form-group">
                       <label :for="'feesNatives_' + index">رسوم الطلاب الوافدين (فئة أ)</label>
-                      <input 
+                        <input 
                         type="text" 
                         v-model="faculty.feesNatives" 
                         :id="'feesNatives_' + index"
@@ -406,7 +406,7 @@
                     </div>
                     <div class="form-group">
                       <label :for="'feesNatives2_' + index">رسوم الطلاب الوافدين (فئة ب)</label>
-                      <input 
+                        <input 
                         type="text" 
                         v-model="faculty.feesNatives2" 
                         :id="'feesNatives2_' + index"
@@ -415,7 +415,7 @@
                     </div>
                     <div class="form-group">
                       <label :for="'feesNatives3_' + index">رسوم الطلاب الوافدين (فئة ج)</label>
-                      <input 
+                        <input 
                         type="text" 
                         v-model="faculty.feesNatives3" 
                         :id="'feesNatives3_' + index"
@@ -424,58 +424,58 @@
                     </div>
                     <div class="form-group">
                       <label :for="'feesNatives4_' + index">رسوم الطلاب الوافدين (فئة د)</label>
-                      <input 
+                        <input 
                         type="text" 
                         v-model="faculty.feesNatives4" 
                         :id="'feesNatives4_' + index"
                         placeholder="أدخل الرسوم"
-                      >
-                    </div>
+                        >
+                      </div>
                     <div class="form-group">
                       <label :for="'thanwyaa_firstYear_score_' + index">حد ادني الثانوية العامة (السنة الأولى)</label>
-                      <input 
+                        <input 
                         type="text" 
-                        v-model="faculty.thanwyaa_firstYear_score" 
+                          v-model="faculty.thanwyaa_firstYear_score" 
                         :id="'thanwyaa_firstYear_score_' + index"
                         placeholder="أدخل الدرجة"
-                      >
+                        >
                     </div>
                     <div class="form-group">
                       <label :for="'thanwyaa_secondYear_score_' + index">حد ادني الثانوية العامة (السنة الثانية)</label>
-                      <input 
+                        <input 
                         type="text" 
-                        v-model="faculty.thanwyaa_secondYear_score" 
+                          v-model="faculty.thanwyaa_secondYear_score" 
                         :id="'thanwyaa_secondYear_score_' + index"
                         placeholder="أدخل الدرجة"
-                      >
-                    </div>
+                        >
+                      </div>
                     <div class="form-group">
                       <label :for="'azhar_firstYear_score_' + index">حد ادني الأزهر (السنة الأولى)</label>
-                      <input 
+                        <input 
                         type="text" 
-                        v-model="faculty.azhar_firstYear_score" 
+                          v-model="faculty.azhar_firstYear_score" 
                         :id="'azhar_firstYear_score_' + index"
                         placeholder="أدخل الدرجة"
-                      >
+                        >
                     </div>
                     <div class="form-group">
                       <label :for="'azhar_secondYear_score_' + index">حد ادني الأزهر (السنة الثانية)</label>
-                      <input 
+                        <input 
                         type="text" 
-                        v-model="faculty.azhar_secondYear_score" 
+                          v-model="faculty.azhar_secondYear_score" 
                         :id="'azhar_secondYear_score_' + index"
                         placeholder="أدخل الدرجة"
-                      >
-                    </div>
+                        >
+                      </div>
                     <div class="form-group">
                       <label :for="'Arabenglish_firstYear_score_' + index">حد ادني الشهادات العربية والأجنبية (السنة الأولى)</label>
-                      <input 
+                        <input 
                         type="text" 
-                        v-model="faculty.Arabenglish_firstYear_score" 
+                          v-model="faculty.Arabenglish_firstYear_score" 
                         :id="'Arabenglish_firstYear_score_' + index"
                         placeholder="أدخل الدرجة"
-                      >
-                    </div>
+                        >
+                      </div>
                     <div class="form-group">
                       <label :for="'Arabenglish_secondYear_score_' + index">حد ادني الشهادات العربية والأجنبية (السنة الثانية)</label>
                       <input 
@@ -1218,14 +1218,14 @@
                     {{ faculty.faculty || `كلية ${index + 1}` }}
                   </h4>
                   <div class="form-actions">
-                    <button type="button" class="toggle-btn" @click="toggleSection('faculties', index)">
+                  <button type="button" class="toggle-btn" @click="toggleSection('faculties', index)">
                       <i class="fas" :class="collapsedSections.faculties[index] ? 'fa-edit' : 'fa-save'"></i>
                       {{ collapsedSections.faculties[index] ? 'تعديل' : 'حفظ' }}
                     </button>
                     <button type="button" class="remove-btn" @click="removeFaculty(index, 'edit')">
                       <i class="fas fa-trash"></i>
                       حذف
-                    </button>
+                  </button>
                   </div>
                 </div>
                 <div class="form-grid" v-show="!collapsedSections.faculties[index]">
@@ -1271,7 +1271,7 @@
                       :id="'feesEgyption_' + index"
                       placeholder="أدخل الرسوم"
                     >
-                  </div>
+                </div>
                   <div class="form-group">
                     <label :for="'feesEgyption2_' + index">رسوم الطلاب المصريين (فئة ب)</label>
                     <input 
@@ -1280,7 +1280,7 @@
                       :id="'feesEgyption2_' + index"
                       placeholder="أدخل الرسوم"
                     >
-                  </div>
+              </div>
                   <div class="form-group">
                     <label :for="'feesEgyption3_' + index">رسوم الطلاب المصريين (فئة ج)</label>
                     <input 
@@ -1675,14 +1675,14 @@
               <div class="form-header">
                 <h4>{{ trans.type || 'مواصلات جديدة' }}</h4>
                 <div class="form-actions">
-                  <button type="button" class="toggle-btn" @click="toggleSection('transportation', index)">
-                    <i class="fas" :class="collapsedSections.transportation[index] ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
+                <button type="button" class="toggle-btn" @click="toggleSection('transportation', index)">
+                  <i class="fas" :class="collapsedSections.transportation[index] ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
                     {{ collapsedSections.transportation[index] ? 'تعديل' : 'حفظ' }}
                   </button>
                   <button type="button" class="remove-btn" @click="removeTransportation(index, 'edit')">
                     <i class="fas fa-trash"></i>
                     حذف
-                  </button>
+                </button>
                 </div>
               </div>
               <div class="form-grid" v-show="!collapsedSections.transportation[index]">
@@ -2672,18 +2672,18 @@ export default {
     },
 
     async removeFaculty(index, formType) {
-      try {
+        try {
         const faculty = formType === 'add' ? this.addFormData.faculties[index] : this.editFormData.faculties[index];
-        const type = formType === 'add' ? this.addFormData.type : this.editFormData.type;
+          const type = formType === 'add' ? this.addFormData.type : this.editFormData.type;
 
         if (formType === 'edit' && faculty._id) {
           await this.deleteFacultyAPI(type.toLowerCase(), faculty._id);
-        }
-
-        if (formType === 'add') {
-          this.addFormData.faculties.splice(index, 1);
-        } else {
-          this.editFormData.faculties.splice(index, 1);
+      }
+      
+      if (formType === 'add') {
+        this.addFormData.faculties.splice(index, 1);
+      } else {
+        this.editFormData.faculties.splice(index, 1);
         }
 
         this.$toast.success('تم حذف الكلية بنجاح');
@@ -2780,71 +2780,46 @@ export default {
     },
     async addUniversity() {
       try {
-        const type = this.addFormData.type.toUpperCase();
-        const universityCode = this.addFormData.university_code.toUpperCase();
-
-        // Add university links first
-        const linksData = {
-          university: this.addFormData.university_Arabic_Name,
-          university_code: universityCode,
-          website: this.addFormData.website,
-          phone: this.addFormData.phone,
-          email: this.addFormData.email,
-          facebook: this.addFormData.facebook,
-          instagram: this.addFormData.instagram,
-          youtube: this.addFormData.youtube,
-          linkedin: this.addFormData.linkedin,
-          international_programs: this.addFormData.international_programs,
-          dorms_link: this.addFormData.dorms_link,
-          transportation_link: this.addFormData.transportation_link,
-          scholarship_link: this.addFormData.scholarship_link,
-          Egyptian_Admission_link: this.addFormData.Egyptian_Admission_link,
-          Egyptian_Admission_link2: this.addFormData.Egyptian_Admission_link2,
-          Egyptian_Transfer_link: this.addFormData.Egyptian_Transfer_link,
-          Wafdeen_Admission_link: this.addFormData.Wafdeen_Admission_link
+        // 1. Add the university links/info (main university object)
+        const type = this.addFormData.type.toLowerCase();
+        const universityCode = this.addFormData.university_code;
+        const universityName = this.addFormData.university_Arabic_Name;
+        // Prepare main university data (links/info)
+        const mainData = {
+          ...this.addFormData
         };
-        await this.addLinkAPI(type.toLowerCase(), linksData);
-
-        // Add faculties
-        if (this.addFormData.faculties && this.addFormData.faculties.length > 0) {
-          for (const faculty of this.addFormData.faculties) {
-            const facultyData = {
-              ...faculty,
-              university: this.addFormData.university_Arabic_Name,
-              university_code: universityCode
-            };
-            await this.addFacultyAPI(type.toLowerCase(), facultyData);
-          }
+        // Post main university info (links)
+        await this.addLinkAPI(type, mainData);
+        // 2. Add all faculties
+        for (const faculty of this.addFormData.faculties) {
+          const facultyData = {
+            ...faculty,
+            university: universityName,
+            university_code: universityCode
+          };
+          await this.addFacultyAPI(type, facultyData);
         }
-
-        // Add dorms
-        if (this.addFormData.dorms && this.addFormData.dorms.length > 0) {
-          for (const dorm of this.addFormData.dorms) {
-            const dormData = {
-              ...dorm,
-              spec: universityCode
-            };
-            await this.addDormAPI(type.toLowerCase(), dormData);
-          }
+        // 3. Add all dorms
+        for (const dorm of this.addFormData.dorms) {
+          const dormData = {
+            ...dorm,
+            spec: universityCode
+          };
+          await this.addDormAPI(type, dormData);
         }
-
-        // Add transportation
-        if (this.addFormData.transportation && this.addFormData.transportation.length > 0) {
-          for (const transport of this.addFormData.transportation) {
-            const transportData = {
-              ...transport,
-              spec: universityCode
-            };
-            await this.addTransportationAPI(type.toLowerCase(), transportData);
-          }
+        // 4. Add all transportation
+        for (const transport of this.addFormData.transportation) {
+          const transportData = {
+            ...transport,
+            spec: universityCode
+          };
+          await this.addTransportationAPI(type, transportData);
         }
-
-        alert('تم إضافة الجامعة بنجاح');
+        this.$toast.success('تمت إضافة الجامعة وكل البيانات بنجاح');
         this.resetAddForm();
-        this.fetchUniversities();
       } catch (error) {
         console.error('Error adding university:', error);
-        alert('حدث خطأ أثناء إضافة الجامعة');
+        this.$toast.error('حدث خطأ أثناء إضافة الجامعة أو البيانات');
       }
     },
     async updateUniversity() {
@@ -3181,7 +3156,10 @@ export default {
         };
 
         if (formType === 'add') {
-          await this.addFacultyAPI(type.toLowerCase(), facultyData);
+          // In add mode, do NOT post to API. Only collapse the section and show a message.
+          this.collapsedSections.faculties[index] = true;
+          this.$toast.success('تم حفظ البيانات محلياً. سيتم الحفظ النهائي عند إضافة الجامعة.');
+          return;
         } else {
           await this.updateFacultyAPI(type.toLowerCase(), faculty._id, facultyData);
         }
@@ -3204,22 +3182,24 @@ export default {
       try {
         const type = mode === 'add' ? this.addFormData.type : this.editFormData.type;
         const universityCode = mode === 'add' ? this.addFormData.university_code : this.editFormData.university_code;
-        
-        // Add university reference to dorm data
         const dormData = {
           ...dorm,
           spec: universityCode
         };
 
-        if (dorm.id) {
-          // Update existing dorm
-          await this.updateDormAPI(type, dorm.id, dormData);
+        if (mode === 'add') {
+          // In add mode, do NOT post to API. Only collapse the section and show a message.
+          this.collapsedSections.dorms[index] = true;
+          
+          return;
         } else {
-          // Add new dorm
-          await this.addDormAPI(type, dormData);
+          if (dorm.id) {
+            await this.updateDormAPI(type, dorm.id, dormData);
+          } else {
+            await this.addDormAPI(type, dormData);
+          }
         }
 
-        // Set the section as collapsed
         this.collapsedSections.dorms[index] = true;
         alert('تم حفظ السكن بنجاح');
       } catch (error) {
@@ -3238,22 +3218,24 @@ export default {
       try {
         const type = mode === 'add' ? this.addFormData.type : this.editFormData.type;
         const universityCode = mode === 'add' ? this.addFormData.university_code : this.editFormData.university_code;
-        
-        // Add university reference to transportation data
         const transportData = {
           ...transport,
           spec: universityCode
         };
 
-        if (transport.id) {
-          // Update existing transportation
-          await this.updateTransportationAPI(type, transport.id, transportData);
+        if (mode === 'add') {
+          // In add mode, do NOT post to API. Only collapse the section and show a message.
+          this.collapsedSections.transportation[index] = true;
+          
+          return;
         } else {
-          // Add new transportation
-          await this.addTransportationAPI(type, transportData);
+          if (transport.id) {
+            await this.updateTransportationAPI(type, transport.id, transportData);
+          } else {
+            await this.addTransportationAPI(type, transportData);
+          }
         }
 
-        // Set the section as collapsed
         this.collapsedSections.transportation[index] = true;
         alert('تم حفظ وسيلة النقل بنجاح');
       } catch (error) {

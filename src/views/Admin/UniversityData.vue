@@ -1199,11 +1199,20 @@
             <div class="programs-list">
               <div v-for="(faculty, index) in editFormData.faculties" :key="index" class="faculty-item">
                 <div class="form-header">
-                  <h4>{{ faculty.faculty || 'كلية جديدة' }}</h4>
-                  <button type="button" class="toggle-btn" @click="toggleSection('faculties', index)">
-                    <i class="fas" :class="collapsedSections.faculties[index] ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
-                    {{ collapsedSections.faculties[index] ? 'تعديل' : 'حفظ' }}
-                  </button>
+                  <h4>
+                    <i class="fas fa-graduation-cap"></i>
+                    {{ faculty.faculty || `كلية ${index + 1}` }}
+                  </h4>
+                  <div class="form-actions">
+                    <button type="button" class="toggle-btn" @click="collapsedSections.faculties[index] ? toggleSection('faculties', index) : saveFaculty(index, 'edit')">
+                      <i class="fas" :class="collapsedSections.faculties[index] ? 'fa-edit' : 'fa-save'"></i>
+                      {{ collapsedSections.faculties[index] ? 'تعديل' : 'حفظ' }}
+                    </button>
+                    <button type="button" class="remove-btn" @click="removeFaculty(index, 'edit')">
+                      <i class="fas fa-trash"></i>
+                      حذف
+                    </button>
+                  </div>
                 </div>
                 <div class="form-grid" v-show="!collapsedSections.faculties[index]">
                   <div class="form-group">
@@ -1240,9 +1249,53 @@
                       placeholder="أدخل البرامج مفصولة بفواصل"
                     ></textarea>
                   </div>
+                  <div class="form-group">
+                    <label :for="'feesNatives_' + index">رسوم الطلاب المصريين</label>
+                    <input 
+                      type="text" 
+                      v-model="faculty.feesNatives" 
+                      :id="'feesNatives_' + index"
+                      placeholder="أدخل الرسوم"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label :for="'feesEgyption_' + index">رسوم الطلاب الوافدين</label>
+                    <input 
+                      type="text" 
+                      v-model="faculty.feesEgyption" 
+                      :id="'feesEgyption_' + index"
+                      placeholder="أدخل الرسوم"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label :for="'thanwyaa_firstYear_score_' + index">درجة الثانوية العامة (السنة الأولى)</label>
+                    <input 
+                      type="text" 
+                      v-model="faculty.thanwyaa_firstYear_score" 
+                      :id="'thanwyaa_firstYear_score_' + index"
+                      placeholder="أدخل الدرجة"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label :for="'thanwyaa_secondYear_score_' + index">درجة الثانوية العامة (السنة الثانية)</label>
+                    <input 
+                      type="text" 
+                      v-model="faculty.thanwyaa_secondYear_score" 
+                      :id="'thanwyaa_secondYear_score_' + index"
+                      placeholder="أدخل الدرجة"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label :for="'wafdeen_score_' + index">درجة الوافدين</label>
+                    <input 
+                      type="text" 
+                      v-model="faculty.wafdeen_score" 
+                      :id="'wafdeen_score_' + index"
+                      placeholder="أدخل الدرجة"
+                    >
+                  </div>
                 </div>
               </div>
-              <!-- Remove the add faculty button -->
             </div>
           </div>
 
@@ -2340,24 +2393,24 @@ export default {
     },
 
     async removeFaculty(index, formType) {
-      const faculty = formType === 'add' ? this.addFormData.faculties[index] : this.editFormData.faculties[index];
-      
-      if (faculty.id) {
-        try {
-          const type = formType === 'add' ? this.addFormData.type : this.editFormData.type;
-          await this.deleteFacultyAPI(type, faculty.id);
-          alert('تم حذف الكلية بنجاح');
-        } catch (error) {
-          console.error('Error deleting faculty:', error);
-          alert('حدث خطأ أثناء حذف الكلية');
-          return;
+      try {
+        const faculty = formType === 'add' ? this.addFormData.faculties[index] : this.editFormData.faculties[index];
+        const type = formType === 'add' ? this.addFormData.type : this.editFormData.type;
+
+        if (formType === 'edit' && faculty._id) {
+          await this.deleteFacultyAPI(type.toLowerCase(), faculty._id);
         }
-      }
-      
-      if (formType === 'add') {
-        this.addFormData.faculties.splice(index, 1);
-      } else {
-        this.editFormData.faculties.splice(index, 1);
+
+        if (formType === 'add') {
+          this.addFormData.faculties.splice(index, 1);
+        } else {
+          this.editFormData.faculties.splice(index, 1);
+        }
+
+        this.$toast.success('تم حذف الكلية بنجاح');
+      } catch (error) {
+        console.error('Error removing faculty:', error);
+        this.$toast.error('حدث خطأ أثناء حذف الكلية');
       }
     },
 
@@ -2716,7 +2769,9 @@ export default {
         ]);
 
         // 3. Filter data for this university
-        const universityFaculties = faculties.filter(f => f.university_code === universityCode);
+        const universityFaculties = faculties.filter(
+          f => f.university_code === universityCode || f.university === universityCode
+        );
         const universityDorms = dorms.filter(d => d.spec === universityCode);
         const universityTransportation = transportation.filter(t => t.spec === universityCode);
         const universityLinks = links.find(l => l.university === universityCode);
@@ -2834,38 +2889,29 @@ export default {
       }
     },
 
-    async saveFaculty(index, mode = 'edit') {
-      const faculty = mode === 'add' ? this.addFormData.faculties[index] : this.editFormData.faculties[index];
-      if (!faculty.faculty) {
-        alert('الرجاء إدخال اسم الكلية');
-        return;
-      }
-
+    async saveFaculty(index, formType) {
       try {
-        const type = mode === 'add' ? this.addFormData.type : this.editFormData.type;
-        const universityCode = mode === 'add' ? this.addFormData.university_code : this.editFormData.university_code;
-        
-        // Add university reference to faculty data
+        const faculty = formType === 'add' ? this.addFormData.faculties[index] : this.editFormData.faculties[index];
+        const universityCode = formType === 'add' ? this.addFormData.university_code : this.editFormData.university_code;
+        const type = formType === 'add' ? this.addFormData.type : this.editFormData.type;
+
         const facultyData = {
           ...faculty,
-          university: mode === 'add' ? this.addFormData.university_Arabic_Name : this.editFormData.university_Arabic_Name,
+          university: formType === 'add' ? this.addFormData.university_Arabic_Name : this.editFormData.university_Arabic_Name,
           university_code: universityCode
         };
 
-        if (faculty.id) {
-          // Update existing faculty
-          await this.updateFacultyAPI(type, faculty.id, facultyData);
+        if (formType === 'add') {
+          await this.addFacultyAPI(type.toLowerCase(), facultyData);
         } else {
-          // Add new faculty
-          await this.addFacultyAPI(type, facultyData);
+          await this.updateFacultyAPI(type.toLowerCase(), faculty._id, facultyData);
         }
 
-        // Set the section as collapsed
         this.collapsedSections.faculties[index] = true;
-        alert('تم حفظ الكلية بنجاح');
+        this.$toast.success('تم حفظ البيانات بنجاح');
       } catch (error) {
         console.error('Error saving faculty:', error);
-        alert('حدث خطأ أثناء حفظ الكلية');
+        this.$toast.error('حدث خطأ أثناء حفظ البيانات');
       }
     },
 
@@ -2938,10 +2984,7 @@ export default {
     },
 
     toggleSection(section, index) {
-      if (!this.collapsedSections[section]) {
-        this.collapsedSections[section] = {};
-      }
-      this.collapsedSections[section][index] = !this.collapsedSections[section][index];
+      this.$set(this.collapsedSections[section], index, !this.collapsedSections[section][index]);
     },
 
     async deleteBasicInfo(field) {

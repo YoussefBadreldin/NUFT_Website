@@ -1929,296 +1929,6 @@
                 {{ section.label }}
               </button>
             </div>
-
-            <!-- Basic Information Section -->
-            <div v-if="activeDeleteSection === 'basic'" class="delete-section">
-              <h3 class="delete-section-title">
-                <i class="fas fa-university"></i>
-                بيانات الجامعة الأساسية
-              </h3>
-              <div class="delete-items-list">
-                <div class="delete-item">
-                  <div class="item-info">
-                    <h4>الرمز المختصر</h4>
-                    <p>{{ selectedUniversityForDelete?.university_code }}</p>
-                  </div>
-                  <button class="delete-item-btn" @click="deleteBasicInfo('university_code')">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
-                </div>
-                <div class="delete-item">
-                  <div class="item-info">
-                    <h4>اسم الجامعة</h4>
-                    <p>{{ selectedUniversityForDelete?.university_Arabic_Name }}</p>
-                  </div>
-                  <button class="delete-item-btn" @click="deleteBasicInfo('university_Arabic_Name')">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
-                </div>
-                <div class="delete-item">
-                  <div class="item-info">
-                    <h4>نوع الجامعة</h4>
-                    <p>{{ getUniversityTypeName(selectedUniversityForDelete?.type) }}</p>
-                  </div>
-                  <button class="delete-item-btn" @click="deleteBasicInfo('type')">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
-                </div>
-                <div class="delete-item">
-                  <div class="item-info">
-                    <h4>نبذة عن الجامعة</h4>
-                    <p>{{ selectedUniversityForDelete?.Uni_Bio }}</p>
-                  </div>
-                  <button class="delete-item-btn" @click="deleteBasicInfo('Uni_Bio')">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Contact Information Section -->
-            <div v-if="activeDeleteSection === 'contact'" class="delete-section">
-              <h3 class="delete-section-title">
-                <i class="fas fa-address-book"></i>
-                معلومات الاتصال
-              </h3>
-              <div class="delete-items-list">
-                <div class="delete-item">
-                  <div class="item-info">
-                    <h4>الموقع الإلكتروني</h4>
-                    <p>{{ selectedUniversityForDelete?.website }}</p>
-                  </div>
-                  <button class="delete-item-btn" @click="deleteContactInfo('website')">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
-                </div>
-                <div class="delete-item">
-                  <div class="item-info">
-                    <h4>رقم الهاتف</h4>
-                    <p>{{ selectedUniversityForDelete?.phone }}</p>
-                  </div>
-                  <button class="delete-item-btn" @click="deleteContactInfo('phone')">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
-                </div>
-                <div class="delete-item">
-                  <div class="item-info">
-                    <h4>البريد الإلكتروني</h4>
-                    <p>{{ selectedUniversityForDelete?.email }}</p>
-                  </div>
-                  <button class="delete-item-btn" @click="deleteContactInfo('email')">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Social Media Section -->
-            <div v-if="activeDeleteSection === 'social'" class="delete-section">
-              <h3 class="delete-section-title">
-                <i class="fas fa-share-alt"></i>
-                روابط التواصل الاجتماعي
-              </h3>
-              <div class="delete-items-list">
-                <div class="delete-item">
-                  <div class="item-info">
-                    <h4>فيسبوك</h4>
-                    <p>{{ selectedUniversityForDelete?.facebook }}</p>
-                  </div>
-                  <button class="delete-item-btn" @click="deleteSocialMedia('facebook')">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
-                </div>
-                <div class="delete-item">
-                  <div class="item-info">
-                    <h4>انستجرام</h4>
-                    <p>{{ selectedUniversityForDelete?.instagram }}</p>
-                  </div>
-                  <button class="delete-item-btn" @click="deleteSocialMedia('instagram')">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
-                </div>
-                <div class="delete-item">
-                  <div class="item-info">
-                    <h4>يوتيوب</h4>
-                    <p>{{ selectedUniversityForDelete?.youtube }}</p>
-                  </div>
-                  <button class="delete-item-btn" @click="deleteSocialMedia('youtube')">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
-                </div>
-                <div class="delete-item">
-                  <div class="item-info">
-                    <h4>لينكد إن</h4>
-                    <p>{{ selectedUniversityForDelete?.linkedin }}</p>
-                  </div>
-                  <button class="delete-item-btn" @click="deleteSocialMedia('linkedin')">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Faculties Section -->
-            <div v-if="activeDeleteSection === 'faculties'" class="delete-section">
-              <h3 class="delete-section-title">
-                <i class="fas fa-graduation-cap"></i>
-                الكليات
-              </h3>
-              <div class="delete-items-list">
-                <div v-for="(faculty, index) in selectedUniversityForDelete?.faculties" 
-                     :key="index" 
-                     class="delete-item">
-                  <div class="item-info">
-                    <h4>{{ faculty.faculty }}</h4>
-                    <p>الشعبة: {{ faculty.section }}</p>
-                    <p>نوع البرنامج: {{ faculty.normal_or_Dual === 'normal' ? 'عادي' : 'مزدوج' }}</p>
-                    <p class="programs">البرامج: {{ faculty.programs }}</p>
-                  </div>
-                  <button class="delete-item-btn" @click="deleteFaculty(faculty)">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Dorms Section -->
-            <div v-if="activeDeleteSection === 'dorms'" class="delete-section">
-              <h3 class="delete-section-title">
-                <i class="fas fa-home"></i>
-                السكن الجامعي
-              </h3>
-              <div class="delete-items-list">
-                <div class="delete-item">
-                  <div class="item-info">
-                    <h4>رابط معلومات السكن</h4>
-                    <p>{{ selectedUniversityForDelete?.dorms_link }}</p>
-                  </div>
-                </div>
-                <div v-for="(dorm, index) in selectedUniversityForDelete?.dorms" 
-                     :key="index" 
-                     class="delete-item">
-                  <div class="item-info">
-                    <h4>{{ dorm.type }}</h4>
-                    <p class="price">السعر: {{ dorm.price }}</p>
-                  </div>
-                  <button class="delete-item-btn" @click="deleteDorm(dorm)">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Transportation Section -->
-            <div v-if="activeDeleteSection === 'transportation'" class="delete-section">
-              <h3 class="delete-section-title">
-                <i class="fas fa-bus"></i>
-                الأنتقالات
-              </h3>
-              <div class="delete-items-list">
-                <div class="delete-item">
-                  <div class="item-info">
-                    <h4>رابط الأنتقالات</h4>
-                    <p>{{ selectedUniversityForDelete?.transportation_link }}</p>
-                  </div>
-                </div>
-                <div v-for="(trans, index) in selectedUniversityForDelete?.transportation" 
-                     :key="index" 
-                     class="delete-item">
-                  <div class="item-info">
-                    <h4>{{ trans.type }}</h4>
-                    <p class="price">السعر: {{ trans.price }}</p>
-                  </div>
-                  <button class="delete-item-btn" @click="deleteTransportation(trans)">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- International Programs Section -->
-            <div v-if="activeDeleteSection === 'international'" class="delete-section">
-              <h3 class="delete-section-title">
-                <i class="fas fa-globe-americas"></i>
-                البرامج الدولية
-              </h3>
-              <div class="delete-items-list">
-                <div class="delete-item">
-                  <div class="item-info">
-                    <h4>رابط البرامج الدولية</h4>
-                    <p>{{ selectedUniversityForDelete?.international_programs }}</p>
-                  </div>
-                  <button class="delete-item-btn" @click="deleteInternationalPrograms">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Admission Links Section -->
-            <div v-if="activeDeleteSection === 'admission'" class="delete-section">
-              <h3 class="delete-section-title">
-                <i class="fas fa-user-graduate"></i>
-                روابط التقديم
-              </h3>
-              <div class="delete-items-list">
-                <div class="delete-item">
-                  <div class="item-info">
-                    <h4>رابط التقديم للطلاب المصريين</h4>
-                    <p>{{ selectedUniversityForDelete?.Egyptian_Admission_link }}</p>
-                  </div>
-                  <button class="delete-item-btn" @click="deleteAdmissionLink('Egyptian_Admission_link')">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
-                </div>
-                <div class="delete-item">
-                  <div class="item-info">
-                    <h4>رابط التقديم للطلاب المصريين (البرامج الدولية)</h4>
-                    <p>{{ selectedUniversityForDelete?.Egyptian_Admission_link2 }}</p>
-                  </div>
-                  <button class="delete-item-btn" @click="deleteAdmissionLink('Egyptian_Admission_link2')">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
-                </div>
-                <div class="delete-item">
-                  <div class="item-info">
-                    <h4>رابط التحويل للطلاب المصريين</h4>
-                    <p>{{ selectedUniversityForDelete?.Egyptian_Transfer_link }}</p>
-                  </div>
-                  <button class="delete-item-btn" @click="deleteAdmissionLink('Egyptian_Transfer_link')">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
-                </div>
-                <div class="delete-item">
-                  <div class="item-info">
-                    <h4>رابط التقديم للطلاب الوافدين</h4>
-                    <p>{{ selectedUniversityForDelete?.Wafdeen_Admission_link }}</p>
-                  </div>
-                  <button class="delete-item-btn" @click="deleteAdmissionLink('Wafdeen_Admission_link')">
-                    <i class="fas fa-trash"></i>
-                    حذف
-                  </button>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -2451,16 +2161,6 @@ export default {
       selectedUniversityForEdit: null,
       selectedUniversityForDelete: null,
       activeDeleteSection: 'faculties',
-      deleteSections: [
-        { id: 'basic', label: 'البيانات الأساسية', icon: 'fas fa-university' },
-        { id: 'contact', label: 'معلومات الاتصال', icon: 'fas fa-address-book' },
-        { id: 'social', label: 'التواصل الاجتماعي', icon: 'fas fa-share-alt' },
-        { id: 'faculties', label: 'الكليات', icon: 'fas fa-graduation-cap' },
-        { id: 'dorms', label: 'السكن الجامعي', icon: 'fas fa-home' },
-        { id: 'transportation', label: 'الأنتقالات', icon: 'fas fa-bus' },
-        { id: 'international', label: 'البرامج الدولية', icon: 'fas fa-globe-americas' },
-        { id: 'admission', label: 'روابط التقديم', icon: 'fas fa-user-graduate' }
-      ],
       universityLinks: {
         website: { label: 'الموقع الإلكتروني' },
         facebook: { label: 'فيسبوك' },
@@ -2666,6 +2366,8 @@ export default {
       
       if (formType === 'add') {
         this.addFormData.faculties.push(faculty);
+        // Set the new faculty section as open
+        this.collapsedSections.faculties[this.addFormData.faculties.length - 1] = false;
       } else {
         this.editFormData.faculties.push(faculty);
       }
@@ -2701,6 +2403,8 @@ export default {
       
       if (formType === 'add') {
         this.addFormData.dorms.push(dorm);
+        // Set the new dorm section as open
+        this.collapsedSections.dorms[this.addFormData.dorms.length - 1] = false;
       } else {
         this.editFormData.dorms.push(dorm);
       }
@@ -2736,6 +2440,8 @@ export default {
       
       if (formType === 'add') {
         this.addFormData.transportation.push(trans);
+        // Set the new transportation section as open
+        this.collapsedSections.transportation[this.addFormData.transportation.length - 1] = false;
       } else {
         this.editFormData.transportation.push(trans);
       }
@@ -3248,69 +2954,6 @@ export default {
       this.collapsedSections[section][index] = !this.collapsedSections[section][index];
     },
 
-    async deleteBasicInfo(field) {
-      if (confirm(`هل أنت متأكد من حذف ${field}؟`)) {
-        try {
-          const type = this.selectedUniversityForDelete.type.toUpperCase();
-          const typeConfig = API_CONFIG.ENDPOINTS[type];
-          const universityCode = this.selectedUniversityForDelete.university_code;
-
-          await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.UPDATE(universityCode)}`, {
-            ...this.selectedUniversityForDelete,
-            [field]: ''
-          });
-
-          this.selectedUniversityForDelete[field] = '';
-          alert('تم الحذف بنجاح');
-        } catch (error) {
-          console.error('Error deleting basic info:', error);
-          alert('حدث خطأ أثناء الحذف');
-        }
-      }
-    },
-
-    async deleteContactInfo(field) {
-      if (confirm(`هل أنت متأكد من حذف ${field}؟`)) {
-        try {
-          const type = this.selectedUniversityForDelete.type.toUpperCase();
-          const typeConfig = API_CONFIG.ENDPOINTS[type];
-          const universityCode = this.selectedUniversityForDelete.university_code;
-
-          await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.UPDATE(universityCode)}`, {
-            ...this.selectedUniversityForDelete,
-            [field]: ''
-          });
-
-          this.selectedUniversityForDelete[field] = '';
-          alert('تم الحذف بنجاح');
-        } catch (error) {
-          console.error('Error deleting contact info:', error);
-          alert('حدث خطأ أثناء الحذف');
-        }
-      }
-    },
-
-    async deleteSocialMedia(field) {
-      if (confirm(`هل أنت متأكد من حذف ${field}؟`)) {
-        try {
-          const type = this.selectedUniversityForDelete.type.toUpperCase();
-          const typeConfig = API_CONFIG.ENDPOINTS[type];
-          const universityCode = this.selectedUniversityForDelete.university_code;
-
-          await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.UPDATE(universityCode)}`, {
-            ...this.selectedUniversityForDelete,
-            [field]: ''
-          });
-
-          this.selectedUniversityForDelete[field] = '';
-          alert('تم الحذف بنجاح');
-        } catch (error) {
-          console.error('Error deleting social media:', error);
-          alert('حدث خطأ أثناء الحذف');
-        }
-      }
-    },
-
     async deleteInternationalPrograms() {
       if (confirm('هل أنت متأكد من حذف رابط البرامج الدولية؟')) {
         try {
@@ -3332,26 +2975,6 @@ export default {
       }
     },
 
-    async deleteAdmissionLink(field) {
-      if (confirm(`هل أنت متأكد من حذف ${field}؟`)) {
-        try {
-          const type = this.selectedUniversityForDelete.type.toUpperCase();
-          const typeConfig = API_CONFIG.ENDPOINTS[type];
-          const universityCode = this.selectedUniversityForDelete.university_code;
-
-          await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.UPDATE(universityCode)}`, {
-            ...this.selectedUniversityForDelete,
-            [field]: ''
-          });
-
-          this.selectedUniversityForDelete[field] = '';
-          alert('تم الحذف بنجاح');
-        } catch (error) {
-          console.error('Error deleting admission link:', error);
-          alert('حدث خطأ أثناء الحذف');
-        }
-      }
-    },
 
     // FACULTY CRUD
     async getAllFaculties(type) {
@@ -3453,11 +3076,6 @@ export default {
     async updateLinkAPI(type, id, data) {
       const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
       const response = await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.LINKS_UPDATE(id)}`, data);
-      return response.data;
-    },
-    async deleteLinkAPI(type, id) {
-      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
-      const response = await axios.delete(`${API_CONFIG.BASE_URL}${typeConfig.LINKS_DELETE(id)}`);
       return response.data;
     },
   },

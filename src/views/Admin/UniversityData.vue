@@ -2613,7 +2613,12 @@ export default {
         };
 
         // Post main university info (links)
-        await this.addLinkAPI(type, mainData);
+        const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+        const response = await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.LINKS_ADD}`, mainData);
+
+        if (!response.data) {
+          throw new Error('No response data received from server');
+        }
 
         // 2. Add all faculties
         for (const faculty of this.addFormData.faculties) {
@@ -2623,7 +2628,7 @@ export default {
             university_Arabic_Name: universityName,
             type: type
           };
-          await this.addFacultyAPI(type, facultyData);
+          await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.ADD}`, facultyData);
         }
 
         // 3. Add all dorms
@@ -2632,7 +2637,7 @@ export default {
             ...dorm,
             spec: universityCode
           };
-          await this.addDormAPI(type, dormData);
+          await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.DORMS.ADD}`, dormData);
         }
 
         // 4. Add all transportation
@@ -2641,15 +2646,28 @@ export default {
             ...transport,
             spec: universityCode
           };
-          await this.addTransportationAPI(type, transportData);
+          await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.TRANSPORTATION.ADD}`, transportData);
         }
 
-        this.$toast.success('تمت إضافة الجامعة وكل البيانات بنجاح');
+        alert('تمت إضافة الجامعة وكل البيانات بنجاح');
         this.resetAddForm();
         this.fetchUniversities(); // Refresh the universities list
       } catch (error) {
         console.error('Error adding university:', error);
-        this.$toast.error('حدث خطأ أثناء إضافة الجامعة أو البيانات');
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.error('Error response:', error.response.data);
+          alert(`حدث خطأ أثناء إضافة الجامعة: ${error.response.data.message || 'خطأ في الخادم'}`);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.error('No response received:', error.request);
+          alert('لم يتم استلام رد من الخادم. يرجى التحقق من اتصال الإنترنت');
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.error('Error message:', error.message);
+          alert(`حدث خطأ أثناء إضافة الجامعة: ${error.message}`);
+        }
       }
     },
     async updateUniversity() {

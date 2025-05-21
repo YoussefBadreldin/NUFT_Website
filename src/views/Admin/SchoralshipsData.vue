@@ -124,6 +124,15 @@
                 <span class="hint">https://</span>
               </div>
             </div>
+
+            <div class="form-group">
+              <label for="status">حالة المنحة</label>
+              <select v-model="status" id="status" required>
+                <option value="active">نشطة</option>
+                <option value="inactive">غير نشطة</option>
+                <option value="expired">منتهية</option>
+              </select>
+            </div>
           </div>
 
           <div class="form-group full-width">
@@ -160,6 +169,7 @@ export default {
       scholarship_type: '',
       due_date: '',
       scholarship_link: '',
+      status: 'active',
       scholarshipsData: [],
       loading: true,
       searchQuery: '',
@@ -175,7 +185,7 @@ export default {
     },
     async fetchScholarships() {
       try {
-        const response = await axios.get('https://nuft-website-backend.vercel.app/Schoralships/all');
+        const response = await axios.get('https://nuft-website-backend.vercel.app/scholarships');
         this.scholarshipsData = response.data;
         this.filteredScholarships = response.data;
         this.loading = false;
@@ -206,10 +216,11 @@ export default {
         scholarship_photo: this.scholarship_photo,
         scholarship_type: this.scholarship_type,
         due_date: this.due_date,
-        scholarship_link: this.scholarship_link
+        scholarship_link: this.scholarship_link,
+        status: this.status
       };
       try {
-        await axios.post('https://nuft-website-backend.vercel.app/Schoralships/add', formData);
+        await axios.post('https://nuft-website-backend.vercel.app/scholarships/add', formData);
         alert('تم إضافة المنحة بنجاح');
         this.resetForm();
         this.fetchScholarships();
@@ -221,13 +232,14 @@ export default {
     },
     editScholarship(scholarship) {
       this.isEditing = true;
-      this.editingId = scholarship.id;
+      this.editingId = scholarship._id;
       this.scholarship_title = scholarship.scholarship_title;
       this.scholarship_details = scholarship.scholarship_details;
       this.scholarship_photo = scholarship.scholarship_photo;
       this.scholarship_type = scholarship.scholarship_type;
       this.due_date = scholarship.due_date;
       this.scholarship_link = scholarship.scholarship_link;
+      this.status = scholarship.status;
       this.activeTab = 'add';
     },
     async updateScholarship() {
@@ -237,10 +249,11 @@ export default {
         scholarship_photo: this.scholarship_photo,
         scholarship_type: this.scholarship_type,
         due_date: this.due_date,
-        scholarship_link: this.scholarship_link
+        scholarship_link: this.scholarship_link,
+        status: this.status
       };
       try {
-        await axios.put(`https://nuft-website-backend.vercel.app/Schoralships/update/${this.editingId}`, formData);
+        await axios.put(`https://nuft-website-backend.vercel.app/scholarships/${this.editingId}`, formData);
         alert('تم تحديث المنحة بنجاح');
         this.cancelEdit();
         this.fetchScholarships();
@@ -252,7 +265,7 @@ export default {
     },
     async deleteScholarship(id) {
       try {
-        await axios.delete(`https://nuft-website-backend.vercel.app/Schoralships/delete/${id}`);
+        await axios.delete(`https://nuft-website-backend.vercel.app/scholarships/${id}`);
         alert('تم حذف المنحة بنجاح');
         this.fetchScholarships();
       } catch (error) {
@@ -278,6 +291,7 @@ export default {
       this.scholarship_type = '';
       this.due_date = '';
       this.scholarship_link = '';
+      this.status = 'active';
     }
   },
   created() {
@@ -683,5 +697,47 @@ textarea {
   .scholarships-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Add styles for status select */
+select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+select:focus {
+  outline: none;
+  border-color: #4158d0;
+  box-shadow: 0 0 0 3px rgba(65, 88, 208, 0.1);
+}
+
+/* Add status indicator styles */
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-active {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-inactive {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.status-expired {
+  background-color: #fde7e7;
+  color: #d32f2f;
 }
 </style>

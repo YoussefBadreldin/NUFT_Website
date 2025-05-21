@@ -12,21 +12,239 @@
     <!-- Navigation Tabs -->
     <div class="nav-tabs">
       <button 
-        v-for="tab in tabs" 
-        :key="tab.id"
         class="nav-tab" 
-        :class="{ active: activeTab === tab.id }"
-        @click="activeTab = tab.id"
+        :class="{ active: activeTab === 'add' }"
+        @click="activeTab = 'add'"
+      >
+        <i class="fas fa-plus"></i>
+        اضافة حالة جامعة جديدة
+      </button>
+      <button 
+        class="nav-tab" 
+        :class="{ active: activeTab === 'manage' }"
+        @click="activeTab = 'manage'"
       >
         <i class="fas fa-university"></i>
-        {{ tab.name }}
+        حالة الجامعات الحالية
+      </button>
+      <button 
+        class="nav-tab" 
+        :class="{ active: activeTab === 'edit' }"
+        @click="switchToEdit"
+      >
+        <i class="fas fa-edit"></i>
+        تعديل حالة جامعة حالية
+      </button>
+      <button 
+        class="nav-tab" 
+        :class="{ active: activeTab === 'delete' }"
+        @click="switchToDelete"
+      >
+        <i class="fas fa-trash"></i>
+        حذف حالة جامعة حالية
       </button>
     </div>
 
-    <!-- Universities List Section -->
-    <div class="universities-list-section">
+    <!-- Category Tabs -->
+    <div v-if="activeTab !== 'add'" class="type-tabs">
+      <button 
+        v-for="type in universityTypes" 
+        :key="type.value"
+        :class="['type-tab', { active: selectedType === type.value }]"
+        @click="selectedType = type.value"
+      >
+        {{ type.label }}
+      </button>
+    </div>
+
+    <!-- Add New Status Section -->
+    <div v-if="activeTab === 'add'" class="section-container">
       <div class="section-header">
-        <h2>الجامعات</h2>
+        <h2>إضافة حالة جامعة جديدة</h2>
+      </div>
+      <div class="form-section">
+        <div class="form-card">
+          <form @submit.prevent="addUniversityStatus()">
+            <div class="form-category">
+              <h3 class="category-title">
+                <i class="fas fa-university"></i>
+                بيانات حالة الجامعة
+              </h3>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="university_type">
+                    <i class="fas fa-tag"></i>
+                    نوع الجامعة
+                  </label>
+                  <select v-model="addFormData.type" id="university_type" required>
+                    <option value="national">أهلية</option>
+                    <option value="private">خاصة</option>
+                    <option value="special">ذات طبيعة خاصة</option>
+                    <option value="international">دولية</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="university_name">
+                    <i class="fas fa-graduation-cap"></i>
+                    اسم الجامعة
+                  </label>
+                  <input 
+                    type="text" 
+                    v-model="addFormData.university_Arabic_Name" 
+                    id="university_name" 
+                    required
+                    placeholder="أدخل اسم الجامعة"
+                  >
+                </div>
+
+                <!-- Transfer Status -->
+                <div class="form-group">
+                  <label for="transfer_status">
+                    <i class="fas fa-exchange-alt"></i>
+                    حالة التحويل
+                  </label>
+                  <select v-model="addFormData.transfer_status" id="transfer_status" required>
+                    <option value="متاح">متاح</option>
+                    <option value="انتهي">انتهي</option>
+                    <option value="لم يبدأ">لم يبدأ</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="transfer_deadline">
+                    <i class="fas fa-calendar"></i>
+                    آخر موعد للتحويل
+                  </label>
+                  <input 
+                    type="date" 
+                    v-model="addFormData.transfer_deadline" 
+                    id="transfer_deadline"
+                    required
+                  >
+                </div>
+
+                <!-- Thanawya Status -->
+                <div class="form-group">
+                  <label for="thanwyaa_status">
+                    <i class="fas fa-book"></i>
+                    حالة الثانوية العامة
+                  </label>
+                  <select v-model="addFormData.thanwyaa_firstYear_status" id="thanwyaa_status" required>
+                    <option value="متاح">متاح</option>
+                    <option value="انتهي">انتهي</option>
+                    <option value="لم يبدأ">لم يبدأ</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="thanwyaa_deadline">
+                    <i class="fas fa-calendar"></i>
+                    آخر موعد للثانوية العامة
+                  </label>
+                  <input 
+                    type="date" 
+                    v-model="addFormData.thanwyaa_firstYear_deadline" 
+                    id="thanwyaa_deadline"
+                    required
+                  >
+                </div>
+
+                <!-- Azhar Status -->
+                <div class="form-group">
+                  <label for="azhar_status">
+                    <i class="fas fa-mosque"></i>
+                    حالة الثانوية الأزهرية
+                  </label>
+                  <select v-model="addFormData.azhar_firstYear_status" id="azhar_status" required>
+                    <option value="متاح">متاح</option>
+                    <option value="انتهي">انتهي</option>
+                    <option value="لم يبدأ">لم يبدأ</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="azhar_deadline">
+                    <i class="fas fa-calendar"></i>
+                    آخر موعد للثانوية الأزهرية
+                  </label>
+                  <input 
+                    type="date" 
+                    v-model="addFormData.azhar_firstYear_deadline" 
+                    id="azhar_deadline"
+                    required
+                  >
+                </div>
+
+                <!-- Arab/English Status -->
+                <div class="form-group">
+                  <label for="arab_english_status">
+                    <i class="fas fa-language"></i>
+                    حالة الشهادات العربية والإجنبية
+                  </label>
+                  <select v-model="addFormData.Arabenglish_firstYear_status" id="arab_english_status" required>
+                    <option value="متاح">متاح</option>
+                    <option value="انتهي">انتهي</option>
+                    <option value="لم يبدأ">لم يبدأ</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="arab_english_deadline">
+                    <i class="fas fa-calendar"></i>
+                    آخر موعد للشهادات العربية والإجنبية
+                  </label>
+                  <input 
+                    type="date" 
+                    v-model="addFormData.Arabenglish_firstYear_deadline" 
+                    id="arab_english_deadline"
+                    required
+                  >
+                </div>
+
+                <!-- Wafdeen Status -->
+                <div class="form-group">
+                  <label for="wafdeen_status">
+                    <i class="fas fa-user-plus"></i>
+                    حالة الوافدين
+                  </label>
+                  <select v-model="addFormData.wafdeen_status" id="wafdeen_status" required>
+                    <option value="متاح">متاح</option>
+                    <option value="انتهي">انتهي</option>
+                    <option value="لم يبدأ">لم يبدأ</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="wafdeen_deadline">
+                    <i class="fas fa-calendar"></i>
+                    آخر موعد للوافدين
+                  </label>
+                  <input 
+                    type="date" 
+                    v-model="addFormData.wafdeen_deadline" 
+                    id="wafdeen_deadline"
+                    required
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-save"></i>
+                حفظ الحالة
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Manage Current Status Section -->
+    <div v-if="activeTab === 'manage'" class="section-container">
+      <div class="section-header">
+        <h2>حالة الجامعات الحالية</h2>
         <div class="search-bar">
           <input 
             type="text" 
@@ -48,90 +266,126 @@
       </div>
 
       <div v-else class="universities-grid">
-        <div v-for="(pair, index) in pairedUniversities" :key="index" class="university-card">
+        <div v-for="university in filteredUniversities" :key="university.id" class="university-card">
           <div class="university-header">
-            <h3>{{ pair[0].university_Arabic_Name }}</h3>
-            <button class="toggle-btn" @click="toggleSection(index)">
-              <i class="fas" :class="isSectionOpen(index) ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
-              {{ isSectionOpen(index) ? 'إغلاق' : 'فتح' }}
-            </button>
+            <h3>{{ university.university_Arabic_Name }}</h3>
           </div>
 
-          <div class="status-sections" v-show="isSectionOpen(index)">
+          <div class="status-sections">
+            <!-- Transfer Status -->
+            <div class="status-section">
+              <h4>التحويل</h4>
+              <div class="status-info">
+                <p>الحالة: {{ university.transfer_status }}</p>
+                <p>آخر موعد: {{ university.transfer_deadline }}</p>
+              </div>
+            </div>
+
+            <!-- Thanawya Status -->
+            <div class="status-section">
+              <h4>الثانوية العامة</h4>
+              <div class="status-info">
+                <p>الحالة: {{ university.thanwyaa_firstYear_status }}</p>
+                <p>آخر موعد: {{ university.thanwyaa_firstYear_deadline }}</p>
+              </div>
+            </div>
+
+            <!-- Azhar Status -->
+            <div class="status-section">
+              <h4>الثانوية الأزهرية</h4>
+              <div class="status-info">
+                <p>الحالة: {{ university.azhar_firstYear_status }}</p>
+                <p>آخر موعد: {{ university.azhar_firstYear_deadline }}</p>
+              </div>
+            </div>
+
+            <!-- Arab/English Status -->
+            <div class="status-section">
+              <h4>الشهادات العربية والإجنبية</h4>
+              <div class="status-info">
+                <p>الحالة: {{ university.Arabenglish_firstYear_status }}</p>
+                <p>آخر موعد: {{ university.Arabenglish_firstYear_deadline }}</p>
+              </div>
+            </div>
+
+            <!-- Wafdeen Status -->
+            <div class="status-section">
+              <h4>الوافدين</h4>
+              <div class="status-info">
+                <p>الحالة: {{ university.wafdeen_status }}</p>
+                <p>آخر موعد: {{ university.wafdeen_deadline }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Status Section -->
+    <div v-if="activeTab === 'edit'" class="section-container">
+      <div class="section-header">
+        <h2>تعديل حالة جامعة حالية</h2>
+        <div class="search-bar">
+          <input 
+            type="text" 
+            v-model="searchQuery" 
+            placeholder="ابحث عن جامعة..."
+            @input="filterUniversities"
+          >
+        </div>
+      </div>
+
+      <div v-if="loading" class="loading-state">
+        <div class="spinner"></div>
+        <p>جاري التحميل...</p>
+      </div>
+
+      <div v-else-if="filteredUniversities.length === 0" class="no-results">
+        <i class="fas fa-university"></i>
+        <p>لا توجد جامعات</p>
+      </div>
+
+      <div v-else class="universities-grid">
+        <div v-for="university in filteredUniversities" :key="university.id" class="university-card">
+          <div class="university-header">
+            <h3>{{ university.university_Arabic_Name }}</h3>
+          </div>
+
+          <div class="status-sections">
             <!-- Transfer Status -->
             <div class="status-section">
               <h4>التحويل</h4>
               <div class="status-inputs">
                 <div class="status-input">
-                  <label>الحالة الحالية</label>
-                  <div class="current-value">{{ pair[0].transfer_status }}</div>
-                </div>
-                <div class="status-input">
-                  <label>آخر موعد الحالي</label>
-                  <div class="current-value">{{ pair[1].transfer_deadline }}</div>
-                </div>
-                <div class="status-input">
-                  <label>الحالة الجديدة</label>
-                  <select v-model="pair[1].transfer_status">
+                  <label>الحالة</label>
+                  <select v-model="university.transfer_status">
                     <option value="متاح">متاح</option>
                     <option value="انتهي">انتهي</option>
                     <option value="لم يبدأ">لم يبدأ</option>
                   </select>
                 </div>
                 <div class="status-input">
-                  <label>آخر موعد الجديد</label>
-                  <input type="date" v-model="pair[1].transfer_deadline">
+                  <label>آخر موعد</label>
+                  <input type="date" v-model="university.transfer_deadline">
                 </div>
               </div>
             </div>
 
             <!-- Thanawya Status -->
             <div class="status-section">
-              <h4>الثانوية العامة وستيم والنيل</h4>
-              <div class="year-status">
-                <div class="status-inputs">
-                  <div class="status-input">
-                    <label>{{ firstYear }} - الحالة الحالية</label>
-                    <div class="current-value">{{ pair[0].thanwyaa_firstYear_status }}</div>
-                  </div>
-                  <div class="status-input">
-                    <label>{{ firstYear }} - آخر موعد الحالي</label>
-                    <div class="current-value">{{ pair[1].thanwyaa_firstYear_deadline }}</div>
-                  </div>
-                  <div class="status-input">
-                    <label>{{ firstYear }} - الحالة الجديدة</label>
-                    <select v-model="pair[1].thanwyaa_firstYear_status">
-                      <option value="متاح">متاح</option>
-                      <option value="انتهي">انتهي</option>
-                      <option value="لم يبدأ">لم يبدأ</option>
-                    </select>
-                  </div>
-                  <div class="status-input">
-                    <label>{{ firstYear }} - آخر موعد الجديد</label>
-                    <input type="date" v-model="pair[1].thanwyaa_firstYear_deadline">
-                  </div>
+              <h4>الثانوية العامة</h4>
+              <div class="status-inputs">
+                <div class="status-input">
+                  <label>الحالة</label>
+                  <select v-model="university.thanwyaa_firstYear_status">
+                    <option value="متاح">متاح</option>
+                    <option value="انتهي">انتهي</option>
+                    <option value="لم يبدأ">لم يبدأ</option>
+                  </select>
                 </div>
-                <div class="status-inputs">
-                  <div class="status-input">
-                    <label>{{ secondYear }} - الحالة الحالية</label>
-                    <div class="current-value">{{ pair[0].thanwyaa_secondYear_status }}</div>
-                  </div>
-                  <div class="status-input">
-                    <label>{{ secondYear }} - آخر موعد الحالي</label>
-                    <div class="current-value">{{ pair[1].thanwyaa_secondYear_deadline }}</div>
-                  </div>
-                  <div class="status-input">
-                    <label>{{ secondYear }} - الحالة الجديدة</label>
-                    <select v-model="pair[1].thanwyaa_secondYear_status">
-                      <option value="متاح">متاح</option>
-                      <option value="انتهي">انتهي</option>
-                      <option value="لم يبدأ">لم يبدأ</option>
-                    </select>
-                  </div>
-                  <div class="status-input">
-                    <label>{{ secondYear }} - آخر موعد الجديد</label>
-                    <input type="date" v-model="pair[1].thanwyaa_secondYear_deadline">
-                  </div>
+                <div class="status-input">
+                  <label>آخر موعد</label>
+                  <input type="date" v-model="university.thanwyaa_firstYear_deadline">
                 </div>
               </div>
             </div>
@@ -139,50 +393,18 @@
             <!-- Azhar Status -->
             <div class="status-section">
               <h4>الثانوية الأزهرية</h4>
-              <div class="year-status">
-                <div class="status-inputs">
-                  <div class="status-input">
-                    <label>{{ firstYear }} - الحالة الحالية</label>
-                    <div class="current-value">{{ pair[0].azhar_firstYear_status }}</div>
-                  </div>
-                  <div class="status-input">
-                    <label>{{ firstYear }} - آخر موعد الحالي</label>
-                    <div class="current-value">{{ pair[1].azhar_firstYear_deadline }}</div>
-                  </div>
-                  <div class="status-input">
-                    <label>{{ firstYear }} - الحالة الجديدة</label>
-                    <select v-model="pair[1].azhar_firstYear_status">
-                      <option value="متاح">متاح</option>
-                      <option value="انتهي">انتهي</option>
-                      <option value="لم يبدأ">لم يبدأ</option>
-                    </select>
-                  </div>
-                  <div class="status-input">
-                    <label>{{ firstYear }} - آخر موعد الجديد</label>
-                    <input type="date" v-model="pair[1].azhar_firstYear_deadline">
-                  </div>
+              <div class="status-inputs">
+                <div class="status-input">
+                  <label>الحالة</label>
+                  <select v-model="university.azhar_firstYear_status">
+                    <option value="متاح">متاح</option>
+                    <option value="انتهي">انتهي</option>
+                    <option value="لم يبدأ">لم يبدأ</option>
+                  </select>
                 </div>
-                <div class="status-inputs">
-                  <div class="status-input">
-                    <label>{{ secondYear }} - الحالة الحالية</label>
-                    <div class="current-value">{{ pair[0].azhar_secondYear_status }}</div>
-                  </div>
-                  <div class="status-input">
-                    <label>{{ secondYear }} - آخر موعد الحالي</label>
-                    <div class="current-value">{{ pair[1].azhar_secondYear_deadline }}</div>
-                  </div>
-                  <div class="status-input">
-                    <label>{{ secondYear }} - الحالة الجديدة</label>
-                    <select v-model="pair[1].azhar_secondYear_status">
-                      <option value="متاح">متاح</option>
-                      <option value="انتهي">انتهي</option>
-                      <option value="لم يبدأ">لم يبدأ</option>
-                    </select>
-                  </div>
-                  <div class="status-input">
-                    <label>{{ secondYear }} - آخر موعد الجديد</label>
-                    <input type="date" v-model="pair[1].azhar_secondYear_deadline">
-                  </div>
+                <div class="status-input">
+                  <label>آخر موعد</label>
+                  <input type="date" v-model="university.azhar_firstYear_deadline">
                 </div>
               </div>
             </div>
@@ -190,50 +412,18 @@
             <!-- Arab/English Status -->
             <div class="status-section">
               <h4>الشهادات العربية والإجنبية</h4>
-              <div class="year-status">
-                <div class="status-inputs">
-                  <div class="status-input">
-                    <label>{{ firstYear }} - الحالة الحالية</label>
-                    <div class="current-value">{{ pair[0].Arabenglish_firstYear_status }}</div>
-                  </div>
-                  <div class="status-input">
-                    <label>{{ firstYear }} - آخر موعد الحالي</label>
-                    <div class="current-value">{{ pair[1].Arabenglish_firstYear_deadline }}</div>
-                  </div>
-                  <div class="status-input">
-                    <label>{{ firstYear }} - الحالة الجديدة</label>
-                    <select v-model="pair[1].Arabenglish_firstYear_status">
-                      <option value="متاح">متاح</option>
-                      <option value="انتهي">انتهي</option>
-                      <option value="لم يبدأ">لم يبدأ</option>
-                    </select>
-                  </div>
-                  <div class="status-input">
-                    <label>{{ firstYear }} - آخر موعد الجديد</label>
-                    <input type="date" v-model="pair[1].Arabenglish_firstYear_deadline">
-                  </div>
+              <div class="status-inputs">
+                <div class="status-input">
+                  <label>الحالة</label>
+                  <select v-model="university.Arabenglish_firstYear_status">
+                    <option value="متاح">متاح</option>
+                    <option value="انتهي">انتهي</option>
+                    <option value="لم يبدأ">لم يبدأ</option>
+                  </select>
                 </div>
-                <div class="status-inputs">
-                  <div class="status-input">
-                    <label>{{ secondYear }} - الحالة الحالية</label>
-                    <div class="current-value">{{ pair[0].Arabenglish_secondYear_status }}</div>
-                  </div>
-                  <div class="status-input">
-                    <label>{{ secondYear }} - آخر موعد الحالي</label>
-                    <div class="current-value">{{ pair[1].Arabenglish_secondYear_deadline }}</div>
-                  </div>
-                  <div class="status-input">
-                    <label>{{ secondYear }} - الحالة الجديدة</label>
-                    <select v-model="pair[1].Arabenglish_secondYear_status">
-                      <option value="متاح">متاح</option>
-                      <option value="انتهي">انتهي</option>
-                      <option value="لم يبدأ">لم يبدأ</option>
-                    </select>
-                  </div>
-                  <div class="status-input">
-                    <label>{{ secondYear }} - آخر موعد الجديد</label>
-                    <input type="date" v-model="pair[1].Arabenglish_secondYear_deadline">
-                  </div>
+                <div class="status-input">
+                  <label>آخر موعد</label>
+                  <input type="date" v-model="university.Arabenglish_firstYear_deadline">
                 </div>
               </div>
             </div>
@@ -243,33 +433,75 @@
               <h4>الوافدين</h4>
               <div class="status-inputs">
                 <div class="status-input">
-                  <label>الحالة الحالية</label>
-                  <div class="current-value">{{ pair[0].wafdeen_status }}</div>
-                </div>
-                <div class="status-input">
-                  <label>آخر موعد الحالي</label>
-                  <div class="current-value">{{ pair[1].wafdeen_deadline }}</div>
-                </div>
-                <div class="status-input">
-                  <label>الحالة الجديدة</label>
-                  <select v-model="pair[1].wafdeen_status">
+                  <label>الحالة</label>
+                  <select v-model="university.wafdeen_status">
                     <option value="متاح">متاح</option>
                     <option value="انتهي">انتهي</option>
                     <option value="لم يبدأ">لم يبدأ</option>
                   </select>
                 </div>
                 <div class="status-input">
-                  <label>آخر موعد الجديد</label>
-                  <input type="date" v-model="pair[1].wafdeen_deadline">
+                  <label>آخر موعد</label>
+                  <input type="date" v-model="university.wafdeen_deadline">
                 </div>
               </div>
             </div>
           </div>
 
           <div class="card-actions">
-            <button class="save-btn" @click="saveUniversity(pair[1])">
+            <button class="save-btn" @click="saveUniversity(university)">
               <i class="fas fa-save"></i>
               حفظ التغييرات
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Status Section -->
+    <div v-if="activeTab === 'delete'" class="section-container">
+      <div class="section-header">
+        <h2>حذف حالة جامعة حالية</h2>
+        <div class="search-bar">
+          <input 
+            type="text" 
+            v-model="searchQuery" 
+            placeholder="ابحث عن جامعة..."
+            @input="filterUniversities"
+          >
+        </div>
+      </div>
+
+      <div v-if="loading" class="loading-state">
+        <div class="spinner"></div>
+        <p>جاري التحميل...</p>
+      </div>
+
+      <div v-else-if="filteredUniversities.length === 0" class="no-results">
+        <i class="fas fa-university"></i>
+        <p>لا توجد جامعات</p>
+      </div>
+
+      <div v-else class="universities-grid">
+        <div v-for="university in filteredUniversities" :key="university.id" class="university-card">
+          <div class="university-header">
+            <h3>{{ university.university_Arabic_Name }}</h3>
+          </div>
+
+          <div class="status-sections">
+            <div class="status-section">
+              <h4>معلومات الحالة</h4>
+              <div class="status-info">
+                <p>نوع الجامعة: {{ getUniversityTypeLabel(university.type) }}</p>
+                <p>آخر تحديث: {{ university.updatedAt }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <button class="delete-btn" @click="confirmDelete(university)">
+              <i class="fas fa-trash"></i>
+              حذف الحالة
             </button>
           </div>
         </div>
@@ -285,32 +517,34 @@ export default {
   name: 'AdmissionStatusAdmin',
   data() {
     return {
-      activeTab: 'national',
-      firstYear: '',
-      secondYear: '',
+      activeTab: 'manage',
+      selectedType: 'national',
       universities: [],
       loading: true,
       searchQuery: '',
       filteredUniversities: [],
       openSections: new Set(),
-      tabs: [
-        { id: 'national', name: 'الجامعات الأهلية' },
-        { id: 'private', name: 'الجامعات الخاصة' },
-        { id: 'special', name: 'الجامعات ذات طبيعة خاصة' },
-        { id: 'international', name: 'الجامعات الأجنبية' }
-      ]
-    };
-  },
-  computed: {
-    pairedUniversities() {
-      const pairs = [];
-      for (let i = 0; i < this.filteredUniversities.length; i += 2) {
-        if (i + 1 < this.filteredUniversities.length) {
-          pairs.push([this.filteredUniversities[i], this.filteredUniversities[i + 1]]);
-        }
+      universityTypes: [
+        { value: 'national', label: 'أهلية' },
+        { value: 'private', label: 'خاصة' },
+        { value: 'special', label: 'ذات طبيعة خاصة' },
+        { value: 'international', label: 'دولية' }
+      ],
+      addFormData: {
+        type: 'national',
+        university_Arabic_Name: '',
+        transfer_status: 'متاح',
+        transfer_deadline: '',
+        thanwyaa_firstYear_status: 'متاح',
+        thanwyaa_firstYear_deadline: '',
+        azhar_firstYear_status: 'متاح',
+        azhar_firstYear_deadline: '',
+        Arabenglish_firstYear_status: 'متاح',
+        Arabenglish_firstYear_deadline: '',
+        wafdeen_status: 'متاح',
+        wafdeen_deadline: ''
       }
-      return pairs;
-    }
+    };
   },
   methods: {
     goBack() {
@@ -326,31 +560,13 @@ export default {
       };
 
       try {
-        const response = await axios.get(endpoints[this.activeTab]);
+        const response = await axios.get(endpoints[this.selectedType]);
         this.universities = response.data;
         this.filteredUniversities = this.universities;
-        await this.fetchYears();
       } catch (error) {
         console.error('Error fetching data:', error);
       } finally {
         this.loading = false;
-      }
-    },
-
-    async fetchYears() {
-      const endpoints = {
-        national: 'https://nuft-website-backend.vercel.app/national/links',
-        private: 'https://nuft-website-backend.vercel.app/private/links',
-        special: 'https://nuft-website-backend.vercel.app/special/links',
-        international: 'https://nuft-website-backend.vercel.app/international/links'
-      };
-
-      try {
-        const response = await axios.get(endpoints[this.activeTab]);
-        this.firstYear = response.data[0].first_year;
-        this.secondYear = response.data[0].second_year;
-      } catch (error) {
-        console.error('Error fetching years:', error);
       }
     },
 
@@ -374,7 +590,7 @@ export default {
       };
 
       try {
-        await axios.put(`${endpoints[this.activeTab]}/${university.id}`, university);
+        await axios.put(`${endpoints[this.selectedType]}/${university.id}`, university);
         alert('تم حفظ التغييرات بنجاح');
       } catch (error) {
         console.error('Error saving university:', error);
@@ -382,20 +598,83 @@ export default {
       }
     },
 
-    toggleSection(index) {
-      if (this.openSections.has(index)) {
-        this.openSections.delete(index);
-      } else {
-        this.openSections.add(index);
+    async addUniversityStatus() {
+      const endpoints = {
+        national: 'https://nuft-website-backend.vercel.app/national/admission',
+        private: 'https://nuft-website-backend.vercel.app/private/admission',
+        special: 'https://nuft-website-backend.vercel.app/special/admission',
+        international: 'https://nuft-website-backend.vercel.app/international/admission'
+      };
+
+      try {
+        await axios.post(endpoints[this.addFormData.type], this.addFormData);
+        alert('تم إضافة حالة الجامعة بنجاح');
+        this.resetAddForm();
+        this.fetchData();
+      } catch (error) {
+        console.error('Error adding university status:', error);
+        alert('حدث خطأ أثناء إضافة حالة الجامعة');
       }
     },
 
-    isSectionOpen(index) {
-      return this.openSections.has(index);
+    async deleteUniversity(university) {
+      const endpoints = {
+        national: 'https://nuft-website-backend.vercel.app/national/admission/:id',
+        private: 'https://nuft-website-backend.vercel.app/private/admission/:id',
+        special: 'https://nuft-website-backend.vercel.app/special/admission/:id',
+        international: 'https://nuft-website-backend.vercel.app/international/admission/:id'
+      };
+
+      try {
+        await axios.delete(`${endpoints[this.selectedType]}/${university.id}`);
+        alert('تم حذف حالة الجامعة بنجاح');
+        this.fetchData();
+      } catch (error) {
+        console.error('Error deleting university status:', error);
+        alert('حدث خطأ أثناء حذف حالة الجامعة');
+      }
+    },
+
+    resetAddForm() {
+      this.addFormData = {
+        type: 'national',
+        university_Arabic_Name: '',
+        transfer_status: 'متاح',
+        transfer_deadline: '',
+        thanwyaa_firstYear_status: 'متاح',
+        thanwyaa_firstYear_deadline: '',
+        azhar_firstYear_status: 'متاح',
+        azhar_firstYear_deadline: '',
+        Arabenglish_firstYear_status: 'متاح',
+        Arabenglish_firstYear_deadline: '',
+        wafdeen_status: 'متاح',
+        wafdeen_deadline: ''
+      };
+    },
+
+    switchToEdit() {
+      this.activeTab = 'edit';
+      this.fetchData();
+    },
+
+    switchToDelete() {
+      this.activeTab = 'delete';
+      this.fetchData();
+    },
+
+    getUniversityTypeLabel(type) {
+      const universityType = this.universityTypes.find(t => t.value === type);
+      return universityType ? universityType.label : 'غير معروف';
+    },
+
+    confirmDelete(university) {
+      if (confirm(`هل أنت متأكد من حذف حالة الجامعة ${university.university_Arabic_Name}؟`)) {
+        this.deleteUniversity(university);
+      }
     }
   },
   watch: {
-    activeTab() {
+    selectedType() {
       this.fetchData();
     }
   },
@@ -435,6 +714,7 @@ export default {
   justify-content: center;
   gap: 1rem;
   margin-bottom: 2rem;
+  flex-wrap: wrap;
 }
 
 .nav-tab {
@@ -451,11 +731,14 @@ export default {
   background: white;
   color: #495057;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  min-width: 200px;
+  justify-content: center;
 }
 
 .nav-tab:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #f8f9fa;
 }
 
 .nav-tab.active {
@@ -463,7 +746,41 @@ export default {
   color: white;
 }
 
-.universities-list-section {
+.type-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.type-tab {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+  color: #495057;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  min-width: 150px;
+  text-align: center;
+}
+
+.type-tab:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #f8f9fa;
+}
+
+.type-tab.active {
+  background: linear-gradient(135deg, #001d3d, #4158d0);
+  color: white;
+}
+
+.section-container {
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -489,9 +806,87 @@ export default {
   font-size: 1rem;
 }
 
+.form-section {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-category {
+  margin-bottom: 2rem;
+}
+
+.category-title {
+  color: #001d3d;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: #495057;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.5rem;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.submit-btn {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #001d3d, #4158d0);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .universities-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
 
@@ -517,30 +912,10 @@ export default {
   margin: 0;
 }
 
-.toggle-btn {
-  padding: 0.5rem 1rem;
-  background: #e3f2fd;
-  color: #1976d2;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-}
-
-.toggle-btn:hover {
-  background: #bbdefb;
-}
-
-.toggle-btn i {
-  transition: transform 0.3s ease;
-}
-
 .status-sections {
-  transition: all 0.3s ease;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .status-section {
@@ -553,6 +928,18 @@ export default {
   color: #001d3d;
   margin-bottom: 1rem;
   font-size: 1.1rem;
+}
+
+.status-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.status-info p {
+  color: #495057;
+  font-size: 0.9rem;
+  margin: 0;
 }
 
 .status-inputs {
@@ -580,22 +967,16 @@ export default {
   font-size: 0.9rem;
 }
 
-.year-status {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
 .card-actions {
   margin-top: 1.5rem;
   display: flex;
   justify-content: flex-end;
+  gap: 1rem;
 }
 
-.save-btn {
+.save-btn,
+.delete-btn {
   padding: 0.75rem 1.5rem;
-  background: linear-gradient(135deg, #001d3d, #4158d0);
-  color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -603,9 +984,21 @@ export default {
   align-items: center;
   gap: 0.5rem;
   transition: all 0.3s ease;
+  font-size: 0.9rem;
 }
 
-.save-btn:hover {
+.save-btn {
+  background: linear-gradient(135deg, #001d3d, #4158d0);
+  color: white;
+}
+
+.delete-btn {
+  background: #dc3545;
+  color: white;
+}
+
+.save-btn:hover,
+.delete-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -640,16 +1033,6 @@ export default {
 .no-results i {
   font-size: 3rem;
   margin-bottom: 1rem;
-}
-
-.current-value {
-  padding: 0.5rem;
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  color: #495057;
-  margin-bottom: 0.5rem;
 }
 
 .back-button {
@@ -689,15 +1072,38 @@ export default {
   }
 
   .nav-tabs {
-    flex-wrap: wrap;
+    flex-direction: column;
+    width: 100%;
   }
 
   .nav-tab {
     width: 100%;
   }
 
+  .type-tabs {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .type-tab {
+    width: 100%;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
   .status-inputs {
     grid-template-columns: 1fr;
+  }
+
+  .card-actions {
+    flex-direction: column;
+  }
+
+  .save-btn,
+  .delete-btn {
+    width: 100%;
   }
 }
 </style> 

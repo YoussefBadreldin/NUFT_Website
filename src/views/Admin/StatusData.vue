@@ -120,11 +120,13 @@
                     <i class="fas fa-exchange-alt"></i>
                     حالة التحويل
                   </label>
-                  <select v-model="addFormData.transfer_status" id="transfer_status" required>
-                    <option value="متاح">متاح</option>
-                    <option value="انتهي">انتهي</option>
-                    <option value="لم يبدأ">لم يبدأ</option>
-                  </select>
+                  <input 
+                    type="text" 
+                    v-model="addFormData.transfer_status" 
+                    id="transfer_status" 
+                    required
+                    placeholder="أدخل حالة التحويل"
+                  >
                 </div>
 
                 <div class="form-group">
@@ -147,11 +149,13 @@
                     <i class="fas fa-book"></i>
                     حالة الثانوية العامة (السنة الأولي)
                   </label>
-                  <select v-model="addFormData.thanwyaa_firstYear_status" id="thanwyaa_first_year_status" required>
-                    <option value="متاح">متاح</option>
-                    <option value="انتهي">انتهي</option>
-                    <option value="لم يبدأ">لم يبدأ</option>
-                  </select>
+                  <input 
+                    type="text" 
+                    v-model="addFormData.thanwyaa_firstYear_status" 
+                    id="thanwyaa_first_year_status" 
+                    required
+                    placeholder="أدخل حالة الثانوية العامة (السنة الأولي)"
+                  >
                 </div>
 
                 <div class="form-group">
@@ -174,11 +178,13 @@
                     <i class="fas fa-book"></i>
                     حالة الثانوية العامة (السنة الثاني)
                   </label>
-                  <select v-model="addFormData.thanwyaa_secondYear_status" id="thanwyaa_second_year_status" required>
-                    <option value="متاح">متاح</option>
-                    <option value="انتهي">انتهي</option>
-                    <option value="لم يبدأ">لم يبدأ</option>
-                  </select>
+                  <input 
+                    type="text" 
+                    v-model="addFormData.thanwyaa_secondYear_status" 
+                    id="thanwyaa_second_year_status" 
+                    required
+                    placeholder="أدخل حالة الثانوية العامة (السنة الثاني)"
+                  >
                 </div>
 
                 <div class="form-group">
@@ -201,11 +207,13 @@
                     <i class="fas fa-mosque"></i>
                     حالة الثانوية الأزهرية (السنة الأولي)
                   </label>
-                  <select v-model="addFormData.azhar_firstYear_status" id="azhar_first_year_status" required>
-                    <option value="متاح">متاح</option>
-                    <option value="انتهي">انتهي</option>
-                    <option value="لم يبدأ">لم يبدأ</option>
-                  </select>
+                  <input 
+                    type="text" 
+                    v-model="addFormData.azhar_firstYear_status" 
+                    id="azhar_first_year_status" 
+                    required
+                    placeholder="أدخل حالة الثانوية الأزهرية (السنة الأولي)"
+                  >
                 </div>
 
                 <div class="form-group">
@@ -228,11 +236,13 @@
                     <i class="fas fa-mosque"></i>
                     حالة الثانوية الأزهرية (السنة الثانية)
                   </label>
-                  <select v-model="addFormData.azhar_secondYear_status" id="azhar_second_year_status" required>
-                    <option value="متاح">متاح</option>
-                    <option value="انتهي">انتهي</option>
-                    <option value="لم يبدأ">لم يبدأ</option>
-                  </select>
+                  <input 
+                    type="text" 
+                    v-model="addFormData.azhar_secondYear_status" 
+                    id="azhar_second_year_status" 
+                    required
+                    placeholder="أدخل حالة الثانوية الأزهرية (السنة الثانية)"
+                  >
                 </div>
 
                 <div class="form-group">
@@ -255,11 +265,13 @@
                     <i class="fas fa-language"></i>
                     حالة الشهادات العربية والإجنبية (السنة الأولي)
                   </label>
-                  <select v-model="addFormData.Arabenglish_firstYear_status" id="arab_english_first_year_status" required>
-                    <option value="متاح">متاح</option>
-                    <option value="انتهي">انتهي</option>
-                    <option value="لم يبدأ">لم يبدأ</option>
-                  </select>
+                  <input 
+                    type="text" 
+                    v-model="addFormData.Arabenglish_firstYear_status" 
+                    id="arab_english_first_year_status" 
+                    required
+                    placeholder="أدخل حالة الشهادات العربية والإجنبية (السنة الأولي)"
+                  >
                 </div>
 
                 <div class="form-group">
@@ -282,11 +294,13 @@
                     <i class="fas fa-language"></i>
                     حالة الشهادات العربية والإجنبية (السنة الثانية)
                   </label>
-                  <select v-model="addFormData.Arabenglish_secondYear_status" id="arab_english_second_year_status" required>
-                    <option value="متاح">متاح</option>
-                    <option value="انتهي">انتهي</option>
-                    <option value="لم يبدأ">لم يبدأ</option>
-                  </select>
+                  <input 
+                    type="text" 
+                    v-model="addFormData.Arabenglish_secondYear_status" 
+                    id="arab_english_second_year_status" 
+                    required
+                    placeholder="أدخل حالة الشهادات العربية والإجنبية (السنة الثانية)"
+                  >
                 </div>
 
                 <div class="form-group">
@@ -309,11 +323,13 @@
                     <i class="fas fa-user-plus"></i>
                     حالة الوافدين
                   </label>
-                  <select v-model="addFormData.wafdeen_status" id="wafdeen_status" required>
-                    <option value="متاح">متاح</option>
-                    <option value="انتهي">انتهي</option>
-                    <option value="لم يبدأ">لم يبدأ</option>
-                  </select>
+                  <input 
+                    type="text" 
+                    v-model="addFormData.wafdeen_status" 
+                    id="wafdeen_status" 
+                    required
+                    placeholder="أدخل حالة الوافدين"
+                  >
                 </div>
 
                 <div class="form-group">
@@ -576,11 +592,13 @@
                     <i class="fas fa-exchange-alt"></i>
                     حالة التحويل
                   </label>
-                  <select v-model="selectedUniversity.transfer_status" id="edit_transfer_status" required>
-                    <option value="متاح">متاح</option>
-                    <option value="انتهي">انتهي</option>
-                    <option value="لم يبدأ">لم يبدأ</option>
-                  </select>
+                  <input 
+                    type="text" 
+                    v-model="selectedUniversity.transfer_status" 
+                    id="edit_transfer_status" 
+                    required
+                    placeholder="أدخل حالة التحويل"
+                  >
                 </div>
 
                 <div class="form-group">
@@ -603,11 +621,13 @@
                     <i class="fas fa-book"></i>
                     حالة الثانوية العامة (السنة الأولي)
                   </label>
-                  <select v-model="selectedUniversity.thanwyaa_firstYear_status" id="edit_thanwyaa_first_year_status" required>
-                    <option value="متاح">متاح</option>
-                    <option value="انتهي">انتهي</option>
-                    <option value="لم يبدأ">لم يبدأ</option>
-                  </select>
+                  <input 
+                    type="text" 
+                    v-model="selectedUniversity.thanwyaa_firstYear_status" 
+                    id="edit_thanwyaa_first_year_status" 
+                    required
+                    placeholder="أدخل حالة الثانوية العامة (السنة الأولي)"
+                  >
                 </div>
 
                 <div class="form-group">
@@ -630,11 +650,13 @@
                     <i class="fas fa-book"></i>
                     حالة الثانوية العامة (السنة الثاني)
                   </label>
-                  <select v-model="selectedUniversity.thanwyaa_secondYear_status" id="edit_thanwyaa_second_year_status" required>
-                    <option value="متاح">متاح</option>
-                    <option value="انتهي">انتهي</option>
-                    <option value="لم يبدأ">لم يبدأ</option>
-                  </select>
+                  <input 
+                    type="text" 
+                    v-model="selectedUniversity.thanwyaa_secondYear_status" 
+                    id="edit_thanwyaa_second_year_status" 
+                    required
+                    placeholder="أدخل حالة الثانوية العامة (السنة الثاني)"
+                  >
                 </div>
 
                 <div class="form-group">
@@ -657,11 +679,13 @@
                     <i class="fas fa-mosque"></i>
                     حالة الثانوية الأزهرية (السنة الأولي)
                   </label>
-                  <select v-model="selectedUniversity.azhar_firstYear_status" id="edit_azhar_first_year_status" required>
-                    <option value="متاح">متاح</option>
-                    <option value="انتهي">انتهي</option>
-                    <option value="لم يبدأ">لم يبدأ</option>
-                  </select>
+                  <input 
+                    type="text" 
+                    v-model="selectedUniversity.azhar_firstYear_status" 
+                    id="edit_azhar_first_year_status" 
+                    required
+                    placeholder="أدخل حالة الثانوية الأزهرية (السنة الأولي)"
+                  >
                 </div>
 
                 <div class="form-group">
@@ -684,11 +708,13 @@
                     <i class="fas fa-mosque"></i>
                     حالة الثانوية الأزهرية (السنة الثانية)
                   </label>
-                  <select v-model="selectedUniversity.azhar_secondYear_status" id="edit_azhar_second_year_status" required>
-                    <option value="متاح">متاح</option>
-                    <option value="انتهي">انتهي</option>
-                    <option value="لم يبدأ">لم يبدأ</option>
-                  </select>
+                  <input 
+                    type="text" 
+                    v-model="selectedUniversity.azhar_secondYear_status" 
+                    id="edit_azhar_second_year_status" 
+                    required
+                    placeholder="أدخل حالة الثانوية الأزهرية (السنة الثانية)"
+                  >
                 </div>
 
                 <div class="form-group">
@@ -711,11 +737,13 @@
                     <i class="fas fa-language"></i>
                     حالة الشهادات العربية والإجنبية (السنة الأولي)
                   </label>
-                  <select v-model="selectedUniversity.Arabenglish_firstYear_status" id="edit_arab_english_first_year_status" required>
-                    <option value="متاح">متاح</option>
-                    <option value="انتهي">انتهي</option>
-                    <option value="لم يبدأ">لم يبدأ</option>
-                  </select>
+                  <input 
+                    type="text" 
+                    v-model="selectedUniversity.Arabenglish_firstYear_status" 
+                    id="edit_arab_english_first_year_status" 
+                    required
+                    placeholder="أدخل حالة الشهادات العربية والإجنبية (السنة الأولي)"
+                  >
                 </div>
 
                 <div class="form-group">
@@ -738,11 +766,13 @@
                     <i class="fas fa-language"></i>
                     حالة الشهادات العربية والإجنبية (السنة الثانية)
                   </label>
-                  <select v-model="selectedUniversity.Arabenglish_secondYear_status" id="edit_arab_english_second_year_status" required>
-                    <option value="متاح">متاح</option>
-                    <option value="انتهي">انتهي</option>
-                    <option value="لم يبدأ">لم يبدأ</option>
-                  </select>
+                  <input 
+                    type="text" 
+                    v-model="selectedUniversity.Arabenglish_secondYear_status" 
+                    id="edit_arab_english_second_year_status" 
+                    required
+                    placeholder="أدخل حالة الشهادات العربية والإجنبية (السنة الثانية)"
+                  >
                 </div>
 
                 <div class="form-group">
@@ -765,11 +795,13 @@
                     <i class="fas fa-user-plus"></i>
                     حالة الوافدين
                   </label>
-                  <select v-model="selectedUniversity.wafdeen_status" id="edit_wafdeen_status" required>
-                    <option value="متاح">متاح</option>
-                    <option value="انتهي">انتهي</option>
-                    <option value="لم يبدأ">لم يبدأ</option>
-                  </select>
+                  <input 
+                    type="text" 
+                    v-model="selectedUniversity.wafdeen_status" 
+                    id="edit_wafdeen_status" 
+                    required
+                    placeholder="أدخل حالة الوافدين"
+                  >
                 </div>
 
                 <div class="form-group">
@@ -891,14 +923,14 @@ export default {
       addFormData: {
         university: '',
         university_Arabic_Name: '',
-        transfer_status: 'متاح',
-        thanwyaa_firstYear_status: 'متاح',
-        thanwyaa_secondYear_status: 'متاح',
-        azhar_firstYear_status: 'متاح',
-        azhar_secondYear_status: 'متاح',
-        Arabenglish_firstYear_status: 'متاح',
-        Arabenglish_secondYear_status: 'متاح',
-        wafdeen_status: 'متاح',
+        transfer_status: '',
+        thanwyaa_firstYear_status: '',
+        thanwyaa_secondYear_status: '',
+        azhar_firstYear_status: '',
+        azhar_secondYear_status: '',
+        Arabenglish_firstYear_status: '',
+        Arabenglish_secondYear_status: '',
+        wafdeen_status: '',
         guide_Url: '',
         transfer_deadline: '',
         thanwyaa_firstYear_deadline: '',
@@ -1132,14 +1164,14 @@ export default {
       this.addFormData = {
         university: '',
         university_Arabic_Name: '',
-        transfer_status: 'متاح',
-        thanwyaa_firstYear_status: 'متاح',
-        thanwyaa_secondYear_status: 'متاح',
-        azhar_firstYear_status: 'متاح',
-        azhar_secondYear_status: 'متاح',
-        Arabenglish_firstYear_status: 'متاح',
-        Arabenglish_secondYear_status: 'متاح',
-        wafdeen_status: 'متاح',
+        transfer_status: '',
+        thanwyaa_firstYear_status: '',
+        thanwyaa_secondYear_status: '',
+        azhar_firstYear_status: '',
+        azhar_secondYear_status: '',
+        Arabenglish_firstYear_status: '',
+        Arabenglish_secondYear_status: '',
+        wafdeen_status: '',
         guide_Url: '',
         transfer_deadline: '',
         thanwyaa_firstYear_deadline: '',

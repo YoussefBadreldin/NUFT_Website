@@ -344,12 +344,12 @@
                       >
                     </div>
                     <div class="form-group">
-                      <label :for="'guide_Url_' + index">رابط الدليل</label>
+                      <label :for="'guide_Url_' + index"> ابط الجامعة في الدليل </label>
                       <input 
                         type="url" 
                         v-model="faculty.guide_Url" 
                         :id="'guide_Url_' + index"
-                        placeholder="أدخل رابط الدليل"
+                        placeholder="أدخل  ابط الجامعة في الدليل "
                       >
                     </div>
                     <div class="form-group">
@@ -1272,12 +1272,12 @@
                     >
                   </div>
                   <div class="form-group">
-                    <label :for="'guide_Url_' + index">رابط الدليل</label>
+                    <label :for="'guide_Url_' + index"> ابط الجامعة في الدليل </label>
                     <input 
                       type="url" 
                       v-model="faculty.guide_Url" 
                       :id="'guide_Url_' + index"
-                      placeholder="أدخل رابط الدليل"
+                      placeholder="أدخل  ابط الجامعة في الدليل "
                     >
                   </div>
                   <div class="form-group">
@@ -1503,12 +1503,12 @@
                     >
                   </div>
                   <div class="form-group">
-                    <label :for="'guide_Url_' + index">رابط الدليل</label>
+                    <label :for="'guide_Url_' + index"> ابط الجامعة في الدليل </label>
                     <input 
                       type="url" 
                       v-model="faculty.guide_Url" 
                       :id="'guide_Url_' + index"
-                      placeholder="أدخل رابط الدليل"
+                      placeholder="أدخل  ابط الجامعة في الدليل "
                     >
                   </div>
                   <div class="form-group">

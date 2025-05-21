@@ -494,12 +494,7 @@
         <p>جاري التحميل...</p>
       </div>
 
-      <div v-else-if="filteredUniversities.length === 0" class="no-results">
-        <i class="fas fa-university"></i>
-        <p>لا توجد جامعات</p>
-      </div>
-
-      <div v-else class="universities-grid">
+      <div v-else-if="!selectedUniversity" class="universities-grid">
         <div v-for="university in filteredUniversities" :key="university.id" class="university-card">
           <div class="university-header">
             <div class="university-info">
@@ -507,214 +502,299 @@
                 <div class="university-logo" v-if="universityLinks[university.university]?.university_Logo">
                   <img :src="universityLinks[university.university].university_Logo" :alt="university.university_Arabic_Name">
                 </div>
-                <h3 @click="toggleUniversity(university.id)" class="university-name-toggle">
+                <h3 @click="selectUniversityForEdit(university)" class="university-name-toggle">
                   {{ university.university_Arabic_Name }}
                 </h3>
               </div>
-              <div class="header-actions">
-                <button class="edit-btn" @click="editUniversity(university)">
-                  <i class="fas fa-edit"></i>
-                  تعديل
-                </button>
-                <button class="delete-btn" @click="confirmDelete(university)">
-                  <i class="fas fa-trash"></i>
-                  حذف
-                </button>
-              </div>
-            </div>
-            <div class="dropdown-icon" :class="{ 'expanded': expandedUniversityId === university.id }">
-              <i class="fas fa-chevron-down"></i>
             </div>
           </div>
+        </div>
+      </div>
 
-          <div class="university-content" v-show="expandedUniversityId === university.id">
-            <div class="status-sections">
-              <!-- Basic Information -->
-              <div class="status-section">
-                <h4>معلومات الجامعة</h4>
-              <div class="status-inputs">
-                <div class="status-input">
-                    <label>الرمز المختصر</label>
-                    <input type="text" v-model="university.university">
+      <div v-else class="form-section">
+        <div class="form-card">
+          <div class="form-header">
+            <h3>تعديل حالة {{ selectedUniversity.university_Arabic_Name }}</h3>
+            <button class="back-btn" @click="selectedUniversity = null">
+              <i class="fas fa-arrow-right"></i>
+              رجوع
+            </button>
+          </div>
+          <form @submit.prevent="saveUniversity(selectedUniversity)">
+            <div class="form-category">
+              <h3 class="category-title">
+                <i class="fas fa-university"></i>
+                بيانات حالة الجامعة
+              </h3>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="edit_university_code">
+                    <i class="fas fa-hashtag"></i>
+                    الرمز المختصر للجامعة
+                  </label>
+                  <input 
+                    type="text" 
+                    v-model="selectedUniversity.university" 
+                    id="edit_university_code" 
+                    required
+                    placeholder="أدخل الرمز المختصر للجامعة"
+                  >
                 </div>
-                <div class="status-input">
-                    <label>اسم الجامعة</label>
-                    <input type="text" v-model="university.university_Arabic_Name">
-                </div>
-                </div>
-              </div>
 
-              <!-- Transfer Section -->
-              <div class="status-section">
-                <h4>التحويل</h4>
-                <div class="status-inputs">
-                <div class="status-input">
-                    <label>الحالة</label>
-                    <select v-model="university.transfer_status">
+                <div class="form-group">
+                  <label for="edit_university_name">
+                    <i class="fas fa-graduation-cap"></i>
+                    اسم الجامعة
+                  </label>
+                  <input 
+                    type="text" 
+                    v-model="selectedUniversity.university_Arabic_Name" 
+                    id="edit_university_name" 
+                    required
+                    placeholder="أدخل اسم الجامعة"
+                  >
+                </div>
+
+                <!-- Guide URL -->
+                <div class="form-group">
+                  <label for="edit_guide_url">
+                    <i class="fas fa-link"></i>
+                    رابط الجامعة في الدليل
+                  </label>
+                  <input 
+                    type="url" 
+                    v-model="selectedUniversity.guide_Url" 
+                    id="edit_guide_url" 
+                    required
+                    placeholder="أدخل رابط الجامعة في الدليل"
+                  >
+                </div>
+
+                <!-- Transfer Section -->
+                <div class="form-group">
+                  <label for="edit_transfer_status">
+                    <i class="fas fa-exchange-alt"></i>
+                    حالة التحويل
+                  </label>
+                  <select v-model="selectedUniversity.transfer_status" id="edit_transfer_status" required>
                     <option value="متاح">متاح</option>
                     <option value="انتهي">انتهي</option>
                     <option value="لم يبدأ">لم يبدأ</option>
                   </select>
                 </div>
-                <div class="status-input">
-                    <label>آخر موعد</label>
-                    <input type="text" v-model="university.transfer_deadline" placeholder="أدخل آخر موعد للتحويل">
-                </div>
-              </div>
-            </div>
 
-              <!-- Thanawya First Year Section -->
-            <div class="status-section">
-                <h4>الثانوية العامة (السنة الأولي)</h4>
-                <div class="status-inputs">
-                  <div class="status-input">
-                    <label>الحالة</label>
-                    <select v-model="university.thanwyaa_firstYear_status">
-                      <option value="متاح">متاح</option>
-                      <option value="انتهي">انتهي</option>
-                      <option value="لم يبدأ">لم يبدأ</option>
-                    </select>
-                  </div>
-                  <div class="status-input">
-                    <label>آخر موعد</label>
-                    <input type="text" v-model="university.thanwyaa_firstYear_deadline" placeholder="أدخل آخر موعد للثانوية العامة (السنة الأولي)">
-                  </div>
+                <div class="form-group">
+                  <label for="edit_transfer_deadline">
+                    <i class="fas fa-calendar"></i>
+                    آخر موعد للتحويل
+                  </label>
+                  <input 
+                    type="text" 
+                    v-model="selectedUniversity.transfer_deadline" 
+                    id="edit_transfer_deadline"
+                    required
+                    placeholder="أدخل آخر موعد للتحويل"
+                  >
                 </div>
-              </div>
 
-              <!-- Thanawya Second Year Section -->
-              <div class="status-section">
-                <h4>الثانوية العامة (السنة الثاني)</h4>
-                <div class="status-inputs">
-                  <div class="status-input">
-                    <label>الحالة</label>
-                    <select v-model="university.thanwyaa_secondYear_status">
-                      <option value="متاح">متاح</option>
-                      <option value="انتهي">انتهي</option>
-                      <option value="لم يبدأ">لم يبدأ</option>
-                    </select>
-                  </div>
-                  <div class="status-input">
-                    <label>آخر موعد</label>
-                    <input type="text" v-model="university.thanwyaa_secondYear_deadline" placeholder="أدخل آخر موعد للثانوية العامة (السنة الثاني)">
-                </div>
-              </div>
-            </div>
-
-              <!-- Azhar First Year Section -->
-            <div class="status-section">
-                <h4>الثانوية الأزهرية (السنة الأولي)</h4>
-                <div class="status-inputs">
-                  <div class="status-input">
-                    <label>الحالة</label>
-                    <select v-model="university.azhar_firstYear_status">
-                      <option value="متاح">متاح</option>
-                      <option value="انتهي">انتهي</option>
-                      <option value="لم يبدأ">لم يبدأ</option>
-                    </select>
-                  </div>
-                  <div class="status-input">
-                    <label>آخر موعد</label>
-                    <input type="text" v-model="university.azhar_firstYear_deadline" placeholder="أدخل آخر موعد للثانوية الأزهرية (السنة الأولي)">
-                  </div>
-                </div>
-              </div>
-
-              <!-- Azhar Second Year Section -->
-              <div class="status-section">
-                <h4>الثانوية الأزهرية (السنة الثانية)</h4>
-                <div class="status-inputs">
-                  <div class="status-input">
-                    <label>الحالة</label>
-                    <select v-model="university.azhar_secondYear_status">
-                      <option value="متاح">متاح</option>
-                      <option value="انتهي">انتهي</option>
-                      <option value="لم يبدأ">لم يبدأ</option>
-                    </select>
-                  </div>
-                  <div class="status-input">
-                    <label>آخر موعد</label>
-                    <input type="text" v-model="university.azhar_secondYear_deadline" placeholder="أدخل آخر موعد للثانوية الأزهرية (السنة الثانية)">
-                </div>
-              </div>
-            </div>
-
-              <!-- Arab/English First Year Section -->
-            <div class="status-section">
-                <h4>الشهادات العربية والإجنبية (السنة الأولي)</h4>
-                <div class="status-inputs">
-                  <div class="status-input">
-                    <label>الحالة</label>
-                    <select v-model="university.Arabenglish_firstYear_status">
-                      <option value="متاح">متاح</option>
-                      <option value="انتهي">انتهي</option>
-                      <option value="لم يبدأ">لم يبدأ</option>
-                    </select>
-                  </div>
-                  <div class="status-input">
-                    <label>آخر موعد</label>
-                    <input type="text" v-model="university.Arabenglish_firstYear_deadline" placeholder="أدخل آخر موعد للشهادات العربية والإجنبية (السنة الأولي)">
-                  </div>
-                </div>
-              </div>
-
-              <!-- Arab/English Second Year Section -->
-              <div class="status-section">
-                <h4>الشهادات العربية والإجنبية (السنة الثانية)</h4>
-                <div class="status-inputs">
-                  <div class="status-input">
-                    <label>الحالة</label>
-                    <select v-model="university.Arabenglish_secondYear_status">
-                      <option value="متاح">متاح</option>
-                      <option value="انتهي">انتهي</option>
-                      <option value="لم يبدأ">لم يبدأ</option>
-                    </select>
-                  </div>
-                  <div class="status-input">
-                    <label>آخر موعد</label>
-                    <input type="text" v-model="university.Arabenglish_secondYear_deadline" placeholder="أدخل آخر موعد للشهادات العربية والإجنبية (السنة الثانية)">
-                </div>
-              </div>
-            </div>
-
-              <!-- Wafdeen Section -->
-            <div class="status-section">
-              <h4>الوافدين</h4>
-              <div class="status-inputs">
-                <div class="status-input">
-                    <label>الحالة</label>
-                    <select v-model="university.wafdeen_status">
+                <!-- Thanawya First Year Section -->
+                <div class="form-group">
+                  <label for="edit_thanwyaa_first_year_status">
+                    <i class="fas fa-book"></i>
+                    حالة الثانوية العامة (السنة الأولي)
+                  </label>
+                  <select v-model="selectedUniversity.thanwyaa_firstYear_status" id="edit_thanwyaa_first_year_status" required>
                     <option value="متاح">متاح</option>
                     <option value="انتهي">انتهي</option>
                     <option value="لم يبدأ">لم يبدأ</option>
                   </select>
                 </div>
-                <div class="status-input">
-                    <label>آخر موعد</label>
-                    <input type="text" v-model="university.wafdeen_deadline" placeholder="أدخل آخر موعد للوافدين">
-                  </div>
-                </div>
-              </div>
 
-              <!-- Guide URL -->
-              <div class="status-section">
-                <h4>رابط الجامعة في الدليل</h4>
-                <div class="status-inputs">
-                  <div class="status-input">
-                    <label>رابط الدليل</label>
-                    <input type="url" v-model="university.guide_Url">
+                <div class="form-group">
+                  <label for="edit_thanwyaa_first_year_deadline">
+                    <i class="fas fa-calendar"></i>
+                    آخر موعد للثانوية العامة (السنة الأولي)
+                  </label>
+                  <input 
+                    type="text" 
+                    v-model="selectedUniversity.thanwyaa_firstYear_deadline" 
+                    id="edit_thanwyaa_first_year_deadline"
+                    required
+                    placeholder="أدخل آخر موعد للثانوية العامة (السنة الأولي)"
+                  >
+                </div>
+
+                <!-- Thanawya Second Year Section -->
+                <div class="form-group">
+                  <label for="edit_thanwyaa_second_year_status">
+                    <i class="fas fa-book"></i>
+                    حالة الثانوية العامة (السنة الثاني)
+                  </label>
+                  <select v-model="selectedUniversity.thanwyaa_secondYear_status" id="edit_thanwyaa_second_year_status" required>
+                    <option value="متاح">متاح</option>
+                    <option value="انتهي">انتهي</option>
+                    <option value="لم يبدأ">لم يبدأ</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="edit_thanwyaa_second_year_deadline">
+                    <i class="fas fa-calendar"></i>
+                    آخر موعد للثانوية العامة (السنة الثاني)
+                  </label>
+                  <input 
+                    type="text" 
+                    v-model="selectedUniversity.thanwyaa_secondYear_deadline" 
+                    id="edit_thanwyaa_second_year_deadline"
+                    required
+                    placeholder="أدخل آخر موعد للثانوية العامة (السنة الثاني)"
+                  >
+                </div>
+
+                <!-- Azhar First Year Section -->
+                <div class="form-group">
+                  <label for="edit_azhar_first_year_status">
+                    <i class="fas fa-mosque"></i>
+                    حالة الثانوية الأزهرية (السنة الأولي)
+                  </label>
+                  <select v-model="selectedUniversity.azhar_firstYear_status" id="edit_azhar_first_year_status" required>
+                    <option value="متاح">متاح</option>
+                    <option value="انتهي">انتهي</option>
+                    <option value="لم يبدأ">لم يبدأ</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="edit_azhar_first_year_deadline">
+                    <i class="fas fa-calendar"></i>
+                    آخر موعد للثانوية الأزهرية (السنة الأولي)
+                  </label>
+                  <input 
+                    type="text" 
+                    v-model="selectedUniversity.azhar_firstYear_deadline" 
+                    id="edit_azhar_first_year_deadline"
+                    required
+                    placeholder="أدخل آخر موعد للثانوية الأزهرية (السنة الأولي)"
+                  >
+                </div>
+
+                <!-- Azhar Second Year Section -->
+                <div class="form-group">
+                  <label for="edit_azhar_second_year_status">
+                    <i class="fas fa-mosque"></i>
+                    حالة الثانوية الأزهرية (السنة الثانية)
+                  </label>
+                  <select v-model="selectedUniversity.azhar_secondYear_status" id="edit_azhar_second_year_status" required>
+                    <option value="متاح">متاح</option>
+                    <option value="انتهي">انتهي</option>
+                    <option value="لم يبدأ">لم يبدأ</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="edit_azhar_second_year_deadline">
+                    <i class="fas fa-calendar"></i>
+                    آخر موعد للثانوية الأزهرية (السنة الثانية)
+                  </label>
+                  <input 
+                    type="text" 
+                    v-model="selectedUniversity.azhar_secondYear_deadline" 
+                    id="edit_azhar_second_year_deadline"
+                    required
+                    placeholder="أدخل آخر موعد للثانوية الأزهرية (السنة الثانية)"
+                  >
+                </div>
+
+                <!-- Arab/English First Year Section -->
+                <div class="form-group">
+                  <label for="edit_arab_english_first_year_status">
+                    <i class="fas fa-language"></i>
+                    حالة الشهادات العربية والإجنبية (السنة الأولي)
+                  </label>
+                  <select v-model="selectedUniversity.Arabenglish_firstYear_status" id="edit_arab_english_first_year_status" required>
+                    <option value="متاح">متاح</option>
+                    <option value="انتهي">انتهي</option>
+                    <option value="لم يبدأ">لم يبدأ</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="edit_arab_english_first_year_deadline">
+                    <i class="fas fa-calendar"></i>
+                    آخر موعد للشهادات العربية والإجنبية (السنة الأولي)
+                  </label>
+                  <input 
+                    type="text" 
+                    v-model="selectedUniversity.Arabenglish_firstYear_deadline" 
+                    id="edit_arab_english_first_year_deadline"
+                    required
+                    placeholder="أدخل آخر موعد للشهادات العربية والإجنبية (السنة الأولي)"
+                  >
+                </div>
+
+                <!-- Arab/English Second Year Section -->
+                <div class="form-group">
+                  <label for="edit_arab_english_second_year_status">
+                    <i class="fas fa-language"></i>
+                    حالة الشهادات العربية والإجنبية (السنة الثانية)
+                  </label>
+                  <select v-model="selectedUniversity.Arabenglish_secondYear_status" id="edit_arab_english_second_year_status" required>
+                    <option value="متاح">متاح</option>
+                    <option value="انتهي">انتهي</option>
+                    <option value="لم يبدأ">لم يبدأ</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="edit_arab_english_second_year_deadline">
+                    <i class="fas fa-calendar"></i>
+                    آخر موعد للشهادات العربية والإجنبية (السنة الثانية)
+                  </label>
+                  <input 
+                    type="text" 
+                    v-model="selectedUniversity.Arabenglish_secondYear_deadline" 
+                    id="edit_arab_english_second_year_deadline"
+                    required
+                    placeholder="أدخل آخر موعد للشهادات العربية والإجنبية (السنة الثانية)"
+                  >
+                </div>
+
+                <!-- Wafdeen Section -->
+                <div class="form-group">
+                  <label for="edit_wafdeen_status">
+                    <i class="fas fa-user-plus"></i>
+                    حالة الوافدين
+                  </label>
+                  <select v-model="selectedUniversity.wafdeen_status" id="edit_wafdeen_status" required>
+                    <option value="متاح">متاح</option>
+                    <option value="انتهي">انتهي</option>
+                    <option value="لم يبدأ">لم يبدأ</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="edit_wafdeen_deadline">
+                    <i class="fas fa-calendar"></i>
+                    آخر موعد للوافدين
+                  </label>
+                  <input 
+                    type="text" 
+                    v-model="selectedUniversity.wafdeen_deadline" 
+                    id="edit_wafdeen_deadline"
+                    required
+                    placeholder="أدخل آخر موعد للوافدين"
+                  >
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="card-actions">
-              <button class="save-btn" @click="saveUniversity(university)">
-              <i class="fas fa-save"></i>
-              حفظ التغييرات
+            <div class="form-actions">
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-save"></i>
+                حفظ التغييرات
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
@@ -738,12 +818,7 @@
         <p>جاري التحميل...</p>
       </div>
 
-      <div v-else-if="filteredUniversities.length === 0" class="no-results">
-        <i class="fas fa-university"></i>
-        <p>لا توجد جامعات</p>
-      </div>
-
-      <div v-else class="universities-grid">
+      <div v-else-if="!universityToDelete" class="universities-grid">
         <div v-for="university in filteredUniversities" :key="university.id" class="university-card">
           <div class="university-header">
             <div class="university-info">
@@ -751,37 +826,28 @@
                 <div class="university-logo" v-if="universityLinks[university.university]?.university_Logo">
                   <img :src="universityLinks[university.university].university_Logo" :alt="university.university_Arabic_Name">
                 </div>
-                <h3 @click="toggleUniversity(university.id)" class="university-name-toggle">
+                <h3 @click="confirmDelete(university)" class="university-name-toggle">
                   {{ university.university_Arabic_Name }}
                 </h3>
               </div>
-              <div class="header-actions">
-                <button class="edit-btn" @click="editUniversity(university)">
-                  <i class="fas fa-edit"></i>
-                  تعديل
-                </button>
-                <button class="delete-btn" @click="confirmDelete(university)">
-                  <i class="fas fa-trash"></i>
-                  حذف
-                </button>
-              </div>
             </div>
           </div>
+        </div>
+      </div>
 
-          <div class="status-sections">
-            <div class="status-section">
-              <h4>معلومات الحالة</h4>
-              <div class="status-info">
-                <p>نوع الجامعة: {{ getUniversityTypeLabel(university.type) }}</p>
-                <p>آخر تحديث: {{ university.updatedAt }}</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="card-actions">
-            <button class="delete-btn" @click="confirmDelete(university)">
+      <div v-else class="delete-confirmation">
+        <div class="confirmation-content">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h3>هل أنت متأكد من حذف حالة الجامعة {{ universityToDelete?.university_Arabic_Name }}؟</h3>
+          <p>سيتم حذف جميع بيانات حالة الجامعة بشكل نهائي</p>
+          <div class="confirmation-actions">
+            <button class="cancel-btn" @click="cancelDelete">
+              <i class="fas fa-times"></i>
+              إلغاء
+            </button>
+            <button class="confirm-delete-btn" @click="confirmDeleteAction">
               <i class="fas fa-trash"></i>
-              حذف الحالة
+              تأكيد الحذف
             </button>
           </div>
         </div>
@@ -834,7 +900,9 @@ export default {
         Arabenglish_secondYear_deadline: '',
         wafdeen_deadline: '',
         type: 'national'
-      }
+      },
+      selectedUniversity: null,
+      universityToDelete: null,
     };
   },
   methods: {
@@ -1092,8 +1160,24 @@ export default {
     },
 
     confirmDelete(university) {
-      if (confirm(`هل أنت متأكد من حذف حالة الجامعة ${university.university_Arabic_Name}؟`)) {
-        this.deleteUniversity(university);
+      this.activeTab = 'delete';
+      this.universityToDelete = { ...university };
+    },
+
+    cancelDelete() {
+      this.universityToDelete = null;
+      this.activeTab = 'manage';
+    },
+
+    async confirmDeleteAction() {
+      if (!this.universityToDelete) return;
+      
+      try {
+        await this.deleteUniversity(this.universityToDelete);
+        this.universityToDelete = null;
+        this.activeTab = 'manage';
+      } catch (error) {
+        console.error('Error deleting university:', error);
       }
     },
 
@@ -1125,7 +1209,7 @@ export default {
 
     editUniversity(university) {
       this.activeTab = 'edit';
-      this.expandedUniversityId = university.id;
+      this.selectedUniversity = { ...university };
       // Scroll to the edit section
       this.$nextTick(() => {
         const editSection = document.querySelector('.section-container');
@@ -1133,6 +1217,10 @@ export default {
           editSection.scrollIntoView({ behavior: 'smooth' });
         }
       });
+    },
+
+    selectUniversityForEdit(university) {
+      this.selectedUniversity = { ...university };
     },
   },
   watch: {
@@ -1757,9 +1845,13 @@ export default {
 .university-name-toggle {
   cursor: pointer;
   transition: color 0.2s;
+  padding: 0.5rem;
+  border-radius: 6px;
 }
+
 .university-name-toggle:hover {
   color: #4158d0;
+  background: #e3f2fd;
 }
 
 .status-ended {
@@ -1815,6 +1907,112 @@ export default {
 
 .delete-btn:hover {
     background: #ffcdd2;
+    transform: translateY(-2px);
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.form-header h3 {
+    color: #001d3d;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.back-btn {
+    padding: 0.5rem 1rem;
+    background: #e3f2fd;
+    color: #1976d2;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: #bbdefb;
+    transform: translateX(-2px);
+}
+
+.delete-confirmation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.confirmation-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+}
+
+.confirmation-content i {
+    font-size: 3rem;
+    color: #dc3545;
+    margin-bottom: 1rem;
+}
+
+.confirmation-content h3 {
+    color: #001d3d;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.confirmation-content p {
+    color: #6c757d;
+    margin-bottom: 2rem;
+}
+
+.confirmation-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.cancel-btn,
+.confirm-delete-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.cancel-btn {
+    background: #e9ecef;
+    color: #495057;
+}
+
+.cancel-btn:hover {
+    background: #dee2e6;
+    transform: translateY(-2px);
+}
+
+.confirm-delete-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.confirm-delete-btn:hover {
+    background: #c82333;
     transform: translateY(-2px);
 }
 </style> 

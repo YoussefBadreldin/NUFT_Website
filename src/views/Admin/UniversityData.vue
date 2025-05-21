@@ -2005,35 +2005,24 @@
             </div>
 
             <!-- Delete Whole University Option -->
-            <div class="delete-section warning-section">
-              <h3 class="delete-section-title">
-                <i class="fas fa-exclamation-triangle"></i>
-                حذف الجامعة بالكامل
-              </h3>
-              <div class="warning-message">
-                <p>سيتم حذف جميع البيانات المرتبطة بالجامعة بما في ذلك الكليات والسكن والأنتقالات.</p>
-                <button class="delete-university-btn" @click="confirmDeleteUniversity">
+            <div class="confirmation-content">
+              <i class="fas fa-exclamation-triangle"></i>
+              <h3>هل أنت متأكد من حذف حالة الجامعة {{ selectedUniversityForDelete?.university_Arabic_Name }}؟</h3>
+              <p>سيتم حذف جميع بيانات حالة الجامعة بشكل نهائي</p>
+              <div class="confirmation-actions">
+                <button class="cancel-btn" @click="cancelDelete">
+                  <i class="fas fa-times"></i>
+                  إلغاء
+                </button>
+                <button class="confirm-delete-btn" @click="confirmDeleteAction">
                   <i class="fas fa-trash"></i>
-                  حذف الجامعة بالكامل
+                  تأكيد الحذف
                 </button>
               </div>
             </div>
-
-            <!-- Delete Sections -->
-            <div class="delete-sections-nav">
-              <button 
-                v-for="section in deleteSections" 
-                :key="section.id"
-                :class="['section-nav-btn', { active: activeDeleteSection === section.id }]"
-                @click="activeDeleteSection = section.id"
-              >
-                <i :class="section.icon"></i>
-                {{ section.label }}
-              </button>
-            </div>
-                  </div>
-                </div>
-                  </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -4365,5 +4354,67 @@ textarea:focus {
   background: #ccc;
   color: #999;
   cursor: not-allowed;
+}
+
+.confirmation-content {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.confirmation-content i {
+  font-size: 3rem;
+  color: #dc3545;
+  margin-bottom: 1rem;
+}
+
+.confirmation-content h3 {
+  color: #1a237e;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.confirmation-content p {
+  color: #6c757d;
+  font-size: 1rem;
+}
+
+.confirmation-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.cancel-btn,
+.confirm-delete-btn {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.cancel-btn {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.confirm-delete-btn {
+  background: #dc3545;
+  color: white;
+}
+
+.cancel-btn:hover,
+.confirm-delete-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 </style> 

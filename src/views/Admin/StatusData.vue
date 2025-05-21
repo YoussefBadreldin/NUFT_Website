@@ -106,12 +106,14 @@
                     رابط الجامعة في الدليل
                   </label>
                   <input 
-                    type="url" 
+                    type="text" 
                     v-model="addFormData.guide_Url" 
                     id="guide_url" 
                     required
-                    placeholder="أدخل رابط الجامعة في الدليل"
+                    pattern="^/guide/(private|national|special|international)/[A-Z]+$"
+                    placeholder="مثال: /guide/private/ACU"
                   >
+                  <small class="form-text text-muted">يجب أن يكون الرابط بالصيغة: /guide/نوع-الجامعة/رمز-الجامعة</small>
                 </div>                
 <br>
                 <!-- Transfer Section -->
@@ -578,12 +580,14 @@
                     رابط الجامعة في الدليل
                   </label>
                   <input 
-                    type="url" 
+                    type="text" 
                     v-model="selectedUniversity.guide_Url" 
                     id="edit_guide_url" 
                     required
-                    placeholder="أدخل رابط الجامعة في الدليل"
+                    pattern="^/guide/(private|national|special|international)/[A-Z]+$"
+                    placeholder="مثال: /guide/private/ACU"
                   >
+                  <small class="form-text text-muted">يجب أن يكون الرابط بالصيغة: /guide/نوع-الجامعة/رمز-الجامعة</small>
                 </div>
 
                 <!-- Transfer Section -->

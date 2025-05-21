@@ -1197,7 +1197,7 @@
               البرامج الدراسية
             </h3>
             <div class="programs-list">
-              <div v-for="(faculty, index) in editFormData.faculties" :key="index" class="faculty-item">
+              <div v-for="(faculty, index) in editFormData.faculties.filter(f => f.normal_or_Dual === 'normal')" :key="index" class="faculty-item">
                 <div class="form-header">
                   <h4>
                     <i class="fas fa-graduation-cap"></i>
@@ -1313,6 +1313,107 @@
                 id="international_programs"
                 placeholder="https://example.com/international-programs"
               >
+            </div>
+            <div class="programs-list">
+              <div v-for="(faculty, index) in editFormData.faculties.filter(f => f.normal_or_Dual === 'dual')" :key="index" class="faculty-item">
+                <div class="form-header">
+                  <h4>
+                    <i class="fas fa-graduation-cap"></i>
+                    {{ faculty.faculty || `كلية ${index + 1}` }}
+                  </h4>
+                  <div class="form-actions">
+                    <button type="button" class="toggle-btn" @click="collapsedSections.faculties[index] ? toggleSection('faculties', index) : saveFaculty(index, 'edit')">
+                      <i class="fas" :class="collapsedSections.faculties[index] ? 'fa-edit' : 'fa-save'"></i>
+                      {{ collapsedSections.faculties[index] ? 'تعديل' : 'حفظ' }}
+                    </button>
+                    <button type="button" class="remove-btn" @click="removeFaculty(index, 'edit')">
+                      <i class="fas fa-trash"></i>
+                      حذف
+                    </button>
+                  </div>
+                </div>
+                <div class="form-grid" v-show="!collapsedSections.faculties[index]">
+                  <div class="form-group">
+                    <label :for="'faculty_' + index">اسم الكلية</label>
+                    <input 
+                      type="text" 
+                      v-model="faculty.faculty" 
+                      :id="'faculty_' + index"
+                      placeholder="أدخل اسم الكلية"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label :for="'section_' + index">الشعبة</label>
+                    <input 
+                      type="text" 
+                      v-model="faculty.section" 
+                      :id="'section_' + index"
+                      placeholder="أدخل اسم الشعبة"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label :for="'normal_or_Dual_' + index">نوع البرنامج</label>
+                    <select v-model="faculty.normal_or_Dual" :id="'normal_or_Dual_' + index">
+                      <option value="normal">عادي</option>
+                      <option value="dual">مزدوج</option>
+                    </select>
+                  </div>
+                  <div class="form-group full-width">
+                    <label :for="'programs_' + index">البرامج</label>
+                    <textarea 
+                      v-model="faculty.programs" 
+                      :id="'programs_' + index" 
+                      rows="3" 
+                      placeholder="أدخل البرامج مفصولة بفواصل"
+                    ></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label :for="'feesNatives_' + index">رسوم الطلاب المصريين</label>
+                    <input 
+                      type="text" 
+                      v-model="faculty.feesNatives" 
+                      :id="'feesNatives_' + index"
+                      placeholder="أدخل الرسوم"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label :for="'feesEgyption_' + index">رسوم الطلاب الوافدين</label>
+                    <input 
+                      type="text" 
+                      v-model="faculty.feesEgyption" 
+                      :id="'feesEgyption_' + index"
+                      placeholder="أدخل الرسوم"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label :for="'thanwyaa_firstYear_score_' + index">درجة الثانوية العامة (السنة الأولى)</label>
+                    <input 
+                      type="text" 
+                      v-model="faculty.thanwyaa_firstYear_score" 
+                      :id="'thanwyaa_firstYear_score_' + index"
+                      placeholder="أدخل الدرجة"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label :for="'thanwyaa_secondYear_score_' + index">درجة الثانوية العامة (السنة الثانية)</label>
+                    <input 
+                      type="text" 
+                      v-model="faculty.thanwyaa_secondYear_score" 
+                      :id="'thanwyaa_secondYear_score_' + index"
+                      placeholder="أدخل الدرجة"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label :for="'wafdeen_score_' + index">درجة الوافدين</label>
+                    <input 
+                      type="text" 
+                      v-model="faculty.wafdeen_score" 
+                      :id="'wafdeen_score_' + index"
+                      placeholder="أدخل الدرجة"
+                    >
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 

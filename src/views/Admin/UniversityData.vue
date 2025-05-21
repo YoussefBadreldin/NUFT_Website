@@ -743,13 +743,9 @@
             </div>
 
             <div class="form-actions">
-              <button type="submit" class="submit-btn">
-                <i :class="activeTab === 'edit' ? 'fas fa-save' : 'fas fa-plus'"></i>
-                {{ activeTab === 'edit' ? 'حفظ التعديلات' : 'إضافة الجامعة' }}
-              </button>
-              <button v-if="activeTab === 'edit'" type="button" class="cancel-btn" @click="cancelEdit">
-                <i class="fas fa-times"></i>
-                إلغاء
+              <button type="submit" class="submit-button" :disabled="isSubmitting">
+                <i class="fas fa-save"></i>
+                {{ isSubmitting ? 'جاري الحفظ...' : 'حفظ الجامعة' }}
               </button>
             </div>
           </form>
@@ -1309,15 +1305,7 @@
                       placeholder="أدخل البرامج مفصولة بفواصل"
                     ></textarea>
                   </div>
-                  <div class="form-group">
-                    <label :for="'wafdeen_score_' + index">حد أدنى الوافدين</label>
-                    <input 
-                      type="number" 
-                      v-model="faculty.wafdeen_score" 
-                      :id="'wafdeen_score_' + index"
-                      placeholder="أدخل حد أدنى الوافدين"
-                    >
-                </div>
+
                   <div class="form-group">
                     <label :for="'feesEgyption_' + index">رسوم الطلاب المصريين (فئة أ)</label>
                     <input 
@@ -1872,9 +1860,9 @@
           </div>
 
           <div class="form-actions">
-            <button type="submit" class="submit-btn">
-                <i :class="activeTab === 'edit' ? 'fas fa-save' : 'fas fa-plus'"></i>
-                {{ activeTab === 'edit' ? 'حفظ التعديلات' : 'إضافة الجامعة' }}
+            <button type="submit" class="submit-button" :disabled="isSubmitting">
+              <i class="fas fa-save"></i>
+              {{ isSubmitting ? 'جاري الحفظ...' : 'حفظ التعديلات' }}
             </button>
               <button v-if="activeTab === 'edit'" type="button" class="cancel-btn" @click="cancelEdit">
               <i class="fas fa-times"></i>
@@ -2580,7 +2568,11 @@ export default {
       this.filterEditUniversities();
     },
     async addUniversity() {
+      if (this.isSubmitting) return; // Prevent multiple submissions
+      
       try {
+        this.isSubmitting = true; // Set submitting state to true
+        
         // 1. Add the university links/info (main university object)
         const type = this.addFormData.type.toLowerCase();
         const universityCode = this.addFormData.university_code;
@@ -2621,14 +2613,16 @@ export default {
         }
 
         // 2. Add all faculties as an array
-        const facultyData = this.addFormData.faculties.map(faculty => ({
-          ...faculty,
-          university: universityCode,
-          university_Arabic_Name: universityName,
-          type: type
-        }));
-        
-        await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.ADD}`, facultyData);
+        if (this.addFormData.faculties.length > 0) {
+          const facultyData = this.addFormData.faculties.map(faculty => ({
+            ...faculty,
+            university: universityCode,
+            university_Arabic_Name: universityName,
+            type: type
+          }));
+          
+          await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.ADD}`, facultyData);
+        }
 
         // 3. Add all dorms (send as array)
         if (this.addFormData.dorms.length > 0) {
@@ -2654,19 +2648,17 @@ export default {
       } catch (error) {
         console.error('Error adding university:', error);
         if (error.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
           console.error('Error response:', error.response.data);
           alert(`حدث خطأ أثناء إضافة الجامعة: ${error.response.data.message || 'خطأ في الخادم'}`);
         } else if (error.request) {
-          // The request was made but no response was received
           console.error('No response received:', error.request);
           alert('لم يتم استلام رد من الخادم. يرجى التحقق من اتصال الإنترنت');
         } else {
-          // Something happened in setting up the request that triggered an Error
           console.error('Error message:', error.message);
           alert(`حدث خطأ أثناء إضافة الجامعة: ${error.message}`);
         }
+      } finally {
+        this.isSubmitting = false; // Reset submitting state
       }
     },
     async updateUniversity() {
@@ -4330,5 +4322,35 @@ textarea:focus {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.submit-button {
+  background: linear-gradient(135deg, #001d3d, #4158d0);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  padding: 0.75rem 2rem;
+  margin-top: 2rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.submit-button:hover {
+  background: linear-gradient(135deg, #001d3d, #4158d0);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.submit-button:disabled {
+  background: #ccc;
+  color: #999;
+  cursor: not-allowed;
 }
 </style> 

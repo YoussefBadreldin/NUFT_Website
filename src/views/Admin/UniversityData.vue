@@ -621,7 +621,7 @@
                     <div class="form-group">
                       <label :for="'trans_price_' + index">السعر</label>
                       <input 
-                        type="number" 
+                        type="text" 
                         v-model="trans.price" 
                         :id="'trans_price_' + index"
                         placeholder="أدخل سعر وسيلة النقل"
@@ -1202,7 +1202,7 @@
                   <h4>{{ faculty.faculty || 'كلية جديدة' }}</h4>
                   <button type="button" class="toggle-btn" @click="toggleSection('faculties', index)">
                     <i class="fas" :class="collapsedSections.faculties[index] ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
-                    {{ collapsedSections.faculties[index] ? 'عرض' : 'إخفاء' }}
+                    {{ collapsedSections.faculties[index] ? 'تعديل' : 'حفظ' }}
                   </button>
                 </div>
                 <div class="form-grid" v-show="!collapsedSections.faculties[index]">
@@ -1342,10 +1342,16 @@
             <div v-for="(trans, index) in editFormData.transportation" :key="index" class="transportation-item">
               <div class="form-header">
                 <h4>{{ trans.type || 'مواصلات جديدة' }}</h4>
-                <button type="button" class="toggle-btn" @click="toggleSection('transportation', index)">
-                  <i class="fas" :class="collapsedSections.transportation[index] ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
-                  {{ collapsedSections.transportation[index] ? 'عرض' : 'إخفاء' }}
-                </button>
+                <div class="form-actions">
+                  <button type="button" class="toggle-btn" @click="toggleSection('transportation', index)">
+                    <i class="fas" :class="collapsedSections.transportation[index] ? 'fa-chevron-down' : 'fa-chevron-up'"></i>
+                    {{ collapsedSections.transportation[index] ? 'تعديل' : 'حفظ' }}
+                  </button>
+                  <button type="button" class="remove-btn" @click="removeTransportation(index, 'edit')">
+                    <i class="fas fa-trash"></i>
+                    حذف
+                  </button>
+                </div>
               </div>
               <div class="form-grid" v-show="!collapsedSections.transportation[index]">
                 <div class="form-group">
@@ -1897,79 +1903,119 @@ const API_CONFIG = {
   ENDPOINTS: {
     NATIONAL: {
       LINKS: '/national/links',
+      LINKS_SINGLE: (id) => `/national/links/${id}`,
+      LINKS_ADD: '/national/links/add',
+      LINKS_UPDATE: (id) => `/national/links/${id}`,
+      LINKS_DELETE: (id) => `/national/links/${id}`,
       FACULTY: {
         ADD: '/national/faculty/add',
-        GET: (code) => `/national/faculty/${code}`,
-        UPDATE: (code) => `/national/faculty/${code}`
+        GET_ALL: '/national/faculty',
+        GET: (id) => `/national/faculty/${id}`,
+        UPDATE: (id) => `/national/faculty/${id}`,
+        DELETE: (id) => `/national/faculty/${id}`
       },
       DORMS: {
         ADD: '/national/dorms/add',
-        GET: (code) => `/national/dorms/${code}`,
-        UPDATE: (code) => `/national/dorms/${code}`
+        GET_ALL: '/national/dorms',
+        GET: (id) => `/national/dorms/${id}`,
+        UPDATE: (id) => `/national/dorms/${id}`,
+        DELETE: (id) => `/national/dorms/${id}`
       },
       TRANSPORTATION: {
         ADD: '/national/transportation/add',
-        GET: (code) => `/national/transportation/${code}`,
-        UPDATE: (code) => `/national/transportation/${code}`
+        GET_ALL: '/national/transportation',
+        GET: (id) => `/national/transportation/${id}`,
+        UPDATE: (id) => `/national/transportation/${id}`,
+        DELETE: (id) => `/national/transportation/${id}`
       },
-      DELETE: (code) => `/national/${code}`
+      DELETE: (id) => `/national/${id}`
     },
     PRIVATE: {
       LINKS: '/private/links',
+      LINKS_SINGLE: (id) => `/private/links/${id}`,
+      LINKS_ADD: '/private/links/add',
+      LINKS_UPDATE: (id) => `/private/links/${id}`,
+      LINKS_DELETE: (id) => `/private/links/${id}`,
       FACULTY: {
         ADD: '/private/faculty/add',
-        GET: (code) => `/private/faculty/${code}`,
-        UPDATE: (code) => `/private/faculty/${code}`
+        GET_ALL: '/private/faculty',
+        GET: (id) => `/private/faculty/${id}`,
+        UPDATE: (id) => `/private/faculty/${id}`,
+        DELETE: (id) => `/private/faculty/${id}`
       },
       DORMS: {
         ADD: '/private/dorms/add',
-        GET: (code) => `/private/dorms/${code}`,
-        UPDATE: (code) => `/private/dorms/${code}`
+        GET_ALL: '/private/dorms',
+        GET: (id) => `/private/dorms/${id}`,
+        UPDATE: (id) => `/private/dorms/${id}`,
+        DELETE: (id) => `/private/dorms/${id}`
       },
       TRANSPORTATION: {
         ADD: '/private/transportation/add',
-        GET: (code) => `/private/transportation/${code}`,
-        UPDATE: (code) => `/private/transportation/${code}`
+        GET_ALL: '/private/transportation',
+        GET: (id) => `/private/transportation/${id}`,
+        UPDATE: (id) => `/private/transportation/${id}`,
+        DELETE: (id) => `/private/transportation/${id}`
       },
-      DELETE: (code) => `/private/${code}`
+      DELETE: (id) => `/private/${id}`
     },
     SPECIAL: {
       LINKS: '/special/links',
+      LINKS_SINGLE: (id) => `/special/links/${id}`,
+      LINKS_ADD: '/special/links/add',
+      LINKS_UPDATE: (id) => `/special/links/${id}`,
+      LINKS_DELETE: (id) => `/special/links/${id}`,
       FACULTY: {
         ADD: '/special/faculty/add',
-        GET: (code) => `/special/faculty/${code}`,
-        UPDATE: (code) => `/special/faculty/${code}`
+        GET_ALL: '/special/faculty',
+        GET: (id) => `/special/faculty/${id}`,
+        UPDATE: (id) => `/special/faculty/${id}`,
+        DELETE: (id) => `/special/faculty/${id}`
       },
       DORMS: {
         ADD: '/special/dorms/add',
-        GET: (code) => `/special/dorms/${code}`,
-        UPDATE: (code) => `/special/dorms/${code}`
+        GET_ALL: '/special/dorms',
+        GET: (id) => `/special/dorms/${id}`,
+        UPDATE: (id) => `/special/dorms/${id}`,
+        DELETE: (id) => `/special/dorms/${id}`
       },
       TRANSPORTATION: {
         ADD: '/special/transportation/add',
-        GET: (code) => `/special/transportation/${code}`,
-        UPDATE: (code) => `/special/transportation/${code}`
+        GET_ALL: '/special/transportation',
+        GET: (id) => `/special/transportation/${id}`,
+        UPDATE: (id) => `/special/transportation/${id}`,
+        DELETE: (id) => `/special/transportation/${id}`
       },
-      DELETE: (code) => `/special/${code}`
+      DELETE: (id) => `/special/${id}`
     },
     INTERNATIONAL: {
       LINKS: '/international/links',
+      LINKS_SINGLE: (id) => `/international/links/${id}`,
+      LINKS_ADD: '/international/links/add',
+      LINKS_UPDATE: (id) => `/international/links/${id}`,
+      LINKS_DELETE: (id) => `/international/links/${id}`,
       FACULTY: {
         ADD: '/international/faculty/add',
-        GET: (code) => `/international/faculty/${code}`,
-        UPDATE: (code) => `/international/faculty/${code}`
+        GET_ALL: '/international/faculty',
+        GET: (id) => `/international/faculty/${id}`,
+        UPDATE: (id) => `/international/faculty/${id}`,
+        DELETE: (id) => `/international/faculty/${id}`
       },
       DORMS: {
         ADD: '/international/dorms/add',
-        GET: (code) => `/international/dorms/${code}`,
-        UPDATE: (code) => `/international/dorms/${code}`
+        GET_ALL: '/international/dorms',
+        GET: (id) => `/international/dorms/${id}`,
+        UPDATE: (id) => `/international/dorms/${id}`,
+        DELETE: (id) => `/international/dorms/${id}`
       },
       TRANSPORTATION: {
         ADD: '/international/transportation/add',
-        GET: (code) => `/international/transportation/${code}`,
-        UPDATE: (code) => `/international/transportation/${code}`
+        GET_ALL: '/international/transportation',
+        GET: (id) => `/international/transportation/${id}`,
+        UPDATE: (id) => `/international/transportation/${id}`,
+        DELETE: (id) => `/international/transportation/${id}`
       },
-      DELETE: (code) => `/international/${code}`
+      DELETE: (id) => `/international/${id}`
     }
   }
 };
@@ -2293,7 +2339,21 @@ export default {
       }
     },
 
-    removeFaculty(index, formType) {
+    async removeFaculty(index, formType) {
+      const faculty = formType === 'add' ? this.addFormData.faculties[index] : this.editFormData.faculties[index];
+      
+      if (faculty.id) {
+        try {
+          const type = formType === 'add' ? this.addFormData.type : this.editFormData.type;
+          await this.deleteFacultyAPI(type, faculty.id);
+          alert('تم حذف الكلية بنجاح');
+        } catch (error) {
+          console.error('Error deleting faculty:', error);
+          alert('حدث خطأ أثناء حذف الكلية');
+          return;
+        }
+      }
+      
       if (formType === 'add') {
         this.addFormData.faculties.splice(index, 1);
       } else {
@@ -2314,7 +2374,21 @@ export default {
       }
     },
 
-    removeDorm(index, formType) {
+    async removeDorm(index, formType) {
+      const dorm = formType === 'add' ? this.addFormData.dorms[index] : this.editFormData.dorms[index];
+      
+      if (dorm.id) {
+        try {
+          const type = formType === 'add' ? this.addFormData.type : this.editFormData.type;
+          await this.deleteDormAPI(type, dorm.id);
+          alert('تم حذف السكن بنجاح');
+        } catch (error) {
+          console.error('Error deleting dorm:', error);
+          alert('حدث خطأ أثناء حذف السكن');
+          return;
+        }
+      }
+      
       if (formType === 'add') {
         this.addFormData.dorms.splice(index, 1);
       } else {
@@ -2335,7 +2409,21 @@ export default {
       }
     },
 
-    removeTransportation(index, formType) {
+    async removeTransportation(index, formType) {
+      const transport = formType === 'add' ? this.addFormData.transportation[index] : this.editFormData.transportation[index];
+      
+      if (transport.id) {
+        try {
+          const type = formType === 'add' ? this.addFormData.type : this.editFormData.type;
+          await this.deleteTransportationAPI(type, transport.id);
+          alert('تم حذف وسيلة النقل بنجاح');
+        } catch (error) {
+          console.error('Error deleting transportation:', error);
+          alert('حدث خطأ أثناء حذف وسيلة النقل');
+          return;
+        }
+      }
+      
       if (formType === 'add') {
         this.addFormData.transportation.splice(index, 1);
       } else {
@@ -2361,52 +2449,67 @@ export default {
     async addUniversity() {
       try {
         const type = this.addFormData.type.toUpperCase();
-        const typeConfig = API_CONFIG.ENDPOINTS[type];
         const universityCode = this.addFormData.university_code.toUpperCase();
 
-        // Add university info and links
-        await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.ADD}`, {
-          ...this.addFormData,
-          university_code: universityCode
-        });
+        // Add university links first
+        const linksData = {
+          university: this.addFormData.university_Arabic_Name,
+          university_code: universityCode,
+          website: this.addFormData.website,
+          phone: this.addFormData.phone,
+          email: this.addFormData.email,
+          facebook: this.addFormData.facebook,
+          instagram: this.addFormData.instagram,
+          youtube: this.addFormData.youtube,
+          linkedin: this.addFormData.linkedin,
+          international_programs: this.addFormData.international_programs,
+          dorms_link: this.addFormData.dorms_link,
+          transportation_link: this.addFormData.transportation_link,
+          scholarship_link: this.addFormData.scholarship_link,
+          Egyptian_Admission_link: this.addFormData.Egyptian_Admission_link,
+          Egyptian_Admission_link2: this.addFormData.Egyptian_Admission_link2,
+          Egyptian_Transfer_link: this.addFormData.Egyptian_Transfer_link,
+          Wafdeen_Admission_link: this.addFormData.Wafdeen_Admission_link
+        };
+        await this.addLinkAPI(type.toLowerCase(), linksData);
 
         // Add faculties
         if (this.addFormData.faculties && this.addFormData.faculties.length > 0) {
           for (const faculty of this.addFormData.faculties) {
-            await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.ADD}`, {
+            const facultyData = {
               ...faculty,
               university: this.addFormData.university_Arabic_Name,
               university_code: universityCode
-            });
+            };
+            await this.addFacultyAPI(type.toLowerCase(), facultyData);
           }
         }
 
         // Add dorms
         if (this.addFormData.dorms && this.addFormData.dorms.length > 0) {
           for (const dorm of this.addFormData.dorms) {
-            await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.DORMS.ADD}`, {
+            const dormData = {
               ...dorm,
-              spec: this.addFormData.university_Arabic_Name,
-              university_code: universityCode
-            });
+              spec: universityCode
+            };
+            await this.addDormAPI(type.toLowerCase(), dormData);
           }
         }
 
         // Add transportation
         if (this.addFormData.transportation && this.addFormData.transportation.length > 0) {
-          for (const trans of this.addFormData.transportation) {
-            await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.TRANSPORTATION.ADD}`, {
-              ...trans,
-              spec: this.addFormData.university_Arabic_Name,
-              university_code: universityCode
-            });
+          for (const transport of this.addFormData.transportation) {
+            const transportData = {
+              ...transport,
+              spec: universityCode
+            };
+            await this.addTransportationAPI(type.toLowerCase(), transportData);
           }
         }
 
         alert('تم إضافة الجامعة بنجاح');
         this.resetAddForm();
         this.fetchUniversities();
-        this.activeTab = 'manage';
       } catch (error) {
         console.error('Error adding university:', error);
         alert('حدث خطأ أثناء إضافة الجامعة');
@@ -2599,66 +2702,80 @@ export default {
       this.activeTab = 'manage';
     },
     async selectUniversityForEdit(university) {
-      // 1. Get the type and code
-      const type = university.type.toLowerCase();
-      const universityCode = university.university_code || university.id;
-
-      // 2. Fetch dorms for this type
-      let dorms = [];
       try {
-        const response = await axios.get(`https://nuft-website-backend.vercel.app/${type}/dorms`);
-        // 3. Filter dorms for this university
-        dorms = response.data.filter(dorm => dorm.spec === universityCode);
-      } catch (e) {
-        dorms = [];
-      }
+        // 1. Get the type and code
+        const type = university.type.toLowerCase();
+        const universityCode = university.university_code || university.id;
 
-      // Initialize all sections as collapsed
-      this.collapsedSections = {
-        faculties: {},
-        dorms: {},
-        transportation: {}
-      };
-      // Set all dorm items as collapsed by default
-      if (dorms) {
-        dorms.forEach((_, index) => {
+        // 2. Fetch all data in parallel
+        const [faculties, dorms, transportation, links] = await Promise.all([
+          this.getAllFaculties(type),
+          this.getAllDorms(type),
+          this.getAllTransportation(type),
+          this.getAllLinks(type)
+        ]);
+
+        // 3. Filter data for this university
+        const universityFaculties = faculties.filter(f => f.university_code === universityCode);
+        const universityDorms = dorms.filter(d => d.spec === universityCode);
+        const universityTransportation = transportation.filter(t => t.spec === universityCode);
+        const universityLinks = links.find(l => l.university === universityCode);
+
+        // Initialize all sections as collapsed
+        this.collapsedSections = {
+          faculties: {},
+          dorms: {},
+          transportation: {}
+        };
+
+        // Set all items as collapsed by default
+        universityFaculties.forEach((_, index) => {
+          this.collapsedSections.faculties[index] = true;
+        });
+        universityDorms.forEach((_, index) => {
           this.collapsedSections.dorms[index] = true;
         });
-      }
+        universityTransportation.forEach((_, index) => {
+          this.collapsedSections.transportation[index] = true;
+        });
 
-      // 4. Set editFormData as before, but with dorms
-      this.selectedUniversityForEdit = university;
-      this.isEditing = true;
-      this.editingId = university.id;
-      this.editFormData = {
-        ...this.editFormData,
-        university_code: university.university_code || university.id,
-        university_Arabic_Name: university.university_Arabic_Name,
-        university_Logo: university.university_Logo,
-        type: university.type,
-        Uni_Bio: university.Uni_Bio || '',
-        location: university.location || '',
-        first_year: university.first_year || '',
-        second_year: university.second_year || '',
-        website: university.website || '',
-        phone: university.phone || '',
-        email: university.email || '',
-        facebook: university.facebook || '',
-        instagram: university.instagram || '',
-        youtube: university.youtube || '',
-        linkedin: university.linkedin || '',
-        faculties: university.faculties || [],
-        international_programs: university.international_programs || '',
-        dorms: dorms, // <-- set the fetched dorms here
-        transportation: university.transportation || [],
-        dorms_link: university.dorms_link || '',
-        transportation_link: university.transportation_link || '',
-        scholarship_link: university.scholarship_link || '',
-        Egyptian_Admission_link: university.Egyptian_Admission_link || '',
-        Egyptian_Admission_link2: university.Egyptian_Admission_link2 || '',
-        Egyptian_Transfer_link: university.Egyptian_Transfer_link || '',
-        Wafdeen_Admission_link: university.Wafdeen_Admission_link || ''
-      };
+        // 4. Set editFormData with all fetched data
+        this.selectedUniversityForEdit = university;
+        this.isEditing = true;
+        this.editingId = university.id;
+        this.editFormData = {
+          ...this.editFormData,
+          university_code: universityCode,
+          university_Arabic_Name: university.university_Arabic_Name,
+          university_Logo: university.university_Logo,
+          type: university.type,
+          Uni_Bio: university.Uni_Bio || '',
+          location: university.location || '',
+          first_year: university.first_year || '',
+          second_year: university.second_year || '',
+          website: universityLinks?.website || '',
+          phone: universityLinks?.phone || '',
+          email: universityLinks?.email || '',
+          facebook: universityLinks?.facebook || '',
+          instagram: universityLinks?.instagram || '',
+          youtube: universityLinks?.youtube || '',
+          linkedin: universityLinks?.linkedin || '',
+          faculties: universityFaculties,
+          international_programs: universityLinks?.international_programs || '',
+          dorms: universityDorms,
+          transportation: universityTransportation,
+          dorms_link: universityLinks?.dorms_link || '',
+          transportation_link: universityLinks?.transportation_link || '',
+          scholarship_link: universityLinks?.scholarship_link || '',
+          Egyptian_Admission_link: universityLinks?.Egyptian_Admission_link || '',
+          Egyptian_Admission_link2: universityLinks?.Egyptian_Admission_link2 || '',
+          Egyptian_Transfer_link: universityLinks?.Egyptian_Transfer_link || '',
+          Wafdeen_Admission_link: universityLinks?.Wafdeen_Admission_link || ''
+        };
+      } catch (error) {
+        console.error('Error loading university data for edit:', error);
+        alert('حدث خطأ أثناء تحميل بيانات الجامعة');
+      }
     },
     selectUniversityForDelete(university) {
       this.selectedUniversityForDelete = university;
@@ -2717,34 +2834,107 @@ export default {
       }
     },
 
-    saveFaculty(index, mode = 'edit') {
+    async saveFaculty(index, mode = 'edit') {
       const faculty = mode === 'add' ? this.addFormData.faculties[index] : this.editFormData.faculties[index];
       if (!faculty.faculty) {
         alert('الرجاء إدخال اسم الكلية');
         return;
       }
-      // Set the section as collapsed
-      this.collapsedSections.faculties[index] = true;
+
+      try {
+        const type = mode === 'add' ? this.addFormData.type : this.editFormData.type;
+        const universityCode = mode === 'add' ? this.addFormData.university_code : this.editFormData.university_code;
+        
+        // Add university reference to faculty data
+        const facultyData = {
+          ...faculty,
+          university: mode === 'add' ? this.addFormData.university_Arabic_Name : this.editFormData.university_Arabic_Name,
+          university_code: universityCode
+        };
+
+        if (faculty.id) {
+          // Update existing faculty
+          await this.updateFacultyAPI(type, faculty.id, facultyData);
+        } else {
+          // Add new faculty
+          await this.addFacultyAPI(type, facultyData);
+        }
+
+        // Set the section as collapsed
+        this.collapsedSections.faculties[index] = true;
+        alert('تم حفظ الكلية بنجاح');
+      } catch (error) {
+        console.error('Error saving faculty:', error);
+        alert('حدث خطأ أثناء حفظ الكلية');
+      }
     },
 
-    saveDorm(index, mode = 'edit') {
+    async saveDorm(index, mode = 'edit') {
       const dorm = mode === 'add' ? this.addFormData.dorms[index] : this.editFormData.dorms[index];
       if (!dorm.type) {
         alert('الرجاء إدخال نوع السكن');
         return;
       }
-      // Set the section as collapsed
-      this.collapsedSections.dorms[index] = true;
+
+      try {
+        const type = mode === 'add' ? this.addFormData.type : this.editFormData.type;
+        const universityCode = mode === 'add' ? this.addFormData.university_code : this.editFormData.university_code;
+        
+        // Add university reference to dorm data
+        const dormData = {
+          ...dorm,
+          spec: universityCode
+        };
+
+        if (dorm.id) {
+          // Update existing dorm
+          await this.updateDormAPI(type, dorm.id, dormData);
+        } else {
+          // Add new dorm
+          await this.addDormAPI(type, dormData);
+        }
+
+        // Set the section as collapsed
+        this.collapsedSections.dorms[index] = true;
+        alert('تم حفظ السكن بنجاح');
+      } catch (error) {
+        console.error('Error saving dorm:', error);
+        alert('حدث خطأ أثناء حفظ السكن');
+      }
     },
 
-    saveTransportation(index, mode = 'edit') {
+    async saveTransportation(index, mode = 'edit') {
       const transport = mode === 'add' ? this.addFormData.transportation[index] : this.editFormData.transportation[index];
       if (!transport.type) {
         alert('الرجاء إدخال نوع وسيلة النقل');
         return;
       }
-      // Set the section as collapsed
-      this.collapsedSections.transportation[index] = true;
+
+      try {
+        const type = mode === 'add' ? this.addFormData.type : this.editFormData.type;
+        const universityCode = mode === 'add' ? this.addFormData.university_code : this.editFormData.university_code;
+        
+        // Add university reference to transportation data
+        const transportData = {
+          ...transport,
+          spec: universityCode
+        };
+
+        if (transport.id) {
+          // Update existing transportation
+          await this.updateTransportationAPI(type, transport.id, transportData);
+        } else {
+          // Add new transportation
+          await this.addTransportationAPI(type, transportData);
+        }
+
+        // Set the section as collapsed
+        this.collapsedSections.transportation[index] = true;
+        alert('تم حفظ وسيلة النقل بنجاح');
+      } catch (error) {
+        console.error('Error saving transportation:', error);
+        alert('حدث خطأ أثناء حفظ وسيلة النقل');
+      }
     },
 
     toggleSection(section, index) {
@@ -2857,6 +3047,114 @@ export default {
           alert('حدث خطأ أثناء الحذف');
         }
       }
+    },
+
+    // FACULTY CRUD
+    async getAllFaculties(type) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.get(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.GET_ALL}`);
+      return response.data;
+    },
+    async getFaculty(type, id) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.get(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.GET(id)}`);
+      return response.data;
+    },
+    async addFacultyAPI(type, data) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.ADD}`, data);
+      return response.data;
+    },
+    async updateFacultyAPI(type, id, data) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.UPDATE(id)}`, data);
+      return response.data;
+    },
+    async deleteFacultyAPI(type, id) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.delete(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.DELETE(id)}`);
+      return response.data;
+    },
+
+    // DORMS CRUD
+    async getAllDorms(type) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.get(`${API_CONFIG.BASE_URL}${typeConfig.DORMS.GET_ALL}`);
+      return response.data;
+    },
+    async getDorm(type, id) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.get(`${API_CONFIG.BASE_URL}${typeConfig.DORMS.GET(id)}`);
+      return response.data;
+    },
+    async addDormAPI(type, data) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.DORMS.ADD}`, data);
+      return response.data;
+    },
+    async updateDormAPI(type, id, data) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.DORMS.UPDATE(id)}`, data);
+      return response.data;
+    },
+    async deleteDormAPI(type, id) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.delete(`${API_CONFIG.BASE_URL}${typeConfig.DORMS.DELETE(id)}`);
+      return response.data;
+    },
+
+    // TRANSPORTATION CRUD
+    async getAllTransportation(type) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.get(`${API_CONFIG.BASE_URL}${typeConfig.TRANSPORTATION.GET_ALL}`);
+      return response.data;
+    },
+    async getTransportation(type, id) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.get(`${API_CONFIG.BASE_URL}${typeConfig.TRANSPORTATION.GET(id)}`);
+      return response.data;
+    },
+    async addTransportationAPI(type, data) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.TRANSPORTATION.ADD}`, data);
+      return response.data;
+    },
+    async updateTransportationAPI(type, id, data) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.TRANSPORTATION.UPDATE(id)}`, data);
+      return response.data;
+    },
+    async deleteTransportationAPI(type, id) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.delete(`${API_CONFIG.BASE_URL}${typeConfig.TRANSPORTATION.DELETE(id)}`);
+      return response.data;
+    },
+
+    // LINKS CRUD
+    async getAllLinks(type) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.get(`${API_CONFIG.BASE_URL}${typeConfig.LINKS}`);
+      return response.data;
+    },
+    async getLink(type, id) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.get(`${API_CONFIG.BASE_URL}${typeConfig.LINKS_SINGLE(id)}`);
+      return response.data;
+    },
+    async addLinkAPI(type, data) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.LINKS_ADD}`, data);
+      return response.data;
+    },
+    async updateLinkAPI(type, id, data) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.LINKS_UPDATE(id)}`, data);
+      return response.data;
+    },
+    async deleteLinkAPI(type, id) {
+      const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+      const response = await axios.delete(`${API_CONFIG.BASE_URL}${typeConfig.LINKS_DELETE(id)}`);
+      return response.data;
     },
   },
   created() {

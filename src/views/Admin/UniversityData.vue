@@ -351,7 +351,7 @@
                       </select>
                     </div>
                     <div class="form-group full-width">
-                      <label :for="'programs_' + index">البرامج</label>
+                      <label :for="'programs_' + index">البرامج الدراسية</label>
                       <textarea 
                         v-model="faculty.programs" 
                         :id="'programs_' + index" 
@@ -359,116 +359,130 @@
                         placeholder="أدخل البرامج مفصولة بفواصل"
                       ></textarea>
                     </div>
-
-                    <!-- Fees Section -->
                     <div class="form-group">
-                      <label>رسوم الوافدين</label>
-                      <div class="fees-grid">
-                        <input 
-                          type="number" 
-                          v-model="faculty.feesNatives" 
-                          placeholder="السنة الأولى"
-                        >
-                        <input 
-                          type="number" 
-                          v-model="faculty.feesNatives2" 
-                          placeholder="السنة الثانية"
-                        >
-                        <input 
-                          type="number" 
-                          v-model="faculty.feesNatives3" 
-                          placeholder="السنة الثالثة"
-                        >
-                        <input 
-                          type="number" 
-                          v-model="faculty.feesNatives4" 
-                          placeholder="السنة الرابعة"
-                        >
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label>رسوم المصريين</label>
-                      <div class="fees-grid">
-                        <input 
-                          type="number" 
-                          v-model="faculty.feesEgyption" 
-                          placeholder="السنة الأولى"
-                        >
-                        <input 
-                          type="number" 
-                          v-model="faculty.feesEgyption2" 
-                          placeholder="السنة الثانية"
-                        >
-                        <input 
-                          type="number" 
-                          v-model="faculty.feesEgyption3" 
-                          placeholder="السنة الثالثة"
-                        >
-                        <input 
-                          type="number" 
-                          v-model="faculty.feesEgyption4" 
-                          placeholder="السنة الرابعة"
-                        >
-                      </div>
-                    </div>
-
-                    <!-- Admission Scores Section -->
-                    <div class="form-group">
-                      <label>الحدود الدنيا - ثانوية عامة</label>
-                      <div class="scores-grid">
-                        <input 
-                          type="number" 
-                          v-model="faculty.thanwyaa_firstYear_score" 
-                          placeholder="السنة الأولى"
-                        >
-                        <input 
-                          type="number" 
-                          v-model="faculty.thanwyaa_secondYear_score" 
-                          placeholder="السنة الثانية"
-                        >
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label>الحدود الدنيا - أزهر</label>
-                      <div class="scores-grid">
-                        <input 
-                          type="number" 
-                          v-model="faculty.azhar_firstYear_score" 
-                          placeholder="السنة الأولى"
-                        >
-                        <input 
-                          type="number" 
-                          v-model="faculty.azhar_secondYear_score" 
-                          placeholder="السنة الثانية"
-                        >
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label>الحدود الدنيا - عربي/انجليزي</label>
-                      <div class="scores-grid">
-                        <input 
-                          type="number" 
-                          v-model="faculty.Arabenglish_firstYear_score" 
-                          placeholder="السنة الأولى"
-                        >
-                        <input 
-                          type="number" 
-                          v-model="faculty.Arabenglish_secondYear_score" 
-                          placeholder="السنة الثانية"
-                        >
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label>الحدود الدنيا - وافدين</label>
+                      <label :for="'feesEgyption_' + index">رسوم الطلاب المصريين (فئة أ)</label>
                       <input 
-                        type="number" 
-                        v-model="faculty.wafdeen_score" 
-                        placeholder="الحد الأدنى للوافدين"
-                        class="full-width-input"
+                        type="text" 
+                        v-model="faculty.feesEgyption" 
+                        :id="'feesEgyption_' + index"
+                        placeholder="أدخل الرسوم"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label :for="'feesEgyption2_' + index">رسوم الطلاب المصريين (فئة ب)</label>
+                      <input 
+                        type="text" 
+                        v-model="faculty.feesEgyption2" 
+                        :id="'feesEgyption2_' + index"
+                        placeholder="أدخل الرسوم"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label :for="'feesEgyption3_' + index">رسوم الطلاب المصريين (فئة ج)</label>
+                      <input 
+                        type="text" 
+                        v-model="faculty.feesEgyption3" 
+                        :id="'feesEgyption3_' + index"
+                        placeholder="أدخل الرسوم"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label :for="'feesEgyption4_' + index">رسوم الطلاب المصريين (فئة د)</label>
+                      <input 
+                        type="text" 
+                        v-model="faculty.feesEgyption4" 
+                        :id="'feesEgyption4_' + index"
+                        placeholder="أدخل الرسوم"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label :for="'feesNatives_' + index">رسوم الطلاب الوافدين (فئة أ)</label>
+                      <input 
+                        type="text" 
+                        v-model="faculty.feesNatives" 
+                        :id="'feesNatives_' + index"
+                        placeholder="أدخل الرسوم"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label :for="'feesNatives2_' + index">رسوم الطلاب الوافدين (فئة ب)</label>
+                      <input 
+                        type="text" 
+                        v-model="faculty.feesNatives2" 
+                        :id="'feesNatives2_' + index"
+                        placeholder="أدخل الرسوم"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label :for="'feesNatives3_' + index">رسوم الطلاب الوافدين (فئة ج)</label>
+                      <input 
+                        type="text" 
+                        v-model="faculty.feesNatives3" 
+                        :id="'feesNatives3_' + index"
+                        placeholder="أدخل الرسوم"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label :for="'feesNatives4_' + index">رسوم الطلاب الوافدين (فئة د)</label>
+                      <input 
+                        type="text" 
+                        v-model="faculty.feesNatives4" 
+                        :id="'feesNatives4_' + index"
+                        placeholder="أدخل الرسوم"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label :for="'thanwyaa_firstYear_score_' + index">حد ادني الثانوية العامة (السنة الأولى)</label>
+                      <input 
+                        type="text" 
+                        v-model="faculty.thanwyaa_firstYear_score" 
+                        :id="'thanwyaa_firstYear_score_' + index"
+                        placeholder="أدخل الدرجة"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label :for="'thanwyaa_secondYear_score_' + index">حد ادني الثانوية العامة (السنة الثانية)</label>
+                      <input 
+                        type="text" 
+                        v-model="faculty.thanwyaa_secondYear_score" 
+                        :id="'thanwyaa_secondYear_score_' + index"
+                        placeholder="أدخل الدرجة"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label :for="'azhar_firstYear_score_' + index">حد ادني الأزهر (السنة الأولى)</label>
+                      <input 
+                        type="text" 
+                        v-model="faculty.azhar_firstYear_score" 
+                        :id="'azhar_firstYear_score_' + index"
+                        placeholder="أدخل الدرجة"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label :for="'azhar_secondYear_score_' + index">حد ادني الأزهر (السنة الثانية)</label>
+                      <input 
+                        type="text" 
+                        v-model="faculty.azhar_secondYear_score" 
+                        :id="'azhar_secondYear_score_' + index"
+                        placeholder="أدخل الدرجة"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label :for="'Arabenglish_firstYear_score_' + index">حد ادني الشهادات العربية والأجنبية (السنة الأولى)</label>
+                      <input 
+                        type="text" 
+                        v-model="faculty.Arabenglish_firstYear_score" 
+                        :id="'Arabenglish_firstYear_score_' + index"
+                        placeholder="أدخل الدرجة"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label :for="'Arabenglish_secondYear_score_' + index">حد ادني الشهادات العربية والأجنبية (السنة الثانية)</label>
+                      <input 
+                        type="text" 
+                        v-model="faculty.Arabenglish_secondYear_score" 
+                        :id="'Arabenglish_secondYear_score_' + index"
+                        placeholder="أدخل الدرجة"
                       >
                     </div>
                   </div>

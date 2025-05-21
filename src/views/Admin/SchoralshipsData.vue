@@ -27,6 +27,22 @@
         <i class="fas fa-plus"></i>
         إضافة منحة جديدة
       </button>
+      <button 
+        class="nav-tab" 
+        :class="{ active: activeTab === 'edit' }"
+        @click="switchToEdit"
+      >
+        <i class="fas fa-edit"></i>
+        تعديل منحة
+      </button>
+      <button 
+        class="nav-tab" 
+        :class="{ active: activeTab === 'delete' }"
+        @click="switchToDelete"
+      >
+        <i class="fas fa-trash"></i>
+        حذف منحة
+      </button>
     </div>
 
     <!-- Scholarships List Section -->
@@ -83,6 +99,200 @@
                 حذف
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Scholarship Tab -->
+    <div v-if="activeTab === 'edit'" class="scholarships-list-section">
+      <div class="section-header">
+        <h2>تعديل منحة</h2>
+        <div class="search-bar">
+          <input 
+            type="text" 
+            v-model="searchQuery" 
+            placeholder="ابحث عن منحة..."
+            @input="filterScholarships"
+          >
+        </div>
+      </div>
+
+      <div v-if="loading" class="loading-state">
+        <div class="spinner"></div>
+        <p>جاري التحميل...</p>
+      </div>
+
+      <div v-else-if="!selectedScholarshipForEdit" class="scholarships-grid">
+        <div v-for="scholarship in filteredScholarships" :key="scholarship._id" class="scholarship-card">
+          <div class="scholarship-image">
+            <img 
+              :src="scholarship.scholarship_photo" 
+              :alt="scholarship.scholarship_title"
+              @error="handleImageError"
+            >
+          </div>
+          <div class="scholarship-content">
+            <h3 @click="selectScholarshipForEdit(scholarship)" class="scholarship-title-toggle">{{ scholarship.scholarship_title }}</h3>
+            <div class="scholarship-type">
+              <i class="fas fa-tag"></i>
+              <span>{{ scholarship.scholarship_type }}</span>
+            </div>
+            <div class="scholarship-due-date">
+              <i class="fas fa-calendar-alt"></i>
+              <span>تاريخ التقديم: {{ scholarship.due_date }}</span>
+            </div>
+            <p class="scholarship-details">{{ scholarship.scholarship_details }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div v-else class="form-section">
+        <div class="form-card">
+          <div class="form-header">
+            <h3>تعديل منحة: {{ selectedScholarshipForEdit.scholarship_title }}</h3>
+            <button class="back-btn" @click="selectedScholarshipForEdit = null">
+              <i class="fas fa-arrow-right"></i>
+              رجوع
+            </button>
+          </div>
+          <form @submit.prevent="updateScholarshipFromEditTab()">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="edit_scholarship_title">عنوان المنحة</label>
+                <input type="text" v-model="selectedScholarshipForEdit.scholarship_title" id="edit_scholarship_title" required>
+              </div>
+
+              <div class="form-group">
+                <label for="edit_scholarship_photo">رابط الشعار</label>
+                <div class="input-with-hint">
+                  <input type="text" v-model="selectedScholarshipForEdit.scholarship_photo" id="edit_scholarship_photo">
+                  <span class="hint">/images/Logos/Scholarships/.png</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="edit_scholarship_type">نوع المنحة</label>
+                <input type="text" v-model="selectedScholarshipForEdit.scholarship_type" id="edit_scholarship_type" placeholder="مثال: منحة كاملة" required>
+              </div>
+
+              <div class="form-group">
+                <label for="edit_due_date">تاريخ التقديم</label>
+                <input type="text" v-model="selectedScholarshipForEdit.due_date" id="edit_due_date" placeholder="باللغة العربية" required>
+              </div>
+
+              <div class="form-group">
+                <label for="edit_scholarship_link">رابط المنحة</label>
+                <div class="input-with-hint">
+                  <input type="text" v-model="selectedScholarshipForEdit.scholarship_link" id="edit_scholarship_link" required>
+                  <span class="hint">https://</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="edit_status">حالة المنحة</label>
+                <select v-model="selectedScholarshipForEdit.status" id="edit_status" required>
+                  <option value="active">نشطة</option>
+                  <option value="inactive">غير نشطة</option>
+                  <option value="expired">منتهية</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="edit_scholarship_details">تفاصيل المنحة</label>
+              <textarea id="edit_scholarship_details" v-model="selectedScholarshipForEdit.scholarship_details" rows="6"></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-save"></i>
+                حفظ التعديلات
+              </button>
+              <button type="button" class="cancel-btn" @click="selectedScholarshipForEdit = null">
+                <i class="fas fa-times"></i>
+                إلغاء
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Scholarship Tab -->
+    <div v-if="activeTab === 'delete'" class="scholarships-list-section">
+      <div class="section-header">
+        <h2>حذف منحة</h2>
+        <div class="search-bar">
+          <input 
+            type="text" 
+            v-model="searchQuery" 
+            placeholder="ابحث عن منحة..."
+            @input="filterScholarships"
+          >
+        </div>
+      </div>
+
+      <div v-if="loading" class="loading-state">
+        <div class="spinner"></div>
+        <p>جاري التحميل...</p>
+      </div>
+
+      <div v-else-if="!selectedScholarshipForDelete" class="scholarships-grid">
+        <div v-for="scholarship in filteredScholarships" :key="scholarship._id" class="scholarship-card">
+          <div class="scholarship-image">
+            <img 
+              :src="scholarship.scholarship_photo" 
+              :alt="scholarship.scholarship_title"
+              @error="handleImageError"
+            >
+          </div>
+          <div class="scholarship-content">
+            <h3 @click="selectScholarshipForDelete(scholarship)" class="scholarship-title-toggle">{{ scholarship.scholarship_title }}</h3>
+            <div class="scholarship-type">
+              <i class="fas fa-tag"></i>
+              <span>{{ scholarship.scholarship_type }}</span>
+            </div>
+            <div class="scholarship-due-date">
+              <i class="fas fa-calendar-alt"></i>
+              <span>تاريخ التقديم: {{ scholarship.due_date }}</span>
+            </div>
+            <p class="scholarship-details">{{ scholarship.scholarship_details }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div v-else class="delete-confirmation">
+        <div class="confirmation-content">
+          <div class="scholarship-info-delete">
+            <div class="scholarship-image-delete">
+              <img :src="selectedScholarshipForDelete.scholarship_photo" :alt="selectedScholarshipForDelete.scholarship_title">
+            </div>
+            <div class="scholarship-details-delete">
+              <h3>{{ selectedScholarshipForDelete.scholarship_title }}</h3>
+              <div class="scholarship-type">
+                <i class="fas fa-tag"></i>
+                <span>{{ selectedScholarshipForDelete.scholarship_type }}</span>
+              </div>
+              <div class="scholarship-due-date">
+                <i class="fas fa-calendar-alt"></i>
+                <span>تاريخ التقديم: {{ selectedScholarshipForDelete.due_date }}</span>
+              </div>
+              <p>{{ selectedScholarshipForDelete.scholarship_details }}</p>
+            </div>
+          </div>
+          <i class="fas fa-exclamation-triangle"></i>
+          <h3>هل أنت متأكد من حذف هذه المنحة؟</h3>
+          <p>سيتم حذف المنحة بشكل نهائي</p>
+          <div class="confirmation-actions">
+            <button class="cancel-btn" @click="selectedScholarshipForDelete = null">
+              <i class="fas fa-times"></i>
+              إلغاء
+            </button>
+            <button class="confirm-delete-btn" @click="confirmDeleteAction">
+              <i class="fas fa-trash"></i>
+              تأكيد الحذف
+            </button>
           </div>
         </div>
       </div>
@@ -176,7 +386,9 @@ export default {
       filteredScholarships: [],
       isEditing: false,
       editingId: null,
-      activeTab: 'manage'
+      activeTab: 'manage',
+      selectedScholarshipForEdit: null,
+      selectedScholarshipForDelete: null
     };
   },
   methods: {
@@ -292,6 +504,55 @@ export default {
       this.due_date = '';
       this.scholarship_link = '';
       this.status = 'active';
+    },
+    switchToEdit() {
+      this.activeTab = 'edit';
+      this.selectedScholarshipForEdit = null;
+      this.fetchScholarships();
+    },
+    switchToDelete() {
+      this.activeTab = 'delete';
+      this.selectedScholarshipForDelete = null;
+      this.fetchScholarships();
+    },
+    selectScholarshipForEdit(scholarship) {
+      this.selectedScholarshipForEdit = { ...scholarship };
+    },
+    selectScholarshipForDelete(scholarship) {
+      this.selectedScholarshipForDelete = { ...scholarship };
+    },
+    async updateScholarshipFromEditTab() {
+      if (!this.selectedScholarshipForEdit) return;
+      const formData = {
+        scholarship_title: this.selectedScholarshipForEdit.scholarship_title,
+        scholarship_details: this.selectedScholarshipForEdit.scholarship_details,
+        scholarship_photo: this.selectedScholarshipForEdit.scholarship_photo,
+        scholarship_type: this.selectedScholarshipForEdit.scholarship_type,
+        due_date: this.selectedScholarshipForEdit.due_date,
+        scholarship_link: this.selectedScholarshipForEdit.scholarship_link,
+        status: this.selectedScholarshipForEdit.status
+      };
+      try {
+        await axios.put(`https://nuft-website-backend.vercel.app/scholarships/${this.selectedScholarshipForEdit._id}`, formData);
+        alert('تم تحديث المنحة بنجاح');
+        this.selectedScholarshipForEdit = null;
+        this.fetchScholarships();
+      } catch (error) {
+        console.error('Error updating scholarship:', error);
+        alert('حدث خطأ أثناء تحديث المنحة');
+      }
+    },
+    async confirmDeleteAction() {
+      if (!this.selectedScholarshipForDelete) return;
+      try {
+        await axios.delete(`https://nuft-website-backend.vercel.app/scholarships/${this.selectedScholarshipForDelete._id}`);
+        alert('تم حذف المنحة بنجاح');
+        this.selectedScholarshipForDelete = null;
+        this.fetchScholarships();
+      } catch (error) {
+        console.error('Error deleting scholarship:', error);
+        alert('حدث خطأ أثناء حذف المنحة');
+      }
     }
   },
   created() {
@@ -739,5 +1000,164 @@ select:focus {
 .status-expired {
   background-color: #fde7e7;
   color: #d32f2f;
+}
+
+.scholarship-title-toggle {
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0.5rem;
+  border-radius: 6px;
+}
+
+.scholarship-title-toggle:hover {
+  color: #4158d0;
+  background: #e3f2fd;
+}
+
+.delete-confirmation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.confirmation-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.confirmation-content i {
+  font-size: 3rem;
+  color: #dc3545;
+  margin-bottom: 1rem;
+}
+
+.confirmation-content h3 {
+  color: #001d3d;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.confirmation-content p {
+  color: #6c757d;
+  margin-bottom: 2rem;
+}
+
+.confirmation-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.cancel-btn,
+.confirm-delete-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.cancel-btn {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.cancel-btn:hover {
+  background: #dee2e6;
+  transform: translateY(-2px);
+}
+
+.confirm-delete-btn {
+  background: #dc3545;
+  color: white;
+}
+
+.confirm-delete-btn:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+}
+
+.scholarship-info-delete {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.scholarship-image-delete {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid #e9ecef;
+  flex-shrink: 0;
+}
+
+.scholarship-image-delete img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scholarship-details-delete {
+  flex: 1;
+}
+
+.scholarship-details-delete h3 {
+  color: #001d3d;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+}
+
+.scholarship-details-delete p {
+  color: #6c757d;
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.form-header h3 {
+  color: #001d3d;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.back-btn {
+  padding: 0.5rem 1rem;
+  background: #e3f2fd;
+  color: #1976d2;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #bbdefb;
+  transform: translateX(-2px);
 }
 </style>

@@ -27,6 +27,22 @@
         <i class="fas fa-plus"></i>
         إضافة خبر جديد
       </button>
+      <button 
+        class="nav-tab" 
+        :class="{ active: activeTab === 'edit' }"
+        @click="switchToEdit"
+      >
+        <i class="fas fa-edit"></i>
+        تعديل خبر
+      </button>
+      <button 
+        class="nav-tab" 
+        :class="{ active: activeTab === 'delete' }"
+        @click="switchToDelete"
+      >
+        <i class="fas fa-trash"></i>
+        حذف خبر
+      </button>
     </div>
 
     <!-- News List Section -->
@@ -80,6 +96,169 @@
                 حذف
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit News Tab -->
+    <div v-if="activeTab === 'edit'" class="news-list-section">
+      <div class="section-header">
+        <h2>تعديل خبر</h2>
+        <div class="search-bar">
+          <input 
+            type="text" 
+            v-model="searchQuery" 
+            placeholder="ابحث عن خبر..."
+            @input="filterNews"
+          >
+        </div>
+      </div>
+      <div v-if="loading" class="loading-state">
+        <div class="spinner"></div>
+        <p>جاري التحميل...</p>
+      </div>
+      <div v-else-if="!selectedNewsForEdit" class="news-grid">
+        <div v-for="news in filteredNews" :key="news._id" class="news-card">
+          <div class="news-image">
+            <img 
+              :src="news.news_photo" 
+              :alt="news.news_title"
+              @error="handleImageError"
+            >
+          </div>
+          <div class="news-content">
+            <h3 @click="selectNewsForEdit(news)" class="news-title-toggle">{{ news.news_title }}</h3>
+            <div class="news-date">
+              <span>{{ news.news_day }}</span>
+              <span>{{ news.news_month }}</span>
+              <span>{{ news.news_year }}</span>
+            </div>
+            <p class="news-details">{{ news.news_details }}</p>
+          </div>
+        </div>
+      </div>
+      <div v-else class="form-section">
+        <div class="form-card">
+          <div class="form-header">
+            <h3>تعديل خبر: {{ selectedNewsForEdit.news_title }}</h3>
+            <button class="back-btn" @click="selectedNewsForEdit = null">
+              <i class="fas fa-arrow-right"></i>
+              رجوع
+            </button>
+          </div>
+          <form @submit.prevent="updateNewsFromEditTab()">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="edit_news_title">عنوان الخبر</label>
+                <input type="text" v-model="selectedNewsForEdit.news_title" id="edit_news_title" required>
+              </div>
+              <div class="form-group">
+                <label for="edit_news_photo">رابط الصورة</label>
+                <div class="input-with-hint">
+                  <input type="text" v-model="selectedNewsForEdit.news_photo" id="edit_news_photo">
+                  <span class="hint">/images/Logos/NEWS/.png</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="edit_news_day">اليوم</label>
+                <input type="number" v-model="selectedNewsForEdit.news_day" id="edit_news_day" min="1" max="31" required>
+              </div>
+              <div class="form-group">
+                <label for="edit_news_month">الشهر</label>
+                <input type="text" v-model="selectedNewsForEdit.news_month" id="edit_news_month" placeholder="باللغة العربية" required>
+              </div>
+              <div class="form-group">
+                <label for="edit_news_year">السنة</label>
+                <input type="number" v-model="selectedNewsForEdit.news_year" id="edit_news_year" min="1900" max="2099" required>
+              </div>
+              <div class="form-group">
+                <label for="edit_news_link">رابط الخبر</label>
+                <div class="input-with-hint">
+                  <input type="text" v-model="selectedNewsForEdit.news_link" id="edit_news_link" required>
+                  <span class="hint">/Guide/UGRAD/ أو https://</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group full-width">
+              <label for="edit_news_details">تفاصيل الخبر</label>
+              <textarea id="edit_news_details" v-model="selectedNewsForEdit.news_details" rows="6"></textarea>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="submit-btn">
+                <i class="fas fa-save"></i>
+                حفظ التعديلات
+              </button>
+              <button type="button" class="cancel-btn" @click="selectedNewsForEdit = null">
+                <i class="fas fa-times"></i>
+                إلغاء
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete News Tab -->
+    <div v-if="activeTab === 'delete'" class="news-list-section">
+      <div class="section-header">
+        <h2>حذف خبر</h2>
+        <div class="search-bar">
+          <input 
+            type="text" 
+            v-model="searchQuery" 
+            placeholder="ابحث عن خبر..."
+            @input="filterNews"
+          >
+        </div>
+      </div>
+      <div v-if="loading" class="loading-state">
+        <div class="spinner"></div>
+        <p>جاري التحميل...</p>
+      </div>
+      <div v-else-if="!selectedNewsForDelete" class="news-grid">
+        <div v-for="news in filteredNews" :key="news._id" class="news-card">
+          <div class="news-image">
+            <img 
+              :src="news.news_photo" 
+              :alt="news.news_title"
+              @error="handleImageError"
+            >
+          </div>
+          <div class="news-content">
+            <h3 @click="selectNewsForDelete(news)" class="news-title-toggle">{{ news.news_title }}</h3>
+            <div class="news-date">
+              <span>{{ news.news_day }}</span>
+              <span>{{ news.news_month }}</span>
+              <span>{{ news.news_year }}</span>
+            </div>
+            <p class="news-details">{{ news.news_details }}</p>
+          </div>
+        </div>
+      </div>
+      <div v-else class="delete-confirmation">
+        <div class="confirmation-content">
+          <div class="news-info-delete">
+            <div class="news-image-delete">
+              <img :src="selectedNewsForDelete.news_photo" :alt="selectedNewsForDelete.news_title">
+            </div>
+            <div class="news-details-delete">
+              <h3>{{ selectedNewsForDelete.news_title }}</h3>
+              <p>{{ selectedNewsForDelete.news_details }}</p>
+            </div>
+          </div>
+          <i class="fas fa-exclamation-triangle"></i>
+          <h3>هل أنت متأكد من حذف هذا الخبر؟</h3>
+          <p>سيتم حذف الخبر بشكل نهائي</p>
+          <div class="confirmation-actions">
+            <button class="cancel-btn" @click="selectedNewsForDelete = null">
+              <i class="fas fa-times"></i>
+              إلغاء
+            </button>
+            <button class="confirm-delete-btn" @click="confirmDeleteAction">
+              <i class="fas fa-trash"></i>
+              تأكيد الحذف
+            </button>
           </div>
         </div>
       </div>
@@ -169,7 +348,9 @@ export default {
       filteredNews: [],
       isEditing: false,
       editingId: null,
-      activeTab: 'manage' // Default to manage tab
+      activeTab: 'manage', // Default to manage tab
+      selectedNewsForEdit: null,
+      selectedNewsForDelete: null
     };
   },
   methods: {
@@ -284,6 +465,55 @@ export default {
           this.news_year = '';
           this.news_link = '';
           this.news_details = '';
+    },
+    switchToEdit() {
+      this.activeTab = 'edit';
+      this.selectedNewsForEdit = null;
+      this.fetchNews();
+    },
+    switchToDelete() {
+      this.activeTab = 'delete';
+      this.selectedNewsForDelete = null;
+      this.fetchNews();
+    },
+    selectNewsForEdit(news) {
+      this.selectedNewsForEdit = { ...news };
+    },
+    selectNewsForDelete(news) {
+      this.selectedNewsForDelete = { ...news };
+    },
+    async updateNewsFromEditTab() {
+      if (!this.selectedNewsForEdit) return;
+      const formData = {
+        news_title: this.selectedNewsForEdit.news_title,
+        news_photo: this.selectedNewsForEdit.news_photo,
+        news_day: this.selectedNewsForEdit.news_day,
+        news_month: this.selectedNewsForEdit.news_month,
+        news_year: this.selectedNewsForEdit.news_year,
+        news_details: this.selectedNewsForEdit.news_details,
+        news_link: this.selectedNewsForEdit.news_link
+      };
+      try {
+        await axios.put(`https://nuft-website-backend.vercel.app/news/updateNews/${this.selectedNewsForEdit._id}`, formData);
+        alert('تم تحديث الخبر بنجاح');
+        this.selectedNewsForEdit = null;
+        this.fetchNews();
+      } catch (error) {
+        console.error('Error updating news:', error);
+        alert('حدث خطأ أثناء تحديث الخبر');
+      }
+    },
+    async confirmDeleteAction() {
+      if (!this.selectedNewsForDelete) return;
+      try {
+        await axios.delete(`https://nuft-website-backend.vercel.app/news/deleteNews/${this.selectedNewsForDelete._id}`);
+        alert('تم حذف الخبر بنجاح');
+        this.selectedNewsForDelete = null;
+        this.fetchNews();
+      } catch (error) {
+        console.error('Error deleting news:', error);
+        alert('حدث خطأ أثناء حذف الخبر');
+      }
     }
   },
   created() {

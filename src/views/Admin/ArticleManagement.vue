@@ -27,6 +27,22 @@
           <i class="fas fa-plus"></i>
           إضافة مقال جديد
         </button>
+        <button 
+          class="nav-tab" 
+          :class="{ active: activeTab === 'edit' }"
+          @click="switchToEdit"
+        >
+          <i class="fas fa-edit"></i>
+          تعديل مقال
+        </button>
+        <button 
+          class="nav-tab" 
+          :class="{ active: activeTab === 'delete' }"
+          @click="switchToDelete"
+        >
+          <i class="fas fa-trash"></i>
+          حذف مقال
+        </button>
       </div>
   
       <!-- Articles List Section -->
@@ -92,6 +108,222 @@
                   حذف
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Edit Article Tab -->
+      <div v-if="activeTab === 'edit'" class="news-list-section">
+        <div class="section-header">
+          <h2>تعديل مقال</h2>
+          <div class="search-bar">
+            <input 
+              type="text" 
+              v-model="searchQuery" 
+              placeholder="ابحث عن مقال..."
+              @input="filterArticles"
+            >
+          </div>
+        </div>
+  
+        <div v-if="loading" class="loading-state">
+          <div class="spinner"></div>
+          <p>جاري التحميل...</p>
+        </div>
+  
+        <div v-else-if="!selectedArticleForEdit" class="news-grid">
+          <div v-for="article in filteredArticles" :key="article._id" class="news-card">
+            <div class="news-image" v-if="article.imageUrl">
+              <img 
+                :src="article.imageUrl" 
+                :alt="article.title"
+                @error="handleImageError"
+              >
+            </div>
+            <div class="news-content">
+              <h3 @click="selectArticleForEdit(article)" class="news-title-toggle">{{ article.title }}</h3>
+              <div class="article-meta">
+                <span class="author">
+                  <i class="fas fa-user"></i>
+                  {{ article.author }}
+                </span>
+                <span class="category" :class="article.category">
+                  {{ getCategoryText(article.category) }}
+                </span>
+                <span class="status" :class="article.status">
+                  {{ getStatusText(article.status) }}
+                </span>
+              </div>
+              <p class="news-details">{{ article.content }}</p>
+              <div class="tags" v-if="article.tags && article.tags.length">
+                <span v-for="tag in article.tags" :key="tag" class="tag">
+                  #{{ tag }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div v-else class="form-section">
+          <div class="form-card">
+            <div class="form-header">
+              <h3>تعديل مقال: {{ selectedArticleForEdit.title }}</h3>
+              <button class="back-btn" @click="selectedArticleForEdit = null">
+                <i class="fas fa-arrow-right"></i>
+                رجوع
+              </button>
+            </div>
+            <form @submit.prevent="updateArticleFromEditTab()">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="edit_title">عنوان المقال</label>
+                  <input type="text" v-model="selectedArticleForEdit.title" id="edit_title" required>
+                </div>
+  
+                <div class="form-group">
+                  <label for="edit_author">اسم الكاتب</label>
+                  <input type="text" v-model="selectedArticleForEdit.author" id="edit_author" required>
+                </div>
+  
+                <div class="form-group">
+                  <label for="edit_category">التصنيف</label>
+                  <select v-model="selectedArticleForEdit.category" id="edit_category" required>
+                    <option value="news">أخبار</option>
+                    <option value="academic">أكاديمي</option>
+                    <option value="research">بحث</option>
+                    <option value="events">فعاليات</option>
+                    <option value="general">عام</option>
+                  </select>
+                </div>
+  
+                <div class="form-group">
+                  <label for="edit_status">الحالة</label>
+                  <select v-model="selectedArticleForEdit.status" id="edit_status" required>
+                    <option value="draft">مسودة</option>
+                    <option value="published">منشور</option>
+                    <option value="archived">مؤرشف</option>
+                  </select>
+                </div>
+  
+                <div class="form-group">
+                  <label for="edit_imageUrl">رابط الصورة</label>
+                  <input type="text" v-model="selectedArticleForEdit.imageUrl" id="edit_imageUrl">
+                </div>
+  
+                <div class="form-group">
+                  <label for="edit_tags">الوسوم (مفصولة بفواصل)</label>
+                  <input type="text" v-model="selectedArticleForEdit.tagsInput" id="edit_tags" placeholder="مثال: تعليم, جامعات, منح">
+                </div>
+              </div>
+  
+              <div class="form-group full-width">
+                <label for="edit_content">محتوى المقال</label>
+                <textarea id="edit_content" v-model="selectedArticleForEdit.content" rows="6" required></textarea>
+              </div>
+  
+              <div class="form-actions">
+                <button type="submit" class="submit-btn">
+                  <i class="fas fa-save"></i>
+                  حفظ التعديلات
+                </button>
+                <button type="button" class="cancel-btn" @click="selectedArticleForEdit = null">
+                  <i class="fas fa-times"></i>
+                  إلغاء
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Delete Article Tab -->
+      <div v-if="activeTab === 'delete'" class="news-list-section">
+        <div class="section-header">
+          <h2>حذف مقال</h2>
+          <div class="search-bar">
+            <input 
+              type="text" 
+              v-model="searchQuery" 
+              placeholder="ابحث عن مقال..."
+              @input="filterArticles"
+            >
+          </div>
+        </div>
+  
+        <div v-if="loading" class="loading-state">
+          <div class="spinner"></div>
+          <p>جاري التحميل...</p>
+        </div>
+  
+        <div v-else-if="!selectedArticleForDelete" class="news-grid">
+          <div v-for="article in filteredArticles" :key="article._id" class="news-card">
+            <div class="news-image" v-if="article.imageUrl">
+              <img 
+                :src="article.imageUrl" 
+                :alt="article.title"
+                @error="handleImageError"
+              >
+            </div>
+            <div class="news-content">
+              <h3 @click="selectArticleForDelete(article)" class="news-title-toggle">{{ article.title }}</h3>
+              <div class="article-meta">
+                <span class="author">
+                  <i class="fas fa-user"></i>
+                  {{ article.author }}
+                </span>
+                <span class="category" :class="article.category">
+                  {{ getCategoryText(article.category) }}
+                </span>
+                <span class="status" :class="article.status">
+                  {{ getStatusText(article.status) }}
+                </span>
+              </div>
+              <p class="news-details">{{ article.content }}</p>
+              <div class="tags" v-if="article.tags && article.tags.length">
+                <span v-for="tag in article.tags" :key="tag" class="tag">
+                  #{{ tag }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div v-else class="delete-confirmation">
+          <div class="confirmation-content">
+            <div class="article-info-delete">
+              <div class="article-image-delete" v-if="selectedArticleForDelete.imageUrl">
+                <img :src="selectedArticleForDelete.imageUrl" :alt="selectedArticleForDelete.title">
+              </div>
+              <div class="article-details-delete">
+                <h3>{{ selectedArticleForDelete.title }}</h3>
+                <p>{{ selectedArticleForDelete.content }}</p>
+                <div class="article-meta">
+                  <span class="author">
+                    <i class="fas fa-user"></i>
+                    {{ selectedArticleForDelete.author }}
+                  </span>
+                  <span class="category" :class="selectedArticleForDelete.category">
+                    {{ getCategoryText(selectedArticleForDelete.category) }}
+                  </span>
+                  <span class="status" :class="selectedArticleForDelete.status">
+                    {{ getStatusText(selectedArticleForDelete.status) }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <i class="fas fa-exclamation-triangle"></i>
+            <h3>هل أنت متأكد من حذف هذا المقال؟</h3>
+            <p>سيتم حذف المقال بشكل نهائي</p>
+            <div class="confirmation-actions">
+              <button class="cancel-btn" @click="selectedArticleForDelete = null">
+                <i class="fas fa-times"></i>
+                إلغاء
+              </button>
+              <button class="confirm-delete-btn" @click="confirmDeleteAction">
+                <i class="fas fa-trash"></i>
+                تأكيد الحذف
+              </button>
             </div>
           </div>
         </div>
@@ -185,7 +417,9 @@
         filteredArticles: [],
         isEditing: false,
         editingId: null,
-        activeTab: 'manage'
+        activeTab: 'manage',
+        selectedArticleForEdit: null,
+        selectedArticleForDelete: null
       };
     },
     methods: {
@@ -325,6 +559,58 @@
       showNotification(message) {
         // You can implement a toast notification system here
         alert(message);
+      },
+      switchToEdit() {
+        this.activeTab = 'edit';
+        this.selectedArticleForEdit = null;
+        this.fetchArticles();
+      },
+      switchToDelete() {
+        this.activeTab = 'delete';
+        this.selectedArticleForDelete = null;
+        this.fetchArticles();
+      },
+      selectArticleForEdit(article) {
+        this.selectedArticleForEdit = { 
+          ...article,
+          tagsInput: article.tags ? article.tags.join(', ') : ''
+        };
+      },
+      selectArticleForDelete(article) {
+        this.selectedArticleForDelete = { ...article };
+      },
+      async updateArticleFromEditTab() {
+        if (!this.selectedArticleForEdit) return;
+        const formData = {
+          title: this.selectedArticleForEdit.title,
+          content: this.selectedArticleForEdit.content,
+          author: this.selectedArticleForEdit.author,
+          category: this.selectedArticleForEdit.category,
+          imageUrl: this.selectedArticleForEdit.imageUrl,
+          tags: this.selectedArticleForEdit.tagsInput.split(',').map(tag => tag.trim()).filter(tag => tag),
+          status: this.selectedArticleForEdit.status
+        };
+        try {
+          await axios.put(`https://nuft-website-backend.vercel.app/articles/${this.selectedArticleForEdit._id}`, formData);
+          this.showNotification('تم تحديث المقال بنجاح');
+          this.selectedArticleForEdit = null;
+          this.fetchArticles();
+        } catch (error) {
+          console.error('Error updating article:', error);
+          this.showNotification('حدث خطأ أثناء تحديث المقال');
+        }
+      },
+      async confirmDeleteAction() {
+        if (!this.selectedArticleForDelete) return;
+        try {
+          await axios.delete(`https://nuft-website-backend.vercel.app/articles/${this.selectedArticleForDelete._id}`);
+          this.showNotification('تم حذف المقال بنجاح');
+          this.selectedArticleForDelete = null;
+          this.fetchArticles();
+        } catch (error) {
+          console.error('Error deleting article:', error);
+          this.showNotification('حدث خطأ أثناء حذف المقال');
+        }
       }
     },
     created() {
@@ -758,6 +1044,165 @@
     .news-grid {
       grid-template-columns: 1fr;
     }
+  }
+  
+  .news-title-toggle {
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 0.5rem;
+    border-radius: 6px;
+  }
+  
+  .news-title-toggle:hover {
+    color: #4158d0;
+    background: #e3f2fd;
+  }
+  
+  .delete-confirmation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+  }
+  
+  .confirmation-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .confirmation-content i {
+    font-size: 3rem;
+    color: #dc3545;
+    margin-bottom: 1rem;
+  }
+  
+  .confirmation-content h3 {
+    color: #001d3d;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  .confirmation-content p {
+    color: #6c757d;
+    margin-bottom: 2rem;
+  }
+  
+  .confirmation-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .cancel-btn,
+  .confirm-delete-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .cancel-btn {
+    background: #e9ecef;
+    color: #495057;
+  }
+  
+  .cancel-btn:hover {
+    background: #dee2e6;
+    transform: translateY(-2px);
+  }
+  
+  .confirm-delete-btn {
+    background: #dc3545;
+    color: white;
+  }
+  
+  .confirm-delete-btn:hover {
+    background: #c82333;
+    transform: translateY(-2px);
+  }
+  
+  .article-info-delete {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+  }
+  
+  .article-image-delete {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #e9ecef;
+    flex-shrink: 0;
+  }
+  
+  .article-image-delete img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .article-details-delete {
+    flex: 1;
+  }
+  
+  .article-details-delete h3 {
+    color: #001d3d;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+  }
+  
+  .article-details-delete p {
+    color: #6c757d;
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+  }
+  
+  .form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e9ecef;
+  }
+  
+  .form-header h3 {
+    color: #001d3d;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  
+  .back-btn {
+    padding: 0.5rem 1rem;
+    background: #e3f2fd;
+    color: #1976d2;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .back-btn:hover {
+    background: #bbdefb;
+    transform: translateX(-2px);
   }
   </style>
   

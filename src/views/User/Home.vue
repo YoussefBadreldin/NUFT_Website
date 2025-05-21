@@ -47,60 +47,87 @@
                         <h2>آراء المستخدمين</h2>
                         <p>ما يقوله عنا الطلاب وأولياء الامور</p>
                     </div>
-                    <!-- Desktop View -->
-                    <div class="row d-none d-md-flex">
-                        <div class="col-md-4" v-for="(feedback, index) in feedbacks" :key="index">
-                            <div class="feedback-card">
-                                <div class="user-info">
-                                    <img :src="feedback.userImage" :alt="feedback.userName" class="user-image">
-                                    <div class="user-details">
-                                        <h5>{{ feedback.userName }}</h5>
-                                        <p>{{ feedback.userTitle }}</p>
+
+                    <!-- Loading State -->
+                    <div v-if="loading" class="loading-state">
+                        <div class="spinner"></div>
+                        <p>جاري تحميل آراء المستخدمين...</p>
+                    </div>
+
+                    <!-- Error State -->
+                    <div v-else-if="error" class="error-state">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p>{{ error }}</p>
+                        <button @click="fetchReviews" class="retry-btn">
+                            <i class="fas fa-redo"></i>
+                            إعادة المحاولة
+                        </button>
+                    </div>
+
+                    <!-- No Reviews State -->
+                    <div v-else-if="approvedReviews.length === 0" class="no-reviews">
+                        <i class="fas fa-comments"></i>
+                        <p>لا توجد آراء متاحة حالياً</p>
+                    </div>
+
+                    <!-- Reviews Display -->
+                    <template v-else>
+                        <!-- Desktop View -->
+                        <div class="row d-none d-md-flex">
+                            <div class="col-md-4" v-for="review in approvedReviews.slice(0, 3)" :key="review._id">
+                                <div class="feedback-card">
+                                    <div class="user-info">
+                                        <div class="user-details">
+                                            <h5>{{ review.author }}</h5>
+                                            <p>{{ review.department }} - {{ review.program }}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="feedback-content">
-                                    <p>{{ feedback.comment }}</p>
-                                    <div class="rating">
-                                        <span v-for="n in 5" :key="n" class="star" :class="{ 'filled': n <= feedback.rating }">★</span>
+                                    <div class="feedback-content">
+                                        <h6 class="review-title">{{ review.title }}</h6>
+                                        <p>{{ review.content }}</p>
+                                        <div class="rating">
+                                            <span v-for="n in 5" :key="n" class="star" :class="{ 'filled': n <= review.rating }">★</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Mobile View -->
-                    <div class="d-md-none">
-                        <div id="feedbackCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="10000">
-                            <div class="carousel-inner">
-                                <div v-for="(feedback, index) in feedbacks" :key="index" 
-                                     class="carousel-item" :class="{ 'active': index === 0 }">
-                                    <div class="feedback-card">
-                                        <div class="user-info">
-                                            <img :src="feedback.userImage" :alt="feedback.userName" class="user-image">
-                                            <div class="user-details">
-                                                <h5>{{ feedback.userName }}</h5>
-                                                <p>{{ feedback.userTitle }}</p>
+
+                        <!-- Mobile View -->
+                        <div class="d-md-none">
+                            <div id="feedbackCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="10000">
+                                <div class="carousel-inner">
+                                    <div v-for="(review, index) in approvedReviews.slice(0, 3)" :key="review._id" 
+                                         class="carousel-item" :class="{ 'active': index === 0 }">
+                                        <div class="feedback-card">
+                                            <div class="user-info">
+                                                <div class="user-details">
+                                                    <h5>{{ review.author }}</h5>
+                                                    <p>{{ review.department }} - {{ review.program }}</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="feedback-content">
-                                            <p>{{ feedback.comment }}</p>
-                                            <div class="rating">
-                                                <span v-for="n in 5" :key="n" class="star" :class="{ 'filled': n <= feedback.rating }">★</span>
+                                            <div class="feedback-content">
+                                                <h6 class="review-title">{{ review.title }}</h6>
+                                                <p>{{ review.content }}</p>
+                                                <div class="rating">
+                                                    <span v-for="n in 5" :key="n" class="star" :class="{ 'filled': n <= review.rating }">★</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="carousel-indicators">
-                                <button v-for="(feedback, index) in feedbacks" :key="index"
-                                        type="button" 
-                                        data-bs-target="#feedbackCarousel" 
-                                        :data-bs-slide-to="index"
-                                        :class="{ 'active': index === 0 }"
-                                        :aria-label="'Slide ' + (index + 1)">
-                                </button>
+                                <div class="carousel-indicators">
+                                    <button v-for="(review, index) in approvedReviews.slice(0, 3)" :key="review._id"
+                                            type="button" 
+                                            data-bs-target="#feedbackCarousel" 
+                                            :data-bs-slide-to="index"
+                                            :class="{ 'active': index === 0 }"
+                                            :aria-label="'Slide ' + (index + 1)">
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </template>
                 </div>
             </div>
 
@@ -142,18 +169,17 @@
 </template>
 
 <script>
-import $ from 'jquery';
 import HeaderComponent from '../../../public/global/headerComponent.vue';
 import FooterComponent from '../../../public/global/footerComponent.vue';
 import smartAssistantComponent from '../../../public/global/smartAssistantComponent.vue';
-
+import axios from 'axios';
 
 export default {
     name: 'MainComponent',
     components: {
-    HeaderComponent,
-    FooterComponent,
-    smartAssistantComponent
+        HeaderComponent,
+        FooterComponent,
+        smartAssistantComponent
     },
     data() {
         return {
@@ -187,59 +213,30 @@ export default {
                     isOpen: false
                 }
             ],
-            feedbacks: [
-                {
-                    userName: 'أحمد محمد',
-                    userTitle: 'طالب هندسة',
-                    userImage: '/images/feedback/user1.jpg',
-                    comment: 'NUFT ساعدني كثيراً في التقديم للجامعة. الاستشارات كانت مفيدة جداً',
-                    rating: 5
-                },
-                {
-                    userName: 'سارة أحمد',
-                    userTitle: 'طالبة طب',
-                    userImage: '/images/feedback/user2.jpg',
-                    comment: 'فريق العمل متعاون جداً والخدمات ممتازة. ساعدوني في الحصول على منحة دراسية',
-                    rating: 5
-                },
-                {
-                    userName: 'محمد علي',
-                    userTitle: 'طالب تجارة',
-                    userImage: '/images/feedback/user3.jpg',
-                    comment: 'الورش التدريبية كانت مفيدة جداً. شكراً لـ NUFT على كل المساعدة',
-                    rating: 4
-                }
-            ],
-            teamMembers: [
-                { name: 'محمود عادل', position: 'رئيس الفريق', image: '/images/Board/MahmoudAdel.jpg' },
-                { name: 'كارينا ايمن', position: 'مدير لجنة التسويق', image: '/images/Board/KarinaAyman.jpg' },
-                { name: 'يوسف بدر الدين', position: 'مدير لجنة تكنولوجيا المعلومات', image: '/images/Board/YoussefBadreldin.jpg' },
-                { name: 'أحمد علاء', position: 'مدير لجنة التسجيلات', image: '/images/Board/AhmedAlaa.jpg' },
-                { name: 'ميادة قنديل', position: 'مدير لجنة الإعلام', image: '/images/Board/MayadaKandil.jpg' },
-                { name: 'أحمد عيد', position: 'مدير لجنة خدمة العملاء', image: '/images/Board/AhmedEid.jpg' },
-                { name: 'زياد ابو الفتوح', position: 'مدير لجنة العلاقات العامة', image: '/images/Board/ZiadApoelfotouh.jpg' },
-                { name: 'حنين صباح', position: 'مدير لجنة المرحلة الجامعية', image: '/images/Board/HaninSabbah.jpg' },
-                { name: 'أحمد حمدي', position: 'مدير المشروعات ومدير لجنة الدراسات العليا', image: '/images/Board/AhmedHamdy.jpg' }  
-            ]
+            reviews: [],
+            loading: false,
+            error: null
         };
     },
-    mounted() {
-        // Create Intersection Observer
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !this.animationStarted) {
-                    this.startCountingAnimation();
-                    this.animationStarted = true;
-                }
-            });
-        }, { threshold: 0.5 });
-
-        // Start observing the About Us section
-        if (this.$refs.aboutSection) {
-            observer.observe(this.$refs.aboutSection);
+    computed: {
+        approvedReviews() {
+            return this.reviews.filter(review => review.status === 'approved');
         }
     },
     methods: {
+        async fetchReviews() {
+            this.loading = true;
+            this.error = null;
+            try {
+                const response = await axios.get('https://nuft-website-backend.vercel.app/reviews');
+                this.reviews = response.data;
+            } catch (error) {
+                console.error('Error fetching reviews:', error);
+                this.error = 'حدث خطأ أثناء تحميل آراء المستخدمين. يرجى المحاولة مرة أخرى.';
+            } finally {
+                this.loading = false;
+            }
+        },
         startCountingAnimation() {
             this.stats.forEach((stat, index) => {
                 const targetNumber = parseInt(stat.number);
@@ -262,33 +259,26 @@ export default {
 
                 animate();
             });
-        },
-        loadNews() {
-            $.get('/News', (data) => {
-                const newsHtml = $(data);
-                const newsCards = newsHtml.find('.our-blog .news-card');
-                newsCards.sort((a, b) => {
-                    const dateA = new Date(
-                        a.querySelector('.date-box small').innerText,
-                        this.getMonth(a.querySelector('.date-box p').innerText),
-                        a.querySelector('.date-box span').innerText
-                    );
-                    const dateB = new Date(
-                        b.querySelector('.date-box small').innerText,
-                        this.getMonth(b.querySelector('.date-box p').innerText),
-                        b.querySelector('.date-box span').innerText
-                    );
-
-                    return dateB - dateA;
-                });
-
-                $('.Latest-News .row-news').html(newsCards.slice(0, 5));
-            });
-        },
-        getMonth(monthName) {
-            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            return months.indexOf(monthName);
         }
+    },
+    mounted() {
+        // Create Intersection Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !this.animationStarted) {
+                    this.startCountingAnimation();
+                    this.animationStarted = true;
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Start observing the About Us section
+        if (this.$refs.aboutSection) {
+            observer.observe(this.$refs.aboutSection);
+        }
+
+        // Fetch reviews when component is mounted
+        this.fetchReviews();
     }
 };
 </script>
@@ -806,5 +796,62 @@ export default {
         margin-bottom: 20px;
         flex-direction: row-reverse;
     }
+}
+
+/* Add new styles for reviews */
+.review-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.loading-state,
+.error-state,
+.no-reviews {
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #007bff;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error-state i,
+.no-reviews i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #dc3545;
+}
+
+.retry-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    margin-top: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.retry-btn:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
 }
 </style>

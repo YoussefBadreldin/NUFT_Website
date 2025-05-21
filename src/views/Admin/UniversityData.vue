@@ -377,15 +377,7 @@
                         placeholder="أدخل البرامج مفصولة بفواصل"
                       ></textarea>
                     </div>
-                    <div class="form-group">
-                      <label :for="'wafdeen_score_' + index">حد أدنى الوافدين</label>
-                      <input 
-                        type="number" 
-                        v-model="faculty.wafdeen_score" 
-                        :id="'wafdeen_score_' + index"
-                        placeholder="أدخل حد أدنى الوافدين"
-                      >
-                    </div>
+
                     <div class="form-group">
                       <label :for="'feesEgyption_' + index">رسوم الطلاب المصريين (فئة أ)</label>
                         <input 
@@ -509,6 +501,15 @@
                         type="text" 
                         v-model="faculty.Arabenglish_secondYear_score" 
                         :id="'Arabenglish_secondYear_score_' + index"
+                        placeholder="أدخل الدرجة"
+                      >
+                    </div>
+                    <div class="form-group">
+                      <label :for="'wafdeen_score_' + index">حد ادني الطلاب الوافدين</label>
+                      <input 
+                        type="text" 
+                        v-model="faculty.wafdeen_score" 
+                        :id="'wafdeen_score_' + index"
                         placeholder="أدخل الدرجة"
                       >
                     </div>
@@ -1443,6 +1444,15 @@
                       placeholder="أدخل الدرجة"
                     >
                   </div>
+                  <div class="form-group">
+                    <label :for="'wafdeen_score_' + index">حد ادني الطلاب الوافدين</label>
+                    <input 
+                      type="text" 
+                      v-model="faculty.wafdeen_score" 
+                      :id="'wafdeen_score_' + index"
+                      placeholder="أدخل الدرجة"
+                    >
+                  </div>
                 </div>
               </div>
               <!-- No add dorm button in edit mode -->
@@ -1667,6 +1677,15 @@
                       type="text" 
                       v-model="faculty.Arabenglish_secondYear_score" 
                       :id="'Arabenglish_secondYear_score_' + index"
+                      placeholder="أدخل الدرجة"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label :for="'wafdeen_score_' + index">حد ادني الطلاب الوافدين</label>
+                    <input 
+                      type="text" 
+                      v-model="faculty.wafdeen_score" 
+                      :id="'wafdeen_score_' + index"
                       placeholder="أدخل الدرجة"
                     >
                   </div>

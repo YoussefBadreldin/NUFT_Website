@@ -133,6 +133,12 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="university-guide-button">
+                                <a :href="universityLinks[university.university]?.guide_Url" target="_blank" class="guide-link">
+                                    معرفة المزيد عن الجامعة
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -615,5 +621,38 @@ export default {
 .status-not-started {
     color: #6f42c1;
     font-weight: 500;
+}
+
+.university-guide-button {
+    margin-top: 1.5rem;
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.guide-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #001d3d, #4158d0);
+    color: white !important;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.guide-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #4158d0, #001d3d);
+    color: white !important;
+}
+
+.guide-link i {
+    font-size: 0.9rem;
+    color: white !important;
 }
 </style>

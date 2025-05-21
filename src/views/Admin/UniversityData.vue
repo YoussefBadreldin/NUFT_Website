@@ -1443,7 +1443,10 @@
                   </div>
                 </div>
               </div>
-              <!-- No add dorm button in edit mode -->
+              <button type="button" class="add-btn" @click="addFaculty('edit')">
+                <i class="fas fa-plus"></i>
+                إضافة برنامج
+              </button>
             </div>
           </div>
 
@@ -1679,7 +1682,10 @@
                   </div>
                 </div>
               </div>
-              <!-- No add dorm button in edit mode -->
+              <button type="button" class="add-btn" @click="addFaculty('edit')">
+                <i class="fas fa-plus"></i>
+                إضافة برنامج
+              </button>
             </div>
           </div>
 
@@ -1741,6 +1747,10 @@
                 </div>
               </div>
               <!-- No add dorm button in edit mode -->
+              <button type="button" class="add-btn" @click="addDorm('edit')">
+                <i class="fas fa-plus"></i>
+                إضافة سكن
+              </button>
             </div>
           </div>
 
@@ -1794,6 +1804,10 @@
                 </div>
               </div>
             </div>
+            <button type="button" class="add-btn" @click="addTransportation('edit')">
+              <i class="fas fa-plus"></i>
+              إضافة وسيلة نقل
+            </button>
           </div>
 
           <!-- Scholarships -->

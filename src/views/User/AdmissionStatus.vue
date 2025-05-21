@@ -53,7 +53,7 @@
                                     {{ university.university_Arabic_Name }}
                                 </h3>
                             </div>
-                            <div class="dropdown-icon" :class="{ 'expanded': expandedUniversityId === university.id }">
+                            <div class="dropdown-icon" :class="{ 'expanded': expandedUniversityId === university.id }" @click="toggleUniversity(university.id)">
                                 <i class="fas fa-chevron-down"></i>
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                                     <h4>التحويل</h4>
                                     <div class="status-row">
                                         <div class="status-item">
-                                            <p>الحالة: {{ university.transfer_status }}</p>
+                                            <p>الحالة: <span :class="getStatusClass(university.transfer_status)">{{ university.transfer_status }}</span></p>
                                             <p>آخر موعد: {{ formatDate(university.transfer_deadline) }}</p>
                                         </div>
                                     </div>
@@ -77,12 +77,12 @@
                                     <div class="status-row">
                                         <div class="status-item">
                                             <h5>السنة الأولي</h5>
-                                            <p><span>الحالة: <br> {{ university.thanwyaa_firstYear_status }}</span></p>
+                                            <p><span>الحالة: <br> <span :class="getStatusClass(university.thanwyaa_firstYear_status)">{{ university.thanwyaa_firstYear_status }}</span></span></p>
                                             <p><span>آخر موعد: <br> {{ formatDate(university.thanwyaa_firstYear_deadline) }}</span></p>
                                         </div>
                                         <div class="status-item">
                                             <h5>السنة الثانية</h5>
-                                            <p><span>الحالة: <br> {{ university.thanwyaa_secondYear_status }}</span></p>
+                                            <p><span>الحالة: <br> <span :class="getStatusClass(university.thanwyaa_secondYear_status)">{{ university.thanwyaa_secondYear_status }}</span></span></p>
                                             <p><span>آخر موعد: <br> {{ formatDate(university.thanwyaa_secondYear_deadline) }}</span></p>
                                         </div>
                                     </div>
@@ -94,12 +94,12 @@
                                     <div class="status-row">
                                         <div class="status-item">
                                             <h5>السنة الأولي</h5>
-                                            <p><span>الحالة: <br> {{ university.azhar_firstYear_status }}</span></p>
+                                            <p><span>الحالة: <br> <span :class="getStatusClass(university.azhar_firstYear_status)">{{ university.azhar_firstYear_status }}</span></span></p>
                                             <p><span>آخر موعد: <br> {{ formatDate(university.azhar_firstYear_deadline) }}</span></p>
                                         </div>
                                         <div class="status-item">
                                             <h5>السنة الثانية</h5>
-                                            <p><span>الحالة: <br> {{ university.azhar_secondYear_status }}</span></p>
+                                            <p><span>الحالة: <br> <span :class="getStatusClass(university.azhar_secondYear_status)">{{ university.azhar_secondYear_status }}</span></span></p>
                                             <p><span>آخر موعد: <br> {{ formatDate(university.azhar_secondYear_deadline) }}</span></p>
                                         </div>
                                     </div>
@@ -111,12 +111,12 @@
                                     <div class="status-row">
                                         <div class="status-item">
                                             <h5>السنة الأولي</h5>
-                                            <p><span>الحالة: <br> {{ university.Arabenglish_firstYear_status }}</span></p>
+                                            <p><span>الحالة: <br> <span :class="getStatusClass(university.Arabenglish_firstYear_status)">{{ university.Arabenglish_firstYear_status }}</span></span></p>
                                             <p><span>آخر موعد: <br> {{ formatDate(university.Arabenglish_firstYear_deadline) }}</span></p>
                                         </div>
                                         <div class="status-item">
                                             <h5>السنة الثانية</h5>
-                                            <p><span>الحالة: <br> {{ university.Arabenglish_secondYear_status }}</span></p>
+                                            <p><span>الحالة: <br> <span :class="getStatusClass(university.Arabenglish_secondYear_status)">{{ university.Arabenglish_secondYear_status }}</span></span></p>
                                             <p><span>آخر موعد: <br> {{ formatDate(university.Arabenglish_secondYear_deadline) }}</span></p>
                                         </div>
                                     </div>
@@ -127,7 +127,7 @@
                                     <h4>الوافدين</h4>
                                     <div class="status-row">
                                         <div class="status-item">
-                                            <p>الحالة: {{ university.wafdeen_status }}</p>
+                                            <p>الحالة: <span :class="getStatusClass(university.wafdeen_status)">{{ university.wafdeen_status }}</span></p>
                                             <p>آخر موعد: {{ formatDate(university.wafdeen_deadline) }}</p>
                                         </div>
                                     </div>
@@ -263,6 +263,14 @@ export default {
         formatDate(dateString) {
             if (!dateString) return 'غير محدد';
             return dateString;
+        },
+
+        getStatusClass(status) {
+            if (!status) return '';
+            if (status.includes('انتهي')) return 'status-ended';
+            if (status.includes('متاح')) return 'status-available';
+            if (status.includes('لم يبداء')) return 'status-not-started';
+            return '';
         }
     },
     watch: {
@@ -399,6 +407,11 @@ export default {
     align-items: center;
     justify-content: center;
     transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.dropdown-icon:hover {
+    color: #4158d0;
 }
 
 .dropdown-icon.expanded {
@@ -587,5 +600,20 @@ export default {
     font-weight: 700;
     font-family: 'Cairo', sans-serif;
     color: #1a237e;
+}
+
+.status-ended {
+    color: #dc3545;
+    font-weight: 500;
+}
+
+.status-available {
+    color: #28a745;
+    font-weight: 500;
+}
+
+.status-not-started {
+    color: #6f42c1;
+    font-weight: 500;
 }
 </style>

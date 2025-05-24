@@ -2304,13 +2304,8 @@ export default {
     async fetchUniversities() {
       this.loading.all = true;
       try {
-        // Fetch universities in parallel based on selected type
-        const typesToFetch = this.selectedType === 'all' 
-          ? ['private', 'national', 'special', 'international']
-          : [this.selectedType];
-
-        const fetchPromises = typesToFetch.map(type => this.fetchUniversityType(type));
-        await Promise.all(fetchPromises);
+        // Fetch universities based on selected type
+        await this.fetchUniversityType(this.selectedType);
 
         // No longer fetch all details upfront
         this.filteredUniversities = this.universitiesData;
@@ -2420,26 +2415,29 @@ export default {
 
     filterUniversities() {
       if (!this.searchQuery) {
-        this.filteredUniversities = this.universitiesData;
+        this.filteredUniversities = this.universitiesData.filter(university => 
+          university.type === this.selectedType
+        );
         return;
       }
       const query = this.searchQuery.toLowerCase();
       this.filteredUniversities = this.universitiesData.filter(university => 
-        university.university_Arabic_Name.toLowerCase().includes(query)
+        university.university_Arabic_Name.toLowerCase().includes(query) &&
+        university.type === this.selectedType
       );
     },
 
     filterEditUniversities() {
       if (!this.editSearchQuery) {
         this.filteredEditUniversities = this.universitiesData.filter(uni => 
-          this.selectedType === 'private' || uni.type === this.selectedType
+          uni.type === this.selectedType
         );
         return;
       }
       const query = this.editSearchQuery.toLowerCase();
       this.filteredEditUniversities = this.universitiesData.filter(university => 
         university.university_Arabic_Name.toLowerCase().includes(query) &&
-        (this.selectedType === 'all' || university.type === this.selectedType)
+        university.type === this.selectedType
       );
     },
 
@@ -2987,14 +2985,12 @@ export default {
     switchToEdit() {
       this.activeTab = 'edit';
       this.selectedType = 'private';
-      this.editSearchQuery = '';
-      this.filteredEditUniversities = this.universitiesData;
+      this.fetchUniversities();
     },
     switchToDelete() {
       this.activeTab = 'delete';
       this.selectedType = 'private';
-      this.deleteSearchQuery = '';
-      this.filteredDeleteUniversities = this.universitiesData;
+      this.fetchUniversities();
     },
     handleEditFromList(university) {
       this.activeTab = 'edit';

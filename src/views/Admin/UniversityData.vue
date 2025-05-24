@@ -912,7 +912,7 @@
       </div>
       <div v-if="!selectedUniversityForEdit" class="universities-grid">
         <!-- Private Universities -->
-        <div v-if="filteredEditUniversities.filter(uni => uni.type === 'private').length" class="university-section">
+        <div v-if="selectedType === 'private' && filteredEditUniversities.filter(uni => uni.type === 'private').length" class="university-section">
           <h2 class="section-title">الجامعات الخاصة</h2>
           <div class="universities-list">
             <div v-for="university in filteredEditUniversities.filter(uni => uni.type === 'private')" 
@@ -932,7 +932,7 @@
         </div>
 
         <!-- National Universities -->
-        <div v-if="filteredEditUniversities.filter(uni => uni.type === 'national').length" class="university-section">
+        <div v-if="selectedType === 'national' && filteredEditUniversities.filter(uni => uni.type === 'national').length" class="university-section">
           <h2 class="section-title">الجامعات الأهلية</h2>
           <div class="universities-list">
             <div v-for="university in filteredEditUniversities.filter(uni => uni.type === 'national')" 
@@ -952,7 +952,7 @@
         </div>
 
         <!-- Special Universities -->
-        <div v-if="filteredEditUniversities.filter(uni => uni.type === 'special').length" class="university-section">
+        <div v-if="selectedType === 'special' && filteredEditUniversities.filter(uni => uni.type === 'special').length" class="university-section">
           <h2 class="section-title">الجامعات ذات طبيعة خاصة</h2>
           <div class="universities-list">
             <div v-for="university in filteredEditUniversities.filter(uni => uni.type === 'special')" 
@@ -972,7 +972,7 @@
         </div>
 
         <!-- International Universities -->
-        <div v-if="filteredEditUniversities.filter(uni => uni.type === 'international').length" class="university-section">
+        <div v-if="selectedType === 'international' && filteredEditUniversities.filter(uni => uni.type === 'international').length" class="university-section">
           <h2 class="section-title">الجامعات الدولية</h2>
           <div class="universities-list">
             <div v-for="university in filteredEditUniversities.filter(uni => uni.type === 'international')" 
@@ -1903,7 +1903,7 @@
       </div>
       <div v-if="!selectedUniversityForDelete" class="universities-grid">
         <!-- Private Universities -->
-        <div v-if="filteredDeleteUniversities.filter(uni => uni.type === 'private').length" class="university-section">
+        <div v-if="selectedType === 'private' && filteredDeleteUniversities.filter(uni => uni.type === 'private').length" class="university-section">
           <h2 class="section-title">الجامعات الخاصة</h2>
           <div class="universities-list">
             <div v-for="university in filteredDeleteUniversities.filter(uni => uni.type === 'private')" 
@@ -1923,7 +1923,7 @@
         </div>
 
         <!-- National Universities -->
-        <div v-if="filteredDeleteUniversities.filter(uni => uni.type === 'national').length" class="university-section">
+        <div v-if="selectedType === 'national' && filteredDeleteUniversities.filter(uni => uni.type === 'national').length" class="university-section">
           <h2 class="section-title">الجامعات الأهلية</h2>
           <div class="universities-list">
             <div v-for="university in filteredDeleteUniversities.filter(uni => uni.type === 'national')" 
@@ -1943,7 +1943,7 @@
         </div>
 
         <!-- Special Universities -->
-        <div v-if="filteredDeleteUniversities.filter(uni => uni.type === 'special').length" class="university-section">
+        <div v-if="selectedType === 'special' && filteredDeleteUniversities.filter(uni => uni.type === 'special').length" class="university-section">
           <h2 class="section-title">الجامعات ذات طبيعة خاصة</h2>
           <div class="universities-list">
             <div v-for="university in filteredDeleteUniversities.filter(uni => uni.type === 'special')" 
@@ -1963,7 +1963,7 @@
         </div>
 
         <!-- International Universities -->
-        <div v-if="filteredDeleteUniversities.filter(uni => uni.type === 'international').length" class="university-section">
+        <div v-if="selectedType === 'international' && filteredDeleteUniversities.filter(uni => uni.type === 'international').length" class="university-section">
           <h2 class="section-title">الجامعات الدولية</h2>
           <div class="universities-list">
             <div v-for="university in filteredDeleteUniversities.filter(uni => uni.type === 'international')" 
@@ -2428,6 +2428,35 @@ export default {
         university.university_Arabic_Name.toLowerCase().includes(query)
       );
     },
+
+    filterEditUniversities() {
+      if (!this.editSearchQuery) {
+        this.filteredEditUniversities = this.universitiesData.filter(uni => 
+          this.selectedType === 'private' || uni.type === this.selectedType
+        );
+        return;
+      }
+      const query = this.editSearchQuery.toLowerCase();
+      this.filteredEditUniversities = this.universitiesData.filter(university => 
+        university.university_Arabic_Name.toLowerCase().includes(query) &&
+        (this.selectedType === 'all' || university.type === this.selectedType)
+      );
+    },
+
+    filterDeleteUniversities() {
+      if (!this.deleteSearchQuery) {
+        this.filteredDeleteUniversities = this.universitiesData.filter(uni => 
+          this.selectedType === 'all' || uni.type === this.selectedType
+        );
+        return;
+      }
+      const query = this.deleteSearchQuery.toLowerCase();
+      this.filteredDeleteUniversities = this.universitiesData.filter(university => 
+        university.university_Arabic_Name.toLowerCase().includes(query) &&
+        (this.selectedType === 'all' || university.type === this.selectedType)
+      );
+    },
+
     handleImageError(event) {
       event.target.src = '/images/default-university.png';
     },
@@ -2955,41 +2984,17 @@ export default {
     selectUniversityForDelete(university) {
       this.selectedUniversityForDelete = university;
     },
-    filterEditUniversities() {
-      if (!this.editSearchQuery) {
-        this.filteredEditUniversities = this.universitiesData.filter(uni => 
-          this.selectedType === 'all' || uni.type === this.selectedType
-        );
-        return;
-      }
-      const query = this.editSearchQuery.toLowerCase();
-      this.filteredEditUniversities = this.universitiesData.filter(university => 
-        university.university_Arabic_Name.toLowerCase().includes(query) &&
-        (this.selectedType === 'all' || university.type === this.selectedType)
-      );
-    },
-    filterDeleteUniversities() {
-      if (!this.deleteSearchQuery) {
-        this.filteredDeleteUniversities = this.universitiesData.filter(uni => 
-          this.selectedType === 'all' || uni.type === this.selectedType
-        );
-        return;
-      }
-      const query = this.deleteSearchQuery.toLowerCase();
-      this.filteredDeleteUniversities = this.universitiesData.filter(university => 
-        university.university_Arabic_Name.toLowerCase().includes(query) &&
-        (this.selectedType === 'all' || university.type === this.selectedType)
-      );
-    },
     switchToEdit() {
       this.activeTab = 'edit';
-      this.selectedType = 'all';
-      this.filterEditUniversities();
+      this.selectedType = 'private';
+      this.editSearchQuery = '';
+      this.filteredEditUniversities = this.universitiesData;
     },
     switchToDelete() {
       this.activeTab = 'delete';
-      this.selectedType = 'all';
-      this.filterDeleteUniversities();
+      this.selectedType = 'private';
+      this.deleteSearchQuery = '';
+      this.filteredDeleteUniversities = this.universitiesData;
     },
     handleEditFromList(university) {
       this.activeTab = 'edit';
@@ -3251,6 +3256,9 @@ export default {
     },
     deleteSearchQuery() {
       this.filterDeleteUniversities();
+    },
+    searchQuery() {
+      this.filterUniversities();
     }
   }
 };

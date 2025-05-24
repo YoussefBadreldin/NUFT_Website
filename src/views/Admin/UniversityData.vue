@@ -2304,18 +2304,13 @@ export default {
     async fetchUniversities() {
       this.loading.all = true;
       try {
-        // Always fetch private universities first
-        await this.fetchUniversityType('private');
-        
-        // Then fetch other types if needed
-        if (this.selectedType !== 'private') {
-          await this.fetchUniversityType(this.selectedType);
-        }
+        // Fetch universities based on selected type
+        await this.fetchUniversityType(this.selectedType);
 
-        // Filter universities based on selected type
-        this.filteredUniversities = this.universitiesData.filter(uni => uni.type === this.selectedType);
-        this.filteredEditUniversities = this.filteredUniversities;
-        this.filteredDeleteUniversities = this.filteredUniversities;
+        // No longer fetch all details upfront
+        this.filteredUniversities = this.universitiesData;
+        this.filteredEditUniversities = this.universitiesData;
+        this.filteredDeleteUniversities = this.universitiesData;
       } catch (error) {
         console.error('Error fetching universities:', error);
         this.universitiesData = [];
@@ -2602,39 +2597,189 @@ export default {
       this.filterEditUniversities();
     },
     async addUniversity() {
+      if (this.isSubmitting) return; // Prevent multiple submissions
+      
       try {
-        const type = this.addFormData.type;
-        const endpoint = `${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS[type.toUpperCase()].LINKS_ADD}`;
-        await axios.post(endpoint, this.addFormData);
+        this.isSubmitting = true; // Set submitting state to true
         
-        // Reset form and refresh data
-        this.addFormData = { ...this.$options.data().addFormData };
-        this.selectedType = 'private'; // Reset to private view
-        await this.fetchUniversities();
-        
-        // Show success message
-        this.$toast.success('تم إضافة الجامعة بنجاح');
+        // 1. Add the university links/info (main university object)
+        const type = this.addFormData.type.toLowerCase();
+        const universityCode = this.addFormData.university_code;
+        const universityName = this.addFormData.university_Arabic_Name;
+
+        // Prepare main university data (links/info)
+        const mainData = {
+          university: universityCode,
+          university_Arabic_Name: universityName,
+          university_Logo: this.addFormData.university_Logo,
+          Uni_Bio: this.addFormData.Uni_Bio,
+          location: this.addFormData.location,
+          website: this.addFormData.website,
+          phone: this.addFormData.phone,
+          email: this.addFormData.email,
+          facebook: this.addFormData.facebook,
+          instagram: this.addFormData.instagram,
+          youtube: this.addFormData.youtube,
+          linkedin: this.addFormData.linkedin,
+          first_year: this.addFormData.first_year,
+          second_year: this.addFormData.second_year,
+          international_programs: this.addFormData.international_programs,
+          dorms_link: this.addFormData.dorms_link,
+          transportation_link: this.addFormData.transportation_link,
+          scholarship_link: this.addFormData.scholarship_link,
+          Egyptian_Admission_link: this.addFormData.Egyptian_Admission_link,
+          Egyptian_Admission_link2: this.addFormData.Egyptian_Admission_link2,
+          Egyptian_Transfer_link: this.addFormData.Egyptian_Transfer_link,
+          Wafdeen_Admission_link: this.addFormData.Wafdeen_Admission_link
+        };
+
+        // Post main university info (links)
+        const typeConfig = API_CONFIG.ENDPOINTS[type.toUpperCase()];
+        const response = await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.LINKS_ADD}`, mainData);
+
+        if (!response.data) {
+          throw new Error('No response data received from server');
+        }
+
+        // 2. Add all faculties as an array
+        if (this.addFormData.faculties.length > 0) {
+          const facultyData = this.addFormData.faculties.map(faculty => ({
+            ...faculty,
+            university: universityCode,
+            university_Arabic_Name: universityName,
+            type: type
+          }));
+          
+          await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.ADD}`, facultyData);
+        }
+
+        // 3. Add all dorms (send as array)
+        if (this.addFormData.dorms.length > 0) {
+          const dormsData = this.addFormData.dorms.map(dorm => ({
+            ...dorm,
+            spec: universityCode
+          }));
+          await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.DORMS.ADD}`, dormsData);
+        }
+
+        // 4. Add all transportation (send as array)
+        if (this.addFormData.transportation.length > 0) {
+          const transportationData = this.addFormData.transportation.map(transport => ({
+            ...transport,
+            spec: universityCode
+          }));
+          await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.TRANSPORTATION.ADD}`, transportationData);
+        }
+
+        alert('تمت إضافة الجامعة وكل البيانات بنجاح');
+        this.resetAddForm();
+        this.fetchUniversities(); // Refresh the universities list
       } catch (error) {
         console.error('Error adding university:', error);
-        this.$toast.error('حدث خطأ أثناء إضافة الجامعة');
+        if (error.response) {
+          console.error('Error response:', error.response.data);
+          alert(`حدث خطأ أثناء إضافة الجامعة: ${error.response.data.message || 'خطأ في الخادم'}`);
+        } else if (error.request) {
+          console.error('No response received:', error.request);
+          alert('لم يتم استلام رد من الخادم. يرجى التحقق من اتصال الإنترنت');
+        } else {
+          console.error('Error message:', error.message);
+          alert(`حدث خطأ أثناء إضافة الجامعة: ${error.message}`);
+        }
+      } finally {
+        this.isSubmitting = false; // Reset submitting state
       }
     },
     async updateUniversity() {
       try {
-        const type = this.editFormData.type;
-        const endpoint = `${API_CONFIG.BASE_URL}${API_CONFIG.ENDPOINTS[type.toUpperCase()].LINKS_UPDATE(this.editingId)}`;
-        await axios.put(endpoint, this.editFormData);
-        
-        // Reset form and refresh data
-        this.editFormData = { ...this.$options.data().editFormData };
-        this.selectedType = 'private'; // Reset to private view
-        await this.fetchUniversities();
-        
-        // Show success message
-        this.$toast.success('تم تحديث الجامعة بنجاح');
+        const type = this.editFormData.type.toUpperCase();
+        const typeConfig = API_CONFIG.ENDPOINTS[type];
+        const universityCode = this.editFormData.university_code.toUpperCase();
+
+        // Use the correct link document _id for update
+        const linkId = this.editFormData.linkId;
+        if (!linkId) {
+          alert('تعذر تحديث بيانات الجامعة: لم يتم العثور على معرف الرابط (link ID)');
+          return;
+        }
+
+        // 1. Update main university info (links)
+        await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.LINKS_UPDATE(linkId)}`, {
+          university: universityCode,
+          university_code: universityCode,
+          university_Arabic_Name: this.editFormData.university_Arabic_Name,
+          university_Logo: this.editFormData.university_Logo,
+          type: this.editFormData.type,
+          Uni_Bio: this.editFormData.Uni_Bio,
+          location: this.editFormData.location,
+          website: this.editFormData.website,
+          phone: this.editFormData.phone,
+          email: this.editFormData.email,
+          facebook: this.editFormData.facebook,
+          instagram: this.editFormData.instagram,
+          youtube: this.editFormData.youtube,
+          linkedin: this.editFormData.linkedin,
+          first_year: this.editFormData.first_year,
+          second_year: this.editFormData.second_year,
+          international_programs: this.editFormData.international_programs,
+          dorms_link: this.editFormData.dorms_link,
+          transportation_link: this.editFormData.transportation_link,
+          scholarship_link: this.editFormData.scholarship_link,
+          Egyptian_Admission_link: this.editFormData.Egyptian_Admission_link,
+          Egyptian_Transfer_link: this.editFormData.Egyptian_Transfer_link,
+          Wafdeen_Admission_link: this.editFormData.Wafdeen_Admission_link
+        });
+
+        // 2. Update or add faculties
+        if (this.editFormData.faculties && this.editFormData.faculties.length > 0) {
+          for (const faculty of this.editFormData.faculties) {
+            if (faculty._id || faculty.id) {
+              await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.UPDATE(faculty._id || faculty.id)}`,
+                { ...faculty, university_code: universityCode, university: this.editFormData.university_Arabic_Name });
+            } else {
+              await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.ADD}`,
+                { ...faculty, university_code: universityCode, university: this.editFormData.university_Arabic_Name });
+            }
+          }
+        }
+
+        // 3. Update or add dorms
+        if (this.editFormData.dorms && this.editFormData.dorms.length > 0) {
+          for (const dorm of this.editFormData.dorms) {
+            if (dorm._id || dorm.id) {
+              await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.DORMS.UPDATE(dorm._id || dorm.id)}`,
+                { ...dorm, university_code: universityCode, spec: universityCode });
+            } else {
+              await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.DORMS.ADD}`,
+                { ...dorm, university_code: universityCode, spec: universityCode });
+            }
+          }
+        }
+
+        // 4. Update or add transportation
+        if (this.editFormData.transportation && this.editFormData.transportation.length > 0) {
+          for (const trans of this.editFormData.transportation) {
+            if (trans._id || trans.id) {
+              await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.TRANSPORTATION.UPDATE(trans._id || trans.id)}`,
+                { ...trans, university_code: universityCode, spec: universityCode });
+            } else {
+              await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.TRANSPORTATION.ADD}`,
+                { ...trans, university_code: universityCode, spec: universityCode });
+            }
+          }
+        }
+
+        alert('تم تحديث الجامعة بنجاح');
+        this.cancelEdit();
+        this.fetchUniversities();
+        this.activeTab = 'manage';
       } catch (error) {
         console.error('Error updating university:', error);
-        this.$toast.error('حدث خطأ أثناء تحديث الجامعة');
+        if (error.response && error.response.data && error.response.data.message) {
+          alert(`حدث خطأ أثناء تحديث الجامعة: ${error.response.data.message}`);
+        } else {
+          alert('حدث خطأ أثناء تحديث الجامعة');
+        }
       }
     },
     async deleteUniversity(id) {
@@ -2912,13 +3057,13 @@ export default {
         if (mode === 'add') {
           // In add mode, do NOT post to API. Only collapse the section and show a message.
           this.collapsedSections.dorms[index] = true;
-          
+          this.$toast.success('تم حفظ البيانات محلياً. سيتم الحفظ النهائي عند إضافة الجامعة.');
           return;
         } else {
-        if (dorm.id) {
-          await this.updateDormAPI(type, dorm.id, dormData);
-        } else {
-          await this.addDormAPI(type, dormData);
+          if (dorm._id) {
+            await this.updateDormAPI(type, dorm._id, dormData);
+          } else {
+            await this.addDormAPI(type, dormData);
           }
         }
 
@@ -3095,21 +3240,23 @@ export default {
       return response.data;
     },
   },
-  watch: {
-    selectedType(newType) {
-      if (newType !== 'private') {
-        this.fetchUniversityType(newType);
-      }
-      this.filterUniversities();
-      this.filterEditUniversities();
-      this.filterDeleteUniversities();
-    }
-  },
   created() {
-    // Set initial type to private and fetch universities
-    this.selectedType = 'private';
     this.fetchUniversities();
   },
+  watch: {
+    selectedType() {
+      this.fetchUniversities();
+    },
+    editSearchQuery() {
+      this.filterEditUniversities();
+    },
+    deleteSearchQuery() {
+      this.filterDeleteUniversities();
+    },
+    searchQuery() {
+      this.filterUniversities();
+    }
+  }
 };
 </script>
 

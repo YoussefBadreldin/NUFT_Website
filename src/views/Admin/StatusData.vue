@@ -1044,15 +1044,9 @@ export default {
         international: 'https://nuft-website-backend.vercel.app/international/deadline'
       };
 
-      this.saving = true;
       try {
-        console.log('Saving university:', university);
-        console.log('Selected type:', this.selectedType);
-        console.log('Status endpoint:', statusEndpoints[this.selectedType]);
-        console.log('Deadline endpoint:', deadlineEndpoints[this.selectedType]);
-
         // Save status data
-        const statusData = {
+        await axios.put(`${statusEndpoints[this.selectedType]}/${university.id}`, {
           university: university.university,
           university_Arabic_Name: university.university_Arabic_Name,
           transfer_status: university.transfer_status,
@@ -1064,9 +1058,10 @@ export default {
           Arabenglish_secondYear_status: university.Arabenglish_secondYear_status,
           wafdeen_status: university.wafdeen_status,
           guide_Url: university.guide_Url
-        };
+        });
 
-        const deadlineData = {
+        // Save deadline data
+        await axios.put(`${deadlineEndpoints[this.selectedType]}/${university.id}`, {
           university: university.university,
           transfer_deadline: university.transfer_deadline,
           thanwyaa_firstYear_deadline: university.thanwyaa_firstYear_deadline,
@@ -1076,55 +1071,13 @@ export default {
           Arabenglish_firstYear_deadline: university.Arabenglish_firstYear_deadline,
           Arabenglish_secondYear_deadline: university.Arabenglish_secondYear_deadline,
           wafdeen_deadline: university.wafdeen_deadline
-        };
+        });
 
-        console.log('Status data to send:', statusData);
-        console.log('Deadline data to send:', deadlineData);
-
-        // Save status data
-        const statusResponse = await axios.put(`${statusEndpoints[this.selectedType]}/${university._id}`, statusData);
-        console.log('Status response:', statusResponse.data);
-
-        // Save deadline data
-        const deadlineResponse = await axios.put(`${deadlineEndpoints[this.selectedType]}/${university._id}`, deadlineData);
-        console.log('Deadline response:', deadlineResponse.data);
-
-        if (statusResponse.data && deadlineResponse.data) {
-          // Update the local state with the new data
-          const updatedUniversity = {
-            ...university,
-            ...statusResponse.data,
-            ...deadlineResponse.data
-          };
-
-          // Update the universities array
-          const index = this.universities.findIndex(u => u._id === university._id);
-          if (index !== -1) {
-            this.universities[index] = updatedUniversity;
-          }
-
-          // Update filtered universities
-          this.filteredUniversities = [...this.universities];
-
-          alert('تم حفظ التغييرات بنجاح');
-          this.selectedUniversity = null;
-          this.activeTab = 'manage';
-        }
+        alert('تم حفظ التغييرات بنجاح');
+        this.fetchData();
       } catch (error) {
         console.error('Error saving university:', error);
-        console.error('Error response:', error.response);
-        console.error('Error message:', error.message);
-        console.error('Error config:', error.config);
-        
-        let errorMessage = 'حدث خطأ أثناء حفظ التغييرات';
-        if (error.response) {
-          errorMessage = error.response.data?.message || errorMessage;
-          console.error('Error response data:', error.response.data);
-          console.error('Error response status:', error.response.status);
-        }
-        alert(errorMessage);
-      } finally {
-        this.saving = false;
+        alert('حدث خطأ أثناء حفظ التغييرات');
       }
     },
 
@@ -1196,26 +1149,18 @@ export default {
         international: 'https://nuft-website-backend.vercel.app/international/deadline'
       };
 
-      this.deleting = true;
       try {
         // Delete both status and deadline data
         await Promise.all([
-          axios.delete(`${statusEndpoints[this.selectedType]}/${university._id}`),
-          axios.delete(`${deadlineEndpoints[this.selectedType]}/${university._id}`)
+          axios.delete(`${statusEndpoints[this.selectedType]}/${university.id}`),
+          axios.delete(`${deadlineEndpoints[this.selectedType]}/${university.id}`)
         ]);
         
-        // Remove from local state
-        this.universities = this.universities.filter(u => u._id !== university._id);
-        this.filteredUniversities = this.filteredUniversities.filter(u => u._id !== university._id);
-        
         alert('تم حذف الجامعة بنجاح');
-        this.universityToDelete = null;
-        this.activeTab = 'manage';
+        this.fetchData();
       } catch (error) {
         console.error('Error deleting university:', error);
-        alert(error.response?.data?.message || 'حدث خطأ أثناء حذف الجامعة');
-      } finally {
-        this.deleting = false;
+        alert('حدث خطأ أثناء حذف الجامعة');
       }
     },
 

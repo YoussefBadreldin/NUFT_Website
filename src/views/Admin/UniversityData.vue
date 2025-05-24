@@ -1712,12 +1712,18 @@
                     {{ dorm.type || `سكن ${index + 1}` }}
                   </h4>
                   <div class="dorm-actions">
-                    <button type="button"
-                            class="toggle-btn"
-                            @click="collapsedSections.dorms[index] ? toggleSection('dorms', index) : saveDorm(index, 'edit')">
-                      <i class="fas" :class="collapsedSections.dorms[index] ? 'fa-edit' : 'fa-save'"></i>
-                      {{ collapsedSections.dorms[index] ? 'تعديل' : 'حفظ' }}
-                    </button>
+                    <template v-if="!collapsedSections.dorms[index]">
+                      <button type="button" class="save-btn" @click="saveDorm(index, 'edit')">
+                        <i class="fas fa-save"></i>
+                        حفظ
+                      </button>
+                    </template>
+                    <template v-else>
+                      <button type="button" class="toggle-btn" @click="toggleSection('dorms', index)">
+                        <i class="fas fa-edit"></i>
+                        تعديل
+                      </button>
+                    </template>
                     <button type="button" class="remove-btn" @click="removeDorm(index, 'edit')">
                       <i class="fas fa-trash"></i>
                       حذف
@@ -1746,7 +1752,6 @@
                   </div>
                 </div>
               </div>
-              <!-- No add dorm button in edit mode -->
               <button type="button" class="add-btn" @click="addDorm('edit')">
                 <i class="fas fa-plus"></i>
                 إضافة سكن
@@ -3040,39 +3045,14 @@ export default {
     },
 
     async saveDorm(index, mode = 'edit') {
+      // Save dorm locally and collapse, do not post to backend until main save
       const dorm = mode === 'add' ? this.addFormData.dorms[index] : this.editFormData.dorms[index];
       if (!dorm.type) {
         alert('الرجاء إدخال نوع السكن');
         return;
       }
-
-      try {
-        const type = mode === 'add' ? this.addFormData.type : this.editFormData.type;
-        const universityCode = mode === 'add' ? this.addFormData.university_code : this.editFormData.university_code;
-        const dormData = {
-          ...dorm,
-          spec: universityCode
-        };
-
-        if (mode === 'add') {
-          // In add mode, do NOT post to API. Only collapse the section and show a message.
-          this.collapsedSections.dorms[index] = true;
-          this.$toast.success('تم حفظ البيانات محلياً. سيتم الحفظ النهائي عند إضافة الجامعة.');
-          return;
-        } else {
-          if (dorm._id) {
-            await this.updateDormAPI(type, dorm._id, dormData);
-          } else {
-            await this.addDormAPI(type, dormData);
-          }
-        }
-
-        this.collapsedSections.dorms[index] = true;
-        alert('تم حفظ السكن بنجاح');
-      } catch (error) {
-        console.error('Error saving dorm:', error);
-        alert('حدث خطأ أثناء حفظ السكن');
-      }
+      this.collapsedSections.dorms[index] = true;
+      this.$toast && this.$toast.success ? this.$toast.success('تم حفظ البيانات محلياً. سيتم الحفظ النهائي عند حفظ التعديلات.') : null;
     },
 
     async saveTransportation(index, mode = 'edit') {

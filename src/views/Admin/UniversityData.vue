@@ -2669,8 +2669,16 @@ export default {
         const typeConfig = API_CONFIG.ENDPOINTS[type];
         const universityCode = this.editFormData.university_code.toUpperCase();
 
-        // Update university basic information
-        await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.UPDATE(universityCode)}`, {
+        // Use the correct link document _id for update
+        const linkId = this.editFormData.linkId;
+        if (!linkId) {
+          alert('تعذر تحديث بيانات الجامعة: لم يتم العثور على معرف الرابط (link ID)');
+          return;
+        }
+
+        // 1. Update main university info (links)
+        await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.LINKS_UPDATE(linkId)}`, {
+          university: universityCode,
           university_code: universityCode,
           university_Arabic_Name: this.editFormData.university_Arabic_Name,
           university_Logo: this.editFormData.university_Logo,
@@ -2684,6 +2692,8 @@ export default {
           instagram: this.editFormData.instagram,
           youtube: this.editFormData.youtube,
           linkedin: this.editFormData.linkedin,
+          first_year: this.editFormData.first_year,
+          second_year: this.editFormData.second_year,
           international_programs: this.editFormData.international_programs,
           dorms_link: this.editFormData.dorms_link,
           transportation_link: this.editFormData.transportation_link,
@@ -2693,36 +2703,42 @@ export default {
           Wafdeen_Admission_link: this.editFormData.Wafdeen_Admission_link
         });
 
-        // Update faculties
+        // 2. Update or add faculties
         if (this.editFormData.faculties && this.editFormData.faculties.length > 0) {
           for (const faculty of this.editFormData.faculties) {
-            await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.UPDATE(universityCode)}`, {
-              ...faculty,
-              university_code: universityCode,
-              university: this.editFormData.university_Arabic_Name
-            });
+            if (faculty._id || faculty.id) {
+              await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.UPDATE(faculty._id || faculty.id)}`,
+                { ...faculty, university_code: universityCode, university: this.editFormData.university_Arabic_Name });
+            } else {
+              await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.FACULTY.ADD}`,
+                { ...faculty, university_code: universityCode, university: this.editFormData.university_Arabic_Name });
+            }
           }
         }
 
-        // Update dorms
+        // 3. Update or add dorms
         if (this.editFormData.dorms && this.editFormData.dorms.length > 0) {
           for (const dorm of this.editFormData.dorms) {
-            await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.DORMS.UPDATE(universityCode)}`, {
-              ...dorm,
-              university_code: universityCode,
-              spec: this.editFormData.university_Arabic_Name
-            });
+            if (dorm._id || dorm.id) {
+              await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.DORMS.UPDATE(dorm._id || dorm.id)}`,
+                { ...dorm, university_code: universityCode, spec: this.editFormData.university_Arabic_Name });
+            } else {
+              await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.DORMS.ADD}`,
+                { ...dorm, university_code: universityCode, spec: this.editFormData.university_Arabic_Name });
+            }
           }
         }
 
-        // Update transportation
+        // 4. Update or add transportation
         if (this.editFormData.transportation && this.editFormData.transportation.length > 0) {
           for (const trans of this.editFormData.transportation) {
-            await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.TRANSPORTATION.UPDATE(universityCode)}`, {
-              ...trans,
-              university_code: universityCode,
-              spec: this.editFormData.university_Arabic_Name
-            });
+            if (trans._id || trans.id) {
+              await axios.put(`${API_CONFIG.BASE_URL}${typeConfig.TRANSPORTATION.UPDATE(trans._id || trans.id)}`,
+                { ...trans, university_code: universityCode, spec: this.editFormData.university_Arabic_Name });
+            } else {
+              await axios.post(`${API_CONFIG.BASE_URL}${typeConfig.TRANSPORTATION.ADD}`,
+                { ...trans, university_code: universityCode, spec: this.editFormData.university_Arabic_Name });
+            }
           }
         }
 
@@ -2732,7 +2748,11 @@ export default {
         this.activeTab = 'manage';
       } catch (error) {
         console.error('Error updating university:', error);
-        alert('حدث خطأ أثناء تحديث الجامعة');
+        if (error.response && error.response.data && error.response.data.message) {
+          alert(`حدث خطأ أثناء تحديث الجامعة: ${error.response.data.message}`);
+        } else {
+          alert('حدث خطأ أثناء تحديث الجامعة');
+        }
       }
     },
     async deleteUniversity(id) {
@@ -2749,7 +2769,7 @@ export default {
         // Delete the university and all associated data
         await axios.delete(`${API_CONFIG.BASE_URL}${typeConfig.DELETE(universityCode)}`);
 
-        // Remove the university from the local state
+        // Only update UI if backend deletion succeeded
         this.universitiesData = this.universitiesData.filter(u => u.id !== id);
         this.filteredUniversities = this.filteredUniversities.filter(u => u.id !== id);
         this.filteredEditUniversities = this.filteredEditUniversities.filter(u => u.id !== id);
@@ -2760,7 +2780,11 @@ export default {
         this.fetchUniversities();
       } catch (error) {
         console.error('Error deleting university:', error);
-        alert('حدث خطأ أثناء حذف الجامعة');
+        if (error.response && error.response.data && error.response.data.message) {
+          alert(`حدث خطأ أثناء حذف الجامعة: ${error.response.data.message}`);
+        } else {
+          alert('حدث خطأ أثناء حذف الجامعة');
+        }
       }
     },
     confirmDelete(id) {
@@ -2920,7 +2944,8 @@ export default {
           Egyptian_Admission_link: universityLinks?.Egyptian_Admission_link || '',
           Egyptian_Admission_link2: universityLinks?.Egyptian_Admission_link2 || '',
           Egyptian_Transfer_link: universityLinks?.Egyptian_Transfer_link || '',
-          Wafdeen_Admission_link: universityLinks?.Wafdeen_Admission_link || ''
+          Wafdeen_Admission_link: universityLinks?.Wafdeen_Admission_link || '',
+          linkId: universityLinks?._id || '' // Store the link document _id for update
         };
       } catch (error) {
         console.error('Error loading university data for edit:', error);
